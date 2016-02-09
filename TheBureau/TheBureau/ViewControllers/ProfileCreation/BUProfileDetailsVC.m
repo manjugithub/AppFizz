@@ -77,11 +77,20 @@
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Birthday\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIDatePicker *picker = [[UIDatePicker alloc] init];
+    
+    
     [picker setDatePickerMode:UIDatePickerModeDate];
     [alertController.view addSubview:picker];
     [picker alignCenterYWithView:alertController.view predicate:@"0.0"];
     [picker alignCenterXWithView:alertController.view predicate:@"0.0"];
     [picker constrainWidth:@"270" ];
+    
+    NSDate *todayDate = [NSDate date];
+    NSDate *newDate = [todayDate dateByAddingTimeInterval:(-1*18*365*24*60*60)];
+    
+    picker.maximumDate = newDate;
+    picker.date = newDate;
+
     
     [alertController addAction:({
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
