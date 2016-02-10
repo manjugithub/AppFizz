@@ -2139,6 +2139,9 @@
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="FpM-nT-Aqu" id="pXn-dA-1nc"/>
+                                                                    </connections>
                                                                 </textField>
                                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="enter here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qJ6-iU-NYq">
                                                                     <rect key="frame" x="155" y="65" width="405" height="30"/>
@@ -2148,6 +2151,9 @@
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="FpM-nT-Aqu" id="anQ-xM-gAp"/>
+                                                                    </connections>
                                                                 </textField>
                                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="enter here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4g1-an-hUh">
                                                                     <rect key="frame" x="155" y="124" width="405" height="30"/>
@@ -2157,6 +2163,9 @@
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="FpM-nT-Aqu" id="FDl-4Q-rCT"/>
+                                                                    </connections>
                                                                 </textField>
                                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="enter here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KY7-tu-1pv">
                                                                     <rect key="frame" x="155" y="183" width="405" height="30"/>
@@ -2166,6 +2175,9 @@
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="FpM-nT-Aqu" id="1YL-Wf-llm"/>
+                                                                    </connections>
                                                                 </textField>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eg: 2000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7H-e2-Yxy">
                                                                     <rect key="frame" x="155" y="217" width="405" height="17"/>
@@ -2298,7 +2310,11 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
+                                            <outlet property="collegeTextField" destination="4g1-an-hUh" id="5uu-RH-iqb"/>
                                             <outlet property="educationlevelLbl" destination="A6V-NG-Idf" id="AzY-ed-QYA"/>
+                                            <outlet property="honorTextField" destination="lvD-B1-jus" id="xb5-iR-VhB"/>
+                                            <outlet property="majorTextField" destination="qJ6-iU-NYq" id="hH7-tG-H8J"/>
+                                            <outlet property="yearTextField" destination="KY7-tu-1pv" id="qQU-Ok-lAl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

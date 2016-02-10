@@ -16,12 +16,21 @@
 
 @end
 
-@interface HighLevelEducationTVCell : UITableViewCell
+@interface HighLevelEducationTVCell : UITableViewCell<UITextFieldDelegate>
 
 @property (nonatomic,assign) id <HighLevelEducationTVCellDelegate> delegate;
 @property(nonatomic) NSIndexPath *indexpath;
 
 @property (nonatomic,weak) IBOutlet UILabel *educationlevelLbl;
+@property (nonatomic,weak) IBOutlet UITextField *honorTextField;
+@property (nonatomic,weak) IBOutlet UITextField *yearTextField;
+
+@property (nonatomic,weak) IBOutlet UITextField *collegeTextField;
+@property (nonatomic,weak) IBOutlet UITextField *majorTextField;
+
+
+
+
 
 
 @end

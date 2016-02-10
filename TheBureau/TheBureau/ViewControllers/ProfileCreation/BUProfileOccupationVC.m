@@ -25,6 +25,8 @@
 
 @property(nonatomic) NSIndexPath *selectedIndexpath;
 
+@property(nonatomic) UITextField *currentTextField;
+
 
 @end
 
@@ -44,8 +46,17 @@
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_back"] style:UIBarButtonItemStylePlain target:self action:@selector(viewPopOnBackButton)];
     
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    [self.view addGestureRecognizer:gestureRecognizer];
+    
     
     self.navigationItem.leftBarButtonItem = backButton;
+}
+
+- (void) hideKeyboard {
+    
+    [self.currentTextField resignFirstResponder];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -116,6 +127,18 @@
     }
     return height;
 }
+
+
+#pragma mark - textField Delegates
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    self.currentTextField = textField;
+    
+    [textField becomeFirstResponder];
+    return YES;
+}
+
 
 #pragma mark - HighLevelEducationTVCellDelegate
 

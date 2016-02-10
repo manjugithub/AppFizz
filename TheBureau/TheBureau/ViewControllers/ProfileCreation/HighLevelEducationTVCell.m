@@ -30,4 +30,13 @@
     [self.delegate updateHighLevelEducationTVCell :_indexpath];
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+    
+}
+
+
 @end
