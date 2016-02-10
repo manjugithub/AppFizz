@@ -33,17 +33,17 @@
     return instance;
 }
 
--(void)setPermissionsRequired:(NSArray *)permissionsRequired
-{
-    NSMutableArray *per;
-    if ([permissionsRequired containsObject:@"publish_actions"])
-    {
-        per = [NSMutableArray arrayWithArray:permissionsRequired];
-        [per removeObject:@"publish_actions"];
-    }
-    
-    _permissionsRequired = per;
-}
+//-(void)setPermissionsRequired:(NSArray *)permissionsRequired
+//{
+//    NSMutableArray *per;
+//    if ([permissionsRequired containsObject:@"publish_actions"])
+//    {
+//        per = [NSMutableArray arrayWithArray:permissionsRequired];
+//        [per removeObject:@"publish_actions"];
+//    }
+//    
+//    _permissionsRequired = per;
+//}
 
 -(void)authenticateWithCompletionHandler:(void(^)(BUSocialChannel *socialChannel, NSError *error, BOOL whetherAlreadyAuthenticated))completion
 {

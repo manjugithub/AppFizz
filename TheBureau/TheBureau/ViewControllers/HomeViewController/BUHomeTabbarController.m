@@ -18,7 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"The Bureau";
-
+    
+    self.navigationItem.hidesBackButton = YES;
 }
 
 - (void)didReceiveMemoryWarning {

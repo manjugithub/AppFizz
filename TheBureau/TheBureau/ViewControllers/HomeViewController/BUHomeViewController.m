@@ -31,6 +31,8 @@
                                @{@"Specification":@"Lorem lpsum"},
                                @{@"Family Origin":@"Gowda"}];
     // Do any additional setup after loading the view.
+    
+
 }
 
 

@@ -13,6 +13,7 @@
 #import "BUProfileDetailsVC.h"
 #import "BUAccountCreationVC.h"
 #import "BUHomeTabbarController.h"
+#import "BUProfileLegalStatusVC.h"
 @interface BUSplashViewController ()
 {
     
@@ -49,10 +50,10 @@
 {
     [splashTimer invalidate];
     
-   [self performSegueWithIdentifier:@"main" sender:self];
+  [self performSegueWithIdentifier:@"main" sender:self];
     
 //    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
-//    BUProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDetailsVC"];
+//    BUProfileLegalStatusVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileLegalStatusVC"];
 //    [self.navigationController pushViewController:vc animated:YES];
     
 //    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];

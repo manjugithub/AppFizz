@@ -9,7 +9,8 @@
 #import "BUProfileOccupationVC.h"
 #import "EmployementStatusTVCell.h"
 #import "HighLevelEducationTVCell.h"
-#import "BUHomeTabbarController.h"
+#import "BUProfileLegalStatusVC.h"
+
 
 @interface BUProfileOccupationVC ()<UITableViewDataSource,UITableViewDelegate, HighLevelEducationTVCellDelegate,EmployementStatusTVCellDelegate,UIActionSheetDelegate>
 
@@ -175,11 +176,15 @@ HighLevelEducationTVCell *cell =(HighLevelEducationTVCell*) [_tableView cellForR
     }
 }
 
+
 -(IBAction)continueClicked:(id)sender
 {
-    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-    BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+    
+    
+    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
+    BUProfileLegalStatusVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileLegalStatusVC"];
     [self.navigationController pushViewController:vc animated:YES];
+    
     
 }
 
