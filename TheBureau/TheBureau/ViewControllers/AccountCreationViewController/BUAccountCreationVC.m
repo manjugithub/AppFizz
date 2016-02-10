@@ -63,6 +63,11 @@
     [self.scrollview addGestureRecognizer:gestureRecognizer];
 
     
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_back"] style:UIBarButtonItemStylePlain target:self action:@selector(viewPopOnBackButton)];
+    
+    
+    self.navigationItem.leftBarButtonItem = backButton;
+    
     
     // Do any additional setup after loading the view.
 }
@@ -329,4 +334,35 @@
                       otherButtonTitles:nil] show];
 
 }
+
+-(void)viewPopOnBackButton {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"Do you wish to leave this appication? Your Information has not been saved" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSLog(@"OK");
+            [self.navigationController popViewControllerAnimated:YES];
+
+        }];
+        
+        action;
+    })];
+    
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSLog(@"cancel");
+            //NSLog(@"%@",picker.date);
+            
+        }];
+        
+        action;
+    })];
+    //  UIPopoverPresentationController *popoverController = alertController.popoverPresentationController;
+    //  popoverController.sourceView = sender;
+    //   popoverController.sourceRect = [sender bounds];
+    [self presentViewController:alertController  animated:YES completion:nil];
+}
+
+
 @end

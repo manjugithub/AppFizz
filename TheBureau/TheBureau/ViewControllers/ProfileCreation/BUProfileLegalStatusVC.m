@@ -36,6 +36,10 @@
     [super viewDidLoad];
     
     self.title = @"Legal Status";
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_back"] style:UIBarButtonItemStylePlain target:self action:@selector(viewPopOnBackButton)];
+    
+    
+    self.navigationItem.leftBarButtonItem = backButton;
     // Do any additional setup after loading the view.
 }
 
@@ -167,6 +171,42 @@
     [self.navigationController pushViewController:vc animated:YES];
     
 }
+
+
+-(void)viewPopOnBackButton {
+   
+    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Do you wish to leave this appication? Your Information has not been saved"];
+    [message addAttribute:NSFontAttributeName
+                  value:[UIFont fontWithName:@"comfortaa" size:15]
+                  range:NSMakeRange(0, message.length)];
+
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+      [alertController setValue:message forKey:@"attributedTitle"];
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSLog(@"OK");
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        }];
+        
+        action;
+    })];
+    
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSLog(@"cancel");
+            //NSLog(@"%@",picker.date);
+            
+        }];
+        
+        action;
+    })];
+    
+    [self presentViewController:alertController  animated:YES completion:nil];
+}
+
 
 /*
 #pragma mark - Navigation

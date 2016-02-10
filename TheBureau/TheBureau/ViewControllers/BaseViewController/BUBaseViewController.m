@@ -25,6 +25,7 @@
    // self.navigationController.navigationBarHidden = YES;
     
       self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+  
 }
 
 
@@ -54,7 +55,33 @@
 
 -(IBAction)navigateBack:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"Do you wish to leave this appication? Your Information has not been saved" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSLog(@"OK");
+            [self.navigationController popViewControllerAnimated:YES];
+
+        }];
+        action;
+    })];
+    
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSLog(@"cancel");
+            //NSLog(@"%@",picker.date);
+        }];
+        action;
+    })];
+    //  UIPopoverPresentationController *popoverController = alertController.popoverPresentationController;
+    //  popoverController.sourceView = sender;
+    //   popoverController.sourceRect = [sender bounds];
+    [self presentViewController:alertController  animated:YES completion:nil];
+    
+
+    
+    
 }
 
 - (BOOL) isShowingActivityIndicator
