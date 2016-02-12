@@ -14,6 +14,7 @@
 #import "BUAccountCreationVC.h"
 #import "BUHomeTabbarController.h"
 #import "BUProfileLegalStatusVC.h"
+#import "BUProfileDietVC.h"
 @interface BUSplashViewController ()
 {
     
@@ -53,7 +54,7 @@
   [self performSegueWithIdentifier:@"main" sender:self];
     
 //    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
-//    BUProfileLegalStatusVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileLegalStatusVC"];
+//    BUProfileDietVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDietVC"];
 //    [self.navigationController pushViewController:vc animated:YES];
     
 //    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];

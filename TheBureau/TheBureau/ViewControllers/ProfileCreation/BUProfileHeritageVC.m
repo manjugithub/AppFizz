@@ -9,6 +9,8 @@
 
 #import "BUProfileHeritageVC.h"
 #import "BUProfileOccupationVC.h"
+#import "BUProfileDietVC.h"
+
 @interface BUProfileHeritageVC ()
 @property(nonatomic, strong) PWCustomPickerView *customPickerView;
 @property(nonatomic, strong) NSString *religionID,*famliyID,*specificationID;
@@ -26,7 +28,7 @@
     self.title = @"Heritage";
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_back"] style:UIBarButtonItemStylePlain target:self action:@selector(viewPopOnBackButton)];
     
-    
+    self.gothraTF.enabled = YES;
     self.navigationItem.leftBarButtonItem = backButton;
     // Do any additional setup after loading the view.
 }
@@ -87,9 +89,9 @@
 {
     
 
-    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
-    BUProfileOccupationVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileOccupationVC"];
-    [self.navigationController pushViewController:vc animated:YES];
+UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
+BUProfileDietVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDietVC"];
+[self.navigationController pushViewController:vc animated:YES];
     
 
 }

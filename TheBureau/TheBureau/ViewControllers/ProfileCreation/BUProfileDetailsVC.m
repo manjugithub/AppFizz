@@ -13,6 +13,8 @@
 @interface BUProfileDetailsVC ()<UIPickerViewDataSource,UIPickerViewDelegate>
 
 @property(nonatomic,weak) IBOutlet UITextField *dateofbirthTF;
+@property(nonatomic,weak) IBOutlet UITextField *currentLocTF;
+
 
 @property(nonatomic,weak) IBOutlet UIButton *neverMarriedBtn;
 @property(nonatomic,weak) IBOutlet UIButton *divorcedBtn;
@@ -371,9 +373,37 @@ numberOfRowsInComponent:(NSInteger)component{
 
 -(IBAction)continueClicked:(id)sender
 {
+    
+        if (![self.currentLocTF.text length]) {
+            [self alertMessage:@"Current Location"];
+            }
+        else if (![self.dateofbirthTF.text length]){
+    
+            [self alertMessage:@"Date Of Birth"];
+        }
+    
+        else if (![self.heighTextField.text length]){
+    
+            [self alertMessage:@"Height"];
+            
+        }
+        else{
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
     BUProfileHeritageVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileHeritageVC"];
     [self.navigationController pushViewController:vc animated:YES];
+        }
+}
+
+-(void)alertMessage : (NSString *)message
+{
+    
+    
+    [[[UIAlertView alloc] initWithTitle:@"Alert"
+                                message:[NSString stringWithFormat:@"Please Enter %@",message]
+                               delegate:nil
+                      cancelButtonTitle:@"OK"
+                      otherButtonTitles:nil] show];
     
 }
+
 @end

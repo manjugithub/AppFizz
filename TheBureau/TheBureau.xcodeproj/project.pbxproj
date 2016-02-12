@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1808029D1C079E7B00F5AEE5 /* BUSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808029C1C079E7B00F5AEE5 /* BUSignUpViewController.m */; };
+		5B08024F1C6CD13C00DAD5A5 /* BUProfileDietVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B08024E1C6CD13C00DAD5A5 /* BUProfileDietVC.m */; settings = {ASSET_TAGS = (); }; };
 		5B0AEDC61C22B94A00877C24 /* BULoginWithEmailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0AEDC51C22B94A00877C24 /* BULoginWithEmailVC.m */; };
 		5B0AEDC91C22C69D00877C24 /* BUAuthButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0AEDC81C22C69D00877C24 /* BUAuthButton.m */; };
 		5B0AEDCC1C23591400877C24 /* BUSignUpWithEmailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0AEDCB1C23591400877C24 /* BUSignUpWithEmailVC.m */; };
@@ -103,6 +104,8 @@
 /* Begin PBXFileReference section */
 		1808029B1C079E7B00F5AEE5 /* BUSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUSignUpViewController.h; sourceTree = "<group>"; };
 		1808029C1C079E7B00F5AEE5 /* BUSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUSignUpViewController.m; sourceTree = "<group>"; };
+		5B08024D1C6CD13C00DAD5A5 /* BUProfileDietVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUProfileDietVC.h; sourceTree = "<group>"; };
+		5B08024E1C6CD13C00DAD5A5 /* BUProfileDietVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfileDietVC.m; sourceTree = "<group>"; };
 		5B0AEDC41C22B94A00877C24 /* BULoginWithEmailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BULoginWithEmailVC.h; sourceTree = "<group>"; };
 		5B0AEDC51C22B94A00877C24 /* BULoginWithEmailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BULoginWithEmailVC.m; sourceTree = "<group>"; };
 		5B0AEDC71C22C69D00877C24 /* BUAuthButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUAuthButton.h; path = TheBureau/ViewControllers/LoginViewController/BUAuthButton.h; sourceTree = SOURCE_ROOT; };
@@ -558,6 +561,8 @@
 				78B5B72B1C5678F900E3C531 /* BUProfileOccupationVC.m */,
 				78B5B72E1C56792000E3C531 /* BUProfileLegalStatusVC.h */,
 				78B5B72F1C56792000E3C531 /* BUProfileLegalStatusVC.m */,
+				5B08024D1C6CD13C00DAD5A5 /* BUProfileDietVC.h */,
+				5B08024E1C6CD13C00DAD5A5 /* BUProfileDietVC.m */,
 				5BB6834C1C64A58E0043C4FC /* EmployementStatusTVCell.h */,
 				5BB6834D1C64A58E0043C4FC /* EmployementStatusTVCell.m */,
 				5BB6834E1C64A58E0043C4FC /* HighLevelEducationTVCell.h */,
@@ -930,6 +935,7 @@
 				5B2A2CAE1C0CE72B006F3845 /* BUForgotPasswordVC.m in Sources */,
 				5B0AEDC91C22C69D00877C24 /* BUAuthButton.m in Sources */,
 				78F4A9411C0CD3F4001C76A6 /* BUAccountCreationVC.m in Sources */,
+				5B08024F1C6CD13C00DAD5A5 /* BUProfileDietVC.m in Sources */,
 				78BF55151C68739000B5F1A4 /* BUHomeTabbarController.m in Sources */,
 				5B0AEDC61C22B94A00877C24 /* BULoginWithEmailVC.m in Sources */,
 				7846226A1C0711E100EA589C /* TheBureau.xcdatamodeld in Sources */,
