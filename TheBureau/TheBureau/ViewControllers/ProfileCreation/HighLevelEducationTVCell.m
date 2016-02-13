@@ -30,12 +30,22 @@
     [self.delegate updateHighLevelEducationTVCell :_indexpath];
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [self.delegate slideTableUp];
+   return YES;
+}
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     [textField resignFirstResponder];
-    
+    [self.delegate slideTableDown];
     return YES;
-    
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.delegate slideTableDown];
+    [self endEditing:YES];
 }
 
 

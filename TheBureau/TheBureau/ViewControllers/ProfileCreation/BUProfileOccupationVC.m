@@ -10,7 +10,7 @@
 #import "EmployementStatusTVCell.h"
 #import "HighLevelEducationTVCell.h"
 #import "BUProfileLegalStatusVC.h"
-
+#import "BUHomeTabbarController.h"
 
 @interface BUProfileOccupationVC ()<UITableViewDataSource,UITableViewDelegate, HighLevelEducationTVCellDelegate,EmployementStatusTVCellDelegate,UIActionSheetDelegate>
 
@@ -27,6 +27,7 @@
 
 @property(nonatomic) UITextField *currentTextField;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableBtmConstraint;
 
 @end
 
@@ -208,10 +209,19 @@ HighLevelEducationTVCell *cell =(HighLevelEducationTVCell*) [_tableView cellForR
 {
     
     
-    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
-    BUProfileLegalStatusVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileLegalStatusVC"];
-    [self.navigationController pushViewController:vc animated:YES];
-    
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"isUSCitizen"])
+    {
+        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
+        BUProfileLegalStatusVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileLegalStatusVC"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else
+    {
+        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+        BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }
     
 }
 
@@ -252,6 +262,19 @@ HighLevelEducationTVCell *cell =(HighLevelEducationTVCell*) [_tableView cellForR
     })];
     
     [self presentViewController:alertController  animated:YES completion:nil];
+}
+
+
+-(void)slideTableUp
+{
+    self.tableBtmConstraint.constant = 250;
+    [self.tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
+-(void)slideTableDown
+{
+    self.tableBtmConstraint.constant = 48;
+    [self.tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 @end

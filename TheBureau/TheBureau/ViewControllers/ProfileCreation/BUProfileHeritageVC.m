@@ -69,26 +69,58 @@
 
 -(IBAction)getSpecificationList:(id)sender
 {
-    self.heritageList = eSpecificationList;
-    NSDictionary *parameters = nil;
-    parameters = @{@"family_origin_id": self.famliyID};
-    [self startActivityIndicator:YES];
-    [[BUWebServicesManager sharedManager] getSpecificationList:self parameters:parameters];
+    
+    
+    if(nil == self.famliyID)
+    {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"Please Select Family Origin" preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alertController addAction:({
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+            }];
+            action;
+        })];
+        [self.navigationController presentViewController:alertController  animated:YES completion:nil];
+
+    }
+    else
+    {
+        self.heritageList = eSpecificationList;
+        NSDictionary *parameters = nil;
+        parameters = @{@"family_origin_id": self.famliyID};
+        [self startActivityIndicator:YES];
+        [[BUWebServicesManager sharedManager] getSpecificationList:self parameters:parameters];
+    }
 }
 
 -(IBAction)getFamilyOrigin:(id)sender
 {
-    self.heritageList = eFamilyOriginList;
-    NSDictionary *parameters = nil;
-    parameters = @{@"religion_id": self.religionID};
-    [self startActivityIndicator:YES];
-    [[BUWebServicesManager sharedManager] getFamilyOriginList:self parameters:parameters];
+    if(nil == self.religionID)
+    {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"Please Select Relegion" preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alertController addAction:({
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+            }];
+            action;
+        })];
+        [self.navigationController presentViewController:alertController  animated:YES completion:nil];
+
+    }
+    else
+    {
+        self.heritageList = eFamilyOriginList;
+        NSDictionary *parameters = nil;
+        parameters = @{@"religion_id": self.religionID};
+        [self startActivityIndicator:YES];
+        [[BUWebServicesManager sharedManager] getFamilyOriginList:self parameters:parameters];
+    }
 }
 
 -(IBAction)continueClicked:(id)sender
 {
-    
-
 UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
 BUProfileDietVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDietVC"];
 [self.navigationController pushViewController:vc animated:YES];
@@ -186,5 +218,17 @@ BUProfileDietVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDie
     
     [self presentViewController:alertController  animated:YES completion:nil];
 }
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
 
 @end
