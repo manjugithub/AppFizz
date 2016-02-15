@@ -14,6 +14,8 @@
 - (void)updateHighLevelEducationTVCell : (NSIndexPath *)indexpath;
 
 
+-(void)slideTableUp;
+-(void)slideTableDown;
 @end
 
 @interface HighLevelEducationTVCell : UITableViewCell<UITextFieldDelegate>

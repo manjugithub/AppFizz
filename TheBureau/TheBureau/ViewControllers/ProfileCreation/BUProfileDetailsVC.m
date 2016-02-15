@@ -53,6 +53,29 @@
     self.navigationItem.leftBarButtonItem = backButton;
     
     
+    [self.btn_India setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
+    [self.btn_USA setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+    
+    [self.btn_India setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.btn_USA setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isUSCitizen"];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    
+    {
+        [self.neverMarriedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
+        [self.divorcedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+        [self.widowedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+        
+        
+        
+        [self.neverMarriedBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.widowedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.divorcedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
+    
     // Do any additional setup after loading the view.
 }
 
@@ -226,6 +249,8 @@
         
         [self.btn_USA setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.btn_India setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isUSCitizen"];
     }
     else
     {
@@ -235,10 +260,11 @@
         [self.btn_India setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.btn_USA setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         
-        
-        
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isUSCitizen"];
     }
-    
+
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
     
 }
 

@@ -32,6 +32,7 @@
                                @{@"Family Origin":@"Gowda"}];
     // Do any additional setup after loading the view.
     
+    self.imgScrollerTableView.hidden = YES;
 
 }
 
@@ -45,7 +46,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"Table view size frame: %@",NSStringFromCGRect(self.imgScrollerTableView.bounds));
-
+    self.imgScrollerTableView.hidden = NO;
     [self.imgScrollerTableView reloadData];
 }
 
