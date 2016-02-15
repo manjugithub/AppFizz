@@ -79,7 +79,6 @@
             <string>Comfortaa</string>
             <string>Comfortaa</string>
             <string>Comfortaa</string>
-            <string>Comfortaa</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1852,46 +1851,50 @@
                                                                     <color key="textColor" white="0.0" alpha="0.46999999999999997" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEP-HD-3aY">
-                                                                    <rect key="frame" x="163" y="41" width="397" height="17"/>
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="designation" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pJv-Ns-S5h">
+                                                                    <rect key="frame" x="163" y="10" width="397" height="17"/>
                                                                     <animations/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="17" id="HNe-fq-TOD"/>
+                                                                        <constraint firstAttribute="height" constant="17" id="1gh-jg-f4j"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="16"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Software Engineer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZ5-Lp-Pf5">
-                                                                    <rect key="frame" x="163" y="8" width="397" height="17"/>
+                                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="zop-3A-46m" id="afG-VE-JmF"/>
+                                                                    </connections>
+                                                                </textField>
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="company name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RLd-KX-3GS">
+                                                                    <rect key="frame" x="163" y="43" width="397" height="17"/>
                                                                     <animations/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="17" id="du7-HT-DEy"/>
+                                                                        <constraint firstAttribute="height" constant="17" id="NTm-q9-3JH"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="16"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="zop-3A-46m" id="eTn-Kf-Cft"/>
+                                                                    </connections>
+                                                                </textField>
                                                             </subviews>
                                                             <animations/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="DmX-G2-Mth" firstAttribute="leading" secondItem="USu-gL-ftz" secondAttribute="trailing" constant="32" id="1Jx-xa-PA2"/>
+                                                                <constraint firstItem="pJv-Ns-S5h" firstAttribute="top" secondItem="0Ne-RO-6Su" secondAttribute="top" constant="10" id="1Rk-hw-pk7"/>
                                                                 <constraint firstAttribute="height" constant="72" id="2DD-Tf-ZSy"/>
-                                                                <constraint firstItem="FEP-HD-3aY" firstAttribute="leading" secondItem="72L-Zv-hZ3" secondAttribute="trailing" constant="16" id="3fR-aT-zi4"/>
                                                                 <constraint firstItem="qsJ-e0-T9L" firstAttribute="leading" secondItem="0Ne-RO-6Su" secondAttribute="leading" constant="8" id="5ez-5B-L91"/>
+                                                                <constraint firstItem="pJv-Ns-S5h" firstAttribute="leading" secondItem="DmX-G2-Mth" secondAttribute="trailing" constant="16" id="8rP-Sq-My2"/>
                                                                 <constraint firstItem="DmX-G2-Mth" firstAttribute="top" secondItem="0Ne-RO-6Su" secondAttribute="top" constant="6" id="CPJ-rf-VP3"/>
                                                                 <constraint firstItem="72L-Zv-hZ3" firstAttribute="centerX" secondItem="DmX-G2-Mth" secondAttribute="centerX" id="FVy-U8-vkX"/>
-                                                                <constraint firstAttribute="trailing" secondItem="XZ5-Lp-Pf5" secondAttribute="trailing" constant="8" id="Grs-rZ-zOp"/>
-                                                                <constraint firstItem="FEP-HD-3aY" firstAttribute="top" secondItem="XZ5-Lp-Pf5" secondAttribute="bottom" constant="16" id="JOY-LJ-X9Y"/>
                                                                 <constraint firstItem="qsJ-e0-T9L" firstAttribute="top" secondItem="USu-gL-ftz" secondAttribute="bottom" constant="16" id="N8W-Iy-H36"/>
+                                                                <constraint firstItem="RLd-KX-3GS" firstAttribute="leading" secondItem="72L-Zv-hZ3" secondAttribute="trailing" constant="16" id="Qjm-P4-veJ"/>
                                                                 <constraint firstItem="USu-gL-ftz" firstAttribute="top" secondItem="0Ne-RO-6Su" secondAttribute="top" constant="8" id="UGs-ka-RDf"/>
-                                                                <constraint firstItem="XZ5-Lp-Pf5" firstAttribute="leading" secondItem="DmX-G2-Mth" secondAttribute="trailing" constant="16" id="a1B-29-shn"/>
+                                                                <constraint firstAttribute="trailing" secondItem="pJv-Ns-S5h" secondAttribute="trailing" constant="8" id="ZOB-Nv-Yce"/>
                                                                 <constraint firstItem="72L-Zv-hZ3" firstAttribute="leading" secondItem="qsJ-e0-T9L" secondAttribute="trailing" constant="32" id="aH8-wg-nlA"/>
+                                                                <constraint firstItem="RLd-KX-3GS" firstAttribute="top" secondItem="pJv-Ns-S5h" secondAttribute="bottom" constant="16" id="aTh-o3-cdW"/>
+                                                                <constraint firstAttribute="trailing" secondItem="RLd-KX-3GS" secondAttribute="trailing" constant="8" id="fHr-so-jgW"/>
                                                                 <constraint firstItem="USu-gL-ftz" firstAttribute="leading" secondItem="0Ne-RO-6Su" secondAttribute="leading" constant="8" id="oLV-W3-95n"/>
-                                                                <constraint firstItem="XZ5-Lp-Pf5" firstAttribute="top" secondItem="0Ne-RO-6Su" secondAttribute="top" constant="8" id="oR9-aD-lFK"/>
                                                                 <constraint firstItem="72L-Zv-hZ3" firstAttribute="baseline" secondItem="qsJ-e0-T9L" secondAttribute="firstBaseline" constant="2" id="p9p-k1-hPf"/>
-                                                                <constraint firstAttribute="trailing" secondItem="FEP-HD-3aY" secondAttribute="trailing" constant="8" id="ry6-zv-pfj"/>
                                                             </constraints>
                                                         </view>
                                                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJe-Aq-PTd">

@@ -16,7 +16,7 @@
 
 @end
 
-@interface EmployementStatusTVCell : UITableViewCell
+@interface EmployementStatusTVCell : UITableViewCell<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *unemployedYConstraint;
 

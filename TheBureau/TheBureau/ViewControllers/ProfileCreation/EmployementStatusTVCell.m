@@ -108,4 +108,12 @@ typedef NS_ENUM (NSInteger, EmployementStatus)
 }
 
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+    
+}
+
 @end
