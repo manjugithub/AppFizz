@@ -51,13 +51,12 @@
 -(void)aTime
 {
     [splashTimer invalidate];
+[self performSegueWithIdentifier:@"main" sender:self];
     
-//  [self performSegueWithIdentifier:@"main" sender:self];
     
-    
-    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
-    BUProfileHeritageVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileHeritageVC"];
-    [self.navigationController pushViewController:vc animated:YES];
+//    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
+//    BUProfileHeritageVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileHeritageVC"];
+//    [self.navigationController pushViewController:vc animated:YES];
 
 //    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
 //    BUProfileOccupationVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileOccupationVC"];
