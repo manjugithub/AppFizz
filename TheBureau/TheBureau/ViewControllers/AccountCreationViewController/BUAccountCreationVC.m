@@ -182,6 +182,10 @@
     
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
     BUProfileSelectionVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileSelectionVC"];
+        
+        vc.firstName = self.firstNameTF.text;
+        vc.lastName = self.lastNameTF.text;
+        
     [self.navigationController pushViewController:vc animated:YES];
         
     }

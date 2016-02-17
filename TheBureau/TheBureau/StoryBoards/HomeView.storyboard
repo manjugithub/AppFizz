@@ -290,42 +290,131 @@
                                     <segue destination="KxN-QL-Lib" kind="embed" identifier="embedContainer" id="i1g-Cg-xvo"/>
                                 </connections>
                             </containerView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DMi-0k-hu1">
-                                <rect key="frame" x="197" y="6" width="206" height="29"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i9s-fI-HNt">
+                                <rect key="frame" x="44" y="6" width="512" height="30"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAx-f6-gQF">
+                                        <rect key="frame" x="170" y="0.0" width="1" height="30"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1" id="8V7-Kj-erd"/>
+                                            <constraint firstAttribute="height" constant="30" id="EEi-UR-q0W"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6L-2u-wOV">
+                                        <rect key="frame" x="341" y="0.0" width="1" height="30"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1" id="Om7-4Z-mV2"/>
+                                            <constraint firstAttribute="height" constant="30" id="lGz-OS-XG2"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42Q-wD-X0M">
+                                        <rect key="frame" x="0.0" y="0.0" width="170" height="30"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="hP0-hN-TPB"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" backgroundImage="tab_cs_s2"/>
+                                        <state key="selected" backgroundImage="tab_cs_s1"/>
+                                        <connections>
+                                            <action selector="showConnectionsSegment:" destination="2hK-WB-l5a" eventType="touchUpInside" id="9sB-es-0qE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfq-Er-wxI">
+                                        <rect key="frame" x="171" y="0.0" width="170" height="30"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="niA-CU-KT4"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" backgroundImage="tab_chat_s2"/>
+                                        <state key="selected" backgroundImage="tab_chat_s1"/>
+                                        <connections>
+                                            <action selector="showConnectionsSegment:" destination="2hK-WB-l5a" eventType="touchUpInside" id="yau-B7-KtE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzC-4m-lar">
+                                        <rect key="frame" x="342" y="0.0" width="170" height="30"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="qVQ-KA-8SZ"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" backgroundImage="tab_rematch_s2"/>
+                                        <state key="selected" backgroundImage="tab_rematch_s1"/>
+                                        <connections>
+                                            <action selector="showConnectionsSegment:" destination="2hK-WB-l5a" eventType="touchUpInside" id="wyZ-tT-w6Q"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="206" id="bRf-n7-0Z9"/>
+                                    <constraint firstAttribute="bottom" secondItem="S6L-2u-wOV" secondAttribute="bottom" id="3pf-1e-Re7"/>
+                                    <constraint firstItem="MAx-f6-gQF" firstAttribute="leading" secondItem="42Q-wD-X0M" secondAttribute="trailing" id="95V-Ky-eQn"/>
+                                    <constraint firstAttribute="bottom" secondItem="42Q-wD-X0M" secondAttribute="bottom" id="Bzt-Ms-8mF"/>
+                                    <constraint firstItem="MAx-f6-gQF" firstAttribute="leading" secondItem="42Q-wD-X0M" secondAttribute="trailing" id="DAY-kU-8vr"/>
+                                    <constraint firstItem="cfq-Er-wxI" firstAttribute="top" secondItem="i9s-fI-HNt" secondAttribute="top" id="EHJ-qC-Tga"/>
+                                    <constraint firstAttribute="height" constant="30" id="Fj2-ef-rh1"/>
+                                    <constraint firstItem="DzC-4m-lar" firstAttribute="top" secondItem="i9s-fI-HNt" secondAttribute="top" id="Gu8-Ww-Bwm"/>
+                                    <constraint firstItem="42Q-wD-X0M" firstAttribute="leading" secondItem="i9s-fI-HNt" secondAttribute="leading" id="HjK-Lb-HwG"/>
+                                    <constraint firstItem="cfq-Er-wxI" firstAttribute="leading" secondItem="MAx-f6-gQF" secondAttribute="trailing" id="IgR-Mv-4Qi"/>
+                                    <constraint firstItem="S6L-2u-wOV" firstAttribute="leading" secondItem="cfq-Er-wxI" secondAttribute="trailing" id="JDE-Cw-z4g"/>
+                                    <constraint firstItem="S6L-2u-wOV" firstAttribute="leading" secondItem="cfq-Er-wxI" secondAttribute="trailing" id="UZT-IX-F2r"/>
+                                    <constraint firstAttribute="bottom" secondItem="cfq-Er-wxI" secondAttribute="bottom" id="Udn-5F-mv5"/>
+                                    <constraint firstItem="cfq-Er-wxI" firstAttribute="width" secondItem="42Q-wD-X0M" secondAttribute="width" id="UpB-Dq-6rm"/>
+                                    <constraint firstAttribute="bottom" secondItem="MAx-f6-gQF" secondAttribute="bottom" id="a45-J5-Vwg"/>
+                                    <constraint firstItem="MAx-f6-gQF" firstAttribute="top" secondItem="i9s-fI-HNt" secondAttribute="top" id="b9q-6L-DhC"/>
+                                    <constraint firstItem="DzC-4m-lar" firstAttribute="width" secondItem="42Q-wD-X0M" secondAttribute="width" id="eOs-h5-Tjj"/>
+                                    <constraint firstItem="DzC-4m-lar" firstAttribute="leading" secondItem="S6L-2u-wOV" secondAttribute="trailing" id="h5I-Ju-rYE"/>
+                                    <constraint firstItem="42Q-wD-X0M" firstAttribute="top" secondItem="i9s-fI-HNt" secondAttribute="top" id="hjs-38-o7a"/>
+                                    <constraint firstAttribute="trailing" secondItem="DzC-4m-lar" secondAttribute="trailing" id="mrK-ZW-zCd"/>
+                                    <constraint firstItem="cfq-Er-wxI" firstAttribute="leading" secondItem="MAx-f6-gQF" secondAttribute="trailing" id="mvF-hx-Y3W"/>
+                                    <constraint firstItem="S6L-2u-wOV" firstAttribute="top" secondItem="i9s-fI-HNt" secondAttribute="top" id="nnS-dJ-3ac"/>
+                                    <constraint firstItem="DzC-4m-lar" firstAttribute="leading" secondItem="S6L-2u-wOV" secondAttribute="trailing" id="ulN-BK-hON"/>
+                                    <constraint firstAttribute="bottom" secondItem="DzC-4m-lar" secondAttribute="bottom" id="up4-0j-JxT"/>
                                 </constraints>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                    <segment title="Three"/>
-                                </segments>
-                                <connections>
-                                    <action selector="showConnectionsSegment:" destination="2hK-WB-l5a" eventType="valueChanged" id="slG-RS-Icg"/>
-                                </connections>
-                            </segmentedControl>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.047058823530000002" green="0.37254901959999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="6rm-Qr-WmO" firstAttribute="top" secondItem="DMi-0k-hu1" secondAttribute="bottom" constant="8" symbolic="YES" id="08V-lf-YGD"/>
                             <constraint firstItem="NZ6-xi-taY" firstAttribute="leading" secondItem="tQc-fg-Nvv" secondAttribute="leading" id="2zu-g3-4QU"/>
-                            <constraint firstItem="DMi-0k-hu1" firstAttribute="top" secondItem="tQc-fg-Nvv" secondAttribute="topMargin" constant="6" id="7hX-ZZ-tor"/>
                             <constraint firstAttribute="trailing" secondItem="6rm-Qr-WmO" secondAttribute="trailing" id="MRU-aY-wyZ"/>
+                            <constraint firstItem="i9s-fI-HNt" firstAttribute="top" secondItem="tQc-fg-Nvv" secondAttribute="top" constant="6" id="QhL-ZI-FFg"/>
                             <constraint firstItem="oPc-KA-TB9" firstAttribute="top" secondItem="6rm-Qr-WmO" secondAttribute="bottom" id="SCN-ne-eWB"/>
                             <constraint firstItem="6rm-Qr-WmO" firstAttribute="leading" secondItem="tQc-fg-Nvv" secondAttribute="leading" id="Sg2-hR-16d"/>
                             <constraint firstAttribute="bottom" secondItem="NZ6-xi-taY" secondAttribute="bottom" id="TX0-32-xNM"/>
+                            <constraint firstAttribute="trailing" secondItem="i9s-fI-HNt" secondAttribute="trailing" constant="44" id="VLj-ka-bhx"/>
                             <constraint firstAttribute="trailing" secondItem="NZ6-xi-taY" secondAttribute="trailing" id="dw0-EL-9Gi"/>
-                            <constraint firstItem="DMi-0k-hu1" firstAttribute="centerX" secondItem="6rm-Qr-WmO" secondAttribute="centerX" id="phf-Dn-VgW"/>
+                            <constraint firstItem="i9s-fI-HNt" firstAttribute="leading" secondItem="tQc-fg-Nvv" secondAttribute="leading" constant="44" id="gL5-Ns-eZk"/>
+                            <constraint firstItem="6rm-Qr-WmO" firstAttribute="top" secondItem="i9s-fI-HNt" secondAttribute="bottom" constant="6" id="hvd-s5-zva"/>
+                            <constraint firstItem="i9s-fI-HNt" firstAttribute="centerX" secondItem="tQc-fg-Nvv" secondAttribute="centerX" id="n6c-fu-vHY"/>
                             <constraint firstItem="NZ6-xi-taY" firstAttribute="top" secondItem="tQc-fg-Nvv" secondAttribute="top" id="qNa-6q-FT7"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Connections" image="tab_connections_icon" selectedImage="tab_connections_red_icon" id="vuM-8m-Awg"/>
+                    <connections>
+                        <outlet property="chatBtn" destination="cfq-Er-wxI" id="3Ws-4c-uHf"/>
+                        <outlet property="csChatBtn" destination="42Q-wD-X0M" id="z77-gh-Di5"/>
+                        <outlet property="rematchBtn" destination="DzC-4m-lar" id="ewY-KP-4nd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dYf-q1-cVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-783" y="-1842"/>
+            <point key="canvasLocation" x="-856" y="-1843"/>
         </scene>
         <!--Tab 4-->
         <scene sceneID="PoV-Zh-Dd3">
@@ -525,13 +614,19 @@
         <image name="img_photo2" width="305" height="437"/>
         <image name="tab_accounts_icon" width="25" height="25"/>
         <image name="tab_accounts_red_icon" width="25" height="25"/>
+        <image name="tab_chat_s1" width="101" height="29"/>
+        <image name="tab_chat_s2" width="101" height="29"/>
         <image name="tab_connections_icon" width="25" height="25"/>
         <image name="tab_connections_red_icon" width="25" height="25"/>
+        <image name="tab_cs_s1" width="101" height="29"/>
+        <image name="tab_cs_s2" width="101" height="29"/>
         <image name="tab_gold_icon" width="25" height="25"/>
         <image name="tab_gold_red_icon" width="25" height="25"/>
         <image name="tab_match_icon" width="25" height="25"/>
         <image name="tab_match_red_icon" width="25" height="25"/>
         <image name="tab_pool_icon" width="25" height="25"/>
         <image name="tab_pool_red_icon" width="25" height="25"/>
+        <image name="tab_rematch_s1" width="101" height="29"/>
+        <image name="tab_rematch_s2" width="101" height="29"/>
     </resources>
 </document>

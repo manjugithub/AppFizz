@@ -7,7 +7,12 @@
 //
 
 #import "BUBaseViewController.h"
+#import "BUSocialChannel.h"
 
 @interface BUProfileSelectionVC : BUBaseViewController
+
+@property(nonatomic) NSString *firstName;
+@property(nonatomic) NSString *lastName;
+
 
 @end

@@ -79,7 +79,9 @@
 
 -(IBAction)dropDownBtn:(id)sender{
     
-    
+    if([self.currentTextField isFirstResponder]){
+        [self.currentTextField resignFirstResponder];
+    }
     
     UIActionSheet *acSheet = [[UIActionSheet alloc] initWithTitle:@"Select Relationship" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles: nil];
     
@@ -97,6 +99,16 @@
     if (buttonIndex != 0)
     {
         self.relationLabel.text = _relationCircle[buttonIndex - 1];
+    }
+    if ([self.relationLabel.text isEqualToString:@"Self"]) {
+        
+        self.firstNameTF.text = self.firstName;
+        self.lastNameTF.text = self.lastName;
+    }
+    else{
+        
+        self.firstNameTF.text = nil;
+        self.lastNameTF.text = nil;
     }
 }
 
@@ -152,13 +164,18 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     
-    self.currentTextField = textField;
 
     [textField resignFirstResponder];
     
     return YES;
 }
-
+- (void)textFieldDidBeginEditing:(UITextField *)textField;           // became first responder
+{
+    
+    self.currentTextField = textField;
+ 
+    
+}
 
 -(void)viewPopOnBackButton {
     

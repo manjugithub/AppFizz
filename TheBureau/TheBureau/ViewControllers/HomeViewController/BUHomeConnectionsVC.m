@@ -12,6 +12,10 @@
 @interface BUHomeConnectionsVC ()
 
 @property(nonatomic) BUHomeConnectionTabVC *tabContainerVC;
+@property(nonatomic,weak)IBOutlet UIButton *csChatBtn;
+@property(nonatomic,weak)IBOutlet UIButton *chatBtn;
+@property(nonatomic,weak)IBOutlet UIButton *rematchBtn;
+
 
 @end
 
@@ -19,8 +23,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
+    
+    self.title =@"Connections";
+    [_csChatBtn setSelected:YES];
+
+ }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -28,8 +35,28 @@
 }
 
 
-- (IBAction)showConnectionsSegment:(UISegmentedControl *)sender {
-    [self.tabContainerVC showViewControllerFromIndex:sender.selectedSegmentIndex];
+- (IBAction)showConnectionsSegment:(UIButton *)sender {
+    if (sender.tag == 0) {
+        
+        [_csChatBtn setSelected:YES];
+        [_chatBtn setSelected:NO];
+        [_rematchBtn setSelected:NO];
+    }
+    
+    else if (sender.tag == 1)
+    {
+        
+        [_csChatBtn setSelected:NO];
+        [_chatBtn setSelected:YES];
+        [_rematchBtn setSelected:NO];
+    }
+    else{
+        [_csChatBtn setSelected:NO];
+        [_chatBtn setSelected:NO];
+        [_rematchBtn setSelected:YES];
+        
+    }
+    [self.tabContainerVC showViewControllerFromIndex:sender.tag];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
