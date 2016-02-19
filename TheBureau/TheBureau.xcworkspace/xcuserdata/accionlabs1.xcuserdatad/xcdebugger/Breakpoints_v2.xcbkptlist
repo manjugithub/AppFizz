@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBureau/ViewControllers/AccountCreationViewController/BUAccountCreationVC.m"
-            timestampString = "476799744.412588"
+            timestampString = "477601072.926789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "-signUpBtnClicked:"
             landmarkType = "5">
          </BreakpointContent>
@@ -163,22 +163,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TheBureau/ViewControllers/HomeViewController/BUHomeConnectionsVC.m"
-            timestampString = "477410225.555359"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "-showConnectionsSegment:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "TheBureau/ViewControllers/HomeViewController/BUHomeConnectionTabVC.m"
             timestampString = "477317639.777292"
             startingColumnNumber = "9223372036854775807"
@@ -196,11 +180,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBureau/ViewControllers/ProfileCreation/BUProfileSelectionVC.m"
-            timestampString = "477396140.840822"
+            timestampString = "477598816.104772"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "-actionSheet:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -212,11 +196,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBureau/ViewControllers/ProfileCreation/BUProfileSelectionVC.m"
-            timestampString = "477396140.840822"
+            timestampString = "477598816.104772"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "-actionSheet:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -228,11 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBureau/ViewControllers/AccountCreationViewController/BUAccountCreationVC.m"
-            timestampString = "477394982.700319"
+            timestampString = "477601072.926789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "-signUpBtnClicked:"
             landmarkType = "5">
          </BreakpointContent>
@@ -244,28 +228,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBureau/ViewControllers/ProfileCreation/BUProfileSelectionVC.m"
-            timestampString = "477396178.275117"
+            timestampString = "477598816.104772"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "-dropDownBtn:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TheBureau/ViewControllers/HomeViewController/BUHomeConnectionsVC.m"
-            timestampString = "477410225.555359"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "-showConnectionsSegment:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -282,6 +250,22 @@
             startingLineNumber = "103"
             endingLineNumber = "103"
             landmarkName = "-showViewControllerFromIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBureau/ViewControllers/SplashViewController/BUSplashViewController.m"
+            timestampString = "477583531.885456"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-aTime"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

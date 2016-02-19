@@ -42,23 +42,56 @@
     
     self.title = @"Account Creation";
     
+    
+    UIImageView * leftView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
+    leftView.image =  [UIImage imageNamed:@"ic_user"];
+    leftView.contentMode = UIViewContentModeCenter;
+    self.firstNameTF.leftView = leftView;
     self.firstNameTF.leftViewMode = UITextFieldViewModeAlways;
-    self.firstNameTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_user"]];
+    self.firstNameTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
     
+    UIImageView * leftView4 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
+    leftView4.image =  [UIImage imageNamed:@"ic_user"];
+    leftView4.contentMode = UIViewContentModeCenter;
+    self.lastNameTF.leftView = leftView4;
     self.lastNameTF.leftViewMode = UITextFieldViewModeAlways;
-    self.lastNameTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_user"]];
+    self.lastNameTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
+
+    
+    
+//    self.lastNameTF.leftViewMode = UITextFieldViewModeAlways;
+//    self.lastNameTF.leftView = leftView;
+//    self.lastNameTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+
+    //[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_user"]];
+    
+    UIImageView * leftView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
+    leftView.image =  [UIImage imageNamed:@"ic_email"];
+    leftView.contentMode = UIViewContentModeCenter;
+    self.emailIdTF.leftView = leftView1;
     self.emailIdTF.leftViewMode = UITextFieldViewModeAlways;
-    self.emailIdTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_email"]];
+    self.emailIdTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
+    
+    UIImageView * leftView2 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
+    leftView.image =  [UIImage imageNamed:@"ic_mobile"];
+    leftView.contentMode = UIViewContentModeCenter;
+    self.mobileNumTF.leftView = leftView2;
     self.mobileNumTF.leftViewMode = UITextFieldViewModeAlways;
-    self.mobileNumTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_mobile"]];
+    self.mobileNumTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
+
+    UIImageView * leftView3 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
+    leftView.image =  [UIImage imageNamed:@"ic_dob"];
+    leftView.contentMode = UIViewContentModeCenter;
+    self.dateofbirthTF.leftView = leftView3;
     self.dateofbirthTF.leftViewMode = UITextFieldViewModeAlways;
-    self.dateofbirthTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_dob"]];
+    self.dateofbirthTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+
     
-    
+      
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.scrollview addGestureRecognizer:gestureRecognizer];
 

@@ -34,12 +34,29 @@
     _relationCircle = [NSArray arrayWithObjects:@"Father",@"Mother",@"Family member", @"Friend", @"Sister", @"Brother",@"Self",nil];
 
     
+    UIImageView * leftView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
+    leftView.image =  [UIImage imageNamed:@"ic_user"];
+    leftView.contentMode = UIViewContentModeCenter;
+    self.firstNameTF.leftView = leftView;
     self.firstNameTF.leftViewMode = UITextFieldViewModeAlways;
-    self.firstNameTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_user"]];
+    self.firstNameTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    
+    
+    
+    UIImageView * leftView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
+    leftView1.image =  [UIImage imageNamed:@"ic_user"];
+    leftView1.contentMode = UIViewContentModeCenter;
+    
+    
+//    self.firstNameTF.leftView = leftView;
+//    self.firstNameTF.leftViewMode = UITextFieldViewModeAlways;
+//    self.firstNameTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+//    
     
     
     self.lastNameTF.leftViewMode = UITextFieldViewModeAlways;
-    self.lastNameTF.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_user"]];
+    self.lastNameTF.leftView = leftView1;
+    self.lastNameTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     // Do any additional setup after loading the view.
     
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
