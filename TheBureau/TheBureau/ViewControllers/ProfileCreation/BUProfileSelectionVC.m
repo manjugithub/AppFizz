@@ -32,7 +32,7 @@
     self.title = @"Profile Creation";
     
     _relationCircle = [NSArray arrayWithObjects:@"Father",@"Mother",@"Family member", @"Friend", @"Sister", @"Brother",@"Self",nil];
-
+    
     
     UIImageView * leftView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
     leftView.image =  [UIImage imageNamed:@"ic_user"];
@@ -48,10 +48,10 @@
     leftView1.contentMode = UIViewContentModeCenter;
     
     
-//    self.firstNameTF.leftView = leftView;
-//    self.firstNameTF.leftViewMode = UITextFieldViewModeAlways;
-//    self.firstNameTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-//    
+    //    self.firstNameTF.leftView = leftView;
+    //    self.firstNameTF.leftViewMode = UITextFieldViewModeAlways;
+    //    self.firstNameTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    //
     
     
     self.lastNameTF.leftViewMode = UITextFieldViewModeAlways;
@@ -62,13 +62,13 @@
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.view addGestureRecognizer:gestureRecognizer];
     
-  
+    
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_back"] style:UIBarButtonItemStylePlain target:self action:@selector(viewPopOnBackButton)];
-
+    
     
     self.navigationItem.leftBarButtonItem = backButton;
     
- 
+    
 }
 
 - (void) hideKeyboard {
@@ -84,7 +84,7 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = NO;
-
+    
     
 }
 
@@ -108,7 +108,7 @@
     }
     
     [acSheet showInView:self.view];
-
+    
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -130,14 +130,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 -(IBAction)continueClicked:(id)sender
 {
@@ -154,34 +154,84 @@
     {
         [self alertMessage:@"Relation"];
     }
-      else
-      {
-        
-          UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
-          BUProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDetailsVC"];
-          [self.navigationController pushViewController:vc animated:YES];
-        
-    }
-
-   
-}
-    
-    -(void)alertMessage : (NSString *)message
+    else
     {
+        NSDictionary *parameters = nil;
         
+        /*
+         
+         1. API for screen 4_profile_setup (Of the mockup screens)
+         
+         http://app.thebureauapp.com/admin/matchMaking
+         
+         Parameters to be sent to this API :
+         
+         userid => user id of user
+         profile_for => profile for eg. self, brother, sister =>One of these values
+         profile_first_name => first name for profile
+         profile_last_name => last name for profile
+         
+         API to view the above details for a user :
+         */
         
-        [[[UIAlertView alloc] initWithTitle:@"Alert"
-                                    message:[NSString stringWithFormat:@"Please Enter %@",message]
-                                   delegate:nil
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil] show];
+        parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                       @"profile_for":self.relationLabel.text,
+                       @"profile_first_name":self.lastNameTF.text,
+                       @"profile_last_name":self.lastNameTF.text};
+        
+        [self startActivityIndicator:YES];
+        [[BUWebServicesManager sharedManager] updateProfileSelection:self parameters:parameters];
+    }
+    
+}
+
+
+-(void)didSuccess:(id)inResult;
+{
+    [self stopActivityIndicator];
+    
+    if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
+    {
+        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
+        BUProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDetailsVC"];
+        [self.navigationController pushViewController:vc animated:YES];
         
     }
+    else
+    {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    
+}
+
+-(void)didFail:(id)inResult;
+{
+    [self startActivityIndicator:YES];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Login Failed" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+
+
+-(void)alertMessage : (NSString *)message
+{
+    
+    
+    [[[UIAlertView alloc] initWithTitle:@"Alert"
+                                message:[NSString stringWithFormat:@"Please Enter %@",message]
+                               delegate:nil
+                      cancelButtonTitle:@"OK"
+                      otherButtonTitles:nil] show];
+    
+}
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     
-
+    
     [textField resignFirstResponder];
     
     return YES;
@@ -190,7 +240,7 @@
 {
     
     self.currentTextField = textField;
- 
+    
     
 }
 

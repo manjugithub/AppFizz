@@ -31,6 +31,8 @@
 @property(nonatomic) NSMutableArray *feetMutableArray;
 @property(nonatomic) NSMutableArray *inchesMutableArray;
 
+@property(nonatomic,weak) NSString *feetStr,*inchStr,*maritalStatus;
+
 
 -(IBAction)continueClicked:(id)sender;
 
@@ -53,13 +55,13 @@
     self.navigationItem.leftBarButtonItem = backButton;
     
     
-    [self.btn_India setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
-    [self.btn_USA setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+    [self.btn_USA setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
+    [self.btn_India setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
     
-    [self.btn_India setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.btn_USA setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.btn_USA setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.btn_India setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isUSCitizen"];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isUSCitizen"];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
 
@@ -70,6 +72,7 @@
         [self.widowedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
         
         
+        self.maritalStatus = @"Never married";
         
         [self.neverMarriedBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.widowedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -82,12 +85,12 @@
 -(void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:YES];
-    for (int i=0; i < 100; i++) {
+    for (int i=0; i < 12; i++) {
         NSString *inches = [NSString stringWithFormat:@"%d\"",i ];
         [self.inchesMutableArray addObject:inches];
     }
     
-    for (int i=0; i < 10; i++) {
+    for (int i=4; i < 8; i++) {
         NSString *feet = [NSString stringWithFormat:@"%d'",i ];
         [self.feetMutableArray addObject:feet];
     }
@@ -192,7 +195,10 @@
 -(IBAction)getMatialStatus:(id)sender
 {
     UIButton *selectedBtn = (UIButton *)sender;
-    if (selectedBtn.tag == 1) {
+    if (selectedBtn.tag == 1)
+    {
+        self.maritalStatus = @"Never married";
+
         [self.neverMarriedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
         [self.divorcedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
         [self.widowedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
@@ -209,6 +215,8 @@
     }
     else if (selectedBtn.tag == 2){
         
+        self.maritalStatus = @"Divorced";
+
         [self.divorcedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
         [self.neverMarriedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
         [self.widowedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
@@ -223,6 +231,8 @@
     }
     else{
         
+        self.maritalStatus = @"Widow";
+
         [self.widowedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
         [self.neverMarriedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
         [self.divorcedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
@@ -294,11 +304,22 @@ numberOfRowsInComponent:(NSInteger)component{
 #pragma mark- Picker View Delegate
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:
-(NSInteger)row inComponent:(NSInteger)component{
-    // [myTextField setText:[pickerArray objectAtIndex:row]];
+(NSInteger)row inComponent:(NSInteger)component
+{
+    
+    if (component == 1)
+    {
+        self.inchStr = [_inchesMutableArray objectAtIndex:row];
+        
+    }
+    else
+    {
+        self.feetStr = [_feetMutableArray objectAtIndex:row];
+    }
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:
-(NSInteger)row forComponent:(NSInteger)component{
+(NSInteger)row forComponent:(NSInteger)component
+{
     
     if (component == 1) {
         return [_inchesMutableArray objectAtIndex:row];
@@ -413,11 +434,82 @@ numberOfRowsInComponent:(NSInteger)component{
             [self alertMessage:@"Height"];
             
         }
-        else{
-    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
-    BUProfileHeritageVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileHeritageVC"];
-    [self.navigationController pushViewController:vc animated:YES];
+        else
+        {
+            NSDictionary *parameters = nil;
+            NSString *citizen = @"USA";
+            if(NO == [[NSUserDefaults standardUserDefaults] boolForKey:@"isUSCitizen"])
+            {
+                citizen = @"INDIA";
+            }
+
+            
+            NSString *gender = @"Female";
+            if(self.genderSelectionBtn.tag == 1)
+            {
+                gender = @"Male";
+            }
+            /*
+             
+             2. API for screen 4a_profile_setup1 (Of the mockup screens)
+             
+             http://app.thebureauapp.com/admin/update_profile_step2
+             
+             Parameters to be sent :
+             
+             userid => user id of user
+             profile_gender =>gender (Male,Female)
+             profile_dob =>date of birth (dd-mm-yy format)
+             country_residing => country residing (India, America) =>one of these values
+             current_zip_code => current zip code
+             height_feet => person height in feet
+             height_inch => person height in inch
+             maritial_status => marital status 
+             
+             */
+            
+            parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                           @"profile_gender":gender,
+                           @"profile_dob":self.dateofbirthTF.text,
+                           @"country_residing":citizen,
+                           @"current_zip_code":self.currentLocTF.text,
+                           @"height_feet":self.feetStr,
+                           @"height_inch":self.inchStr,
+                           @"maritial_status":self.maritalStatus
+                           };
+            
+            [self startActivityIndicator:YES];
+            [[BUWebServicesManager sharedManager] updateProfileDetails:self parameters:parameters];
         }
+    
+}
+
+
+-(void)didSuccess:(id)inResult;
+{
+    [self stopActivityIndicator];
+    
+    if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
+    {
+        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
+        BUProfileHeritageVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileHeritageVC"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else
+    {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    
+}
+
+-(void)didFail:(id)inResult;
+{
+    [self startActivityIndicator:YES];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Login Failed" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 -(void)alertMessage : (NSString *)message

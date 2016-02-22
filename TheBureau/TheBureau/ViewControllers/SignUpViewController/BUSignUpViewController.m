@@ -188,6 +188,8 @@
 
     if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
     {
+        [BUWebServicesManager sharedManager].userID = [inResult valueForKey:@"userid"];
+
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Registration Successful" message:@"" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"

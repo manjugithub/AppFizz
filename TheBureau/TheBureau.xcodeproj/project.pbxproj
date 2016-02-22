@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		1808029D1C079E7B00F5AEE5 /* BUSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1808029C1C079E7B00F5AEE5 /* BUSignUpViewController.m */; };
 		5B08024F1C6CD13C00DAD5A5 /* BUProfileDietVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B08024E1C6CD13C00DAD5A5 /* BUProfileDietVC.m */; };
-		5B0802521C7336EF00DAD5A5 /* BUHomeConnectionTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0802511C7336EF00DAD5A5 /* BUHomeConnectionTabVC.m */; settings = {ASSET_TAGS = (); }; };
-		5B0802551C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0802541C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m */; settings = {ASSET_TAGS = (); }; };
-		5B0802581C733BC400DAD5A5 /* BUProfileMatchChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0802571C733BC400DAD5A5 /* BUProfileMatchChatVC.m */; settings = {ASSET_TAGS = (); }; };
-		5B08025B1C733BE400DAD5A5 /* BUProfileRematchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B08025A1C733BE400DAD5A5 /* BUProfileRematchVC.m */; settings = {ASSET_TAGS = (); }; };
-		5B0802611C7344BC00DAD5A5 /* BUEmptySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0802601C7344BC00DAD5A5 /* BUEmptySegue.m */; settings = {ASSET_TAGS = (); }; };
-		5B0802641C7346E700DAD5A5 /* BUHomeConnectionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0802631C7346E700DAD5A5 /* BUHomeConnectionsVC.m */; settings = {ASSET_TAGS = (); }; };
+		5B0802521C7336EF00DAD5A5 /* BUHomeConnectionTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0802511C7336EF00DAD5A5 /* BUHomeConnectionTabVC.m */; };
+		5B0802551C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0802541C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m */; };
+		5B0802581C733BC400DAD5A5 /* BUProfileMatchChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0802571C733BC400DAD5A5 /* BUProfileMatchChatVC.m */; };
+		5B08025B1C733BE400DAD5A5 /* BUProfileRematchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B08025A1C733BE400DAD5A5 /* BUProfileRematchVC.m */; };
+		5B0802611C7344BC00DAD5A5 /* BUEmptySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0802601C7344BC00DAD5A5 /* BUEmptySegue.m */; };
+		5B0802641C7346E700DAD5A5 /* BUHomeConnectionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0802631C7346E700DAD5A5 /* BUHomeConnectionsVC.m */; };
 		5B0AEDC61C22B94A00877C24 /* BULoginWithEmailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0AEDC51C22B94A00877C24 /* BULoginWithEmailVC.m */; };
 		5B0AEDC91C22C69D00877C24 /* BUAuthButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0AEDC81C22C69D00877C24 /* BUAuthButton.m */; };
 		5B0AEDCC1C23591400877C24 /* BUSignUpWithEmailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0AEDCB1C23591400877C24 /* BUSignUpWithEmailVC.m */; };
@@ -65,6 +65,8 @@
 		78BF551A1C68789E00B5F1A4 /* BUHomeImagePreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BF55191C68789E00B5F1A4 /* BUHomeImagePreviewCell.m */; };
 		78BF551D1C68790B00B5F1A4 /* BUHomeProfileImgPrevCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BF551C1C68790B00B5F1A4 /* BUHomeProfileImgPrevCell.m */; };
 		78BF55241C688E8D00B5F1A4 /* BUAcountsTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BF55231C688E8D00B5F1A4 /* BUAcountsTabViewController.m */; };
+		78CA18581C7AFE2900CF091A /* BUMatchPoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CA18571C7AFE2900CF091A /* BUMatchPoolViewController.m */; };
+		78CA185B1C7B0B0100CF091A /* BUPoolProfileDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CA185A1C7B0B0100CF091A /* BUPoolProfileDetailsVC.m */; };
 		78CE0CFA1C69BC7C00FDA514 /* BUHomeCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CE0CF91C69BC7C00FDA514 /* BUHomeCollectionVC.m */; };
 		78CE0CFD1C69C23100FDA514 /* BUMatchInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CE0CFC1C69C23100FDA514 /* BUMatchInfoCell.m */; };
 		78CF17281C60979600779203 /* CustomPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78CF17271C60979600779203 /* CustomPicker.storyboard */; };
@@ -204,6 +206,10 @@
 		78BF551C1C68790B00B5F1A4 /* BUHomeProfileImgPrevCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUHomeProfileImgPrevCell.m; sourceTree = "<group>"; };
 		78BF55221C688E8D00B5F1A4 /* BUAcountsTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUAcountsTabViewController.h; sourceTree = "<group>"; };
 		78BF55231C688E8D00B5F1A4 /* BUAcountsTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUAcountsTabViewController.m; sourceTree = "<group>"; };
+		78CA18561C7AFE2900CF091A /* BUMatchPoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUMatchPoolViewController.h; sourceTree = "<group>"; };
+		78CA18571C7AFE2900CF091A /* BUMatchPoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUMatchPoolViewController.m; sourceTree = "<group>"; };
+		78CA18591C7B0B0100CF091A /* BUPoolProfileDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUPoolProfileDetailsVC.h; sourceTree = "<group>"; };
+		78CA185A1C7B0B0100CF091A /* BUPoolProfileDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUPoolProfileDetailsVC.m; sourceTree = "<group>"; };
 		78CE0CF81C69BC7C00FDA514 /* BUHomeCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUHomeCollectionVC.h; sourceTree = "<group>"; };
 		78CE0CF91C69BC7C00FDA514 /* BUHomeCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUHomeCollectionVC.m; sourceTree = "<group>"; };
 		78CE0CFB1C69C23100FDA514 /* BUMatchInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUMatchInfoCell.h; sourceTree = "<group>"; };
@@ -418,6 +424,7 @@
 		784622961C0718E500EA589C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				78CA18551C7AFDEA00CF091A /* Pool Tab */,
 				78BF55211C688E7100B5F1A4 /* Accounts Tab */,
 				78BF550D1C686E5500B5F1A4 /* HomeViewController */,
 				78F4A93D1C0CD3DB001C76A6 /* AccountCreationViewController */,
@@ -555,6 +562,17 @@
 				78BF55231C688E8D00B5F1A4 /* BUAcountsTabViewController.m */,
 			);
 			path = "Accounts Tab";
+			sourceTree = "<group>";
+		};
+		78CA18551C7AFDEA00CF091A /* Pool Tab */ = {
+			isa = PBXGroup;
+			children = (
+				78CA18561C7AFE2900CF091A /* BUMatchPoolViewController.h */,
+				78CA18571C7AFE2900CF091A /* BUMatchPoolViewController.m */,
+				78CA18591C7B0B0100CF091A /* BUPoolProfileDetailsVC.h */,
+				78CA185A1C7B0B0100CF091A /* BUPoolProfileDetailsVC.m */,
+			);
+			path = "Pool Tab";
 			sourceTree = "<group>";
 		};
 		78F4A9261C0CCC11001C76A6 /* Fonts */ = {
@@ -960,6 +978,7 @@
 				78FEE23A1C0720B60013E9D2 /* Foundation+Extensions.m in Sources */,
 				78FEE2631C0739CD0013E9D2 /* BULoginViewController.m in Sources */,
 				78B5B7201C56788700E3C531 /* BUProfileSelectionVC.m in Sources */,
+				78CA185B1C7B0B0100CF091A /* BUPoolProfileDetailsVC.m in Sources */,
 				78FEE2571C0726D20013E9D2 /* NSObject+FCKeyPathHelper.m in Sources */,
 				5B16291B1C5F62270034FA33 /* UIView+FLKAutoLayoutDebug.m in Sources */,
 				78FEE2391C0720B60013E9D2 /* UIKit+Extensions.m in Sources */,
@@ -971,6 +990,7 @@
 				5B2A2CAE1C0CE72B006F3845 /* BUForgotPasswordVC.m in Sources */,
 				5B0AEDC91C22C69D00877C24 /* BUAuthButton.m in Sources */,
 				78F4A9411C0CD3F4001C76A6 /* BUAccountCreationVC.m in Sources */,
+				78CA18581C7AFE2900CF091A /* BUMatchPoolViewController.m in Sources */,
 				5B08024F1C6CD13C00DAD5A5 /* BUProfileDietVC.m in Sources */,
 				78BF55151C68739000B5F1A4 /* BUHomeTabbarController.m in Sources */,
 				5B0AEDC61C22B94A00877C24 /* BULoginWithEmailVC.m in Sources */,

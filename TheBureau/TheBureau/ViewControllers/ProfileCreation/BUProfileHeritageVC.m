@@ -13,11 +13,12 @@
 
 @interface BUProfileHeritageVC ()
 @property(nonatomic, strong) PWCustomPickerView *customPickerView;
-@property(nonatomic, strong) NSString *religionID,*famliyID,*specificationID;
+@property(nonatomic, strong) NSString *religionID,*famliyID,*specificationID,*motherToungueID;
 
 @property(nonatomic, strong) IBOutlet UITextField *religionTF,*motherToungueTF,*specificationTF,*gothraTF,*familyOriginTF;
 
 @property(nonatomic) eHeritageList heritageList;
+@property(nonatomic, assign) BOOL isUpdatingProfile;
 @end
 
 @implementation BUProfileHeritageVC
@@ -121,29 +122,92 @@
 
 -(IBAction)continueClicked:(id)sender
 {
-UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
-BUProfileDietVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDietVC"];
-[self.navigationController pushViewController:vc animated:YES];
+    NSDictionary *parameters = nil;
+    /*
+     
+     3. API for screen 4b_profile_setup2
+     
+     API  to  Call
+     http://app.thebureauapp.com/admin/update_profile_step3
+     
+     Parameter
+     userid => user id of user
+     religion_id =>religion id
+     mother_tongue_id => mother tongue id
+     family_origin_id => family origin id
+     specification_id => specification id
+     gothra => gothra(text) 
+     
+     */
     
-
+    if(self.religionID == nil ||
+       self.motherToungueID == nil ||
+       self.famliyID == nil ||
+       self.specificationID == nil ||
+       [self.gothraTF.text isEqualToString:@""])
+    {
+        return;
+    }
+    
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                   @"religion_id":self.religionID,
+                   @"mother_tongue_id":self.motherToungueID,
+                   @"family_origin_id":self.famliyID,
+                   @"specification_id":self.specificationID,
+                   @"gothra":self.gothraTF.text
+                   };
+    
+    [self startActivityIndicator:YES];
+    self.isUpdatingProfile = YES;
+    [[BUWebServicesManager sharedManager] updateProfileHeritage:self parameters:parameters];
 }
--(void)didSuccess:(id)inResult
+
+
+
+-(void)didSuccess:(id)inResult;
 {
     [self stopActivityIndicator];
-
-    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"CustomPicker" bundle:nil];
-    self.customPickerView = [sb instantiateViewControllerWithIdentifier:@"PWCustomPickerView"];
     
-    self.customPickerView.pickerDataSource = inResult;
-    self.customPickerView.selectedHeritage = self.heritageList;
-    [self.customPickerView showCusptomPickeWithDelegate:self];
-    self.customPickerView.titleLabel.text = @"Physical Activity";
+    
+    if(NO == self.isUpdatingProfile)
+    {
+        [self stopActivityIndicator];
+        
+        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"CustomPicker" bundle:nil];
+        self.customPickerView = [sb instantiateViewControllerWithIdentifier:@"PWCustomPickerView"];
+        
+        self.customPickerView.pickerDataSource = inResult;
+        self.customPickerView.selectedHeritage = self.heritageList;
+        [self.customPickerView showCusptomPickeWithDelegate:self];
+        self.customPickerView.titleLabel.text = @"Physical Activity";
+    }
+    else
+    {
+        self.isUpdatingProfile = NO;
+        if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
+        {
+            UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
+            BUProfileDietVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDietVC"];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else
+        {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+    }
 }
 
--(void)didFail:(id)inResult
+-(void)didFail:(id)inResult;
 {
-    
+    [self startActivityIndicator:YES];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Login Failed" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
+
+
 
 - (void)didItemSelected:(NSMutableDictionary *)inSelectedRow
 {
@@ -158,6 +222,7 @@ BUProfileDietVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDie
         case eMotherToungueList:
         {
             self.motherToungueTF.text = [inSelectedRow valueForKey:@"mother_tongue"];
+            self.motherToungueID = [inSelectedRow valueForKey:@"mother_tongue_id"];
             break;
         }
         case eFamilyOriginList:

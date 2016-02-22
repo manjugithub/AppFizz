@@ -32,7 +32,7 @@
 @property(nonatomic) eNavigatedFrom navFrom;
 -(IBAction)setGender:(id)sender;
 -(IBAction)setDOB:(id)sender;
--(IBAction)signUpBtnClicked:(id)sender;
+-(IBAction)continueButtonClicked:(id)sender;
 @end
 
 @implementation BUAccountCreationVC
@@ -188,53 +188,10 @@
 {
     
 }
--(IBAction)signUpBtnClicked:(id)sender
-{
-//    
-//    if (![self.firstNameTF.text length]) {
-//        [self alertMessage:@"First Name"];
-//        }
-//    else if (![self.lastNameTF.text length]){
-//        [self alertMessage:@"Last Name"];
-//    }
-//    else if (![self.dateofbirthTF.text length]){
-//        
-//        [self alertMessage:@"Date Of Birth"];
-//    }
-//    else if (![self.mobileNumTF.text length]){
-//        [self alertMessage:@"Mobile Number"];
-//        
-//    }
-//    else if (![self.emailIdTF.text length]){
-//        
-//        [self alertMessage:@"Email Address"];
-//        
-//    }
-//    else
-    {
-    
-    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
-    BUProfileSelectionVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileSelectionVC"];
-        
-        vc.firstName = self.firstNameTF.text;
-        vc.lastName = self.lastNameTF.text;
-        
-    [self.navigationController pushViewController:vc animated:YES];
-        
-    }
-    
-}
-
 
 - (void)adjustScrollViewOffsetToCenterTextField:(UITextField *)textField
 {
     CGRect textFieldFrame = textField.frame;
-    //    float keyboardHeight = MIN(self.keyboardSize.width, self.keyboardSize.height);
-    //
-    //    float visibleScrollViewHeight = self.scrollview.frame.size.height - keyboardHeight+60;
-    //    float offsetInScrollViewCoords = (visibleScrollViewHeight / 2) - (textFieldFrame.size.height / 2);
-    //
-    //    scrollViewOffset = textFieldFrame.origin.y - offsetInScrollViewCoords;
     
     CGPoint buttonOrigin = textFieldFrame.origin;
     
@@ -399,6 +356,44 @@
     //  popoverController.sourceView = sender;
     //   popoverController.sourceRect = [sender bounds];
     [self presentViewController:alertController  animated:YES completion:nil];
+}
+
+
+#pragma mark - Web services handler
+
+-(IBAction)continueButtonClicked:(id)sender;
+{
+
+    if (![self.firstNameTF.text length]) {
+        [self alertMessage:@"First Name"];
+        }
+    else if (![self.lastNameTF.text length]){
+        [self alertMessage:@"Last Name"];
+    }
+    else if (![self.dateofbirthTF.text length]){
+
+        [self alertMessage:@"Date Of Birth"];
+    }
+    else if (![self.mobileNumTF.text length]){
+        [self alertMessage:@"Mobile Number"];
+
+    }
+    else if (![self.emailIdTF.text length]){
+
+        [self alertMessage:@"Email Address"];
+
+    }
+    else
+    {
+        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
+        BUProfileSelectionVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileSelectionVC"];
+        
+        vc.firstName = self.firstNameTF.text;
+        vc.lastName = self.lastNameTF.text;
+        
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
 }
 
 

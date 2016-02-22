@@ -16,8 +16,8 @@
 @end
 
 @interface BUWebServicesManager : NSObject
-
 @property (nonatomic, weak) id<BUWebServicesCallBack>delegate;
+@property (nonatomic, strong) NSString *userID;
 
 +(instancetype)sharedManager;
 -(void)signUpWithDelegeate:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
@@ -26,4 +26,10 @@
 -(void)getFamilyOriginList:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
 -(void)getSpecificationList:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
 -(void)getMotherTongueList:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
+-(void)updateProfileSelection:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
+-(void)updateProfileDetails:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
+-(void)updateProfileHeritage:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
+-(void)updateProfileOccupation:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
+-(void)updateProfileLegalStatus:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
+
 @end

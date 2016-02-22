@@ -1,31 +1,35 @@
 //
-//  BUHomeCollectionVC.m
+//  BUPoolProfileDetailsVC.m
 //  TheBureau
 //
-//  Created by Manjunath on 09/02/16.
+//  Created by Manjunath on 22/02/16.
 //  Copyright © 2016 Bureau. All rights reserved.
 //
 
-#import "BUHomeCollectionVC.h"
+#import "BUPoolProfileDetailsVC.h"
 #import "BUHomeImagePreviewCell.h"
-@interface BUHomeCollectionVC ()
+
+@interface BUPoolProfileDetailsVC ()
 @property(nonatomic, strong) IBOutlet UIPageControl *pageControl;
 @property(nonatomic, strong) NSDictionary *datasourceDict;
+
 @end
 
-@implementation BUHomeCollectionVC
-
+@implementation BUPoolProfileDetailsVC
 static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.navigationItem.title = @"The Bureau";
     
+    self.navigationItem.hidesBackButton = NO;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
-
 
 /*
 #pragma mark - Navigation
@@ -46,7 +50,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    return self.collectionView.frame.size;
+    return CGSizeMake(80, 100);
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

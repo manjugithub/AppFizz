@@ -1,20 +1,21 @@
 //
-//  BUHomeCollectionVC.m
+//  BUMatchPoolViewController.m
 //  TheBureau
 //
-//  Created by Manjunath on 09/02/16.
+//  Created by Manjunath on 22/02/16.
 //  Copyright © 2016 Bureau. All rights reserved.
 //
 
-#import "BUHomeCollectionVC.h"
+#import "BUMatchPoolViewController.h"
 #import "BUHomeImagePreviewCell.h"
-@interface BUHomeCollectionVC ()
+#import "BUPoolProfileDetailsVC.h"
+
+@interface BUMatchPoolViewController ()
 @property(nonatomic, strong) IBOutlet UIPageControl *pageControl;
 @property(nonatomic, strong) NSDictionary *datasourceDict;
 @end
 
-@implementation BUHomeCollectionVC
-
+@implementation BUMatchPoolViewController
 static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
@@ -26,16 +27,24 @@ static NSString * const reuseIdentifier = @"Cell";
     [super didReceiveMemoryWarning];
 }
 
+-(IBAction)showProfileDetails:(id)sender
+{
+    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+    BUPoolProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUPoolProfileDetailsVC"];
+    [self.tabBarController.navigationController pushViewController:vc animated:NO];
+    
+}
+
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 #pragma mark <UICollectionViewDataSource>
 

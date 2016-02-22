@@ -178,4 +178,114 @@ constructingBodyWithBlock:nil
 }
 
 
+
+-(void)updateProfileSelection:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
+{
+    
+    self.delegate = inDelegate;
+    NSString *baseURL = @"http://app.thebureauapp.com/admin/update_profile_step1";
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:baseURL
+       parameters:inParams
+constructingBodyWithBlock:nil
+         progress:nil
+          success:^(NSURLSessionDataTask *operation, id responseObject)
+     {
+         [self.delegate didSuccess:responseObject];
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(NSURLSessionDataTask *operation, NSError *error)
+     {
+         [self.delegate didFail:error];
+         NSLog(@"Error: %@", error);
+     }];
+}
+
+-(void)updateProfileDetails:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
+{
+    
+    self.delegate = inDelegate;
+    NSString *baseURL = @"http://app.thebureauapp.com/admin/update_profile_step2";
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:baseURL
+       parameters:inParams
+constructingBodyWithBlock:nil
+         progress:nil
+          success:^(NSURLSessionDataTask *operation, id responseObject)
+     {
+         [self.delegate didSuccess:responseObject];
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(NSURLSessionDataTask *operation, NSError *error)
+     {
+         [self.delegate didFail:error];
+         NSLog(@"Error: %@", error);
+     }];
+}
+
+-(void)updateProfileHeritage:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
+{
+    
+    self.delegate = inDelegate;
+    NSString *baseURL = @"http://app.thebureauapp.com/admin/update_profile_step3";
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:baseURL
+       parameters:inParams
+constructingBodyWithBlock:nil
+         progress:nil
+          success:^(NSURLSessionDataTask *operation, id responseObject)
+     {
+         [self.delegate didSuccess:responseObject];
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(NSURLSessionDataTask *operation, NSError *error)
+     {
+         [self.delegate didFail:error];
+         NSLog(@"Error: %@", error);
+     }];
+}
+
+-(void)updateProfileOccupation:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
+{
+    
+    self.delegate = inDelegate;
+    NSString *baseURL = @"http://app.thebureauapp.com/admin/update_profile_step4";
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:baseURL
+       parameters:inParams
+constructingBodyWithBlock:nil
+         progress:nil
+          success:^(NSURLSessionDataTask *operation, id responseObject)
+     {
+         [self.delegate didSuccess:responseObject];
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(NSURLSessionDataTask *operation, NSError *error)
+     {
+         [self.delegate didFail:error];
+         NSLog(@"Error: %@", error);
+     }];
+}
+
+-(void)updateProfileLegalStatus:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
+{
+    
+    self.delegate = inDelegate;
+    NSString *baseURL = @"http://app.thebureauapp.com/admin/update_profile_step1";
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:baseURL
+       parameters:inParams
+constructingBodyWithBlock:nil
+         progress:nil
+          success:^(NSURLSessionDataTask *operation, id responseObject)
+     {
+         [self.delegate didSuccess:responseObject];
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(NSURLSessionDataTask *operation, NSError *error)
+     {
+         [self.delegate didFail:error];
+         NSLog(@"Error: %@", error);
+     }];
+}
 @end
