@@ -10,7 +10,7 @@
 #import "BUWebServicesManager.h"
 #import "BUSocialChannel.h"
 
-@interface BUSignUpViewController : BUBaseViewController<BUWebServicesCallBack>
+@interface BUSignUpViewController : BUBaseViewController
 
 @property(nonatomic, strong) BUSocialChannel *socialChannel;
 @property(nonatomic, assign) eRegistrationType registrationType;

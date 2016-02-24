@@ -8,7 +8,6 @@
 
 #import "BUCustomAlertView.h"
 #import <UIKit/UIKit.h>
-#import "UIView+FLKAutoLayout.h"
 
 @implementation BUCustomAlertView
 
@@ -23,10 +22,6 @@
     UIDatePicker *picker = [[UIDatePicker alloc] init];
     [picker setDatePickerMode:UIDatePickerModeDate];
     [alertController.view addSubview:picker];
-    [picker alignCenterYWithView:alertController.view predicate:@"0.0"];
-    [picker alignCenterXWithView:alertController.view predicate:@"0.0"];
-    [picker constrainWidth:@"270" ];
-    
     [alertController addAction:({
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSLog(@"OK");

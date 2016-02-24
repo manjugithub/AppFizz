@@ -9,7 +9,7 @@
 #import "BUBaseViewController.h"
 #import "BUWebServicesManager.h"
 #import "BUHomeTabbarController.h"
-@interface BUMatchPoolViewController : BUBaseViewController<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource,UICollisionBehaviorDelegate,BUWebServicesCallBack>
+@interface BUMatchPoolViewController : BUBaseViewController<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource,UICollisionBehaviorDelegate>
 
 @property(nonatomic, strong) IBOutlet UICollectionView *collectionView;
 

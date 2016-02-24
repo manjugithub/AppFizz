@@ -180,41 +180,36 @@
                        @"profile_last_name":self.lastNameTF.text};
         
         [self startActivityIndicator:YES];
-        [[BUWebServicesManager sharedManager] updateProfileSelection:self parameters:parameters];
+        [[BUWebServicesManager sharedManager] updateProfileSelectionwithParameters:parameters
+                                                                      successBlock:^(id inResult, NSError *error)
+         {
+             [self stopActivityIndicator];
+             
+             if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
+             {
+                 UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
+                 BUProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDetailsVC"];
+                 [self.navigationController pushViewController:vc animated:YES];
+                 
+             }
+             else
+             {
+                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+                 [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                 [self presentViewController:alertController animated:YES completion:nil];
+             }
+             
+         }
+                                                                      failureBlock:^(id response, NSError *error)
+         {
+             [self startActivityIndicator:YES];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+             [self presentViewController:alertController animated:YES completion:nil];
+         }];
     }
     
 }
-
-
--(void)didSuccess:(id)inResult;
-{
-    [self stopActivityIndicator];
-    
-    if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
-    {
-        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
-        BUProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDetailsVC"];
-        [self.navigationController pushViewController:vc animated:YES];
-        
-    }
-    else
-    {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-        [self presentViewController:alertController animated:YES completion:nil];
-    }
-    
-}
-
--(void)didFail:(id)inResult;
-{
-    [self startActivityIndicator:YES];
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alertController animated:YES completion:nil];
-}
-
-
 
 -(void)alertMessage : (NSString *)message
 {

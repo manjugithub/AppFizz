@@ -20,20 +20,15 @@
 		5B16288F1C4D252A0034FA33 /* ALLURA-REGULAR.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 5B16288E1C4D252A0034FA33 /* ALLURA-REGULAR.TTF */; };
 		5B1628921C4F63D10034FA33 /* BUProfileDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1628911C4F63D10034FA33 /* BUProfileDetails.m */; };
 		5B16290C1C5F61EE0034FA33 /* BUCustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B16290B1C5F61EE0034FA33 /* BUCustomAlertView.m */; };
-		5B1629181C5F62270034FA33 /* FLKAutoLayoutPredicateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B16290F1C5F62270034FA33 /* FLKAutoLayoutPredicateList.m */; };
-		5B1629191C5F62270034FA33 /* NSLayoutConstraint+FLKAutoLayoutDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1629111C5F62270034FA33 /* NSLayoutConstraint+FLKAutoLayoutDebug.m */; };
-		5B16291A1C5F62270034FA33 /* UIView+FLKAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1629131C5F62270034FA33 /* UIView+FLKAutoLayout.m */; };
-		5B16291B1C5F62270034FA33 /* UIView+FLKAutoLayoutDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1629151C5F62270034FA33 /* UIView+FLKAutoLayoutDebug.m */; };
-		5B16291C1C5F62270034FA33 /* UIView+FLKAutoLayoutPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1629171C5F62270034FA33 /* UIView+FLKAutoLayoutPredicate.m */; };
 		5B2A2CAB1C0CD68B006F3845 /* BUTroubleInLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A2CAA1C0CD68B006F3845 /* BUTroubleInLoginVC.m */; };
 		5B2A2CAE1C0CE72B006F3845 /* BUForgotPasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A2CAD1C0CE72B006F3845 /* BUForgotPasswordVC.m */; };
 		5B2A2CB31C182D7D006F3845 /* DigitsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B2A2CB01C182D7D006F3845 /* DigitsKit.framework */; };
 		5B2A2CB41C182D7D006F3845 /* DigitsKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B2A2CB11C182D7D006F3845 /* DigitsKitResources.bundle */; };
 		5B2A2CB51C182D7D006F3845 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B2A2CB21C182D7D006F3845 /* TwitterKitResources.bundle */; };
-		5B2D3E8C1C7C6927006B7674 /* BUHomeConnectionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D3E851C7C6927006B7674 /* BUHomeConnectionsVC.m */; settings = {ASSET_TAGS = (); }; };
-		5B2D3E8D1C7C6927006B7674 /* BUHomeConnectionTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D3E871C7C6927006B7674 /* BUHomeConnectionTabVC.m */; settings = {ASSET_TAGS = (); }; };
-		5B2D3E8E1C7C6927006B7674 /* BUProfileMatchChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D3E891C7C6927006B7674 /* BUProfileMatchChatVC.m */; settings = {ASSET_TAGS = (); }; };
-		5B2D3E8F1C7C6927006B7674 /* BUProfileRematchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D3E8B1C7C6927006B7674 /* BUProfileRematchVC.m */; settings = {ASSET_TAGS = (); }; };
+		5B2D3E8C1C7C6927006B7674 /* BUHomeConnectionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D3E851C7C6927006B7674 /* BUHomeConnectionsVC.m */; };
+		5B2D3E8D1C7C6927006B7674 /* BUHomeConnectionTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D3E871C7C6927006B7674 /* BUHomeConnectionTabVC.m */; };
+		5B2D3E8E1C7C6927006B7674 /* BUProfileMatchChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D3E891C7C6927006B7674 /* BUProfileMatchChatVC.m */; };
+		5B2D3E8F1C7C6927006B7674 /* BUProfileRematchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D3E8B1C7C6927006B7674 /* BUProfileRematchVC.m */; };
 		5BB683501C64A58E0043C4FC /* EmployementStatusTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6834D1C64A58E0043C4FC /* EmployementStatusTVCell.m */; };
 		5BB683511C64A58E0043C4FC /* HighLevelEducationTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6834F1C64A58E0043C4FC /* HighLevelEducationTVCell.m */; };
 		5BDA47201C22596200C875AB /* BURootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA471F1C22596200C875AB /* BURootViewController.m */; };
@@ -134,16 +129,6 @@
 		5B1628911C4F63D10034FA33 /* BUProfileDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfileDetails.m; sourceTree = "<group>"; };
 		5B16290A1C5F61EE0034FA33 /* BUCustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUCustomAlertView.h; sourceTree = "<group>"; };
 		5B16290B1C5F61EE0034FA33 /* BUCustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUCustomAlertView.m; sourceTree = "<group>"; };
-		5B16290E1C5F62270034FA33 /* FLKAutoLayoutPredicateList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLKAutoLayoutPredicateList.h; sourceTree = "<group>"; };
-		5B16290F1C5F62270034FA33 /* FLKAutoLayoutPredicateList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLKAutoLayoutPredicateList.m; sourceTree = "<group>"; };
-		5B1629101C5F62270034FA33 /* NSLayoutConstraint+FLKAutoLayoutDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+FLKAutoLayoutDebug.h"; sourceTree = "<group>"; };
-		5B1629111C5F62270034FA33 /* NSLayoutConstraint+FLKAutoLayoutDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+FLKAutoLayoutDebug.m"; sourceTree = "<group>"; };
-		5B1629121C5F62270034FA33 /* UIView+FLKAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FLKAutoLayout.h"; sourceTree = "<group>"; };
-		5B1629131C5F62270034FA33 /* UIView+FLKAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FLKAutoLayout.m"; sourceTree = "<group>"; };
-		5B1629141C5F62270034FA33 /* UIView+FLKAutoLayoutDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FLKAutoLayoutDebug.h"; sourceTree = "<group>"; };
-		5B1629151C5F62270034FA33 /* UIView+FLKAutoLayoutDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FLKAutoLayoutDebug.m"; sourceTree = "<group>"; };
-		5B1629161C5F62270034FA33 /* UIView+FLKAutoLayoutPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FLKAutoLayoutPredicate.h"; sourceTree = "<group>"; };
-		5B1629171C5F62270034FA33 /* UIView+FLKAutoLayoutPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FLKAutoLayoutPredicate.m"; sourceTree = "<group>"; };
 		5B2A2CA91C0CD68B006F3845 /* BUTroubleInLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUTroubleInLoginVC.h; sourceTree = "<group>"; };
 		5B2A2CAA1C0CD68B006F3845 /* BUTroubleInLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUTroubleInLoginVC.m; sourceTree = "<group>"; };
 		5B2A2CAC1C0CE72B006F3845 /* BUForgotPasswordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUForgotPasswordVC.h; sourceTree = "<group>"; };
@@ -311,23 +296,6 @@
 			path = TheBureau/ModelObjects/SocialConnectModelObject/CustomAlertView;
 			sourceTree = SOURCE_ROOT;
 		};
-		5B16290D1C5F62270034FA33 /* FLKAutoLayout */ = {
-			isa = PBXGroup;
-			children = (
-				5B16290E1C5F62270034FA33 /* FLKAutoLayoutPredicateList.h */,
-				5B16290F1C5F62270034FA33 /* FLKAutoLayoutPredicateList.m */,
-				5B1629101C5F62270034FA33 /* NSLayoutConstraint+FLKAutoLayoutDebug.h */,
-				5B1629111C5F62270034FA33 /* NSLayoutConstraint+FLKAutoLayoutDebug.m */,
-				5B1629121C5F62270034FA33 /* UIView+FLKAutoLayout.h */,
-				5B1629131C5F62270034FA33 /* UIView+FLKAutoLayout.m */,
-				5B1629141C5F62270034FA33 /* UIView+FLKAutoLayoutDebug.h */,
-				5B1629151C5F62270034FA33 /* UIView+FLKAutoLayoutDebug.m */,
-				5B1629161C5F62270034FA33 /* UIView+FLKAutoLayoutPredicate.h */,
-				5B1629171C5F62270034FA33 /* UIView+FLKAutoLayoutPredicate.m */,
-			);
-			path = FLKAutoLayout;
-			sourceTree = "<group>";
-		};
 		5B2D3E831C7C6927006B7674 /* Connections Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,7 +346,6 @@
 		7846225B1C0711E100EA589C /* TheBureau */ = {
 			isa = PBXGroup;
 			children = (
-				5B16290D1C5F62270034FA33 /* FLKAutoLayout */,
 				78B5B7171C55EB9700E3C531 /* Webservices */,
 				78FEE2501C07252D0013E9D2 /* ModelObjects */,
 				784622961C0718E500EA589C /* ViewControllers */,
@@ -961,22 +928,18 @@
 				78FEE25F1C0728660013E9D2 /* FCBaseSocialController.m in Sources */,
 				78BF551D1C68790B00B5F1A4 /* BUHomeProfileImgPrevCell.m in Sources */,
 				78B5B71A1C561A6900E3C531 /* BUWebServicesManager.m in Sources */,
-				5B16291A1C5F62270034FA33 /* UIView+FLKAutoLayout.m in Sources */,
 				78BF551A1C68789E00B5F1A4 /* BUHomeImagePreviewCell.m in Sources */,
 				1808029D1C079E7B00F5AEE5 /* BUSignUpViewController.m in Sources */,
 				5B0802551C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m in Sources */,
 				78CF172F1C609D5100779203 /* PWCustomPickerCell.m in Sources */,
-				5B16291C1C5F62270034FA33 /* UIView+FLKAutoLayoutPredicate.m in Sources */,
 				78FEE2441C0720FE0013E9D2 /* UIColor+CrossFade.m in Sources */,
 				78FEE2541C07255C0013E9D2 /* BUSocialChannel.m in Sources */,
 				78FEE24B1C0721590013E9D2 /* BUUtilities.m in Sources */,
-				5B1629181C5F62270034FA33 /* FLKAutoLayoutPredicateList.m in Sources */,
 				78B5B7241C56789E00E3C531 /* BUProfileDetailsVC.m in Sources */,
 				5B1628871C4CFE400034FA33 /* UIImage+animatedGIF.m in Sources */,
 				5BB683511C64A58E0043C4FC /* HighLevelEducationTVCell.m in Sources */,
 				78B5B7301C56792000E3C531 /* BUProfileLegalStatusVC.m in Sources */,
 				5B1628841C4CFA620034FA33 /* BUSplashViewController.m in Sources */,
-				5B1629191C5F62270034FA33 /* NSLayoutConstraint+FLKAutoLayoutDebug.m in Sources */,
 				5B2D3E8F1C7C6927006B7674 /* BUProfileRematchVC.m in Sources */,
 				5B2D3E8E1C7C6927006B7674 /* BUProfileMatchChatVC.m in Sources */,
 				5B16290C1C5F61EE0034FA33 /* BUCustomAlertView.m in Sources */,
@@ -988,7 +951,6 @@
 				78B5B7201C56788700E3C531 /* BUProfileSelectionVC.m in Sources */,
 				78CA185B1C7B0B0100CF091A /* BUPoolProfileDetailsVC.m in Sources */,
 				78FEE2571C0726D20013E9D2 /* NSObject+FCKeyPathHelper.m in Sources */,
-				5B16291B1C5F62270034FA33 /* UIView+FLKAutoLayoutDebug.m in Sources */,
 				78FEE2391C0720B60013E9D2 /* UIKit+Extensions.m in Sources */,
 				5B1628921C4F63D10034FA33 /* BUProfileDetails.m in Sources */,
 				78FEE25E1C0728660013E9D2 /* FBController.m in Sources */,
@@ -1153,7 +1115,7 @@
 			baseConfigurationReference = 6502757F3F1ACF97331C1C80 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Manjunath HS (3D4G79WZ29)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Manjunath HS (3D4G79WZ29)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1173,7 +1135,7 @@
 			baseConfigurationReference = F1221E9735CB633F12051843 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Manjunath HS (3D4G79WZ29)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Manjunath HS (3D4G79WZ29)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

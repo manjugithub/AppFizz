@@ -18,7 +18,6 @@
 @property (nonatomic) eHeritageList selectedHeritage;
 @property (strong, nonatomic) NSMutableArray *pickerDataSource;
 - (IBAction)closePickerView:(id)sender;
-+(PWCustomPickerView *)createCustomPickerView;
 -(void)showCusptomPickeWithDelegate:(id<PWPickerViewDelegate>) inDelegate;
 
 @end

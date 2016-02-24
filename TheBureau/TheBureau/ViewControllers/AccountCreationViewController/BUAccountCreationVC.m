@@ -8,7 +8,6 @@
 
 #import "BUAccountCreationVC.h"
 #import "BUProfileSelectionVC.h"
-#import "UIView+FLKAutoLayout.h"
 
 @interface BUAccountCreationVC ()
 
@@ -274,9 +273,6 @@
     UIDatePicker *picker = [[UIDatePicker alloc] init];
     [picker setDatePickerMode:UIDatePickerModeDate];
     [alertController.view addSubview:picker];
-    [picker alignCenterYWithView:alertController.view predicate:@"0.0"];
-    [picker alignCenterXWithView:alertController.view predicate:@"0.0"];
-    [picker constrainWidth:@"270" ];
     
     NSDate *todayDate = [NSDate date];
     NSDate *newDate = [todayDate dateByAddingTimeInterval:(-1*18*365*24*60*60)];

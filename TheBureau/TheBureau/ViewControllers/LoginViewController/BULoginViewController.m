@@ -184,7 +184,53 @@
                                    @"digits":session.phoneNumber};
                 }
                 [self startActivityIndicator:YES];
-                [[BUWebServicesManager sharedManager] loginWithDelegeate:self parameters:parameters];
+                [[BUWebServicesManager sharedManager] loginWithDelegeatewithParameters:parameters
+                                                                          successBlock:^(id inResult, NSError *error)
+                 {
+                     [self stopActivityIndicator];
+                     
+                     if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
+                     {
+                         
+                         [BUWebServicesManager sharedManager].userID = [inResult valueForKey:@"userid"];
+                         
+                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Login Successful" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+                         
+                         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                            style:UIAlertActionStyleDefault
+                                                                          handler:^(UIAlertAction *action)
+                                                    {
+                                                        
+                                                        
+                                                        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+                                                        BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+                                                        [self.navigationController pushViewController:vc animated:YES];
+                                                        
+                                                        //                                       UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                                        //                                       BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];
+                                                        //                                       vc.socialChannel = self.socialChannel;
+                                                        //                                       [self.navigationController pushViewController:vc animated:YES];
+                                                    }];
+                         
+                         [alertController addAction:okAction];
+                         [self presentViewController:alertController animated:YES completion:nil];
+                         
+                     }
+                     else
+                     {
+                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Registration Failed" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+                         [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                         [self presentViewController:alertController animated:YES completion:nil];
+                     }
+                     
+                 }
+                                                                          failureBlock:^(id response, NSError *error)
+                 {
+                     [self startActivityIndicator:YES];
+                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Login Failed" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+                     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                     [self presentViewController:alertController animated:YES completion:nil];
+                 }];
                 
             });
         } else {

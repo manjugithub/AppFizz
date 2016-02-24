@@ -8,6 +8,6 @@
 
 #import "BUBaseViewController.h"
 #import "BUWebServicesManager.h"
-@interface BUHomeViewController : BUBaseViewController<UITableViewDataSource,UITableViewDelegate,BUWebServicesCallBack>
+@interface BUHomeViewController : BUBaseViewController<UITableViewDataSource,UITableViewDelegate>
 
 @end

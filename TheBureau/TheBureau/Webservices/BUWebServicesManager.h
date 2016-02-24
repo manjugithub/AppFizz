@@ -8,30 +8,42 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol BUWebServicesCallBack <NSObject>
 
--(void)didSuccess:(id)inResult;
--(void)didFail:(id)inResult;
+typedef void (^FailureBlock)(id response, NSError *error);
+typedef void (^SuccessBlock)(id response, NSError *error);
 
-@end
 
 @interface BUWebServicesManager : NSObject
-@property (nonatomic, weak) id<BUWebServicesCallBack>delegate;
 @property (nonatomic, strong) NSString *userID;
 
 +(instancetype)sharedManager;
--(void)signUpWithDelegeate:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
--(void)loginWithDelegeate:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
--(void)getReligionList:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
--(void)getFamilyOriginList:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
--(void)getSpecificationList:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
--(void)getMotherTongueList:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
--(void)updateProfileSelection:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
--(void)updateProfileDetails:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
--(void)updateProfileHeritage:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
--(void)updateProfileOccupation:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
--(void)updateProfileLegalStatus:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
--(void)matchMakingForTheDay:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
+-(void)signUpWithDelegeatewithParameters:(NSDictionary *)inParams  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+;
+-(void)loginWithDelegeatewithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+;
 
--(void)matchPoolForTheDay:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
+
+-(void)getReligionListwithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+;
+-(void)getFamilyOriginListwithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+;
+-(void)getSpecificationListwithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+;
+-(void)getMotherTongueListwithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+;
+-(void)updateProfileSelectionwithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+;
+-(void)updateProfileDetailswithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+;
+-(void)updateProfileHeritagewithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+;
+-(void)updateProfileOccupationwithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+;
+-(void)updateProfileLegalStatuswithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+;
+-(void)matchMakingForTheDaywithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+;
+
+-(void)matchPoolForTheDaywithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+;
 @end

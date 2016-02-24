@@ -68,6 +68,6 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
     self.pageControl.currentPage = indexPath.row;
-    NSLog(@"collectionView willDisplayCell: %ld",indexPath.row);
+    NSLog(@"collectionView willDisplayCell: %ld",(long)indexPath.row);
 }
 @end

@@ -109,40 +109,36 @@
                    };
     
     [self startActivityIndicator:YES];
-    [[BUWebServicesManager sharedManager] matchMakingForTheDay:self parameters:parameters];
-}
-
-
-
--(void)didSuccess:(id)inResult;
-{
-    [self stopActivityIndicator];
-        if(nil != inResult && 0 < [inResult count])
+    [[BUWebServicesManager sharedManager] matchMakingForTheDaywithParameters:parameters successBlock:^(id response, NSError *error) {
+        [self stopActivityIndicator];
+        if(nil != response && 0 < [response count])
         {
             
             self.noProfileImgView.hidden = YES;
-
-            self.datasourceList = [inResult lastObject];
             
-            self.imagesList = [[NSMutableArray alloc] initWithArray:[[[inResult lastObject]valueForKey:@"img_url"] allValues]];
+            self.datasourceList = [response lastObject];
+            
+            self.imagesList = [[NSMutableArray alloc] initWithArray:[[[response lastObject]valueForKey:@"img_url"] allValues]];
             
             [self.imgScrollerTableView reloadData];
-          }
+        }
         else
         {
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
             [self presentViewController:alertController animated:YES completion:nil];
         }
-}
+    } failureBlock:^(id response, NSError *error) {
+        [self startActivityIndicator:YES];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }];
+     
+     }
 
--(void)didFail:(id)inResult;
-{
-    [self startActivityIndicator:YES];
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alertController animated:YES completion:nil];
-}
+
+
 
 
 

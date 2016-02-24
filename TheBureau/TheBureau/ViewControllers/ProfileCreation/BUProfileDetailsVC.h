@@ -9,6 +9,6 @@
 #import "BUBaseViewController.h"
 #import "BUWebServicesManager.h"
 
-@interface BUProfileDetailsVC : BUBaseViewController<BUWebServicesCallBack>
+@interface BUProfileDetailsVC : BUBaseViewController
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "BUProfileDetailsVC.h"
-#import "UIView+FLKAutoLayout.h"
 #import "BUProfileHeritageVC.h"
 
 @interface BUProfileDetailsVC ()<UIPickerViewDataSource,UIPickerViewDelegate>
@@ -114,10 +113,7 @@
     
     [picker setDatePickerMode:UIDatePickerModeDate];
     [alertController.view addSubview:picker];
-    [picker alignCenterYWithView:alertController.view predicate:@"0.0"];
-    [picker alignCenterXWithView:alertController.view predicate:@"0.0"];
-    [picker constrainWidth:@"270" ];
-    
+
     NSDate *todayDate = [NSDate date];
     NSDate *newDate = [todayDate dateByAddingTimeInterval:(-1*18*365*24*60*60)];
     
@@ -341,9 +337,6 @@ numberOfRowsInComponent:(NSInteger)component{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Height\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIPickerView *picker = [[UIPickerView alloc] init];
     [alertController.view addSubview:picker];
-    [picker alignCenterYWithView:alertController.view predicate:@"0.0"];
-    [picker alignCenterXWithView:alertController.view predicate:@"0.0"];
-    [picker constrainWidth:@"270" ];
     picker.dataSource = self;
     picker.delegate = self ;
     
@@ -479,7 +472,32 @@ numberOfRowsInComponent:(NSInteger)component{
                            };
             
             [self startActivityIndicator:YES];
-            [[BUWebServicesManager sharedManager] updateProfileDetails:self parameters:parameters];
+            [[BUWebServicesManager sharedManager] updateProfileDetailswithParameters:parameters
+                                                                        successBlock:^(id inResult, NSError *error)
+             {
+                 [self stopActivityIndicator];
+                 
+                 if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
+                 {
+                     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
+                     BUProfileHeritageVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileHeritageVC"];
+                     [self.navigationController pushViewController:vc animated:YES];
+                 }
+                 else
+                 {
+                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+                     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                     [self presentViewController:alertController animated:YES completion:nil];
+                 }
+                 
+             }
+                                                                        failureBlock:^(id response, NSError *error)
+             {
+                 [self startActivityIndicator:YES];
+                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+                 [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                 [self presentViewController:alertController animated:YES completion:nil];
+             }];
         }
     
 }

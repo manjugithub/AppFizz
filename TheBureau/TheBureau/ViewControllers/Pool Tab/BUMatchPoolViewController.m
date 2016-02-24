@@ -84,7 +84,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
     self.pageControl.currentPage = indexPath.row;
-    NSLog(@"collectionView willDisplayCell: %ld",indexPath.row);
+    NSLog(@"collectionView willDisplayCell: %ld",(long)indexPath.row);
 }
 
 
@@ -96,7 +96,36 @@ static NSString * const reuseIdentifier = @"Cell";
                    };
     
     [self startActivityIndicator:YES];
-    [[BUWebServicesManager sharedManager] matchPoolForTheDay:self parameters:parameters];
+    [[BUWebServicesManager sharedManager] matchPoolForTheDaywithParameters:parameters
+                                                              successBlock:^(id inResult, NSError *error)
+    {
+        [self stopActivityIndicator];
+        if(nil != inResult && 0 < [inResult count])
+        {
+            self.datasourceList = inResult;
+            
+            self.imagesList = [[NSMutableArray alloc] init];
+            for (NSDictionary *dict in inResult)
+            {
+                [self.imagesList addObject:[[dict valueForKey:@"img_url"] firstObject]];
+            }
+            
+            [self.collectionView reloadData];
+        }
+        else
+        {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+    }
+                                                              failureBlock:^(id response, NSError *error)
+    {
+        [self startActivityIndicator:YES];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }];
 }
 
 

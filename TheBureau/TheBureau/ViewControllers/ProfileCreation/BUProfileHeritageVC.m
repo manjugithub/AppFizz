@@ -50,13 +50,38 @@
 */
 
 
+-(void)showPickerWithDataSource:(id)inResult
+{
+    [self stopActivityIndicator];
+    
+    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"CustomPicker" bundle:nil];
+    self.customPickerView = [sb instantiateViewControllerWithIdentifier:@"PWCustomPickerView"];
+    
+    self.customPickerView.pickerDataSource = inResult;
+    self.customPickerView.selectedHeritage = self.heritageList;
+    [self.customPickerView showCusptomPickeWithDelegate:self];
+    self.customPickerView.titleLabel.text = @"Physical Activity";
+}
+
+-(void)showFailureAlert
+{
+    [self startActivityIndicator:YES];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 
 -(IBAction)getReligion:(id)sender
 {
     NSDictionary *parameters = nil;
     [self startActivityIndicator:YES];
     self.heritageList = eReligionList;
-    [[BUWebServicesManager sharedManager] getReligionList:self parameters:parameters];
+    [[BUWebServicesManager sharedManager] getReligionListwithParameters:parameters successBlock:^(id response, NSError *error) {
+        [self showPickerWithDataSource:response];
+    } failureBlock:^(id response, NSError *error) {
+        [self showFailureAlert];
+
+    }];
 }
 
 
@@ -65,7 +90,12 @@
     NSDictionary *parameters = nil;
     [self startActivityIndicator:YES];
     self.heritageList = eMotherToungueList;
-    [[BUWebServicesManager sharedManager] getMotherTongueList:self parameters:parameters];
+    [[BUWebServicesManager sharedManager] getMotherTongueListwithParameters:parameters successBlock:^(id response, NSError *error) {
+        [self showPickerWithDataSource:response];
+    } failureBlock:^(id response, NSError *error) {
+        [self showFailureAlert];
+
+    }];
 }
 
 -(IBAction)getSpecificationList:(id)sender
@@ -91,7 +121,13 @@
         NSDictionary *parameters = nil;
         parameters = @{@"family_origin_id": self.famliyID};
         [self startActivityIndicator:YES];
-        [[BUWebServicesManager sharedManager] getSpecificationList:self parameters:parameters];
+        [[BUWebServicesManager sharedManager] getSpecificationListwithParameters:parameters successBlock:^(id response, NSError *error) {
+            [self showPickerWithDataSource:response];
+
+        } failureBlock:^(id response, NSError *error) {
+            [self showFailureAlert];
+
+        }];
     }
 }
 
@@ -116,7 +152,13 @@
         NSDictionary *parameters = nil;
         parameters = @{@"religion_id": self.religionID};
         [self startActivityIndicator:YES];
-        [[BUWebServicesManager sharedManager] getFamilyOriginList:self parameters:parameters];
+        [[BUWebServicesManager sharedManager] getFamilyOriginListwithParameters:parameters successBlock:^(id response, NSError *error) {
+            [self showPickerWithDataSource:response];
+
+        } failureBlock:^(id response, NSError *error) {
+            [self showFailureAlert];
+
+        }];
     }
 }
 
@@ -159,54 +201,27 @@
     
     [self startActivityIndicator:YES];
     self.isUpdatingProfile = YES;
-    [[BUWebServicesManager sharedManager] updateProfileHeritage:self parameters:parameters];
+    [[BUWebServicesManager sharedManager] updateProfileHeritagewithParameters:parameters
+                                                                 successBlock:^(id inResult, NSError *error)
+     {
+         self.isUpdatingProfile = NO;
+         if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
+         {
+             UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
+             BUProfileDietVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDietVC"];
+             [self.navigationController pushViewController:vc animated:YES];
+         }
+         else
+         {
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+             [self presentViewController:alertController animated:YES completion:nil];
+         }
+     }
+                                                                 failureBlock:^(id response, NSError *error) {
+                                                                     [self showFailureAlert];
+    }];
 }
-
-
-
--(void)didSuccess:(id)inResult;
-{
-    [self stopActivityIndicator];
-    
-    
-    if(NO == self.isUpdatingProfile)
-    {
-        [self stopActivityIndicator];
-        
-        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"CustomPicker" bundle:nil];
-        self.customPickerView = [sb instantiateViewControllerWithIdentifier:@"PWCustomPickerView"];
-        
-        self.customPickerView.pickerDataSource = inResult;
-        self.customPickerView.selectedHeritage = self.heritageList;
-        [self.customPickerView showCusptomPickeWithDelegate:self];
-        self.customPickerView.titleLabel.text = @"Physical Activity";
-    }
-    else
-    {
-        self.isUpdatingProfile = NO;
-        if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
-        {
-            UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
-            BUProfileDietVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDietVC"];
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-        else
-        {
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-            [self presentViewController:alertController animated:YES completion:nil];
-        }
-    }
-}
-
--(void)didFail:(id)inResult;
-{
-    [self startActivityIndicator:YES];
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alertController animated:YES completion:nil];
-}
-
 
 
 - (void)didItemSelected:(NSMutableDictionary *)inSelectedRow

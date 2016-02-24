@@ -10,7 +10,7 @@
 #import "BUSocialChannel.h"
 #import "BUWebServicesManager.h"
 
-@interface BUProfileSelectionVC : BUBaseViewController<BUWebServicesCallBack>
+@interface BUProfileSelectionVC : BUBaseViewController
 
 @property(nonatomic) NSString *firstName;
 @property(nonatomic) NSString *lastName;
