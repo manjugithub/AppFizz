@@ -11,4 +11,5 @@
 @interface BUHomeCollectionVC : UIViewController<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource,UICollisionBehaviorDelegate>
 
 @property(nonatomic, strong) IBOutlet UICollectionView *collectionView;
+@property(nonatomic, strong) NSMutableArray *imagesList;
 @end

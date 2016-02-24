@@ -31,5 +31,7 @@
 -(void)updateProfileHeritage:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
 -(void)updateProfileOccupation:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
 -(void)updateProfileLegalStatus:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
+-(void)matchMakingForTheDay:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
 
+-(void)matchPoolForTheDay:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
 @end

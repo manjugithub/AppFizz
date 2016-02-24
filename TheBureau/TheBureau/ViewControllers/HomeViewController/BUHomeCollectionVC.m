@@ -50,13 +50,15 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    self.pageControl.numberOfPages = 4;
-    return 4;
+    self.pageControl.numberOfPages = self.imagesList.count;
+    return self.imagesList.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BUHomeImagePreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BUHomeImagePreviewCell"
                                                                              forIndexPath:indexPath];
+    
+    [cell setImageURL:[self.imagesList objectAtIndex:indexPath.row]];
     return cell;
 }
 

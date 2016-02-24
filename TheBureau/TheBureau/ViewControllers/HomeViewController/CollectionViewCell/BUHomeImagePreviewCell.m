@@ -10,4 +10,15 @@
 
 @implementation BUHomeImagePreviewCell
 
+-(void)setImageURL:(NSString *)inImageURL;
+{
+    [self.activityIndicatorView startAnimating];
+    self.activityIndicatorView.hidden = NO;
+    
+    [self.profileImgView sd_setImageWithURL:[NSURL URLWithString:inImageURL]
+                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                      [self.activityIndicatorView stopAnimating];
+                                      self.activityIndicatorView.hidden = YES;
+                                  }];
+}
 @end

@@ -12,7 +12,9 @@
 
 @interface BUMatchPoolViewController ()
 @property(nonatomic, strong) IBOutlet UIPageControl *pageControl;
-@property(nonatomic, strong) NSDictionary *datasourceDict;
+@property(nonatomic, strong) NSMutableArray *datasourceList;
+@property(nonatomic, strong) NSMutableArray *imagesList;
+
 @end
 
 @implementation BUMatchPoolViewController
@@ -20,9 +22,14 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self getMatchPoolFortheDay];
 }
 
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -31,6 +38,7 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
     BUPoolProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUPoolProfileDetailsVC"];
+    vc.datasourceList = [self.datasourceList objectAtIndex:self.pageControl.currentPage];
     [self.tabBarController.navigationController pushViewController:vc animated:NO];
     
 }
@@ -59,13 +67,14 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    self.pageControl.numberOfPages = 4;
-    return 4;
+    self.pageControl.numberOfPages = self.imagesList.count;
+    return self.imagesList.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BUHomeImagePreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BUHomeImagePreviewCell"
                                                                              forIndexPath:indexPath];
+    [cell setImageURL:[self.imagesList objectAtIndex:indexPath.row]];
     return cell;
 }
 
@@ -77,4 +86,52 @@ static NSString * const reuseIdentifier = @"Cell";
     self.pageControl.currentPage = indexPath.row;
     NSLog(@"collectionView willDisplayCell: %ld",indexPath.row);
 }
+
+
+
+-(void)getMatchPoolFortheDay
+{
+    NSDictionary *parameters = nil;
+    parameters = @{@"userid": @"8"
+                   };
+    
+    [self startActivityIndicator:YES];
+    [[BUWebServicesManager sharedManager] matchPoolForTheDay:self parameters:parameters];
+}
+
+
+
+-(void)didSuccess:(id)inResult;
+{
+    [self stopActivityIndicator];
+    if(nil != inResult && 0 < [inResult count])
+    {
+        self.datasourceList = inResult;
+        
+        self.imagesList = [[NSMutableArray alloc] init];
+        for (NSDictionary *dict in inResult)
+        {
+            [self.imagesList addObject:[[dict valueForKey:@"img_url"] firstObject]];
+        }
+        
+        [self.collectionView reloadData];
+    }
+    else
+    {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+}
+
+-(void)didFail:(id)inResult;
+{
+    [self startActivityIndicator:YES];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+
+
 @end

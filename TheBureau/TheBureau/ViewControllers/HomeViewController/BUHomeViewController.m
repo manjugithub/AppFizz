@@ -9,10 +9,12 @@
 #import "BUHomeViewController.h"
 #import "BUHomeProfileImgPrevCell.h"
 #import "BUMatchInfoCell.h"
+#import "AFHTTPSessionManager.h"
 @interface BUHomeViewController ()
 @property(nonatomic, strong) NSMutableArray *imagesList;
 @property(nonatomic, strong) IBOutlet UITableView *imgScrollerTableView;
-@property(nonatomic, strong) NSArray *datasourceList;
+@property(nonatomic, strong) NSDictionary *datasourceList;
+@property(nonatomic, strong) IBOutlet UIImageView *noProfileImgView;
 @end
 
 @implementation BUHomeViewController
@@ -22,14 +24,7 @@
     
 
     self.imagesList = [NSMutableArray arrayWithObjects:@"1",@"5",@"4",@"3",@"2", nil];
-    self.datasourceList =    @[@{@"Name":@"Private until connected"},
-                               @{@"Age":@"22"},
-                               @{@"Location":@"Bangalore, KA"},
-                               @{@"Height":@"5’"},
-                               @{@"Religion":@"Hindu"},
-                               @{@"Mother Tongue":@"Kannada"},
-                               @{@"Specification":@"Lorem lpsum"},
-                               @{@"Family Origin":@"Gowda"}];
+    self.datasourceList = nil;
     // Do any additional setup after loading the view.
     
     self.imgScrollerTableView.hidden = YES;
@@ -45,9 +40,11 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    self.noProfileImgView.hidden = NO;
     NSLog(@"Table view size frame: %@",NSStringFromCGRect(self.imgScrollerTableView.bounds));
     self.imgScrollerTableView.hidden = NO;
     [self.imgScrollerTableView reloadData];
+    [self getMatchMakingfortheDay];
 }
 
 
@@ -92,13 +89,126 @@
     else
     {
         BUMatchInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BUMatchInfoCell"];
-        cell.matchTitleLabel.text = [[[self.datasourceList objectAtIndex:indexPath.row] allKeys] firstObject];
-
-        cell.matchDescritionLabel.text = [[[self.datasourceList objectAtIndex:indexPath.row] allValues]firstObject];
-
+        NSString *key = [[self.datasourceList allKeys] objectAtIndex:indexPath.row];
+        cell.matchTitleLabel.text = key;
+        
+        id value = [[self.datasourceList allValues] objectAtIndex:indexPath.row];
+        if ([value isKindOfClass:[NSString class] ]) {
+            cell.matchDescritionLabel.text = value;
+        }
         return cell;
     }
     return nil;
+}
+
+
+-(void)getMatchMakingfortheDay
+{
+    NSDictionary *parameters = nil;
+    parameters = @{@"userid": @"8"
+                   };
+    
+    [self startActivityIndicator:YES];
+    [[BUWebServicesManager sharedManager] matchMakingForTheDay:self parameters:parameters];
+}
+
+
+
+-(void)didSuccess:(id)inResult;
+{
+    [self stopActivityIndicator];
+        if(nil != inResult && 0 < [inResult count])
+        {
+            
+            self.noProfileImgView.hidden = YES;
+
+            self.datasourceList = [inResult lastObject];
+            
+            self.imagesList = [[NSMutableArray alloc] initWithArray:[[[inResult lastObject]valueForKey:@"img_url"] allValues]];
+            
+            [self.imgScrollerTableView reloadData];
+          }
+        else
+        {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+}
+
+-(void)didFail:(id)inResult;
+{
+    [self startActivityIndicator:YES];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+
+
+-(IBAction)match:(id)sender
+{
+    NSDictionary *parameters = nil;
+    parameters = @{@"userid1": @"8",
+                   @"userid2": @"6"
+                   };
+    
+    [self startActivityIndicator:YES];
+    [self matchWithparameters:parameters];
+
+}
+-(void)matchWithparameters:(NSDictionary *)inParams;
+{
+    
+    NSString *baseURL = @"http://app.thebureauapp.com/admin/isMatched";
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:baseURL
+       parameters:inParams
+constructingBodyWithBlock:nil
+         progress:nil
+          success:^(NSURLSessionDataTask *operation, id responseObject)
+     {
+         [self stopActivityIndicator];
+
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"Your interest is sent!" preferredStyle:UIAlertControllerStyleAlert];
+         
+         [alertController addAction:({
+             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                 NSLog(@"OK");
+
+                 self.noProfileImgView.hidden = NO;
+             }];
+             
+             action;
+         })];
+         
+         [self presentViewController:alertController  animated:YES completion:nil];
+
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(NSURLSessionDataTask *operation, NSError *error)
+     {
+         [self stopActivityIndicator];
+         NSLog(@"Error: %@", error);
+     }];
+}
+
+-(IBAction)pass:(id)sender
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"You have passed the profile!" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSLog(@"OK");
+            
+            self.noProfileImgView.hidden = NO;
+        }];
+        
+        action;
+    })];
+    
+    [self presentViewController:alertController  animated:YES completion:nil];
+    
 }
 
 @end

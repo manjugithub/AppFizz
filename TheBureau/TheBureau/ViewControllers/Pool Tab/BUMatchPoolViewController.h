@@ -7,12 +7,12 @@
 //
 
 #import "BUBaseViewController.h"
+#import "BUWebServicesManager.h"
 #import "BUHomeTabbarController.h"
-@interface BUMatchPoolViewController : BUBaseViewController<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource,UICollisionBehaviorDelegate>
+@interface BUMatchPoolViewController : BUBaseViewController<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource,UICollisionBehaviorDelegate,BUWebServicesCallBack>
 
 @property(nonatomic, strong) IBOutlet UICollectionView *collectionView;
 
-
-
+-(void)getMatchPoolFortheDay;
 @end
 

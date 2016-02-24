@@ -8,7 +8,8 @@
 
 #import "BUBaseViewController.h"
 
-@interface BUPoolProfileDetailsVC : BUBaseViewController<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource,UICollisionBehaviorDelegate>
+@interface BUPoolProfileDetailsVC : BUBaseViewController<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource,UICollisionBehaviorDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic, strong) IBOutlet UICollectionView *collectionView;
+@property(nonatomic, strong) NSDictionary *datasourceList;
 @end

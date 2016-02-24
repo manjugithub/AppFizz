@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIImageView+WebCache.h"
 
 @interface BUHomeImagePreviewCell : UICollectionViewCell
+@property(nonatomic, strong) IBOutlet UIImageView *profileImgView;
+@property(nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 
+-(void)setImageURL:(NSString *)inImageURL;
 @end

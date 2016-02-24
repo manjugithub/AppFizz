@@ -51,7 +51,7 @@
 -(void)aTime
 {
     [splashTimer invalidate];
-[self performSegueWithIdentifier:@"main" sender:self];
+    [self performSegueWithIdentifier:@"main" sender:self];
     
     
 //    {
@@ -60,6 +60,8 @@
 //        [self.navigationController pushViewController:vc animated:YES];
 //        
 //    }
+
+    
     
 //    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //    BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];

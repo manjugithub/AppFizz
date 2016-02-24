@@ -41,6 +41,7 @@
 
 -(void)setImagesListToScroll:(NSMutableArray *)inImageList
 {
+    self.imgCollectionVC.imagesList = inImageList;
     [self.imgCollectionVC.collectionView reloadData];
 }
 

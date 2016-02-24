@@ -288,4 +288,50 @@ constructingBodyWithBlock:nil
          NSLog(@"Error: %@", error);
      }];
 }
+
+
+-(void)matchMakingForTheDay:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
+{
+    
+    self.delegate = inDelegate;
+    NSString *baseURL = @"http://app.thebureauapp.com/admin/matchMaking";
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:baseURL
+       parameters:inParams
+constructingBodyWithBlock:nil
+         progress:nil
+          success:^(NSURLSessionDataTask *operation, id responseObject)
+     {
+         [self.delegate didSuccess:responseObject];
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(NSURLSessionDataTask *operation, NSError *error)
+     {
+         [self.delegate didFail:error];
+         NSLog(@"Error: %@", error);
+     }];
+}
+
+-(void)matchPoolForTheDay:(id<BUWebServicesCallBack>)inDelegate parameters:(NSDictionary *)inParams;
+{
+    
+    self.delegate = inDelegate;
+    NSString *baseURL = @"http://app.thebureauapp.com/admin/pool";
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:baseURL
+       parameters:inParams
+constructingBodyWithBlock:nil
+         progress:nil
+          success:^(NSURLSessionDataTask *operation, id responseObject)
+     {
+         [self.delegate didSuccess:responseObject];
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(NSURLSessionDataTask *operation, NSError *error)
+     {
+         [self.delegate didFail:error];
+         NSLog(@"Error: %@", error);
+     }];
+}
+
 @end
