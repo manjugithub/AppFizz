@@ -12,6 +12,7 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import <DigitsKit/DigitsKit.h>
+#import <LayerKit/LayerKit.h>
 
 
 
@@ -27,15 +28,24 @@
     // Override point for customization after application launch.
     
     [Fabric with:@[[Crashlytics class],[DigitsKit class]]];
-    
-    
-    
-  
+
+   
    [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     
     
     [self setAppearence];
+    
+    NSURL *appID = [NSURL URLWithString:@"layer:///apps/staging/238530d8-995f-11e5-9461-6ac9d8033a8c"];
+    LYRClient *layerClient = [LYRClient clientWithAppID:appID];
+    [layerClient connectWithCompletion:^(BOOL success, NSError *error) {
+        if (success) {
+            NSLog(@"Sucessfully connected to Layer!");
+        } else {
+            NSLog(@"Failed connection to Layer with error: %@", error);
+        }
+    }];
+
     
        
     return YES;
