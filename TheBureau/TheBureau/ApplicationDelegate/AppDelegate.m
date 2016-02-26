@@ -29,12 +29,21 @@
     
     [Fabric with:@[[Crashlytics class],[DigitsKit class]]];
 
-   
+    [self setupLayers];
+
    [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     
     
     [self setAppearence];
+    
+    
+    return YES;
+}
+
+- (void)setupLayers
+{
+    
     
     NSURL *appID = [NSURL URLWithString:@"layer:///apps/staging/238530d8-995f-11e5-9461-6ac9d8033a8c"];
     LYRClient *layerClient = [LYRClient clientWithAppID:appID];
@@ -45,11 +54,12 @@
             NSLog(@"Failed connection to Layer with error: %@", error);
         }
     }];
+    
 
     
-       
-    return YES;
+    
 }
+
 
 
 - (void)setAppearence

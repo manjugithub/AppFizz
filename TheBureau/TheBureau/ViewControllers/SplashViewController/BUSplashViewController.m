@@ -16,6 +16,7 @@
 #import "BUProfileLegalStatusVC.h"
 #import "BUProfileDietVC.h"
 #import "BUProfileHeritageVC.h"
+#import "BUProfileRematchVC.h"
 @interface BUSplashViewController ()
 {
     
@@ -51,7 +52,7 @@
 -(void)aTime
 {
     [splashTimer invalidate];
-    [self performSegueWithIdentifier:@"main" sender:self];
+   [self performSegueWithIdentifier:@"main" sender:self];
     
     
 //    {
@@ -72,9 +73,9 @@
 //    [self.navigationController pushViewController:vc animated:YES];
 
     
-//    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
-//    BUProfileDietVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDietVC"];
-//    [self.navigationController pushViewController:vc animated:YES];
+//  UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Rematch" bundle:nil];
+//   BUProfileRematchVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileRematchVC"];
+//   [self.navigationController pushViewController:vc animated:YES];
     
 //    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
 //    BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
