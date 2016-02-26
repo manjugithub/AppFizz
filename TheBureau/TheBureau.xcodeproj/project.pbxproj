@@ -77,8 +77,10 @@
 		5BA796031C7F9125009B65E1 /* ATLParticipantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795DA1C7F9125009B65E1 /* ATLParticipantTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		5BA796041C7F9125009B65E1 /* ATLPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795DC1C7F9125009B65E1 /* ATLPlayView.m */; settings = {ASSET_TAGS = (); }; };
 		5BA796051C7F9125009B65E1 /* ATLProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795DE1C7F9125009B65E1 /* ATLProgressView.m */; settings = {ASSET_TAGS = (); }; };
-		5BA796071C7F9683009B65E1 /* Rematch.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA796061C7F9683009B65E1 /* Rematch.Storyboard */; settings = {ASSET_TAGS = (); }; };
+		5BA796071C7F9683009B65E1 /* Connections.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA796061C7F9683009B65E1 /* Connections.Storyboard */; settings = {ASSET_TAGS = (); }; };
 		5BA7960A1C7F980C009B65E1 /* BURematchCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796091C7F980C009B65E1 /* BURematchCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		5BA796111C808062009B65E1 /* BUContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796101C808062009B65E1 /* BUContactListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		5BA796171C8090B4009B65E1 /* BUContactListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796161C8090B4009B65E1 /* BUContactListTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		5BB683501C64A58E0043C4FC /* EmployementStatusTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6834D1C64A58E0043C4FC /* EmployementStatusTVCell.m */; };
 		5BB683511C64A58E0043C4FC /* HighLevelEducationTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6834F1C64A58E0043C4FC /* HighLevelEducationTVCell.m */; };
 		5BDA47201C22596200C875AB /* BURootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA471F1C22596200C875AB /* BURootViewController.m */; };
@@ -322,9 +324,13 @@
 		5BA795DC1C7F9125009B65E1 /* ATLPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLPlayView.m; sourceTree = "<group>"; };
 		5BA795DD1C7F9125009B65E1 /* ATLProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLProgressView.h; sourceTree = "<group>"; };
 		5BA795DE1C7F9125009B65E1 /* ATLProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLProgressView.m; sourceTree = "<group>"; };
-		5BA796061C7F9683009B65E1 /* Rematch.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rematch.Storyboard; sourceTree = "<group>"; };
+		5BA796061C7F9683009B65E1 /* Connections.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Connections.Storyboard; sourceTree = "<group>"; };
 		5BA796081C7F980C009B65E1 /* BURematchCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BURematchCollectionViewCell.h; sourceTree = "<group>"; };
 		5BA796091C7F980C009B65E1 /* BURematchCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BURematchCollectionViewCell.m; sourceTree = "<group>"; };
+		5BA7960F1C808062009B65E1 /* BUContactListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUContactListViewController.h; sourceTree = "<group>"; };
+		5BA796101C808062009B65E1 /* BUContactListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUContactListViewController.m; sourceTree = "<group>"; };
+		5BA796151C8090B4009B65E1 /* BUContactListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUContactListTableViewCell.h; sourceTree = "<group>"; };
+		5BA796161C8090B4009B65E1 /* BUContactListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUContactListTableViewCell.m; sourceTree = "<group>"; };
 		5BB6834C1C64A58E0043C4FC /* EmployementStatusTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployementStatusTVCell.h; sourceTree = "<group>"; };
 		5BB6834D1C64A58E0043C4FC /* EmployementStatusTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployementStatusTVCell.m; sourceTree = "<group>"; };
 		5BB6834E1C64A58E0043C4FC /* HighLevelEducationTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighLevelEducationTVCell.h; sourceTree = "<group>"; };
@@ -543,6 +549,8 @@
 				5BA795801C7F90C7009B65E1 /* ConversationViewController.m */,
 				5BA795811C7F90C7009B65E1 /* ParticipantTableViewController.h */,
 				5BA795821C7F90C7009B65E1 /* ParticipantTableViewController.m */,
+				5BA7960F1C808062009B65E1 /* BUContactListViewController.h */,
+				5BA796101C808062009B65E1 /* BUContactListViewController.m */,
 			);
 			path = "Chat ViewControllers";
 			sourceTree = "<group>";
@@ -811,6 +819,8 @@
 				5B0AEDC81C22C69D00877C24 /* BUAuthButton.m */,
 				5BA796081C7F980C009B65E1 /* BURematchCollectionViewCell.h */,
 				5BA796091C7F980C009B65E1 /* BURematchCollectionViewCell.m */,
+				5BA796151C8090B4009B65E1 /* BUContactListTableViewCell.h */,
+				5BA796161C8090B4009B65E1 /* BUContactListTableViewCell.m */,
 				5B1629091C5F61EE0034FA33 /* CustomAlertView */,
 			);
 			path = CustomClasses;
@@ -839,7 +849,7 @@
 				78B5B71B1C5675E200E3C531 /* ProfileCreation.storyboard */,
 				78CF17271C60979600779203 /* CustomPicker.storyboard */,
 				78BF55111C68701000B5F1A4 /* HomeView.storyboard */,
-				5BA796061C7F9683009B65E1 /* Rematch.Storyboard */,
+				5BA796061C7F9683009B65E1 /* Connections.Storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -1304,7 +1314,7 @@
 				78BF55121C68701000B5F1A4 /* HomeView.storyboard in Resources */,
 				78CF17281C60979600779203 /* CustomPicker.storyboard in Resources */,
 				5B16288F1C4D252A0034FA33 /* ALLURA-REGULAR.TTF in Resources */,
-				5BA796071C7F9683009B65E1 /* Rematch.Storyboard in Resources */,
+				5BA796071C7F9683009B65E1 /* Connections.Storyboard in Resources */,
 				5B2A2CB51C182D7D006F3845 /* TwitterKitResources.bundle in Resources */,
 				789D88FE1C7E403500772EED /* BUProfileBasicInfoVC.xib in Resources */,
 				78F4A92B1C0CCC11001C76A6 /* Comfortaa-Light.ttf in Resources */,
@@ -1447,6 +1457,7 @@
 				5BA795FA1C7F9125009B65E1 /* ATLConversationTableViewCell.m in Sources */,
 				789D88F01C7E3F7F00772EED /* BUProfileLegalStatusInfoCell.m in Sources */,
 				5BA795EF1C7F9125009B65E1 /* ATLUIImageHelper.m in Sources */,
+				5BA796171C8090B4009B65E1 /* BUContactListTableViewCell.m in Sources */,
 				5BA795FF1C7F9125009B65E1 /* ATLMessageComposeTextView.m in Sources */,
 				78FEE2441C0720FE0013E9D2 /* UIColor+CrossFade.m in Sources */,
 				78FEE2541C07255C0013E9D2 /* BUSocialChannel.m in Sources */,
@@ -1468,6 +1479,7 @@
 				789D891C1C7F863900772EED /* BUProfileHoroscopeInfoVC.m in Sources */,
 				5BA795E71C7F9125009B65E1 /* ATLDataSourceChange.m in Sources */,
 				5B2D3E8D1C7C6927006B7674 /* BUHomeConnectionTabVC.m in Sources */,
+				5BA796111C808062009B65E1 /* BUContactListViewController.m in Sources */,
 				5BA795F91C7F9125009B65E1 /* ATLConversationCollectionViewMoreMessagesHeader.m in Sources */,
 				5BA795F41C7F9125009B65E1 /* ATLAvatarImageView.m in Sources */,
 				78B5B7281C5678DD00E3C531 /* BUProfileHeritageVC.m in Sources */,

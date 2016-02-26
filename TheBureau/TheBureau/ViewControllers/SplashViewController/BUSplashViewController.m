@@ -17,6 +17,7 @@
 #import "BUProfileDietVC.h"
 #import "BUProfileHeritageVC.h"
 #import "BUProfileRematchVC.h"
+#import "BUContactListViewController.h"
 @interface BUSplashViewController ()
 {
     
@@ -44,15 +45,15 @@
     [super viewDidAppear:YES];
     
     
-   splashTimer  = [NSTimer scheduledTimerWithTimeInterval:4.5 target:self selector:@selector(aTime) userInfo:nil repeats:NO];
+   splashTimer  = [NSTimer scheduledTimerWithTimeInterval:4.5 target:self selector:@selector(setSplashTimer) userInfo:nil repeats:NO];
 
     
 }
 
--(void)aTime
+-(void)setSplashTimer
 {
     [splashTimer invalidate];
-   [self performSegueWithIdentifier:@"main" sender:self];
+ //  [self performSegueWithIdentifier:@"main" sender:self];
     
     
 //    {
@@ -73,9 +74,9 @@
 //    [self.navigationController pushViewController:vc animated:YES];
 
     
-//  UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Rematch" bundle:nil];
-//   BUProfileRematchVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileRematchVC"];
-//   [self.navigationController pushViewController:vc animated:YES];
+  UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Connections" bundle:nil];
+   BUContactListViewController *vc = [sb instantiateViewControllerWithIdentifier:@"BUContactListViewController"];
+   [self.navigationController pushViewController:vc animated:YES];
     
 //    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
 //    BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
