@@ -14,6 +14,8 @@
 #import <DigitsKit/DigitsKit.h>
 #import "BUAccountCreationVC.h"
 #import "BUHomeTabbarController.h"
+#import <LayerKit/LayerKit.h>
+
 @interface BULoginViewController ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *overLayViewTapConstraint;
@@ -24,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet BUAuthButton *loginBtn;
 @property (strong, nonatomic) DGTAppearance *theme;
 @property (strong, nonatomic) DGTAuthenticationConfiguration *configuration;
+
+@property (nonatomic) LYRClient *layerClient;
 
 -(IBAction)loginUsingFacebook:(id)sender;
 -(IBAction)loginUsingEmail:(id)sender;
@@ -295,4 +299,119 @@
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alertController animated:YES completion:nil];
 }
+
+#pragma mark - Layer Authentication Methods
+
+- (void)loginLayer
+{
+    [self.layerClient connectWithCompletion:^(BOOL success, NSError *error) {
+        if (!success) {
+            NSLog(@"Failed to connect to Layer: %@", error);
+        } else {
+//            PFUser *user = [PFUser currentUser];
+            NSString *userID = @"";
+// Pass User ID HERE
+            
+            [self authenticateLayerWithUserID:userID completion:^(BOOL success, NSError *error) {
+                if (!error){
+                } else {
+                    NSLog(@"Failed Authenticating Layer Client with error:%@", error);
+                }
+            }];
+        }
+    }];
+}
+
+- (void)authenticateLayerWithUserID:(NSString *)userID completion:(void (^)(BOOL success, NSError * error))completion
+{
+    // Check to see if the layerClient is already authenticated.
+    if (self.layerClient.authenticatedUserID) {
+        if ([self.layerClient.authenticatedUserID isEqualToString:userID]){
+            NSLog(@"Layer Authenticated as User %@", self.layerClient.authenticatedUserID);
+            
+            //[GiFHUD dismiss];
+            
+            
+            if (completion) completion(YES, nil);
+            {
+                
+                
+                return;}
+        } else {
+            //If the authenticated userID is different, then deauthenticate the current client and re-authenticate with the new userID.
+            [self.layerClient deauthenticateWithCompletion:^(BOOL success, NSError *error) {
+                if (!error){
+                    [self authenticationTokenWithUserId:userID completion:^(BOOL success, NSError *error) {
+                        if (completion){
+                            completion(success, error);
+                        }
+                    }];
+                } else {
+                    if (completion){
+                        completion(NO, error);
+                    }
+                }
+            }];
+        }
+    } else {
+        // If the layerClient isn't already authenticated, then authenticate.
+        [self authenticationTokenWithUserId:userID completion:^(BOOL success, NSError *error) {
+            if (completion){
+                completion(success, error);
+            }
+        }];
+    }
+}
+
+- (void)authenticationTokenWithUserId:(NSString *)userID completion:(void (^)(BOOL success, NSError* error))completion
+{
+    /*
+     * 1. Request an authentication Nonce from Layer
+     */
+    [self.layerClient requestAuthenticationNonceWithCompletion:^(NSString *nonce, NSError *error) {
+        if (!nonce) {
+            if (completion) {
+                completion(NO, error);
+            }
+            return;
+        }
+        
+        /*
+         * 2. Acquire identity Token from Layer Identity Service
+         */
+        NSDictionary *parameters = @{@"nonce" : nonce, @"userID" : userID};
+        
+        
+        // Should call Api here and add below block 
+        
+        // [self.layerClient authenticateWithIdentityToken:identityToken completion:^(NSString *authenticatedUserID, NSError *error) {
+        
+        
+//        [PFCloud callFunctionInBackground:@"generateToken" withParameters:parameters block:^(id object, NSError *error) {
+//            if (!error){
+//                
+//                NSString *identityToken = (NSString*)object;
+//                [self.layerClient authenticateWithIdentityToken:identityToken completion:^(NSString *authenticatedUserID, NSError *error) {
+//                    if (authenticatedUserID) {
+//                        if (completion) {
+//                            completion(YES, nil);
+//                        }
+//                        
+//                    }
+//                    else
+//                    {
+//                        completion(NO, error);
+//                    }
+//                }];
+//            } else {
+//                NSLog(@"Parse Cloud function failed to be called to generate token with error: %@", error);
+//            }
+//        }];
+        
+    }];
+}
+
+
+
+
 @end
