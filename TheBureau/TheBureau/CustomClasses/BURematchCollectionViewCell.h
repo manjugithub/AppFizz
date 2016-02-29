@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIImageView+WebCache.h"
+
 
 @interface BURematchCollectionViewCell : UICollectionViewCell
 @property(nonatomic,weak) IBOutlet UIImageView *userImageView;
 @property(nonatomic,weak) IBOutlet UIImageView *userMatchImageView;
+@property(nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+
+-(void)setImageURL:(NSString *)inImageURL;
+
 @end

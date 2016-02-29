@@ -125,7 +125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xIM-3P-INx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-66" y="681"/>
+            <point key="canvasLocation" x="-746" y="889"/>
         </scene>
         <!--Tab 1-->
         <scene sceneID="G5a-hL-8Cj">
@@ -265,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kup-Z5-ZGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="971" y="-68"/>
+            <point key="canvasLocation" x="1043" y="708"/>
         </scene>
         <!--Home CollectionVC-->
         <scene sceneID="UjR-k4-mjB">
@@ -361,7 +361,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gE-nI-zlV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818" y="622"/>
+            <point key="canvasLocation" x="250" y="870"/>
         </scene>
         <!--Home Tabbar Controller-->
         <scene sceneID="kOq-kL-5IN">
@@ -645,7 +645,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ftw-QP-Fuw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32" y="-578"/>
+            <point key="canvasLocation" x="48" y="-170"/>
         </scene>
         <!--Home Connection TabVC-->
         <scene sceneID="6km-Sd-2YT">
@@ -664,7 +664,7 @@
                     <connections>
                         <segue destination="9kZ-sz-xqb" kind="custom" identifier="embedCustomerService" customClass="BUEmptySegue" id="sDk-yu-tm0"/>
                         <segue destination="BAL-79-JJq" kind="custom" identifier="embedProfileMatchChat" customClass="BUEmptySegue" id="k6W-IE-7b1"/>
-                        <segue destination="0Bh-Zw-2WK" kind="custom" identifier="embedProfileRematch" customClass="BUEmptySegue" id="Gq3-cn-0O8"/>
+                        <segue destination="eZ1-wj-euv" kind="custom" identifier="embedProfileRematch" customClass="BUEmptySegue" id="6vJ-5M-3in"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yn1-Pb-cXY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -726,7 +726,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xUg-XW-Kdd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="936" y="-1068"/>
+            <point key="canvasLocation" x="256" y="-1036"/>
         </scene>
         <!--PoolProfile Details VC-->
         <scene sceneID="IFb-SE-Zj5">
@@ -926,13 +926,106 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zp6-eZ-vod" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="688" y="-151"/>
+            <point key="canvasLocation" x="968" y="-151"/>
+        </scene>
+        <!--Profile RematchVC-->
+        <scene sceneID="eRJ-Mc-s8E">
+            <objects>
+                <viewController storyboardIdentifier="BUProfileRematchVC" id="eZ1-wj-euv" customClass="BUProfileRematchVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9hR-pJ-4Cf"/>
+                        <viewControllerLayoutGuide type="bottom" id="9rb-4G-3ze"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SZM-h1-yGk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ox1-vi-7vf">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hVd-CR-ogy">
+                                    <size key="itemSize" width="120" height="120"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BURematchCollectionViewCell" id="JIA-DJ-2Qr" customClass="BURematchCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="10" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WR3-eG-l05">
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                    <animations/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_liked" translatesAutoresizingMaskIntoConstraints="NO" id="kwU-IV-Yd3">
+                                                    <rect key="frame" x="0.0" y="40" width="120" height="40"/>
+                                                    <animations/>
+                                                </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="pa0-st-J8i">
+                                                    <rect key="frame" x="50" y="50" width="20" height="20"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="66j-un-Bnj"/>
+                                                        <constraint firstAttribute="width" constant="20" id="fDC-2M-yGg"/>
+                                                    </constraints>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstItem="kwU-IV-Yd3" firstAttribute="top" secondItem="JIA-DJ-2Qr" secondAttribute="top" constant="40" id="GDC-PU-IEi"/>
+                                            <constraint firstItem="pa0-st-J8i" firstAttribute="centerX" secondItem="JIA-DJ-2Qr" secondAttribute="centerX" id="JSw-rv-dOK"/>
+                                            <constraint firstItem="WR3-eG-l05" firstAttribute="leading" secondItem="JIA-DJ-2Qr" secondAttribute="leading" id="Lgz-ay-4Mo"/>
+                                            <constraint firstAttribute="bottom" secondItem="kwU-IV-Yd3" secondAttribute="bottom" constant="40" id="Lkl-ap-kc4"/>
+                                            <constraint firstItem="pa0-st-J8i" firstAttribute="centerY" secondItem="JIA-DJ-2Qr" secondAttribute="centerY" id="VzU-oY-ogO"/>
+                                            <constraint firstAttribute="trailing" secondItem="kwU-IV-Yd3" secondAttribute="trailing" id="X9V-Uc-xZe"/>
+                                            <constraint firstAttribute="trailing" secondItem="WR3-eG-l05" secondAttribute="trailing" id="j90-Dh-gqH"/>
+                                            <constraint firstAttribute="bottom" secondItem="WR3-eG-l05" secondAttribute="bottom" id="kuo-XC-b8C"/>
+                                            <constraint firstItem="WR3-eG-l05" firstAttribute="top" secondItem="JIA-DJ-2Qr" secondAttribute="top" id="nM6-jY-hfU"/>
+                                            <constraint firstItem="kwU-IV-Yd3" firstAttribute="leading" secondItem="JIA-DJ-2Qr" secondAttribute="leading" id="uuS-YP-U2v"/>
+                                        </constraints>
+                                        <size key="customSize" width="120" height="120"/>
+                                        <connections>
+                                            <outlet property="activityIndicatorView" destination="pa0-st-J8i" id="UjL-la-yBz"/>
+                                            <outlet property="userImageView" destination="WR3-eG-l05" id="DMJ-Pq-vE5"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="eZ1-wj-euv" id="XHy-Yt-R0P"/>
+                                    <outlet property="delegate" destination="eZ1-wj-euv" id="b8L-bn-Itd"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ox1-vi-7vf" secondAttribute="trailing" id="4Jl-WF-wNc"/>
+                            <constraint firstItem="9rb-4G-3ze" firstAttribute="top" secondItem="Ox1-vi-7vf" secondAttribute="bottom" id="EhJ-iS-oLV"/>
+                            <constraint firstItem="Ox1-vi-7vf" firstAttribute="top" secondItem="SZM-h1-yGk" secondAttribute="top" id="Nlb-d0-aGe"/>
+                            <constraint firstItem="Ox1-vi-7vf" firstAttribute="leading" secondItem="SZM-h1-yGk" secondAttribute="leading" id="eBs-3t-nGj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="rematchCollectionView" destination="Ox1-vi-7vf" id="rwS-Gc-pmy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CSb-Qv-U8V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1708" y="-1068"/>
         </scene>
     </scenes>
     <resources>
         <image name="ac_pref" width="151" height="132"/>
         <image name="ac_profile" width="151" height="132"/>
         <image name="bg_with_logo" width="320" height="568"/>
+        <image name="btn_liked" width="104" height="40"/>
         <image name="btn_match" width="129" height="50"/>
         <image name="btn_pass" width="129" height="50"/>
         <image name="btn_red" width="238" height="37"/>

@@ -42,6 +42,9 @@
     self.title = @"login";
     _configuration = [[DGTAuthenticationConfiguration alloc] initWithAccountFields:DGTAccountFieldsDefaultOptionMask];
     _configuration.appearance = [self makeTheme];
+    
+    NSURL *appID = [NSURL URLWithString:@"layer:///apps/production/23853704-995f-11e5-9c2e-6ac9d8033a8c"];
+    self.layerClient = [LYRClient clientWithAppID:appID];
 
 }
 
@@ -205,7 +208,8 @@
                                                                           handler:^(UIAlertAction *action)
                                                     {
                                                         
-                                                        
+                                                      //  [self loginLayer];
+   
                                                         UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
                                                         BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
                                                         [self.navigationController pushViewController:vc animated:YES];
@@ -268,7 +272,7 @@
                                                          handler:^(UIAlertAction *action)
                                    {
                                        
-                                       
+                                       [self loginLayer];
                                        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
                                        BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
                                        [self.navigationController pushViewController:vc animated:YES];
@@ -309,7 +313,7 @@
             NSLog(@"Failed to connect to Layer: %@", error);
         } else {
 //            PFUser *user = [PFUser currentUser];
-            NSString *userID = @"";
+            NSString *userID = @"123456";
 // Pass User ID HERE
             
             [self authenticateLayerWithUserID:userID completion:^(BOOL success, NSError *error) {
@@ -382,27 +386,28 @@
         NSDictionary *parameters = @{@"nonce" : nonce, @"userID" : userID};
         
         
-        // Should call Api here and add below block 
+        // Should call Api here and add below block
         
         // [self.layerClient authenticateWithIdentityToken:identityToken completion:^(NSString *authenticatedUserID, NSError *error) {
         
         
 //        [PFCloud callFunctionInBackground:@"generateToken" withParameters:parameters block:^(id object, NSError *error) {
 //            if (!error){
-//                
-//                NSString *identityToken = (NSString*)object;
-//                [self.layerClient authenticateWithIdentityToken:identityToken completion:^(NSString *authenticatedUserID, NSError *error) {
-//                    if (authenticatedUserID) {
-//                        if (completion) {
-//                            completion(YES, nil);
-//                        }
-//                        
-//                    }
-//                    else
-//                    {
-//                        completion(NO, error);
-//                    }
-//                }];
+//
+        
+               NSString *identityToken = @"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImN0eSI6ImxheWVyLWVpdDt2PTEiLCJraWQiOiJsYXllcjovLy9rZXlzLzQyNjExMGNlLWRkMWQtMTFlNS1iZjcyLWNiODE1ODAwNDUwOSJ9.eyJpc3MiOiJsYXllcjovLy9wcm92aWRlcnMvMjM4MzRhMTYtOTk1Zi0xMWU1LTkxOGUtNmFjOWQ4MDMzYThjIiwicHJuIjpudWxsLCJpYXQiOjE0NTY1NTU3Mzg5NTUsImV4cCI6MS40NTY1NTU3MzkwOGUrMTIsIm5jZSI6bnVsbH0.OaJ-AnCwFTkH-EhsqBOzfJp18FEUjJsiUBqtuCF55AhYGCqgej0JkcgtqdbmME8ooDP3vAiQEl4vZTpr11BhI9qlCSVKXGScj3RBS25ZZGVGFhYrMz8Bq4i5mbdpsM_8Arhevg_jVrL7drsT1nM1BAT7dPljnTNYVoKRm2rBkS79I0-bgb-aynJYTQw3LB-pKcMBrb4OUTqXYGfmiYU_KIGxY3Slr0Rblt6tKsm-9LCniB8eLYbieOrmF7xXOGVRs_bLqfF-bPmO5kf22bW_NtBxDHYjFaNDwgLteBs0dmSyXQG_yjt0YSK92BDeYUg5IlzzNUvBcQPsOD-rQJzoGQ";
+                [self.layerClient authenticateWithIdentityToken:identityToken completion:^(NSString *authenticatedUserID, NSError *error) {
+                    if (authenticatedUserID) {
+                        if (completion) {
+                            completion(YES, nil);
+                        }
+                        
+                    }
+                    else
+                    {
+                        completion(NO, error);
+                    }
+                }];
 //            } else {
 //                NSLog(@"Parse Cloud function failed to be called to generate token with error: %@", error);
 //            }

@@ -8,10 +8,16 @@
 
 #import "BUProfileRematchVC.h"
 #import "BURematchCollectionViewCell.h"
+#import "BUUserProfile.h"
 
 @interface BUProfileRematchVC ()
 
 @property(nonatomic) NSArray * imageArray;
+@property(nonatomic, strong) NSMutableArray *datasourceList;
+@property(nonatomic, strong) NSMutableArray *imagesList;
+@property(nonatomic,weak) IBOutlet UICollectionView *rematchCollectionView;
+@property(nonatomic,strong) BUUserProfile *userProfile;
+
 
 @end
 
@@ -20,13 +26,66 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _datasourceList = [[NSMutableArray alloc]init];
     _imageArray = [[NSArray alloc]initWithObjects:@"img_photo1",@"img_photo1",@"img_photo1",@"img_photo1", @"img_photo2",@"img_photo2",@"img_photo2",@"img_photo2",nil];
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    [self getRematchProfile];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)getRematchProfile
+{
+    NSDictionary *parameters = nil;
+    parameters = @{@"userid": @"8"
+                   };
+    
+    [self startActivityIndicator:YES];
+    [[BUWebServicesManager sharedManager] rematchwithParameters:parameters
+                                                              successBlock:^(id inResult, NSError *error)
+     {
+         [self stopActivityIndicator];
+         if(nil != inResult && 0 < [inResult count])
+         {
+             self.datasourceList = inResult;
+             
+         //    self.userProfile = [[BUUserProfile alloc]initWithUserProfile:inResult];
+             
+             
+             self.imagesList = [[NSMutableArray alloc] init];
+             for (NSDictionary *dict in inResult)
+             {
+                 if ([[dict valueForKey:@"img_url"] firstObject]) {
+                     [self.imagesList addObject:[[dict valueForKey:@"img_url"] firstObject]];
+                 }
+                 
+             }
+//
+            [self.rematchCollectionView reloadData];
+         }
+         else
+         {
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+             [self presentViewController:alertController animated:YES completion:nil];
+         }
+     }
+                                                              failureBlock:^(id response, NSError *error)
+     {
+         [self startActivityIndicator:YES];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+         [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+         [self presentViewController:alertController animated:YES completion:nil];
+     }];
 }
 
 
@@ -35,7 +94,7 @@
 #pragma mark - UICollectionView Datasource
 // 1
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
-    return [_imageArray count];
+    return [_imagesList count];
 }
 // 2
 - (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
@@ -44,9 +103,10 @@
 // 3
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
    BURematchCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BURematchCollectionViewCell" forIndexPath:indexPath];
-    cell.userImageView.image = [UIImage imageNamed:[_imageArray objectAtIndex:indexPath.item]];
+//    cell.userImageView.image = [UIImage imageNamed:[_imagesList objectAtIndex:indexPath.item]];
     
-    
+    [cell setImageURL:[self.imagesList objectAtIndex:indexPath.row]];
+ 
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;

@@ -46,4 +46,8 @@ typedef void (^SuccessBlock)(id response, NSError *error);
 
 -(void)matchPoolForTheDaywithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
 ;
+
+
+-(void)rematchwithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+;
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface BUProfileRematchVC : UIViewController
+#import "BUBaseViewController.h"
+#import "BUWebServicesManager.h"
+@interface BUProfileRematchVC : BUBaseViewController
 
 @end

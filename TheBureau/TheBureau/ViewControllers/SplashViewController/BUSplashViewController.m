@@ -53,7 +53,7 @@
 -(void)setSplashTimer
 {
     [splashTimer invalidate];
- //  [self performSegueWithIdentifier:@"main" sender:self];
+   [self performSegueWithIdentifier:@"main" sender:self];
     
     
 //    {
@@ -74,9 +74,9 @@
 //    [self.navigationController pushViewController:vc animated:YES];
 
     
-  UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Connections" bundle:nil];
-   BUContactListViewController *vc = [sb instantiateViewControllerWithIdentifier:@"BUContactListViewController"];
-   [self.navigationController pushViewController:vc animated:YES];
+//  UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Connections" bundle:nil];
+//   BUContactListViewController *vc = [sb instantiateViewControllerWithIdentifier:@"BUContactListViewController"];
+//   [self.navigationController pushViewController:vc animated:YES];
     
 //    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
 //    BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];

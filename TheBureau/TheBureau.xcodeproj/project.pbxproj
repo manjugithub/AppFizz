@@ -81,6 +81,7 @@
 		5BA7960A1C7F980C009B65E1 /* BURematchCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796091C7F980C009B65E1 /* BURematchCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		5BA796111C808062009B65E1 /* BUContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796101C808062009B65E1 /* BUContactListViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5BA796171C8090B4009B65E1 /* BUContactListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796161C8090B4009B65E1 /* BUContactListTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		5BA7961A1C845D1E009B65E1 /* BUUserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796191C845D1E009B65E1 /* BUUserProfile.m */; settings = {ASSET_TAGS = (); }; };
 		5BB683501C64A58E0043C4FC /* EmployementStatusTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6834D1C64A58E0043C4FC /* EmployementStatusTVCell.m */; };
 		5BB683511C64A58E0043C4FC /* HighLevelEducationTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6834F1C64A58E0043C4FC /* HighLevelEducationTVCell.m */; };
 		5BDA47201C22596200C875AB /* BURootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA471F1C22596200C875AB /* BURootViewController.m */; };
@@ -331,6 +332,8 @@
 		5BA796101C808062009B65E1 /* BUContactListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUContactListViewController.m; sourceTree = "<group>"; };
 		5BA796151C8090B4009B65E1 /* BUContactListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUContactListTableViewCell.h; sourceTree = "<group>"; };
 		5BA796161C8090B4009B65E1 /* BUContactListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUContactListTableViewCell.m; sourceTree = "<group>"; };
+		5BA796181C845D1E009B65E1 /* BUUserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUUserProfile.h; path = TheBureau/ModelObjects/BUUserProfile.h; sourceTree = SOURCE_ROOT; };
+		5BA796191C845D1E009B65E1 /* BUUserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUUserProfile.m; path = TheBureau/ModelObjects/BUUserProfile.m; sourceTree = SOURCE_ROOT; };
 		5BB6834C1C64A58E0043C4FC /* EmployementStatusTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployementStatusTVCell.h; sourceTree = "<group>"; };
 		5BB6834D1C64A58E0043C4FC /* EmployementStatusTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployementStatusTVCell.m; sourceTree = "<group>"; };
 		5BB6834E1C64A58E0043C4FC /* HighLevelEducationTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighLevelEducationTVCell.h; sourceTree = "<group>"; };
@@ -1129,6 +1132,8 @@
 				78FEE2531C07255C0013E9D2 /* BUSocialChannel.m */,
 				5B1628901C4F63D10034FA33 /* BUProfileDetails.h */,
 				5B1628911C4F63D10034FA33 /* BUProfileDetails.m */,
+				5BA796181C845D1E009B65E1 /* BUUserProfile.h */,
+				5BA796191C845D1E009B65E1 /* BUUserProfile.m */,
 			);
 			path = SocialConnectModelObject;
 			sourceTree = "<group>";
@@ -1527,6 +1532,7 @@
 				78BF55151C68739000B5F1A4 /* BUHomeTabbarController.m in Sources */,
 				5BA795F11C7F9125009B65E1 /* ATLAddressBarContainerView.m in Sources */,
 				5B0AEDC61C22B94A00877C24 /* BULoginWithEmailVC.m in Sources */,
+				5BA7961A1C845D1E009B65E1 /* BUUserProfile.m in Sources */,
 				5BA795EB1C7F9125009B65E1 /* ATLErrors.m in Sources */,
 				789D88F91C7E3FC000772EED /* BUProfileHoroscopeInfoCell.m in Sources */,
 				789D88F61C7E3FAD00772EED /* BUProfileSocialHabitsInfoCell.m in Sources */,
