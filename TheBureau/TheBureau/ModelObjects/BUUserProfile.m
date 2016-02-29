@@ -11,27 +11,56 @@
 @implementation BUUserProfile
 
 /*
- College = "test test test ";
- "Company Name" = "test test ";
- "Country Residing" = India;
- "Date of Birth" = "31-January-1921";
- "Diet Preference" = "Non Vegetarian";
- Education = Bachelors;
- "First Name" = Lionel;
- Gender = Male;
- Honors = "test test test test ";
- "Last Name" = Messi;
- "Legal Status" = "Citizen/Green Card";
- Major = "test test test test ";
- "Marital Status" = "Never Married";
- "Mother Tongue" = English;
- "Position Title" = "test test test test test ";
- "Religion Name" = Hinduism;
- "Year of Passing" = 1988;
- "Years in USA" = "0 - 2";
+ college = test3;
+ company = test;
+ "country_residing" = India;
+ "created_by" = Mother;
+ "current_zip_code" = 1234;
+ diet = Eggetarian;
+ dob = "1988-01-14";
+ drinking = Never;
+ email = "siddharth@zolipe.com";
+ "employment_status" = Employed;
+ "family_origin_id" = 2;
+ "first_name" = Dipika;
+ gender = Female;
+ gothra = test;
+ "graduated_year" = 2011;
  "height_feet" = 5;
- "height_inch" = 7;
- userid = 16;
+ "height_inch" = 5;
+ "highest_education" = Doctorate;
+ honors = test1;
+ id = 1;
+ "img_names" = "img2.jpg,img3.jpg,img4.jpg,img5.jpg,img1.jpg";
+ "img_url" =         {
+ 1 = "http://app.thebureauapp.com/uploads/1/9403/img2.jpg";
+ 2 = "http://app.thebureauapp.com/uploads/1/8608/img3.jpg";
+ 3 = "http://app.thebureauapp.com/uploads/1/9931/img4.jpg";
+ 4 = "http://app.thebureauapp.com/uploads/1/1644/img5.jpg";
+ 5 = "http://app.thebureauapp.com/uploads/1/6862/img1.jpg";
+ };
+ "last_name" = Padukone;
+ latitude = "-31.4488192";
+ "legal_status" = "H1 Visa";
+ longitude = "-64.5048649";
+ major = test2;
+ "maritial_status" = Divorced;
+ "mother_tongue_id" = 2;
+ "other_legal_status" = "";
+ "phone_number" = 555;
+ "position_title" = test;
+ "profile_dob" = "1988-01-14";
+ "profile_first_name" = Dipika;
+ "profile_for" = Son;
+ "profile_gender" = Female;
+ "profile_last_name" = Padukone;
+ "religion_id" = 1;
+ smoking = Yes;
+ "specification_id" = 3;
+ "uniq_ids" = "9403,8608,9931,1644,6862";
+ "user_status" = Active;
+ userid = 1;
+ "years_in_usa" = "2 - 6";
  */
 
 
@@ -62,8 +91,17 @@
         self.education = inUserProfileDict[@"Education"];
         self.countryResiding = inUserProfileDict[@"Country Residing"];
         self.college = inUserProfileDict[@"College"];
-        self.imageUrl = inUserProfileDict[@"img_url"];
+        self.imageListArray = inUserProfileDict[@"img_url"];
         self.userAction = inUserProfileDict[@"user_action"];
+        
+        self.userAction = inUserProfileDict[@"user_action"];
+        self.userAction = inUserProfileDict[@"user_action"];
+        self.userAction = inUserProfileDict[@"user_action"];
+        self.userAction = inUserProfileDict[@"user_action"];
+        self.userAction = inUserProfileDict[@"user_action"];
+        self.userAction = inUserProfileDict[@"user_action"];
+        self.userAction = inUserProfileDict[@"user_action"];
+
 
         
     }

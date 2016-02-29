@@ -36,6 +36,8 @@ userid = 16;
 
 @property(nonatomic,strong)NSString *college,*companyName,*countryResiding,*DOB,*dietPreference,*education,*firstName,*gender,*honors,*lastName,*legalStatus,*major,*maritalStatus,*motherTongue,*postionTitle,*religionName,*yearOfPassing,*yearsInUSA,*heightFeet,*heightInch,*userID,*imageUrl,*userAction;
 
+@property(nonatomic,strong) NSArray *imageListArray;
+
 
 - (instancetype)initWithUserProfile:(NSDictionary *)inUserProfileDict;
 

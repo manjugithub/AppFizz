@@ -12,5 +12,7 @@
 
 @property(nonatomic,weak)IBOutlet UIImageView *userImageView;
 @property(nonatomic,weak)IBOutlet UILabel *userName;
+@property(nonatomic,weak)IBOutlet UILabel *lastmessageLbl;
+
 
 @end

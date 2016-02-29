@@ -29,7 +29,7 @@
     
     [Fabric with:@[[Crashlytics class],[DigitsKit class]]];
 
-    [self setupLayers];
+ //   [self setupLayers];
 
    [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];

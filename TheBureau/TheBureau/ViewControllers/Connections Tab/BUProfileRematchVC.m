@@ -58,7 +58,7 @@
          {
              self.datasourceList = inResult;
              
-         //    self.userProfile = [[BUUserProfile alloc]initWithUserProfile:inResult];
+      //      self.userProfile = [[BUUserProfile alloc]initWithUserProfile:inResult];
              
              
              self.imagesList = [[NSMutableArray alloc] init];
@@ -119,14 +119,14 @@
 {
   CGFloat picDimension = self.view.frame.size.width/2;
     if (self.view.frame.size.width == 375) {
-        return CGSizeMake(110, 110);
+        return CGSizeMake(110, 150);
    
     }
     if (self.view.frame.size.width == 320) {
-        return CGSizeMake(90, 90);
+        return CGSizeMake(90, 150);
         
     }
-    return CGSizeMake(110, 110);
+    return CGSizeMake(110, 150);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
