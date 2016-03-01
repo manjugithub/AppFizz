@@ -468,7 +468,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faY-mx-Yhh">
-                                                    <rect key="frame" x="8" y="11" width="94" height="21"/>
+                                                    <rect key="frame" x="8" y="11" width="98" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="w4K-2m-RKY"/>
                                                     </constraints>
@@ -494,7 +494,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms and Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZmG-k5-epo">
-                                                    <rect key="frame" x="8" y="11" width="147" height="21"/>
+                                                    <rect key="frame" x="8" y="11" width="159" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="ivD-mc-BoB"/>
                                                     </constraints>
@@ -520,7 +520,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate us on the app store!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oo-FE-9ll">
-                                                    <rect key="frame" x="8" y="11" width="170" height="21"/>
+                                                    <rect key="frame" x="8" y="11" width="183" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="cG5-QS-HGf"/>
                                                     </constraints>
