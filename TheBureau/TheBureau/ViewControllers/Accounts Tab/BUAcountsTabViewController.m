@@ -63,7 +63,7 @@
 {    
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Accounts" bundle:nil];
     BUConfigurationVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUConfigurationVC"];
-    [self.tabBarController.navigationController pushViewController:vc animated:NO];
+    [self.tabBarController.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)showInviteFriend:(id)sender {

@@ -57,7 +57,7 @@
                                                         <constraint firstAttribute="width" constant="68" id="WRt-BW-abT"/>
                                                         <constraint firstAttribute="height" constant="32" id="dgK-yE-d6g"/>
                                                     </constraints>
-                                                    <state key="normal" image="switch_ON"/>
+                                                    <state key="normal" backgroundImage="switch_ON"/>
                                                     <connections>
                                                         <action selector="changeNotificationSettings:" destination="iLm-OO-Yu8" eventType="touchUpInside" id="Rdg-Xh-Zoh"/>
                                                     </connections>
@@ -71,6 +71,11 @@
                                                 <constraint firstItem="9kC-mq-fge" firstAttribute="leading" secondItem="eqr-k3-VJi" secondAttribute="leading" constant="8" id="tva-sb-N9F"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="appNotificationCellType">
+                                                <integer key="value" value="0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="notificationTitleLabel" destination="9kC-mq-fge" id="ynr-ZG-wZh"/>
                                             <outlet property="switchBtn" destination="hjZ-Re-10g" id="mRY-Qf-tqh"/>
@@ -98,7 +103,7 @@
                                                         <constraint firstAttribute="height" constant="32" id="mbQ-vO-qiY"/>
                                                         <constraint firstAttribute="width" constant="68" id="p2B-NL-EiU"/>
                                                     </constraints>
-                                                    <state key="normal" image="switch_ON"/>
+                                                    <state key="normal" backgroundImage="switch_ON"/>
                                                     <connections>
                                                         <action selector="changeNotificationSettings:" destination="z73-dO-yye" eventType="touchUpInside" id="dGe-O0-rWd"/>
                                                     </connections>
@@ -112,6 +117,11 @@
                                                 <constraint firstItem="9rD-x5-UiF" firstAttribute="top" secondItem="4ut-1D-ag6" secondAttribute="top" constant="6" id="wXM-2H-WAv"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="appNotificationCellType">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="notificationTitleLabel" destination="als-uf-E2u" id="qgu-Wc-9ga"/>
                                             <outlet property="switchBtn" destination="9rD-x5-UiF" id="m79-4K-piu"/>
@@ -139,7 +149,7 @@
                                                         <constraint firstAttribute="width" constant="68" id="0ck-Hy-Msc"/>
                                                         <constraint firstAttribute="height" constant="32" id="uhg-j8-6AX"/>
                                                     </constraints>
-                                                    <state key="normal" image="switch_ON"/>
+                                                    <state key="normal" backgroundImage="switch_ON"/>
                                                     <connections>
                                                         <action selector="changeNotificationSettings:" destination="6fb-tO-l8K" eventType="touchUpInside" id="Lt2-rY-Sca"/>
                                                     </connections>
@@ -153,6 +163,11 @@
                                                 <constraint firstItem="NV1-2h-Ob0" firstAttribute="leading" secondItem="paP-2S-JDG" secondAttribute="trailing" constant="8" id="wuy-Wk-bc3"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="appNotificationCellType">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="notificationTitleLabel" destination="paP-2S-JDG" id="zU8-ct-1Oe"/>
                                             <outlet property="switchBtn" destination="NV1-2h-Ob0" id="nuj-6M-xgo"/>
@@ -180,7 +195,7 @@
                                                         <constraint firstAttribute="height" constant="32" id="ZdE-Xv-zYC"/>
                                                         <constraint firstAttribute="width" constant="68" id="cIV-I8-3mV"/>
                                                     </constraints>
-                                                    <state key="normal" image="switch_ON"/>
+                                                    <state key="normal" backgroundImage="switch_ON"/>
                                                     <connections>
                                                         <action selector="changeNotificationSettings:" destination="Ueu-1r-OW9" eventType="touchUpInside" id="YDb-yU-g7S"/>
                                                     </connections>
@@ -194,6 +209,11 @@
                                                 <constraint firstItem="Vei-uv-N1r" firstAttribute="leading" secondItem="zUW-h1-UEv" secondAttribute="leading" constant="8" id="uwb-Xd-BzO"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="appNotificationCellType">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="notificationTitleLabel" destination="Vei-uv-N1r" id="vT2-B8-8Ev"/>
                                             <outlet property="switchBtn" destination="W3i-rN-Xbd" id="3nD-cf-dbc"/>
@@ -221,7 +241,7 @@
                                                         <constraint firstAttribute="height" constant="32" id="Uo5-WY-NRv"/>
                                                         <constraint firstAttribute="width" constant="68" id="fdq-55-h1t"/>
                                                     </constraints>
-                                                    <state key="normal" image="switch_ON"/>
+                                                    <state key="normal" backgroundImage="switch_ON"/>
                                                     <connections>
                                                         <action selector="changeNotificationSettings:" destination="BjE-Ej-EgY" eventType="touchUpInside" id="CbR-TM-7iM"/>
                                                     </connections>
@@ -235,6 +255,11 @@
                                                 <constraint firstItem="Cnb-fC-uFe" firstAttribute="top" secondItem="UVu-4H-fPl" secondAttribute="top" constant="11" id="mZ2-uy-5uj"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="appNotificationCellType">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="notificationTitleLabel" destination="Cnb-fC-uFe" id="0zQ-fF-qIR"/>
                                             <outlet property="switchBtn" destination="CF1-Mi-whG" id="2yi-CP-7Er"/>
@@ -310,7 +335,7 @@
                                                     </constraints>
                                                     <state key="normal" image="switch_disable"/>
                                                     <connections>
-                                                        <action selector="changeNotificationSettings:" destination="xb0-j8-A2j" eventType="touchUpInside" id="eW6-Qz-VR8"/>
+                                                        <action selector="deactivateAccount:" destination="xb0-j8-A2j" eventType="touchUpInside" id="TlP-Mk-KrO"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -351,7 +376,7 @@
                                                     </constraints>
                                                     <state key="normal" image="switch_disable"/>
                                                     <connections>
-                                                        <action selector="changeNotificationSettings:" destination="DbD-Cr-lqw" eventType="touchUpInside" id="A4O-44-qDm"/>
+                                                        <action selector="deleteAccount:" destination="DbD-Cr-lqw" eventType="touchUpInside" id="v4N-ye-01L"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -392,7 +417,7 @@
                                                     </constraints>
                                                     <state key="normal" image="switch_disable"/>
                                                     <connections>
-                                                        <action selector="changeNotificationSettings:" destination="fqF-uW-MaM" eventType="touchUpInside" id="LXx-60-Jri"/>
+                                                        <action selector="logout:" destination="fqF-uW-MaM" eventType="touchUpInside" id="HWI-Jd-dhy"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
