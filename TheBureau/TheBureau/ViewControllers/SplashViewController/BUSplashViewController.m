@@ -53,7 +53,7 @@
 -(void)setSplashTimer
 {
     [splashTimer invalidate];
-   [self performSegueWithIdentifier:@"main" sender:self];
+  [self performSegueWithIdentifier:@"main" sender:self];
     
     
 //    {
@@ -61,7 +61,7 @@
 //        BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
 //        [self.navigationController pushViewController:vc animated:YES];
 //        
-//    }
+//    
 
     
     

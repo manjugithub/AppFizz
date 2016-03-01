@@ -8,6 +8,7 @@
 
 #import "BUAccountCreationVC.h"
 #import "BUProfileSelectionVC.h"
+#import "UIView+FLKAutoLayout.h"
 
 @interface BUAccountCreationVC ()
 
@@ -269,10 +270,18 @@
 }
 -(IBAction)dateofbirthBtn:(id)sender{
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Birthday\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Birthday\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIDatePicker *picker = [[UIDatePicker alloc] init];
     [picker setDatePickerMode:UIDatePickerModeDate];
     [alertController.view addSubview:picker];
+    
+    [picker alignCenterYWithView:alertController.view predicate:@"0.0"];
+    [picker alignCenterXWithView:alertController.view predicate:@"0.0"];
+    [picker constrainWidth:@"270" ];
+//
+       
+   
+
     
     NSDate *todayDate = [NSDate date];
     NSDate *newDate = [todayDate dateByAddingTimeInterval:(-1*18*365*24*60*60)];
@@ -303,6 +312,21 @@
     //   popoverController.sourceRect = [sender bounds];
     [self presentViewController:alertController  animated:YES completion:nil];
     
+  
+//    NSLayoutConstraint *xCenterConstraint = [NSLayoutConstraint constraintWithItem:picker attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:alertController.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+//    
+//    [alertController.view addConstraint:xCenterConstraint];
+//    
+//    NSLayoutConstraint *yCenterConstraint = [NSLayoutConstraint constraintWithItem:picker attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:alertController.view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0];
+//    
+//    [alertController.view addConstraint:yCenterConstraint];
+    
+//    [alertController.view addConstraint:[NSLayoutConstraint constraintWithItem:picker attribute: NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute: NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:150.0]];
+//    
+//    [alertController.view addConstraint:[NSLayoutConstraint constraintWithItem:picker attribute: NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute: NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:150.0]];
+    
+    
+
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{

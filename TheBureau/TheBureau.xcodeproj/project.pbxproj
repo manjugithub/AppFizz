@@ -82,6 +82,11 @@
 		5BA796111C808062009B65E1 /* BUContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796101C808062009B65E1 /* BUContactListViewController.m */; };
 		5BA796171C8090B4009B65E1 /* BUContactListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796161C8090B4009B65E1 /* BUContactListTableViewCell.m */; };
 		5BA7961A1C845D1E009B65E1 /* BUUserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796191C845D1E009B65E1 /* BUUserProfile.m */; };
+		5BA7963C1C85C98F009B65E1 /* FLKAutoLayoutPredicateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796331C85C98F009B65E1 /* FLKAutoLayoutPredicateList.m */; settings = {ASSET_TAGS = (); }; };
+		5BA7963D1C85C98F009B65E1 /* NSLayoutConstraint+FLKAutoLayoutDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796351C85C98F009B65E1 /* NSLayoutConstraint+FLKAutoLayoutDebug.m */; settings = {ASSET_TAGS = (); }; };
+		5BA7963E1C85C98F009B65E1 /* UIView+FLKAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796371C85C98F009B65E1 /* UIView+FLKAutoLayout.m */; settings = {ASSET_TAGS = (); }; };
+		5BA7963F1C85C98F009B65E1 /* UIView+FLKAutoLayoutDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796391C85C98F009B65E1 /* UIView+FLKAutoLayoutDebug.m */; settings = {ASSET_TAGS = (); }; };
+		5BA796401C85C98F009B65E1 /* UIView+FLKAutoLayoutPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7963B1C85C98F009B65E1 /* UIView+FLKAutoLayoutPredicate.m */; settings = {ASSET_TAGS = (); }; };
 		5BB683501C64A58E0043C4FC /* EmployementStatusTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6834D1C64A58E0043C4FC /* EmployementStatusTVCell.m */; };
 		5BB683511C64A58E0043C4FC /* HighLevelEducationTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6834F1C64A58E0043C4FC /* HighLevelEducationTVCell.m */; };
 		5BDA47201C22596200C875AB /* BURootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA471F1C22596200C875AB /* BURootViewController.m */; };
@@ -337,6 +342,16 @@
 		5BA796161C8090B4009B65E1 /* BUContactListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUContactListTableViewCell.m; sourceTree = "<group>"; };
 		5BA796181C845D1E009B65E1 /* BUUserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUUserProfile.h; path = TheBureau/ModelObjects/BUUserProfile.h; sourceTree = SOURCE_ROOT; };
 		5BA796191C845D1E009B65E1 /* BUUserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUUserProfile.m; path = TheBureau/ModelObjects/BUUserProfile.m; sourceTree = SOURCE_ROOT; };
+		5BA796321C85C98F009B65E1 /* FLKAutoLayoutPredicateList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLKAutoLayoutPredicateList.h; sourceTree = "<group>"; };
+		5BA796331C85C98F009B65E1 /* FLKAutoLayoutPredicateList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLKAutoLayoutPredicateList.m; sourceTree = "<group>"; };
+		5BA796341C85C98F009B65E1 /* NSLayoutConstraint+FLKAutoLayoutDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+FLKAutoLayoutDebug.h"; sourceTree = "<group>"; };
+		5BA796351C85C98F009B65E1 /* NSLayoutConstraint+FLKAutoLayoutDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+FLKAutoLayoutDebug.m"; sourceTree = "<group>"; };
+		5BA796361C85C98F009B65E1 /* UIView+FLKAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FLKAutoLayout.h"; sourceTree = "<group>"; };
+		5BA796371C85C98F009B65E1 /* UIView+FLKAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FLKAutoLayout.m"; sourceTree = "<group>"; };
+		5BA796381C85C98F009B65E1 /* UIView+FLKAutoLayoutDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FLKAutoLayoutDebug.h"; sourceTree = "<group>"; };
+		5BA796391C85C98F009B65E1 /* UIView+FLKAutoLayoutDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FLKAutoLayoutDebug.m"; sourceTree = "<group>"; };
+		5BA7963A1C85C98F009B65E1 /* UIView+FLKAutoLayoutPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FLKAutoLayoutPredicate.h"; sourceTree = "<group>"; };
+		5BA7963B1C85C98F009B65E1 /* UIView+FLKAutoLayoutPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FLKAutoLayoutPredicate.m"; sourceTree = "<group>"; };
 		5BB6834C1C64A58E0043C4FC /* EmployementStatusTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmployementStatusTVCell.h; sourceTree = "<group>"; };
 		5BB6834D1C64A58E0043C4FC /* EmployementStatusTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmployementStatusTVCell.m; sourceTree = "<group>"; };
 		5BB6834E1C64A58E0043C4FC /* HighLevelEducationTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighLevelEducationTVCell.h; sourceTree = "<group>"; };
@@ -694,6 +709,24 @@
 				5BA795DE1C7F9125009B65E1 /* ATLProgressView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		5BA796311C85C98F009B65E1 /* FLKAutoLayout */ = {
+			isa = PBXGroup;
+			children = (
+				5BA796321C85C98F009B65E1 /* FLKAutoLayoutPredicateList.h */,
+				5BA796331C85C98F009B65E1 /* FLKAutoLayoutPredicateList.m */,
+				5BA796341C85C98F009B65E1 /* NSLayoutConstraint+FLKAutoLayoutDebug.h */,
+				5BA796351C85C98F009B65E1 /* NSLayoutConstraint+FLKAutoLayoutDebug.m */,
+				5BA796361C85C98F009B65E1 /* UIView+FLKAutoLayout.h */,
+				5BA796371C85C98F009B65E1 /* UIView+FLKAutoLayout.m */,
+				5BA796381C85C98F009B65E1 /* UIView+FLKAutoLayoutDebug.h */,
+				5BA796391C85C98F009B65E1 /* UIView+FLKAutoLayoutDebug.m */,
+				5BA7963A1C85C98F009B65E1 /* UIView+FLKAutoLayoutPredicate.h */,
+				5BA7963B1C85C98F009B65E1 /* UIView+FLKAutoLayoutPredicate.m */,
+			);
+			name = FLKAutoLayout;
+			path = "../../../../Bureau back up/Bureau_iOS/TheBureau/TheBureau/FLKAutoLayout";
 			sourceTree = "<group>";
 		};
 		5BDA471D1C2258CA00C875AB /* RootViewController */ = {
@@ -1121,6 +1154,7 @@
 		78FEE24F1C0721870013E9D2 /* ExternalLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				5BA796311C85C98F009B65E1 /* FLKAutoLayout */,
 				5BA795861C7F9125009B65E1 /* Atlas */,
 				5BA7956F1C7F8EDD009B65E1 /* LayerKit.framework */,
 				5B2A2CB01C182D7D006F3845 /* DigitsKit.framework */,
@@ -1462,6 +1496,7 @@
 				78CE0CFD1C69C23100FDA514 /* BUMatchInfoCell.m in Sources */,
 				78FEE25F1C0728660013E9D2 /* FCBaseSocialController.m in Sources */,
 				5BA795FE1C7F9125009B65E1 /* ATLMessageCollectionViewCell.m in Sources */,
+				5BA796401C85C98F009B65E1 /* UIView+FLKAutoLayoutPredicate.m in Sources */,
 				78BF551D1C68790B00B5F1A4 /* BUHomeProfileImgPrevCell.m in Sources */,
 				5BA795851C7F90C7009B65E1 /* ParticipantTableViewController.m in Sources */,
 				5BA795EE1C7F9125009B65E1 /* ATLMessagingUtilities.m in Sources */,
@@ -1471,6 +1506,7 @@
 				78BF551A1C68789E00B5F1A4 /* BUHomeImagePreviewCell.m in Sources */,
 				1808029D1C079E7B00F5AEE5 /* BUSignUpViewController.m in Sources */,
 				5BA795F61C7F9125009B65E1 /* ATLConversationCollectionView.m in Sources */,
+				5BA7963C1C85C98F009B65E1 /* FLKAutoLayoutPredicateList.m in Sources */,
 				5B0802551C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m in Sources */,
 				78CF172F1C609D5100779203 /* PWCustomPickerCell.m in Sources */,
 				5BA795FA1C7F9125009B65E1 /* ATLConversationTableViewCell.m in Sources */,
@@ -1514,6 +1550,7 @@
 				78B5B7201C56788700E3C531 /* BUProfileSelectionVC.m in Sources */,
 				78CA185B1C7B0B0100CF091A /* BUPoolProfileDetailsVC.m in Sources */,
 				78FEE2571C0726D20013E9D2 /* NSObject+FCKeyPathHelper.m in Sources */,
+				5BA7963F1C85C98F009B65E1 /* UIView+FLKAutoLayoutDebug.m in Sources */,
 				5BA795E31C7F9125009B65E1 /* ATLConversationViewController.m in Sources */,
 				5BA796031C7F9125009B65E1 /* ATLParticipantTableViewCell.m in Sources */,
 				5BA795E51C7F9125009B65E1 /* ATLTypingIndicatorViewController.m in Sources */,
@@ -1533,9 +1570,11 @@
 				78CF172B1C609D3C00779203 /* PWCustomPickerView.m in Sources */,
 				5B0802611C7344BC00DAD5A5 /* BUEmptySegue.m in Sources */,
 				5BA796011C7F9125009B65E1 /* ATLOutgoingMessageCollectionViewCell.m in Sources */,
+				5BA7963E1C85C98F009B65E1 /* UIView+FLKAutoLayout.m in Sources */,
 				5B2A2CAE1C0CE72B006F3845 /* BUForgotPasswordVC.m in Sources */,
 				5BA795E41C7F9125009B65E1 /* ATLParticipantTableViewController.m in Sources */,
 				5BA795FC1C7F9125009B65E1 /* ATLIncomingMessageCollectionViewCell.m in Sources */,
+				5BA7963D1C85C98F009B65E1 /* NSLayoutConstraint+FLKAutoLayoutDebug.m in Sources */,
 				5BA795841C7F90C7009B65E1 /* ConversationViewController.m in Sources */,
 				5B0AEDC91C22C69D00877C24 /* BUAuthButton.m in Sources */,
 				5BA796001C7F9125009B65E1 /* ATLMessageInputToolbar.m in Sources */,

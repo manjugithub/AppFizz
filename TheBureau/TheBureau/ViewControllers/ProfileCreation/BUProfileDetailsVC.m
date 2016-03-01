@@ -8,6 +8,7 @@
 
 #import "BUProfileDetailsVC.h"
 #import "BUProfileHeritageVC.h"
+#import "UIView+FLKAutoLayout.h"
 
 @interface BUProfileDetailsVC ()<UIPickerViewDataSource,UIPickerViewDelegate>
 
@@ -113,6 +114,10 @@
     
     [picker setDatePickerMode:UIDatePickerModeDate];
     [alertController.view addSubview:picker];
+    
+    [picker alignCenterYWithView:alertController.view predicate:@"0.0"];
+    [picker alignCenterXWithView:alertController.view predicate:@"0.0"];
+    [picker constrainWidth:@"270" ];
 
     NSDate *todayDate = [NSDate date];
     NSDate *newDate = [todayDate dateByAddingTimeInterval:(-1*18*365*24*60*60)];
@@ -337,6 +342,9 @@ numberOfRowsInComponent:(NSInteger)component{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Height\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIPickerView *picker = [[UIPickerView alloc] init];
     [alertController.view addSubview:picker];
+    [picker alignCenterYWithView:alertController.view predicate:@"0.0"];
+    [picker alignCenterXWithView:alertController.view predicate:@"0.0"];
+    [picker constrainWidth:@"270" ];
     picker.dataSource = self;
     picker.delegate = self ;
     
