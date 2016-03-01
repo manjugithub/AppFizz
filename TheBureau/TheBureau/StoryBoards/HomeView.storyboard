@@ -1106,6 +1106,9 @@
                             <constraint firstItem="Rwk-KM-dc3" firstAttribute="leading" secondItem="yft-ny-zdB" secondAttribute="leading" id="x4V-mA-ys8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contactsTableView" destination="Rwk-KM-dc3" id="1WU-sO-w8c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0kE-IG-RA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

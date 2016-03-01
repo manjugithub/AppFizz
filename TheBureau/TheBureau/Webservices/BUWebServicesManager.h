@@ -50,4 +50,8 @@ typedef void (^SuccessBlock)(id response, NSError *error);
 
 -(void)rematchwithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
 ;
+
+-(void)getContactListwithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+;
+
 @end

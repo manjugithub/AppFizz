@@ -363,4 +363,30 @@ constructingBodyWithBlock:nil
     
 }
 
+-(void)getContactListwithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock)successCallBack failureBlock:(FailureBlock)failureCallBack
+{
+    
+    
+    
+    NSString *baseURL = @"http://app.thebureauapp.com/admin/userContacts";
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:baseURL
+       parameters:inParams
+constructingBodyWithBlock:nil
+         progress:nil
+          success:^(NSURLSessionDataTask *operation, id responseObject)
+     {
+         successCallBack(responseObject,nil);
+         ;
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(NSURLSessionDataTask *operation, NSError *error)
+     {
+         failureCallBack(nil,error);
+         NSLog(@"Error: %@", error);
+     }];
+}
+
+
 @end

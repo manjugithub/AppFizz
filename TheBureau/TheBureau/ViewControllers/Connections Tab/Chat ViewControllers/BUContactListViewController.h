@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BUBaseViewController.h"
 
-@interface BUContactListViewController : UIViewController
+@interface BUContactListViewController : BUBaseViewController
 
 @end
