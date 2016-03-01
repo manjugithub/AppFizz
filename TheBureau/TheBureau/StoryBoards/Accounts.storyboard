@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Comfortaa-Bold.ttf">
+            <string>Comfortaa-Bold</string>
+        </mutableArray>
+        <mutableArray key="Comfortaa-Regular.ttf">
+            <string>Comfortaa</string>
+            <string>Comfortaa</string>
+            <string>Comfortaa</string>
+            <string>Comfortaa</string>
+            <string>Comfortaa</string>
+            <string>Comfortaa</string>
+            <string>Comfortaa</string>
+            <string>Comfortaa</string>
+            <string>Comfortaa</string>
+            <string>Comfortaa</string>
+            <string>Comfortaa</string>
+            <string>Comfortaa</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--ConfigurationVC-->
+        <scene sceneID="JVG-G9-Php">
+            <objects>
+                <tableViewController storyboardIdentifier="BUConfigurationVC" id="odO-SY-IS5" customClass="BUConfigurationVC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4WB-4B-ZWL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection headerTitle="APP NOTIFICATIONS" id="WUd-A2-4xl">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="iLm-OO-Yu8" customClass="BUAppNotificationCell">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iLm-OO-Yu8" id="eqr-k3-VJi">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Match" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kC-mq-fge">
+                                                    <rect key="frame" x="8" y="11" width="500" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="sC3-eX-wH7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjZ-Re-10g">
+                                                    <rect key="frame" x="516" y="6" width="68" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="68" id="WRt-BW-abT"/>
+                                                        <constraint firstAttribute="height" constant="32" id="dgK-yE-d6g"/>
+                                                    </constraints>
+                                                    <state key="normal" image="switch_ON"/>
+                                                    <connections>
+                                                        <action selector="changeNotificationSettings:" destination="iLm-OO-Yu8" eventType="touchUpInside" id="Rdg-Xh-Zoh"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hjZ-Re-10g" firstAttribute="leading" secondItem="9kC-mq-fge" secondAttribute="trailing" constant="8" id="KoB-6x-BxK"/>
+                                                <constraint firstAttribute="trailing" secondItem="hjZ-Re-10g" secondAttribute="trailing" constant="16" id="P13-Lw-GmX"/>
+                                                <constraint firstItem="hjZ-Re-10g" firstAttribute="top" secondItem="eqr-k3-VJi" secondAttribute="top" constant="6" id="d9B-1f-y8X"/>
+                                                <constraint firstItem="9kC-mq-fge" firstAttribute="top" secondItem="eqr-k3-VJi" secondAttribute="top" constant="11" id="n8d-vN-Sco"/>
+                                                <constraint firstItem="9kC-mq-fge" firstAttribute="leading" secondItem="eqr-k3-VJi" secondAttribute="leading" constant="8" id="tva-sb-N9F"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notificationTitleLabel" destination="9kC-mq-fge" id="ynr-ZG-wZh"/>
+                                            <outlet property="switchBtn" destination="hjZ-Re-10g" id="mRY-Qf-tqh"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="z73-dO-yye" customClass="BUAppNotificationCell">
+                                        <rect key="frame" x="0.0" y="72" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z73-dO-yye" id="4ut-1D-ag6">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="als-uf-E2u">
+                                                    <rect key="frame" x="8" y="11" width="500" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="QNQ-ej-Se0"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9rD-x5-UiF">
+                                                    <rect key="frame" x="516" y="6" width="68" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="mbQ-vO-qiY"/>
+                                                        <constraint firstAttribute="width" constant="68" id="p2B-NL-EiU"/>
+                                                    </constraints>
+                                                    <state key="normal" image="switch_ON"/>
+                                                    <connections>
+                                                        <action selector="changeNotificationSettings:" destination="z73-dO-yye" eventType="touchUpInside" id="dGe-O0-rWd"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="als-uf-E2u" firstAttribute="leading" secondItem="4ut-1D-ag6" secondAttribute="leading" constant="8" id="4Oq-hH-Rij"/>
+                                                <constraint firstItem="als-uf-E2u" firstAttribute="top" secondItem="4ut-1D-ag6" secondAttribute="top" constant="11" id="FBf-th-JGl"/>
+                                                <constraint firstItem="9rD-x5-UiF" firstAttribute="leading" secondItem="als-uf-E2u" secondAttribute="trailing" constant="8" id="g94-w6-x8G"/>
+                                                <constraint firstAttribute="trailing" secondItem="9rD-x5-UiF" secondAttribute="trailing" constant="16" id="jV2-fT-Fud"/>
+                                                <constraint firstItem="9rD-x5-UiF" firstAttribute="top" secondItem="4ut-1D-ag6" secondAttribute="top" constant="6" id="wXM-2H-WAv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notificationTitleLabel" destination="als-uf-E2u" id="qgu-Wc-9ga"/>
+                                            <outlet property="switchBtn" destination="9rD-x5-UiF" id="m79-4K-piu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="6fb-tO-l8K" customClass="BUAppNotificationCell">
+                                        <rect key="frame" x="0.0" y="116" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6fb-tO-l8K" id="FHm-TL-cMZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customer Service (Emails)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paP-2S-JDG">
+                                                    <rect key="frame" x="8" y="11" width="500" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="I72-Jo-Opb"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NV1-2h-Ob0">
+                                                    <rect key="frame" x="516" y="6" width="68" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="68" id="0ck-Hy-Msc"/>
+                                                        <constraint firstAttribute="height" constant="32" id="uhg-j8-6AX"/>
+                                                    </constraints>
+                                                    <state key="normal" image="switch_ON"/>
+                                                    <connections>
+                                                        <action selector="changeNotificationSettings:" destination="6fb-tO-l8K" eventType="touchUpInside" id="Lt2-rY-Sca"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="paP-2S-JDG" firstAttribute="leading" secondItem="FHm-TL-cMZ" secondAttribute="leading" constant="8" id="Hfv-cY-bD8"/>
+                                                <constraint firstAttribute="trailing" secondItem="NV1-2h-Ob0" secondAttribute="trailing" constant="16" id="IeM-0z-dZu"/>
+                                                <constraint firstItem="NV1-2h-Ob0" firstAttribute="top" secondItem="FHm-TL-cMZ" secondAttribute="top" constant="6" id="PZg-6X-7Rm"/>
+                                                <constraint firstItem="paP-2S-JDG" firstAttribute="top" secondItem="FHm-TL-cMZ" secondAttribute="top" constant="11" id="Yu2-df-jBS"/>
+                                                <constraint firstItem="NV1-2h-Ob0" firstAttribute="leading" secondItem="paP-2S-JDG" secondAttribute="trailing" constant="8" id="wuy-Wk-bc3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notificationTitleLabel" destination="paP-2S-JDG" id="zU8-ct-1Oe"/>
+                                            <outlet property="switchBtn" destination="NV1-2h-Ob0" id="nuj-6M-xgo"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="Ueu-1r-OW9" customClass="BUAppNotificationCell">
+                                        <rect key="frame" x="0.0" y="160" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ueu-1r-OW9" id="zUW-h1-UEv">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blog Release" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vei-uv-N1r">
+                                                    <rect key="frame" x="8" y="11" width="500" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="OG2-u8-Ui5"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3i-rN-Xbd">
+                                                    <rect key="frame" x="516" y="6" width="68" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="ZdE-Xv-zYC"/>
+                                                        <constraint firstAttribute="width" constant="68" id="cIV-I8-3mV"/>
+                                                    </constraints>
+                                                    <state key="normal" image="switch_ON"/>
+                                                    <connections>
+                                                        <action selector="changeNotificationSettings:" destination="Ueu-1r-OW9" eventType="touchUpInside" id="YDb-yU-g7S"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="W3i-rN-Xbd" firstAttribute="leading" secondItem="Vei-uv-N1r" secondAttribute="trailing" constant="8" id="AlE-uQ-be9"/>
+                                                <constraint firstAttribute="trailing" secondItem="W3i-rN-Xbd" secondAttribute="trailing" constant="16" id="Czn-9s-cC6"/>
+                                                <constraint firstItem="Vei-uv-N1r" firstAttribute="top" secondItem="zUW-h1-UEv" secondAttribute="top" constant="11" id="PHw-FT-qXe"/>
+                                                <constraint firstItem="W3i-rN-Xbd" firstAttribute="top" secondItem="zUW-h1-UEv" secondAttribute="top" constant="6" id="p4D-G1-N1E"/>
+                                                <constraint firstItem="Vei-uv-N1r" firstAttribute="leading" secondItem="zUW-h1-UEv" secondAttribute="leading" constant="8" id="uwb-Xd-BzO"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notificationTitleLabel" destination="Vei-uv-N1r" id="vT2-B8-8Ev"/>
+                                            <outlet property="switchBtn" destination="W3i-rN-Xbd" id="3nD-cf-dbc"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="BjE-Ej-EgY" customClass="BUAppNotificationCell">
+                                        <rect key="frame" x="0.0" y="204" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BjE-Ej-EgY" id="UVu-4H-fPl">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cnb-fC-uFe">
+                                                    <rect key="frame" x="8" y="11" width="500" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="HaA-hR-YYM"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CF1-Mi-whG">
+                                                    <rect key="frame" x="516" y="6" width="68" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="Uo5-WY-NRv"/>
+                                                        <constraint firstAttribute="width" constant="68" id="fdq-55-h1t"/>
+                                                    </constraints>
+                                                    <state key="normal" image="switch_ON"/>
+                                                    <connections>
+                                                        <action selector="changeNotificationSettings:" destination="BjE-Ej-EgY" eventType="touchUpInside" id="CbR-TM-7iM"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Cnb-fC-uFe" firstAttribute="leading" secondItem="UVu-4H-fPl" secondAttribute="leading" constant="8" id="1C8-Uj-RK8"/>
+                                                <constraint firstAttribute="trailing" secondItem="CF1-Mi-whG" secondAttribute="trailing" constant="16" id="R3p-EY-Q1e"/>
+                                                <constraint firstItem="CF1-Mi-whG" firstAttribute="top" secondItem="UVu-4H-fPl" secondAttribute="top" constant="6" id="eMJ-VB-5BH"/>
+                                                <constraint firstItem="CF1-Mi-whG" firstAttribute="leading" secondItem="Cnb-fC-uFe" secondAttribute="trailing" constant="8" id="kPS-fm-OrH"/>
+                                                <constraint firstItem="Cnb-fC-uFe" firstAttribute="top" secondItem="UVu-4H-fPl" secondAttribute="top" constant="11" id="mZ2-uy-5uj"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notificationTitleLabel" destination="Cnb-fC-uFe" id="0zQ-fF-qIR"/>
+                                            <outlet property="switchBtn" destination="CF1-Mi-whG" id="2yi-CP-7Er"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="MEMBERSHIP" id="grK-Q3-Xfg">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="ipG-Yc-OOn" customClass="BUAppNotificationCell">
+                                        <rect key="frame" x="0.0" y="276" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ipG-Yc-OOn" id="b9Z-nR-5XW">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aca-qo-iVw">
+                                                    <rect key="frame" x="8" y="11" width="500" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="dbD-9f-uTx"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ez-sX-fyJ">
+                                                    <rect key="frame" x="516" y="9" width="68" height="26"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="26" id="B4z-Ju-KaF"/>
+                                                        <constraint firstAttribute="width" constant="68" id="ib3-Um-OKO"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="15"/>
+                                                    <state key="normal" title="ACTIVE" backgroundImage="btn_red"/>
+                                                    <connections>
+                                                        <action selector="changeNotificationSettings:" destination="ipG-Yc-OOn" eventType="touchUpInside" id="hwp-HH-tvb"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9ez-sX-fyJ" firstAttribute="leading" secondItem="Aca-qo-iVw" secondAttribute="trailing" constant="8" id="2Bp-o9-hB8"/>
+                                                <constraint firstAttribute="trailing" secondItem="9ez-sX-fyJ" secondAttribute="trailing" constant="16" id="6Q8-VW-IWe"/>
+                                                <constraint firstItem="Aca-qo-iVw" firstAttribute="leading" secondItem="b9Z-nR-5XW" secondAttribute="leading" constant="8" id="bbA-1b-Ih5"/>
+                                                <constraint firstItem="Aca-qo-iVw" firstAttribute="top" secondItem="b9Z-nR-5XW" secondAttribute="top" constant="11" id="ltG-67-DKH"/>
+                                                <constraint firstItem="9ez-sX-fyJ" firstAttribute="top" secondItem="b9Z-nR-5XW" secondAttribute="top" constant="9" id="zGy-Yc-FKT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notificationTitleLabel" destination="Aca-qo-iVw" id="5Ih-ZH-0FN"/>
+                                            <outlet property="switchBtn" destination="9ez-sX-fyJ" id="bSj-jQ-MWH"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="xb0-j8-A2j" customClass="BUAppNotificationCell">
+                                        <rect key="frame" x="0.0" y="320" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xb0-j8-A2j" id="RiB-Tq-Sh6">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deactivate account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opx-eV-Fl5">
+                                                    <rect key="frame" x="8" y="11" width="500" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="nNz-hB-hoY"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49y-Hi-Fb7">
+                                                    <rect key="frame" x="516" y="6" width="68" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="68" id="98X-Gz-UeW"/>
+                                                        <constraint firstAttribute="height" constant="32" id="GkI-PV-QaH"/>
+                                                    </constraints>
+                                                    <state key="normal" image="switch_disable"/>
+                                                    <connections>
+                                                        <action selector="changeNotificationSettings:" destination="xb0-j8-A2j" eventType="touchUpInside" id="eW6-Qz-VR8"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="49y-Hi-Fb7" firstAttribute="leading" secondItem="opx-eV-Fl5" secondAttribute="trailing" constant="8" id="T9d-pN-uH4"/>
+                                                <constraint firstItem="opx-eV-Fl5" firstAttribute="top" secondItem="RiB-Tq-Sh6" secondAttribute="top" constant="11" id="ZVH-hh-eyd"/>
+                                                <constraint firstItem="opx-eV-Fl5" firstAttribute="leading" secondItem="RiB-Tq-Sh6" secondAttribute="leading" constant="8" id="aQL-pe-shZ"/>
+                                                <constraint firstItem="49y-Hi-Fb7" firstAttribute="top" secondItem="RiB-Tq-Sh6" secondAttribute="top" constant="6" id="imR-j9-LJV"/>
+                                                <constraint firstAttribute="trailing" secondItem="49y-Hi-Fb7" secondAttribute="trailing" constant="16" id="jYS-Qc-J0V"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notificationTitleLabel" destination="opx-eV-Fl5" id="QZM-zq-FGu"/>
+                                            <outlet property="switchBtn" destination="49y-Hi-Fb7" id="VJh-xV-jgK"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="DbD-Cr-lqw" customClass="BUAppNotificationCell">
+                                        <rect key="frame" x="0.0" y="364" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DbD-Cr-lqw" id="Yll-NE-hYc">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFL-1Y-o5u">
+                                                    <rect key="frame" x="8" y="11" width="500" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="lCK-aR-Q4M"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lh2-3A-awb">
+                                                    <rect key="frame" x="516" y="6" width="68" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="68" id="54B-rI-2A3"/>
+                                                        <constraint firstAttribute="height" constant="32" id="5Vg-lO-H8X"/>
+                                                    </constraints>
+                                                    <state key="normal" image="switch_disable"/>
+                                                    <connections>
+                                                        <action selector="changeNotificationSettings:" destination="DbD-Cr-lqw" eventType="touchUpInside" id="A4O-44-qDm"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="lh2-3A-awb" secondAttribute="trailing" constant="16" id="BED-aK-Wgs"/>
+                                                <constraint firstItem="lh2-3A-awb" firstAttribute="top" secondItem="Yll-NE-hYc" secondAttribute="top" constant="6" id="CMA-t1-wvC"/>
+                                                <constraint firstItem="FFL-1Y-o5u" firstAttribute="top" secondItem="Yll-NE-hYc" secondAttribute="top" constant="11" id="DHg-Pd-Lfx"/>
+                                                <constraint firstItem="FFL-1Y-o5u" firstAttribute="leading" secondItem="Yll-NE-hYc" secondAttribute="leading" constant="8" id="LNe-zC-9g8"/>
+                                                <constraint firstItem="lh2-3A-awb" firstAttribute="leading" secondItem="FFL-1Y-o5u" secondAttribute="trailing" constant="8" id="rQ5-NO-WOg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notificationTitleLabel" destination="FFL-1Y-o5u" id="bni-FW-KB0"/>
+                                            <outlet property="switchBtn" destination="lh2-3A-awb" id="ScV-27-QU9"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="fqF-uW-MaM" customClass="BUAppNotificationCell">
+                                        <rect key="frame" x="0.0" y="408" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fqF-uW-MaM" id="YU2-UD-zAd">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQw-6H-4kE">
+                                                    <rect key="frame" x="8" y="11" width="500" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="UjS-3u-QHg"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ic1-0O-ujw">
+                                                    <rect key="frame" x="516" y="6" width="68" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="ILs-z8-Cld"/>
+                                                        <constraint firstAttribute="width" constant="68" id="WIw-a7-tyv"/>
+                                                    </constraints>
+                                                    <state key="normal" image="switch_disable"/>
+                                                    <connections>
+                                                        <action selector="changeNotificationSettings:" destination="fqF-uW-MaM" eventType="touchUpInside" id="LXx-60-Jri"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="YQw-6H-4kE" firstAttribute="leading" secondItem="YU2-UD-zAd" secondAttribute="leading" constant="8" id="5em-qH-9om"/>
+                                                <constraint firstItem="YQw-6H-4kE" firstAttribute="top" secondItem="YU2-UD-zAd" secondAttribute="top" constant="11" id="SN3-kb-r16"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ic1-0O-ujw" secondAttribute="trailing" constant="16" id="j6F-f7-x0m"/>
+                                                <constraint firstItem="Ic1-0O-ujw" firstAttribute="top" secondItem="YU2-UD-zAd" secondAttribute="top" constant="6" id="jsd-bm-20i"/>
+                                                <constraint firstItem="Ic1-0O-ujw" firstAttribute="leading" secondItem="YQw-6H-4kE" secondAttribute="trailing" constant="8" id="uvS-CP-Chq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notificationTitleLabel" destination="YQw-6H-4kE" id="dTz-4s-pVu"/>
+                                            <outlet property="switchBtn" destination="Ic1-0O-ujw" id="FBh-Eb-RWs"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="SUPPORT" id="af1-RZ-qga">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="PB8-NH-Uch" customClass="BUAppNotificationCell">
+                                        <rect key="frame" x="0.0" y="480" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PB8-NH-Uch" id="Hoh-1q-Vdb">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faY-mx-Yhh">
+                                                    <rect key="frame" x="8" y="11" width="94" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="w4K-2m-RKY"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="faY-mx-Yhh" firstAttribute="top" secondItem="Hoh-1q-Vdb" secondAttribute="top" constant="11" id="1Z7-W7-Upz"/>
+                                                <constraint firstItem="faY-mx-Yhh" firstAttribute="leading" secondItem="Hoh-1q-Vdb" secondAttribute="leading" constant="8" id="D3F-7V-PjZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notificationTitleLabel" destination="faY-mx-Yhh" id="RpW-hL-6tm"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="u22-Gw-0hh" customClass="BUAppNotificationCell">
+                                        <rect key="frame" x="0.0" y="524" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u22-Gw-0hh" id="bdx-o6-Xrd">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms and Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZmG-k5-epo">
+                                                    <rect key="frame" x="8" y="11" width="147" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="ivD-mc-BoB"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ZmG-k5-epo" firstAttribute="leading" secondItem="bdx-o6-Xrd" secondAttribute="leading" constant="8" id="3nQ-Vr-TKA"/>
+                                                <constraint firstItem="ZmG-k5-epo" firstAttribute="top" secondItem="bdx-o6-Xrd" secondAttribute="top" constant="11" id="ynM-4l-0np"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notificationTitleLabel" destination="ZmG-k5-epo" id="mhR-Zb-r0u"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="mt2-1E-H8V" customClass="BUAppNotificationCell">
+                                        <rect key="frame" x="0.0" y="568" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mt2-1E-H8V" id="mMI-ra-7Dl">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate us on the app store!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oo-FE-9ll">
+                                                    <rect key="frame" x="8" y="11" width="170" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="cG5-QS-HGf"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5oo-FE-9ll" firstAttribute="top" secondItem="mMI-ra-7Dl" secondAttribute="top" constant="11" id="2ou-Zj-6YC"/>
+                                                <constraint firstItem="5oo-FE-9ll" firstAttribute="leading" secondItem="mMI-ra-7Dl" secondAttribute="leading" constant="8" id="p9D-lU-8hl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notificationTitleLabel" destination="5oo-FE-9ll" id="zuD-11-DVr"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="odO-SY-IS5" id="2Jl-Ah-quH"/>
+                            <outlet property="delegate" destination="odO-SY-IS5" id="dkq-SE-b5P"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DQM-XI-yfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="440" y="253"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="btn_red" width="238" height="37"/>
+        <image name="switch_ON" width="68" height="32"/>
+        <image name="switch_disable" width="68" height="32"/>
+    </resources>
+</document>

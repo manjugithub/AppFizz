@@ -8,7 +8,7 @@
 
 #import "BUAcountsTabViewController.h"
 #import "BUHomeProfileImgPrevCell.h"
-
+#import "BUConfigurationVC.h"
 @interface BUAcountsTabViewController ()
 @property(nonatomic, strong) IBOutlet UITableView *imgScrollerTableView;
 
@@ -37,20 +37,41 @@
 */
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
-{
-    return self.imgScrollerTableView.frame.size.height;
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+//{
+//    return self.imgScrollerTableView.frame.size.height;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
+//{
+//    return 1;
+//}
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+//{
+//    BUHomeProfileImgPrevCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BUHomeProfileImgPrevCell"];
+//    return cell;
+//}
+
+- (IBAction)showProfileDetails:(id)sender {
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
-{
-    return 1;
+- (IBAction)showPreferences:(id)sender {
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
-{
-    BUHomeProfileImgPrevCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BUHomeProfileImgPrevCell"];
-    return cell;
+- (IBAction)showConfiguration:(id)sender
+{    
+    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Accounts" bundle:nil];
+    BUConfigurationVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUConfigurationVC"];
+    [self.tabBarController.navigationController pushViewController:vc animated:NO];
 }
 
+- (IBAction)showInviteFriend:(id)sender {
+}
+
+- (IBAction)showHowItWorks:(id)sender {
+}
+
+- (IBAction)showHelpAndFeedback:(id)sender {
+}
 @end

@@ -8,6 +8,12 @@
 
 #import "BUBaseViewController.h"
 
-@interface BUAcountsTabViewController : BUBaseViewController<UITableViewDelegate,UITableViewDataSource>
+@interface BUAcountsTabViewController : BUBaseViewController
+- (IBAction)showProfileDetails:(id)sender;
+- (IBAction)showPreferences:(id)sender;
+- (IBAction)showConfiguration:(id)sender;
+- (IBAction)showInviteFriend:(id)sender;
+- (IBAction)showHowItWorks:(id)sender;
+- (IBAction)showHelpAndFeedback:(id)sender;
 
 @end

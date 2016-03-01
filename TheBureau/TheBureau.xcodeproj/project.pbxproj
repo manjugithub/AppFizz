@@ -29,59 +29,59 @@
 		5B2D3E8D1C7C6927006B7674 /* BUHomeConnectionTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D3E871C7C6927006B7674 /* BUHomeConnectionTabVC.m */; };
 		5B2D3E8E1C7C6927006B7674 /* BUProfileMatchChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D3E891C7C6927006B7674 /* BUProfileMatchChatVC.m */; };
 		5B2D3E8F1C7C6927006B7674 /* BUProfileRematchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D3E8B1C7C6927006B7674 /* BUProfileRematchVC.m */; };
-		5BA795701C7F8EDD009B65E1 /* LayerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA7956F1C7F8EDD009B65E1 /* LayerKit.framework */; settings = {ASSET_TAGS = (); }; };
+		5BA795701C7F8EDD009B65E1 /* LayerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA7956F1C7F8EDD009B65E1 /* LayerKit.framework */; };
 		5BA795721C7F8EEC009B65E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA795711C7F8EEC009B65E1 /* Security.framework */; };
 		5BA795741C7F8EF7009B65E1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA795731C7F8EF7009B65E1 /* MobileCoreServices.framework */; };
 		5BA795761C7F8F02009B65E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA795751C7F8F02009B65E1 /* SystemConfiguration.framework */; };
 		5BA795781C7F8F0A009B65E1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA795771C7F8F0A009B65E1 /* CFNetwork.framework */; };
 		5BA7957A1C7F8F22009B65E1 /* LayerKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5BA7956F1C7F8EDD009B65E1 /* LayerKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5BA795831C7F90C7009B65E1 /* ConversationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7957E1C7F90C7009B65E1 /* ConversationListViewController.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795841C7F90C7009B65E1 /* ConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795801C7F90C7009B65E1 /* ConversationViewController.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795851C7F90C7009B65E1 /* ParticipantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795821C7F90C7009B65E1 /* ParticipantTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795DF1C7F9125009B65E1 /* Atlas.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795881C7F9125009B65E1 /* Atlas.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795E01C7F9125009B65E1 /* ATLAddressBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7958B1C7F9125009B65E1 /* ATLAddressBarViewController.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795E11C7F9125009B65E1 /* ATLBaseConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7958D1C7F9125009B65E1 /* ATLBaseConversationViewController.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795E21C7F9125009B65E1 /* ATLConversationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7958F1C7F9125009B65E1 /* ATLConversationListViewController.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795E31C7F9125009B65E1 /* ATLConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795911C7F9125009B65E1 /* ATLConversationViewController.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795E41C7F9125009B65E1 /* ATLParticipantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795931C7F9125009B65E1 /* ATLParticipantTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795E51C7F9125009B65E1 /* ATLTypingIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795951C7F9125009B65E1 /* ATLTypingIndicatorViewController.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795E61C7F9125009B65E1 /* ATLConversationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795981C7F9125009B65E1 /* ATLConversationDataSource.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795E71C7F9125009B65E1 /* ATLDataSourceChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7959A1C7F9125009B65E1 /* ATLDataSourceChange.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795E81C7F9125009B65E1 /* ATLMediaAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7959C1C7F9125009B65E1 /* ATLMediaAttachment.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795E91C7F9125009B65E1 /* ATLParticipantTableDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7959E1C7F9125009B65E1 /* ATLParticipantTableDataSet.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795EA1C7F9125009B65E1 /* ATLConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795A71C7F9125009B65E1 /* ATLConstants.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795EB1C7F9125009B65E1 /* ATLErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795A91C7F9125009B65E1 /* ATLErrors.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795EC1C7F9125009B65E1 /* ATLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795AB1C7F9125009B65E1 /* ATLLocationManager.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795ED1C7F9125009B65E1 /* ATLMediaInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795AD1C7F9125009B65E1 /* ATLMediaInputStream.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795EE1C7F9125009B65E1 /* ATLMessagingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795AF1C7F9125009B65E1 /* ATLMessagingUtilities.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795EF1C7F9125009B65E1 /* ATLUIImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795B11C7F9125009B65E1 /* ATLUIImageHelper.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795F01C7F9125009B65E1 /* UIResponder+ATLFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795B31C7F9125009B65E1 /* UIResponder+ATLFirstResponder.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795F11C7F9125009B65E1 /* ATLAddressBarContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795B61C7F9125009B65E1 /* ATLAddressBarContainerView.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795F21C7F9125009B65E1 /* ATLAddressBarTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795B81C7F9125009B65E1 /* ATLAddressBarTextView.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795F31C7F9125009B65E1 /* ATLAddressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795BA1C7F9125009B65E1 /* ATLAddressBarView.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795F41C7F9125009B65E1 /* ATLAvatarImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795BC1C7F9125009B65E1 /* ATLAvatarImageView.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795F51C7F9125009B65E1 /* ATLBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795BE1C7F9125009B65E1 /* ATLBaseCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795F61C7F9125009B65E1 /* ATLConversationCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795C01C7F9125009B65E1 /* ATLConversationCollectionView.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795F71C7F9125009B65E1 /* ATLConversationCollectionViewFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795C21C7F9125009B65E1 /* ATLConversationCollectionViewFooter.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795F81C7F9125009B65E1 /* ATLConversationCollectionViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795C41C7F9125009B65E1 /* ATLConversationCollectionViewHeader.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795F91C7F9125009B65E1 /* ATLConversationCollectionViewMoreMessagesHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795C61C7F9125009B65E1 /* ATLConversationCollectionViewMoreMessagesHeader.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795FA1C7F9125009B65E1 /* ATLConversationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795C81C7F9125009B65E1 /* ATLConversationTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795FB1C7F9125009B65E1 /* ATLConversationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795CA1C7F9125009B65E1 /* ATLConversationView.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795FC1C7F9125009B65E1 /* ATLIncomingMessageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795CC1C7F9125009B65E1 /* ATLIncomingMessageCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795FD1C7F9125009B65E1 /* ATLMessageBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795CE1C7F9125009B65E1 /* ATLMessageBubbleView.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795FE1C7F9125009B65E1 /* ATLMessageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795D01C7F9125009B65E1 /* ATLMessageCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		5BA795FF1C7F9125009B65E1 /* ATLMessageComposeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795D21C7F9125009B65E1 /* ATLMessageComposeTextView.m */; settings = {ASSET_TAGS = (); }; };
-		5BA796001C7F9125009B65E1 /* ATLMessageInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795D41C7F9125009B65E1 /* ATLMessageInputToolbar.m */; settings = {ASSET_TAGS = (); }; };
-		5BA796011C7F9125009B65E1 /* ATLOutgoingMessageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795D61C7F9125009B65E1 /* ATLOutgoingMessageCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		5BA796021C7F9125009B65E1 /* ATLParticipantSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795D81C7F9125009B65E1 /* ATLParticipantSectionHeaderView.m */; settings = {ASSET_TAGS = (); }; };
-		5BA796031C7F9125009B65E1 /* ATLParticipantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795DA1C7F9125009B65E1 /* ATLParticipantTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		5BA796041C7F9125009B65E1 /* ATLPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795DC1C7F9125009B65E1 /* ATLPlayView.m */; settings = {ASSET_TAGS = (); }; };
-		5BA796051C7F9125009B65E1 /* ATLProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795DE1C7F9125009B65E1 /* ATLProgressView.m */; settings = {ASSET_TAGS = (); }; };
-		5BA796071C7F9683009B65E1 /* Connections.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA796061C7F9683009B65E1 /* Connections.Storyboard */; settings = {ASSET_TAGS = (); }; };
-		5BA7960A1C7F980C009B65E1 /* BURematchCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796091C7F980C009B65E1 /* BURematchCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		5BA796111C808062009B65E1 /* BUContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796101C808062009B65E1 /* BUContactListViewController.m */; settings = {ASSET_TAGS = (); }; };
-		5BA796171C8090B4009B65E1 /* BUContactListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796161C8090B4009B65E1 /* BUContactListTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		5BA7961A1C845D1E009B65E1 /* BUUserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796191C845D1E009B65E1 /* BUUserProfile.m */; settings = {ASSET_TAGS = (); }; };
+		5BA795831C7F90C7009B65E1 /* ConversationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7957E1C7F90C7009B65E1 /* ConversationListViewController.m */; };
+		5BA795841C7F90C7009B65E1 /* ConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795801C7F90C7009B65E1 /* ConversationViewController.m */; };
+		5BA795851C7F90C7009B65E1 /* ParticipantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795821C7F90C7009B65E1 /* ParticipantTableViewController.m */; };
+		5BA795DF1C7F9125009B65E1 /* Atlas.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795881C7F9125009B65E1 /* Atlas.m */; };
+		5BA795E01C7F9125009B65E1 /* ATLAddressBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7958B1C7F9125009B65E1 /* ATLAddressBarViewController.m */; };
+		5BA795E11C7F9125009B65E1 /* ATLBaseConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7958D1C7F9125009B65E1 /* ATLBaseConversationViewController.m */; };
+		5BA795E21C7F9125009B65E1 /* ATLConversationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7958F1C7F9125009B65E1 /* ATLConversationListViewController.m */; };
+		5BA795E31C7F9125009B65E1 /* ATLConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795911C7F9125009B65E1 /* ATLConversationViewController.m */; };
+		5BA795E41C7F9125009B65E1 /* ATLParticipantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795931C7F9125009B65E1 /* ATLParticipantTableViewController.m */; };
+		5BA795E51C7F9125009B65E1 /* ATLTypingIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795951C7F9125009B65E1 /* ATLTypingIndicatorViewController.m */; };
+		5BA795E61C7F9125009B65E1 /* ATLConversationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795981C7F9125009B65E1 /* ATLConversationDataSource.m */; };
+		5BA795E71C7F9125009B65E1 /* ATLDataSourceChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7959A1C7F9125009B65E1 /* ATLDataSourceChange.m */; };
+		5BA795E81C7F9125009B65E1 /* ATLMediaAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7959C1C7F9125009B65E1 /* ATLMediaAttachment.m */; };
+		5BA795E91C7F9125009B65E1 /* ATLParticipantTableDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7959E1C7F9125009B65E1 /* ATLParticipantTableDataSet.m */; };
+		5BA795EA1C7F9125009B65E1 /* ATLConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795A71C7F9125009B65E1 /* ATLConstants.m */; };
+		5BA795EB1C7F9125009B65E1 /* ATLErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795A91C7F9125009B65E1 /* ATLErrors.m */; };
+		5BA795EC1C7F9125009B65E1 /* ATLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795AB1C7F9125009B65E1 /* ATLLocationManager.m */; };
+		5BA795ED1C7F9125009B65E1 /* ATLMediaInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795AD1C7F9125009B65E1 /* ATLMediaInputStream.m */; };
+		5BA795EE1C7F9125009B65E1 /* ATLMessagingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795AF1C7F9125009B65E1 /* ATLMessagingUtilities.m */; };
+		5BA795EF1C7F9125009B65E1 /* ATLUIImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795B11C7F9125009B65E1 /* ATLUIImageHelper.m */; };
+		5BA795F01C7F9125009B65E1 /* UIResponder+ATLFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795B31C7F9125009B65E1 /* UIResponder+ATLFirstResponder.m */; };
+		5BA795F11C7F9125009B65E1 /* ATLAddressBarContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795B61C7F9125009B65E1 /* ATLAddressBarContainerView.m */; };
+		5BA795F21C7F9125009B65E1 /* ATLAddressBarTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795B81C7F9125009B65E1 /* ATLAddressBarTextView.m */; };
+		5BA795F31C7F9125009B65E1 /* ATLAddressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795BA1C7F9125009B65E1 /* ATLAddressBarView.m */; };
+		5BA795F41C7F9125009B65E1 /* ATLAvatarImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795BC1C7F9125009B65E1 /* ATLAvatarImageView.m */; };
+		5BA795F51C7F9125009B65E1 /* ATLBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795BE1C7F9125009B65E1 /* ATLBaseCollectionViewCell.m */; };
+		5BA795F61C7F9125009B65E1 /* ATLConversationCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795C01C7F9125009B65E1 /* ATLConversationCollectionView.m */; };
+		5BA795F71C7F9125009B65E1 /* ATLConversationCollectionViewFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795C21C7F9125009B65E1 /* ATLConversationCollectionViewFooter.m */; };
+		5BA795F81C7F9125009B65E1 /* ATLConversationCollectionViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795C41C7F9125009B65E1 /* ATLConversationCollectionViewHeader.m */; };
+		5BA795F91C7F9125009B65E1 /* ATLConversationCollectionViewMoreMessagesHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795C61C7F9125009B65E1 /* ATLConversationCollectionViewMoreMessagesHeader.m */; };
+		5BA795FA1C7F9125009B65E1 /* ATLConversationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795C81C7F9125009B65E1 /* ATLConversationTableViewCell.m */; };
+		5BA795FB1C7F9125009B65E1 /* ATLConversationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795CA1C7F9125009B65E1 /* ATLConversationView.m */; };
+		5BA795FC1C7F9125009B65E1 /* ATLIncomingMessageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795CC1C7F9125009B65E1 /* ATLIncomingMessageCollectionViewCell.m */; };
+		5BA795FD1C7F9125009B65E1 /* ATLMessageBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795CE1C7F9125009B65E1 /* ATLMessageBubbleView.m */; };
+		5BA795FE1C7F9125009B65E1 /* ATLMessageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795D01C7F9125009B65E1 /* ATLMessageCollectionViewCell.m */; };
+		5BA795FF1C7F9125009B65E1 /* ATLMessageComposeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795D21C7F9125009B65E1 /* ATLMessageComposeTextView.m */; };
+		5BA796001C7F9125009B65E1 /* ATLMessageInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795D41C7F9125009B65E1 /* ATLMessageInputToolbar.m */; };
+		5BA796011C7F9125009B65E1 /* ATLOutgoingMessageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795D61C7F9125009B65E1 /* ATLOutgoingMessageCollectionViewCell.m */; };
+		5BA796021C7F9125009B65E1 /* ATLParticipantSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795D81C7F9125009B65E1 /* ATLParticipantSectionHeaderView.m */; };
+		5BA796031C7F9125009B65E1 /* ATLParticipantTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795DA1C7F9125009B65E1 /* ATLParticipantTableViewCell.m */; };
+		5BA796041C7F9125009B65E1 /* ATLPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795DC1C7F9125009B65E1 /* ATLPlayView.m */; };
+		5BA796051C7F9125009B65E1 /* ATLProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA795DE1C7F9125009B65E1 /* ATLProgressView.m */; };
+		5BA796071C7F9683009B65E1 /* Connections.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA796061C7F9683009B65E1 /* Connections.Storyboard */; };
+		5BA7960A1C7F980C009B65E1 /* BURematchCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796091C7F980C009B65E1 /* BURematchCollectionViewCell.m */; };
+		5BA796111C808062009B65E1 /* BUContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796101C808062009B65E1 /* BUContactListViewController.m */; };
+		5BA796171C8090B4009B65E1 /* BUContactListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796161C8090B4009B65E1 /* BUContactListTableViewCell.m */; };
+		5BA7961A1C845D1E009B65E1 /* BUUserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796191C845D1E009B65E1 /* BUUserProfile.m */; };
 		5BB683501C64A58E0043C4FC /* EmployementStatusTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6834D1C64A58E0043C4FC /* EmployementStatusTVCell.m */; };
 		5BB683511C64A58E0043C4FC /* HighLevelEducationTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6834F1C64A58E0043C4FC /* HighLevelEducationTVCell.m */; };
 		5BDA47201C22596200C875AB /* BURootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA471F1C22596200C875AB /* BURootViewController.m */; };
@@ -142,6 +142,9 @@
 		78CF172B1C609D3C00779203 /* PWCustomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CF172A1C609D3C00779203 /* PWCustomPickerView.m */; };
 		78CF172F1C609D5100779203 /* PWCustomPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CF172D1C609D5100779203 /* PWCustomPickerCell.m */; };
 		78CF17301C609D5100779203 /* PWCustomPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78CF172E1C609D5100779203 /* PWCustomPickerCell.xib */; };
+		78E4F2801C85A1120034CFE2 /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78E4F27F1C85A1120034CFE2 /* Accounts.storyboard */; };
+		78E4F2831C85A1560034CFE2 /* BUConfigurationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E4F2821C85A1560034CFE2 /* BUConfigurationVC.m */; };
+		78E4F2861C85A2F60034CFE2 /* BUAppNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E4F2851C85A2F60034CFE2 /* BUAppNotificationCell.m */; };
 		78F4A92A1C0CCC11001C76A6 /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78F4A9271C0CCC11001C76A6 /* Comfortaa-Bold.ttf */; };
 		78F4A92B1C0CCC11001C76A6 /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78F4A9281C0CCC11001C76A6 /* Comfortaa-Light.ttf */; };
 		78F4A92C1C0CCC11001C76A6 /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78F4A9291C0CCC11001C76A6 /* Comfortaa-Regular.ttf */; };
@@ -431,6 +434,11 @@
 		78CF172C1C609D5100779203 /* PWCustomPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWCustomPickerCell.h; sourceTree = "<group>"; };
 		78CF172D1C609D5100779203 /* PWCustomPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWCustomPickerCell.m; sourceTree = "<group>"; };
 		78CF172E1C609D5100779203 /* PWCustomPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWCustomPickerCell.xib; sourceTree = "<group>"; };
+		78E4F27F1C85A1120034CFE2 /* Accounts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Accounts.storyboard; sourceTree = "<group>"; };
+		78E4F2811C85A1560034CFE2 /* BUConfigurationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUConfigurationVC.h; sourceTree = "<group>"; };
+		78E4F2821C85A1560034CFE2 /* BUConfigurationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUConfigurationVC.m; sourceTree = "<group>"; };
+		78E4F2841C85A2F60034CFE2 /* BUAppNotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUAppNotificationCell.h; sourceTree = "<group>"; };
+		78E4F2851C85A2F60034CFE2 /* BUAppNotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUAppNotificationCell.m; sourceTree = "<group>"; };
 		78F4A9271C0CCC11001C76A6 /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
 		78F4A9281C0CCC11001C76A6 /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Light.ttf"; sourceTree = "<group>"; };
 		78F4A9291C0CCC11001C76A6 /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
@@ -853,6 +861,7 @@
 				78CF17271C60979600779203 /* CustomPicker.storyboard */,
 				78BF55111C68701000B5F1A4 /* HomeView.storyboard */,
 				5BA796061C7F9683009B65E1 /* Connections.Storyboard */,
+				78E4F27F1C85A1120034CFE2 /* Accounts.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -869,6 +878,10 @@
 		789D88DA1C7E3CBE00772EED /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				78E4F2811C85A1560034CFE2 /* BUConfigurationVC.h */,
+				78E4F2821C85A1560034CFE2 /* BUConfigurationVC.m */,
+				78E4F2841C85A2F60034CFE2 /* BUAppNotificationCell.h */,
+				78E4F2851C85A2F60034CFE2 /* BUAppNotificationCell.m */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -1307,6 +1320,7 @@
 				5B2A2CB41C182D7D006F3845 /* DigitsKitResources.bundle in Resources */,
 				789D89081C7F85BA00772EED /* BUProfileOcupationInfoVC.xib in Resources */,
 				78F4A92A1C0CCC11001C76A6 /* Comfortaa-Bold.ttf in Resources */,
+				78E4F2801C85A1120034CFE2 /* Accounts.storyboard in Resources */,
 				789D89131C7F860B00772EED /* BUProfileHabitsInfoVC.xib in Resources */,
 				7846226F1C0711E100EA589C /* LaunchScreen.storyboard in Resources */,
 				789D89181C7F862000772EED /* BUProfileLegalStatusInfoVC.xib in Resources */,
@@ -1485,6 +1499,7 @@
 				5BA795E71C7F9125009B65E1 /* ATLDataSourceChange.m in Sources */,
 				5B2D3E8D1C7C6927006B7674 /* BUHomeConnectionTabVC.m in Sources */,
 				5BA796111C808062009B65E1 /* BUContactListViewController.m in Sources */,
+				78E4F2861C85A2F60034CFE2 /* BUAppNotificationCell.m in Sources */,
 				5BA795F91C7F9125009B65E1 /* ATLConversationCollectionViewMoreMessagesHeader.m in Sources */,
 				5BA795F41C7F9125009B65E1 /* ATLAvatarImageView.m in Sources */,
 				78B5B7281C5678DD00E3C531 /* BUProfileHeritageVC.m in Sources */,
@@ -1513,6 +1528,7 @@
 				5BA795E61C7F9125009B65E1 /* ATLConversationDataSource.m in Sources */,
 				5BA796041C7F9125009B65E1 /* ATLPlayView.m in Sources */,
 				789D89071C7F85BA00772EED /* BUProfileOcupationInfoVC.m in Sources */,
+				78E4F2831C85A1560034CFE2 /* BUConfigurationVC.m in Sources */,
 				789D890E1C7F85E800772EED /* BUProfileHeritageInfoVC.m in Sources */,
 				78CF172B1C609D3C00779203 /* PWCustomPickerView.m in Sources */,
 				5B0802611C7344BC00DAD5A5 /* BUEmptySegue.m in Sources */,
