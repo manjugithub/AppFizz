@@ -9,6 +9,7 @@
 #import "BUAcountsTabViewController.h"
 #import "BUHomeProfileImgPrevCell.h"
 #import "BUConfigurationVC.h"
+#import "BUInviteFriendVC.h"
 @interface BUAcountsTabViewController ()
 @property(nonatomic, strong) IBOutlet UITableView *imgScrollerTableView;
 
@@ -53,10 +54,18 @@
 //    return cell;
 //}
 
-- (IBAction)showProfileDetails:(id)sender {
+- (IBAction)showProfileDetails:(id)sender
+{
+    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Accounts" bundle:nil];
+    BUConfigurationVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUConfigurationVC"];
+    [self.tabBarController.navigationController pushViewController:vc animated:YES];
 }
 
-- (IBAction)showPreferences:(id)sender {
+- (IBAction)showPreferences:(id)sender
+{
+    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Accounts" bundle:nil];
+    BUConfigurationVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUConfigurationVC"];
+    [self.tabBarController.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)showConfiguration:(id)sender
@@ -66,12 +75,26 @@
     [self.tabBarController.navigationController pushViewController:vc animated:YES];
 }
 
-- (IBAction)showInviteFriend:(id)sender {
+- (IBAction)showInviteFriend:(id)sender
+{
+    
+    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Accounts" bundle:nil];
+    BUInviteFriendVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUInviteFriendVC"];
+    [self.tabBarController.navigationController pushViewController:vc animated:YES];
+    
 }
 
-- (IBAction)showHowItWorks:(id)sender {
+- (IBAction)showHowItWorks:(id)sender
+{
+    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Accounts" bundle:nil];
+    BUConfigurationVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUConfigurationVC"];
+    [self.tabBarController.navigationController pushViewController:vc animated:YES];
 }
 
-- (IBAction)showHelpAndFeedback:(id)sender {
+- (IBAction)showHelpAndFeedback:(id)sender
+{
+    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Accounts" bundle:nil];
+    BUConfigurationVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUConfigurationVC"];
+    [self.tabBarController.navigationController pushViewController:vc animated:YES];
 }
 @end

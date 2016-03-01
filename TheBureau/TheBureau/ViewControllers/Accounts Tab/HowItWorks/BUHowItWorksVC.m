@@ -1,23 +1,22 @@
 //
-//  BUConfigurationVC.m
+//  BUHowItWorksVC.m
 //  TheBureau
 //
 //  Created by Manjunath on 01/03/16.
 //  Copyright © 2016 Bureau. All rights reserved.
 //
 
-#import "BUConfigurationVC.h"
+#import "BUHowItWorksVC.h"
 
-@interface BUConfigurationVC ()
+@interface BUHowItWorksVC ()
 
 @end
 
-@implementation BUConfigurationVC
+@implementation BUHowItWorksVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"CONFIGURATION";
 }
 
 - (void)didReceiveMemoryWarning {
