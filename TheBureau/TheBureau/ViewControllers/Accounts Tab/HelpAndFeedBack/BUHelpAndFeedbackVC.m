@@ -1,26 +1,27 @@
 //
-//  BUConfigurationVC.m
+//  BUHelpAndFeedbackVC.m
 //  TheBureau
 //
 //  Created by Manjunath on 01/03/16.
 //  Copyright © 2016 Bureau. All rights reserved.
 //
 
-#import "BUConfigurationVC.h"
+#import "BUHelpAndFeedbackVC.h"
 
-@interface BUConfigurationVC ()
+@interface BUHelpAndFeedbackVC ()
 
 @end
 
-@implementation BUConfigurationVC
+@implementation BUHelpAndFeedbackVC
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"CONFIGURATION";
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

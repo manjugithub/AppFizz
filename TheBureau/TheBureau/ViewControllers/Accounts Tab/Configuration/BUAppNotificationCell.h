@@ -18,7 +18,9 @@ typedef NS_ENUM(NSInteger, BUAppNotificationCellType) {
 
 @interface BUAppNotificationCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *notificationTitleLabel;
-@property (assign, nonatomic) IBInspectable BUAppNotificationCellType appNotificationCellType;
+@property (nonatomic) IBInspectable NSInteger appNotificationCellType;
+@property (weak, nonatomic) IBInspectable UIImage *avaImage;
+
 
 - (IBAction)changeNotificationSettings:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *switchBtn;

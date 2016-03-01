@@ -150,6 +150,10 @@
 		78E4F2801C85A1120034CFE2 /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78E4F27F1C85A1120034CFE2 /* Accounts.storyboard */; };
 		78E4F2831C85A1560034CFE2 /* BUConfigurationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E4F2821C85A1560034CFE2 /* BUConfigurationVC.m */; };
 		78E4F2861C85A2F60034CFE2 /* BUAppNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E4F2851C85A2F60034CFE2 /* BUAppNotificationCell.m */; };
+		78E4F2891C85B3280034CFE2 /* BUInviteFriendVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E4F2881C85B3280034CFE2 /* BUInviteFriendVC.m */; };
+		78E4F28C1C85B3C30034CFE2 /* BUPreferencesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E4F28B1C85B3C30034CFE2 /* BUPreferencesVC.m */; };
+		78E4F28F1C85B3E40034CFE2 /* BUHowItWorksVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E4F28E1C85B3E40034CFE2 /* BUHowItWorksVC.m */; };
+		78E4F2921C85B4010034CFE2 /* BUHelpAndFeedbackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E4F2911C85B4010034CFE2 /* BUHelpAndFeedbackVC.m */; };
 		78F4A92A1C0CCC11001C76A6 /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78F4A9271C0CCC11001C76A6 /* Comfortaa-Bold.ttf */; };
 		78F4A92B1C0CCC11001C76A6 /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78F4A9281C0CCC11001C76A6 /* Comfortaa-Light.ttf */; };
 		78F4A92C1C0CCC11001C76A6 /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78F4A9291C0CCC11001C76A6 /* Comfortaa-Regular.ttf */; };
@@ -454,6 +458,14 @@
 		78E4F2821C85A1560034CFE2 /* BUConfigurationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUConfigurationVC.m; sourceTree = "<group>"; };
 		78E4F2841C85A2F60034CFE2 /* BUAppNotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUAppNotificationCell.h; sourceTree = "<group>"; };
 		78E4F2851C85A2F60034CFE2 /* BUAppNotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUAppNotificationCell.m; sourceTree = "<group>"; };
+		78E4F2871C85B3280034CFE2 /* BUInviteFriendVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUInviteFriendVC.h; sourceTree = "<group>"; };
+		78E4F2881C85B3280034CFE2 /* BUInviteFriendVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUInviteFriendVC.m; sourceTree = "<group>"; };
+		78E4F28A1C85B3C30034CFE2 /* BUPreferencesVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUPreferencesVC.h; sourceTree = "<group>"; };
+		78E4F28B1C85B3C30034CFE2 /* BUPreferencesVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUPreferencesVC.m; sourceTree = "<group>"; };
+		78E4F28D1C85B3E40034CFE2 /* BUHowItWorksVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUHowItWorksVC.h; sourceTree = "<group>"; };
+		78E4F28E1C85B3E40034CFE2 /* BUHowItWorksVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUHowItWorksVC.m; sourceTree = "<group>"; };
+		78E4F2901C85B4010034CFE2 /* BUHelpAndFeedbackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUHelpAndFeedbackVC.h; sourceTree = "<group>"; };
+		78E4F2911C85B4010034CFE2 /* BUHelpAndFeedbackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUHelpAndFeedbackVC.m; sourceTree = "<group>"; };
 		78F4A9271C0CCC11001C76A6 /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
 		78F4A9281C0CCC11001C76A6 /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Light.ttf"; sourceTree = "<group>"; };
 		78F4A9291C0CCC11001C76A6 /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
@@ -922,6 +934,8 @@
 		789D88DB1C7E3CBE00772EED /* HelpAndFeedBack */ = {
 			isa = PBXGroup;
 			children = (
+				78E4F2901C85B4010034CFE2 /* BUHelpAndFeedbackVC.h */,
+				78E4F2911C85B4010034CFE2 /* BUHelpAndFeedbackVC.m */,
 			);
 			path = HelpAndFeedBack;
 			sourceTree = "<group>";
@@ -929,6 +943,8 @@
 		789D88DC1C7E3CBE00772EED /* HowItWorks */ = {
 			isa = PBXGroup;
 			children = (
+				78E4F28D1C85B3E40034CFE2 /* BUHowItWorksVC.h */,
+				78E4F28E1C85B3E40034CFE2 /* BUHowItWorksVC.m */,
 			);
 			path = HowItWorks;
 			sourceTree = "<group>";
@@ -936,6 +952,8 @@
 		789D88DD1C7E3CBE00772EED /* InviteFriend */ = {
 			isa = PBXGroup;
 			children = (
+				78E4F2871C85B3280034CFE2 /* BUInviteFriendVC.h */,
+				78E4F2881C85B3280034CFE2 /* BUInviteFriendVC.m */,
 			);
 			path = InviteFriend;
 			sourceTree = "<group>";
@@ -943,6 +961,8 @@
 		789D88DE1C7E3CBE00772EED /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
+				78E4F28A1C85B3C30034CFE2 /* BUPreferencesVC.h */,
+				78E4F28B1C85B3C30034CFE2 /* BUPreferencesVC.m */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -1526,12 +1546,14 @@
 				5BA795F81C7F9125009B65E1 /* ATLConversationCollectionViewHeader.m in Sources */,
 				789D89021C7E404B00772EED /* BUProfileEducationInfoVC.m in Sources */,
 				78B5B7301C56792000E3C531 /* BUProfileLegalStatusVC.m in Sources */,
+				78E4F28C1C85B3C30034CFE2 /* BUPreferencesVC.m in Sources */,
 				5B1628841C4CFA620034FA33 /* BUSplashViewController.m in Sources */,
 				789D89121C7F860B00772EED /* BUProfileHabitsInfoVC.m in Sources */,
 				5B2D3E8F1C7C6927006B7674 /* BUProfileRematchVC.m in Sources */,
 				5B2D3E8E1C7C6927006B7674 /* BUProfileMatchChatVC.m in Sources */,
 				5B16290C1C5F61EE0034FA33 /* BUCustomAlertView.m in Sources */,
 				789D891C1C7F863900772EED /* BUProfileHoroscopeInfoVC.m in Sources */,
+				78E4F28F1C85B3E40034CFE2 /* BUHowItWorksVC.m in Sources */,
 				5BA795E71C7F9125009B65E1 /* ATLDataSourceChange.m in Sources */,
 				5B2D3E8D1C7C6927006B7674 /* BUHomeConnectionTabVC.m in Sources */,
 				5BA796111C808062009B65E1 /* BUContactListViewController.m in Sources */,
@@ -1566,9 +1588,11 @@
 				5BA796041C7F9125009B65E1 /* ATLPlayView.m in Sources */,
 				789D89071C7F85BA00772EED /* BUProfileOcupationInfoVC.m in Sources */,
 				78E4F2831C85A1560034CFE2 /* BUConfigurationVC.m in Sources */,
+				78E4F2891C85B3280034CFE2 /* BUInviteFriendVC.m in Sources */,
 				789D890E1C7F85E800772EED /* BUProfileHeritageInfoVC.m in Sources */,
 				78CF172B1C609D3C00779203 /* PWCustomPickerView.m in Sources */,
 				5B0802611C7344BC00DAD5A5 /* BUEmptySegue.m in Sources */,
+				78E4F2921C85B4010034CFE2 /* BUHelpAndFeedbackVC.m in Sources */,
 				5BA796011C7F9125009B65E1 /* ATLOutgoingMessageCollectionViewCell.m in Sources */,
 				5BA7963E1C85C98F009B65E1 /* UIView+FLKAutoLayout.m in Sources */,
 				5B2A2CAE1C0CE72B006F3845 /* BUForgotPasswordVC.m in Sources */,

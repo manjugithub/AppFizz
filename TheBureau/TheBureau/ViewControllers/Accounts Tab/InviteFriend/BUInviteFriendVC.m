@@ -1,23 +1,22 @@
 //
-//  BUConfigurationVC.m
+//  BUInviteFriendVC.m
 //  TheBureau
 //
 //  Created by Manjunath on 01/03/16.
 //  Copyright © 2016 Bureau. All rights reserved.
 //
 
-#import "BUConfigurationVC.h"
+#import "BUInviteFriendVC.h"
 
-@interface BUConfigurationVC ()
+@interface BUInviteFriendVC ()
 
 @end
 
-@implementation BUConfigurationVC
+@implementation BUInviteFriendVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"CONFIGURATION";
 }
 
 - (void)didReceiveMemoryWarning {
