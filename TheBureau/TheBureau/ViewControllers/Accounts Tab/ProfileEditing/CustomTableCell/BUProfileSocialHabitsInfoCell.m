@@ -20,4 +20,11 @@
     // Configure the view for the selected state
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+
 @end

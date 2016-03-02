@@ -15,11 +15,13 @@ typedef NS_ENUM(NSInteger, BUAppNotificationCellType) {
     BUAppNotificationCellTypeSounds
 };
 
+#import "BUConfigurationVC.h"
 
 @interface BUAppNotificationCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *notificationTitleLabel;
 @property (nonatomic) IBInspectable NSInteger appNotificationCellType;
 @property (weak, nonatomic) IBInspectable UIImage *avaImage;
+@property (weak, nonatomic) IBOutlet BUConfigurationVC *parentVC;
 
 
 - (IBAction)changeNotificationSettings:(id)sender;

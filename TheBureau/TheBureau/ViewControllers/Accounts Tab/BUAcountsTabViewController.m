@@ -12,6 +12,7 @@
 #import "BUInviteFriendVC.h"
 #import "BUProfileEditingVC.h"
 #import "BUHowItWorksVC.h"
+#import "BUHelpAndFeedbackVC.h"
 
 @interface BUAcountsTabViewController ()
 @property(nonatomic, strong) IBOutlet UITableView *imgScrollerTableView;
@@ -97,7 +98,7 @@
 - (IBAction)showHelpAndFeedback:(id)sender
 {
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Accounts" bundle:nil];
-    BUConfigurationVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUConfigurationVC"];
+    BUHelpAndFeedbackVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUHelpAndFeedbackVC"];
     [self.tabBarController.navigationController pushViewController:vc animated:YES];
 }
 @end

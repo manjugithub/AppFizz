@@ -15,6 +15,9 @@
 @property(nonatomic, strong) IBOutlet UITableView *imgScrollerTableView;
 @property(nonatomic, strong) NSDictionary *datasourceList;
 @property(nonatomic, strong) IBOutlet UIImageView *noProfileImgView;
+
+@property(nonatomic, strong) IBOutlet UIButton *matchBtn,*passBtn;
+
 @end
 
 @implementation BUHomeViewController
@@ -172,7 +175,9 @@ constructingBodyWithBlock:nil
              UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                  NSLog(@"OK");
 
-                 self.noProfileImgView.hidden = NO;
+                 self.matchBtn.hidden = YES;
+                 self.passBtn.hidden = YES;
+//                 self.noProfileImgView.hidden = NO;
              }];
              
              action;
@@ -197,7 +202,9 @@ constructingBodyWithBlock:nil
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSLog(@"OK");
             
-            self.noProfileImgView.hidden = NO;
+            self.matchBtn.hidden = YES;
+            self.passBtn.hidden = YES;
+//            self.noProfileImgView.hidden = NO;
         }];
         
         action;

@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBureau/ViewControllers/HomeViewController/BUHomeViewController.m"
-            timestampString = "477979983.24124"
+            timestampString = "478581611.580275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "-match:"
             landmarkType = "5">
          </BreakpointContent>

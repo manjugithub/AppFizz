@@ -9,6 +9,9 @@
 #import "BUHelpAndFeedbackVC.h"
 
 @interface BUHelpAndFeedbackVC ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewBottomConstraint;
+- (IBAction)sendFeedback:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextView *feedbackTextView;
 
 @end
 
@@ -18,6 +21,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.feedbackTextView.layer.cornerRadius = 5.0;
+    self.feedbackTextView.layer.borderWidth = 1.0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,4 +41,53 @@
 }
 */
 
+- (IBAction)sendFeedback:(id)sender
+{
+    [self.view endEditing:YES];
+    [self showKeyBoard:NO];
+    
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Thak you!" message:@"We received your message and wll get back to you shortly" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSLog(@"OK");
+
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        
+        action;
+    })];
+    
+    [self presentViewController:alertController  animated:YES completion:nil];
+
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+    [self showKeyBoard:NO];
+}
+
+-(void)showKeyBoard:(BOOL)inBool
+{
+    CGFloat constant = 0;
+    if(NO == inBool)
+    {
+        constant = 58;
+    }
+    else
+    {
+        constant = 320;
+    }
+    
+    self.textViewBottomConstraint.constant = constant;
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView;
+{
+    textView.text = [textView.text stringByReplacingOccurrencesOfString:@"Enter Your feedback here." withString:@""];
+    [self showKeyBoard:YES];
+    return YES;
+}
 @end

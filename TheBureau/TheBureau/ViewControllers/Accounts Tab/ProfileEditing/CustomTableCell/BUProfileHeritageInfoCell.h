@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BUProfileEditingVC.h"
 #import "PWCustomPickerView.h"
-@interface BUProfileHeritageInfoCell : UITableViewCell<PWPickerViewDelegate>
+@interface BUProfileHeritageInfoCell : UITableViewCell<PWPickerViewDelegate,UITextFieldDelegate>
 @property(weak, nonatomic) IBOutlet BUProfileEditingVC *parentVC;
 
 @property(nonatomic, strong) PWCustomPickerView *customPickerView;

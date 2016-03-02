@@ -126,10 +126,10 @@
             </objects>
             <point key="canvasLocation" x="-746" y="889"/>
         </scene>
-        <!--Tab 1-->
+        <!--Details-->
         <scene sceneID="G5a-hL-8Cj">
             <objects>
-                <viewController title="Tab 1" id="U3C-Nv-blz" customClass="BUHomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BUHomeViewController" title="Details" id="U3C-Nv-blz" customClass="BUHomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1mY-5h-Yqb"/>
                         <viewControllerLayoutGuide type="bottom" id="0UX-WQ-1oo"/>
@@ -248,7 +248,9 @@
                     <tabBarItem key="tabBarItem" title="Match" image="tab_match_icon" selectedImage="tab_match_red_icon" id="mNv-Tn-TCP"/>
                     <connections>
                         <outlet property="imgScrollerTableView" destination="oXk-6L-Jg3" id="oe0-Bw-Har"/>
+                        <outlet property="matchBtn" destination="ygq-7W-tFF" id="MbU-3h-qJA"/>
                         <outlet property="noProfileImgView" destination="Ch4-a6-IHu" id="MQA-5Y-Iqo"/>
+                        <outlet property="passBtn" destination="bAQ-Qi-3az" id="cFc-Vt-IMl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kup-Z5-ZGk" userLabel="First Responder" sceneMemberID="firstResponder"/>

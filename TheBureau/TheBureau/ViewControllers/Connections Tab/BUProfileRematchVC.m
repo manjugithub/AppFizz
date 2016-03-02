@@ -9,6 +9,7 @@
 #import "BUProfileRematchVC.h"
 #import "BURematchCollectionViewCell.h"
 #import "BUUserProfile.h"
+#import "BUHomeViewController.h"
 
 @interface BUProfileRematchVC ()
 
@@ -111,7 +112,11 @@
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 {
-    [self performSegueWithIdentifier:@"details" sender:self];
+    
+    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+    BUHomeViewController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeViewController"];
+    [self.tabBarController.navigationController pushViewController:vc animated:YES];
+    
 }
 #pragma mark – UICollectionViewDelegateFlowLayout
 

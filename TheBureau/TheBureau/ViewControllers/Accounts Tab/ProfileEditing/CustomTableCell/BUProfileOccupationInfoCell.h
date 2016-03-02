@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BUProfileEditingVC.h"
 
-@interface BUProfileOccupationInfoCell : UITableViewCell
+@interface BUProfileOccupationInfoCell : UITableViewCell<UITextFieldDelegate>
 @property(weak, nonatomic) IBOutlet BUProfileEditingVC *parentVC;
 
 @end
