@@ -10,6 +10,7 @@
 #import "BUProfileEditingVC.h"
 
 @interface BUProfileLegalStatusInfoCell : UITableViewCell<UITextFieldDelegate>
+@property(weak, nonatomic) IBOutlet UIView *nonEditingView,*editingView;
 @property(weak, nonatomic) IBOutlet BUProfileEditingVC *parentVC;
 
 @end

@@ -29,7 +29,7 @@
 		5B2D3E8D1C7C6927006B7674 /* BUHomeConnectionTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D3E871C7C6927006B7674 /* BUHomeConnectionTabVC.m */; };
 		5B2D3E8E1C7C6927006B7674 /* BUProfileMatchChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D3E891C7C6927006B7674 /* BUProfileMatchChatVC.m */; };
 		5B2D3E8F1C7C6927006B7674 /* BUProfileRematchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D3E8B1C7C6927006B7674 /* BUProfileRematchVC.m */; };
-		5BA795701C7F8EDD009B65E1 /* LayerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA7956F1C7F8EDD009B65E1 /* LayerKit.framework */; };
+		5BA795701C7F8EDD009B65E1 /* LayerKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA7956F1C7F8EDD009B65E1 /* LayerKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5BA795721C7F8EEC009B65E1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA795711C7F8EEC009B65E1 /* Security.framework */; };
 		5BA795741C7F8EF7009B65E1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA795731C7F8EF7009B65E1 /* MobileCoreServices.framework */; };
 		5BA795761C7F8F02009B65E1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA795751C7F8F02009B65E1 /* SystemConfiguration.framework */; };
@@ -1357,6 +1357,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 8761ef7408ba35916fe36c49067b96d6b6efb3ba a327e5abd4f5eebc33831c77535043bb03e26f8a22e86e08f33a9440a1b2f33a";
+			showEnvVarsInLog = 0;
 		};
 		5BA7957B1C7F8F29009B65E1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
