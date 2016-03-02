@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BUProfileEditingVC.h"
 
 @interface BUProfileOccupationInfoCell : UITableViewCell
+@property(weak, nonatomic) IBOutlet BUProfileEditingVC *parentVC;
 
 @end

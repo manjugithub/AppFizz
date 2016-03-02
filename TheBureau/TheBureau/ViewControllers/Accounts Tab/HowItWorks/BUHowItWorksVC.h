@@ -8,6 +8,8 @@
 
 #import "BUBaseViewController.h"
 
-@interface BUHowItWorksVC : BUBaseViewController
+@interface BUHowItWorksVC : BUBaseViewController<UITableViewDataSource,UITableViewDelegate>
+
+@property(nonatomic , strong) IBOutlet UITableView *profileTableView;
 
 @end

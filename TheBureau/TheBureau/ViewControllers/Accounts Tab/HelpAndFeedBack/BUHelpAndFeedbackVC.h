@@ -8,6 +8,6 @@
 
 #import "BUBaseViewController.h"
 
-@interface BUHelpAndFeedbackVC : BUBaseViewController
+@interface BUHelpAndFeedbackVC : BUBaseViewController <UITextViewDelegate>
 
 @end

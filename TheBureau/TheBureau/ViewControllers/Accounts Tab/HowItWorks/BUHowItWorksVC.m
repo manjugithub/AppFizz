@@ -9,6 +9,7 @@
 #import "BUHowItWorksVC.h"
 
 @interface BUHowItWorksVC ()
+@property(nonatomic) NSInteger selectedRow;
 
 @end
 
@@ -16,7 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.selectedRow = -1;
     // Do any additional setup after loading the view.
+    self.navigationItem.title = @"How it works";
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,5 +37,85 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 5;
+}
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    UITableViewCell *cell = nil;
+    
+    switch (indexPath.section) {
+        case 0:
+        {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Cell1"];
+            break;
+        }
+        case 1:
+        {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Cell2"];
+            break;
+        }
+        case 2:
+        {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Cell3"];
+            break;
+        }
+        case 3:
+        {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Cell4"];
+            break;
+        }
+        case 4:
+        {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Cell5"];
+            break;
+        }
+        default:
+            break;
+    }
+    //Clip whatever is out the cell frame
+    cell.clipsToBounds = YES;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    return cell;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat normalHeight = 70;
+    CGFloat expandedHeight = 195;
+
+    CGFloat height = 0;
+    
+    height =  self.selectedRow != indexPath.section ? normalHeight :expandedHeight;
+    return height;
+}
+
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.selectedRow = indexPath.section;
+    [self.profileTableView beginUpdates];
+    [self.profileTableView endUpdates];
+    
+}
 
 @end

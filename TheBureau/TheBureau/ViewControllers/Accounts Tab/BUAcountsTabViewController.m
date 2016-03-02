@@ -10,6 +10,9 @@
 #import "BUHomeProfileImgPrevCell.h"
 #import "BUConfigurationVC.h"
 #import "BUInviteFriendVC.h"
+#import "BUProfileEditingVC.h"
+#import "BUHowItWorksVC.h"
+
 @interface BUAcountsTabViewController ()
 @property(nonatomic, strong) IBOutlet UITableView *imgScrollerTableView;
 
@@ -57,7 +60,7 @@
 - (IBAction)showProfileDetails:(id)sender
 {
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Accounts" bundle:nil];
-    BUConfigurationVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUConfigurationVC"];
+    BUProfileEditingVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileEditingVC"];
     [self.tabBarController.navigationController pushViewController:vc animated:YES];
 }
 
@@ -87,7 +90,7 @@
 - (IBAction)showHowItWorks:(id)sender
 {
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Accounts" bundle:nil];
-    BUConfigurationVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUConfigurationVC"];
+    BUHowItWorksVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUHowItWorksVC"];
     [self.tabBarController.navigationController pushViewController:vc animated:YES];
 }
 

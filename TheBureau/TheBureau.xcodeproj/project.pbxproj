@@ -82,11 +82,11 @@
 		5BA796111C808062009B65E1 /* BUContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796101C808062009B65E1 /* BUContactListViewController.m */; };
 		5BA796171C8090B4009B65E1 /* BUContactListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796161C8090B4009B65E1 /* BUContactListTableViewCell.m */; };
 		5BA7961A1C845D1E009B65E1 /* BUUserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796191C845D1E009B65E1 /* BUUserProfile.m */; };
-		5BA7964C1C85E973009B65E1 /* FLKAutoLayoutPredicateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796431C85E973009B65E1 /* FLKAutoLayoutPredicateList.m */; settings = {ASSET_TAGS = (); }; };
-		5BA7964D1C85E973009B65E1 /* NSLayoutConstraint+FLKAutoLayoutDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796451C85E973009B65E1 /* NSLayoutConstraint+FLKAutoLayoutDebug.m */; settings = {ASSET_TAGS = (); }; };
-		5BA7964E1C85E973009B65E1 /* UIView+FLKAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796471C85E973009B65E1 /* UIView+FLKAutoLayout.m */; settings = {ASSET_TAGS = (); }; };
-		5BA7964F1C85E973009B65E1 /* UIView+FLKAutoLayoutDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796491C85E973009B65E1 /* UIView+FLKAutoLayoutDebug.m */; settings = {ASSET_TAGS = (); }; };
-		5BA796501C85E973009B65E1 /* UIView+FLKAutoLayoutPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7964B1C85E973009B65E1 /* UIView+FLKAutoLayoutPredicate.m */; settings = {ASSET_TAGS = (); }; };
+		5BA7964C1C85E973009B65E1 /* FLKAutoLayoutPredicateList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796431C85E973009B65E1 /* FLKAutoLayoutPredicateList.m */; };
+		5BA7964D1C85E973009B65E1 /* NSLayoutConstraint+FLKAutoLayoutDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796451C85E973009B65E1 /* NSLayoutConstraint+FLKAutoLayoutDebug.m */; };
+		5BA7964E1C85E973009B65E1 /* UIView+FLKAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796471C85E973009B65E1 /* UIView+FLKAutoLayout.m */; };
+		5BA7964F1C85E973009B65E1 /* UIView+FLKAutoLayoutDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA796491C85E973009B65E1 /* UIView+FLKAutoLayoutDebug.m */; };
+		5BA796501C85E973009B65E1 /* UIView+FLKAutoLayoutPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA7964B1C85E973009B65E1 /* UIView+FLKAutoLayoutPredicate.m */; };
 		5BB683501C64A58E0043C4FC /* EmployementStatusTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6834D1C64A58E0043C4FC /* EmployementStatusTVCell.m */; };
 		5BB683511C64A58E0043C4FC /* HighLevelEducationTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6834F1C64A58E0043C4FC /* HighLevelEducationTVCell.m */; };
 		5BDA47201C22596200C875AB /* BURootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA471F1C22596200C875AB /* BURootViewController.m */; };
@@ -107,19 +107,6 @@
 		789D88F31C7E3F9300772EED /* BUProfileHeritageInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 789D88F21C7E3F9300772EED /* BUProfileHeritageInfoCell.m */; };
 		789D88F61C7E3FAD00772EED /* BUProfileSocialHabitsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 789D88F51C7E3FAD00772EED /* BUProfileSocialHabitsInfoCell.m */; };
 		789D88F91C7E3FC000772EED /* BUProfileHoroscopeInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 789D88F81C7E3FC000772EED /* BUProfileHoroscopeInfoCell.m */; };
-		789D88FD1C7E403500772EED /* BUProfileBasicInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 789D88FB1C7E403500772EED /* BUProfileBasicInfoVC.m */; };
-		789D88FE1C7E403500772EED /* BUProfileBasicInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 789D88FC1C7E403500772EED /* BUProfileBasicInfoVC.xib */; };
-		789D89021C7E404B00772EED /* BUProfileEducationInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 789D89001C7E404B00772EED /* BUProfileEducationInfoVC.m */; };
-		789D89031C7E404B00772EED /* BUProfileEducationInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 789D89011C7E404B00772EED /* BUProfileEducationInfoVC.xib */; };
-		789D89071C7F85BA00772EED /* BUProfileOcupationInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 789D89051C7F85BA00772EED /* BUProfileOcupationInfoVC.m */; };
-		789D89081C7F85BA00772EED /* BUProfileOcupationInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 789D89061C7F85BA00772EED /* BUProfileOcupationInfoVC.xib */; };
-		789D890E1C7F85E800772EED /* BUProfileHeritageInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 789D890D1C7F85E800772EED /* BUProfileHeritageInfoVC.m */; };
-		789D89121C7F860B00772EED /* BUProfileHabitsInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 789D89101C7F860B00772EED /* BUProfileHabitsInfoVC.m */; };
-		789D89131C7F860B00772EED /* BUProfileHabitsInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 789D89111C7F860B00772EED /* BUProfileHabitsInfoVC.xib */; };
-		789D89171C7F862000772EED /* BUProfileLegalStatusInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 789D89151C7F862000772EED /* BUProfileLegalStatusInfoVC.m */; };
-		789D89181C7F862000772EED /* BUProfileLegalStatusInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 789D89161C7F862000772EED /* BUProfileLegalStatusInfoVC.xib */; };
-		789D891C1C7F863900772EED /* BUProfileHoroscopeInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 789D891A1C7F863900772EED /* BUProfileHoroscopeInfoVC.m */; };
-		789D891D1C7F863900772EED /* BUProfileHoroscopeInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 789D891B1C7F863900772EED /* BUProfileHoroscopeInfoVC.xib */; };
 		78B5B71A1C561A6900E3C531 /* BUWebServicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B5B7191C561A6900E3C531 /* BUWebServicesManager.m */; };
 		78B5B71C1C5675E200E3C531 /* ProfileCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B5B71B1C5675E200E3C531 /* ProfileCreation.storyboard */; };
 		78B5B71D1C5675E200E3C531 /* ProfileCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B5B71B1C5675E200E3C531 /* ProfileCreation.storyboard */; };
@@ -395,26 +382,6 @@
 		789D88F51C7E3FAD00772EED /* BUProfileSocialHabitsInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfileSocialHabitsInfoCell.m; sourceTree = "<group>"; };
 		789D88F71C7E3FC000772EED /* BUProfileHoroscopeInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUProfileHoroscopeInfoCell.h; sourceTree = "<group>"; };
 		789D88F81C7E3FC000772EED /* BUProfileHoroscopeInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfileHoroscopeInfoCell.m; sourceTree = "<group>"; };
-		789D88FA1C7E403500772EED /* BUProfileBasicInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUProfileBasicInfoVC.h; sourceTree = "<group>"; };
-		789D88FB1C7E403500772EED /* BUProfileBasicInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfileBasicInfoVC.m; sourceTree = "<group>"; };
-		789D88FC1C7E403500772EED /* BUProfileBasicInfoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BUProfileBasicInfoVC.xib; sourceTree = "<group>"; };
-		789D88FF1C7E404B00772EED /* BUProfileEducationInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUProfileEducationInfoVC.h; sourceTree = "<group>"; };
-		789D89001C7E404B00772EED /* BUProfileEducationInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfileEducationInfoVC.m; sourceTree = "<group>"; };
-		789D89011C7E404B00772EED /* BUProfileEducationInfoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BUProfileEducationInfoVC.xib; sourceTree = "<group>"; };
-		789D89041C7F85BA00772EED /* BUProfileOcupationInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUProfileOcupationInfoVC.h; sourceTree = "<group>"; };
-		789D89051C7F85BA00772EED /* BUProfileOcupationInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfileOcupationInfoVC.m; sourceTree = "<group>"; };
-		789D89061C7F85BA00772EED /* BUProfileOcupationInfoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BUProfileOcupationInfoVC.xib; sourceTree = "<group>"; };
-		789D890C1C7F85E800772EED /* BUProfileHeritageInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUProfileHeritageInfoVC.h; sourceTree = "<group>"; };
-		789D890D1C7F85E800772EED /* BUProfileHeritageInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfileHeritageInfoVC.m; sourceTree = "<group>"; };
-		789D890F1C7F860B00772EED /* BUProfileHabitsInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUProfileHabitsInfoVC.h; sourceTree = "<group>"; };
-		789D89101C7F860B00772EED /* BUProfileHabitsInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfileHabitsInfoVC.m; sourceTree = "<group>"; };
-		789D89111C7F860B00772EED /* BUProfileHabitsInfoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BUProfileHabitsInfoVC.xib; sourceTree = "<group>"; };
-		789D89141C7F862000772EED /* BUProfileLegalStatusInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUProfileLegalStatusInfoVC.h; sourceTree = "<group>"; };
-		789D89151C7F862000772EED /* BUProfileLegalStatusInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfileLegalStatusInfoVC.m; sourceTree = "<group>"; };
-		789D89161C7F862000772EED /* BUProfileLegalStatusInfoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BUProfileLegalStatusInfoVC.xib; sourceTree = "<group>"; };
-		789D89191C7F863900772EED /* BUProfileHoroscopeInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUProfileHoroscopeInfoVC.h; sourceTree = "<group>"; };
-		789D891A1C7F863900772EED /* BUProfileHoroscopeInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfileHoroscopeInfoVC.m; sourceTree = "<group>"; };
-		789D891B1C7F863900772EED /* BUProfileHoroscopeInfoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BUProfileHoroscopeInfoVC.xib; sourceTree = "<group>"; };
 		78B5B7181C561A6900E3C531 /* BUWebServicesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUWebServicesManager.h; sourceTree = "<group>"; };
 		78B5B7191C561A6900E3C531 /* BUWebServicesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUWebServicesManager.m; sourceTree = "<group>"; };
 		78B5B71B1C5675E200E3C531 /* ProfileCreation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileCreation.storyboard; sourceTree = "<group>"; };
@@ -970,7 +937,6 @@
 			isa = PBXGroup;
 			children = (
 				789D88E31C7E3EE800772EED /* CustomTableCell */,
-				789D88E41C7E3EE800772EED /* CustomViews */,
 				789D88E01C7E3CED00772EED /* BUProfileEditingVC.h */,
 				789D88E11C7E3CED00772EED /* BUProfileEditingVC.m */,
 			);
@@ -996,33 +962,6 @@
 				789D88F81C7E3FC000772EED /* BUProfileHoroscopeInfoCell.m */,
 			);
 			path = CustomTableCell;
-			sourceTree = "<group>";
-		};
-		789D88E41C7E3EE800772EED /* CustomViews */ = {
-			isa = PBXGroup;
-			children = (
-				789D88FA1C7E403500772EED /* BUProfileBasicInfoVC.h */,
-				789D88FB1C7E403500772EED /* BUProfileBasicInfoVC.m */,
-				789D88FC1C7E403500772EED /* BUProfileBasicInfoVC.xib */,
-				789D88FF1C7E404B00772EED /* BUProfileEducationInfoVC.h */,
-				789D89001C7E404B00772EED /* BUProfileEducationInfoVC.m */,
-				789D89011C7E404B00772EED /* BUProfileEducationInfoVC.xib */,
-				789D89041C7F85BA00772EED /* BUProfileOcupationInfoVC.h */,
-				789D89051C7F85BA00772EED /* BUProfileOcupationInfoVC.m */,
-				789D89061C7F85BA00772EED /* BUProfileOcupationInfoVC.xib */,
-				789D890C1C7F85E800772EED /* BUProfileHeritageInfoVC.h */,
-				789D890D1C7F85E800772EED /* BUProfileHeritageInfoVC.m */,
-				789D890F1C7F860B00772EED /* BUProfileHabitsInfoVC.h */,
-				789D89101C7F860B00772EED /* BUProfileHabitsInfoVC.m */,
-				789D89111C7F860B00772EED /* BUProfileHabitsInfoVC.xib */,
-				789D89141C7F862000772EED /* BUProfileLegalStatusInfoVC.h */,
-				789D89151C7F862000772EED /* BUProfileLegalStatusInfoVC.m */,
-				789D89161C7F862000772EED /* BUProfileLegalStatusInfoVC.xib */,
-				789D89191C7F863900772EED /* BUProfileHoroscopeInfoVC.h */,
-				789D891A1C7F863900772EED /* BUProfileHoroscopeInfoVC.m */,
-				789D891B1C7F863900772EED /* BUProfileHoroscopeInfoVC.xib */,
-			);
-			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		78B5B7171C55EB9700E3C531 /* Webservices */ = {
@@ -1371,24 +1310,18 @@
 			files = (
 				78CF17301C609D5100779203 /* PWCustomPickerCell.xib in Resources */,
 				5B2A2CB41C182D7D006F3845 /* DigitsKitResources.bundle in Resources */,
-				789D89081C7F85BA00772EED /* BUProfileOcupationInfoVC.xib in Resources */,
 				78F4A92A1C0CCC11001C76A6 /* Comfortaa-Bold.ttf in Resources */,
 				78E4F2801C85A1120034CFE2 /* Accounts.storyboard in Resources */,
-				789D89131C7F860B00772EED /* BUProfileHabitsInfoVC.xib in Resources */,
 				7846226F1C0711E100EA589C /* LaunchScreen.storyboard in Resources */,
-				789D89181C7F862000772EED /* BUProfileLegalStatusInfoVC.xib in Resources */,
 				7846226C1C0711E100EA589C /* Assets.xcassets in Resources */,
 				784622671C0711E100EA589C /* Main.storyboard in Resources */,
-				789D89031C7E404B00772EED /* BUProfileEducationInfoVC.xib in Resources */,
 				78F4A92C1C0CCC11001C76A6 /* Comfortaa-Regular.ttf in Resources */,
 				78B5B71C1C5675E200E3C531 /* ProfileCreation.storyboard in Resources */,
-				789D891D1C7F863900772EED /* BUProfileHoroscopeInfoVC.xib in Resources */,
 				78BF55121C68701000B5F1A4 /* HomeView.storyboard in Resources */,
 				78CF17281C60979600779203 /* CustomPicker.storyboard in Resources */,
 				5B16288F1C4D252A0034FA33 /* ALLURA-REGULAR.TTF in Resources */,
 				5BA796071C7F9683009B65E1 /* Connections.Storyboard in Resources */,
 				5B2A2CB51C182D7D006F3845 /* TwitterKitResources.bundle in Resources */,
-				789D88FE1C7E403500772EED /* BUProfileBasicInfoVC.xib in Resources */,
 				78F4A92B1C0CCC11001C76A6 /* Comfortaa-Light.ttf in Resources */,
 				5B16288D1C4D04B80034FA33 /* TheBureau_Splash.gif in Resources */,
 			);
@@ -1543,15 +1476,12 @@
 				5BB683511C64A58E0043C4FC /* HighLevelEducationTVCell.m in Sources */,
 				789D88EA1C7E3F2300772EED /* BUProfileEducationInfoCell.m in Sources */,
 				5BA795F81C7F9125009B65E1 /* ATLConversationCollectionViewHeader.m in Sources */,
-				789D89021C7E404B00772EED /* BUProfileEducationInfoVC.m in Sources */,
 				78B5B7301C56792000E3C531 /* BUProfileLegalStatusVC.m in Sources */,
 				78E4F28C1C85B3C30034CFE2 /* BUPreferencesVC.m in Sources */,
 				5B1628841C4CFA620034FA33 /* BUSplashViewController.m in Sources */,
-				789D89121C7F860B00772EED /* BUProfileHabitsInfoVC.m in Sources */,
 				5B2D3E8F1C7C6927006B7674 /* BUProfileRematchVC.m in Sources */,
 				5B2D3E8E1C7C6927006B7674 /* BUProfileMatchChatVC.m in Sources */,
 				5B16290C1C5F61EE0034FA33 /* BUCustomAlertView.m in Sources */,
-				789D891C1C7F863900772EED /* BUProfileHoroscopeInfoVC.m in Sources */,
 				78E4F28F1C85B3E40034CFE2 /* BUHowItWorksVC.m in Sources */,
 				5BA795E71C7F9125009B65E1 /* ATLDataSourceChange.m in Sources */,
 				5B2D3E8D1C7C6927006B7674 /* BUHomeConnectionTabVC.m in Sources */,
@@ -1562,7 +1492,6 @@
 				78B5B7281C5678DD00E3C531 /* BUProfileHeritageVC.m in Sources */,
 				5B2A2CAB1C0CD68B006F3845 /* BUTroubleInLoginVC.m in Sources */,
 				78FEE23A1C0720B60013E9D2 /* Foundation+Extensions.m in Sources */,
-				789D89171C7F862000772EED /* BUProfileLegalStatusInfoVC.m in Sources */,
 				78FEE2631C0739CD0013E9D2 /* BULoginViewController.m in Sources */,
 				5BA795E81C7F9125009B65E1 /* ATLMediaAttachment.m in Sources */,
 				5BA795EA1C7F9125009B65E1 /* ATLConstants.m in Sources */,
@@ -1587,10 +1516,8 @@
 				5BA795E61C7F9125009B65E1 /* ATLConversationDataSource.m in Sources */,
 				5BA796041C7F9125009B65E1 /* ATLPlayView.m in Sources */,
 				5BA7964F1C85E973009B65E1 /* UIView+FLKAutoLayoutDebug.m in Sources */,
-				789D89071C7F85BA00772EED /* BUProfileOcupationInfoVC.m in Sources */,
 				78E4F2831C85A1560034CFE2 /* BUConfigurationVC.m in Sources */,
 				78E4F2891C85B3280034CFE2 /* BUInviteFriendVC.m in Sources */,
-				789D890E1C7F85E800772EED /* BUProfileHeritageInfoVC.m in Sources */,
 				78CF172B1C609D3C00779203 /* PWCustomPickerView.m in Sources */,
 				5B0802611C7344BC00DAD5A5 /* BUEmptySegue.m in Sources */,
 				78E4F2921C85B4010034CFE2 /* BUHelpAndFeedbackVC.m in Sources */,
@@ -1603,7 +1530,6 @@
 				5BA796001C7F9125009B65E1 /* ATLMessageInputToolbar.m in Sources */,
 				78F4A9411C0CD3F4001C76A6 /* BUAccountCreationVC.m in Sources */,
 				5BA796021C7F9125009B65E1 /* ATLParticipantSectionHeaderView.m in Sources */,
-				789D88FD1C7E403500772EED /* BUProfileBasicInfoVC.m in Sources */,
 				78CA18581C7AFE2900CF091A /* BUMatchPoolViewController.m in Sources */,
 				789D88E21C7E3CED00772EED /* BUProfileEditingVC.m in Sources */,
 				5B08024F1C6CD13C00DAD5A5 /* BUProfileDietVC.m in Sources */,

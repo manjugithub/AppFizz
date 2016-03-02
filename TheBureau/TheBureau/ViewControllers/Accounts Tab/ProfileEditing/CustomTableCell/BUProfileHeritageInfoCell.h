@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BUProfileEditingVC.h"
+#import "PWCustomPickerView.h"
+@interface BUProfileHeritageInfoCell : UITableViewCell<PWPickerViewDelegate>
+@property(weak, nonatomic) IBOutlet BUProfileEditingVC *parentVC;
 
-@interface BUProfileHeritageInfoCell : UITableViewCell
+@property(nonatomic, strong) PWCustomPickerView *customPickerView;
+@property(nonatomic, strong) NSString *religionID,*famliyID,*specificationID,*motherToungueID;
 
+@property(nonatomic, strong) IBOutlet UITextField *religionTF,*motherToungueTF,*specificationTF,*gothraTF,*familyOriginTF;
+
+@property(nonatomic) eHeritageList heritageList;
+@property(nonatomic, assign) BOOL isUpdatingProfile;
 @end

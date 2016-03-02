@@ -8,6 +8,8 @@
 
 #import "BUBaseViewController.h"
 
-@interface BUPreferencesVC : BUBaseViewController
+@interface BUPreferencesVC : BUBaseViewController<UITableViewDelegate,UITableViewDataSource>
+
+@property(nonatomic , strong) IBOutlet UITableView *preferenceTableView;
 
 @end
