@@ -226,7 +226,7 @@
                      }
                      else
                      {
-                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Login Failed" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[inResult valueForKey:@"response"] message:@"" preferredStyle:UIAlertControllerStyleAlert];
                          [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
                          [self presentViewController:alertController animated:YES completion:nil];
                      }
