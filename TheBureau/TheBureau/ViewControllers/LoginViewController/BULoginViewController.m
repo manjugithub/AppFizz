@@ -15,6 +15,7 @@
 #import "BUAccountCreationVC.h"
 #import "BUHomeTabbarController.h"
 #import <LayerKit/LayerKit.h>
+#import "BUWebServicesManager.h"
 
 @interface BULoginViewController ()
 
@@ -43,7 +44,7 @@
     _configuration = [[DGTAuthenticationConfiguration alloc] initWithAccountFields:DGTAccountFieldsDefaultOptionMask];
     _configuration.appearance = [self makeTheme];
     
-    NSURL *appID = [NSURL URLWithString:@"layer:///apps/production/23853704-995f-11e5-9c2e-6ac9d8033a8c"];
+    NSURL *appID = [NSURL URLWithString:@"layer:///apps/staging/238530d8-995f-11e5-9461-6ac9d8033a8c"];
     self.layerClient = [LYRClient clientWithAppID:appID];
 
 }
@@ -208,11 +209,11 @@
                                                                           handler:^(UIAlertAction *action)
                                                     {
                                                         
-                                                      //  [self loginLayer];
+                                                        [self loginLayer];
    
-                                                        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-                                                        BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-                                                        [self.navigationController pushViewController:vc animated:YES];
+//                                                        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+//                                                        BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+//                                                        [self.navigationController pushViewController:vc animated:YES];
                                                         
                                                         //                                       UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                                         //                                       BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];
@@ -273,9 +274,9 @@
                                    {
                                        
                                        [self loginLayer];
-                                       UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-                                       BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-                                       [self.navigationController pushViewController:vc animated:YES];
+//                                       UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+//                                       BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+//                                       [self.navigationController pushViewController:vc animated:YES];
 
 //                                       UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //                                       BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];
@@ -332,13 +333,14 @@
     if (self.layerClient.authenticatedUserID) {
         if ([self.layerClient.authenticatedUserID isEqualToString:userID]){
             NSLog(@"Layer Authenticated as User %@", self.layerClient.authenticatedUserID);
-            
-            //[GiFHUD dismiss];
+            [BUWebServicesManager sharedManager].layerClient = self.layerClient;
             
             
             if (completion) completion(YES, nil);
             {
-                
+        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+     BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+        [self.navigationController pushViewController:vc animated:YES];
                 
                 return;}
         } else {
@@ -383,9 +385,50 @@
         /*
          * 2. Acquire identity Token from Layer Identity Service
          */
-        NSDictionary *parameters = @{@"nonce" : nonce, @"userID" : userID};
         
+        NSDictionary *parameters = nil;
+        parameters = @{@"userid": userID
+                       ,@"nonce": nonce};
+     //   NSDictionary *parameters = @{@"nonce" : nonce, @"userid" : userID};
         
+        [[BUWebServicesManager sharedManager] getLayerAuthTokenwithParameters:parameters
+                                                              successBlock:^(id inResult, NSError *error)
+         {
+            // [self stopActivityIndicator];
+             if(nil != inResult && 0 < [inResult count])
+             {
+                 NSString *identityToken = [inResult valueForKey:@"identity_token"];
+                 
+                 [self.layerClient authenticateWithIdentityToken:identityToken completion:^(NSString *authenticatedUserID, NSError *error) {
+                     if (authenticatedUserID) {
+                         if (completion) {
+                             completion(YES, nil);
+                         }
+                         
+                     }
+                     else
+                     {
+                         completion(NO, error);
+                     }
+                 }];
+
+               
+             }
+             else
+             {
+                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+                 [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                 [self presentViewController:alertController animated:YES completion:nil];
+             }
+         }
+                                                              failureBlock:^(id response, NSError *error)
+         {
+             [self startActivityIndicator:YES];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+             [self presentViewController:alertController animated:YES completion:nil];
+         }];
+
         // Should call Api here and add below block
         
         // [self.layerClient authenticateWithIdentityToken:identityToken completion:^(NSString *authenticatedUserID, NSError *error) {
@@ -394,20 +437,20 @@
 //        [PFCloud callFunctionInBackground:@"generateToken" withParameters:parameters block:^(id object, NSError *error) {
 //            if (!error){
 //
+        //NSString *identityToken =
         
-               NSString *identityToken = @"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImN0eSI6ImxheWVyLWVpdDt2PTEiLCJraWQiOiJsYXllcjovLy9rZXlzLzQyNjExMGNlLWRkMWQtMTFlNS1iZjcyLWNiODE1ODAwNDUwOSJ9.eyJpc3MiOiJsYXllcjovLy9wcm92aWRlcnMvMjM4MzRhMTYtOTk1Zi0xMWU1LTkxOGUtNmFjOWQ4MDMzYThjIiwicHJuIjpudWxsLCJpYXQiOjE0NTY1NTU3Mzg5NTUsImV4cCI6MS40NTY1NTU3MzkwOGUrMTIsIm5jZSI6bnVsbH0.OaJ-AnCwFTkH-EhsqBOzfJp18FEUjJsiUBqtuCF55AhYGCqgej0JkcgtqdbmME8ooDP3vAiQEl4vZTpr11BhI9qlCSVKXGScj3RBS25ZZGVGFhYrMz8Bq4i5mbdpsM_8Arhevg_jVrL7drsT1nM1BAT7dPljnTNYVoKRm2rBkS79I0-bgb-aynJYTQw3LB-pKcMBrb4OUTqXYGfmiYU_KIGxY3Slr0Rblt6tKsm-9LCniB8eLYbieOrmF7xXOGVRs_bLqfF-bPmO5kf22bW_NtBxDHYjFaNDwgLteBs0dmSyXQG_yjt0YSK92BDeYUg5IlzzNUvBcQPsOD-rQJzoGQ";
-                [self.layerClient authenticateWithIdentityToken:identityToken completion:^(NSString *authenticatedUserID, NSError *error) {
-                    if (authenticatedUserID) {
-                        if (completion) {
-                            completion(YES, nil);
-                        }
-                        
-                    }
-                    else
-                    {
-                        completion(NO, error);
-                    }
-                }];
+//                [self.layerClient authenticateWithIdentityToken:identityToken completion:^(NSString *authenticatedUserID, NSError *error) {
+//                    if (authenticatedUserID) {
+//                        if (completion) {
+//                            completion(YES, nil);
+//                        }
+//                        
+//                    }
+//                    else
+//                    {
+//                        completion(NO, error);
+//                    }
+//                }];
 //            } else {
 //                NSLog(@"Parse Cloud function failed to be called to generate token with error: %@", error);
 //            }

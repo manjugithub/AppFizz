@@ -19,9 +19,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Atlas.h"
+#import <LayerKit/LayerKit.h>
 //#import "ParseUI.h"
 //#import "PFUser+ATLParticipant.h"
 
 @interface ConversationListViewController : ATLConversationListViewController
-
 @end

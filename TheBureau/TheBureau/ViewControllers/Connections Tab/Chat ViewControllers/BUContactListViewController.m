@@ -9,6 +9,7 @@
 #import "BUContactListViewController.h"
 #import "BUCOntactListTableViewCell.h"
 #import "BUWebServicesManager.h"
+#import "ConversationViewController.h"
 
 @interface BUContactListViewController ()
 
@@ -32,6 +33,8 @@
     
     _imageArray = [[NSArray alloc]initWithObjects:@"img_photo1",@"img_photo1",@"img_photo1",@"img_photo1", @"img_photo2",@"img_photo2",@"img_photo2",@"img_photo2",nil];
     // Do any additional setup after loading the view.
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -129,7 +132,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    
+    ConversationViewController *controller = [ConversationViewController conversationViewControllerWithLayerClient:[BUWebServicesManager sharedManager].layerClient];
+    controller.displaysAddressBar = YES;
+    [self.navigationController pushViewController:controller animated:YES];
+
     
     
 }

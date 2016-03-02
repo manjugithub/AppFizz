@@ -22,6 +22,7 @@
 #import "Atlas.h"
 #import "ConversationViewController.h"
 #import "ParticipantTableViewController.h"
+#import "BUWebServicesManager.h"
 
 @interface ConversationViewController () <ATLConversationViewControllerDataSource, ATLConversationViewControllerDelegate, ATLParticipantTableViewControllerDelegate>
 
@@ -43,6 +44,8 @@
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateStyle = NSDateFormatterShortStyle;
     self.dateFormatter.timeStyle = NSDateFormatterShortStyle;
+    
+    self.layerClient = [BUWebServicesManager sharedManager].layerClient;
 
     [self configureUI];
 }

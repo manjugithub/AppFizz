@@ -381,6 +381,15 @@ NSString *const ATLConversationListViewControllerDeletionModeEveryone = @"Everyo
     }
 }
 
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+//{
+//    UIView *sampleView = [[UIView alloc] init];
+//    sampleView.frame = CGRectMake(self.tableView.frame.size.height/2, 5, 60, 4);
+//    sampleView.backgroundColor = [UIColor blackColor];
+//    
+//    return sampleView;
+//}
+
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

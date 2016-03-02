@@ -7,6 +7,7 @@
 //
 
 #import "BUAppNotificationCell.h"
+#import <DigitsKit/DigitsKit.h>
 
 @implementation BUAppNotificationCell
 
@@ -92,7 +93,8 @@
     [alertController addAction:({
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSLog(@"OK");
-            
+            [[Digits sharedInstance]logOut];
+
             [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
         }];
         

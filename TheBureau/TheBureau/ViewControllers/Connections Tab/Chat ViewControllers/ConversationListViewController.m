@@ -22,6 +22,7 @@
 #import "ConversationListViewController.h"
 #import "ConversationViewController.h"
 #import "ATLConstants.h"
+#import "BUWebServicesManager.h"
 #import <LayerKit/LayerKit.h>
 
 @interface ConversationListViewController () <ATLConversationListViewControllerDelegate, ATLConversationListViewControllerDataSource>
@@ -38,11 +39,17 @@
     self.dataSource = self;
     self.delegate = self;
     
-    
-    NSURL *appID = [NSURL URLWithString:@"layer:///apps/staging/238530d8-995f-11e5-9461-6ac9d8033a8c"];
-    self.layerClient = [LYRClient clientWithAppID:appID];
+    self.layerClient =  [BUWebServicesManager sharedManager].layerClient;
+
+   
     
     [self.navigationController.navigationBar setTintColor:ATLBlueColor()];
+    
+    UIButton *composeBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height - 40, self.view.frame.size.width, 40)];
+    [self.view addSubview:composeBtn];
+    
+    [self.view bringSubviewToFront:composeBtn];
+
     
     UIBarButtonItem *logoutItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(logoutButtonTapped:)];
     [self.navigationItem setLeftBarButtonItem:logoutItem];

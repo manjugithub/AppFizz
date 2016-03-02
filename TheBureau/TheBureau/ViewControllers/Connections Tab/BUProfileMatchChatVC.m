@@ -8,6 +8,8 @@
 
 #import "BUProfileMatchChatVC.h"
 #import "BUContactListTableViewCell.h"
+#import "ConversationViewController.h"
+#import "BUWebServicesManager.h"
 
 @interface BUProfileMatchChatVC ()
 @property(nonatomic) NSArray * imageArray;
@@ -62,6 +64,24 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     
+    
+    
+}
+
+-(IBAction)compose:(id)sender{
+//    ConversationViewController *controller = [ConversationViewController conversationViewControllerWithLayerClient:[BUWebServicesManager sharedManager].layerClient];
+//    controller.displaysAddressBar = YES;
+// //   controller.self.proxy_participants = [_selectedaddressParticipants copy];
+//  //  controller.productimage = _productImage;
+//  //  controller.addressBar_Participants = _selectedaddressParticipants;
+//    [self.navigationController pushViewController:controller animated:YES];
+    
+    
+//            UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+//           ConversationViewController  *vc = [sb instantiateViewControllerWithIdentifier:@"ConversationViewController"];
+////        vc = [ConversationViewController conversationViewControllerWithLayerClient:[BUWebServicesManager sharedManager].layerClient];
+//
+//            [self.navigationController pushViewController:vc animated:YES];
     
     
 }
