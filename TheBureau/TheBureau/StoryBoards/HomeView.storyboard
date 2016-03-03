@@ -558,7 +558,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCZ-Kc-avu">
-                                <rect key="frame" x="150" y="46" width="300" height="458"/>
+                                <rect key="frame" x="150" y="20" width="300" height="458"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIb-Ip-fkM">
                                         <rect key="frame" x="144" y="11" width="151" height="132"/>
@@ -605,11 +605,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="Wz9-ba-7dB"/>
-                                    <constraint firstAttribute="height" constant="458" id="rYg-Rw-rOx"/>
+                                    <constraint firstAttribute="height" constant="458" id="Dg9-TG-Bgr"/>
+                                    <constraint firstAttribute="width" constant="300" id="vZO-ol-RLJ"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_with_logo" translatesAutoresizingMaskIntoConstraints="NO" id="gdN-0x-eFL">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_with_logo" translatesAutoresizingMaskIntoConstraints="NO" id="gdN-0x-eFL">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                         </subviews>
@@ -617,10 +617,10 @@
                         <constraints>
                             <constraint firstItem="gdN-0x-eFL" firstAttribute="top" secondItem="DMH-IB-OMN" secondAttribute="top" id="7X6-dz-KiS"/>
                             <constraint firstItem="gdN-0x-eFL" firstAttribute="leading" secondItem="DMH-IB-OMN" secondAttribute="leading" id="RkU-Bj-br7"/>
+                            <constraint firstItem="kCZ-Kc-avu" firstAttribute="top" secondItem="1ag-Nd-tGv" secondAttribute="bottom" id="UsQ-40-7Aw"/>
                             <constraint firstAttribute="bottom" secondItem="gdN-0x-eFL" secondAttribute="bottom" id="Z81-kv-Y6k"/>
-                            <constraint firstItem="2X2-Od-Yl1" firstAttribute="top" secondItem="kCZ-Kc-avu" secondAttribute="bottom" constant="47" id="bfb-xU-Ztc"/>
-                            <constraint firstItem="kCZ-Kc-avu" firstAttribute="centerX" secondItem="DMH-IB-OMN" secondAttribute="centerX" id="hgt-bV-Qjr"/>
                             <constraint firstAttribute="trailing" secondItem="gdN-0x-eFL" secondAttribute="trailing" id="jw5-fy-HXc"/>
+                            <constraint firstItem="kCZ-Kc-avu" firstAttribute="centerX" secondItem="DMH-IB-OMN" secondAttribute="centerX" id="rpR-fd-J8p"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" image="tab_accounts_icon" selectedImage="tab_accounts_red_icon" id="sTa-Hx-qd9"/>

@@ -44,8 +44,8 @@
     _configuration = [[DGTAuthenticationConfiguration alloc] initWithAccountFields:DGTAccountFieldsDefaultOptionMask];
     _configuration.appearance = [self makeTheme];
     
-    NSURL *appID = [NSURL URLWithString:@"layer:///apps/staging/238530d8-995f-11e5-9461-6ac9d8033a8c"];
-    self.layerClient = [LYRClient clientWithAppID:appID];
+//    NSURL *appID = [NSURL URLWithString:@"layer:///apps/staging/238530d8-995f-11e5-9461-6ac9d8033a8c"];
+//    self.layerClient = [LYRClient clientWithAppID:appID];
 
 }
 
@@ -211,14 +211,14 @@
                                                         
 //                                                        [self loginLayer];
    
-//                                                        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-//                                                        BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-//                                                        [self.navigationController pushViewController:vc animated:YES];
+                                                        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+                                                        BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+                                                        [self.navigationController pushViewController:vc animated:YES];
                                                         
-                                                                                               UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                                                                                               BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];
-                                                                                               vc.socialChannel = self.socialChannel;
-                                                                                               [self.navigationController pushViewController:vc animated:YES];
+//                                                                                               UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//                                                                                               BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];
+//                                                                                               vc.socialChannel = self.socialChannel;
+//                                                                                               [self.navigationController pushViewController:vc animated:YES];
                                                     }];
                          
                          [alertController addAction:okAction];
