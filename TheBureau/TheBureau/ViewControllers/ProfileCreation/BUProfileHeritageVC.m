@@ -204,6 +204,8 @@
     [[BUWebServicesManager sharedManager] updateProfileHeritagewithParameters:parameters
                                                                  successBlock:^(id inResult, NSError *error)
      {
+         [self stopActivityIndicator];
+
          self.isUpdatingProfile = NO;
          if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
          {
@@ -219,6 +221,8 @@
          }
      }
                                                                  failureBlock:^(id response, NSError *error) {
+                                                                     [self stopActivityIndicator];
+
                                                                      [self showFailureAlert];
     }];
 }
