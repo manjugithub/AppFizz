@@ -74,6 +74,9 @@
         
         self.maritalStatus = @"Never married";
         
+        self.feetStr = @"4";
+        self.inchStr = @"0";
+
         [self.neverMarriedBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.widowedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self.divorcedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

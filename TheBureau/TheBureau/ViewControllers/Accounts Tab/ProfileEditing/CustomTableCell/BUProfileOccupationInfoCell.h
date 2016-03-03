@@ -13,4 +13,13 @@
 @property(weak, nonatomic) IBOutlet UIView *nonEditingView,*editingView;
 @property(weak, nonatomic) IBOutlet BUProfileEditingVC *parentVC;
 
+#pragma mark -
+#pragma mark - Social habits
+
+@property (weak, nonatomic) IBOutlet UIView *employmentDetailView;
+@property (weak, nonatomic) IBOutlet UIButton *employedBtn;
+@property (weak, nonatomic) IBOutlet UIButton *unemployedBtn;
+@property (weak, nonatomic) IBOutlet UIButton *studentBtn;
+@property (weak, nonatomic) IBOutlet UIButton *othersBtn;
+
 @end

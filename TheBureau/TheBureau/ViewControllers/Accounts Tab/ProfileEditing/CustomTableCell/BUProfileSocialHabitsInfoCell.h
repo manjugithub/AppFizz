@@ -12,4 +12,23 @@
 @interface BUProfileSocialHabitsInfoCell : UITableViewCell<UITextFieldDelegate>
 @property(weak, nonatomic) IBOutlet BUProfileEditingVC *parentVC;
 
+#pragma mark -
+#pragma mark - Social habits
+
+@property(nonatomic,weak)IBOutlet UIButton *vegetarianBtn;
+@property(nonatomic,weak)IBOutlet UIButton *eegetarianBtn;
+
+@property(nonatomic,weak)IBOutlet UIButton *veganBtn;
+@property(nonatomic,weak)IBOutlet UIButton *nonVegetarianBtn;
+
+@property(nonatomic,weak)IBOutlet UIButton *drinkingSelectionBtn;
+@property(nonatomic,weak)IBOutlet UIButton *smokingSelectionBtn;
+
+@property(nonatomic,weak)IBOutlet UILabel *sociallyLabel;
+@property(nonatomic,weak)IBOutlet UILabel *neverLabel;
+
+@property(nonatomic,weak)IBOutlet UILabel *yesLabel;
+@property(nonatomic,weak)IBOutlet UILabel *noLabel;
+
+
 @end

@@ -209,16 +209,16 @@
                                                                           handler:^(UIAlertAction *action)
                                                     {
                                                         
-                                                        [self loginLayer];
+//                                                        [self loginLayer];
    
 //                                                        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
 //                                                        BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
 //                                                        [self.navigationController pushViewController:vc animated:YES];
                                                         
-                                                        //                                       UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                                                        //                                       BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];
-                                                        //                                       vc.socialChannel = self.socialChannel;
-                                                        //                                       [self.navigationController pushViewController:vc animated:YES];
+                                                                                               UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                                                                               BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];
+                                                                                               vc.socialChannel = self.socialChannel;
+                                                                                               [self.navigationController pushViewController:vc animated:YES];
                                                     }];
                          
                          [alertController addAction:okAction];
@@ -273,10 +273,10 @@
                                                          handler:^(UIAlertAction *action)
                                    {
                                        
-                                       [self loginLayer];
-//                                       UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-//                                       BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-//                                       [self.navigationController pushViewController:vc animated:YES];
+//                                       [self loginLayer];
+                                       UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+                                       BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+                                       [self.navigationController pushViewController:vc animated:YES];
 
 //                                       UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //                                       BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];
@@ -309,6 +309,8 @@
 
 - (void)loginLayer
 {
+    [self startActivityIndicator:YES];
+
     [self.layerClient connectWithCompletion:^(BOOL success, NSError *error) {
         if (!success) {
             NSLog(@"Failed to connect to Layer: %@", error);
@@ -335,7 +337,8 @@
             NSLog(@"Layer Authenticated as User %@", self.layerClient.authenticatedUserID);
             [BUWebServicesManager sharedManager].layerClient = self.layerClient;
             
-            
+            [self stopActivityIndicator];
+
             if (completion) completion(YES, nil);
             {
         UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
@@ -349,7 +352,14 @@
                 if (!error){
                     [self authenticationTokenWithUserId:userID completion:^(BOOL success, NSError *error) {
                         if (completion){
+                            
+                            UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+                            BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+                            [self.navigationController pushViewController:vc animated:YES];
+                            
                             completion(success, error);
+                            
+                            
                         }
                     }];
                 } else {

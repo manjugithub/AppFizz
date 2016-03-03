@@ -7,11 +7,24 @@
 //
 
 #import "BUProfileBasicInfoCell.h"
+#import "UIView+FLKAutoLayout.h"
 
 @implementation BUProfileBasicInfoCell
 
 - (void)awakeFromNib {
     // Initialization code
+    self.feetMutableArray = [[NSMutableArray alloc]init];
+    
+    self.inchesMutableArray = [[NSMutableArray alloc]init];
+    for (int i=0; i < 12; i++) {
+        NSString *inches = [NSString stringWithFormat:@"%d\"",i ];
+        [self.inchesMutableArray addObject:inches];
+    }
+    
+    for (int i=4; i < 8; i++) {
+        NSString *feet = [NSString stringWithFormat:@"%d'",i ];
+        [self.feetMutableArray addObject:feet];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -25,4 +38,130 @@
     [textField resignFirstResponder];
     return YES;
 }
+
+#pragma mark - Gender selection
+
+
+-(IBAction)setGender:(id)sender
+{
+    NSString *femaleImgName,*maleImgName,*genderImgName;
+    
+    if(0 == self.genderSelectionBtn.tag)
+    {
+        femaleImgName = @"ic_female_s2.png";
+        maleImgName = @"ic_male_s1.png";
+        genderImgName = @"switch_female.png";
+        self.genderSelectionBtn.tag = 1;
+    }
+    else
+    {
+        self.genderSelectionBtn.tag = 0;
+        femaleImgName = @"ic_female_s1.png";
+        maleImgName = @"ic_male_s2.png";
+        genderImgName = @"switch_male.png";
+    }
+    
+    self.femaleImgView.image = [UIImage imageNamed:femaleImgName];
+    self.maleImgView.image = [UIImage imageNamed:maleImgName];
+    [self.genderSelectionBtn setImage:[UIImage imageNamed:genderImgName]
+                             forState:UIControlStateNormal];
+    
+}
+
+#pragma mark -
+#pragma mark - Height selection
+
+-(IBAction)setheight {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Height\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIPickerView *picker = [[UIPickerView alloc] init];
+    [alertController.view addSubview:picker];
+    [picker alignCenterYWithView:alertController.view predicate:@"0.0"];
+    [picker alignCenterXWithView:alertController.view predicate:@"0.0"];
+    [picker constrainWidth:@"270" ];
+    picker.dataSource = self;
+    picker.delegate = self ;
+    
+    
+    [picker reloadAllComponents];
+    
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSLog(@"OK");
+            
+            NSUInteger numComponents = [[picker dataSource] numberOfComponentsInPickerView:picker];
+            
+            NSMutableString * text = [NSMutableString string];
+            for(NSUInteger i = 0; i < numComponents; ++i) {
+                NSString *title = [self pickerView:picker titleForRow:[picker selectedRowInComponent:i] forComponent:i];
+                [text appendFormat:@"%@", title];
+            }
+            
+            NSLog(@"%@", text);
+            self.heighTextField.text = text;
+        }];
+        action;
+    })];
+    
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSLog(@"cancel");
+        }];
+        action;
+    })];
+    [self.parentVC presentViewController:alertController  animated:YES completion:nil];
+}
+
+#pragma mark- Picker View Delegate
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:
+(NSInteger)row inComponent:(NSInteger)component
+{
+    
+    if (component == 1)
+    {
+        self.inchStr = [_inchesMutableArray objectAtIndex:row];
+        
+    }
+    else
+    {
+        self.feetStr = [_feetMutableArray objectAtIndex:row];
+    }
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:
+(NSInteger)row forComponent:(NSInteger)component
+{
+    
+    if (component == 1) {
+        return [_inchesMutableArray objectAtIndex:row];
+        
+    }
+    else
+    {
+        return [_feetMutableArray objectAtIndex:row];
+        
+        
+    }
+}
+
+
+#pragma mark - Picker View Data source
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 2;
+}
+
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView
+numberOfRowsInComponent:(NSInteger)component{
+    if (component ==1) {
+        return [_inchesMutableArray count];
+    }
+    else
+    {
+        
+        return [_feetMutableArray count];
+    }
+}
+
+
 @end

@@ -9,8 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "BUProfileEditingVC.h"
 
-@interface BUProfileEducationInfoCell : UITableViewCell<UITextFieldDelegate>
+@interface BUProfileEducationInfoCell : UITableViewCell<UITextFieldDelegate,UIActionSheetDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 @property(weak, nonatomic) IBOutlet UIView *nonEditingView,*editingView;
 @property(weak, nonatomic) IBOutlet BUProfileEditingVC *parentVC;
+@property(nonatomic,strong)NSArray* relationCircle,*educationLevelArray;
+
+#pragma mark -
+#pragma mark - Education selection
+@property (weak, nonatomic) IBOutlet UILabel *educationlevelLbl,*educationlevelLbl2;
+
+@property (nonatomic,weak) IBOutlet UITextField *honorTextField,*honorTextField2;
+@property (nonatomic,weak) IBOutlet UITextField *yearTextField,*yearTextField2;
+
+@property (nonatomic,weak) IBOutlet UITextField *collegeTextField,*collegeTextField2;
+@property (nonatomic,weak) IBOutlet UITextField *majorTextField,*majorTextField2;
 
 @end

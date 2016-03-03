@@ -7,17 +7,10 @@
 //
 
 #import "EmployementStatusTVCell.h"
-
+#import "BUConstants.h"
 #define UNEMPLOYEDYCONSTANTBEFOREDETAILVIEW  4.0
 #define UNEMPLOYEDYCONSTANTAFTERDETAILVIEW   94.0
 
-typedef NS_ENUM (NSInteger, EmployementStatus)
-{
-    EmployementStatusEmployed,
-    EmployementStatusUnEmployed,
-    EmployementStatusStudent,
-    EmployementStatusOthers
-};
 
 @implementation EmployementStatusTVCell
 

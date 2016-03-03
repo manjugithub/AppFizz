@@ -15,8 +15,18 @@
 #import "BUProfileSocialHabitsInfoCell.h"
 #import "BUProfileHoroscopeInfoCell.h"
 #import "BUUtilities.h"
+#import "BUConstants.h"
+
 @interface BUProfileEditingVC ()
 @property(nonatomic) NSInteger selectedRow;
+
+
+#pragma mark - Account selection
+@property (weak, nonatomic) IBOutlet UILabel *relationLabel;
+-(IBAction)dropDownBtn:(id)sender;
+
+
+
 @end
 
 @implementation BUProfileEditingVC
@@ -26,10 +36,15 @@
     self.selectedRow = -1;
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"Profile";
+    // Do any additional setup after loading the view.
+    
+
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:YES];
+
     [super viewWillAppear:animated];
     [BUUtilities removeLogo:self.navigationController];
     self.navigationItem.rightBarButtonItem = self.rightBarButton;
@@ -41,6 +56,7 @@
     [BUUtilities setNavBarLogo:self.navigationController image:[UIImage imageNamed:@"logo44"]];
     self.navigationItem.rightBarButtonItem = nil;
 }
+
 
 
 - (void)didReceiveMemoryWarning {
@@ -204,6 +220,9 @@
     [self.profileTableView endUpdates];
 
 }
+
+
+
 
 
 

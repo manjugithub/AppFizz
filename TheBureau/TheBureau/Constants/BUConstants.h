@@ -22,3 +22,12 @@ typedef NS_ENUM(NSInteger,ButtonType){
     ButtonTypeVegan
     
 };
+
+
+typedef NS_ENUM (NSInteger, EmployementStatus)
+{
+    EmployementStatusEmployed,
+    EmployementStatusUnEmployed,
+    EmployementStatusStudent,
+    EmployementStatusOthers
+};
