@@ -84,8 +84,13 @@
             }];
             action;
         })];
-        [self.parentVC.navigationController presentViewController:alertController  animated:YES completion:nil];
+
         
+        if(nil != self.parentVC)
+            [self.parentVC.navigationController presentViewController:alertController  animated:YES completion:nil];
+        else
+            [self.prefVC.navigationController presentViewController:alertController  animated:YES completion:nil];
+
     }
     else
     {
@@ -115,8 +120,12 @@
             }];
             action;
         })];
-        [self.parentVC.navigationController presentViewController:alertController  animated:YES completion:nil];
         
+        if(nil != self.parentVC)
+            [self.parentVC.navigationController presentViewController:alertController  animated:YES completion:nil];
+        else
+            [self.prefVC.navigationController presentViewController:alertController  animated:YES completion:nil];
+
     }
     else
     {

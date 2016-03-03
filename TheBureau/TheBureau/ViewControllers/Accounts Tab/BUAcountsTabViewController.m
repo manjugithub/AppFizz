@@ -13,7 +13,7 @@
 #import "BUProfileEditingVC.h"
 #import "BUHowItWorksVC.h"
 #import "BUHelpAndFeedbackVC.h"
-
+#import "BUPreferencesVC.h"
 @interface BUAcountsTabViewController ()
 @property(nonatomic, strong) IBOutlet UITableView *imgScrollerTableView;
 
@@ -67,8 +67,8 @@
 
 - (IBAction)showPreferences:(id)sender
 {
-    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Accounts" bundle:nil];
-    BUConfigurationVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUConfigurationVC"];
+    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Preference" bundle:nil];
+    BUPreferencesVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUPreferencesVC"];
     [self.tabBarController.navigationController pushViewController:vc animated:YES];
 }
 

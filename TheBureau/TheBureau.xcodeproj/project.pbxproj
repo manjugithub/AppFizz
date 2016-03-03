@@ -145,6 +145,8 @@
 		78F4A92B1C0CCC11001C76A6 /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78F4A9281C0CCC11001C76A6 /* Comfortaa-Light.ttf */; };
 		78F4A92C1C0CCC11001C76A6 /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78F4A9291C0CCC11001C76A6 /* Comfortaa-Regular.ttf */; };
 		78F4A9411C0CD3F4001C76A6 /* BUAccountCreationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F4A9401C0CD3F4001C76A6 /* BUAccountCreationVC.m */; };
+		78F7555F1C8806EE007E5678 /* Preference.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78F7555E1C8806EE007E5678 /* Preference.storyboard */; };
+		78F755621C889340007E5678 /* logoImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F755611C889340007E5678 /* logoImageView.m */; };
 		78FEE2331C071EAC0013E9D2 /* BUBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FEE2321C071EAC0013E9D2 /* BUBaseViewController.m */; };
 		78FEE2391C0720B60013E9D2 /* UIKit+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FEE2361C0720B60013E9D2 /* UIKit+Extensions.m */; };
 		78FEE23A1C0720B60013E9D2 /* Foundation+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FEE2381C0720B60013E9D2 /* Foundation+Extensions.m */; };
@@ -438,6 +440,9 @@
 		78F4A9291C0CCC11001C76A6 /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
 		78F4A93F1C0CD3F4001C76A6 /* BUAccountCreationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUAccountCreationVC.h; sourceTree = "<group>"; };
 		78F4A9401C0CD3F4001C76A6 /* BUAccountCreationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUAccountCreationVC.m; sourceTree = "<group>"; };
+		78F7555E1C8806EE007E5678 /* Preference.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Preference.storyboard; sourceTree = "<group>"; };
+		78F755601C889340007E5678 /* logoImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = logoImageView.h; sourceTree = "<group>"; };
+		78F755611C889340007E5678 /* logoImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = logoImageView.m; sourceTree = "<group>"; };
 		78FEE2311C071EAC0013E9D2 /* BUBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUBaseViewController.h; sourceTree = "<group>"; };
 		78FEE2321C071EAC0013E9D2 /* BUBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUBaseViewController.m; sourceTree = "<group>"; };
 		78FEE2351C0720B60013E9D2 /* UIKit+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIKit+Extensions.h"; sourceTree = "<group>"; };
@@ -873,6 +878,7 @@
 				78BF55111C68701000B5F1A4 /* HomeView.storyboard */,
 				5BA796061C7F9683009B65E1 /* Connections.Storyboard */,
 				78E4F27F1C85A1120034CFE2 /* Accounts.storyboard */,
+				78F7555E1C8806EE007E5678 /* Preference.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -882,6 +888,8 @@
 			children = (
 				78FEE2491C0721590013E9D2 /* BUUtilities.h */,
 				78FEE24A1C0721590013E9D2 /* BUUtilities.m */,
+				78F755601C889340007E5678 /* logoImageView.h */,
+				78F755611C889340007E5678 /* logoImageView.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1322,6 +1330,7 @@
 				5B16288F1C4D252A0034FA33 /* ALLURA-REGULAR.TTF in Resources */,
 				5BA796071C7F9683009B65E1 /* Connections.Storyboard in Resources */,
 				5B2A2CB51C182D7D006F3845 /* TwitterKitResources.bundle in Resources */,
+				78F7555F1C8806EE007E5678 /* Preference.storyboard in Resources */,
 				78F4A92B1C0CCC11001C76A6 /* Comfortaa-Light.ttf in Resources */,
 				5B16288D1C4D04B80034FA33 /* TheBureau_Splash.gif in Resources */,
 			);
@@ -1481,6 +1490,7 @@
 				78E4F28C1C85B3C30034CFE2 /* BUPreferencesVC.m in Sources */,
 				5B1628841C4CFA620034FA33 /* BUSplashViewController.m in Sources */,
 				5B2D3E8F1C7C6927006B7674 /* BUProfileRematchVC.m in Sources */,
+				78F755621C889340007E5678 /* logoImageView.m in Sources */,
 				5B2D3E8E1C7C6927006B7674 /* BUProfileMatchChatVC.m in Sources */,
 				5B16290C1C5F61EE0034FA33 /* BUCustomAlertView.m in Sources */,
 				78E4F28F1C85B3E40034CFE2 /* BUHowItWorksVC.m in Sources */,

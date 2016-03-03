@@ -8,15 +8,9 @@
 
 #import "BUProfileDietVC.h"
 #import "BUProfileOccupationVC.h"
+#import "BUConstants.h"
 
 
-typedef NS_ENUM(NSInteger,ButtonType){
-  ButtonTypeVegetarian,
-  ButtonTypeEegetarian,
-  ButtonTypeNonvegetarian,
-  ButtonTypeVegan
-    
-};
     
     
     

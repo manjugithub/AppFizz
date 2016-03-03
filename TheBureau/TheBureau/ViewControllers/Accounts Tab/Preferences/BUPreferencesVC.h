@@ -8,8 +8,8 @@
 
 #import "BUBaseViewController.h"
 
-@interface BUPreferencesVC : BUBaseViewController<UITableViewDelegate,UITableViewDataSource>
+@interface BUPreferencesVC : UITableViewController<UITableViewDelegate,UITableViewDataSource>
 
-@property(nonatomic , strong) IBOutlet UITableView *preferenceTableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBarButton;
 
 @end

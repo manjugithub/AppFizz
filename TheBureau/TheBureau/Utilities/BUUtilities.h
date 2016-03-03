@@ -11,4 +11,6 @@
 @interface BUUtilities : NSObject
 
 +(void)testFontFamily;
++(void)setNavBarLogo:(UINavigationController *)innavContrlr image:(UIImage *)inImage;
++(void)removeLogo:(UINavigationController *)innavContrlr;
 @end

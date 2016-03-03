@@ -7,7 +7,7 @@
 //
 
 #import "BURootViewController.h"
-
+#import "BUUtilities.h"
 @interface BURootViewController ()
 
 @end
@@ -22,15 +22,7 @@
 }
 - (void)setNavBarLogo {
     
-    [self setNeedsStatusBarAppearanceUpdate];
-    
-    CGRect myImageS = CGRectMake(0, 0, 44, 44);
-    UIImageView *logo = [[UIImageView alloc] initWithFrame:myImageS];
-    [logo setImage:[UIImage imageNamed:@"logo44"]];
-    logo.contentMode = UIViewContentModeScaleAspectFit;
-    logo.center = CGPointMake(self.navigationController.navigationBar.frame.size.width - logo.frame.size.width, self.navigationController.navigationBar.frame.size.height / 2.0);
-    logo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-    [self.navigationController.navigationBar addSubview:logo];
+    [BUUtilities setNavBarLogo:self.navigationController image:[UIImage imageNamed:@"logo44"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

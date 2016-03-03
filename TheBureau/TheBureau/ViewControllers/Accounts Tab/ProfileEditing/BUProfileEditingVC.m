@@ -14,7 +14,7 @@
 #import "BUProfileHeritageInfoCell.h"
 #import "BUProfileSocialHabitsInfoCell.h"
 #import "BUProfileHoroscopeInfoCell.h"
-
+#import "BUUtilities.h"
 @interface BUProfileEditingVC ()
 @property(nonatomic) NSInteger selectedRow;
 @end
@@ -26,9 +26,22 @@
     self.selectedRow = -1;
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"Profile";
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [BUUtilities removeLogo:self.navigationController];
     self.navigationItem.rightBarButtonItem = self.rightBarButton;
 }
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [BUUtilities setNavBarLogo:self.navigationController image:[UIImage imageNamed:@"logo44"]];
+    self.navigationItem.rightBarButtonItem = nil;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

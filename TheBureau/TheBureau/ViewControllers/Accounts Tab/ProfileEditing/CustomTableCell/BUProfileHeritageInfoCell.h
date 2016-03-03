@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "BUProfileEditingVC.h"
 #import "PWCustomPickerView.h"
+#import "BUPreferencesVC.h"
 @interface BUProfileHeritageInfoCell : UITableViewCell<PWPickerViewDelegate,UITextFieldDelegate>
 @property(weak, nonatomic) IBOutlet BUProfileEditingVC *parentVC;
+
+@property(weak, nonatomic) IBOutlet BUPreferencesVC *prefVC;
 
 @property(nonatomic, strong) PWCustomPickerView *customPickerView;
 @property(nonatomic, strong) NSString *religionID,*famliyID,*specificationID,*motherToungueID;

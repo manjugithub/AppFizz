@@ -13,3 +13,12 @@
 #define kSignupTopLayoutOffset 80
 
 #define kAnimationDuration 0.5
+
+
+typedef NS_ENUM(NSInteger,ButtonType){
+    ButtonTypeVegetarian,
+    ButtonTypeEegetarian,
+    ButtonTypeNonvegetarian,
+    ButtonTypeVegan
+    
+};
