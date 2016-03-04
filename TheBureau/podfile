@@ -1,8 +1,12 @@
+
+platform :ios, '8.0'
+use_frameworks!
+
+
+pod 'LayerKit'
 pod 'AFNetworking'
 pod 'MBProgressHUD'
 pod 'SDWebImage'
-pod 'FBSDKCoreKit'
-pod 'FBSDKLoginKit'
 pod 'TwitterKit'
 pod 'TwitterCore'
 pod 'Fabric'

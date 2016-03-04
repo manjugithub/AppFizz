@@ -82,3 +82,16 @@ strip_invalid_archs() {
   fi
 }
 
+
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods/AFNetworking.framework"
+  install_framework "${PODS_ROOT}/LayerKit/LayerKit.framework"
+  install_framework "Pods/MBProgressHUD.framework"
+  install_framework "Pods/SDWebImage.framework"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods/AFNetworking.framework"
+  install_framework "${PODS_ROOT}/LayerKit/LayerKit.framework"
+  install_framework "Pods/MBProgressHUD.framework"
+  install_framework "Pods/SDWebImage.framework"
+fi
