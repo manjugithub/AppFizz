@@ -8,7 +8,6 @@
 
 #import "BUProfileMatchChatVC.h"
 #import "BUContactListTableViewCell.h"
-#import "ConversationViewController.h"
 #import "BUWebServicesManager.h"
 
 @interface BUProfileMatchChatVC ()
