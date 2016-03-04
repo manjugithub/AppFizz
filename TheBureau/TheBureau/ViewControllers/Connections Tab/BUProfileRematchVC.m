@@ -18,6 +18,8 @@
 @property(nonatomic, strong) NSMutableArray *imagesList;
 @property(nonatomic,weak) IBOutlet UICollectionView *rematchCollectionView;
 @property(nonatomic,strong) BUUserProfile *userProfile;
+@property(nonatomic, strong) NSMutableArray *userStatus;
+
 
 
 @end
@@ -63,14 +65,17 @@
              
              
              self.imagesList = [[NSMutableArray alloc] init];
+             self.userStatus = [[NSMutableArray alloc] init];
              for (NSDictionary *dict in inResult)
              {
+                 [self.userStatus addObject:[dict valueForKey:@"user_action"]];
+
                  if ([[dict valueForKey:@"img_url"] firstObject]) {
                      [self.imagesList addObject:[[dict valueForKey:@"img_url"] firstObject]];
                  }
                  
              }
-//
+//Liked Passed
             [self.rematchCollectionView reloadData];
          }
          else
@@ -107,6 +112,18 @@
 //    cell.userImageView.image = [UIImage imageNamed:[_imagesList objectAtIndex:indexPath.item]];
     
     [cell setImageURL:[self.imagesList objectAtIndex:indexPath.row]];
+    
+    NSString *user_status = [self.userStatus objectAtIndex:indexPath.row];
+    
+    if ([user_status isEqualToString:@"Liked"]) {
+        cell.userMatchImageView.image = [UIImage imageNamed:@"btn_liked"];
+
+    }
+    else{
+        
+        cell.userMatchImageView.image = [UIImage imageNamed:@"btn_passed"];
+
+    }
  
     return cell;
 }
