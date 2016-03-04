@@ -23,6 +23,7 @@
 
 #pragma mark - Account selection
 @property (weak, nonatomic) IBOutlet UILabel *relationLabel;
+@property (assign, nonatomic) BOOL shouldExpand;
 -(IBAction)dropDownBtn:(id)sender;
 
 
@@ -195,7 +196,7 @@
         }
         case 5:
         {
-            expandedHeight = 195;
+            expandedHeight = 320;
             break;
         }
         case 6:
@@ -206,7 +207,9 @@
         default:
             break;
     }
-    height =  self.selectedRow != indexPath.section ? normalHeight :expandedHeight;
+    height =   (self.selectedRow != indexPath.section) ? normalHeight :expandedHeight;
+    if(NO == self.shouldExpand)
+        height = normalHeight;
     return height;
 }
 
@@ -215,12 +218,26 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(self.selectedRow == indexPath.section)
+    {
+        self.shouldExpand = !self.shouldExpand;
+    }
+    else
+    {
+        self.shouldExpand = YES;
+    }
     self.selectedRow = indexPath.section;
     [self.profileTableView beginUpdates];
     [self.profileTableView endUpdates];
 
+    [self performSelector:@selector(scrollToTop:) withObject:indexPath afterDelay:1.0];
 }
 
+
+-(void)scrollToTop:(NSIndexPath *)indexPath
+{
+    [self.profileTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
 
 
 

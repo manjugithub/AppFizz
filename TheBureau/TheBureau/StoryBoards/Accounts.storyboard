@@ -133,14 +133,14 @@
                         <viewControllerLayoutGuide type="bottom" id="nEX-gC-WYh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wiQ-4B-8vG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="4000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg_with_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Vpd-ft-0jy">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Wh-Md-08Q">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="4000"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Wh-Md-08Q">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUProfileBasicInfoCell" rowHeight="300" id="eQg-4I-oLv" customClass="BUProfileBasicInfoCell">
@@ -2216,14 +2216,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7Wh-Md-08Q" firstAttribute="leading" secondItem="wiQ-4B-8vG" secondAttribute="leading" id="93p-fS-R9n"/>
-                            <constraint firstItem="7Wh-Md-08Q" firstAttribute="top" secondItem="wiQ-4B-8vG" secondAttribute="top" id="Riu-9P-CpI"/>
-                            <constraint firstItem="nEX-gC-WYh" firstAttribute="top" secondItem="7Wh-Md-08Q" secondAttribute="bottom" id="TiW-0u-Sar"/>
-                            <constraint firstAttribute="trailing" secondItem="7Wh-Md-08Q" secondAttribute="trailing" id="Yfv-B9-NYW"/>
+                            <constraint firstItem="7Wh-Md-08Q" firstAttribute="leading" secondItem="wiQ-4B-8vG" secondAttribute="leading" id="1dN-1W-Sdv"/>
+                            <constraint firstAttribute="bottom" secondItem="7Wh-Md-08Q" secondAttribute="bottom" id="Mbz-5w-5FY"/>
                             <constraint firstItem="nEX-gC-WYh" firstAttribute="top" secondItem="Vpd-ft-0jy" secondAttribute="bottom" id="Z09-iz-VzO"/>
                             <constraint firstItem="Vpd-ft-0jy" firstAttribute="leading" secondItem="wiQ-4B-8vG" secondAttribute="leading" id="h50-cb-k8f"/>
                             <constraint firstItem="Vpd-ft-0jy" firstAttribute="top" secondItem="wiQ-4B-8vG" secondAttribute="top" id="hM8-RS-73M"/>
+                            <constraint firstAttribute="trailing" secondItem="7Wh-Md-08Q" secondAttribute="trailing" id="hUy-F4-Uzx"/>
                             <constraint firstAttribute="trailing" secondItem="Vpd-ft-0jy" secondAttribute="trailing" id="q5x-09-pRk"/>
+                            <constraint firstItem="7Wh-Md-08Q" firstAttribute="top" secondItem="wiQ-4B-8vG" secondAttribute="top" id="xHW-WW-XWV"/>
                         </constraints>
                     </view>
                     <toolbarItems>
@@ -2234,8 +2234,6 @@
                         </barButtonItem>
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="4000"/>
                     <connections>
                         <outlet property="profileTableView" destination="7Wh-Md-08Q" id="g1F-HL-NXA"/>
                         <outlet property="rightBarButton" destination="eOT-om-uAS" id="tai-s7-9cS"/>

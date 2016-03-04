@@ -28,9 +28,6 @@
     // Override point for customization after application launch.
     
     [Fabric with:@[[Crashlytics class],[DigitsKit class]]];
-
-   // [self setupLayers];
-
    [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     
