@@ -22,6 +22,7 @@ PODS:
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
+  - Smooch (4.0.2)
   - TwitterCore (1.14.6):
     - Fabric
   - TwitterKit (1.14.6):
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - LayerKit
   - MBProgressHUD
   - SDWebImage
+  - Smooch
   - TwitterCore
   - TwitterKit
 
@@ -44,6 +46,7 @@ SPEC CHECKSUMS:
   LayerKit: 8a1fa803bb5f5f515d3cd2b1f94b50b25dc548af
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  Smooch: 14c51841a0889b34f29ca54312275506363ce85a
   TwitterCore: 5e9b2d066ceeef53fe611c0c4436cb700f1ed620
   TwitterKit: f67360ee0a5f935f053bf37015652ac157e4eb92
 

@@ -7,6 +7,7 @@
 //
 
 #import "BUCustomerServiceChatVC.h"
+#import <Smooch/Smooch.h>
 
 @interface BUCustomerServiceChatVC ()
 
@@ -17,7 +18,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
 }
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    [Smooch showConversationFromViewController:self];
+
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

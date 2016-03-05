@@ -13,6 +13,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import <DigitsKit/DigitsKit.h>
 #import <LayerKit/LayerKit.h>
+#import <Smooch/Smooch.h>
 
 
 
@@ -30,6 +31,9 @@
     [Fabric with:@[[Crashlytics class],[DigitsKit class]]];
    [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
+    [Smooch initWithSettings:
+     [SKTSettings settingsWithAppToken:@"98vczyf814ei6h4nyyasqhnxv"]];
+
     
     [self setupLayers];
     [self setAppearence];

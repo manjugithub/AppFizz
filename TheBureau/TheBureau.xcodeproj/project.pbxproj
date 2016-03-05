@@ -144,8 +144,8 @@
 		1808029C1C079E7B00F5AEE5 /* BUSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUSignUpViewController.m; sourceTree = "<group>"; };
 		5B08024D1C6CD13C00DAD5A5 /* BUProfileDietVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUProfileDietVC.h; sourceTree = "<group>"; };
 		5B08024E1C6CD13C00DAD5A5 /* BUProfileDietVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfileDietVC.m; sourceTree = "<group>"; };
-		5B0802531C733B0E00DAD5A5 /* BUCustomerServiceChatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUCustomerServiceChatVC.h; sourceTree = "<group>"; };
-		5B0802541C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUCustomerServiceChatVC.m; sourceTree = "<group>"; };
+		5B0802531C733B0E00DAD5A5 /* BUCustomerServiceChatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUCustomerServiceChatVC.h; path = ../HomeViewController/BUCustomerServiceChatVC.h; sourceTree = "<group>"; };
+		5B0802541C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUCustomerServiceChatVC.m; path = ../HomeViewController/BUCustomerServiceChatVC.m; sourceTree = "<group>"; };
 		5B08025F1C7344BC00DAD5A5 /* BUEmptySegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUEmptySegue.h; sourceTree = "<group>"; };
 		5B0802601C7344BC00DAD5A5 /* BUEmptySegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUEmptySegue.m; sourceTree = "<group>"; };
 		5B0AEDC41C22B94A00877C24 /* BULoginWithEmailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BULoginWithEmailVC.h; sourceTree = "<group>"; };
@@ -411,6 +411,8 @@
 				5B2D3E8B1C7C6927006B7674 /* BUProfileRematchVC.m */,
 				5BFF6E651C89C5B400596381 /* BUContactListViewController.h */,
 				5BFF6E661C89C5B400596381 /* BUContactListViewController.m */,
+				5B0802531C733B0E00DAD5A5 /* BUCustomerServiceChatVC.h */,
+				5B0802541C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m */,
 			);
 			path = "Connections Tab";
 			sourceTree = "<group>";
@@ -716,8 +718,6 @@
 				78BF55141C68739000B5F1A4 /* BUHomeTabbarController.m */,
 				78CE0CF81C69BC7C00FDA514 /* BUHomeCollectionVC.h */,
 				78CE0CF91C69BC7C00FDA514 /* BUHomeCollectionVC.m */,
-				5B0802531C733B0E00DAD5A5 /* BUCustomerServiceChatVC.h */,
-				5B0802541C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";

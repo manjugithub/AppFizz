@@ -701,10 +701,10 @@
             </objects>
             <point key="canvasLocation" x="-32" y="-1865.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Customer Service ChatVC-->
         <scene sceneID="2J8-cv-9nt">
             <objects>
-                <viewController id="9kZ-sz-xqb" sceneMemberID="viewController">
+                <viewController id="9kZ-sz-xqb" customClass="BUCustomerServiceChatVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="T5g-g9-pu6"/>
                         <viewControllerLayoutGuide type="bottom" id="K80-gB-7RM"/>
