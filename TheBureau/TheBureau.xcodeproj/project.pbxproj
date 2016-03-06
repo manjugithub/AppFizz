@@ -50,6 +50,7 @@
 		5BFF6E6B1C89DBBD00596381 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFF6E6A1C89DBBD00596381 /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
 		5BFF6E6D1C89DBCD00596381 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFF6E6C1C89DBCD00596381 /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
 		5BFF6E6F1C89DBF300596381 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFF6E6E1C89DBF300596381 /* FBSDKShareKit.framework */; settings = {ASSET_TAGS = (); }; };
+		5BFF6E711C8C7AF900596381 /* SmoochLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BFF6E701C8C7AF900596381 /* SmoochLocalizable.strings */; settings = {ASSET_TAGS = (); }; };
 		7846225E1C0711E100EA589C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846225D1C0711E100EA589C /* main.m */; };
 		784622671C0711E100EA589C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 784622651C0711E100EA589C /* Main.storyboard */; };
 		7846226A1C0711E100EA589C /* TheBureau.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 784622681C0711E100EA589C /* TheBureau.xcdatamodeld */; };
@@ -212,6 +213,7 @@
 		5BFF6E6A1C89DBBD00596381 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		5BFF6E6C1C89DBCD00596381 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		5BFF6E6E1C89DBF300596381 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		5BFF6E701C8C7AF900596381 /* SmoochLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = SmoochLocalizable.strings; path = ViewControllers/ProfileCreation/SmoochLocalizable.strings; sourceTree = "<group>"; };
 		6502757F3F1ACF97331C1C80 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		784622591C0711E100EA589C /* TheBureau.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheBureau.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7846225D1C0711E100EA589C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 				7846229E1C07197E00EA589C /* Utilities */,
 				78FEE24F1C0721870013E9D2 /* ExternalLibraries */,
 				7846226B1C0711E100EA589C /* Assets.xcassets */,
+				5BFF6E701C8C7AF900596381 /* SmoochLocalizable.strings */,
 				784622701C0711E100EA589C /* Info.plist */,
 				784622681C0711E100EA589C /* TheBureau.xcdatamodeld */,
 				7846225C1C0711E100EA589C /* Supporting Files */,
@@ -1040,6 +1043,7 @@
 				5B2A2CB41C182D7D006F3845 /* DigitsKitResources.bundle in Resources */,
 				78F4A92A1C0CCC11001C76A6 /* Comfortaa-Bold.ttf in Resources */,
 				78E4F2801C85A1120034CFE2 /* Accounts.storyboard in Resources */,
+				5BFF6E711C8C7AF900596381 /* SmoochLocalizable.strings in Resources */,
 				7846226F1C0711E100EA589C /* LaunchScreen.storyboard in Resources */,
 				7846226C1C0711E100EA589C /* Assets.xcassets in Resources */,
 				784622671C0711E100EA589C /* Main.storyboard in Resources */,

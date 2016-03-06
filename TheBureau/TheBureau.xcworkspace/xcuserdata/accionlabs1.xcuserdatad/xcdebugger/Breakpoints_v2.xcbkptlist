@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBureau/ViewControllers/SignUpViewController/BUSignUpViewController.m"
-            timestampString = "478712883.114973"
+            timestampString = "478954737.745848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "-regiserWithDigits"
             landmarkType = "5">
          </BreakpointContent>
@@ -212,11 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
-            timestampString = "478798872.313561"
+            timestampString = "478954737.745848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "310"
-            endingLineNumber = "310"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
             landmarkName = "-loginLayer"
             landmarkType = "5">
          </BreakpointContent>
@@ -228,11 +228,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
-            timestampString = "478808280.314817"
+            timestampString = "478954737.745848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
             landmarkName = "-authenticationTokenWithUserId:completion:"
             landmarkType = "5">
          </BreakpointContent>
@@ -244,11 +244,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
-            timestampString = "478799602.791789"
+            timestampString = "478954737.745848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "314"
-            endingLineNumber = "314"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "-loginLayer"
             landmarkType = "5">
             <Locations>
@@ -292,11 +292,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
-            timestampString = "478799607.835661"
+            timestampString = "478954737.745848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
+            startingLineNumber = "352"
+            endingLineNumber = "352"
             landmarkName = "-loginLayer"
             landmarkType = "5">
             <Locations>

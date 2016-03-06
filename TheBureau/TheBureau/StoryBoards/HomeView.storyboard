@@ -13,6 +13,7 @@
             <string>Comfortaa</string>
             <string>Comfortaa</string>
             <string>Comfortaa</string>
+            <string>Comfortaa</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -712,8 +713,38 @@
                     <view key="view" contentMode="scaleToFill" id="Lvp-u9-k4M">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_with_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Cv8-fe-ntg">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIc-CB-FaT">
+                                <rect key="frame" x="155" y="285" width="290" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.83529411760000005" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="290" id="4SH-dC-4al"/>
+                                    <constraint firstAttribute="height" constant="30" id="6oF-aj-tre"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
+                                <state key="normal" title="Chat With Customer Service">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="chatWithCustomerService:" destination="9kZ-sz-xqb" eventType="touchUpInside" id="FpX-7M-PZT"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.21960784310000001" green="0.83137254900000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Cv8-fe-ntg" firstAttribute="top" secondItem="T5g-g9-pu6" secondAttribute="bottom" id="9ag-6v-R66"/>
+                            <constraint firstItem="K80-gB-7RM" firstAttribute="top" secondItem="Cv8-fe-ntg" secondAttribute="bottom" id="AFY-SL-Uch"/>
+                            <constraint firstAttribute="trailing" secondItem="Cv8-fe-ntg" secondAttribute="trailing" id="Jll-sY-3BI"/>
+                            <constraint firstItem="VIc-CB-FaT" firstAttribute="top" secondItem="T5g-g9-pu6" secondAttribute="bottom" constant="285" id="Lte-yu-Lgv"/>
+                            <constraint firstItem="VIc-CB-FaT" firstAttribute="centerX" secondItem="Lvp-u9-k4M" secondAttribute="centerX" id="aKf-ca-eBH"/>
+                            <constraint firstItem="VIc-CB-FaT" firstAttribute="centerY" secondItem="Lvp-u9-k4M" secondAttribute="centerY" id="cPZ-mQ-9qP"/>
+                            <constraint firstItem="Cv8-fe-ntg" firstAttribute="leading" secondItem="Lvp-u9-k4M" secondAttribute="leading" id="gLq-D5-GAd"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="008-h7-fYv" userLabel="First Responder" sceneMemberID="firstResponder"/>
