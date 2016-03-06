@@ -46,8 +46,12 @@
     [self.view endEditing:YES];
     [self showKeyBoard:NO];
     
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Thak you!" message:@"We received your message and wll get back to you shortly" preferredStyle:UIAlertControllerStyleAlert];
+    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"We received your message and will get back to you shortly"];
+    [message addAttribute:NSFontAttributeName
+                    value:[UIFont fontWithName:@"comfortaa" size:15]
+                    range:NSMakeRange(0, message.length)];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Thank you!" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertController setValue:message forKey:@"attributedTitle"];
     
     [alertController addAction:({
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Close" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {

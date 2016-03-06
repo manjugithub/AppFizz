@@ -202,7 +202,12 @@
                          
                          [BUWebServicesManager sharedManager].userID = [inResult valueForKey:@"userid"];
                          
-                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Login Successful" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+                         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Login Successful"];
+                         [message addAttribute:NSFontAttributeName
+                                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                                         range:NSMakeRange(0, message.length)];
+                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+                         [alertController setValue:message forKey:@"attributedTitle"];
                          
                          UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
                                                                             style:UIAlertActionStyleDefault
@@ -227,7 +232,13 @@
                      }
                      else
                      {
-                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[inResult valueForKey:@"response"] message:@"" preferredStyle:UIAlertControllerStyleAlert];
+                         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[inResult valueForKey:@"response"] ];
+                         [message addAttribute:NSFontAttributeName
+                                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                                         range:NSMakeRange(0, message.length)];
+                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+                         [alertController setValue:message forKey:@"attributedTitle"];
+                         
                          [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
                          [self presentViewController:alertController animated:YES completion:nil];
                      }
@@ -236,7 +247,12 @@
                                                                           failureBlock:^(id response, NSError *error)
                  {
                      [self startActivityIndicator:YES];
-                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Login Failed" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+                     NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Login Failed"];
+                     [message addAttribute:NSFontAttributeName
+                                     value:[UIFont fontWithName:@"comfortaa" size:15]
+                                     range:NSMakeRange(0, message.length)];
+                     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+                     [alertController setValue:message forKey:@"attributedTitle"];
                      [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
                      [self presentViewController:alertController animated:YES completion:nil];
                  }];
@@ -265,8 +281,12 @@
     {
         
         [BUWebServicesManager sharedManager].userID = [inResult valueForKey:@"userid"];
-        
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Login Successful" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Login Successful"];
+        [message addAttribute:NSFontAttributeName
+                        value:[UIFont fontWithName:@"comfortaa" size:15]
+                        range:NSMakeRange(0, message.length)];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alertController setValue:message forKey:@"attributedTitle"];
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
                                                            style:UIAlertActionStyleDefault
@@ -290,7 +310,12 @@
     }
     else
     {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Registration Failed" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Registration Failed"];
+        [message addAttribute:NSFontAttributeName
+                        value:[UIFont fontWithName:@"comfortaa" size:15]
+                        range:NSMakeRange(0, message.length)];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alertController setValue:message forKey:@"attributedTitle"];
         [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
         [self presentViewController:alertController animated:YES completion:nil];
     }
@@ -300,7 +325,12 @@
 -(void)didFail:(id)inResult;
 {
     [self startActivityIndicator:YES];
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Login Failed" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Login Failed"];
+    [message addAttribute:NSFontAttributeName
+                    value:[UIFont fontWithName:@"comfortaa" size:15]
+                    range:NSMakeRange(0, message.length)];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertController setValue:message forKey:@"attributedTitle"];
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
     [self presentViewController:alertController animated:YES completion:nil];
 }
@@ -423,7 +453,12 @@
              }
              else
              {
-                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+                 NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
+                 [message addAttribute:NSFontAttributeName
+                                 value:[UIFont fontWithName:@"comfortaa" size:15]
+                                 range:NSMakeRange(0, message.length)];
+                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+                 [alertController setValue:message forKey:@"attributedTitle"];
                  [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
                  [self presentViewController:alertController animated:YES completion:nil];
              }
@@ -431,8 +466,12 @@
                                                               failureBlock:^(id response, NSError *error)
          {
              [self startActivityIndicator:YES];
-             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
+             [message addAttribute:NSFontAttributeName
+                             value:[UIFont fontWithName:@"comfortaa" size:15]
+                             range:NSMakeRange(0, message.length)];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+             [alertController setValue:message forKey:@"attributedTitle"];             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
              [self presentViewController:alertController animated:YES completion:nil];
          }];
 

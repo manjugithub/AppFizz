@@ -56,7 +56,14 @@
 -(IBAction)navigateBack:(id)sender
 {
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"Do you wish to leave this appication? Your Information has not been saved" preferredStyle:UIAlertControllerStyleAlert];
+ 
+    
+    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Do you wish to leave this appication? Your Information has not been saved"];
+    [message addAttribute:NSFontAttributeName
+                    value:[UIFont fontWithName:@"comfortaa" size:15]
+                    range:NSMakeRange(0, message.length)];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertController setValue:message forKey:@"attributedTitle"];
     
     [alertController addAction:({
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {

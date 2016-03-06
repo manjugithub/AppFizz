@@ -127,13 +127,24 @@
         }
         else
         {
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+            NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
+            [message addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"comfortaa" size:15]
+                            range:NSMakeRange(0, message.length)];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+            [alertController setValue:message forKey:@"attributedTitle"];
             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
             [self presentViewController:alertController animated:YES completion:nil];
         }
     } failureBlock:^(id response, NSError *error) {
         [self startActivityIndicator:YES];
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        
+        NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
+        [message addAttribute:NSFontAttributeName
+                        value:[UIFont fontWithName:@"comfortaa" size:15]
+                        range:NSMakeRange(0, message.length)];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alertController setValue:message forKey:@"attributedTitle"];
         [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
         [self presentViewController:alertController animated:YES completion:nil];
     }];
@@ -168,8 +179,13 @@ constructingBodyWithBlock:nil
           success:^(NSURLSessionDataTask *operation, id responseObject)
      {
          [self stopActivityIndicator];
-
-         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"Your interest is sent!" preferredStyle:UIAlertControllerStyleAlert];
+         
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Your interest is sent!"];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];
          
          [alertController addAction:({
              UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -196,7 +212,12 @@ constructingBodyWithBlock:nil
 
 -(IBAction)pass:(id)sender
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"You have passed the profile!" preferredStyle:UIAlertControllerStyleAlert];
+    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"You have passed the profile!"];
+    [message addAttribute:NSFontAttributeName
+                    value:[UIFont fontWithName:@"comfortaa" size:15]
+                    range:NSMakeRange(0, message.length)];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertController setValue:message forKey:@"attributedTitle"];
     
     [alertController addAction:({
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {

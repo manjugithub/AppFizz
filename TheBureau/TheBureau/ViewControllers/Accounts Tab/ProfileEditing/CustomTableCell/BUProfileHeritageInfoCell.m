@@ -38,7 +38,12 @@
 -(void)showFailureAlert
 {
     [self.parentVC startActivityIndicator:YES];
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
+    [message addAttribute:NSFontAttributeName
+                    value:[UIFont fontWithName:@"comfortaa" size:15]
+                    range:NSMakeRange(0, message.length)];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertController setValue:message forKey:@"attributedTitle"];
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
     [self.parentVC presentViewController:alertController animated:YES completion:nil];
 }
@@ -76,7 +81,12 @@
     
     if(nil == self.famliyID)
     {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"Please Select Family Origin" preferredStyle:UIAlertControllerStyleAlert];
+        NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Please Select Family Origin"];
+        [message addAttribute:NSFontAttributeName
+                        value:[UIFont fontWithName:@"comfortaa" size:15]
+                        range:NSMakeRange(0, message.length)];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alertController setValue:message forKey:@"attributedTitle"];
         
         [alertController addAction:({
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -112,7 +122,12 @@
 {
     if(nil == self.religionID)
     {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"Please Select Relegion" preferredStyle:UIAlertControllerStyleAlert];
+        NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Please Select Relegion"];
+        [message addAttribute:NSFontAttributeName
+                        value:[UIFont fontWithName:@"comfortaa" size:15]
+                        range:NSMakeRange(0, message.length)];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alertController setValue:message forKey:@"attributedTitle"];
         
         [alertController addAction:({
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -188,13 +203,23 @@
          self.isUpdatingProfile = NO;
          if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
          {
-             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Updated successfully" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Updated Successfully"];
+             [message addAttribute:NSFontAttributeName
+                             value:[UIFont fontWithName:@"comfortaa" size:15]
+                             range:NSMakeRange(0, message.length)];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+             [alertController setValue:message forKey:@"attributedTitle"];
              [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
              [self.parentVC presentViewController:alertController animated:YES completion:nil];
          }
          else
          {
-             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Bureau Server Error" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
+             [message addAttribute:NSFontAttributeName
+                             value:[UIFont fontWithName:@"comfortaa" size:15]
+                             range:NSMakeRange(0, message.length)];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+             [alertController setValue:message forKey:@"attributedTitle"];
              [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
              [self.parentVC presentViewController:alertController animated:YES completion:nil];
          }

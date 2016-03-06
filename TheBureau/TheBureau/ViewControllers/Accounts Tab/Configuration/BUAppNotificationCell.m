@@ -40,7 +40,12 @@
 
 - (IBAction)deactivateAccount:(id)sender
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"Your Account will be deactivated. Do you want to continue?" preferredStyle:UIAlertControllerStyleAlert];
+    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Do you wish to leave this appication? Your Information has not been saved"];
+    [message addAttribute:NSFontAttributeName
+                    value:[UIFont fontWithName:@"comfortaa" size:15]
+                    range:NSMakeRange(0, message.length)];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertController setValue:message forKey:@"attributedTitle"];
     
     [alertController addAction:({
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -64,7 +69,13 @@
 }
 - (IBAction)deleteAccount:(id)sender
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"Your Account will be deleted. Do you want to continue?" preferredStyle:UIAlertControllerStyleAlert];
+    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Your Account will be deleted. Do you want to continue?"];
+    [message addAttribute:NSFontAttributeName
+                    value:[UIFont fontWithName:@"comfortaa" size:15]
+                    range:NSMakeRange(0, message.length)];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertController setValue:message forKey:@"attributedTitle"];
+
     
     [alertController addAction:({
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
