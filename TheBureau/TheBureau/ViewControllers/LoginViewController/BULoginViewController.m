@@ -441,7 +441,11 @@
                          if (completion) {
                              completion(YES, nil);
                          }
-                         
+                        
+                         UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+                         BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+                         [self.navigationController pushViewController:vc animated:YES];
+
                      }
                      else
                      {

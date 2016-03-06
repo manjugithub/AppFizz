@@ -260,11 +260,11 @@
                   moduleName = "TheBureau"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/accionlabs1/Desktop/AppFizz/TheBureau/TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
-                  timestampString = "478859017.223955"
+                  timestampString = "478986065.0827"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "314"
-                  endingLineNumber = "314"
+                  startingLineNumber = "344"
+                  endingLineNumber = "344"
                   offsetFromSymbolStart = "52">
                </Location>
                <Location
@@ -275,11 +275,11 @@
                   moduleName = "TheBureau"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/accionlabs1/Desktop/AppFizz/TheBureau/TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
-                  timestampString = "478859017.224164"
+                  timestampString = "478986065.082853"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "314"
-                  endingLineNumber = "314"
+                  startingLineNumber = "344"
+                  endingLineNumber = "344"
                   offsetFromSymbolStart = "47">
                </Location>
             </Locations>
@@ -308,11 +308,11 @@
                   moduleName = "TheBureau"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/accionlabs1/Desktop/AppFizz/TheBureau/TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
-                  timestampString = "478859017.225362"
+                  timestampString = "478986065.083908"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "322"
-                  endingLineNumber = "322"
+                  startingLineNumber = "352"
+                  endingLineNumber = "352"
                   offsetFromSymbolStart = "121">
                </Location>
                <Location
@@ -323,11 +323,11 @@
                   moduleName = "TheBureau"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/accionlabs1/Desktop/AppFizz/TheBureau/TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
-                  timestampString = "478859017.225599"
+                  timestampString = "478986065.084079"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "322"
-                  endingLineNumber = "322"
+                  startingLineNumber = "352"
+                  endingLineNumber = "352"
                   offsetFromSymbolStart = "47">
                </Location>
             </Locations>
@@ -378,6 +378,22 @@
             startingLineNumber = "18"
             endingLineNumber = "18"
             landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
+            timestampString = "478986064.950415"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "445"
+            endingLineNumber = "445"
+            landmarkName = "-authenticationTokenWithUserId:completion:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
