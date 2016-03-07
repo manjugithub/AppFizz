@@ -81,7 +81,6 @@
 		7846227A1C0711E100EA589C /* TheBureauTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 784622791C0711E100EA589C /* TheBureauTests.m */; };
 		784622851C0711E100EA589C /* TheBureauUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 784622841C0711E100EA589C /* TheBureauUITests.m */; };
 		784622951C0718B700EA589C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 784622941C0718B700EA589C /* AppDelegate.m */; };
-		78626F2E1C8DA07900914F35 /* Smooch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78626F2D1C8DA07900914F35 /* Smooch.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		78626F301C8DA0C400914F35 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78626F2F1C8DA0C400914F35 /* CoreText.framework */; };
 		78626F311C8DA13700914F35 /* Smooch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78626F2D1C8DA07900914F35 /* Smooch.framework */; };
 		78626F321C8DA13700914F35 /* Smooch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 78626F2D1C8DA07900914F35 /* Smooch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -445,7 +444,6 @@
 				5BFF6E6F1C89DBF300596381 /* FBSDKShareKit.framework in Frameworks */,
 				5BFF6E6D1C89DBCD00596381 /* FBSDKLoginKit.framework in Frameworks */,
 				5BA795741C7F8EF7009B65E1 /* MobileCoreServices.framework in Frameworks */,
-				78626F2E1C8DA07900914F35 /* Smooch.framework in Frameworks */,
 				78626F311C8DA13700914F35 /* Smooch.framework in Frameworks */,
 				5BA795721C7F8EEC009B65E1 /* Security.framework in Frameworks */,
 				5B2A2CB31C182D7D006F3845 /* DigitsKit.framework in Frameworks */,
