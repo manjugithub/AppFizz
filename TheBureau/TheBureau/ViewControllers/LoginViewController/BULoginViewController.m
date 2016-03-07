@@ -346,7 +346,7 @@
             NSLog(@"Failed to connect to Layer: %@", error);
         } else {
 //            PFUser *user = [PFUser currentUser];
-            NSString *userID = @"123456";
+            NSString *userID = [BUWebServicesManager sharedManager].userID;
 // Pass User ID HERE
             
             [self authenticateLayerWithUserID:userID completion:^(BOOL success, NSError *error) {
