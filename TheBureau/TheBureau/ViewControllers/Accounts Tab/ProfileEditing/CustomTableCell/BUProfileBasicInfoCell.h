@@ -28,5 +28,10 @@
 @property(nonatomic,weak) NSString *feetStr,*inchStr,*maritalStatus;
 @property (weak, nonatomic) IBOutlet UITextField *heighTextField;
 
+@property(nonatomic) NSMutableArray *ageArray;
+@property(nonatomic) NSMutableArray *radiusArray;
+@property(nonatomic,weak)IBOutlet UITextField *ageLabel,*radiusLabel;
+@property(nonatomic) NSArray *maritalStatusArray;
+@property (weak, nonatomic) IBOutlet UITextField *maritalStatusTF;
 
 @end

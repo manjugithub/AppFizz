@@ -15,8 +15,6 @@
 @property(nonatomic , strong) IBOutlet UITableView *profileTableView;
 @property(nonatomic , assign) NSInteger currentSelectedTab,previousSelectedTab;
 
--(void)expandProfileTab:(NSInteger)inTabIndex;
--(void)collapseProfileTab:(NSInteger)inTabIndex;
 - (IBAction)editProfileDetails:(id)sender;
 
 @end

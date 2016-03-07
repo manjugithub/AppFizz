@@ -45,12 +45,12 @@
 		5BB683501C64A58E0043C4FC /* EmployementStatusTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6834D1C64A58E0043C4FC /* EmployementStatusTVCell.m */; };
 		5BB683511C64A58E0043C4FC /* HighLevelEducationTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6834F1C64A58E0043C4FC /* HighLevelEducationTVCell.m */; };
 		5BDA47201C22596200C875AB /* BURootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA471F1C22596200C875AB /* BURootViewController.m */; };
-		5BFF6E671C89C5B400596381 /* BUContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF6E661C89C5B400596381 /* BUContactListViewController.m */; settings = {ASSET_TAGS = (); }; };
-		5BFF6E691C89DBAA00596381 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFF6E681C89DBAA00596381 /* Bolts.framework */; settings = {ASSET_TAGS = (); }; };
-		5BFF6E6B1C89DBBD00596381 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFF6E6A1C89DBBD00596381 /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
-		5BFF6E6D1C89DBCD00596381 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFF6E6C1C89DBCD00596381 /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
-		5BFF6E6F1C89DBF300596381 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFF6E6E1C89DBF300596381 /* FBSDKShareKit.framework */; settings = {ASSET_TAGS = (); }; };
-		5BFF6E711C8C7AF900596381 /* SmoochLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BFF6E701C8C7AF900596381 /* SmoochLocalizable.strings */; settings = {ASSET_TAGS = (); }; };
+		5BFF6E671C89C5B400596381 /* BUContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF6E661C89C5B400596381 /* BUContactListViewController.m */; };
+		5BFF6E691C89DBAA00596381 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFF6E681C89DBAA00596381 /* Bolts.framework */; };
+		5BFF6E6B1C89DBBD00596381 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFF6E6A1C89DBBD00596381 /* FBSDKCoreKit.framework */; };
+		5BFF6E6D1C89DBCD00596381 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFF6E6C1C89DBCD00596381 /* FBSDKLoginKit.framework */; };
+		5BFF6E6F1C89DBF300596381 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFF6E6E1C89DBF300596381 /* FBSDKShareKit.framework */; };
+		5BFF6E711C8C7AF900596381 /* SmoochLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5BFF6E701C8C7AF900596381 /* SmoochLocalizable.strings */; };
 		7846225E1C0711E100EA589C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7846225D1C0711E100EA589C /* main.m */; };
 		784622671C0711E100EA589C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 784622651C0711E100EA589C /* Main.storyboard */; };
 		7846226A1C0711E100EA589C /* TheBureau.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 784622681C0711E100EA589C /* TheBureau.xcdatamodeld */; };
@@ -80,6 +80,8 @@
 		78B5B72D1C5678F900E3C531 /* BUProfileOccupationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B5B72B1C5678F900E3C531 /* BUProfileOccupationVC.m */; };
 		78B5B7301C56792000E3C531 /* BUProfileLegalStatusVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B5B72F1C56792000E3C531 /* BUProfileLegalStatusVC.m */; };
 		78B5B7311C56792000E3C531 /* BUProfileLegalStatusVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B5B72F1C56792000E3C531 /* BUProfileLegalStatusVC.m */; };
+		78BD7D531C8CC665000AD38B /* BUGoldTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BD7D521C8CC665000AD38B /* BUGoldTabVC.m */; };
+		78BD7D561C8D0B29000AD38B /* BUGoldTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BD7D551C8D0B29000AD38B /* BUGoldTabCell.m */; };
 		78BF55101C686F9400B5F1A4 /* BUHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BF550F1C686F9400B5F1A4 /* BUHomeViewController.m */; };
 		78BF55121C68701000B5F1A4 /* HomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78BF55111C68701000B5F1A4 /* HomeView.storyboard */; };
 		78BF55151C68739000B5F1A4 /* BUHomeTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BF55141C68739000B5F1A4 /* BUHomeTabbarController.m */; };
@@ -259,6 +261,10 @@
 		78B5B72B1C5678F900E3C531 /* BUProfileOccupationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfileOccupationVC.m; sourceTree = "<group>"; };
 		78B5B72E1C56792000E3C531 /* BUProfileLegalStatusVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUProfileLegalStatusVC.h; sourceTree = "<group>"; };
 		78B5B72F1C56792000E3C531 /* BUProfileLegalStatusVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfileLegalStatusVC.m; sourceTree = "<group>"; };
+		78BD7D511C8CC665000AD38B /* BUGoldTabVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUGoldTabVC.h; sourceTree = "<group>"; };
+		78BD7D521C8CC665000AD38B /* BUGoldTabVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUGoldTabVC.m; sourceTree = "<group>"; };
+		78BD7D541C8D0B29000AD38B /* BUGoldTabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUGoldTabCell.h; sourceTree = "<group>"; };
+		78BD7D551C8D0B29000AD38B /* BUGoldTabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUGoldTabCell.m; sourceTree = "<group>"; };
 		78BF550E1C686F9400B5F1A4 /* BUHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUHomeViewController.h; sourceTree = "<group>"; };
 		78BF550F1C686F9400B5F1A4 /* BUHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUHomeViewController.m; sourceTree = "<group>"; };
 		78BF55111C68701000B5F1A4 /* HomeView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeView.storyboard; sourceTree = "<group>"; };
@@ -536,6 +542,7 @@
 		784622961C0718E500EA589C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				78BD7D501C8CC63D000AD38B /* Gold Tab */,
 				5B2D3E831C7C6927006B7674 /* Connections Tab */,
 				78CA18551C7AFDEA00CF091A /* Pool Tab */,
 				78BF55211C688E7100B5F1A4 /* Accounts Tab */,
@@ -708,6 +715,17 @@
 				78B5B7191C561A6900E3C531 /* BUWebServicesManager.m */,
 			);
 			path = Webservices;
+			sourceTree = "<group>";
+		};
+		78BD7D501C8CC63D000AD38B /* Gold Tab */ = {
+			isa = PBXGroup;
+			children = (
+				78BD7D511C8CC665000AD38B /* BUGoldTabVC.h */,
+				78BD7D521C8CC665000AD38B /* BUGoldTabVC.m */,
+				78BD7D541C8D0B29000AD38B /* BUGoldTabCell.h */,
+				78BD7D551C8D0B29000AD38B /* BUGoldTabCell.m */,
+			);
+			path = "Gold Tab";
 			sourceTree = "<group>";
 		};
 		78BF550D1C686E5500B5F1A4 /* HomeViewController */ = {
@@ -1221,6 +1239,8 @@
 				5BA7961A1C845D1E009B65E1 /* BUUserProfile.m in Sources */,
 				789D88F91C7E3FC000772EED /* BUProfileHoroscopeInfoCell.m in Sources */,
 				789D88F61C7E3FAD00772EED /* BUProfileSocialHabitsInfoCell.m in Sources */,
+				78BD7D531C8CC665000AD38B /* BUGoldTabVC.m in Sources */,
+				78BD7D561C8D0B29000AD38B /* BUGoldTabCell.m in Sources */,
 				7846226A1C0711E100EA589C /* TheBureau.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,9 +22,7 @@
 
 
 #pragma mark - Account selection
-@property (weak, nonatomic) IBOutlet UILabel *relationLabel;
-@property (assign, nonatomic) BOOL shouldExpand;
--(IBAction)dropDownBtn:(id)sender;
+@property (assign, nonatomic) BOOL shouldExpand,isEditing;
 
 
 
@@ -39,7 +37,7 @@
     self.navigationItem.title = @"Profile";
     // Do any additional setup after loading the view.
     
-
+    self.isEditing = NO;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -82,6 +80,7 @@
     NSString *imgName = @"";
     if (self.rightBarButton.tag == 0)
     {
+        self.isEditing = YES;
         self.rightBarButton.tag = 1;
         imgName = @"ic_done";
     }
@@ -89,8 +88,11 @@
     {
         self.rightBarButton.tag = 0;
         imgName = @"ic_edit";
+        self.isEditing = NO;
     }
     self.rightBarButton.image = [UIImage imageNamed:imgName];
+
+    [self.profileTableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -156,6 +158,8 @@
     cell.clipsToBounds = YES;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    [cell.contentView setUserInteractionEnabled:self.isEditing];
+    
     return cell;
 }
 
@@ -165,8 +169,6 @@
     CGFloat normalHeight = 80;
     CGFloat expandedHeight = 300;
     CGFloat height = 0;
-    
-    
     
     switch (indexPath.section) {
         case 0:
@@ -218,6 +220,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    [self.view endEditing:YES];
+    NSString *imgName = @"";
+    
+    self.rightBarButton.tag = 0;
+    imgName = @"ic_edit";
+    self.isEditing = NO;
+    self.rightBarButton.image = [UIImage imageNamed:imgName];
+
     if(self.selectedRow == indexPath.section)
     {
         self.shouldExpand = !self.shouldExpand;
@@ -229,8 +240,8 @@
     self.selectedRow = indexPath.section;
     [self.profileTableView beginUpdates];
     [self.profileTableView endUpdates];
-
-    [self performSelector:@selector(scrollToTop:) withObject:indexPath afterDelay:1.0];
+    
+    //   [self performSelector:@selector(scrollToTop:) withObject:indexPath afterDelay:1.0];
 }
 
 

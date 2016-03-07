@@ -75,6 +75,38 @@
             endingLineNumber = "310"
             landmarkName = "-loginLayer"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BULoginViewController didSuccess:]"
+                  moduleName = "TheBureau"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/accion/Skype%20Downloads/TheBureau/AppFizz/TheBureau/TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
+                  timestampString = "479009624.988605"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "310"
+                  endingLineNumber = "310"
+                  offsetFromSymbolStart = "982">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BULoginViewController didSuccess:]"
+                  moduleName = "TheBureau"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/accion/Skype%20Downloads/TheBureau/AppFizz/TheBureau/TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
+                  timestampString = "479009624.988806"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "310"
+                  endingLineNumber = "310"
+                  offsetFromSymbolStart = "1044">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -91,38 +123,6 @@
             endingLineNumber = "314"
             landmarkName = "-loginLayer"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[BULoginViewController loginLayer]"
-                  moduleName = "TheBureau"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/accion/Documents/Manjunath/AppFizz/TheBureau/TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
-                  timestampString = "478726997.523368"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "314"
-                  endingLineNumber = "314"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__35-[BULoginViewController loginLayer]_block_invoke"
-                  moduleName = "TheBureau"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/accion/Documents/Manjunath/AppFizz/TheBureau/TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
-                  timestampString = "478726997.524147"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "314"
-                  endingLineNumber = "314"
-                  offsetFromSymbolStart = "47">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -139,38 +139,6 @@
             endingLineNumber = "322"
             landmarkName = "-loginLayer"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__35-[BULoginViewController loginLayer]_block_invoke"
-                  moduleName = "TheBureau"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/accion/Documents/Manjunath/AppFizz/TheBureau/TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
-                  timestampString = "478726997.602206"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "322"
-                  endingLineNumber = "322"
-                  offsetFromSymbolStart = "121">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__35-[BULoginViewController loginLayer]_block_invoke_2"
-                  moduleName = "TheBureau"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/accion/Documents/Manjunath/AppFizz/TheBureau/TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
-                  timestampString = "478726997.602389"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "322"
-                  endingLineNumber = "322"
-                  offsetFromSymbolStart = "47">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -195,13 +163,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TheBureau/ViewControllers/Accounts Tab/ProfileEditing/BUProfileEditingVC.m"
-            timestampString = "478726942.346525"
+            filePath = "TheBureau/ViewControllers/Accounts Tab/Preferences/BUPreferencesVC.m"
+            timestampString = "479008663.459"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBureau/ViewControllers/Accounts Tab/ProfileEditing/BUProfileEditingVC.m"
+            timestampString = "479009624.886108"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

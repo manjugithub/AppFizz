@@ -231,6 +231,9 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="28" id="vH9-Q7-cxc"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <action selector="setAge" destination="eQg-4I-oLv" eventType="touchUpInside" id="xJo-VZ-wa6"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
@@ -336,6 +339,9 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="28" id="Nqj-DC-DFK"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <action selector="setRadius" destination="eQg-4I-oLv" eventType="touchUpInside" id="8yW-3s-OKr"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
@@ -421,6 +427,9 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="28" id="OCP-t1-c9i"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <action selector="selectMarital:" destination="eQg-4I-oLv" eventType="touchUpInside" id="UeY-bU-QGB"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
@@ -486,11 +495,14 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="ageLabel" destination="3Kj-2t-gR4" id="Vjm-EZ-X4G"/>
                                             <outlet property="femaleImgView" destination="mfH-N8-q7D" id="xyj-r3-GZ8"/>
                                             <outlet property="genderSelectionBtn" destination="7Zq-iw-9MK" id="fHf-ok-kDC"/>
                                             <outlet property="heighTextField" destination="fh1-zE-17x" id="4Kt-J6-hT1"/>
                                             <outlet property="maleImgView" destination="PUF-fH-Pqw" id="ilE-Oe-XUo"/>
+                                            <outlet property="maritalStatusTF" destination="gmx-9z-L16" id="5Mg-mM-z2t"/>
                                             <outlet property="parentVC" destination="DA2-eY-bxN" id="wJs-MO-aat"/>
+                                            <outlet property="radiusLabel" destination="0Zx-cp-aGh" id="BUr-Vf-H8V"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUProfileEducationInfoCell" rowHeight="380" id="l6C-Z0-ds0" customClass="BUProfileEducationInfoCell">
@@ -2241,7 +2253,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7a-2x-EPY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="766" y="611"/>
+            <point key="canvasLocation" x="654" y="595"/>
         </scene>
         <!--Help And FeedbackVC-->
         <scene sceneID="dTB-Dc-kYi">
