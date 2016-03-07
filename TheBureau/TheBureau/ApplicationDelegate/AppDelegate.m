@@ -35,7 +35,7 @@
      [SKTSettings settingsWithAppToken:@"98vczyf814ei6h4nyyasqhnxv"]];
 
     
-    [self setupLayers];
+//    [self setupLayers];
     [self setAppearence];
     
     

@@ -57,4 +57,7 @@ typedef enum {
 - (void)stopActivityIndicator;
 - (void)startCustomActivityIndicator:(BOOL)isWhite;
 - (void)stopCustomActivityIndicator;
+
+-(void)showFailureAlert;
+
 @end

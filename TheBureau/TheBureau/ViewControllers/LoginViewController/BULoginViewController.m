@@ -214,11 +214,11 @@
                                                                           handler:^(UIAlertAction *action)
                                                     {
                                                         
-                                                     [self loginLayer];
+//                                                     [self loginLayer];
    
-//                                                        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-//                                                        BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-//                                                        [self.navigationController pushViewController:vc animated:YES];
+                                                        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+                                                        BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+                                                        [self.navigationController pushViewController:vc animated:YES];
                                                         
 //                                                                                               UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //                                                                                               BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];

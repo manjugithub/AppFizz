@@ -428,10 +428,6 @@ numberOfRowsInComponent:(NSInteger)component{
         if (![self.currentLocTF.text length]) {
             [self alertMessage:@"Current Location"];
             }
-        else if (![self.dateofbirthTF.text length]){
-    
-            [self alertMessage:@"Date Of Birth"];
-        }
     
         else if (![self.heighTextField.text length]){
     
@@ -448,11 +444,6 @@ numberOfRowsInComponent:(NSInteger)component{
             }
 
             
-            NSString *gender = @"Female";
-            if(self.genderSelectionBtn.tag == 1)
-            {
-                gender = @"Male";
-            }
             /*
              
              2. API for screen 4a_profile_setup1 (Of the mockup screens)
@@ -473,8 +464,6 @@ numberOfRowsInComponent:(NSInteger)component{
              */
             
             parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
-                           @"profile_gender":gender,
-                           @"profile_dob":self.dateofbirthTF.text,
                            @"country_residing":citizen,
                            @"current_zip_code":self.currentLocTF.text,
                            @"height_feet":self.feetStr,

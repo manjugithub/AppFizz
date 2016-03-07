@@ -137,7 +137,7 @@
 
 -(IBAction)setAge {
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Age\n From                        To\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Age\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIPickerView *picker = [[UIPickerView alloc] init];
     picker.tag = 100;
     [alertController.view addSubview:picker];
@@ -163,7 +163,7 @@
             }
             
             NSLog(@"%@", text);
-            self.ageLabel.text = text;
+            self.ageLabel.text = [NSString stringWithFormat:@"%@ years",text];
         }];
         action;
     })];
@@ -183,7 +183,7 @@
 
 -(IBAction)setRadius {
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Location Radius\n From                        To\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Location Radius\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIPickerView *picker = [[UIPickerView alloc] init];
     picker.tag = 101;
     [alertController.view addSubview:picker];
@@ -204,12 +204,13 @@
             
             NSMutableString * text = [NSMutableString string];
             for(NSUInteger i = 0; i < numComponents; ++i) {
+                
                 NSString *title = [self pickerView:picker titleForRow:[picker selectedRowInComponent:i] forComponent:i];
                 [text appendFormat:@"%@", title];
             }
             
             NSLog(@"%@", text);
-            self.radiusLabel.text = text;
+            self.radiusLabel.text = [NSString stringWithFormat:@"%@ miles",text];
         }];
         action;
     })];
@@ -228,14 +229,25 @@
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:
 (NSInteger)row inComponent:(NSInteger)component
 {
-    if (component == 1)
+    
+    if(pickerView.tag == 100)
     {
-        self.inchStr = [_inchesMutableArray objectAtIndex:row];
-        
+    }
+    else if(pickerView.tag == 101)
+    {
     }
     else
     {
-        self.feetStr = [_feetMutableArray objectAtIndex:row];
+        
+        if (component == 1)
+        {
+            self.inchStr = [_inchesMutableArray objectAtIndex:row];
+            
+        }
+        else
+        {
+            self.feetStr = [_feetMutableArray objectAtIndex:row];
+        }
     }
 }
 
@@ -268,6 +280,14 @@
 
 #pragma mark - Picker View Data source
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    if(pickerView.tag == 100)
+    {
+        return 1;
+    }
+    else if(pickerView.tag == 101)
+    {
+        return 1;
+    }
     return 2;
 }
 

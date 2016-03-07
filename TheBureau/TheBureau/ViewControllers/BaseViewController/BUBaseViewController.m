@@ -241,4 +241,15 @@
     }];
 }
 
+-(void)showFailureAlert
+{
+    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
+    [message addAttribute:NSFontAttributeName
+                    value:[UIFont fontWithName:@"comfortaa" size:15]
+                    range:NSMakeRange(0, message.length)];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertController setValue:message forKey:@"attributedTitle"];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 @end

@@ -32,7 +32,7 @@
 @property(nonatomic,weak)IBOutlet UILabel *noLabel;
 
 
-
+@property(nonatomic, strong) NSString *diet,*smoke,*drink;
 
 @end
 
@@ -44,6 +44,11 @@
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_back"] style:UIBarButtonItemStylePlain target:self action:@selector(viewPopOnBackButton)];
     
+    
+    self.diet = @"Vegetarian";
+    self.drink = @"Social";
+    self.smoke = @"No";
+
     
     self.navigationItem.leftBarButtonItem = backButton;
 
@@ -57,42 +62,49 @@
 
 -(IBAction)setDiet:(id)sender{
     
-    UIButton *setYearBtn = (UIButton *)sender;
-    
-    if (setYearBtn.tag == ButtonTypeVegetarian) {
-        
-        [_vegetarianBtn setSelected:YES];
-        [_eegetarianBtn setSelected:NO];
-        [_nonVegetarianBtn setSelected:NO];
-        [_veganBtn setSelected:NO];
-        
+    UIButton *dietButton = (UIButton *)sender;
+    switch (dietButton.tag)
+    {
+        case ButtonTypeVegetarian:
+        {
+            
+            [_vegetarianBtn setSelected:YES];
+            [_eegetarianBtn setSelected:NO];
+            [_nonVegetarianBtn setSelected:NO];
+            [_veganBtn setSelected:NO];
+            self.diet = @"Vegetarian";
+            break;
+        }
+        case ButtonTypeEegetarian:
+        {
+            
+            [_vegetarianBtn setSelected:NO];
+            [_eegetarianBtn setSelected:YES];
+            [_nonVegetarianBtn setSelected:NO];
+            [_veganBtn setSelected:NO];
+            self.diet = @"Eggetarian";
+            break;
+        }
+        case ButtonTypeNonvegetarian:
+        {
+            
+            [_vegetarianBtn setSelected:NO];
+            [_eegetarianBtn setSelected:NO];
+            [_nonVegetarianBtn setSelected:YES];
+            [_veganBtn setSelected:NO];
+            self.diet = @"Non Vegetarian";
+            break;
+        }
+        default:
+        {
+            [_vegetarianBtn setSelected:NO];
+            [_eegetarianBtn setSelected:NO];
+            [_nonVegetarianBtn setSelected:NO];
+            [_veganBtn setSelected:YES];
+            self.diet = @"Vegan";
+            break;
+        }
     }
-    else if (setYearBtn.tag == ButtonTypeEegetarian){
-        
-        [_vegetarianBtn setSelected:NO];
-        [_eegetarianBtn setSelected:YES];
-        [_nonVegetarianBtn setSelected:NO];
-        [_veganBtn setSelected:NO];
-        
-    }
-    else if (setYearBtn.tag == ButtonTypeNonvegetarian){
-        
-        [_vegetarianBtn setSelected:NO];
-        [_eegetarianBtn setSelected:NO];
-        [_nonVegetarianBtn setSelected:YES];
-        [_veganBtn setSelected:NO];
-        
-    }
-    else{
-        [_vegetarianBtn setSelected:NO];
-        [_eegetarianBtn setSelected:NO];
-        [_nonVegetarianBtn setSelected:NO];
-        [_veganBtn setSelected:YES];
-        
-        
-    }
-    
-    
     
 }
 
@@ -104,16 +116,16 @@
     {
         _sociallyLabel.textColor = [UIColor lightGrayColor];
         _neverLabel.textColor = [UIColor blackColor];
-     
         switchBtnStr = @"switch_ON";
         self.drinkingSelectionBtn.tag = 1;
+        self.smoke = @"Socially";
     }
     else
     {
         self.drinkingSelectionBtn.tag = 0;
         _sociallyLabel.textColor = [UIColor blackColor];
         _neverLabel.textColor = [UIColor lightGrayColor];
-        
+        self.smoke = @"Never";
         switchBtnStr = @"switch_OFF";
     }
     
@@ -134,13 +146,14 @@
 
                switchBtnStr = @"switch_ON";
         self.smokingSelectionBtn.tag = 1;
+        self.smoke = @"Yes";
     }
     else
     {
         self.smokingSelectionBtn.tag = 0;
         _yesLabel.textColor = [UIColor lightGrayColor];
         _noLabel.textColor = [UIColor blackColor];
-       
+        self.smoke = @"No";
         switchBtnStr = @"switch_OFF";
     }
     
@@ -153,11 +166,42 @@
 
 -(IBAction)continueClicked:(id)sender
 {
+  /*
+    API to  upload :
+http://app.thebureauapp.com/admin/update_profile_step4
     
+    Parameter
+    userid => user id of user
+    diet => e.g. Vegetarian, Eggetarian, Non Vegetarian
+    drinking => e.g. Socially, Never
+    smoking => e.g. Yes, No
+*/
+    NSDictionary *parameters = nil;
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                   @"diet":self.diet,
+                   @"drinking":self.drink,
+                   @"smoking":self.smoke
+                   };
+
     
-    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
-    BUProfileOccupationVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileOccupationVC"];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self startActivityIndicator:YES];
+    [[BUWebServicesManager sharedManager]queryServer:nil
+                                             baseURL:@"http://app.thebureauapp.com/admin/update_profile_step4"
+                                        successBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
+         BUProfileOccupationVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileOccupationVC"];
+         [self.navigationController pushViewController:vc animated:YES];
+         
+     }
+                                        failureBlock:^(id response, NSError *error)
+    {
+        [self stopActivityIndicator];
+        
+        [self showFailureAlert];
+    }];
+    
     
     
 }

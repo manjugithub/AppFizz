@@ -59,4 +59,7 @@ typedef void (^SuccessBlock)(id response, NSError *error);
 -(void)getLayerAuthTokenwithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
 ;
 
+#pragma mark - Generic Server query API
+-(void)queryServer:(NSDictionary *)inParams baseURL:(NSString *)inBaseURL  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+
 @end
