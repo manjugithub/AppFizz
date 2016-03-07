@@ -73,6 +73,7 @@
     [[BUWebServicesManager sharedManager] getReligionListwithParameters:parameters successBlock:^(id response, NSError *error) {
         [self showPickerWithDataSource:response];
     } failureBlock:^(id response, NSError *error) {
+        [self stopActivityIndicator];
         [self showFailureAlert];
 
     }];
@@ -87,7 +88,8 @@
     [[BUWebServicesManager sharedManager] getMotherTongueListwithParameters:parameters successBlock:^(id response, NSError *error) {
         [self showPickerWithDataSource:response];
     } failureBlock:^(id response, NSError *error) {
-        [self showFailureAlert];
+        [self stopActivityIndicator];
+       [self showFailureAlert];
 
     }];
 }
@@ -123,6 +125,7 @@
             [self showPickerWithDataSource:response];
 
         } failureBlock:^(id response, NSError *error) {
+            [self stopActivityIndicator];
             [self showFailureAlert];
 
         }];
@@ -158,6 +161,7 @@
             [self showPickerWithDataSource:response];
 
         } failureBlock:^(id response, NSError *error) {
+            [self stopActivityIndicator];
             [self showFailureAlert];
 
         }];

@@ -97,7 +97,7 @@
      }
                                                    failureBlock:^(id response, NSError *error)
      {
-         [self startActivityIndicator:YES];
+         [self stopActivityIndicator];
          NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
          [message addAttribute:NSFontAttributeName
                          value:[UIFont fontWithName:@"comfortaa" size:15]
