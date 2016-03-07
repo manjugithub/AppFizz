@@ -59,6 +59,11 @@
 
 @property(nonatomic,weak)IBOutlet UITextField *ageLabel,*radiusLabel;
 
+
+@property(nonatomic,weak) IBOutlet UIButton *neverMarriedBtn;
+@property(nonatomic,weak) IBOutlet UIButton *divorcedBtn;
+@property(nonatomic,weak) IBOutlet UIButton *widowedBtn;
+
 @end
 
 @implementation BUPreferencesVC
@@ -130,6 +135,21 @@
         
     }
     
+    {
+        [self.neverMarriedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
+        [self.divorcedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+        [self.widowedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+        
+        
+        self.maritalStatus = @"Never married";
+        
+        self.feetStr = @"4";
+        self.inchStr = @"0";
+        
+        [self.neverMarriedBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.widowedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.divorcedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
 
     self.navigationItem.rightBarButtonItem = self.rightBarButton;
 }
@@ -592,7 +612,64 @@ numberOfRowsInComponent:(NSInteger)component{
 }
 
 
+#pragma mark - Martial status
 
 
+-(IBAction)getMatialStatus:(id)sender
+{
+    UIButton *selectedBtn = (UIButton *)sender;
+    if (selectedBtn.tag == 1)
+    {
+        self.maritalStatus = @"Never married";
+        
+        [self.neverMarriedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
+        [self.divorcedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+        [self.widowedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+        
+        
+        
+        [self.neverMarriedBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.widowedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.divorcedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        
+        
+        
+    }
+    else if (selectedBtn.tag == 2){
+        
+        self.maritalStatus = @"Divorced";
+        
+        [self.divorcedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
+        [self.neverMarriedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+        [self.widowedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+        
+        
+        [self.divorcedBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.widowedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.neverMarriedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        
+        
+    }
+    else{
+        
+        self.maritalStatus = @"Widow";
+        
+        [self.widowedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
+        [self.neverMarriedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+        [self.divorcedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+        
+        [self.widowedBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.divorcedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.neverMarriedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        
+        
+    }
+    
+    
+    
+}
 
 @end

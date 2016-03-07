@@ -241,13 +241,16 @@
     [self.profileTableView beginUpdates];
     [self.profileTableView endUpdates];
     
-    //   [self performSelector:@selector(scrollToTop:) withObject:indexPath afterDelay:1.0];
+   [self performSelector:@selector(scrollToTop:) withObject:indexPath afterDelay:1.0];
 }
 
 
 -(void)scrollToTop:(NSIndexPath *)indexPath
 {
     [self.profileTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+
+
+    [self.profileTableView reloadData];
 }
 
 

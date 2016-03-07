@@ -38,6 +38,10 @@
             <string>Comfortaa</string>
             <string>Comfortaa</string>
             <string>Comfortaa</string>
+            <string>Comfortaa</string>
+            <string>Comfortaa</string>
+            <string>Comfortaa</string>
+            <string>Comfortaa</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1031,6 +1035,125 @@
                                             <outlet property="religionTF" destination="z5T-y5-elu" id="ZT4-cF-t5S"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="128" id="TYA-Gr-Etj">
+                                        <rect key="frame" x="0.0" y="771" width="600" height="128"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TYA-Gr-Etj" id="YOX-sY-pAn">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nsp-hx-OhV">
+                                                    <rect key="frame" x="20" y="0.0" width="560" height="130"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maritial status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jJ-Bk-oGI">
+                                                            <rect key="frame" x="8" y="15" width="247" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="nPO-UM-eKp"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUK-Kb-WCt">
+                                                            <rect key="frame" x="275" y="15" width="10" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="AYc-Kb-BwV"/>
+                                                                <constraint firstAttribute="width" constant="10" id="IGn-UE-dk2"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFO-6u-MbD">
+                                                            <rect key="frame" x="287" y="5" width="265" height="112"/>
+                                                            <subviews>
+                                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XzP-qV-dvJ">
+                                                                    <rect key="frame" x="8" y="5" width="116" height="34"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="116" id="H1h-Ja-FvP"/>
+                                                                        <constraint firstAttribute="height" constant="34" id="yPA-4z-5Fc"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
+                                                                    <state key="normal" title="  Never Married" backgroundImage="bg_radiobutton_bubble_s1">
+                                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <connections>
+                                                                        <action selector="getMatialStatus:" destination="Uwt-3x-DiF" eventType="touchUpInside" id="lY9-bg-gOV"/>
+                                                                    </connections>
+                                                                </button>
+                                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U08-uQ-7o3">
+                                                                    <rect key="frame" x="8" y="40" width="116" height="34"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="116" id="MoH-7J-T3b"/>
+                                                                        <constraint firstAttribute="height" constant="34" id="xPl-4S-b37"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
+                                                                    <state key="normal" title="  Divorced" backgroundImage="bg_radiobutton_bubble_s1">
+                                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <connections>
+                                                                        <action selector="getMatialStatus:" destination="Uwt-3x-DiF" eventType="touchUpInside" id="gzW-CX-fGa"/>
+                                                                    </connections>
+                                                                </button>
+                                                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Zo-Em-eKi">
+                                                                    <rect key="frame" x="8" y="75" width="116" height="34"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="116" id="UPL-j5-GJQ"/>
+                                                                        <constraint firstAttribute="height" constant="34" id="YmF-SU-CW1"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
+                                                                    <state key="normal" title="  Widowed" backgroundImage="bg_radiobutton_bubble_s1">
+                                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <connections>
+                                                                        <action selector="getMatialStatus:" destination="Uwt-3x-DiF" eventType="touchUpInside" id="Y8d-fP-8eF"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstItem="U08-uQ-7o3" firstAttribute="leading" secondItem="ZFO-6u-MbD" secondAttribute="leading" constant="8" id="3P1-fC-IfU"/>
+                                                                <constraint firstItem="9Zo-Em-eKi" firstAttribute="leading" secondItem="ZFO-6u-MbD" secondAttribute="leading" constant="8" id="9Fm-pU-xT2"/>
+                                                                <constraint firstItem="XzP-qV-dvJ" firstAttribute="leading" secondItem="ZFO-6u-MbD" secondAttribute="leading" constant="8" id="JOA-mh-F9i"/>
+                                                                <constraint firstAttribute="height" constant="112" id="Jai-jo-RUD"/>
+                                                                <constraint firstItem="XzP-qV-dvJ" firstAttribute="top" secondItem="ZFO-6u-MbD" secondAttribute="top" constant="5" id="KLh-oU-hqW"/>
+                                                                <constraint firstAttribute="bottom" secondItem="9Zo-Em-eKi" secondAttribute="bottom" constant="3" id="M6i-ME-3VA"/>
+                                                                <constraint firstItem="9Zo-Em-eKi" firstAttribute="top" secondItem="U08-uQ-7o3" secondAttribute="bottom" constant="1" id="PLc-mF-sbM"/>
+                                                                <constraint firstItem="U08-uQ-7o3" firstAttribute="top" secondItem="XzP-qV-dvJ" secondAttribute="bottom" constant="1" id="bvb-gJ-hxV"/>
+                                                                <constraint firstItem="9Zo-Em-eKi" firstAttribute="top" secondItem="U08-uQ-7o3" secondAttribute="bottom" constant="1" id="crt-wi-C0v"/>
+                                                                <constraint firstItem="U08-uQ-7o3" firstAttribute="top" secondItem="XzP-qV-dvJ" secondAttribute="bottom" constant="1" id="lW6-jd-pma"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="5jJ-Bk-oGI" firstAttribute="top" secondItem="Nsp-hx-OhV" secondAttribute="top" constant="15" id="8AX-r1-v1o"/>
+                                                        <constraint firstItem="5jJ-Bk-oGI" firstAttribute="leading" secondItem="Nsp-hx-OhV" secondAttribute="leading" constant="8" id="CAb-Ge-afe"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="130" id="I3s-xe-Ojx"/>
+                                                        <constraint firstItem="MUK-Kb-WCt" firstAttribute="leading" secondItem="5jJ-Bk-oGI" secondAttribute="trailing" constant="20" id="NZC-in-zRW"/>
+                                                        <constraint firstItem="MUK-Kb-WCt" firstAttribute="centerY" secondItem="Nsp-hx-OhV" secondAttribute="centerY" id="XuM-YQ-qUg"/>
+                                                        <constraint firstItem="ZFO-6u-MbD" firstAttribute="top" secondItem="Nsp-hx-OhV" secondAttribute="top" constant="5" id="csf-63-Uc4"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ZFO-6u-MbD" secondAttribute="trailing" constant="8" id="fXo-NZ-Yoe"/>
+                                                        <constraint firstItem="MUK-Kb-WCt" firstAttribute="centerY" secondItem="Nsp-hx-OhV" secondAttribute="centerY" constant="-40" id="iBE-eT-0XR"/>
+                                                        <constraint firstItem="MUK-Kb-WCt" firstAttribute="centerX" secondItem="Nsp-hx-OhV" secondAttribute="centerX" id="mGA-mV-dYg"/>
+                                                        <constraint firstItem="ZFO-6u-MbD" firstAttribute="leading" secondItem="MUK-Kb-WCt" secondAttribute="trailing" constant="2" id="mpM-Lu-N1q"/>
+                                                        <constraint firstAttribute="height" constant="130" id="ucb-4P-z1e"/>
+                                                        <constraint firstItem="MUK-Kb-WCt" firstAttribute="centerX" secondItem="Nsp-hx-OhV" secondAttribute="centerX" id="vVC-4i-giA"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="XuM-YQ-qUg"/>
+                                                            <exclude reference="mGA-mV-dYg"/>
+                                                        </mask>
+                                                    </variation>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Nsp-hx-OhV" firstAttribute="leading" secondItem="YOX-sY-pAn" secondAttribute="leading" constant="20" id="FfB-lJ-Glz"/>
+                                                <constraint firstAttribute="trailing" secondItem="Nsp-hx-OhV" secondAttribute="trailing" constant="20" id="dzb-ka-YzW"/>
+                                                <constraint firstItem="Nsp-hx-OhV" firstAttribute="top" secondItem="YOX-sY-pAn" secondAttribute="top" id="qTN-R7-oAN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1043,6 +1166,7 @@
                         <outlet property="ageLabel" destination="55A-tq-edu" id="2CC-9n-246"/>
                         <outlet property="btn_India" destination="5Pl-h5-mSi" id="fHd-dE-yUk"/>
                         <outlet property="btn_USA" destination="VdF-d0-GXe" id="jNQ-dl-BW3"/>
+                        <outlet property="divorcedBtn" destination="U08-uQ-7o3" id="kxX-G7-VdZ"/>
                         <outlet property="drinkingSelectionBtn" destination="fHn-2k-MN4" id="1KB-DW-T8s"/>
                         <outlet property="educationlevelLbl" destination="vvh-Db-mxK" id="7OD-Ew-on9"/>
                         <outlet property="eegetarianBtn" destination="VRY-jG-QEI" id="w39-8J-vKf"/>
@@ -1051,6 +1175,7 @@
                         <outlet property="heighTextField" destination="Z6l-7L-w8s" id="rR1-TU-Tfw"/>
                         <outlet property="maleImgView" destination="07Q-aL-bPL" id="1PH-me-u49"/>
                         <outlet property="neverLabel" destination="gxY-gD-pg5" id="axR-KS-pfL"/>
+                        <outlet property="neverMarriedBtn" destination="XzP-qV-dvJ" id="Xgj-G6-veF"/>
                         <outlet property="noLabel" destination="8l5-DK-omG" id="bgm-of-PZn"/>
                         <outlet property="nonVegetarianBtn" destination="omj-Ll-9ae" id="KjB-9u-8OL"/>
                         <outlet property="radiusLabel" destination="y3L-bn-g2t" id="tKN-jr-EK6"/>
@@ -1060,6 +1185,7 @@
                         <outlet property="sociallyLabel" destination="iep-AR-nXt" id="OmI-Rv-7WK"/>
                         <outlet property="veganBtn" destination="Sna-Ph-tSL" id="FSb-dI-79f"/>
                         <outlet property="vegetarianBtn" destination="RcC-4C-5Ut" id="60B-27-pjW"/>
+                        <outlet property="widowedBtn" destination="9Zo-Em-eKi" id="86n-vY-vRj"/>
                         <outlet property="yesLabel" destination="7fx-Ec-GVO" id="IPT-0z-6wA"/>
                     </connections>
                 </tableViewController>
@@ -1070,7 +1196,7 @@
                     </connections>
                 </barButtonItem>
             </objects>
-            <point key="canvasLocation" x="640" y="1149"/>
+            <point key="canvasLocation" x="631" y="491"/>
         </scene>
     </scenes>
     <resources>
