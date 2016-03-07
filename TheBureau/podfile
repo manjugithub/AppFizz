@@ -4,7 +4,6 @@ use_frameworks!
 
 
 pod 'LayerKit'
-pod 'AFNetworking'
 pod 'MBProgressHUD'
 pod 'SDWebImage'
 pod 'TwitterKit'
