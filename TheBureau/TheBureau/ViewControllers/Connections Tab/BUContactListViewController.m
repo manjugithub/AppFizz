@@ -51,7 +51,7 @@
 -(void)getContactsList
 {
     NSDictionary *parameters = nil;
-    parameters = @{@"userid": @"8"
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
                    };
     
     [self startActivityIndicator:YES];

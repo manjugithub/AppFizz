@@ -64,6 +64,7 @@
 @property(nonatomic,weak) IBOutlet UIButton *divorcedBtn;
 @property(nonatomic,weak) IBOutlet UIButton *widowedBtn;
 
+
 @end
 
 @implementation BUPreferencesVC
@@ -671,5 +672,6 @@ numberOfRowsInComponent:(NSInteger)component{
     
     
 }
+
 
 @end

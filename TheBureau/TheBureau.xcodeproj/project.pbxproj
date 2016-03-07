@@ -82,6 +82,8 @@
 		78B5B7311C56792000E3C531 /* BUProfileLegalStatusVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B5B72F1C56792000E3C531 /* BUProfileLegalStatusVC.m */; };
 		78BD7D531C8CC665000AD38B /* BUGoldTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BD7D521C8CC665000AD38B /* BUGoldTabVC.m */; };
 		78BD7D561C8D0B29000AD38B /* BUGoldTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BD7D551C8D0B29000AD38B /* BUGoldTabCell.m */; };
+		78BD7D591C8D229D000AD38B /* BURematchProfileDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BD7D581C8D229D000AD38B /* BURematchProfileDetailsVC.m */; };
+		78BD7D5C1C8D3A67000AD38B /* BUPrefAgeSeekCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BD7D5B1C8D3A67000AD38B /* BUPrefAgeSeekCell.m */; };
 		78BF55101C686F9400B5F1A4 /* BUHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BF550F1C686F9400B5F1A4 /* BUHomeViewController.m */; };
 		78BF55121C68701000B5F1A4 /* HomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78BF55111C68701000B5F1A4 /* HomeView.storyboard */; };
 		78BF55151C68739000B5F1A4 /* BUHomeTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78BF55141C68739000B5F1A4 /* BUHomeTabbarController.m */; };
@@ -265,6 +267,10 @@
 		78BD7D521C8CC665000AD38B /* BUGoldTabVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUGoldTabVC.m; sourceTree = "<group>"; };
 		78BD7D541C8D0B29000AD38B /* BUGoldTabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUGoldTabCell.h; sourceTree = "<group>"; };
 		78BD7D551C8D0B29000AD38B /* BUGoldTabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUGoldTabCell.m; sourceTree = "<group>"; };
+		78BD7D571C8D229D000AD38B /* BURematchProfileDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BURematchProfileDetailsVC.h; sourceTree = "<group>"; };
+		78BD7D581C8D229D000AD38B /* BURematchProfileDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BURematchProfileDetailsVC.m; sourceTree = "<group>"; };
+		78BD7D5A1C8D3A67000AD38B /* BUPrefAgeSeekCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUPrefAgeSeekCell.h; sourceTree = "<group>"; };
+		78BD7D5B1C8D3A67000AD38B /* BUPrefAgeSeekCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUPrefAgeSeekCell.m; sourceTree = "<group>"; };
 		78BF550E1C686F9400B5F1A4 /* BUHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUHomeViewController.h; sourceTree = "<group>"; };
 		78BF550F1C686F9400B5F1A4 /* BUHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUHomeViewController.m; sourceTree = "<group>"; };
 		78BF55111C68701000B5F1A4 /* HomeView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeView.storyboard; sourceTree = "<group>"; };
@@ -421,6 +427,8 @@
 				5BFF6E661C89C5B400596381 /* BUContactListViewController.m */,
 				5B0802531C733B0E00DAD5A5 /* BUCustomerServiceChatVC.h */,
 				5B0802541C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m */,
+				78BD7D571C8D229D000AD38B /* BURematchProfileDetailsVC.h */,
+				78BD7D581C8D229D000AD38B /* BURematchProfileDetailsVC.m */,
 			);
 			path = "Connections Tab";
 			sourceTree = "<group>";
@@ -673,6 +681,8 @@
 			children = (
 				78E4F28A1C85B3C30034CFE2 /* BUPreferencesVC.h */,
 				78E4F28B1C85B3C30034CFE2 /* BUPreferencesVC.m */,
+				78BD7D5A1C8D3A67000AD38B /* BUPrefAgeSeekCell.h */,
+				78BD7D5B1C8D3A67000AD38B /* BUPrefAgeSeekCell.m */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -1167,6 +1177,7 @@
 				5B0AEDCC1C23591400877C24 /* BUSignUpWithEmailVC.m in Sources */,
 				7846225E1C0711E100EA589C /* main.m in Sources */,
 				5B2D3E8C1C7C6927006B7674 /* BUHomeConnectionsVC.m in Sources */,
+				78BD7D5C1C8D3A67000AD38B /* BUPrefAgeSeekCell.m in Sources */,
 				78BF55101C686F9400B5F1A4 /* BUHomeViewController.m in Sources */,
 				5BA7960A1C7F980C009B65E1 /* BURematchCollectionViewCell.m in Sources */,
 				78FEE2331C071EAC0013E9D2 /* BUBaseViewController.m in Sources */,
@@ -1186,6 +1197,7 @@
 				5B0802551C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m in Sources */,
 				78CF172F1C609D5100779203 /* PWCustomPickerCell.m in Sources */,
 				5BA7964E1C85E973009B65E1 /* UIView+FLKAutoLayout.m in Sources */,
+				78BD7D591C8D229D000AD38B /* BURematchProfileDetailsVC.m in Sources */,
 				789D88F01C7E3F7F00772EED /* BUProfileLegalStatusInfoCell.m in Sources */,
 				5BA796171C8090B4009B65E1 /* BUContactListTableViewCell.m in Sources */,
 				78FEE2441C0720FE0013E9D2 /* UIColor+CrossFade.m in Sources */,

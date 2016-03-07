@@ -10,7 +10,7 @@
 #import "BURematchCollectionViewCell.h"
 #import "BUUserProfile.h"
 #import "BUHomeViewController.h"
-
+#import "BURematchProfileDetailsVC.h"
 @interface BUProfileRematchVC ()
 
 @property(nonatomic) NSArray * imageArray;
@@ -49,7 +49,7 @@
 -(void)getRematchProfile
 {
     NSDictionary *parameters = nil;
-    parameters = @{@"userid": @"8"
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
                    };
     
     [self startActivityIndicator:YES];
@@ -139,8 +139,12 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 {
     
-    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-    BUHomeViewController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeViewController"];
+    
+    NSLog(@"Selected user id : %@",[[self.datasourceList objectAtIndex:indexPath.row] valueForKey:@"userid"]);
+    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Connections" bundle:nil];
+    BURematchProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BURematchProfileDetailsVC"];
+    
+    vc.datasourceList = [self.datasourceList objectAtIndex:indexPath.row];
     [self.tabBarController.navigationController pushViewController:vc animated:YES];
     
 }

@@ -108,7 +108,7 @@
 -(void)getMatchMakingfortheDay
 {
     NSDictionary *parameters = nil;
-    parameters = @{@"userid": @"8"
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
                    };
     
     [self startActivityIndicator:YES];
@@ -159,8 +159,8 @@
 -(IBAction)match:(id)sender
 {
     NSDictionary *parameters = nil;
-    parameters = @{@"userid1": @"8",
-                   @"userid2": @"6"
+    parameters = @{@"userid1": [BUWebServicesManager sharedManager].userID,
+                   @"userid2": [self.datasourceList valueForKey:@"userid"]
                    };
     
     [self startActivityIndicator:YES];
@@ -212,26 +212,67 @@ constructingBodyWithBlock:nil
 
 -(IBAction)pass:(id)sender
 {
-    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"You have passed the profile!"];
-    [message addAttribute:NSFontAttributeName
-                    value:[UIFont fontWithName:@"comfortaa" size:15]
-                    range:NSMakeRange(0, message.length)];
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alertController setValue:message forKey:@"attributedTitle"];
     
-    [alertController addAction:({
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            NSLog(@"OK");
-            
-            self.matchBtn.hidden = YES;
-            self.passBtn.hidden = YES;
-//            self.noProfileImgView.hidden = NO;
-        }];
-        
-        action;
-    })];
+
+    /*
+     http://app.thebureauapp.com/admin/passMatches
+     
+     Parameters :
+     
+     passed_by => user id of the logged in user
+     userid_passed => user id of the user that has been passed / skipped
+     action_taken => Passed or Liked (Send one of these two options )
+*/
     
-    [self presentViewController:alertController  animated:YES completion:nil];
+    NSDictionary *parameters = nil;
+    parameters = @{@"passed_by": [BUWebServicesManager sharedManager].userID,
+                   @"userid_passed": [self.datasourceList valueForKey:@"userid"],
+                   @"action_taken": @"Passed"
+                   };
+    
+    [self startActivityIndicator:YES];
+
+    
+    
+    NSString *baseURL = @"http://app.thebureauapp.com/admin/passMatches";
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:baseURL
+       parameters:parameters
+constructingBodyWithBlock:nil
+         progress:nil
+          success:^(NSURLSessionDataTask *operation, id responseObject)
+     {
+         [self stopActivityIndicator];
+         
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"You have passed the profile!"];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];
+         
+         [alertController addAction:({
+             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                 NSLog(@"OK");
+                 
+                 self.matchBtn.hidden = YES;
+                 self.passBtn.hidden = YES;
+                 //            self.noProfileImgView.hidden = NO;
+             }];
+             
+             action;
+         })];
+         
+         [self presentViewController:alertController  animated:YES completion:nil];
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(NSURLSessionDataTask *operation, NSError *error)
+     {
+         [self stopActivityIndicator];
+         NSLog(@"Error: %@", error);
+     }];
+
+    
     
 }
 

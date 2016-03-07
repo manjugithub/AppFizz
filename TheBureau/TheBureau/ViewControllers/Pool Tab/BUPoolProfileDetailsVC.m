@@ -14,6 +14,15 @@
 @property(nonatomic, strong) NSDictionary *datasourceDict;
 @property(nonatomic, strong) NSMutableArray *imagesList;
 @property(nonatomic, strong) IBOutlet UITableView *imgScrollerTableView;
+
+@property(nonatomic, strong) IBOutlet UIButton *anonymousBtn,*anonymousPayBtn,*directBtn,*directPayBtn;
+
+
+-(IBAction)anonymousClicked:(id)sender;
+-(IBAction)payAnonymousClicked:(id)sender;
+-(IBAction)directClicked:(id)sender;
+-(IBAction)payDirectClicked:(id)sender;
+
 @end
 
 @implementation BUPoolProfileDetailsVC
@@ -106,6 +115,71 @@ static NSString * const reuseIdentifier = @"Cell";
             cell.matchDescritionLabel.text = value;
         }
         return cell;
+}
+
+
+-(IBAction)anonymousClicked:(id)sender
+{
+    self.anonymousBtn.hidden = YES;
+    self.anonymousPayBtn.hidden = NO;
+    self.directBtn.hidden = NO;
+    self.directPayBtn.hidden = YES;
+}
+
+-(IBAction)payAnonymousClicked:(id)sende
+{
+    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"You have sent interest anonymously!"];
+    [message addAttribute:NSFontAttributeName
+                    value:[UIFont fontWithName:@"comfortaa" size:15]
+                    range:NSMakeRange(0, message.length)];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertController setValue:message forKey:@"attributedTitle"];
+    
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            self.anonymousBtn.enabled = NO;
+            self.anonymousPayBtn.enabled = NO;
+            self.directBtn.enabled = NO;
+            self.directPayBtn.enabled = NO;
+        }];
+        
+        action;
+    })];
+    
+    [self presentViewController:alertController  animated:YES completion:nil];
+    
+}
+
+
+-(IBAction)directClicked:(id)sender
+{
+    self.directBtn.hidden = YES;
+    self.directPayBtn.hidden = NO;
+    self.anonymousBtn.hidden = NO;
+    self.anonymousPayBtn.hidden = YES;
+}
+
+-(IBAction)payDirectClicked:(id)sender
+{
+    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"You have sent an interest!"];
+    [message addAttribute:NSFontAttributeName
+                    value:[UIFont fontWithName:@"comfortaa" size:15]
+                    range:NSMakeRange(0, message.length)];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertController setValue:message forKey:@"attributedTitle"];
+    
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            self.anonymousBtn.enabled = NO;
+            self.anonymousPayBtn.enabled = NO;
+            self.directBtn.enabled = NO;
+            self.directPayBtn.enabled = NO;
+        }];
+        
+        action;
+    })];
+    
+    [self presentViewController:alertController  animated:YES completion:nil];
 }
 
 
