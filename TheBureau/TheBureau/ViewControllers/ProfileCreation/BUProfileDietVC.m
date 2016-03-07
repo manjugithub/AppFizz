@@ -32,7 +32,7 @@
 @property(nonatomic,weak)IBOutlet UILabel *noLabel;
 
 
-@property(nonatomic, strong) NSString *diet,*smoke,*drink;
+@property(nonatomic, strong) NSString *dieting,*smoke,*drink;
 
 @end
 
@@ -45,7 +45,7 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_back"] style:UIBarButtonItemStylePlain target:self action:@selector(viewPopOnBackButton)];
     
     
-    self.diet = @"Vegetarian";
+    self.dieting = @"Vegetarian";
     self.drink = @"Social";
     self.smoke = @"No";
 
@@ -72,7 +72,7 @@
             [_eegetarianBtn setSelected:NO];
             [_nonVegetarianBtn setSelected:NO];
             [_veganBtn setSelected:NO];
-            self.diet = @"Vegetarian";
+            self.dieting = @"Vegetarian";
             break;
         }
         case ButtonTypeEegetarian:
@@ -82,7 +82,7 @@
             [_eegetarianBtn setSelected:YES];
             [_nonVegetarianBtn setSelected:NO];
             [_veganBtn setSelected:NO];
-            self.diet = @"Eggetarian";
+            self.dieting = @"Eggetarian";
             break;
         }
         case ButtonTypeNonvegetarian:
@@ -92,7 +92,7 @@
             [_eegetarianBtn setSelected:NO];
             [_nonVegetarianBtn setSelected:YES];
             [_veganBtn setSelected:NO];
-            self.diet = @"Non Vegetarian";
+            self.dieting = @"Non Vegetarian";
             break;
         }
         default:
@@ -101,7 +101,7 @@
             [_eegetarianBtn setSelected:NO];
             [_nonVegetarianBtn setSelected:NO];
             [_veganBtn setSelected:YES];
-            self.diet = @"Vegan";
+            self.dieting = @"Vegan";
             break;
         }
     }
@@ -178,7 +178,7 @@ http://app.thebureauapp.com/admin/update_profile_step4
 */
     NSDictionary *parameters = nil;
     parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
-                   @"diet":self.diet,
+                   @"diet":self.dieting,
                    @"drinking":self.drink,
                    @"smoking":self.smoke
                    };

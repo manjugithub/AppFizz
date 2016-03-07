@@ -52,7 +52,7 @@
                   moduleName = "TheBureau"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/accion/Skype%20Downloads/TheBureau/AppFizz/TheBureau/TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
-                  timestampString = "479044036.301068"
+                  timestampString = "479045072.495576"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "310"
@@ -67,7 +67,7 @@
                   moduleName = "TheBureau"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/accion/Skype%20Downloads/TheBureau/AppFizz/TheBureau/TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
-                  timestampString = "479044036.301235"
+                  timestampString = "479045072.49589"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "310"
@@ -202,6 +202,54 @@
             startingLineNumber = "40"
             endingLineNumber = "40"
             landmarkName = "-chatWithCustomerService:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBureau/ViewControllers/ProfileCreation/BUProfileHeritageVC.m"
+            timestampString = "479044823.016246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "-continueClicked:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBureau/ViewControllers/ProfileCreation/BUProfileHeritageVC.m"
+            timestampString = "479044815.376102"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "-continueClicked:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBureau/ViewControllers/ProfileCreation/BUProfileHeritageVC.m"
+            timestampString = "479044827.11029"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "-continueClicked:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
