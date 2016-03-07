@@ -57,6 +57,23 @@
                                                               successBlock:^(id inResult, NSError *error)
      {
          [self stopActivityIndicator];
+         if([inResult isKindOfClass:[NSDictionary class]])
+         {
+             if([[inResult valueForKey:@"msg"] isEqualToString:@"Error"])
+             {
+                 [self stopActivityIndicator];
+                 NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[inResult valueForKey:@"response"]];
+                 [message addAttribute:NSFontAttributeName
+                                 value:[UIFont fontWithName:@"comfortaa" size:15]
+                                 range:NSMakeRange(0, message.length)];
+                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+                 [alertController setValue:message forKey:@"attributedTitle"];
+                 [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                 [self presentViewController:alertController animated:YES completion:nil];
+                 
+                 return ;
+             }
+         }
          if(nil != inResult && 0 < [inResult count])
          {
              self.datasourceList = inResult;
