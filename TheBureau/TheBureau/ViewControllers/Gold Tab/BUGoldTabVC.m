@@ -26,6 +26,19 @@
     
     self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
 
+    
+    self.inviteFriendButton.layer.cornerRadius = 5.0;
+    self.inviteFriendButton.layer.borderWidth = 1.0;
+    self.inviteFriendButton.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    self.inviteFriendButton.layer.shadowOffset = CGSizeMake(2, 2);
+    self.inviteFriendButton.layer.shadowColor = [[UIColor darkGrayColor]CGColor];
+
+
+    self.likeUsOnFBButton.layer.cornerRadius = 5.0;
+    self.likeUsOnFBButton.layer.borderWidth = 1.0;
+    self.likeUsOnFBButton.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    self.likeUsOnFBButton.layer.shadowOffset = CGSizeMake(2, 2);
+    self.likeUsOnFBButton.layer.shadowColor = [[UIColor darkGrayColor]CGColor];
 }
 
 - (void)didReceiveMemoryWarning {
