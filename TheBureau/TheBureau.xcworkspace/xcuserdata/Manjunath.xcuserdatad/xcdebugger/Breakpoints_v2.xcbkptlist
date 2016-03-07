@@ -36,38 +36,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
-            timestampString = "478713433.903319"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "399"
-            endingLineNumber = "399"
-            landmarkName = "-authenticateLayerWithUserID:completion:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
-            timestampString = "478713445.078447"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "382"
-            endingLineNumber = "382"
-            landmarkName = "-authenticateLayerWithUserID:completion:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
             timestampString = "478713467.064589"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -84,12 +52,12 @@
                   moduleName = "TheBureau"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/accion/Skype%20Downloads/TheBureau/AppFizz/TheBureau/TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
-                  timestampString = "479016780.15964"
+                  timestampString = "479044036.301068"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "310"
                   endingLineNumber = "310"
-                  offsetFromSymbolStart = "982">
+                  offsetFromSymbolStart = "916">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -99,12 +67,12 @@
                   moduleName = "TheBureau"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/accion/Skype%20Downloads/TheBureau/AppFizz/TheBureau/TheBureau/ViewControllers/LoginViewController/BULoginViewController.m"
-                  timestampString = "479016780.159838"
+                  timestampString = "479044036.301235"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "310"
                   endingLineNumber = "310"
-                  offsetFromSymbolStart = "1044">
+                  offsetFromSymbolStart = "988">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -218,6 +186,22 @@
             startingLineNumber = "215"
             endingLineNumber = "215"
             landmarkName = "-pass:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBureau/ViewControllers/HomeViewController/BUCustomerServiceChatVC.m"
+            timestampString = "479044036.194989"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "-chatWithCustomerService:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

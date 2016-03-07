@@ -12,8 +12,6 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    self.interval = self.overLayView.frame.size.width / 50.0;
-    NSLog(@"interval ===> %0.0f",self.interval);
     self.minValueLabel.text = @"0";
     self.maxValueLabel.text = @"50";
 
@@ -32,9 +30,6 @@
 {
     UITouch *touch = [[event allTouches] anyObject];
     self.prevLocation = [touch locationInView:self.overLayView];
-    NSLog(@"touched point ==> %@",NSStringFromCGPoint(self.prevLocation));
-    NSLog(@"Left View frame ==> %@",NSStringFromCGRect(self.leftView.frame));
-    NSLog(@"Right View frame ==> %@",NSStringFromCGRect(self.rightView.frame));
     if(CGRectContainsPoint(self.leftView.frame, self.prevLocation))
     {
         self.shouldMoveLeftView = YES;
@@ -56,7 +51,6 @@
 {
     UITouch *touch = [[event allTouches] anyObject];
     self.currentLocation = [touch locationInView:self.overLayView];
-    NSLog(@"touched point ==> %@",NSStringFromCGPoint(self.currentLocation));
     
     CGFloat newX = self.currentLocation.x - self.prevLocation.x;
     
@@ -70,7 +64,6 @@
             self.leftViewLeftConstraint.constant += newX;
             self.minLabelLeftConstraint.constant += newX;
             self.minValueLabel.text = [NSString stringWithFormat:@"%0.0f",(self.leftViewLeftConstraint.constant / self.interval)+1];
-            NSLog(@"Left View constant ==> %f",self.leftViewLeftConstraint.constant);
         }
     }
     else if(self.shouldMoveRightView)
@@ -85,18 +78,17 @@
             
             self.maxValueLabel.text = [NSString stringWithFormat:@"%0.0f",((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+1];
             
-            NSLog(@"Right View constant ==> %f",self.rightViewRightConstraint.constant);
         }
     }
     
-    //    NSLog(@"touched point ==> %@",NSStringFromCGPoint(self.prevLocation));
-    //    NSLog(@"Left View frame ==> %@",NSStringFromCGRect(self.leftView.frame));
-    //    NSLog(@"Right View frame ==> %@",NSStringFromCGRect(self.rightView.frame));
-    
     self.prevLocation = self.currentLocation;
-    
 }
 
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.interval = self.overLayView.frame.size.width / 50.0;
+}
 
 
 @end
