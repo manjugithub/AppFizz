@@ -8,10 +8,11 @@
 
 #import "BUGoldTabVC.h"
 #import "BUGoldTabCell.h"
+#import "PWInAppHelper.h"
 @interface BUGoldTabVC ()
 
 @property(nonatomic, weak) IBOutlet UILabel *totalGoldLabel;
-
+@property(nonatomic, strong) NSArray *products;
 @property(nonatomic, weak) IBOutlet UIButton *inviteFriendButton,*likeUsOnFBButton;
 
 -(IBAction)inviteFriend:(id)sender;
@@ -20,6 +21,24 @@
 
 @implementation BUGoldTabVC
 
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self reload];
+}
+
+- (void)reload {
+    _products = nil;
+    
+    [self startActivityIndicator:YES];
+    [[PWInAppHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        if (success) {
+            _products = products;
+        }
+        [self stopActivityIndicator];
+    }];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

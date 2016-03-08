@@ -157,6 +157,11 @@
                                                 <constraint firstAttribute="bottom" secondItem="QBo-oo-bF0" secondAttribute="bottom" id="nvo-xp-TDL"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cellType">
+                                                <integer key="value" value="0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="leftView" destination="9a6-L1-lUE" id="xW6-Eg-XuX"/>
                                             <outlet property="leftViewLeftConstraint" destination="qyh-SH-QjK" id="7wj-Jh-2Ig"/>
@@ -537,6 +542,11 @@
                                                 <constraint firstItem="dua-kO-zXw" firstAttribute="leading" secondItem="VGO-Ro-rXP" secondAttribute="leading" constant="40" id="sQG-29-fb9"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cellType">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="leftView" destination="21s-9x-urf" id="Lxj-tf-bVb"/>
                                             <outlet property="leftViewLeftConstraint" destination="Hyy-6u-kDs" id="GgX-lT-iwd"/>

@@ -11,5 +11,6 @@
 @interface BUPreferencesVC : UITableViewController<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBarButton;
+@property (strong, nonatomic) NSDictionary *preferenceDict;
 
 @end

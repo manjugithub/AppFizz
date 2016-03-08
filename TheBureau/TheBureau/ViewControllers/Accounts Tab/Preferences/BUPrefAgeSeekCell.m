@@ -26,7 +26,7 @@
 }
 
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [[event allTouches] anyObject];
     self.prevLocation = [touch locationInView:self.overLayView];
@@ -47,7 +47,7 @@
     }
 }
 
--(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [[event allTouches] anyObject];
     self.currentLocation = [touch locationInView:self.overLayView];
@@ -82,6 +82,25 @@
     }
     
     self.prevLocation = self.currentLocation;
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSDictionary *prefDict1 = [[NSUserDefaults standardUserDefaults] valueForKey:@"Preferences"];
+    
+    NSMutableDictionary *prefDict = [[NSMutableDictionary alloc]initWithDictionary:prefDict1];
+
+    if(0 == self.cellType)
+    {
+        [prefDict setValue:self.minValueLabel.text forKey:@"age_from"];
+        [prefDict setValue:self.minValueLabel.text forKey:@"age_to"];
+    }
+    else
+    {
+        [prefDict setValue:self.minValueLabel.text forKey:@"location_radius"];
+    }
+    [[NSUserDefaults standardUserDefaults] setValue:prefDict forKey:@"Preferences"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 -(void)layoutSubviews

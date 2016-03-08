@@ -493,6 +493,7 @@
                                             <outlet property="heighTextField" destination="fh1-zE-17x" id="4Kt-J6-hT1"/>
                                             <outlet property="maleImgView" destination="PUF-fH-Pqw" id="ilE-Oe-XUo"/>
                                             <outlet property="maritalStatusTF" destination="gmx-9z-L16" id="5Mg-mM-z2t"/>
+                                            <outlet property="nameTF" destination="lhk-NO-ZEP" id="4Fw-he-K0G"/>
                                             <outlet property="parentVC" destination="DA2-eY-bxN" id="wJs-MO-aat"/>
                                             <outlet property="radiusLabel" destination="0Zx-cp-aGh" id="BUr-Vf-H8V"/>
                                         </connections>

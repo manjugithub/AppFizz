@@ -17,6 +17,9 @@
 @property(nonatomic, assign) CGFloat interval;
 
 
+@property(nonatomic, assign) IBInspectable int cellType;
+
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftViewLeftConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightViewRightConstraint;
 

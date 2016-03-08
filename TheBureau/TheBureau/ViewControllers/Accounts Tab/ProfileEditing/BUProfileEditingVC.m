@@ -23,6 +23,10 @@
 
 #pragma mark - Account selection
 @property (assign, nonatomic) BOOL shouldExpand,isEditing;
+@property (assign, nonatomic) NSIndexPath *selectedCellIndex;
+
+
+@property (strong, nonatomic) NSMutableDictionary *basicInfoDict,*educationDict,*occupationDict,*heritageDict,*socialHabitsDict,*horoscopeDict;
 
 
 
@@ -89,6 +93,10 @@
         self.rightBarButton.tag = 0;
         imgName = @"ic_edit";
         self.isEditing = NO;
+        if (nil != self.selectedCellIndex)
+        {
+            [[self.profileTableView cellForRowAtIndexPath:self.selectedCellIndex] performSelector:@selector(updateProfile) withObject:nil];
+        }
     }
     self.rightBarButton.image = [UIImage imageNamed:imgName];
 
@@ -242,6 +250,7 @@
     [self.profileTableView endUpdates];
     
    [self performSelector:@selector(scrollToTop:) withObject:indexPath afterDelay:1.0];
+    self.selectedCellIndex = indexPath;
 }
 
 
@@ -252,11 +261,6 @@
 
     [self.profileTableView reloadData];
 }
-
-
-
-
-
 
 
 @end

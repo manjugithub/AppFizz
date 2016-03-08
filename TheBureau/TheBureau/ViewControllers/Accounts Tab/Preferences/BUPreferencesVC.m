@@ -10,6 +10,7 @@
 #import "UIView+FLKAutoLayout.h"
 #import "BUConstants.h"
 #import "BUUtilities.h"
+#import "BUWebServicesManager.h"
 @interface BUPreferencesVC ()<UIActionSheetDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 
 #pragma mark - Account selection
@@ -32,7 +33,7 @@
 @property(nonatomic) NSMutableArray *inchesMutableArray;
 @property(nonatomic) NSMutableArray *ageArray;
 @property(nonatomic) NSMutableArray *radiusArray;
-@property(nonatomic,weak) NSString *feetStr,*inchStr,*maritalStatus;
+@property(nonatomic,weak) NSString *feetStr,*inchStr,*maritalStatus,*dietStr,*genderStr;
 @property (weak, nonatomic) IBOutlet UITextField *heighTextField;
 
 #pragma mark -
@@ -106,6 +107,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSDictionary *prefDict = [[NSUserDefaults standardUserDefaults] valueForKey:@"Preferences"];
+    
+    if(nil == prefDict)
+    {
+        self.preferenceDict = [[NSMutableDictionary alloc] init];
+    }
+    else
+    {
+        self.preferenceDict = [[NSMutableDictionary alloc] initWithDictionary:prefDict];
+    }
+
     self.feetMutableArray = [[NSMutableArray alloc]init];
     
     self.navigationItem.title = @"Match Preferences";
@@ -142,6 +155,7 @@
         [self.widowedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
         
         
+        [self.preferenceDict setValue:@"Never married" forKey:@"maritalStatus"];
         self.maritalStatus = @"Never married";
         
         self.feetStr = @"4";
@@ -151,6 +165,9 @@
         [self.widowedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self.divorcedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
+
+
+    self.genderStr = @"Female";
 
     self.navigationItem.rightBarButtonItem = self.rightBarButton;
 }
@@ -183,6 +200,7 @@
         maleImgName = @"ic_male_s1.png";
         genderImgName = @"switch_female.png";
         self.genderSelectionBtn.tag = 1;
+        self.genderStr = @"Male";
     }
     else
     {
@@ -190,6 +208,7 @@
         femaleImgName = @"ic_female_s1.png";
         maleImgName = @"ic_male_s2.png";
         genderImgName = @"switch_male.png";
+        self.genderStr = @"Female";
     }
     
     self.femaleImgView.image = [UIImage imageNamed:femaleImgName];
@@ -202,10 +221,7 @@
 
 -(IBAction)dropDownBtn:(id)sender
 {
-    
     [self.view endEditing:YES];
-    
-    
     UIActionSheet *acSheet = [[UIActionSheet alloc] initWithTitle:@"Select Relationship" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles: nil];
     acSheet.tag = 100;
 
@@ -443,101 +459,14 @@
     {
         self.rightBarButton.tag = 0;
         imgName = @"ic_edit";
+        [self updatePrefernceValues];
     }
     self.rightBarButton.image = [UIImage imageNamed:imgName];
 }
 
 
-#pragma mark -
-#pragma mark - Age selection
-
--(IBAction)setAge {
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Age\n From                        To\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    UIPickerView *picker = [[UIPickerView alloc] init];
-    picker.tag = 100;
-    [alertController.view addSubview:picker];
-    [picker alignCenterYWithView:alertController.view predicate:@"0.0"];
-    [picker alignCenterXWithView:alertController.view predicate:@"0.0"];
-    [picker constrainWidth:@"270" ];
-    picker.dataSource = self;
-    picker.delegate = self ;
-    
-    
-    [picker reloadAllComponents];
-    
-    [alertController addAction:({
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            NSLog(@"OK");
-            
-            NSUInteger numComponents = [[picker dataSource] numberOfComponentsInPickerView:picker];
-            
-            NSMutableString * text = [NSMutableString string];
-            for(NSUInteger i = 0; i < numComponents; ++i) {
-                NSString *title = [self pickerView:picker titleForRow:[picker selectedRowInComponent:i] forComponent:i];
-                [text appendFormat:@"%@", title];
-            }
-            
-            NSLog(@"%@", text);
-            self.ageLabel.text = text;
-        }];
-        action;
-    })];
-    
-    [alertController addAction:({
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            NSLog(@"cancel");
-        }];
-        action;
-    })];
-    [self presentViewController:alertController  animated:YES completion:nil];
-}
 
 
-#pragma mark -
-#pragma mark - Radius selection
-
--(IBAction)setRadius {
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Location Radius\n From                        To\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    UIPickerView *picker = [[UIPickerView alloc] init];
-    picker.tag = 101;
-    [alertController.view addSubview:picker];
-    [picker alignCenterYWithView:alertController.view predicate:@"0.0"];
-    [picker alignCenterXWithView:alertController.view predicate:@"0.0"];
-    [picker constrainWidth:@"270" ];
-    picker.dataSource = self;
-    picker.delegate = self ;
-    
-    
-    [picker reloadAllComponents];
-    
-    [alertController addAction:({
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            NSLog(@"OK");
-            
-            NSUInteger numComponents = [[picker dataSource] numberOfComponentsInPickerView:picker];
-            
-            NSMutableString * text = [NSMutableString string];
-            for(NSUInteger i = 0; i < numComponents; ++i) {
-                NSString *title = [self pickerView:picker titleForRow:[picker selectedRowInComponent:i] forComponent:i];
-                [text appendFormat:@"%@", title];
-            }
-            
-            NSLog(@"%@", text);
-            self.radiusLabel.text = text;
-        }];
-        action;
-    })];
-    
-    [alertController addAction:({
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            NSLog(@"cancel");
-        }];
-        action;
-    })];
-    [self presentViewController:alertController  animated:YES completion:nil];
-}
 
 #pragma mark- Picker View Delegate
 
@@ -673,5 +602,114 @@ numberOfRowsInComponent:(NSInteger)component{
     
 }
 
+-(void)updatePrefernceValues
+{
+    
+    /*
+     userid => User id  (userid)
+     
+     age_from=> integer number (age_from)
+     
+     age_to=> integer number (age_to)
+     
+     gender=>enum('Male','Female')(gender)
+     
+     account_created_by=>enum('Brother','Sister','Son','Daughter','Relative','Friend','Self')(account_created_by)
+     
+     country=>enum('America','India')(country)
+     
+     location_radius=>integer number (location_radius)
+     
+     height_range_from=>height from (height_range_from)
+     
+     height_range_to=>height to (height_range_to)
+     
+     minimum_education_requirement=>enum('Doctorate','Masters','Bachelors','Associates','Grade School')(minimum_education_requirement)
+     
+     religion_id=>religion id (religion_id)
+     
+     mother_tongue_id=>mother tongue id(mother_tongue_id)
+     
+     family_origin_id=>family origin id(family_origin_id)
+     
+     social_habit=>enum('No Smoking','Never Drinking')(social_habit)
+     
+     diet=>enum('Vegetarian','Eggetarian','Non Vegetarian','Vegan')(diet)
+     
+     years_in_usa=>enum('0 - 2','2 - 6','6+','Born & Raised')(years_in_usa)
+     
+     legal_status=>enum('Citizen/Green Card','Greencard','Greencard Processing','H1 Visa','Student Visa','Other')(legal_status)
+     
+     marital_status=>enum('Never Married','Divorced','Widowed')(marital_status)
+*/
+    
+    NSDictionary *prefDict = [[NSUserDefaults standardUserDefaults] valueForKey:@"Preferences"];
+    self.preferenceDict = [[NSMutableDictionary alloc] initWithDictionary:prefDict];
+
+    [self.preferenceDict setValue:self.feetStr forKey:@"height_range_from"];
+    [self.preferenceDict setValue:self.inchStr forKey:@"height_range_to"];
+    [self.preferenceDict setValue:self.maritalStatus forKey:@"marital_status"];
+    
+    NSString *smoke,*drink;
+    if(0 == self.drinkingSelectionBtn.tag)
+    {
+        smoke = @"NO";
+    }
+    else
+    {
+        smoke = @"YES";
+    }
+    if(0 == self.smokingSelectionBtn.tag)
+    {
+        drink = @"Never";
+    }
+    else
+    {
+        drink = @"Socially";
+    }
+    [self.preferenceDict setValue:self.genderStr forKey:@"gender"];
+    
+    [self.preferenceDict setValue:self.relationLabel.text forKey:@"account_created_by"];
+
+    [self.preferenceDict setValue:self.educationlevelLbl.text forKey:@"minimum_education_requirement"];
+    [[NSUserDefaults standardUserDefaults] setValue:self.preferenceDict forKey:@"Preferences"]
+    ;
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    NSString *baseURl = @"http://app.thebureauapp.com/admin/add_match_preference_ws";
+    [[BUWebServicesManager sharedManager] queryServer:self.preferenceDict
+                                              baseURL:baseURl
+                                         successBlock:^(id response, NSError *error)
+    {
+                                         }
+                                         failureBlock:^(id response, NSError *error) {
+                                             
+                                         }
+     ];
+}
+
+
+
+-(void)readPreferences
+{
+    
+    NSString *baseURl = @"http://app.thebureauapp.com/admin/add_match_preference_ws";
+    [[BUWebServicesManager sharedManager] queryServer:self.preferenceDict
+                                              baseURL:baseURl
+                                         successBlock:^(id response, NSError *error)
+     {
+         
+     }
+                                         failureBlock:^(id response, NSError *error)
+    {
+                                             
+                                         }
+     ];
+}
+
+-(void)populatePreerences:(NSMutableDictionary *)inDict
+{
+    
+}
 
 @end

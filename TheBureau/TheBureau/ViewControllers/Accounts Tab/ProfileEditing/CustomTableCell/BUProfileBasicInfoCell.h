@@ -26,7 +26,7 @@
 @property(nonatomic) NSMutableArray *feetMutableArray;
 @property(nonatomic) NSMutableArray *inchesMutableArray;
 @property(nonatomic,weak) NSString *feetStr,*inchStr,*maritalStatus;
-@property (weak, nonatomic) IBOutlet UITextField *heighTextField;
+@property (weak, nonatomic) IBOutlet UITextField *heighTextField,*nameTF;
 
 @property(nonatomic) NSMutableArray *ageArray;
 @property(nonatomic) NSMutableArray *radiusArray;

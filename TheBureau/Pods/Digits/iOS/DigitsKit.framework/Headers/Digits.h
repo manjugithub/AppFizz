@@ -16,10 +16,6 @@
 #import <DigitsKit/DGTSession.h>
 #import <TwitterCore/TWTRAuthConfig.h>
 
-
-#define __TVOS_UNAVAILABLE
-
-
 @class DGTAuthenticationConfiguration;
 @class TWTRAuthConfig;
 @class UIViewController;
@@ -153,7 +149,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param configuration            Options to configure the Digits experience
  *  @param completionViewController View controller pushed to the navigation controller when the auth flow is completed
  */
-- (void)authenticateWithNavigationViewController:(UINavigationController *)navigationController configuration:(DGTAuthenticationConfiguration *)configuration completionViewController:(UIViewController<DGTCompletionViewController> *)completionViewController ;
+- (void)authenticateWithNavigationViewController:(UINavigationController *)navigationController configuration:(DGTAuthenticationConfiguration *)configuration completionViewController:(UIViewController<DGTCompletionViewController> *)completionViewController __TVOS_UNAVAILABLE;
 
 /**
  *  Deletes the local Digits user session from this app. This will not make a network request to invalidate the session. Subsequent calls to `authenticateWith` methods will start a new Digits authentication flow.

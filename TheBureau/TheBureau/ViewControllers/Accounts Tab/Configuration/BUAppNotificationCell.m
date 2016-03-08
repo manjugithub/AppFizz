@@ -11,6 +11,21 @@
 
 @implementation BUAppNotificationCell
 
+/*
+ 
+ Logout API
+ 
+ URL: http://app.thebureauapp.com/admin/logout_ws
+ Parameter:
+ userid => id of a user
+ 
+ Deactivate account API
+ 
+ URL: http://app.thebureauapp.com/admin/deactivate_account_ws
+ Parameter:
+ userid => id of a user
+
+ */
 - (void)awakeFromNib {
     // Initialization code
 }

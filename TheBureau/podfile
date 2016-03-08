@@ -1,5 +1,6 @@
 
 platform :ios, '8.0'
+use_frameworks!
 
 pod 'MBProgressHUD'
 pod 'SDWebImage'
@@ -8,3 +9,5 @@ pod 'TwitterCore'
 pod 'Fabric'
 pod 'Crashlytics'
 pod 'Digits'
+pod 'LayerKit'
+pod 'Smooch'
