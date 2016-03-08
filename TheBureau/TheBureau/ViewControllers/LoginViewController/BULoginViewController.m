@@ -324,8 +324,6 @@
             UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
             BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
             [self.navigationController pushViewController:vc animated:YES];
-            
-
         }
         else
         {
@@ -338,7 +336,6 @@
             [alertController setValue:message forKey:@"attributedTitle"];
             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
             [self presentViewController:alertController animated:YES completion:nil];
-
             
         }
     }];
@@ -440,26 +437,12 @@
              }
              else
              {
-                 NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
-                 [message addAttribute:NSFontAttributeName
-                                 value:[UIFont fontWithName:@"comfortaa" size:15]
-                                 range:NSMakeRange(0, message.length)];
-                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-                 [alertController setValue:message forKey:@"attributedTitle"];
-                 [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-                 [self presentViewController:alertController animated:YES completion:nil];
+                 completion(NO,error);
              }
          }
                                                               failureBlock:^(id response, NSError *error)
          {
-             [self startActivityIndicator:YES];
-             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
-             [message addAttribute:NSFontAttributeName
-                             value:[UIFont fontWithName:@"comfortaa" size:15]
-                             range:NSMakeRange(0, message.length)];
-             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-             [alertController setValue:message forKey:@"attributedTitle"];             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-             [self presentViewController:alertController animated:YES completion:nil];
+             completion(NO,error);
          }];
    }];
 }
