@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-//#import <LayerKit/LayerKit.h>
+#import <LayerKit/LayerKit.h>
 
 
 typedef void (^FailureBlock)(id response, NSError *error);
@@ -16,7 +16,7 @@ typedef void (^SuccessBlock)(id response, NSError *error);
 
 @interface BUWebServicesManager : NSObject
 @property (nonatomic, strong) NSString *userID;
-//@property (nonatomic) LYRClient *layerClient;
+@property (nonatomic) LYRClient *layerClient;
 
 +(instancetype)sharedManager;
 -(void)signUpWithDelegeatewithParameters:(NSDictionary *)inParams  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;

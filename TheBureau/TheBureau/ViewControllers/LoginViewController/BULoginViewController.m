@@ -14,7 +14,7 @@
 #import <DigitsKit/DigitsKit.h>
 #import "BUAccountCreationVC.h"
 #import "BUHomeTabbarController.h"
-//#import <LayerKit/LayerKit.h>
+#import <LayerKit/LayerKit.h>
 #import "BUWebServicesManager.h"
 
 @interface BULoginViewController ()//<LYRClientDelegate>
@@ -28,7 +28,7 @@
 @property (strong, nonatomic) DGTAppearance *theme;
 @property (strong, nonatomic) DGTAuthenticationConfiguration *configuration;
 
-//@property (nonatomic) LYRClient *layerClient;
+@property (nonatomic) LYRClient *layerClient;
 
 -(IBAction)loginUsingFacebook:(id)sender;
 -(IBAction)loginUsingEmail:(id)sender;
@@ -44,8 +44,8 @@
     _configuration = [[DGTAuthenticationConfiguration alloc] initWithAccountFields:DGTAccountFieldsDefaultOptionMask];
     _configuration.appearance = [self makeTheme];
     
-//    NSURL *appID = [NSURL URLWithString:@"layer:///apps/staging/238530d8-995f-11e5-9461-6ac9d8033a8c"];
-//    self.layerClient = [LYRClient clientWithAppID:appID];
+    NSURL *appID = [NSURL URLWithString:@"layer:///apps/staging/238530d8-995f-11e5-9461-6ac9d8033a8c"];
+    self.layerClient = [LYRClient clientWithAppID:appID];
 
 }
 
@@ -154,30 +154,7 @@
                 
                 self.socialChannel.mobileNumber = session.phoneNumber;
                 self.socialChannel.emailID = session.emailAddress;
-                
-                
-                /*
-                 
-                 Hello Manjunaht , Vinay  ,
-                 
-                 Please hit the below url from your end to check for login creds :
-                 
-                 http://app.thebureauapp.com/login/checkLogin
-                 
-                 Parameters to be POSTED :
-                 
-                 - login_type : Takes either 'fb' or 'digits' as input
-                 
-                 - if login_type is 'fb' , then the parameter to be posted is 'fb_id'  , else if login_type is 'digits' , parameter to be posted is 'digits'
-                 
-                 So for example , if login_type = fb and fb_id = 'asdj2312312kjas'
-                 
-                 The sample output will like below in the JSON format :
-                 
-                 {"msg":"Success","userid":"1","profile_details":[{"first_name":"Siddharth","last_name":"Raghunath","dob":"2016-01-14","gender":"Male","phone_number":"9591314204","email":"siddharth@zolipe.com"}]}
-                 */
-                
-                
+           
                 NSDictionary *parameters = nil;
                 
                 if(self.loginType == eLoginFromFB)
@@ -214,11 +191,11 @@
                                                                           handler:^(UIAlertAction *action)
                                                     {
                                                         
-//                                                     [self loginLayer];
+                                                     [self loginLayer];
    
-                                                        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-                                                        BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-                                                        [self.navigationController pushViewController:vc animated:YES];
+//                                                        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+//                                                        BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+//                                                        [self.navigationController pushViewController:vc animated:YES];
                                                         
 //                                                                                               UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //                                                                                               BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];
@@ -339,181 +316,154 @@
 
 - (void)loginLayer
 {
-    
+    [self startActivityIndicator:YES];
+    [self authenticateLayerWithUserID:[BUWebServicesManager sharedManager].userID completion:^(BOOL success, NSError *error) {
+        [self stopActivityIndicator];
+        if (YES == success)
+        {
+            UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+            BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+
+        }
+        else
+        {
+            NSLog(@"Failed Authenticating Layer Client with error:%@", error);
+            NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Failed Authenticating Layer Client with error:%@", error]];
+            [message addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"comfortaa" size:15]
+                            range:NSMakeRange(0, message.length)];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+            [alertController setValue:message forKey:@"attributedTitle"];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+            [self presentViewController:alertController animated:YES completion:nil];
+
+            
+        }
+    }];
 }
-//{
-//    [self startActivityIndicator:YES];
-//
-//    [self.layerClient connectWithCompletion:^(BOOL success, NSError *error) {
-//        if (!success) {
-//            NSLog(@"Failed to connect to Layer: %@", error);
-//        } else {
-////            PFUser *user = [PFUser currentUser];
-//            NSString *userID = [BUWebServicesManager sharedManager].userID;
-//// Pass User ID HERE
-//            
-//            [self authenticateLayerWithUserID:userID completion:^(BOOL success, NSError *error) {
-//                if (!error){
-//                } else {
-//                    NSLog(@"Failed Authenticating Layer Client with error:%@", error);
-//                }
-//            }];
-//        }
-//    }];
-//}
 
 - (void)authenticateLayerWithUserID:(NSString *)userID completion:(void (^)(BOOL success, NSError * error))completion
 {
     // Check to see if the layerClient is already authenticated.
-//    if (self.layerClient.authenticatedUserID) {
-//        if ([self.layerClient.authenticatedUserID isEqualToString:userID]){
-//            NSLog(@"Layer Authenticated as User %@", self.layerClient.authenticatedUserID);
-//            [BUWebServicesManager sharedManager].layerClient = self.layerClient;
-//            
-//            [self stopActivityIndicator];
-//
-//            if (completion) completion(YES, nil);
-//            {
-//        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-//     BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-//        [self.navigationController pushViewController:vc animated:YES];
-//                
-//                return;}
-//        } else {
-//            //If the authenticated userID is different, then deauthenticate the current client and re-authenticate with the new userID.
-//            [self.layerClient deauthenticateWithCompletion:^(BOOL success, NSError *error) {
-//                if (!error){
-//                    [self authenticationTokenWithUserId:userID completion:^(BOOL success, NSError *error) {
-//                        if (completion){
-//                            
-//                                                      
-//                            completion(success, error);
-//                            
-//                            
-//                        }
-//                    }];
-//                } else {
-//                    if (completion){
-//                        completion(NO, error);
-//                    }
-//                }
-//            }];
-//        }
-//    } else {
-//        // If the layerClient isn't already authenticated, then authenticate.
-//        [self authenticationTokenWithUserId:userID completion:^(BOOL success, NSError *error) {
-//            if (completion){
-//                completion(success, error);
-//            }
-//        }];
-//    }
+    if (self.layerClient.authenticatedUserID)
+    {
+        if ([self.layerClient.authenticatedUserID isEqualToString:userID])
+        {
+            NSLog(@"Layer Authenticated as User %@", self.layerClient.authenticatedUserID);
+            [BUWebServicesManager sharedManager].layerClient = self.layerClient;
+            
+            [self stopActivityIndicator];
+
+            if (completion)
+                completion(YES, nil);
+            
+        }
+        else
+        {
+            //If the authenticated userID is different, then deauthenticate the current client and re-authenticate with the new userID.
+            [self.layerClient deauthenticateWithCompletion:^(BOOL success, NSError *error) {
+                if (!error){
+                    [self authenticationTokenWithUserId:userID completion:^(BOOL success, NSError *error) {
+                        if (completion){
+                            completion(success, error);
+                        }
+                    }];
+                } else {
+                    if (completion){
+                        completion(NO, error);
+                    }
+                }
+            }];
+        }
+    } else {
+        // If the layerClient isn't already authenticated, then authenticate.
+        [self authenticationTokenWithUserId:userID completion:^(BOOL success, NSError *error)
+        {
+            if (completion){
+                completion(success, error);
+            }
+        }];
+    }
 }
 
 - (void)authenticationTokenWithUserId:(NSString *)userID completion:(void (^)(BOOL success, NSError* error))completion
-//{
-//    /*
-//     * 1. Request an authentication Nonce from Layer
-//     */
-//    [self.layerClient requestAuthenticationNonceWithCompletion:^(NSString *nonce, NSError *error) {
-//        if (!nonce) {
-//            if (completion) {
-//                completion(NO, error);
-//            }
-//            return;
-//        }
-//        
-//        /*
-//         * 2. Acquire identity Token from Layer Identity Service
-//         */
-//        
-//        NSDictionary *parameters = nil;
-//        parameters = @{@"userid": userID
-//                       ,@"nonce": nonce};
-//     //   NSDictionary *parameters = @{@"nonce" : nonce, @"userid" : userID};
-//        
-//        [[BUWebServicesManager sharedManager] getLayerAuthTokenwithParameters:parameters
-//                                                              successBlock:^(id inResult, NSError *error)
-//         {
-//            // [self stopActivityIndicator];
-//             if(nil != inResult && 0 < [inResult count])
-//             {
-//                 NSString *identityToken = [inResult valueForKey:@"identity_token"];
-//                 
-//                 [self.layerClient authenticateWithIdentityToken:identityToken completion:^(NSString *authenticatedUserID, NSError *error) {
-//                     if (authenticatedUserID) {
-//                         if (completion) {
-//                             completion(YES, nil);
-//                         }
-//                        
-//                         UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-//                         BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-//                         [self.navigationController pushViewController:vc animated:YES];
-//
-//                     }
-//                     else
-//                     {
-//                         completion(NO, error);
-//                     }
-//                 }];
-//
-//               
-//             }
-//             else
-//             {
-//                 NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
-//                 [message addAttribute:NSFontAttributeName
-//                                 value:[UIFont fontWithName:@"comfortaa" size:15]
-//                                 range:NSMakeRange(0, message.length)];
-//                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-//                 [alertController setValue:message forKey:@"attributedTitle"];
-//                 [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-//                 [self presentViewController:alertController animated:YES completion:nil];
-//             }
-//         }
-//                                                              failureBlock:^(id response, NSError *error)
-//         {
-//             [self startActivityIndicator:YES];
-//             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
-//             [message addAttribute:NSFontAttributeName
-//                             value:[UIFont fontWithName:@"comfortaa" size:15]
-//                             range:NSMakeRange(0, message.length)];
-//             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-//             [alertController setValue:message forKey:@"attributedTitle"];             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-//             [self presentViewController:alertController animated:YES completion:nil];
-//         }];
-//
-//        // Should call Api here and add below block
-//        
-//        // [self.layerClient authenticateWithIdentityToken:identityToken completion:^(NSString *authenticatedUserID, NSError *error) {
-//        
-//        
-////        [PFCloud callFunctionInBackground:@"generateToken" withParameters:parameters block:^(id object, NSError *error) {
-////            if (!error){
-////
-//        //NSString *identityToken =
-//        
-////                [self.layerClient authenticateWithIdentityToken:identityToken completion:^(NSString *authenticatedUserID, NSError *error) {
-////                    if (authenticatedUserID) {
-////                        if (completion) {
-////                            completion(YES, nil);
-////                        }
-////                        
-////                    }
-////                    else
-////                    {
-////                        completion(NO, error);
-////                    }
-////                }];
-////            } else {
-////                NSLog(@"Parse Cloud function failed to be called to generate token with error: %@", error);
-////            }
-////        }];
-//        
-//    }];
-//}
 {
-    
+    /*
+     * 1. Request an authentication Nonce from Layer
+     */
+    [self.layerClient requestAuthenticationNonceWithCompletion:^(NSString *nonce, NSError *error)
+    {
+        if (!nonce)
+        {
+            if (completion)
+            {
+                completion(NO, error);
+            }
+            return;
+        }
+        
+        /*
+         * 2. Acquire identity Token from Layer Identity Service
+         */
+        
+        NSDictionary *parameters = nil;
+        parameters = @{@"userid": userID
+                       ,@"nonce": nonce};
+     //   NSDictionary *parameters = @{@"nonce" : nonce, @"userid" : userID};
+        
+        [[BUWebServicesManager sharedManager] getLayerAuthTokenwithParameters:parameters
+                                                              successBlock:^(id inResult, NSError *error)
+         {
+            // [self stopActivityIndicator];
+             if(nil != inResult && 0 < [inResult count])
+             {
+                 NSString *identityToken = [inResult valueForKey:@"identity_token"];
+                 
+                 [self.layerClient authenticateWithIdentityToken:identityToken completion:^(NSString *authenticatedUserID, NSError *error)
+                 {
+                     if (authenticatedUserID)
+                     {
+                         if (completion)
+                         {
+                             completion(YES, nil);
+                         }
+                     }
+                     else
+                     {
+                         completion(NO, error);
+                     }
+                 }];
+
+               
+             }
+             else
+             {
+                 NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
+                 [message addAttribute:NSFontAttributeName
+                                 value:[UIFont fontWithName:@"comfortaa" size:15]
+                                 range:NSMakeRange(0, message.length)];
+                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+                 [alertController setValue:message forKey:@"attributedTitle"];
+                 [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                 [self presentViewController:alertController animated:YES completion:nil];
+             }
+         }
+                                                              failureBlock:^(id response, NSError *error)
+         {
+             [self startActivityIndicator:YES];
+             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
+             [message addAttribute:NSFontAttributeName
+                             value:[UIFont fontWithName:@"comfortaa" size:15]
+                             range:NSMakeRange(0, message.length)];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+             [alertController setValue:message forKey:@"attributedTitle"];             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+             [self presentViewController:alertController animated:YES completion:nil];
+         }];
+   }];
 }
+
 
 
 
