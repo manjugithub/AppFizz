@@ -16,6 +16,8 @@
 #import <DigitsKit/DGTSession.h>
 #import <TwitterCore/TWTRAuthConfig.h>
 
+#define __TVOS_UNAVAILABLE
+
 @class DGTAuthenticationConfiguration;
 @class TWTRAuthConfig;
 @class UIViewController;
