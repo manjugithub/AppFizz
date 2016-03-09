@@ -16,6 +16,8 @@ typedef void (^SuccessBlock)(id response, NSError *error);
 
 @interface BUWebServicesManager : NSObject
 @property (nonatomic, strong) NSString *userID;
+@property (nonatomic, strong) NSString *participantUserID;
+
 @property (nonatomic) LYRClient *layerClient;
 
 +(instancetype)sharedManager;

@@ -43,6 +43,8 @@
 		5BB683501C64A58E0043C4FC /* EmployementStatusTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6834D1C64A58E0043C4FC /* EmployementStatusTVCell.m */; };
 		5BB683511C64A58E0043C4FC /* HighLevelEducationTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6834F1C64A58E0043C4FC /* HighLevelEducationTVCell.m */; };
 		5BDA47201C22596200C875AB /* BURootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA471F1C22596200C875AB /* BURootViewController.m */; };
+		5BF7CE521C904CDE0057B946 /* LQSChatMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF7CE4F1C904CDE0057B946 /* LQSChatMessageCell.m */; settings = {ASSET_TAGS = (); }; };
+		5BF7CE531C904CDE0057B946 /* LQSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF7CE511C904CDE0057B946 /* LQSViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5BFF6E671C89C5B400596381 /* BUContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF6E661C89C5B400596381 /* BUContactListViewController.m */; };
 		5BFF6E691C89DBAA00596381 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFF6E681C89DBAA00596381 /* Bolts.framework */; };
 		5BFF6E6B1C89DBBD00596381 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFF6E6A1C89DBBD00596381 /* FBSDKCoreKit.framework */; };
@@ -246,6 +248,10 @@
 		5BB6834F1C64A58E0043C4FC /* HighLevelEducationTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighLevelEducationTVCell.m; sourceTree = "<group>"; };
 		5BDA471E1C22596200C875AB /* BURootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BURootViewController.h; sourceTree = "<group>"; };
 		5BDA471F1C22596200C875AB /* BURootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BURootViewController.m; sourceTree = "<group>"; };
+		5BF7CE4E1C904CDE0057B946 /* LQSChatMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQSChatMessageCell.h; sourceTree = "<group>"; };
+		5BF7CE4F1C904CDE0057B946 /* LQSChatMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQSChatMessageCell.m; sourceTree = "<group>"; };
+		5BF7CE501C904CDE0057B946 /* LQSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQSViewController.h; sourceTree = "<group>"; };
+		5BF7CE511C904CDE0057B946 /* LQSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQSViewController.m; sourceTree = "<group>"; };
 		5BFF6E651C89C5B400596381 /* BUContactListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUContactListViewController.h; sourceTree = "<group>"; };
 		5BFF6E661C89C5B400596381 /* BUContactListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUContactListViewController.m; sourceTree = "<group>"; };
 		5BFF6E681C89DBAA00596381 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -550,6 +556,18 @@
 			path = SocialConnect;
 			sourceTree = "<group>";
 		};
+		5BF7CE4D1C904C900057B946 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				5BF7CE4E1C904CDE0057B946 /* LQSChatMessageCell.h */,
+				5BF7CE4F1C904CDE0057B946 /* LQSChatMessageCell.m */,
+				5BF7CE501C904CDE0057B946 /* LQSViewController.h */,
+				5BF7CE511C904CDE0057B946 /* LQSViewController.m */,
+			);
+			name = Chat;
+			path = "Gold Tab";
+			sourceTree = "<group>";
+		};
 		5BFF6E7E1C8D80E300596381 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -719,6 +737,7 @@
 		784622961C0718E500EA589C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5BF7CE4D1C904C900057B946 /* Chat */,
 				78BD7D501C8CC63D000AD38B /* Gold Tab */,
 				5B2D3E831C7C6927006B7674 /* Connections Tab */,
 				78CA18551C7AFDEA00CF091A /* Pool Tab */,
@@ -1372,6 +1391,7 @@
 				5BDA47201C22596200C875AB /* BURootViewController.m in Sources */,
 				789D88ED1C7E3F6700772EED /* BUProfileOccupationInfoCell.m in Sources */,
 				78FEE24E1C0721690013E9D2 /* BUConstants.m in Sources */,
+				5BF7CE531C904CDE0057B946 /* LQSViewController.m in Sources */,
 				5BB683501C64A58E0043C4FC /* EmployementStatusTVCell.m in Sources */,
 				78FEE2431C0720FE0013E9D2 /* UIColor+APColor.m in Sources */,
 				78B5B72C1C5678F900E3C531 /* BUProfileOccupationVC.m in Sources */,
@@ -1450,6 +1470,7 @@
 				5B0AEDC61C22B94A00877C24 /* BULoginWithEmailVC.m in Sources */,
 				5BA7961A1C845D1E009B65E1 /* BUUserProfile.m in Sources */,
 				5BFF6EAB1C8D80E300596381 /* AFURLSessionManager.m in Sources */,
+				5BF7CE521C904CDE0057B946 /* LQSChatMessageCell.m in Sources */,
 				789D88F91C7E3FC000772EED /* BUProfileHoroscopeInfoCell.m in Sources */,
 				5BFF6EA61C8D80E300596381 /* AFHTTPSessionManager.m in Sources */,
 				5BFF6EB51C8D80E300596381 /* UIWebView+AFNetworking.m in Sources */,

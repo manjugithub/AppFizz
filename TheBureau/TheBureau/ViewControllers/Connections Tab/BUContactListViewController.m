@@ -9,6 +9,7 @@
 #import "BUContactListViewController.h"
 #import "BUCOntactListTableViewCell.h"
 #import "BUWebServicesManager.h"
+#import "LQSViewController.h"
 
 @interface BUContactListViewController ()
 
@@ -16,6 +17,8 @@
 @property(nonatomic, strong) NSMutableArray *datasourceList;
 @property(nonatomic, strong) NSMutableArray *imagesList;
 @property(nonatomic, strong) NSMutableArray *contactNamesList;
+@property(nonatomic, strong) NSMutableArray *userIDList;
+
 
 @property(nonatomic, weak) IBOutlet UITableView *contactsTableView;
 
@@ -68,6 +71,8 @@
              
              self.imagesList = [[NSMutableArray alloc] init];
              self.contactNamesList = [[NSMutableArray alloc] init];
+             self.userIDList = [[NSMutableArray alloc] init];
+
 
              for (NSDictionary *dict in inResult)
              {
@@ -77,6 +82,9 @@
                  
                  if ([dict valueForKey:@"First Name"]) {
                      [self.contactNamesList addObject:[[dict valueForKey:@"First Name"]firstObject]];
+                 }
+                 if ([dict valueForKey:@"userid"]) {
+                     [self.userIDList addObject:[dict valueForKey:@"userid"]];
                  }
              }
              //
@@ -116,7 +124,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 {
     
-    return [_contactNamesList count];
+    return 1;//[_contactNamesList count];
     
 }
 
@@ -125,8 +133,8 @@
     
     BUContactListTableViewCell *cell = (BUContactListTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"BUContactListTableViewCell" ];//forIndexPath:indexPath];
     
-    cell.userImageView.image = [UIImage imageNamed:[_imageArray objectAtIndex:indexPath.row]];
-    cell.userName.text = [self.contactNamesList objectAtIndex:indexPath.row];
+//    cell.userImageView.image = [UIImage imageNamed:[_imageArray objectAtIndex:indexPath.row]];
+    cell.userName.text = @"Manjunath";//[self.contactNamesList objectAtIndex:indexPath.row];
 
     return cell;
     
@@ -145,7 +153,16 @@
 //    ConversationViewController *controller = [ConversationViewController conversationViewControllerWithLayerClient:[BUWebServicesManager sharedManager].layerClient];
 //    controller.displaysAddressBar = YES;
 //    [self.navigationController pushViewController:controller animated:YES];
+    
+    NSString * participantuserID = @"8";// [self.userIDList objectAtIndex:indexPath.row];
+    
 
+            UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+            LQSViewController *vc = [sb instantiateViewControllerWithIdentifier:@"LQSViewController"];
+    
+        vc.LQSParticipantUserID = participantuserID;
+    
+            [self.navigationController pushViewController:vc animated:YES];
     
     
 }
