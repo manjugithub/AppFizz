@@ -13,7 +13,7 @@
 #define kSignupTopLayoutOffset 80
 
 #define kAnimationDuration 0.5
-
+#define kBaseURL @"http://app.thebureauapp.com/admin/"
 
 typedef NS_ENUM(NSInteger,ButtonType){
     ButtonTypeVegetarian,
