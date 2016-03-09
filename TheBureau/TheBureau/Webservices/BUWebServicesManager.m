@@ -10,6 +10,7 @@
 #import "AFHTTPSessionManager.h"
 #import "AFNetworking.h"
 #import "AFHTTPSessionManager.h"
+#import "BUConstants.h"
 @implementation BUWebServicesManager
 
 
@@ -88,7 +89,7 @@ constructingBodyWithBlock:nil
     
      
     
-    NSString *baseURL = @"http://app.thebureauapp.com/admin/religion_ws";
+    NSString *baseURL = [NSString stringWithFormat:@"%@%@",kBaseURL,@"religion_ws"];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
@@ -114,7 +115,7 @@ constructingBodyWithBlock:nil
     
      
     
-    NSString *baseURL = @"http://app.thebureauapp.com/admin/family_origin_ws";
+    NSString *baseURL = [NSString stringWithFormat:@"%@%@",kBaseURL,@"family_origin_ws"];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
@@ -139,7 +140,7 @@ constructingBodyWithBlock:nil
     
      
     
-    NSString *baseURL = @"http://app.thebureauapp.com/admin/specification_ws";
+    NSString *baseURL = [NSString stringWithFormat:@"%@%@",kBaseURL,@"specification_ws"];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
@@ -162,7 +163,7 @@ constructingBodyWithBlock:nil
 -(void)getMotherTongueListwithParameters:(NSDictionary *)inParams  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack
 {
     
-    NSString *baseURL = @"http://app.thebureauapp.com/admin/mother_tongue_ws";
+    NSString *baseURL = [NSString stringWithFormat:@"%@%@",kBaseURL,@"mother_tongue_ws"];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
@@ -188,7 +189,8 @@ constructingBodyWithBlock:nil
 {
     
      
-    NSString *baseURL = @"http://app.thebureauapp.com/admin/update_profile_step1";
+    NSString *baseURL = [NSString stringWithFormat:@"%@%@",kBaseURL,@"update_profile_step1"];
+
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
        parameters:inParams
@@ -211,7 +213,7 @@ constructingBodyWithBlock:nil
 {
     
      
-    NSString *baseURL = @"http://app.thebureauapp.com/admin/update_profile_step2";
+    NSString *baseURL = [NSString stringWithFormat:@"%@%@",kBaseURL,@"update_profile_step2"];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
        parameters:inParams
@@ -234,7 +236,7 @@ constructingBodyWithBlock:nil
 {
     
      
-    NSString *baseURL = @"http://app.thebureauapp.com/admin/update_profile_step3";
+    NSString *baseURL = [NSString stringWithFormat:@"%@%@",kBaseURL,@"update_profile_step3"];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
        parameters:inParams
@@ -255,9 +257,7 @@ constructingBodyWithBlock:nil
 
 -(void)updateProfileOccupationwithParameters:(NSDictionary *)inParams  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack
 {
-    
-     
-    NSString *baseURL = @"http://app.thebureauapp.com/admin/update_profile_step4";
+    NSString *baseURL = [NSString stringWithFormat:@"%@%@",kBaseURL,@"update_profile_step4"];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
        parameters:inParams
@@ -278,7 +278,7 @@ constructingBodyWithBlock:nil
 
 -(void)updateProfileLegalStatuswithParameters:(NSDictionary *)inParams  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack
 {
-    NSString *baseURL = @"http://app.thebureauapp.com/admin/update_profile_step1";
+    NSString *baseURL = [NSString stringWithFormat:@"%@%@",kBaseURL,@"update_profile_step1"];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
        parameters:inParams
@@ -300,7 +300,7 @@ constructingBodyWithBlock:nil
 
 -(void)matchMakingForTheDaywithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack
 {
-    NSString *baseURL = @"http://app.thebureauapp.com/admin/matchMaking";
+    NSString *baseURL =[NSString stringWithFormat:@"%@%@",kBaseURL,@"matchMaking"];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
        parameters:inParams
@@ -320,7 +320,7 @@ constructingBodyWithBlock:nil
 
 -(void)matchPoolForTheDaywithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack
 {
-    NSString *baseURL = @"http://app.thebureauapp.com/admin/pool";
+    NSString *baseURL = [NSString stringWithFormat:@"%@%@",kBaseURL,@"pool"];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
        parameters:inParams
@@ -341,7 +341,7 @@ constructingBodyWithBlock:nil
 
 -(void)rematchwithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
 {
-    NSString *baseURL = @"http://app.thebureauapp.com/admin/rematch";
+    NSString *baseURL = [NSString stringWithFormat:@"%@%@",kBaseURL,@"rematch"];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
        parameters:inParams
@@ -368,7 +368,7 @@ constructingBodyWithBlock:nil
     
     
     
-    NSString *baseURL = @"http://app.thebureauapp.com/admin/userContacts";
+    NSString *baseURL = [NSString stringWithFormat:@"%@%@",kBaseURL,@"userContacts"];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
@@ -409,8 +409,6 @@ constructingBodyWithBlock:nil
          failureCallBack(nil,error);
          NSLog(@"Error: %@", error);
      }];
-   
-    
 }
 
 

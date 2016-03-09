@@ -51,6 +51,7 @@
     [super viewWillAppear:animated];
     [BUUtilities removeLogo:self.navigationController];
     self.navigationItem.rightBarButtonItem = self.rightBarButton;
+    [self getProfileDetails];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -58,6 +59,7 @@
     [super viewWillDisappear:animated];
     [BUUtilities setNavBarLogo:self.navigationController image:[UIImage imageNamed:@"logo44"]];
     self.navigationItem.rightBarButtonItem = nil;
+    
 }
 
 
@@ -97,10 +99,13 @@
         {
             [[self.profileTableView cellForRowAtIndexPath:self.selectedCellIndex] performSelector:@selector(updateProfile) withObject:nil];
         }
+        
+        [self updateProfile];
     }
     self.rightBarButton.image = [UIImage imageNamed:imgName];
 
     [self.profileTableView reloadData];
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -263,4 +268,85 @@
 }
 
 
+-(void)getProfileDetails
+{
+    NSDictionary *parameters = nil;
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
+                   };
+    
+    [self startActivityIndicator:YES];
+
+    [[BUWebServicesManager sharedManager] queryServer:parameters
+                                              baseURL:@"http://app.thebureauapp.com/admin/readProfileDetails"
+                                         successBlock:^(id response, NSError *error) {
+                                             
+                                             [self stopActivityIndicator];
+                                             
+                                         }
+                                         failureBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+         [self presentViewController:alertController animated:YES completion:nil];
+     }];
+    
+}
+
+
+-(void)updateProfile
+{
+    NSDictionary *parameters = nil;
+ parameters = @{
+        @"college"  :  @"MCE ashkjsd",
+        @"company"  :  @"asjhdjksdd",
+        @"country_residing" : @"India",
+        @"created_by" : @"Self",
+        @"current_zip_code" : @"45323437126",
+        @"diet" : @"Non Vegetarian",
+        @"dob" : @"1996-01-27",
+        @"drinking" : @"Never",
+        @"email" : @"testedagain@test.com",
+        @"employment_status" : @"Student",
+        @"family_origin_id" : @"3",
+        @"first_name" : @"Manjunath",
+        @"gender" : @"Male",
+        @"gothra" : @"gothra tested again",
+        @"userid": [BUWebServicesManager sharedManager].userID,
+        @"graduated_year" : @"2008",
+        @"height_feet" : @"6",
+        @"height_inch" : @"0",
+        @"highest_education" : @"BE",
+        @"maritial_status" : @"alskdhsa",
+        @"honors" : @"honors" };
+
+    
+    
+    [self startActivityIndicator:YES];
+    
+    [[BUWebServicesManager sharedManager] queryServer:parameters
+                                              baseURL:@"http://app.thebureauapp.com/admin/update_profile_ws"
+                                         successBlock:^(id response, NSError *error) {
+                                             
+                                             [self stopActivityIndicator];
+                                             
+                                         }
+                                         failureBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+         [self presentViewController:alertController animated:YES completion:nil];
+     }];
+    
+
+}
 @end

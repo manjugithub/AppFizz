@@ -70,6 +70,7 @@
 		5BFF6EB31C8D80E300596381 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF6EA11C8D80E300596381 /* UIProgressView+AFNetworking.m */; };
 		5BFF6EB41C8D80E300596381 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF6EA31C8D80E300596381 /* UIRefreshControl+AFNetworking.m */; };
 		5BFF6EB51C8D80E300596381 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF6EA51C8D80E300596381 /* UIWebView+AFNetworking.m */; };
+		7800D46A1C906EE5003F409D /* BUMyProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7800D4691C906EE5003F409D /* BUMyProfile.m */; };
 		783ABEFE1C8E07AB00AA59BE /* PWInAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 783ABEFD1C8E07AB00AA59BE /* PWInAppHelper.m */; };
 		783ABF041C8E07D500AA59BE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783ABF031C8E07D500AA59BE /* StoreKit.framework */; };
 		783ABF071C8E1C8C00AA59BE /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 783ABF061C8E1C8C00AA59BE /* IAPHelper.m */; };
@@ -293,6 +294,8 @@
 		5BFF6EA41C8D80E300596381 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		5BFF6EA51C8D80E300596381 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		6502757F3F1ACF97331C1C80 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		7800D4681C906EE5003F409D /* BUMyProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUMyProfile.h; sourceTree = "<group>"; };
+		7800D4691C906EE5003F409D /* BUMyProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUMyProfile.m; sourceTree = "<group>"; };
 		783ABEFC1C8E07AB00AA59BE /* PWInAppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWInAppHelper.h; sourceTree = "<group>"; };
 		783ABEFD1C8E07AB00AA59BE /* PWInAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWInAppHelper.m; sourceTree = "<group>"; };
 		783ABF031C8E07D500AA59BE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -612,6 +615,15 @@
 			path = "UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
+		7800D4671C906C8C003F409D /* ModelObj */ = {
+			isa = PBXGroup;
+			children = (
+				7800D4681C906EE5003F409D /* BUMyProfile.h */,
+				7800D4691C906EE5003F409D /* BUMyProfile.m */,
+			);
+			path = ModelObj;
+			sourceTree = "<group>";
+		};
 		783ABEFF1C8E07C500AA59BE /* InApp Purchase */ = {
 			isa = PBXGroup;
 			children = (
@@ -851,6 +863,7 @@
 		789D88DF1C7E3CBE00772EED /* ProfileEditing */ = {
 			isa = PBXGroup;
 			children = (
+				7800D4671C906C8C003F409D /* ModelObj */,
 				789D88E31C7E3EE800772EED /* CustomTableCell */,
 				789D88E01C7E3CED00772EED /* BUProfileEditingVC.h */,
 				789D88E11C7E3CED00772EED /* BUProfileEditingVC.m */,
@@ -1410,6 +1423,7 @@
 				5BA7964C1C85E973009B65E1 /* FLKAutoLayoutPredicateList.m in Sources */,
 				5BA796501C85E973009B65E1 /* UIView+FLKAutoLayoutPredicate.m in Sources */,
 				78FEE2391C0720B60013E9D2 /* UIKit+Extensions.m in Sources */,
+				7800D46A1C906EE5003F409D /* BUMyProfile.m in Sources */,
 				5BFF6EAF1C8D80E300596381 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				789D88E71C7E3F0D00772EED /* BUProfileBasicInfoCell.m in Sources */,
 				5B1628921C4F63D10034FA33 /* BUProfileDetails.m in Sources */,
