@@ -21,6 +21,8 @@
     dispatch_once(&pred, ^{
         sharedBUWebServicesManager = [[BUWebServicesManager alloc] init];
         
+        
+        sharedBUWebServicesManager.userID = @"400";
     });
     return sharedBUWebServicesManager;
 }

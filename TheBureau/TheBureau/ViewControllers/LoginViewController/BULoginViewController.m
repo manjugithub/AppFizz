@@ -166,7 +166,7 @@
                 else
                 {
                     parameters = @{@"login_type": @"digits",
-                                   @"digits":session.phoneNumber};
+                                   @"digits":@"23432432443"};
                 }
                 [self startActivityIndicator:YES];
                 [[BUWebServicesManager sharedManager] loginWithDelegeatewithParameters:parameters
@@ -177,7 +177,8 @@
                      if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
                      {
                          
-                         [BUWebServicesManager sharedManager].userID = [inResult valueForKey:@"userid"];
+                         [BUWebServicesManager sharedManager].userID = @"123456";
+                     //    [inResult valueForKey:@"userid"];
                          
                          NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Login Successful"];
                          [message addAttribute:NSFontAttributeName

@@ -149,7 +149,7 @@ static UIColor *LSRandomColor(void)
     if (!self.conversation) {
         NSError *error;
         // Trying creating a new distinct conversation between all 3 participants
-        self.conversation = [self.layerClient newConversationWithParticipants:[NSSet setWithArray:@[ _LQSParticipantUserID ]] options:nil error:&error];
+        self.conversation = [self.layerClient  newConversationWithParticipants:[NSSet setWithArray:@[ _LQSParticipantUserID ]] options:nil error:&error];
         if (!self.conversation) {
             // If a conversation already exists, use that one
             if (error.code == LYRErrorDistinctConversationExists) {
