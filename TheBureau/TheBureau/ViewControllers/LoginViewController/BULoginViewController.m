@@ -179,7 +179,7 @@
                          
                          [[BULayerHelper sharedHelper] setCurrentUserID:[inResult valueForKey:@"userid"]];
                          
-//                         [[BULayerHelper sharedHelper] setCurrentUserID:@"8"];
+//                         [[BULayerHelper sharedHelper] setCurrentUserID:@"126"];
 
                          NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Login Successful"];
                          [message addAttribute:NSFontAttributeName
