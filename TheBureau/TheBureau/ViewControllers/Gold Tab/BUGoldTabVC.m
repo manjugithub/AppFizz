@@ -9,7 +9,8 @@
 #import "BUGoldTabVC.h"
 #import "BUGoldTabCell.h"
 #import "PWInAppHelper.h"
-@interface BUGoldTabVC ()
+#import <FBSDKShareKit/FBSDKShareKit.h>
+@interface BUGoldTabVC ()<FBSDKAppInviteDialogDelegate>
 
 @property(nonatomic, weak) IBOutlet UILabel *totalGoldLabel;
 @property(nonatomic, strong) NSArray *products;
@@ -42,7 +43,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    FBSDKLikeControl *likeButton = [[FBSDKLikeControl alloc]initWithFrame:CGRectMake(20, 294, 560, 40)];
+    likeButton.objectID = @"https://www.facebook.com/thebureauapp/";
     
+    [self.view addSubview:likeButton];
+
     self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
 
     
@@ -180,6 +185,19 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(IBAction)inviteFriend:(id)sender
 {
+    
+        FBSDKAppInviteContent *content =[[FBSDKAppInviteContent alloc] init];
+        content.appLinkURL = [NSURL URLWithString:@"https://app.cancerlife.com/fb.html"];
+    
+        [FBSDKAppInviteDialog showFromViewController:self withContent:content delegate:self];
+        //    [_facebookLoginButton setEnabled:NO];
+        //    _activeIndicator.hidden = NO;
+        //    [_activeIndicator startAnimating];
+        //    [NB_FBLoginPaser login:self];
+    
+}
+-(void)showSuccessMessage
+{
     NSInteger gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
     NSInteger purchasedGold = 100;
     
@@ -210,32 +228,38 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 -(IBAction)likeUsOnFB:(id)sender
 {
-    NSInteger gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
-    NSInteger purchasedGold = 100;
     
+//    FBSDKLikeControl *likeButton = [[FBSDKLikeControl alloc]initWithFrame:CGRectMake(20, 294, 560, 40)];
+//    likeButton.objectID = @"https://www.facebook.com/FacebookDevelopers";
+//    
+//    [self.view addSubview:likeButton];
     
-    [[NSUserDefaults standardUserDefaults] setInteger:gold + purchasedGold forKey:@"purchasedGold"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
-    
-    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"You have Earned %ld Gold, Your total purchased gold is %ld",purchasedGold,gold]];
-    [message addAttribute:NSFontAttributeName
-                    value:[UIFont fontWithName:@"comfortaa" size:15]
-                    range:NSMakeRange(0, message.length)];
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alertController setValue:message forKey:@"attributedTitle"];
-    
-    
-    [alertController addAction:({
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            NSLog(@"OK");
-            self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
-        }];
-        
-        action;
-    })];
-    [self presentViewController:alertController  animated:YES completion:nil];
+//    NSInteger gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
+//    NSInteger purchasedGold = 100;
+//    
+//    
+//    [[NSUserDefaults standardUserDefaults] setInteger:gold + purchasedGold forKey:@"purchasedGold"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+//    
+//    gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
+//    
+//    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"You have Earned %ld Gold, Your total purchased gold is %ld",purchasedGold,gold]];
+//    [message addAttribute:NSFontAttributeName
+//                    value:[UIFont fontWithName:@"comfortaa" size:15]
+//                    range:NSMakeRange(0, message.length)];
+//    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+//    [alertController setValue:message forKey:@"attributedTitle"];
+//    
+//    
+//    [alertController addAction:({
+//        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//            NSLog(@"OK");
+//            self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+//        }];
+//        
+//        action;
+//    })];
+//    [self presentViewController:alertController  animated:YES completion:nil];
     
 }
 

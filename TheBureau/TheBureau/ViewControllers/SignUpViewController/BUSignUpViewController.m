@@ -170,7 +170,7 @@
                 else
                 {
                     parameters =  @{@"reg_type": @"digits",
-                                    @"digits":session.phoneNumber};
+                                    @"digits":@"23432432443"};
                 }
                 [self startActivityIndicator:YES];
                 
