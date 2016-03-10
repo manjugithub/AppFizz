@@ -163,7 +163,7 @@
                 else
                 {
                     parameters = @{@"login_type": @"digits",
-                                   @"digits":@"23432432443"};
+                                   @"digits":session.phoneNumber};
                 }
                 [self startActivityIndicator:YES];
                 [[BUWebServicesManager sharedManager] loginWithDelegeatewithParameters:parameters
@@ -174,10 +174,13 @@
                      if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
                      {
                          
-                         [BUWebServicesManager sharedManager].userID = @"123456";
+                         [BUWebServicesManager sharedManager].userID = [inResult valueForKey:@"userid"];
                      //    [inResult valueForKey:@"userid"];
                          
                          [[BULayerHelper sharedHelper] setCurrentUserID:[inResult valueForKey:@"userid"]];
+                         
+//                         [[BULayerHelper sharedHelper] setCurrentUserID:@"8"];
+
                          NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Login Successful"];
                          [message addAttribute:NSFontAttributeName
                                          value:[UIFont fontWithName:@"comfortaa" size:15]
