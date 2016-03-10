@@ -152,7 +152,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     
-    [[BULayerHelper sharedHelper] setParticipantUserID:@"12"];
+    [[BULayerHelper sharedHelper] setParticipantUserID:@"8"];
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Connections" bundle:nil];
     LQSViewController *vc = [sb instantiateViewControllerWithIdentifier:@"LQSViewController"];
     [self.navigationController pushViewController:vc animated:YES];

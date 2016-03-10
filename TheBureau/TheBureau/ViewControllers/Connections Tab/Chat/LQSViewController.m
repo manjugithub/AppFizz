@@ -29,7 +29,7 @@ static NSString *const LQSMessageReadImageName =@"message-read";
 
 static NSString *const LQSChatMessageCellReuseIdentifier = @"ChatMessageCell";
 
-static NSString *const LQSLogoImageName = @"Logo";
+//static NSString *const LQSLogoImageName = @"Logo";
 static CGFloat const LQSKeyboardHeight = 255.0f;
 
 static NSInteger const LQSMaxCharacterLimit = 66;
@@ -78,17 +78,19 @@ static UIColor *LSRandomColor(void)
     self.layerClient = [[BULayerHelper sharedHelper] layerClient];
     [self setupLayerNotificationObservers];
     [self fetchLayerConversation];
+    self.title =@"message";
     
     // Setup for Shake
     [self becomeFirstResponder];
     
-    UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:LQSLogoImageName]];
-    logoImageView.frame = CGRectMake(0, 0, 36, 36);
-    logoImageView.contentMode = UIViewContentModeScaleAspectFit;
-    self.navigationItem.titleView = logoImageView;
-    self.navigationItem.hidesBackButton = YES;
+//    UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:LQSLogoImageName]];
+//    logoImageView.frame = CGRectMake(0, 0, 36, 36);
+//    logoImageView.contentMode = UIViewContentModeScaleAspectFit;
+//    self.navigationItem.titleView = logoImageView;
+   self.navigationItem.hidesBackButton = NO;
+    self.navigationItem.rightBarButtonItem = nil;
     self.inputTextView.delegate = self;
-    self.inputTextView.text = LQSInitialMessageText;
+  //  self.inputTextView.text = LQSInitialMessageText;
     
 }
 
