@@ -418,11 +418,11 @@ static UIColor *LSRandomColor(void)
     
     CGRect rect = self.view.frame;
     if (movedUp) {
-        if (rect.origin.y == 0) {
+        if (rect.origin.y == 64) {
             rect.origin.y = self.view.frame.origin.y - LQSKeyboardHeight;
         }
     } else {
-        if (rect.origin.y < 0) {
+        if (rect.origin.y < 64) {
             rect.origin.y = self.view.frame.origin.y + LQSKeyboardHeight;
         }
     }
