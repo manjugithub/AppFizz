@@ -16,7 +16,7 @@
 #import "BUHomeTabbarController.h"
 #import <LayerKit/LayerKit.h>
 #import "BUWebServicesManager.h"
-
+#import "BULayerHelper.h"
 @interface BULoginViewController ()//<LYRClientDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *overLayViewTapConstraint;
@@ -43,9 +43,6 @@
     self.title = @"login";
     _configuration = [[DGTAuthenticationConfiguration alloc] initWithAccountFields:DGTAccountFieldsDefaultOptionMask];
     _configuration.appearance = [self makeTheme];
-    
-    NSURL *appID = [NSURL URLWithString:@"layer:///apps/staging/238530d8-995f-11e5-9461-6ac9d8033a8c"];
-    self.layerClient = [LYRClient clientWithAppID:appID];
 
 }
 
@@ -179,6 +176,7 @@
                          
                          [BUWebServicesManager sharedManager].userID = [inResult valueForKey:@"userid"];
                          
+                         [[BULayerHelper sharedHelper] setCurrentUserID:[inResult valueForKey:@"userid"]];
                          NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Login Successful"];
                          [message addAttribute:NSFontAttributeName
                                          value:[UIFont fontWithName:@"comfortaa" size:15]
@@ -190,17 +188,26 @@
                                                                             style:UIAlertActionStyleDefault
                                                                           handler:^(UIAlertAction *action)
                                                     {
+                                                        [self startActivityIndicator:YES];
                                                         
-                                                     [self loginLayer];
-   
-//                                                        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-//                                                        BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-//                                                        [self.navigationController pushViewController:vc animated:YES];
-                                                        
-//                                                                                               UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//                                                                                               BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];
-//                                                                                               vc.socialChannel = self.socialChannel;
-//                                                                                               [self.navigationController pushViewController:vc animated:YES];
+                                                        [[BULayerHelper sharedHelper] authenticateLayerWithsuccessBlock:^(id response, NSError *error) {
+                                                                [self stopActivityIndicator];
+                                                                    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+                                                                    BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+                                                                    [self.navigationController pushViewController:vc animated:YES];
+                                                        } failureBlock:^(id response, NSError *error) {
+                                                            {
+                                                                NSLog(@"Failed Authenticating Layer Client with error:%@", error);
+                                                                NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Failed Authenticating Layer Client with error:%@", error]];
+                                                                [message addAttribute:NSFontAttributeName
+                                                                                value:[UIFont fontWithName:@"comfortaa" size:15]
+                                                                                range:NSMakeRange(0, message.length)];
+                                                                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+                                                                [alertController setValue:message forKey:@"attributedTitle"];
+                                                                [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                                                                [self presentViewController:alertController animated:YES completion:nil];
+                                                                
+                                                            }                                                        }];
                                                     }];
                          
                          [alertController addAction:okAction];
@@ -248,206 +255,6 @@
     [[Digits sharedInstance]logOut];
 
 }
-
-
--(void)didSuccess:(id)inResult;
-{
-    [self stopActivityIndicator];
-    
-    if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
-    {
-        
-        [BUWebServicesManager sharedManager].userID = [inResult valueForKey:@"userid"];
-        NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Login Successful"];
-        [message addAttribute:NSFontAttributeName
-                        value:[UIFont fontWithName:@"comfortaa" size:15]
-                        range:NSMakeRange(0, message.length)];
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-        [alertController setValue:message forKey:@"attributedTitle"];
-        
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction *action)
-                                   {
-                                       
-                                      [self loginLayer];
-//                                       UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-//                                       BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-//                                       [self.navigationController pushViewController:vc animated:YES];
-
-//                                       UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//                                       BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];
-//                                       vc.socialChannel = self.socialChannel;
-//                                       [self.navigationController pushViewController:vc animated:YES];
-                                   }];
-        
-        [alertController addAction:okAction];
-        [self presentViewController:alertController animated:YES completion:nil];
-        
-    }
-    else
-    {
-        NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Registration Failed"];
-        [message addAttribute:NSFontAttributeName
-                        value:[UIFont fontWithName:@"comfortaa" size:15]
-                        range:NSMakeRange(0, message.length)];
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-        [alertController setValue:message forKey:@"attributedTitle"];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-        [self presentViewController:alertController animated:YES completion:nil];
-    }
-    
-}
-
--(void)didFail:(id)inResult;
-{
-    [self startActivityIndicator:YES];
-    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Login Failed"];
-    [message addAttribute:NSFontAttributeName
-                    value:[UIFont fontWithName:@"comfortaa" size:15]
-                    range:NSMakeRange(0, message.length)];
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alertController setValue:message forKey:@"attributedTitle"];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-    [self presentViewController:alertController animated:YES completion:nil];
-}
-
-#pragma mark - Layer Authentication Methods
-
-- (void)loginLayer
-{
-    [self startActivityIndicator:YES];
-    [self authenticateLayerWithUserID:[BUWebServicesManager sharedManager].userID completion:^(BOOL success, NSError *error) {
-        [self stopActivityIndicator];
-        if (YES == success)
-        {
-            UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-            BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-        else
-        {
-            NSLog(@"Failed Authenticating Layer Client with error:%@", error);
-            NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Failed Authenticating Layer Client with error:%@", error]];
-            [message addAttribute:NSFontAttributeName
-                            value:[UIFont fontWithName:@"comfortaa" size:15]
-                            range:NSMakeRange(0, message.length)];
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-            [alertController setValue:message forKey:@"attributedTitle"];
-            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-            [self presentViewController:alertController animated:YES completion:nil];
-            
-        }
-    }];
-}
-
-- (void)authenticateLayerWithUserID:(NSString *)userID completion:(void (^)(BOOL success, NSError * error))completion
-{
-    // Check to see if the layerClient is already authenticated.
-    if (self.layerClient.authenticatedUserID)
-    {
-        if ([self.layerClient.authenticatedUserID isEqualToString:userID])
-        {
-            NSLog(@"Layer Authenticated as User %@", self.layerClient.authenticatedUserID);
-            [BUWebServicesManager sharedManager].layerClient = self.layerClient;
-            
-            [self stopActivityIndicator];
-
-            if (completion)
-                completion(YES, nil);
-            
-        }
-        else
-        {
-            //If the authenticated userID is different, then deauthenticate the current client and re-authenticate with the new userID.
-            [self.layerClient deauthenticateWithCompletion:^(BOOL success, NSError *error) {
-                if (!error){
-                    [self authenticationTokenWithUserId:userID completion:^(BOOL success, NSError *error) {
-                        if (completion){
-                            completion(success, error);
-                        }
-                    }];
-                } else {
-                    if (completion){
-                        completion(NO, error);
-                    }
-                }
-            }];
-        }
-    } else {
-        // If the layerClient isn't already authenticated, then authenticate.
-        [self authenticationTokenWithUserId:userID completion:^(BOOL success, NSError *error)
-        {
-            if (completion){
-                completion(success, error);
-            }
-        }];
-    }
-}
-
-- (void)authenticationTokenWithUserId:(NSString *)userID completion:(void (^)(BOOL success, NSError* error))completion
-{
-    /*
-     * 1. Request an authentication Nonce from Layer
-     */
-    [self.layerClient requestAuthenticationNonceWithCompletion:^(NSString *nonce, NSError *error)
-    {
-        if (!nonce)
-        {
-            if (completion)
-            {
-                completion(NO, error);
-            }
-            return;
-        }
-        
-        /*
-         * 2. Acquire identity Token from Layer Identity Service
-         */
-        
-        NSDictionary *parameters = nil;
-        parameters = @{@"userid": userID
-                       ,@"nonce": nonce};
-     //   NSDictionary *parameters = @{@"nonce" : nonce, @"userid" : userID};
-        
-        [[BUWebServicesManager sharedManager] getLayerAuthTokenwithParameters:parameters
-                                                              successBlock:^(id inResult, NSError *error)
-         {
-            // [self stopActivityIndicator];
-             if(nil != inResult && 0 < [inResult count])
-             {
-                 NSString *identityToken = [inResult valueForKey:@"identity_token"];
-                 
-                 [self.layerClient authenticateWithIdentityToken:identityToken completion:^(NSString *authenticatedUserID, NSError *error)
-                 {
-                     if (authenticatedUserID)
-                     {
-                         if (completion)
-                         {
-                             completion(YES, nil);
-                         }
-                     }
-                     else
-                     {
-                         completion(NO, error);
-                     }
-                 }];
-
-               
-             }
-             else
-             {
-                 completion(NO,error);
-             }
-         }
-                                                              failureBlock:^(id response, NSError *error)
-         {
-             completion(NO,error);
-         }];
-   }];
-}
-
-
 
 
 @end

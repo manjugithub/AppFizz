@@ -8,10 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <LayerKit/LayerKit.h>
+#import "BUUtilities.h"
 
 
-typedef void (^FailureBlock)(id response, NSError *error);
-typedef void (^SuccessBlock)(id response, NSError *error);
 
 
 @interface BUWebServicesManager : NSObject

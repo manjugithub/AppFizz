@@ -30,5 +30,6 @@
 @property(nonatomic,weak)IBOutlet UILabel *yesLabel;
 @property(nonatomic,weak)IBOutlet UILabel *noLabel;
 
+-(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict;
 
 @end

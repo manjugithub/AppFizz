@@ -24,4 +24,5 @@
 @property (nonatomic,weak) IBOutlet UITextField *collegeTextField,*collegeTextField2;
 @property (nonatomic,weak) IBOutlet UITextField *majorTextField,*majorTextField2;
 
+-(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict;
 @end

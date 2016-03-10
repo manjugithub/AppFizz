@@ -121,8 +121,10 @@
             
             self.datasourceList = [response lastObject];
             
-            self.imagesList = [[NSMutableArray alloc] initWithArray:[[[response lastObject]valueForKey:@"img_url"] allValues]];
-            
+//            self.imagesList = [[NSMutableArray alloc] initWithArray:[[[response lastObject]valueForKey:@"img_url"] allValues]];
+
+            self.imagesList = [[NSMutableArray alloc] initWithArray:[[response lastObject]valueForKey:@"img_url"]];
+
             [self.imgScrollerTableView reloadData];
         }
         else

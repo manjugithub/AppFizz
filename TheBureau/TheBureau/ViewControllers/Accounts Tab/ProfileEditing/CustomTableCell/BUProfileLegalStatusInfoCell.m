@@ -31,6 +31,12 @@
     
 }
 
+
+-(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict
+{
+    
+}
+
 /*
  
  {

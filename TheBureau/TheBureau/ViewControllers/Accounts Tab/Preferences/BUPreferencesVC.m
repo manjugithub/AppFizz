@@ -338,6 +338,8 @@
 
     [BUUtilities removeLogo:self.navigationController];
     self.navigationItem.rightBarButtonItem = self.rightBarButton;
+    
+    [self readPreferences];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -604,45 +606,7 @@ numberOfRowsInComponent:(NSInteger)component{
 
 -(void)updatePrefernceValues
 {
-    
-    /*
-     userid => User id  (userid)
-     
-     age_from=> integer number (age_from)
-     
-     age_to=> integer number (age_to)
-     
-     gender=>enum('Male','Female')(gender)
-     
-     account_created_by=>enum('Brother','Sister','Son','Daughter','Relative','Friend','Self')(account_created_by)
-     
-     country=>enum('America','India')(country)
-     
-     location_radius=>integer number (location_radius)
-     
-     height_range_from=>height from (height_range_from)
-     
-     height_range_to=>height to (height_range_to)
-     
-     minimum_education_requirement=>enum('Doctorate','Masters','Bachelors','Associates','Grade School')(minimum_education_requirement)
-     
-     religion_id=>religion id (religion_id)
-     
-     mother_tongue_id=>mother tongue id(mother_tongue_id)
-     
-     family_origin_id=>family origin id(family_origin_id)
-     
-     social_habit=>enum('No Smoking','Never Drinking')(social_habit)
-     
-     diet=>enum('Vegetarian','Eggetarian','Non Vegetarian','Vegan')(diet)
-     
-     years_in_usa=>enum('0 - 2','2 - 6','6+','Born & Raised')(years_in_usa)
-     
-     legal_status=>enum('Citizen/Green Card','Greencard','Greencard Processing','H1 Visa','Student Visa','Other')(legal_status)
-     
-     marital_status=>enum('Never Married','Divorced','Widowed')(marital_status)
-*/
-    
+ 
     NSDictionary *prefDict = [[NSUserDefaults standardUserDefaults] valueForKey:@"Preferences"];
     self.preferenceDict = [[NSMutableDictionary alloc] initWithDictionary:prefDict];
 

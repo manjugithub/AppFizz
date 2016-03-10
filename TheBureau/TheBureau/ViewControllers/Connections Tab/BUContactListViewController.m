@@ -10,7 +10,8 @@
 #import "BUCOntactListTableViewCell.h"
 #import "BUWebServicesManager.h"
 #import "LQSViewController.h"
-
+#import "BUConstants.h"
+#import "BULayerHelper.h"
 @interface BUContactListViewController ()
 
 @property(nonatomic) NSArray * imageArray;
@@ -134,7 +135,7 @@
     BUContactListTableViewCell *cell = (BUContactListTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"BUContactListTableViewCell" ];//forIndexPath:indexPath];
     
 //    cell.userImageView.image = [UIImage imageNamed:[_imageArray objectAtIndex:indexPath.row]];
-    cell.userName.text = @"Manjunath";//[self.contactNamesList objectAtIndex:indexPath.row];
+    cell.userName.text = @"Vinay";//[self.contactNamesList objectAtIndex:indexPath.row];
 
     return cell;
     
@@ -150,21 +151,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-//    ConversationViewController *controller = [ConversationViewController conversationViewControllerWithLayerClient:[BUWebServicesManager sharedManager].layerClient];
-//    controller.displaysAddressBar = YES;
-//    [self.navigationController pushViewController:controller animated:YES];
     
-    NSString * participantuserID = @"8";// [self.userIDList objectAtIndex:indexPath.row];
-    
-
-            UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-            LQSViewController *vc = [sb instantiateViewControllerWithIdentifier:@"LQSViewController"];
-    
-        vc.LQSParticipantUserID = participantuserID;
-    
-            [self.navigationController pushViewController:vc animated:YES];
-    
-    
+    [[BULayerHelper sharedHelper] setParticipantUserID:@"12"];
+    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Connections" bundle:nil];
+    LQSViewController *vc = [sb instantiateViewControllerWithIdentifier:@"LQSViewController"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

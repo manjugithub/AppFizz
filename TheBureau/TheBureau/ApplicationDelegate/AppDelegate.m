@@ -44,16 +44,6 @@
 
 - (void)setupLayers
 {
-    
-    NSURL *appID = [NSURL URLWithString:@"layer:///apps/staging/238530d8-995f-11e5-9461-6ac9d8033a8c"];
-    LYRClient *layerClient = [LYRClient clientWithAppID:appID];
-    
-    [layerClient connectWithCompletion:^(BOOL success, NSError *error) {
-        if (success) {
-            NSLog(@"Client is Connected!");
-        }
-    }];
-    
 }
 
 

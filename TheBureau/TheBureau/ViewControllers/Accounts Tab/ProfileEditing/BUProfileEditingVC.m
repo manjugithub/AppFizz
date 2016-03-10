@@ -26,7 +26,7 @@
 @property (assign, nonatomic) NSIndexPath *selectedCellIndex;
 
 
-@property (strong, nonatomic) NSMutableDictionary *basicInfoDict,*educationDict,*occupationDict,*heritageDict,*socialHabitsDict,*horoscopeDict;
+@property (strong, nonatomic) NSMutableDictionary *basicInfoDict,*educationDict,*occupationDict,*heritageDict,*socialHabitsDict,*horoscopeDict,*legalStatus;
 
 
 
@@ -52,6 +52,10 @@
     [BUUtilities removeLogo:self.navigationController];
     self.navigationItem.rightBarButtonItem = self.rightBarButton;
     [self getProfileDetails];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyboard) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyBoard) name:UIKeyboardWillHideNotification object:nil];
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -132,36 +136,44 @@
         case 0:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileBasicInfoCell"];
+            
+            [(BUProfileBasicInfoCell *)cell setDatasource:self.basicInfoDict];
             break;
         }
         case 1:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileEducationInfoCell"];
+            [(BUProfileEducationInfoCell *)cell setDatasource:self.educationDict];
             break;
         }
         case 2:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileOccupationInfoCell"];
+            [(BUProfileOccupationInfoCell *)cell setDatasource:self.occupationDict];
             break;
         }
         case 3:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileLegalStatusInfoCell"];
+            [(BUProfileLegalStatusInfoCell *)cell setDatasource:self.legalStatus];
             break;
         }
         case 4:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileHeritageInfoCell"];
+            [(BUProfileHeritageInfoCell *)cell setDatasource:self.heritageDict];
             break;
         }
         case 5:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileSocialHabitsInfoCell"];
+            [(BUProfileSocialHabitsInfoCell *)cell setDatasource:self.socialHabitsDict];
             break;
         }
         case 6:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileHoroscopeInfoCell"];
+            [(BUProfileHoroscopeInfoCell *)cell setDatasource:self.horoscopeDict];
             break;
         }
         default:
@@ -281,7 +293,71 @@
                                          successBlock:^(id response, NSError *error) {
                                              
                                              [self stopActivityIndicator];
+                                             NSDictionary *respDict = response;
+                                             self.basicInfoDict = [[NSMutableDictionary alloc] init];
                                              
+                                             [self.basicInfoDict setValue:([respDict valueForKey:@"first_name"] != nil && NO == [[respDict valueForKey:@"first_name"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"first_name"] : @"" forKey:@"name"];
+                                             
+                                             [self.basicInfoDict setValue:([respDict valueForKey:@"dob"] != nil && NO == [[respDict valueForKey:@"dob"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"dob"] : @""  forKey:@"dob"];
+                                             
+                                             [self.basicInfoDict setValue:([respDict valueForKey:@"gender"] != nil && NO == [[respDict valueForKey:@"gender"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"gender"] : @""  forKey:@"gender"];
+                                             
+                                             [self.basicInfoDict setValue:([respDict valueForKey:@"location"] != nil && NO == [[respDict valueForKey:@"location"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@""] : @""  forKey:@"location"];
+                                             
+                                             [self.basicInfoDict setValue:([respDict valueForKey:@"height_feet"] != nil && NO == [[respDict valueForKey:@"height_feet"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"height_feet"] : @""  forKey:@"height_feet"];
+                                             
+                                             [self.basicInfoDict setValue:([respDict valueForKey:@"height_inch"] != nil && NO == [[respDict valueForKey:@"height_inch"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"height_inch"] : @""  forKey:@"height_inch"];
+                                             
+                                             [self.basicInfoDict setValue:([respDict valueForKey:@"maritial_status"] != nil && NO == [[respDict valueForKey:@"maritial_status"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"maritial_status"] : @""  forKey:@"maritial_status"];
+                                             
+                                             
+                                             
+                                             self.educationDict = [[NSMutableDictionary alloc] init];
+                                             [self.educationDict setValue:([respDict valueForKey:@"highest_level_edu"] != nil && NO == [[respDict valueForKey:@"highest_level_edu"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"highest_level_edu"] : @""  forKey:@"highest_level_edu"];
+                                             
+                                             
+                                             [self.educationDict setValue:([respDict valueForKey:@"honor"] != nil && NO == [[respDict valueForKey:@"honor"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"honor"] : @""  forKey:@"honor"];
+                                             
+                                             [self.educationDict setValue:([respDict valueForKey:@"major"] != nil && NO == [[respDict valueForKey:@"major"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"major"] : @""  forKey:@"major"];
+                                             
+                                             
+                                             [self.educationDict setValue:([respDict valueForKey:@"college"] != nil && NO == [[respDict valueForKey:@"college"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"college"] : @""  forKey:@"college"];
+                                             
+                                             [self.educationDict setValue:([respDict valueForKey:@"year"] != nil && NO == [[respDict valueForKey:@"year"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"year"] : @""  forKey:@"year"];
+
+                                             
+                                             self.occupationDict = [[NSMutableDictionary alloc] init];
+                                             [self.occupationDict setValue:([respDict valueForKey:@"employment_status"] != nil && NO == [[respDict valueForKey:@"employment_status"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"employment_status"] : @""  forKey:@"employment_status"];
+                                             
+                                             [self.occupationDict setValue:([respDict valueForKey:@"position_title"] != nil && NO == [[respDict valueForKey:@"position_title"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"position_title"] : @""  forKey:@"position_title"];
+                                             
+                                             [self.occupationDict setValue:([respDict valueForKey:@"company"] != nil && NO == [[respDict valueForKey:@"company"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"company"] : @""  forKey:@"company"];
+                                             
+                                             self.heritageDict = [[NSMutableDictionary alloc] init];
+                                             [self.heritageDict setValue:([respDict valueForKey:@"religion_id"] != nil && NO == [[respDict valueForKey:@"religion_id"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"religion_id"] : @""  forKey:@"religion_id"];
+                                             
+                                             [self.heritageDict setValue:([respDict valueForKey:@"mother_tongue_id"] != nil && NO == [[respDict valueForKey:@"mother_tongue_id"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"mother_tongue_id"] : @""  forKey:@"mother_tongue_id"];
+                                             
+                                             [self.heritageDict setValue:([respDict valueForKey:@"family_origin_id"] != nil && NO == [[respDict valueForKey:@"family_origin_id"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"family_origin_id"] : @""  forKey:@"family_origin_id"];
+                                             
+                                             [self.heritageDict setValue:([respDict valueForKey:@"specification_id"] != nil && NO == [[respDict valueForKey:@"specification_id"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"specification_id"] : @""  forKey:@"specification_id"];
+                                             
+                                             [self.heritageDict setValue:([respDict valueForKey:@"gothra"] != nil && NO == [[respDict valueForKey:@"gothra"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"gothra"] : @""  forKey:@"gothra"];
+
+                                             self.socialHabitsDict = [[NSMutableDictionary alloc] init];
+                                             [self.socialHabitsDict setValue:([respDict valueForKey:@"diet"] != nil && NO == [[respDict valueForKey:@"diet"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"diet"] : @""  forKey:@"diet"];
+                                             
+                                             [self.socialHabitsDict setValue:([respDict valueForKey:@"drinking"] != nil && NO == [[respDict valueForKey:@"drinking"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"drinking"] : @""  forKey:@"drinking"];
+                                             
+                                             [self.socialHabitsDict setValue:([respDict valueForKey:@"smoking"] != nil && NO == [[respDict valueForKey:@"smoking"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"smoking"] : @""  forKey:@"smoking"];
+                                             
+                                             
+                                             self.legalStatus = [[NSMutableDictionary alloc] init];
+                                             [self.legalStatus setValue:([respDict valueForKey:@"years_in_usa"] != nil && NO == [[respDict valueForKey:@"years_in_usa"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"years_in_usa"] : @""  forKey:@"years_in_usa"];
+                                             
+                                             [self.legalStatus setValue:([respDict valueForKey:@"legal_status"] != nil && NO == [[respDict valueForKey:@"legal_status"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"legal_status"] : @""  forKey:@"legal_status"];
+                                             
+                                             [self.profileTableView reloadData];
                                          }
                                          failureBlock:^(id response, NSError *error)
      {
@@ -346,7 +422,20 @@
          [alertController setValue:message forKey:@"attributedTitle"];            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
          [self presentViewController:alertController animated:YES completion:nil];
      }];
-    
+}
 
+-(void)showKeyboard
+{
+    CGFloat constant = 0;
+    constant = 280;
+    self.tableBottomConstraint.constant = constant;
+    [self.profileTableView scrollToRowAtIndexPath:self.selectedCellIndex atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
+-(void)hideKeyBoard
+{
+    CGFloat constant = 0;
+    self.tableBottomConstraint.constant = constant;
+    [self.profileTableView scrollToRowAtIndexPath:self.selectedCellIndex atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 @end

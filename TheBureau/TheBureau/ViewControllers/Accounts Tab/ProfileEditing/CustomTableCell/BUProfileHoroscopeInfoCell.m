@@ -26,6 +26,12 @@
     return YES;
 }
 
+-(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict
+{
+    
+}
+
+
 -(void)updateProfile
 {
     

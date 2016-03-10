@@ -43,8 +43,6 @@
 		5BB683501C64A58E0043C4FC /* EmployementStatusTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6834D1C64A58E0043C4FC /* EmployementStatusTVCell.m */; };
 		5BB683511C64A58E0043C4FC /* HighLevelEducationTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB6834F1C64A58E0043C4FC /* HighLevelEducationTVCell.m */; };
 		5BDA47201C22596200C875AB /* BURootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA471F1C22596200C875AB /* BURootViewController.m */; };
-		5BF7CE521C904CDE0057B946 /* LQSChatMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF7CE4F1C904CDE0057B946 /* LQSChatMessageCell.m */; settings = {ASSET_TAGS = (); }; };
-		5BF7CE531C904CDE0057B946 /* LQSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BF7CE511C904CDE0057B946 /* LQSViewController.m */; settings = {ASSET_TAGS = (); }; };
 		5BFF6E671C89C5B400596381 /* BUContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF6E661C89C5B400596381 /* BUContactListViewController.m */; };
 		5BFF6E691C89DBAA00596381 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFF6E681C89DBAA00596381 /* Bolts.framework */; };
 		5BFF6E6B1C89DBBD00596381 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFF6E6A1C89DBBD00596381 /* FBSDKCoreKit.framework */; };
@@ -73,6 +71,11 @@
 		5BFF6EB41C8D80E300596381 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF6EA31C8D80E300596381 /* UIRefreshControl+AFNetworking.m */; };
 		5BFF6EB51C8D80E300596381 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF6EA51C8D80E300596381 /* UIWebView+AFNetworking.m */; };
 		7800D46A1C906EE5003F409D /* BUMyProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7800D4691C906EE5003F409D /* BUMyProfile.m */; };
+		7800D4A81C91AD3A003F409D /* BULayerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7800D4A71C91AD3A003F409D /* BULayerHelper.m */; };
+		7800D4B31C91AE40003F409D /* LQSChatMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7800D4AA1C91AE40003F409D /* LQSChatMessageCell.m */; };
+		7800D4B41C91AE40003F409D /* LQSAnnouncementsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7800D4AC1C91AE40003F409D /* LQSAnnouncementsTableViewCell.m */; };
+		7800D4B51C91AE40003F409D /* LQSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7800D4AF1C91AE40003F409D /* LQSViewController.m */; };
+		7800D4B61C91AE40003F409D /* LQSAnnouncementsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7800D4B11C91AE40003F409D /* LQSAnnouncementsTableViewController.m */; };
 		783ABEFE1C8E07AB00AA59BE /* PWInAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 783ABEFD1C8E07AB00AA59BE /* PWInAppHelper.m */; };
 		783ABF041C8E07D500AA59BE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783ABF031C8E07D500AA59BE /* StoreKit.framework */; };
 		783ABF071C8E1C8C00AA59BE /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 783ABF061C8E1C8C00AA59BE /* IAPHelper.m */; };
@@ -248,10 +251,6 @@
 		5BB6834F1C64A58E0043C4FC /* HighLevelEducationTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighLevelEducationTVCell.m; sourceTree = "<group>"; };
 		5BDA471E1C22596200C875AB /* BURootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BURootViewController.h; sourceTree = "<group>"; };
 		5BDA471F1C22596200C875AB /* BURootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BURootViewController.m; sourceTree = "<group>"; };
-		5BF7CE4E1C904CDE0057B946 /* LQSChatMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQSChatMessageCell.h; sourceTree = "<group>"; };
-		5BF7CE4F1C904CDE0057B946 /* LQSChatMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQSChatMessageCell.m; sourceTree = "<group>"; };
-		5BF7CE501C904CDE0057B946 /* LQSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQSViewController.h; sourceTree = "<group>"; };
-		5BF7CE511C904CDE0057B946 /* LQSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQSViewController.m; sourceTree = "<group>"; };
 		5BFF6E651C89C5B400596381 /* BUContactListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUContactListViewController.h; sourceTree = "<group>"; };
 		5BFF6E661C89C5B400596381 /* BUContactListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUContactListViewController.m; sourceTree = "<group>"; };
 		5BFF6E681C89DBAA00596381 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -302,6 +301,16 @@
 		6502757F3F1ACF97331C1C80 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7800D4681C906EE5003F409D /* BUMyProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUMyProfile.h; sourceTree = "<group>"; };
 		7800D4691C906EE5003F409D /* BUMyProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUMyProfile.m; sourceTree = "<group>"; };
+		7800D4A61C91AD3A003F409D /* BULayerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BULayerHelper.h; sourceTree = "<group>"; };
+		7800D4A71C91AD3A003F409D /* BULayerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BULayerHelper.m; sourceTree = "<group>"; };
+		7800D4A91C91AE40003F409D /* LQSChatMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LQSChatMessageCell.h; sourceTree = "<group>"; };
+		7800D4AA1C91AE40003F409D /* LQSChatMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LQSChatMessageCell.m; sourceTree = "<group>"; };
+		7800D4AB1C91AE40003F409D /* LQSAnnouncementsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQSAnnouncementsTableViewCell.h; sourceTree = "<group>"; };
+		7800D4AC1C91AE40003F409D /* LQSAnnouncementsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQSAnnouncementsTableViewCell.m; sourceTree = "<group>"; };
+		7800D4AE1C91AE40003F409D /* LQSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LQSViewController.h; sourceTree = "<group>"; };
+		7800D4AF1C91AE40003F409D /* LQSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LQSViewController.m; sourceTree = "<group>"; };
+		7800D4B01C91AE40003F409D /* LQSAnnouncementsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQSAnnouncementsTableViewController.h; sourceTree = "<group>"; };
+		7800D4B11C91AE40003F409D /* LQSAnnouncementsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQSAnnouncementsTableViewController.m; sourceTree = "<group>"; };
 		783ABEFC1C8E07AB00AA59BE /* PWInAppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWInAppHelper.h; sourceTree = "<group>"; };
 		783ABEFD1C8E07AB00AA59BE /* PWInAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWInAppHelper.m; sourceTree = "<group>"; };
 		783ABF031C8E07D500AA59BE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -559,10 +568,8 @@
 		5BF7CE4D1C904C900057B946 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				5BF7CE4E1C904CDE0057B946 /* LQSChatMessageCell.h */,
-				5BF7CE4F1C904CDE0057B946 /* LQSChatMessageCell.m */,
-				5BF7CE501C904CDE0057B946 /* LQSViewController.h */,
-				5BF7CE511C904CDE0057B946 /* LQSViewController.m */,
+				7800D4AD1C91AE40003F409D /* Views */,
+				7800D4B21C91AE40003F409D /* Controllers */,
 			);
 			name = Chat;
 			path = "Gold Tab";
@@ -640,6 +647,30 @@
 				7800D4691C906EE5003F409D /* BUMyProfile.m */,
 			);
 			path = ModelObj;
+			sourceTree = "<group>";
+		};
+		7800D4AD1C91AE40003F409D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7800D4A91C91AE40003F409D /* LQSChatMessageCell.h */,
+				7800D4AA1C91AE40003F409D /* LQSChatMessageCell.m */,
+				7800D4AB1C91AE40003F409D /* LQSAnnouncementsTableViewCell.h */,
+				7800D4AC1C91AE40003F409D /* LQSAnnouncementsTableViewCell.m */,
+			);
+			name = Views;
+			path = "../../../../../../../Downloads/quick-start-ios-master 4/QuickStart";
+			sourceTree = "<group>";
+		};
+		7800D4B21C91AE40003F409D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7800D4AE1C91AE40003F409D /* LQSViewController.h */,
+				7800D4AF1C91AE40003F409D /* LQSViewController.m */,
+				7800D4B01C91AE40003F409D /* LQSAnnouncementsTableViewController.h */,
+				7800D4B11C91AE40003F409D /* LQSAnnouncementsTableViewController.m */,
+			);
+			name = Controllers;
+			path = "../../../../../../../Downloads/quick-start-ios-master 4/QuickStart";
 			sourceTree = "<group>";
 		};
 		783ABEFF1C8E07C500AA59BE /* InApp Purchase */ = {
@@ -826,6 +857,8 @@
 				78FEE24A1C0721590013E9D2 /* BUUtilities.m */,
 				78F755601C889340007E5678 /* logoImageView.h */,
 				78F755611C889340007E5678 /* logoImageView.m */,
+				7800D4A61C91AD3A003F409D /* BULayerHelper.h */,
+				7800D4A71C91AD3A003F409D /* BULayerHelper.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1381,19 +1414,21 @@
 				5BFF6EB41C8D80E300596381 /* UIRefreshControl+AFNetworking.m in Sources */,
 				5B0AEDCC1C23591400877C24 /* BUSignUpWithEmailVC.m in Sources */,
 				7846225E1C0711E100EA589C /* main.m in Sources */,
+				7800D4B51C91AE40003F409D /* LQSViewController.m in Sources */,
 				5B2D3E8C1C7C6927006B7674 /* BUHomeConnectionsVC.m in Sources */,
 				78BD7D5C1C8D3A67000AD38B /* BUPrefAgeSeekCell.m in Sources */,
 				78BF55101C686F9400B5F1A4 /* BUHomeViewController.m in Sources */,
 				5BA7960A1C7F980C009B65E1 /* BURematchCollectionViewCell.m in Sources */,
 				78FEE2331C071EAC0013E9D2 /* BUBaseViewController.m in Sources */,
 				78BF55241C688E8D00B5F1A4 /* BUAcountsTabViewController.m in Sources */,
+				7800D4A81C91AD3A003F409D /* BULayerHelper.m in Sources */,
 				5BFF6EA71C8D80E300596381 /* AFNetworkReachabilityManager.m in Sources */,
 				5BDA47201C22596200C875AB /* BURootViewController.m in Sources */,
 				789D88ED1C7E3F6700772EED /* BUProfileOccupationInfoCell.m in Sources */,
 				78FEE24E1C0721690013E9D2 /* BUConstants.m in Sources */,
-				5BF7CE531C904CDE0057B946 /* LQSViewController.m in Sources */,
 				5BB683501C64A58E0043C4FC /* EmployementStatusTVCell.m in Sources */,
 				78FEE2431C0720FE0013E9D2 /* UIColor+APColor.m in Sources */,
+				7800D4B31C91AE40003F409D /* LQSChatMessageCell.m in Sources */,
 				78B5B72C1C5678F900E3C531 /* BUProfileOccupationVC.m in Sources */,
 				78CE0CFD1C69C23100FDA514 /* BUMatchInfoCell.m in Sources */,
 				5BFF6EB01C8D80E300596381 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -1406,11 +1441,13 @@
 				1808029D1C079E7B00F5AEE5 /* BUSignUpViewController.m in Sources */,
 				5BFF6EAD1C8D80E300596381 /* AFAutoPurgingImageCache.m in Sources */,
 				5B0802551C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m in Sources */,
+				7800D4B61C91AE40003F409D /* LQSAnnouncementsTableViewController.m in Sources */,
 				78CF172F1C609D5100779203 /* PWCustomPickerCell.m in Sources */,
 				5BA7964E1C85E973009B65E1 /* UIView+FLKAutoLayout.m in Sources */,
 				5BFF6EA81C8D80E300596381 /* AFSecurityPolicy.m in Sources */,
 				78BD7D591C8D229D000AD38B /* BURematchProfileDetailsVC.m in Sources */,
 				789D88F01C7E3F7F00772EED /* BUProfileLegalStatusInfoCell.m in Sources */,
+				7800D4B41C91AE40003F409D /* LQSAnnouncementsTableViewCell.m in Sources */,
 				5BA796171C8090B4009B65E1 /* BUContactListTableViewCell.m in Sources */,
 				78FEE2441C0720FE0013E9D2 /* UIColor+CrossFade.m in Sources */,
 				78FEE2541C07255C0013E9D2 /* BUSocialChannel.m in Sources */,
@@ -1470,7 +1507,6 @@
 				5B0AEDC61C22B94A00877C24 /* BULoginWithEmailVC.m in Sources */,
 				5BA7961A1C845D1E009B65E1 /* BUUserProfile.m in Sources */,
 				5BFF6EAB1C8D80E300596381 /* AFURLSessionManager.m in Sources */,
-				5BF7CE521C904CDE0057B946 /* LQSChatMessageCell.m in Sources */,
 				789D88F91C7E3FC000772EED /* BUProfileHoroscopeInfoCell.m in Sources */,
 				5BFF6EA61C8D80E300596381 /* AFHTTPSessionManager.m in Sources */,
 				5BFF6EB51C8D80E300596381 /* UIWebView+AFNetworking.m in Sources */,
@@ -1616,6 +1652,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "0c737a1e-67eb-4d01-8534-e0d78a954e62";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

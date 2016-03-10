@@ -13,4 +13,5 @@
 @property(weak, nonatomic) IBOutlet UIView *nonEditingView,*editingView;
 @property(weak, nonatomic) IBOutlet BUProfileEditingVC *parentVC;
 
+-(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict;
 @end

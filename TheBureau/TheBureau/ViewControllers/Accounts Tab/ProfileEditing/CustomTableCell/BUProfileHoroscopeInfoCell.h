@@ -12,4 +12,5 @@
 @interface BUProfileHoroscopeInfoCell : UITableViewCell<UITextFieldDelegate>
 @property(weak, nonatomic) IBOutlet BUProfileEditingVC *parentVC;
 
+-(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict;
 @end

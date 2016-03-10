@@ -24,18 +24,21 @@
 {
     self = [super init];
     if (self) {
-        [profDict valueForKey:@""] != nil ? [profDict valueForKey:@""] : @"";
-        [profDict valueForKey:@""] != nil ? [profDict valueForKey:@""] : @"";
-        [profDict valueForKey:@""] != nil ? [profDict valueForKey:@""] : @"";
-        [profDict valueForKey:@""] != nil ? [profDict valueForKey:@""] : @"";
-        [profDict valueForKey:@""] != nil ? [profDict valueForKey:@""] : @"";
-        [profDict valueForKey:@""] != nil ? [profDict valueForKey:@""] : @"";
-        [profDict valueForKey:@""] != nil ? [profDict valueForKey:@""] : @"";
-        [profDict valueForKey:@""] != nil ? [profDict valueForKey:@""] : @"";
-        [profDict valueForKey:@""] != nil ? [profDict valueForKey:@""] : @"";
-        [profDict valueForKey:@""] != nil ? [profDict valueForKey:@""] : @"";
-        [profDict valueForKey:@""] != nil ? [profDict valueForKey:@""] : @"";
-        [profDict valueForKey:@""] != nil ? [profDict valueForKey:@""] : @"";
+        self. college = [profDict valueForKey:@"college"] != nil ? [profDict valueForKey:@"college"] : @"";
+        self.company = [profDict valueForKey:@"company"] != nil ? [profDict valueForKey:@"company"] : @"";
+        self.created_by = [profDict valueForKey:@"created_by"] != nil ? [profDict valueForKey:@"created_by"] : @"";
+        self.current_zip_code = [profDict valueForKey:@"current_zip_code"] != nil ? [profDict valueForKey:@"current_zip_code"] : @"";
+        self.diet = [profDict valueForKey:@"diet"] != nil ? [profDict valueForKey:@"diet"] : @"";
+        self.dob = [profDict valueForKey:@"dob"] != nil ? [profDict valueForKey:@"dob"] : @"";
+        self.drinking = [profDict valueForKey:@"drinking"] != nil ? [profDict valueForKey:@"drinking"] : @"";
+        self.company = [profDict valueForKey:@"company"] != nil ? [profDict valueForKey:@"company"] : @"";
+        self.company = [profDict valueForKey:@"company"] != nil ? [profDict valueForKey:@"company"] : @"";
+        self.company = [profDict valueForKey:@"company"] != nil ? [profDict valueForKey:@"company"] : @"";
+        self.company = [profDict valueForKey:@"company"] != nil ? [profDict valueForKey:@"company"] : @"";
+        self.company = [profDict valueForKey:@"company"] != nil ? [profDict valueForKey:@"company"] : @"";
+        self.company = [profDict valueForKey:@"company"] != nil ? [profDict valueForKey:@"company"] : @"";
+        self.company = [profDict valueForKey:@"company"] != nil ? [profDict valueForKey:@"company"] : @"";
+        self.company = [profDict valueForKey:@"company"] != nil ? [profDict valueForKey:@"company"] : @"";
     }
     return self;
 }

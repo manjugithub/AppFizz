@@ -2242,6 +2242,7 @@
                     <connections>
                         <outlet property="profileTableView" destination="7Wh-Md-08Q" id="g1F-HL-NXA"/>
                         <outlet property="rightBarButton" destination="eOT-om-uAS" id="tai-s7-9cS"/>
+                        <outlet property="tableBottomConstraint" destination="Mbz-5w-5FY" id="sR8-Fd-Owc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7a-2x-EPY" userLabel="First Responder" sceneMemberID="firstResponder"/>

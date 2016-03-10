@@ -22,4 +22,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *studentBtn;
 @property (weak, nonatomic) IBOutlet UIButton *othersBtn;
 
+-(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict;
 @end

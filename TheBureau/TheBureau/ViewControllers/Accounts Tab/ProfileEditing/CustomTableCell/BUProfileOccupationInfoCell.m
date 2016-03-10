@@ -27,6 +27,11 @@
 }
 
 
+-(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict
+{
+    
+}
+
 
 #pragma mark -Occupation
 

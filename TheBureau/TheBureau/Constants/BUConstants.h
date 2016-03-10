@@ -31,3 +31,25 @@ typedef NS_ENUM (NSInteger, EmployementStatus)
     EmployementStatusStudent,
     EmployementStatusOthers
 };
+
+
+
+//#if TARGET_IPHONE_SIMULATOR
+//// If on simulator set the user ID to Simulator and participant to Device
+#define LQSCurrentUserID  @"1"
+#define LQSInitialMessageText @"Hey Device! This is your friend, Simulator."
+//#else
+//// If on device set the user ID to Device and participant to Simulator
+//#define LQSCurrentUserID  @"1"
+//#define LQSParticipantUserID @"2"
+//#define LQSInitialMessageText @"Hey Simulator! This is your friend, Device."
+//#endif
+//
+
+//static NSString *LQSCurrentUserID = @"2";
+//static NSString *LQSParticipantUserID = @"1";
+//static NSString *LQSInitialMessageText = @"Hey Device! This is your friend, Simulator.";
+static NSString *const LQSLayerAppIDString = @"layer:///apps/staging/238530d8-995f-11e5-9461-6ac9d8033a8c";
+static NSString *LQSCategoryIdentifier = @"category_lqs";
+static NSString *LQSAcceptIdentifier = @"ACCEPT_IDENTIFIER";
+static NSString *LQSIgnoreIdentifier = @"IGNORE_IDENTIFIER";

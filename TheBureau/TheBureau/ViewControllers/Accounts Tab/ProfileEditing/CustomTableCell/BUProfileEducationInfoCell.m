@@ -253,4 +253,14 @@ NSString *baseURl = @"http://app.thebureauapp.com/admin/update_profile_step1";
 }
 
 */
+
+-(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict
+{
+   self.educationlevelLbl.text = [inBasicInfoDict valueForKey:@"highest_level_edu"];
+   self.honorTextField.text =     [inBasicInfoDict valueForKey:@"honor"];
+   self.majorTextField.text =     [inBasicInfoDict valueForKey:@"major"];
+   self.collegeTextField.text =     [inBasicInfoDict valueForKey:@"college"];
+   self.yearTextField.text =     [inBasicInfoDict valueForKey:@"year"];
+}
+
 @end

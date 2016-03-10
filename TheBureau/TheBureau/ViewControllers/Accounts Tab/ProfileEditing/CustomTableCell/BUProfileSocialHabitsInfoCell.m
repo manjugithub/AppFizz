@@ -26,6 +26,10 @@
     return YES;
 }
 
+-(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict
+{
+    
+}
 
 
 #pragma mark -

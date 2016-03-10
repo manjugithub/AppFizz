@@ -34,4 +34,5 @@
 @property(nonatomic) NSArray *maritalStatusArray;
 @property (weak, nonatomic) IBOutlet UITextField *maritalStatusTF;
 
+-(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict;
 @end
