@@ -17,6 +17,7 @@
 @property(nonatomic, strong) IBOutlet UIImageView *noProfileImgView;
 
 @property(nonatomic, strong) IBOutlet UIButton *matchBtn,*passBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *profileStatusImgView;
 
 @end
 
@@ -31,6 +32,8 @@
     // Do any additional setup after loading the view.
     
     self.imgScrollerTableView.hidden = YES;
+
+    self.profileStatusImgView.hidden = YES;
 
 }
 
@@ -195,7 +198,8 @@ constructingBodyWithBlock:nil
 
                  self.matchBtn.hidden = YES;
                  self.passBtn.hidden = YES;
-//                 self.noProfileImgView.hidden = NO;
+                 self.profileStatusImgView.hidden = NO;
+                 self.profileStatusImgView.image = [UIImage imageNamed:@"btn_liked"];
              }];
              
              action;
@@ -259,7 +263,8 @@ constructingBodyWithBlock:nil
                  
                  self.matchBtn.hidden = YES;
                  self.passBtn.hidden = YES;
-                 //            self.noProfileImgView.hidden = NO;
+                 self.profileStatusImgView.hidden = NO;
+                 self.profileStatusImgView.image = [UIImage imageNamed:@"btn_passed"];
              }];
              
              action;

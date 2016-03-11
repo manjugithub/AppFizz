@@ -135,7 +135,7 @@
     BUContactListTableViewCell *cell = (BUContactListTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"BUContactListTableViewCell" ];//forIndexPath:indexPath];
     
 //    cell.userImageView.image = [UIImage imageNamed:[_imageArray objectAtIndex:indexPath.row]];
-    cell.userName.text = @"Vinay";//[self.contactNamesList objectAtIndex:indexPath.row];
+    cell.userName.text = @"Vinay";
 
     return cell;
     
@@ -152,7 +152,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     
-    [[BULayerHelper sharedHelper] setParticipantUserID:@"8"];
+    [[BULayerHelper sharedHelper] setParticipantUserID:@"12"];
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Connections" bundle:nil];
     LQSViewController *vc = [sb instantiateViewControllerWithIdentifier:@"LQSViewController"];
     [self.navigationController pushViewController:vc animated:YES];
