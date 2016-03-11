@@ -61,7 +61,6 @@ static UIColor *LSRandomColor(void)
 
 @interface LQSViewController () <UITextViewDelegate, LYRQueryControllerDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIAlertViewDelegate>
 
-@property (nonatomic) LYRConversation *conversation;
 @property (nonatomic) LYRQueryController *queryController;
 @property (nonatomic) BOOL sendingImage;
 @property (nonatomic) UIImage *photo; // This is where the selected photo will be stored

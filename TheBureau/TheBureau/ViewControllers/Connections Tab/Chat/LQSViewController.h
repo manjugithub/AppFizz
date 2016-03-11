@@ -18,6 +18,8 @@
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UILabel *typingIndicatorLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *messageImageView;
+@property (nonatomic) LYRConversation *conversation;
+
 
 - (IBAction)clearButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)cameraButtonPressed:(UIButton *)sender;
