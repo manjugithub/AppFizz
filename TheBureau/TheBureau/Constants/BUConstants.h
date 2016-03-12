@@ -37,7 +37,7 @@ typedef NS_ENUM (NSInteger, EmployementStatus)
 //#if TARGET_IPHONE_SIMULATOR
 //// If on simulator set the user ID to Simulator and participant to Device
 #define LQSCurrentUserID  @"1"
-#define LQSInitialMessageText @"Hey Device! This is your friend, Simulator."
+#define LQSInitialMessageText @" "
 //#else
 //// If on device set the user ID to Device and participant to Simulator
 //#define LQSCurrentUserID  @"1"

@@ -146,7 +146,40 @@
     else
     {
         self.interval = self.overLayView.frame.size.width / 40;
+//        [self setminAge:15 maxAge:34];
     }
 }
 
+
+-(void)setminAge:(NSInteger)inMinAge maxAge:(NSInteger) inMaxAge
+{
+    CGFloat newX = 0;
+    
+    {
+        CGRect frame = self.rightView.frame;
+        frame.origin.x = frame.origin.x + self.interval*inMinAge;
+        newX =  frame.origin.x + self.interval*inMinAge;
+        
+        if(0 <= frame.origin.x && self.overLayView.frame.size.width >= (frame.origin.x + frame.size.width))
+        {
+            self.leftView.frame = frame;
+            self.leftViewLeftConstraint.constant += newX;
+            self.minLabelLeftConstraint.constant += newX;
+            
+            self.minValueLabel.text = [NSString stringWithFormat:@"%0.0f",(self.leftViewLeftConstraint.constant / self.interval)+1];
+            
+        }
+    }
+    {
+        CGRect frame = self.rightView.frame;
+        frame.origin.x = frame.origin.x + self.interval*inMaxAge;
+        newX =  frame.origin.x + self.interval*inMaxAge;
+        {
+            self.rightView.frame = frame;
+            self.rightViewRightConstraint.constant -= newX;
+            self.maxLabelRightConstraint.constant -= newX;
+            self.maxValueLabel.text = [NSString stringWithFormat:@"%0.0f",((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+1];
+        }
+    }
+}
 @end

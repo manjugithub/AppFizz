@@ -244,7 +244,7 @@
                                     <action selector="pass:" destination="U3C-Nv-blz" eventType="touchUpInside" id="mJE-Wi-2Lf"/>
                                 </connections>
                             </button>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_with_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ch4-a6-IHu">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_with_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ch4-a6-IHu">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                         </subviews>

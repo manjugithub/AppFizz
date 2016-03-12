@@ -154,6 +154,10 @@
            
                 NSDictionary *parameters = nil;
                 
+                if(nil == self.socialChannel.profileDetails.fbID)
+                {
+                    self.loginType = eLoginFromDigit;
+                }
                 if(self.loginType == eLoginFromFB)
                 {
                     parameters = @{@"login_type": @"fb",
@@ -196,6 +200,7 @@
                                                         
                                                         [[BULayerHelper sharedHelper] authenticateLayerWithsuccessBlock:^(id response, NSError *error) {
                                                                 [self stopActivityIndicator];
+                                                            
                                                                     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
                                                                     BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
                                                                     [self.navigationController pushViewController:vc animated:YES];

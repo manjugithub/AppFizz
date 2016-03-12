@@ -26,7 +26,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self reload];
+//    [self reload];
 }
 
 - (void)reload {

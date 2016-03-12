@@ -161,6 +161,11 @@
                 
                 NSDictionary *parameters = nil;
                 
+                if(nil == self.socialChannel.profileDetails.fbID)
+                {
+                    self.registrationType = eRegistrationFromDigit;
+                }
+
                 if(self.registrationType == eRegistrationFromFB)
                 {
                    parameters =  @{@"reg_type": @"fb",

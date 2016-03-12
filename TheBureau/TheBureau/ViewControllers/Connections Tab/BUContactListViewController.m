@@ -48,7 +48,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     
     [super viewDidAppear:animated];
-    [self getContactsList];
+   // [self getContactsList];
 }
 
 
