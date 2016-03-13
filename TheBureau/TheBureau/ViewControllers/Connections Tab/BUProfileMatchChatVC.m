@@ -72,13 +72,28 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LYRConversation *conversation = [self.queryController objectAtIndexPath:indexPath];
+    LYRMessage * lastMessage = conversation.lastMessage;
+    LYRMessagePart *messagePart = lastMessage.parts[0];
+    
+    //If it is type image
+   
     BUContactListTableViewCell *cell = (BUContactListTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"BUContactListTableViewCell" ];//forIndexPath:indexPath];
     for (NSString *participant in conversation.participants) {
         if (![participant isEqualToString:self.layerClient.authenticatedUserID] ) {
-            cell.userName.text = participant;
+            cell.userName.text = @"vinay";
+            cell.userImageView.image = [UIImage imageNamed:[_imageArray objectAtIndex:indexPath.row]];
             
         }
     }
+    
+    if ([messagePart.MIMEType isEqualToString:@"image/png"]) {
+        cell.lastmessageLbl.text = @""; //
+        
+    } else {
+        cell.lastmessageLbl.text =[[NSString alloc]initWithData:messagePart.data
+                                              encoding:NSUTF8StringEncoding];
+    }
+
     
     return cell;
 }
