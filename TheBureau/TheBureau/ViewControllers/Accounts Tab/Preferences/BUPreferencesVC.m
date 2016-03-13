@@ -13,6 +13,10 @@
 #import "BUWebServicesManager.h"
 @interface BUPreferencesVC ()<UIActionSheetDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 
+@property (assign, nonatomic) BOOL shouldAddPref;
+
+
+
 #pragma mark - Account selection
 @property (weak, nonatomic) IBOutlet UILabel *relationLabel;
 @property(nonatomic,strong)NSArray* relationCircle,*educationLevelArray;
@@ -169,7 +173,7 @@
 
     self.genderStr = @"Female";
 
-    self.navigationItem.rightBarButtonItem = self.rightBarButton;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(editProfileDetails:)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -337,7 +341,7 @@
 
 
     [BUUtilities removeLogo:self.navigationController];
-    self.navigationItem.rightBarButtonItem = self.rightBarButton;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(editProfileDetails:)];
     
     [self readPreferences];
 }
@@ -451,19 +455,7 @@
 
 - (IBAction)editProfileDetails:(id)sender
 {
-    NSString *imgName = @"";
-    if (self.rightBarButton.tag == 0)
-    {
-        self.rightBarButton.tag = 1;
-        imgName = @"ic_done";
-    }
-    else
-    {
-        self.rightBarButton.tag = 0;
-        imgName = @"ic_edit";
         [self updatePrefernceValues];
-    }
-    self.rightBarButton.image = [UIImage imageNamed:imgName];
 }
 
 
@@ -641,6 +633,10 @@ numberOfRowsInComponent:(NSInteger)component{
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     NSString *baseURl = @"http://app.thebureauapp.com/admin/add_match_preference_ws";
+    if(self.shouldAddPref == NO)
+    {
+     baseURl = @"http://app.thebureauapp.com/admin/update_match_preference_ws";
+    }
     [[BUWebServicesManager sharedManager] queryServer:self.preferenceDict
                                               baseURL:baseURl
                                          successBlock:^(id response, NSError *error)
@@ -656,17 +652,26 @@ numberOfRowsInComponent:(NSInteger)component{
 
 -(void)readPreferences
 {
-    
-    NSString *baseURl = @"http://app.thebureauapp.com/admin/add_match_preference_ws";
+    self.shouldAddPref = NO;
+
+    NSString *baseURl = @"http://app.thebureauapp.com/admin/readPreference";
     [[BUWebServicesManager sharedManager] queryServer:self.preferenceDict
                                               baseURL:baseURl
                                          successBlock:^(id response, NSError *error)
      {
-         
+         if([response isKindOfClass:[NSDictionary class]])
+         {
+             self.shouldAddPref = YES;
+         }
+         else
+         {
+             
+         }
      }
                                          failureBlock:^(id response, NSError *error)
     {
-                                             
+        self.shouldAddPref = YES;
+        
                                          }
      ];
 }

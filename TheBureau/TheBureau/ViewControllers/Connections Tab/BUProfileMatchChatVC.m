@@ -161,26 +161,6 @@
 
 #pragma TableView DataSource & Delegates
 
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
-//{
-//
-//    return [_imageArray count];
-//
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
-//{
-//
-//    BUContactListTableViewCell *cell = (BUContactListTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"BUContactListTableViewCell" ];//forIndexPath:indexPath];
-//
-//    cell.userImageView.image = [UIImage imageNamed:[_imageArray objectAtIndex:indexPath.row]];
-//    cell.userName.text = @"vinay";
-//    cell.lastmessageLbl.text = @"Hi How you doing?";
-//
-//    return cell;
-//
-//}
-//
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
 
 {

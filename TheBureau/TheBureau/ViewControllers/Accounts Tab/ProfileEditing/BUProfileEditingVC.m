@@ -50,7 +50,9 @@
 
     [super viewWillAppear:animated];
     [BUUtilities removeLogo:self.navigationController];
-    self.navigationItem.rightBarButtonItem = self.rightBarButton;
+//    self.navigationItem.rightBarButtonItem = self.rightBarButton;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(editProfileDetails:)];
     [self getProfileDetails];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyboard) name:UIKeyboardWillShowNotification object:nil];
@@ -87,29 +89,8 @@
 
 - (IBAction)editProfileDetails:(id)sender
 {
-    NSString *imgName = @"";
-    if (self.rightBarButton.tag == 0)
-    {
-        self.isEditing = YES;
-        self.rightBarButton.tag = 1;
-        imgName = @"ic_done";
-    }
-    else
-    {
-        self.rightBarButton.tag = 0;
-        imgName = @"ic_edit";
-        self.isEditing = NO;
-        if (nil != self.selectedCellIndex)
-        {
-            [[self.profileTableView cellForRowAtIndexPath:self.selectedCellIndex] performSelector:@selector(updateProfile) withObject:nil];
-        }
-        
-        [self updateProfile];
-    }
-    self.rightBarButton.image = [UIImage imageNamed:imgName];
-
+    [self updateProfile];
     [self.profileTableView reloadData];
-    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -122,7 +103,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 6;
+    return 7;
 }
 
 
@@ -137,43 +118,43 @@
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileBasicInfoCell"];
             
-            [(BUProfileBasicInfoCell *)cell setDatasource:self.basicInfoDict];
+//            [(BUProfileBasicInfoCell *)cell setDatasource:self.basicInfoDict];
             break;
         }
         case 1:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileEducationInfoCell"];
-            [(BUProfileEducationInfoCell *)cell setDatasource:self.educationDict];
+//            [(BUProfileEducationInfoCell *)cell setDatasource:self.educationDict];
             break;
         }
         case 2:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileOccupationInfoCell"];
-            [(BUProfileOccupationInfoCell *)cell setDatasource:self.occupationDict];
+//            [(BUProfileOccupationInfoCell *)cell setDatasource:self.occupationDict];
             break;
         }
         case 3:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileLegalStatusInfoCell"];
-            [(BUProfileLegalStatusInfoCell *)cell setDatasource:self.legalStatus];
+//            [(BUProfileLegalStatusInfoCell *)cell setDatasource:self.legalStatus];
             break;
         }
         case 4:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileHeritageInfoCell"];
-            [(BUProfileHeritageInfoCell *)cell setDatasource:self.heritageDict];
+//            [(BUProfileHeritageInfoCell *)cell setDatasource:self.heritageDict];
             break;
         }
         case 5:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileSocialHabitsInfoCell"];
-            [(BUProfileSocialHabitsInfoCell *)cell setDatasource:self.socialHabitsDict];
+//            [(BUProfileSocialHabitsInfoCell *)cell setDatasource:self.socialHabitsDict];
             break;
         }
         case 6:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileHoroscopeInfoCell"];
-            [(BUProfileHoroscopeInfoCell *)cell setDatasource:self.horoscopeDict];
+//            [(BUProfileHoroscopeInfoCell *)cell setDatasource:self.horoscopeDict];
             break;
         }
         default:
@@ -183,7 +164,7 @@
     cell.clipsToBounds = YES;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    [cell.contentView setUserInteractionEnabled:self.isEditing];
+//    [cell.contentView setUserInteractionEnabled:self.isEditing];
     
     return cell;
 }
@@ -293,6 +274,7 @@
                                          successBlock:^(id response, NSError *error) {
                                              
                                              [self stopActivityIndicator];
+
                                              NSDictionary *respDict = response;
                                              self.basicInfoDict = [[NSMutableDictionary alloc] init];
                                              

@@ -81,7 +81,6 @@
  {
  [self.parentVC startActivityIndicator:YES];
  
- /*
  
  userid => User's ID
  first_name => First name of account holder
@@ -262,5 +261,36 @@ NSString *baseURl = @"http://app.thebureauapp.com/admin/update_profile_step1";
    self.collegeTextField.text =     [inBasicInfoDict valueForKey:@"college"];
    self.yearTextField.text =     [inBasicInfoDict valueForKey:@"year"];
 }
+
+//-(void)updateProfile
+//{
+//    
+//}
+//{
+//    [self.parentVC startActivityIndicator:YES];
+//    
+//    NSDictionary *parameters = nil;
+//    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+//                   @"gender": @"Male",
+//                   @"height_feet": self.feetStr,
+//                   @"height_inch":self.inchStr,
+//                   @"maritial_status": self.maritalStatusTF.text,
+//                   @"location": self.radiusLabel.text,
+//                   
+//                   };
+//    
+//    NSString *baseURl = @"http://app.thebureauapp.com/admin/update_profile_step1";
+//    [[BUWebServicesManager sharedManager] queryServer:parameters
+//                                              baseURL:baseURl
+//                                         successBlock:^(id response, NSError *error)
+//     {
+//         [self.parentVC stopActivityIndicator];
+//         
+//     }
+//                                         failureBlock:^(id response, NSError *error) {
+//                                             [self.parentVC stopActivityIndicator];
+//                                         }
+//     ];
+//}
 
 @end

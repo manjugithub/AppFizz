@@ -96,6 +96,7 @@
 		78ABA0271C9205B9009F369A /* LQSAnnouncementsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78ABA0211C9205B9009F369A /* LQSAnnouncementsTableViewController.m */; };
 		78ABA0281C9205B9009F369A /* LQSChatMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78ABA0231C9205B9009F369A /* LQSChatMessageCell.m */; };
 		78ABA0291C9205B9009F369A /* LQSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78ABA0251C9205B9009F369A /* LQSViewController.m */; };
+		78ABA0381C935022009F369A /* BUChatContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 78ABA0371C935022009F369A /* BUChatContact.m */; };
 		78B5B71A1C561A6900E3C531 /* BUWebServicesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B5B7191C561A6900E3C531 /* BUWebServicesManager.m */; };
 		78B5B71C1C5675E200E3C531 /* ProfileCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B5B71B1C5675E200E3C531 /* ProfileCreation.storyboard */; };
 		78B5B71D1C5675E200E3C531 /* ProfileCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B5B71B1C5675E200E3C531 /* ProfileCreation.storyboard */; };
@@ -348,6 +349,8 @@
 		78ABA0231C9205B9009F369A /* LQSChatMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQSChatMessageCell.m; sourceTree = "<group>"; };
 		78ABA0241C9205B9009F369A /* LQSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQSViewController.h; sourceTree = "<group>"; };
 		78ABA0251C9205B9009F369A /* LQSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQSViewController.m; sourceTree = "<group>"; };
+		78ABA0361C935022009F369A /* BUChatContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUChatContact.h; sourceTree = "<group>"; };
+		78ABA0371C935022009F369A /* BUChatContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUChatContact.m; sourceTree = "<group>"; };
 		78B5B7181C561A6900E3C531 /* BUWebServicesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUWebServicesManager.h; sourceTree = "<group>"; };
 		78B5B7191C561A6900E3C531 /* BUWebServicesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUWebServicesManager.m; sourceTree = "<group>"; };
 		78B5B71B1C5675E200E3C531 /* ProfileCreation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileCreation.storyboard; sourceTree = "<group>"; };
@@ -535,6 +538,8 @@
 				5B0802541C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m */,
 				78BD7D571C8D229D000AD38B /* BURematchProfileDetailsVC.h */,
 				78BD7D581C8D229D000AD38B /* BURematchProfileDetailsVC.m */,
+				78ABA0361C935022009F369A /* BUChatContact.h */,
+				78ABA0371C935022009F369A /* BUChatContact.m */,
 			);
 			path = "Connections Tab";
 			sourceTree = "<group>";
@@ -1439,6 +1444,7 @@
 				78B5B7301C56792000E3C531 /* BUProfileLegalStatusVC.m in Sources */,
 				78E4F28C1C85B3C30034CFE2 /* BUPreferencesVC.m in Sources */,
 				5B1628841C4CFA620034FA33 /* BUSplashViewController.m in Sources */,
+				78ABA0381C935022009F369A /* BUChatContact.m in Sources */,
 				5B2D3E8F1C7C6927006B7674 /* BUProfileRematchVC.m in Sources */,
 				78F755621C889340007E5678 /* logoImageView.m in Sources */,
 				5B2D3E8E1C7C6927006B7674 /* BUProfileMatchChatVC.m in Sources */,

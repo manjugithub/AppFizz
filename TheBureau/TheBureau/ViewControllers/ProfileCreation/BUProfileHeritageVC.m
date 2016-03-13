@@ -60,7 +60,7 @@
     self.customPickerView.pickerDataSource = inResult;
     self.customPickerView.selectedHeritage = self.heritageList;
     [self.customPickerView showCusptomPickeWithDelegate:self];
-    self.customPickerView.titleLabel.text = @"Physical Activity";
+    self.customPickerView.titleLabel.text = @"Heritage";
 }
 
 

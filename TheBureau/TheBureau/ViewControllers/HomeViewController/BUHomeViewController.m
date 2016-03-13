@@ -17,6 +17,7 @@
 @property(nonatomic, strong) IBOutlet UIImageView *noProfileImgView;
 
 @property(nonatomic, strong) IBOutlet UIButton *matchBtn,*passBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *profileStatusImgView;
 
 @end
 
@@ -31,6 +32,8 @@
     // Do any additional setup after loading the view.
     
     self.imgScrollerTableView.hidden = YES;
+
+    self.profileStatusImgView.hidden = YES;
 
 }
 
@@ -114,6 +117,19 @@
     [self startActivityIndicator:YES];
     [[BUWebServicesManager sharedManager] matchMakingForTheDaywithParameters:parameters successBlock:^(id response, NSError *error) {
         [self stopActivityIndicator];
+        
+        if([response isKindOfClass:[NSDictionary class]])
+        {
+            [self stopActivityIndicator];
+            NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"No matches found yet"];
+            [message addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"comfortaa" size:15]
+                            range:NSMakeRange(0, message.length)];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+            [alertController setValue:message forKey:@"attributedTitle"];            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+            [self presentViewController:alertController animated:YES completion:nil];
+            return;
+        }
         if(nil != response && 0 < [response count])
         {
             
@@ -125,6 +141,29 @@
 
             self.imagesList = [[NSMutableArray alloc] initWithArray:[[response lastObject]valueForKey:@"img_url"]];
 
+            
+            NSString *userAction = [[response lastObject]valueForKey:@"user_action"];
+            
+            if([userAction isKindOfClass:[NSNull class]])
+            {
+                self.matchBtn.hidden = NO;
+                self.passBtn.hidden = NO;
+                self.profileStatusImgView.hidden = YES;
+            }
+            else if([userAction isEqualToString:@"Passed"])
+            {
+                self.matchBtn.hidden = YES;
+                self.passBtn.hidden = YES;
+                self.profileStatusImgView.hidden = NO;
+                self.profileStatusImgView.image = [UIImage imageNamed:@"btn_passed"];
+            }
+            else if([userAction isEqualToString:@"Liked"])
+            {
+                self.matchBtn.hidden = YES;
+                self.passBtn.hidden = YES;
+                self.profileStatusImgView.hidden = NO;
+                self.profileStatusImgView.image = [UIImage imageNamed:@"btn_liked"];
+            }
             [self.imgScrollerTableView reloadData];
         }
         else
@@ -195,7 +234,8 @@ constructingBodyWithBlock:nil
 
                  self.matchBtn.hidden = YES;
                  self.passBtn.hidden = YES;
-//                 self.noProfileImgView.hidden = NO;
+                 self.profileStatusImgView.hidden = NO;
+                 self.profileStatusImgView.image = [UIImage imageNamed:@"btn_liked"];
              }];
              
              action;
@@ -259,7 +299,8 @@ constructingBodyWithBlock:nil
                  
                  self.matchBtn.hidden = YES;
                  self.passBtn.hidden = YES;
-                 //            self.noProfileImgView.hidden = NO;
+                 self.profileStatusImgView.hidden = NO;
+                 self.profileStatusImgView.image = [UIImage imageNamed:@"btn_passed"];
              }];
              
              action;
