@@ -50,8 +50,6 @@ static NSDateFormatter *LQSDateFormatter()
 - (void)setupConversationDataSource
 {
     
-    
-    
     LYRQuery *query = [LYRQuery queryWithQueryableClass:[LYRConversation class]];
     query.predicate = [LYRPredicate predicateWithProperty:@"participants" predicateOperator:LYRPredicateOperatorIsIn value:self.layerClient.authenticatedUserID];
     query.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"lastMessage.receivedAt" ascending:NO]];
@@ -221,10 +219,20 @@ static NSDateFormatter *LQSDateFormatter()
 
 
 -(void)getContactDetails
-
 {
     
-    NSArray *params = @[@"8",@"12"];
+//    LYRConversation *conversation = [self.queryController objectAtIndexPath:indexPath];
+//    for (NSString *participant in conversation.participants) {
+//        if (![participant isEqualToString:self.layerClient.authenticatedUserID] ) {
+//            [[BULayerHelper sharedHelper] setParticipantUserID:participant];
+//            
+//        }
+//    }
+//
+    
+    
+    
+    NSArray *params = @[@"12",@"7",@"152",@"16"];
     NSString *baseURL = @"http://app.thebureauapp.com/admin/getUserDetails";
     
     [self startActivityIndicator:YES];
