@@ -12,6 +12,16 @@
 #import "BULayerHelper.h"
 #import "LQSViewController.h"
 
+static NSDateFormatter *LQSDateFormatter()
+{
+    static NSDateFormatter *dateFormatter;
+    if (!dateFormatter)
+    {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"dd-MMM-yyyy";
+    }
+    return dateFormatter;
+}
 @interface BUProfileMatchChatVC ()<LYRQueryControllerDelegate>
 @property(nonatomic) NSArray * imageArray;
 @property (nonatomic) LYRQueryController *queryController;
@@ -93,6 +103,44 @@
         cell.lastmessageLbl.text =[[NSString alloc]initWithData:messagePart.data
                                               encoding:NSUTF8StringEncoding];
     }
+    
+    NSString *timestampText = @"";
+    
+    
+    // If the message was sent by current user, show Receipent Status Indicator
+    if ([lastMessage.sender.userID isEqualToString:[[BULayerHelper sharedHelper] currentUserID]]) {
+        switch ([lastMessage recipientStatusForUserID:[[BULayerHelper sharedHelper] participantUserID]]) {
+            case LYRRecipientStatusSent:
+                timestampText = [NSString stringWithFormat:@"%@",[LQSDateFormatter() stringFromDate:lastMessage.sentAt]];
+                break;
+                
+            case LYRRecipientStatusDelivered:
+                timestampText = [NSString stringWithFormat:@"%@",[LQSDateFormatter() stringFromDate:lastMessage.sentAt]];
+                break;
+                
+            case LYRRecipientStatusRead:
+                timestampText = [NSString stringWithFormat:@"%@",[LQSDateFormatter() stringFromDate:lastMessage.receivedAt]];
+                break;
+                
+            case LYRRecipientStatusInvalid:
+                NSLog(@"Participant: Invalid");
+                break;
+                
+            default:
+                break;
+        }
+    } else {
+        [lastMessage markAsRead:nil];
+        timestampText = [NSString stringWithFormat:@"%@",[LQSDateFormatter() stringFromDate:lastMessage.sentAt]];
+    }
+        cell.timeLbl.text = [NSString stringWithFormat:@"%@",timestampText];
+ 
+//    if (lastMessage.sender.userID != Nil) {
+//        cell.timeLbl.text = [NSString stringWithFormat:@"%@",timestampText];
+//    }else {
+//        cell.timeLbl.text = [NSString stringWithFormat:@"%@",timestampText];
+//    }
+
 
     
     return cell;
