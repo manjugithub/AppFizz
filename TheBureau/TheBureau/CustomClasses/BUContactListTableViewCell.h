@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BUChatContact.h"
 @interface BUContactListTableViewCell : UITableViewCell
 
 @property(nonatomic,weak)IBOutlet UIImageView *userImageView;
@@ -16,4 +16,5 @@
 @property(nonatomic,weak)IBOutlet UILabel *timeLbl;
 
 
+-(void)setContactListDataSource:(BUChatContact *)inContact;
 @end

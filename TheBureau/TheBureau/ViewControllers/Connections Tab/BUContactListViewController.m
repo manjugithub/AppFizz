@@ -15,11 +15,6 @@
 @interface BUContactListViewController ()
 
 @property(nonatomic) NSArray * imageArray;
-@property(nonatomic, strong) NSMutableArray *datasourceList;
-@property(nonatomic, strong) NSMutableArray *imagesList;
-@property(nonatomic, strong) NSMutableArray *contactNamesList;
-@property(nonatomic, strong) NSMutableArray *userIDList;
-
 
 @property(nonatomic, weak) IBOutlet UITableView *contactsTableView;
 
@@ -34,10 +29,6 @@
     
     self.title = @"Contact List";
     
-    _imageArray = [[NSArray alloc]initWithObjects:@"img_photo1",@"img_photo1",@"img_photo1",@"img_photo1", @"img_photo2",@"img_photo2",@"img_photo2",@"img_photo2",nil];
-    // Do any additional setup after loading the view.
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,7 +39,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     
     [super viewDidAppear:animated];
-   // [self getContactsList];
+    [self getContactsList];
 }
 
 
@@ -65,30 +56,14 @@
          [self stopActivityIndicator];
          if(nil != inResult && 0 < [inResult count])
          {
-             self.datasourceList = inResult;
              
-             //      self.userProfile = [[BUUserProfile alloc]initWithUserProfile:inResult];
-             
-             
-             self.imagesList = [[NSMutableArray alloc] init];
-             self.contactNamesList = [[NSMutableArray alloc] init];
-             self.userIDList = [[NSMutableArray alloc] init];
-
-
+             [self.contactList removeAllObjects];
+             self.contactList = [[NSMutableArray alloc] init];
              for (NSDictionary *dict in inResult)
              {
-                 if ([[dict valueForKey:@"img_url"] firstObject]) {
-                     [self.imagesList addObject:[[dict valueForKey:@"img_url"] firstObject]];
-                 }
-                 
-                 if ([dict valueForKey:@"First Name"]) {
-                     [self.contactNamesList addObject:[[dict valueForKey:@"First Name"]firstObject]];
-                 }
-                 if ([dict valueForKey:@"userid"]) {
-                     [self.userIDList addObject:[dict valueForKey:@"userid"]];
-                 }
+                 BUChatContact *contact = [[BUChatContact alloc] initWithDict:dict];
+                 [self.contactList addObject:contact];
              }
-             //
              [self.contactsTableView reloadData];
          }
          else
@@ -125,20 +100,15 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 {
     
-    return 1;//[_contactNamesList count];
+    return self.contactList.count;
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    
     BUContactListTableViewCell *cell = (BUContactListTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"BUContactListTableViewCell" ];//forIndexPath:indexPath];
-    
-//    cell.userImageView.image = [UIImage imageNamed:[_imageArray objectAtIndex:indexPath.row]];
-    cell.userName.text = @"Vinay";
-
+    [cell setContactListDataSource:[self.contactList objectAtIndex:indexPath.row]];
     return cell;
-    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
@@ -151,8 +121,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    
-    [[BULayerHelper sharedHelper] setParticipantUserID:@"12"];
+    [[BULayerHelper sharedHelper] setParticipantUserID:[(BUChatContact *)[self.contactList objectAtIndex:indexPath.row] userID]];
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Connections" bundle:nil];
     LQSViewController *vc = [sb instantiateViewControllerWithIdentifier:@"LQSViewController"];
     [self.navigationController pushViewController:vc animated:YES];

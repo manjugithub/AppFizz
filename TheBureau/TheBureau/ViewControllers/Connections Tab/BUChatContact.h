@@ -22,4 +22,5 @@
 
 
 @property(nonatomic, strong) NSString *fName,*lName,*imgURL,*userID;
+- (instancetype)initWithDict:(NSDictionary *)inDictionary;
 @end

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "BUBaseViewController.h"
+#import "BUChatContact.h"
 
 @interface BUContactListViewController : BUBaseViewController
-
+@property(nonatomic,strong) NSMutableArray *contactList;
 
 @end
