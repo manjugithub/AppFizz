@@ -1540,14 +1540,14 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JN-KZ-2S1">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1JN-KZ-2S1">
                                                     <rect key="frame" x="521" y="19" width="71" height="21"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="71" id="A9a-fL-ijD"/>
                                                         <constraint firstAttribute="height" constant="21" id="G3b-XZ-wpf"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="11"/>
+                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1612,6 +1612,9 @@
                             <constraint firstAttribute="trailing" secondItem="rWj-aR-NF4" secondAttribute="trailing" id="vSV-TD-dUg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="conversationListTableView" destination="rWj-aR-NF4" id="IZ5-tW-I3F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDB-a0-B8D" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQz-TF-Xia">

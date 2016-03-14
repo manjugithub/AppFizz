@@ -18,7 +18,7 @@ static NSDateFormatter *LQSDateFormatter()
     if (!dateFormatter)
     {
         dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = @"dd-MMM-yyyy";
+        dateFormatter.dateFormat = @"dd-MMM";
     }
     return dateFormatter;
 }
@@ -109,37 +109,13 @@ static NSDateFormatter *LQSDateFormatter()
     
     // If the message was sent by current user, show Receipent Status Indicator
     if ([lastMessage.sender.userID isEqualToString:[[BULayerHelper sharedHelper] currentUserID]]) {
-        switch ([lastMessage recipientStatusForUserID:[[BULayerHelper sharedHelper] participantUserID]]) {
-            case LYRRecipientStatusSent:
-                timestampText = [NSString stringWithFormat:@"%@",[LQSDateFormatter() stringFromDate:lastMessage.sentAt]];
-                break;
-                
-            case LYRRecipientStatusDelivered:
-                timestampText = [NSString stringWithFormat:@"%@",[LQSDateFormatter() stringFromDate:lastMessage.sentAt]];
-                break;
-                
-            case LYRRecipientStatusRead:
-                timestampText = [NSString stringWithFormat:@"%@",[LQSDateFormatter() stringFromDate:lastMessage.receivedAt]];
-                break;
-                
-            case LYRRecipientStatusInvalid:
-                NSLog(@"Participant: Invalid");
-                break;
-                
-            default:
-                break;
-        }
+        
+      timestampText = [NSString stringWithFormat:@"%@",[LQSDateFormatter() stringFromDate:lastMessage.sentAt]];
     } else {
-        [lastMessage markAsRead:nil];
-        timestampText = [NSString stringWithFormat:@"%@",[LQSDateFormatter() stringFromDate:lastMessage.sentAt]];
+        timestampText = [NSString stringWithFormat:@"%@",[LQSDateFormatter() stringFromDate:lastMessage.receivedAt]];
     }
         cell.timeLbl.text = [NSString stringWithFormat:@"%@",timestampText];
  
-//    if (lastMessage.sender.userID != Nil) {
-//        cell.timeLbl.text = [NSString stringWithFormat:@"%@",timestampText];
-//    }else {
-//        cell.timeLbl.text = [NSString stringWithFormat:@"%@",timestampText];
-//    }
 
 
     
