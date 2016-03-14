@@ -21,22 +21,24 @@
 
 @implementation BUHomeConnectionsVC
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    
     self.title =@"Connections";
     [_csChatBtn setSelected:YES];
+}
 
- }
-
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 
-- (IBAction)showConnectionsSegment:(UIButton *)sender {
-    if (sender.tag == 0) {
+- (IBAction)showConnectionsSegment:(UIButton *)sender
+{
+    if (sender.tag == 0)
+    {
         
         [_csChatBtn setSelected:YES];
         [_chatBtn setSelected:NO];

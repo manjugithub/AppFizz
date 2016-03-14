@@ -63,4 +63,5 @@
 #pragma mark - Generic Server query API
 -(void)queryServer:(NSDictionary *)inParams baseURL:(NSString *)inBaseURL  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
 
+-(void)queryServerWithList:(NSArray *)inParams baseURL:(NSString *)inBaseURL  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
 @end

@@ -15,6 +15,7 @@
 @property (assign, nonatomic) MessageSender sender;
 @property (assign, nonatomic) MessageStatus status;
 @property (strong, nonatomic) NSString *text,*senderID,*senderName;
+@property (strong, nonatomic) NSString *profileImgURL;
 @property (strong, nonatomic) NSDate *sent;
 
 @end

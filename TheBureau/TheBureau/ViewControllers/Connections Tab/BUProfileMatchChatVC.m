@@ -69,7 +69,7 @@ static NSDateFormatter *LQSDateFormatter()
         NSLog(@"LayerKit failed to execute query with error: %@", error);
         return;
     }
-    [self.conversationListTableView reloadData];
+    [self getContactDetails];
 }
 
 #pragma mark - UITableViewDataSource
@@ -241,5 +241,70 @@ static NSDateFormatter *LQSDateFormatter()
     
     
 }
+
+
+
+-(void)getContactDetails
+
+{
+    
+    NSArray *params = @[@"8",@"12"];
+    NSString *baseURL = @"http://app.thebureauapp.com/admin/getUserDetails";
+    
+    [self startActivityIndicator:YES];
+    [[BUWebServicesManager sharedManager] queryServerWithList:params
+                                              baseURL:baseURL
+                                         successBlock:^(id inResult, NSError *error)
+     {
+         [self stopActivityIndicator];
+         if([inResult isKindOfClass:[NSDictionary class]])
+         {
+             if([[inResult valueForKey:@"msg"] isEqualToString:@"Error"])
+             {
+                 [self stopActivityIndicator];
+                 NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[inResult valueForKey:@"response"]];
+                 [message addAttribute:NSFontAttributeName
+                                 value:[UIFont fontWithName:@"comfortaa" size:15]
+                                 range:NSMakeRange(0, message.length)];
+                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+                 [alertController setValue:message forKey:@"attributedTitle"];
+                 [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                 [self presentViewController:alertController animated:YES completion:nil];
+                 
+                 return ;
+             }
+         }
+         if(nil != inResult && 0 < [inResult count])
+         {
+             //Liked Passed
+             [self.conversationListTableView reloadData];
+         }
+         else
+         {
+             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
+             [message addAttribute:NSFontAttributeName
+                             value:[UIFont fontWithName:@"comfortaa" size:15]
+                             range:NSMakeRange(0, message.length)];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+             [alertController setValue:message forKey:@"attributedTitle"];              [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+             [self presentViewController:alertController animated:YES completion:nil];
+         }
+     }
+                                                   failureBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];
+         [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+         [self presentViewController:alertController animated:YES completion:nil];
+     }];
+    
+
+}
+
 
 @end

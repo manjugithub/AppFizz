@@ -435,4 +435,26 @@ constructingBodyWithBlock:nil
          NSLog(@"Error: %@", error);
      }];
 }
+
+-(void)queryServerWithList:(NSArray *)inParams baseURL:(NSString *)inBaseURL  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack
+{
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:inBaseURL
+       parameters:inParams
+constructingBodyWithBlock:nil
+         progress:nil
+          success:^(NSURLSessionDataTask *operation, id responseObject)
+     {
+         successCallBack(responseObject,nil);
+         ;
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(NSURLSessionDataTask *operation, NSError *error)
+     {
+         failureCallBack(nil,error);
+         NSLog(@"Error: %@", error);
+     }];
+}
+
 @end

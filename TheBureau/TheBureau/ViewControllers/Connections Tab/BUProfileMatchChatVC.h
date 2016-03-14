@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface BUProfileMatchChatVC : UIViewController
+#import "BUBaseViewController.h"
+@interface BUProfileMatchChatVC : BUBaseViewController
 
 @end
