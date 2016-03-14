@@ -11,6 +11,8 @@
 #import "LQSAnnouncementsTableViewController.h"
 #import "BUConstants.h"
 #import "BULayerHelper.h"
+#import "MessageCell.h"
+
 // Defined in LQSAppDelegate.m
 
 // Metadata keys related to navbar color
@@ -204,27 +206,40 @@ static UIColor *LSRandomColor(void)
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LYRMessage *message = [self.queryController objectAtIndexPath:indexPath];
-    LYRMessagePart *messagePart = message.parts[0];
-    
-    //If it is type image
-    if ([messagePart.MIMEType isEqualToString:@"image/png"]) {
-        return 130;
-    } else {
-        return 70;
-    }
+    MessageCell *cell = (MessageCell *) [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    return cell?cell.height > 60 ? cell.height : 60 :200;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Set up custom ChatMessageCell for displaying message
-    //LQSPictureMessageCell
-    LQSChatMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:LQSChatMessageCellReuseIdentifier forIndexPath:indexPath];
-    if (!cell) {
-        cell = [[LQSChatMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:LQSChatMessageCellReuseIdentifier];
+    static NSString *CellIdentifier = @"MessageCell";
+    MessageCell *cell = (MessageCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+    {
+        cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    [self configureCell:cell forRowAtIndexPath:indexPath];
+    
+    LYRMessage *lyrMessage = [self.queryController objectAtIndexPath:indexPath];
+    LYRMessagePart *messagePart = lyrMessage.parts[0];
+    Message *message = [[Message alloc] init];
+    message.text = [[NSString alloc]initWithData:messagePart.data
+                                        encoding:NSUTF8StringEncoding];
+    if ([lyrMessage.sender.userID isEqualToString:[[BULayerHelper sharedHelper] currentUserID]])
+    {
+        message.sender = MessageSenderMyself;
+    }
+    else
+    {
+        message.sender = MessageSenderSomeone;
+    }
+    message.sent = [NSDate date];
+    
+    cell.message = message;
+    
+    cell.backgroundColor = [UIColor clearColor];
+    cell.contentView.backgroundColor = [UIColor clearColor];
+    
     return cell;
 }
 

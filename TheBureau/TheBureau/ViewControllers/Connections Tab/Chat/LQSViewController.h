@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <LayerKit/LayerKit.h>
-
-@interface LQSViewController : UIViewController
+#import "BUBaseViewController.h"
+@interface LQSViewController : BUBaseViewController
 
 @property (nonatomic) LYRClient *layerClient;
 

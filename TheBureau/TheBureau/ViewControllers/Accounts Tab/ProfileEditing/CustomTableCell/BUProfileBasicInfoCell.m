@@ -54,6 +54,11 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    
+    [self.basicInfoDict setValue:textField.text forKey:@"first_name"];
+
+    [self.basicInfoDict setValue:textField.text forKey:@"profile_first_name"];
+
     [textField resignFirstResponder];
     return YES;
 }
@@ -71,6 +76,7 @@
         maleImgName = @"ic_male_s1.png";
         genderImgName = @"switch_female.png";
         self.genderSelectionBtn.tag = 1;
+        [self.basicInfoDict setValue:@"Female" forKey:@"gender"];
     }
     else
     {
@@ -78,6 +84,7 @@
         femaleImgName = @"ic_female_s1.png";
         maleImgName = @"ic_male_s2.png";
         genderImgName = @"switch_male.png";
+        [self.basicInfoDict setValue:@"Male" forKey:@"gender"];
     }
     
     self.femaleImgView.image = [UIImage imageNamed:femaleImgName];
@@ -164,6 +171,7 @@
             
             NSLog(@"%@", text);
             self.ageLabel.text = [NSString stringWithFormat:@"%@ years",text];
+            [self.basicInfoDict setValue:text forKey:@"age"];
         }];
         action;
     })];
@@ -211,6 +219,10 @@
             
             NSLog(@"%@", text);
             self.radiusLabel.text = [NSString stringWithFormat:@"%@ miles",text];
+            
+            
+            [self.basicInfoDict setValue:text forKey:@"location"];
+
         }];
         action;
     })];
@@ -243,11 +255,14 @@
         {
             self.inchStr = [_inchesMutableArray objectAtIndex:row];
             
+            [self.basicInfoDict setValue:@"4" forKey:@"height_inch"];
+
         }
         else
         {
             self.feetStr = [_feetMutableArray objectAtIndex:row];
-        }
+            [self.basicInfoDict setValue:@"5" forKey:@"height_feet"];
+   }
     }
 }
 
@@ -319,28 +334,12 @@ numberOfRowsInComponent:(NSInteger)component{
 
 #pragma mark - Account selection
 
--(IBAction)selectMarital:(id)sender
-{
-    
-    [self.parentVC.view endEditing:YES];
-    
-    UIActionSheet *acSheet = [[UIActionSheet alloc] initWithTitle:@"Select Marital Status" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles: nil];
-    acSheet.tag = 100;
-    
-    for (NSString *str in self.maritalStatusArray)
-    {
-        [acSheet addButtonWithTitle:str];
-    }
-    
-    [acSheet showInView:self.parentVC.view];
-    
-}
-
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex != 0)
     {
             self.maritalStatusTF.text = self.maritalStatusArray[buttonIndex - 1];
+        
     }
 }
 
@@ -348,16 +347,59 @@ numberOfRowsInComponent:(NSInteger)component{
 -(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict
 {
     
-    self.nameTF.text = [inBasicInfoDict valueForKey:@"name"];
     
-    self.ageLabel.text = [inBasicInfoDict valueForKey:@"dob"];
+    self.basicInfoDict = inBasicInfoDict;
+    self.nameTF.text = [inBasicInfoDict valueForKey:@"first_name"];
     
-    self.maritalStatusTF.text = [inBasicInfoDict valueForKey:@"gender"];
+    self.ageLabel.text = [inBasicInfoDict valueForKey:@"age"];
+    
+    NSString *genderStr  = [inBasicInfoDict valueForKey:@"gender"];
+    
+    NSString *femaleImgName,*maleImgName,*genderImgName;
+
+    if([[genderStr lowercaseString] isEqualToString:@"female"])
+    {
+        femaleImgName = @"ic_female_s2.png";
+        maleImgName = @"ic_male_s1.png";
+        genderImgName = @"switch_female.png";
+        self.genderSelectionBtn.tag = 1;
+    }
+    else
+    {
+        self.genderSelectionBtn.tag = 0;
+        femaleImgName = @"ic_female_s1.png";
+        maleImgName = @"ic_male_s2.png";
+        genderImgName = @"switch_male.png";
+    }
+    
+    self.femaleImgView.image = [UIImage imageNamed:femaleImgName];
+    self.maleImgView.image = [UIImage imageNamed:maleImgName];
+    [self.genderSelectionBtn setImage:[UIImage imageNamed:genderImgName]
+                             forState:UIControlStateNormal];
+    
+    
     self.radiusLabel.text = [inBasicInfoDict valueForKey:@"location"];
     
     self.heighTextField.text = [NSString stringWithFormat:@"%@' %@''",[inBasicInfoDict valueForKey:@"height_feet"],[inBasicInfoDict valueForKey:@"height_inch"]];
-    self.maritalStatusTF.text = [inBasicInfoDict valueForKey:@"maritial_status"];
     
+    
+    self.maritalStatus = [inBasicInfoDict valueForKey:@"maritial_status"];
+
+    NSInteger tag = 1;
+    
+    if([self.maritalStatus  isEqualToString:@"Never married"] || [self.maritalStatus  isEqualToString:@""])
+    {
+        tag = 1;
+    }
+    else if([self.maritalStatus  isEqualToString:@"Divorced"])
+    {
+        tag = 2;
+    }
+    else
+    {
+        tag = 3;
+    }
+    [self setMAritalStatusForState:tag];
 }
 
 
@@ -387,5 +429,66 @@ numberOfRowsInComponent:(NSInteger)component{
                                              [self.parentVC stopActivityIndicator];
                                          }
      ];
+}
+
+
+#pragma mark - Martial status
+
+
+-(IBAction)getMatialStatus:(id)sender
+{
+    [self setMAritalStatusForState:[sender tag]];
+    
+}
+-(void)setMAritalStatusForState:(NSInteger)inTag
+{
+    if (inTag == 1)
+    {
+        self.maritalStatus = @"Never married";
+        
+        [self.neverMarriedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
+        [self.divorcedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+        [self.widowedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+        
+        
+        
+        [self.neverMarriedBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.widowedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.divorcedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        
+        
+        
+    }
+    else if (inTag == 2){
+        
+        self.maritalStatus = @"Divorced";
+        
+        [self.divorcedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
+        [self.neverMarriedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+        [self.widowedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+        
+        
+        [self.divorcedBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.widowedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.neverMarriedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        
+        
+    }
+    else{
+        
+        self.maritalStatus = @"Widow";
+        
+        [self.widowedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
+        [self.neverMarriedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+        [self.divorcedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+        
+        [self.widowedBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.divorcedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.neverMarriedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
+    
+    [self.basicInfoDict setValue:self.maritalStatus forKey:@"maritial_status"];
 }
 @end

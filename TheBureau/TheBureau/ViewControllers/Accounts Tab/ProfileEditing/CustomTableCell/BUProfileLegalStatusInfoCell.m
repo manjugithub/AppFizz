@@ -26,42 +26,210 @@
     return YES;
 }
 
--(void)updateProfile
-{
-    
-}
-//{
-//    [self.parentVC startActivityIndicator:YES];
-//
-//    NSDictionary *parameters = nil;
-//    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
-//                   @"gender": @"Male",
-//                   @"height_feet": self.feetStr,
-//                   @"height_inch":self.inchStr,
-//                   @"maritial_status": self.maritalStatusTF.text,
-//                   @"location": self.radiusLabel.text,
-//
-//                   };
-//
-//    NSString *baseURl = @"http://app.thebureauapp.com/admin/update_profile_step1";
-//    [[BUWebServicesManager sharedManager] queryServer:parameters
-//                                              baseURL:baseURl
-//                                         successBlock:^(id response, NSError *error)
-//     {
-//         [self.parentVC stopActivityIndicator];
-//
-//     }
-//                                         failureBlock:^(id response, NSError *error) {
-//                                             [self.parentVC stopActivityIndicator];
-//                                         }
-//     ];
-//}
 
 
 
 -(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict
 {
+    self.legalStausrInfo = inBasicInfoDict;
+
+    [self yearsInUSUpdate];
+    [self legalStautsUpdate];
+}
+
+
+-(void)yearsInUSUpdate
+{
+    NSString *occupationStr = [self.legalStausrInfo valueForKey:@"years_in_usa"];
     
+    occupationStr = occupationStr == nil ? @"" : occupationStr;
+    NSInteger tag = 1;
+    
+    if([[[self.twoYearBtn titleLabel] text] containsString:occupationStr])
+    {
+        tag = 1;
+    }
+    else if([[[self.two_sixYearBtn titleLabel] text] containsString:occupationStr])
+    {
+        tag = 2;
+    }
+    else if([[[self.sixPlusYearBtn titleLabel] text] containsString:occupationStr])
+    {
+        tag = 3;
+    }
+    else if([[[self.bornAndRaisedBtn titleLabel] text] containsString:occupationStr])
+    {
+        tag = 4;
+    }
+    [self updateYearsInUSForTag:tag];
+    
+}
+
+-(void)legalStautsUpdate
+{
+    NSString *occupationStr = [self.legalStausrInfo valueForKey:@"legal_status"];
+    
+    occupationStr = occupationStr == nil ? @"" : occupationStr;
+    NSInteger tag = 1;
+    
+    if([[[self.US_CitizenBtn titleLabel] text] containsString:occupationStr])
+    {
+        tag = 1;
+    }
+    else if([[[self.greenCardBtn titleLabel] text] containsString:occupationStr])
+    {
+        tag = 2;
+    }
+    else if([[[self.greenCardProcessingBtn titleLabel] text] containsString:occupationStr])
+    {
+        tag = 3;
+    }
+    else if([[[self.h1VisaBtn titleLabel] text] containsString:occupationStr])
+    {
+        tag = 4;
+    }
+    else if([[[self.othersBtn titleLabel] text] containsString:occupationStr])
+    {
+        tag = 5;
+    }
+    else if([[[self.studentVisaBtn titleLabel] text] containsString:occupationStr])
+    {
+        tag = 6;
+    }
+    [self updateLegalStatusForTag:tag];
+
+}
+
+-(IBAction)setYearsInUs:(id)sender
+{
+    UIButton *setYearBtn = (UIButton *)sender;
+
+    [self updateYearsInUSForTag:setYearBtn.tag];
+}
+
+
+-(void)updateYearsInUSForTag:(NSInteger)inTag
+{
+    
+    UIButton *selectedButton = _US_CitizenBtn;
+    if (inTag == 1) {
+        
+        [_twoYearBtn setSelected:YES];
+        [_sixPlusYearBtn setSelected:NO];
+        [_two_sixYearBtn setSelected:NO];
+        [_bornAndRaisedBtn setSelected:NO];
+        
+        selectedButton = _twoYearBtn;
+    }
+    else if (inTag == 2){
+        
+        [_twoYearBtn setSelected:NO];
+        [_sixPlusYearBtn setSelected:NO];
+        [_two_sixYearBtn setSelected:YES];
+        [_bornAndRaisedBtn setSelected:NO];
+        selectedButton = _two_sixYearBtn;
+        
+    }
+    else if (inTag == 3){
+        
+        [_twoYearBtn setSelected:NO];
+        [_sixPlusYearBtn setSelected:YES];
+        [_two_sixYearBtn setSelected:NO];
+        [_bornAndRaisedBtn setSelected:NO];
+        selectedButton = _sixPlusYearBtn;
+        
+    }
+    else{
+        [_twoYearBtn setSelected:NO];
+        [_sixPlusYearBtn setSelected:NO];
+        [_two_sixYearBtn setSelected:NO];
+        [_bornAndRaisedBtn setSelected:YES];
+        selectedButton = _bornAndRaisedBtn;
+    }
+    
+    [self.legalStausrInfo setValue:[[[selectedButton titleLabel] text] stringByReplacingOccurrencesOfString:@" " withString:@""] forKey:@"years_in_usa"];
+    
+}
+-(IBAction)setLegalStatus:(id)sender
+{
+    UIButton *setLegalStatusBtn = (UIButton *)sender;
+    [self updateLegalStatusForTag:setLegalStatusBtn.tag];
+}
+
+-(void)updateLegalStatusForTag:(NSInteger)inTag
+{
+    
+    UIButton *selectedButton = _US_CitizenBtn;
+    if (inTag == 1) {
+        [_US_CitizenBtn setSelected:YES];
+        [_greenCardBtn setSelected:NO];
+        [_greenCardProcessingBtn setSelected:NO];
+        [_studentVisaBtn setSelected:NO];
+        [_h1VisaBtn setSelected:NO];
+        [_othersBtn setSelected:NO];
+        
+        selectedButton = _US_CitizenBtn;
+    }
+    else if (inTag == 2){
+        [_US_CitizenBtn setSelected:NO];
+        [_greenCardBtn setSelected:YES];
+        [_greenCardProcessingBtn setSelected:NO];
+        [_studentVisaBtn setSelected:NO];
+        [_h1VisaBtn setSelected:NO];
+        [_othersBtn setSelected:NO];
+        
+        selectedButton = _greenCardBtn;
+        
+    }
+    else if (inTag == 3){
+        
+        [_US_CitizenBtn setSelected:NO];
+        [_greenCardBtn setSelected:NO];
+        [_greenCardProcessingBtn setSelected:YES];
+        [_studentVisaBtn setSelected:NO];
+        [_h1VisaBtn setSelected:NO];
+        [_othersBtn setSelected:NO];
+        
+        selectedButton = _greenCardProcessingBtn;
+        
+    }
+    else if (inTag == 4){
+        
+        [_US_CitizenBtn setSelected:NO];
+        [_greenCardBtn setSelected:NO];
+        [_greenCardProcessingBtn setSelected:NO];
+        [_studentVisaBtn setSelected:YES];
+        [_h1VisaBtn setSelected:NO];
+        [_othersBtn setSelected:NO];
+        
+        selectedButton = _studentVisaBtn;
+        
+    }
+    else if (inTag == 5){
+        
+        [_US_CitizenBtn setSelected:NO];
+        [_greenCardBtn setSelected:NO];
+        [_greenCardProcessingBtn setSelected:NO];
+        [_studentVisaBtn setSelected:NO];
+        [_h1VisaBtn setSelected:YES];
+        [_othersBtn setSelected:NO];
+        
+        selectedButton = _h1VisaBtn;
+    }
+    
+    else{
+        [_US_CitizenBtn setSelected:NO];
+        [_greenCardBtn setSelected:NO];
+        [_greenCardProcessingBtn setSelected:NO];
+        [_studentVisaBtn setSelected:NO];
+        [_h1VisaBtn setSelected:NO];
+        [_othersBtn setSelected:YES];
+        
+        selectedButton = _othersBtn;
+    }
+    
+    [self.legalStausrInfo setValue:[[[selectedButton titleLabel] text] stringByReplacingOccurrencesOfString:@" " withString:@""] forKey:@"legal_status"];
+
 }
 
 @end

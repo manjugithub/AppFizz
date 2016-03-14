@@ -24,6 +24,59 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    
+    switch ([textField tag])
+    {
+        case 0:
+        {
+            [self.educationInfo setValue:textField.text forKey:@"honors"];
+            break;
+        }
+        case 1:
+        {
+            [self.educationInfo setValue:textField.text forKey:@"major"];
+            break;
+        }
+        case 2:
+        {
+            [self.educationInfo setValue:textField.text forKey:@"college"];
+            break;
+        }
+        case 3:
+        {
+            [self.educationInfo setValue:textField.text forKey:@"graduated_year"];
+            break;
+        }
+        case 4:
+        {
+            [self.educationInfo setValue:textField.text forKey:@"second_honor"];
+            break;
+        }
+        case 5:
+        {
+            [self.educationInfo setValue:textField.text forKey:@"second_major"];
+            break;
+        }
+        case 6:
+        {
+            [self.educationInfo setValue:textField.text forKey:@"second_college"];
+            break;
+        }
+        case 7:
+        {
+            [self.educationInfo setValue:textField.text forKey:@"second_year"];
+            break;
+        }
+            
+        default:
+            break;
+    }
+    
+
+
+    
+
+
     return YES;
 }
 
@@ -32,9 +85,15 @@
     if (buttonIndex != 0)
     {
         if(actionSheet.tag == 101)
+        {
             self.educationlevelLbl.text = _educationLevelArray[buttonIndex - 1];
+            [self.educationInfo setValue:self.educationlevelLbl.text forKey:@"highest_education"];
+        }
         else if(actionSheet.tag == 102)
+        {
             self.educationlevelLbl2.text = _educationLevelArray[buttonIndex - 1];
+            [self.educationInfo setValue:self.educationlevelLbl2.text forKey:@"Second_highest_level_edu"];
+        }
     }
 }
 
@@ -76,221 +135,15 @@
     
 }
 
-/*
- 
- {
- [self.parentVC startActivityIndicator:YES];
- 
- 
- userid => User's ID
- first_name => First name of account holder
- last_name => Last name of account holder
- dob => date of birth (dd-mm-yyyy)
- gender => Gender - enum('Male', 'Female')
- phone_number => phone number of account holder
- email => email of account holder
- 
- 1. API for screen 4_profile_setup (Of the mockup screens)
- 
- http://app.thebureauapp.com/admin/update_profile_step1
- 
- Parameters to be sent to this API :
- 
- userid => user id of user
- profile_for => profile for eg. self, brother, sister =>One of these values
- profile_first_name => first name for profile
- profile_last_name => last name for profile
- 
- API to view the above details for a user :
- 
- http://app.thebureauapp.com/admin/view_profile_step1
- 
- Parameters to be sent :
- userid => user id of user
- 
- As an output it will return all the fields (profile_for, profile_first_name, profile_last_name) with value in json format.
- 
- 2. API for screen 4a_profile_setup1 (Of the mockup screens)
- 
- http://app.thebureauapp.com/admin/update_profile_step2
- 
- Parameters to be sent :
- 
- userid => user id of user
- profile_gender =>gender (Male,Female)
- profile_dob =>date of birth (dd-mm-yy format)
- country_residing => country residing (India, America) =>one of these values
- current_zip_code => current zip code
- height_feet => person height in feet
- height_inch => person height in inch
- maritial_status => marital status
- 
- 
- API to  view the above  :
- http://app.thebureauapp.com/admin/view_profile_step2
- 
- Parameter => userid => user id of user
- 
- * as an output it will return all the fields (profile_gender, profile_dob, country_residing, current_zip_code, height_feet, height_inch, maritial_status) with value.
- 
- 
- 3. API for screen 4b_profile_setup2
- 
- API  to  Call
- http://app.thebureauapp.com/admin/update_profile_step3
- 
- Parameter
- userid => user id of user
- religion_id =>religion id
- mother_tongue_id => mother tongue id
- family_origin_id => family origin id
- specification_id => specification id
- gothra => gothra(text)
- 
- API to  view the above details for a user
- 
- http://app.thebureauapp.com/admin/view_profile_step3
- 
- Parameter
- userid => user id of user
- 
- * as an output it will return all the fields (religion_id, mother_tongue_id, family_origin_id, specification_id, gothra) with value.
- 
- 
- 4. API for screen 4c_profile_setup3
- 
- API to  upload :
- http://app.thebureauapp.com/admin/update_profile_step4
- 
- Parameter
- userid => user id of user
- diet => e.g. Vegetarian, Eggetarian, Non Vegetarian
- drinking => e.g. Socially, Never
- smoking => e.g. Yes, No
- 
- API to  view the above
- http://app.thebureauapp.com/admin/view_profile_step4
- 
- Parameter
- userid => user id of user
- 
- * as an output it will return all the fields (diet, drinking, smoking) with value.
- 
- 5. API for screen 4d_profile_setup4
- 
- API to  upload
- http://app.thebureauapp.com/admin/update_profile_step5
- 
- Parameter
- 
- userid => user id of user
- employment_status=> e.g. Employed, Unemployed
- position_title => position title
- company => company name
- highest_education=> e.g. Doctorate, Masters
- honors=> honors (text)
- major=> major
- college=> college
- graduated_year=> graduated year
- 
- API to view the above  :
- 
- http://app.thebureauapp.com/admin/view_profile_step5
- 
- Parameter
- userid => user id of user
- 
- * as an output it will return all the fields (employment_status,position_title,company,highest_education,honors,major,college,graduated_year) with value.
- 
- 6. API for screen 4e_profile_setup5
- 
- API to call
- 
- http://app.thebureauapp.com/admin/update_profile_step6
- 
- Parameters
- 
- userid => user id of user
- years_in_usa => e.g. 0 - 2, 2 - 6
- legal_status => e.g. Citizen/Green Card, Greencard
- 
- * /
-
-
-
-//    gender => Gender - enum('Male', 'Female')
-//    userid => user id of user
-//    profile_first_name => first name for profile
-//        profile_last_name => last name for profile
-//            height_feet => person height in feet
-//            height_inch => person height in inch
-//            maritial_status => marital status
-
-
-NSDictionary *parameters = nil;
-parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
-               @"gender": [BUWebServicesManager sharedManager].userID,
-               @"height_feet": self.feetStr,
-               @"height_inch":self.inchStr,
-               @"maritial_status": self.maritalStatusTF.text,
-               @"location": self.radiusLabel.text,
-               
-               };
-
-NSString *baseURl = @"http://app.thebureauapp.com/admin/update_profile_step1";
-[[BUWebServicesManager sharedManager] queryServer:nil
-                                          baseURL:baseURl
-                                     successBlock:^(id response, NSError *error)
- {
-     [self.parentVC stopActivityIndicator];
-     
- }
-                                     failureBlock:^(id response, NSError *error) {
-                                         [self.parentVC stopActivityIndicator];
-                                     }
- ];
-}
-
-*/
-
 -(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict
 {
-   self.educationlevelLbl.text = [inBasicInfoDict valueForKey:@"highest_level_edu"];
-   self.honorTextField.text =     [inBasicInfoDict valueForKey:@"honor"];
+    self.educationInfo = inBasicInfoDict;
+   self.educationlevelLbl.text = [inBasicInfoDict valueForKey:@"highest_education"];
+   self.honorTextField.text =     [inBasicInfoDict valueForKey:@"honors"];
    self.majorTextField.text =     [inBasicInfoDict valueForKey:@"major"];
    self.collegeTextField.text =     [inBasicInfoDict valueForKey:@"college"];
-   self.yearTextField.text =     [inBasicInfoDict valueForKey:@"year"];
+   self.yearTextField.text =     [inBasicInfoDict valueForKey:@"graduated_year"];
+    
 }
-
-//-(void)updateProfile
-//{
-//    
-//}
-//{
-//    [self.parentVC startActivityIndicator:YES];
-//    
-//    NSDictionary *parameters = nil;
-//    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
-//                   @"gender": @"Male",
-//                   @"height_feet": self.feetStr,
-//                   @"height_inch":self.inchStr,
-//                   @"maritial_status": self.maritalStatusTF.text,
-//                   @"location": self.radiusLabel.text,
-//                   
-//                   };
-//    
-//    NSString *baseURl = @"http://app.thebureauapp.com/admin/update_profile_step1";
-//    [[BUWebServicesManager sharedManager] queryServer:parameters
-//                                              baseURL:baseURl
-//                                         successBlock:^(id response, NSError *error)
-//     {
-//         [self.parentVC stopActivityIndicator];
-//         
-//     }
-//                                         failureBlock:^(id response, NSError *error) {
-//                                             [self.parentVC stopActivityIndicator];
-//                                         }
-//     ];
-//}
 
 @end

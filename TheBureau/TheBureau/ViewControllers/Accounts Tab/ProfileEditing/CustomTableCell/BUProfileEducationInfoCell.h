@@ -14,6 +14,8 @@
 @property(weak, nonatomic) IBOutlet BUProfileEditingVC *parentVC;
 @property(nonatomic,strong)NSArray* relationCircle,*educationLevelArray;
 
+@property (strong, nonatomic) NSMutableDictionary *educationInfo;
+
 #pragma mark -
 #pragma mark - Education selection
 @property (weak, nonatomic) IBOutlet UILabel *educationlevelLbl,*educationlevelLbl2;

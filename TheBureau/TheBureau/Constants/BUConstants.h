@@ -53,3 +53,20 @@ static NSString *const LQSLayerAppIDString = @"layer:///apps/staging/238530d8-99
 static NSString *LQSCategoryIdentifier = @"category_lqs";
 static NSString *LQSAcceptIdentifier = @"ACCEPT_IDENTIFIER";
 static NSString *LQSIgnoreIdentifier = @"IGNORE_IDENTIFIER";
+
+typedef NS_ENUM(NSInteger, MessageStatus)
+{
+    MessageStatusSending,
+    MessageStatusSent,
+    MessageStatusNotified,
+    MessageStatusRead,
+    MessageStatusFailed
+};
+
+typedef NS_ENUM(NSInteger, MessageSender)
+{
+    MessageSenderMyself,
+    MessageSenderSomeone
+};
+
+

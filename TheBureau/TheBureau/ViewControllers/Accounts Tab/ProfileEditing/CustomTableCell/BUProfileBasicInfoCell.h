@@ -13,7 +13,7 @@
 
 @property(weak, nonatomic) IBOutlet UIView *nonEditingView,*editingView;
 @property(weak, nonatomic) IBOutlet BUProfileEditingVC *parentVC;
-
+@property (strong, nonatomic) NSMutableDictionary *basicInfoDict;
 #pragma mark -
 #pragma mark - Gender selection
 @property(nonatomic,weak) IBOutlet UIImageView *femaleImgView,*maleImgView;
@@ -35,4 +35,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *maritalStatusTF;
 
 -(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict;
+
+@property(nonatomic,weak) IBOutlet UIButton *neverMarriedBtn;
+@property(nonatomic,weak) IBOutlet UIButton *divorcedBtn;
+@property(nonatomic,weak) IBOutlet UIButton *widowedBtn;
+
 @end

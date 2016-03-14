@@ -22,6 +22,10 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+if([textField tag] == 0)
+    [self.occupationInfoDict setValue:self.positionTitleTF.text forKey:@"position_title"];
+else
+    [self.occupationInfoDict setValue:self.companyTF.text forKey:@"company"];
     [textField resignFirstResponder];
     return YES;
 }
@@ -29,7 +33,38 @@
 
 -(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict
 {
+    NSString *occupationStr = [inBasicInfoDict valueForKey:@"employment_status"];
     
+    occupationStr = occupationStr == nil ? @"" : occupationStr;
+    EmployementStatus tag = EmployementStatusEmployed;
+    
+    if([[[self.employedBtn titleLabel] text] containsString:occupationStr])
+    {
+        tag = EmployementStatusEmployed;
+    }
+    else if([[[self.unemployedBtn titleLabel] text] containsString:occupationStr])
+    {
+        tag = EmployementStatusUnEmployed;
+    }
+    else if([[[self.studentBtn titleLabel] text] containsString:occupationStr])
+    {
+        tag = EmployementStatusStudent;
+    }
+    else
+    {
+        tag = EmployementStatusOthers;
+    }
+    [self updateOccupation:tag];
+    
+    
+    self.positionTitleTF.text = [inBasicInfoDict valueForKey:@"position_title"];
+    self.positionTitleTF.tag = 0;
+    self.positionTitleTF.delegate = self;
+    self.companyTF.text = [inBasicInfoDict valueForKey:@"company"];
+    self.companyTF.tag = 1;
+    self.companyTF.delegate = self;
+    
+    self.occupationInfoDict = inBasicInfoDict;
 }
 
 
@@ -37,9 +72,12 @@
 
 - (IBAction)employementStatusButtonTapped:(id)sender
 {
-    UIButton *employementStatusButton = (UIButton *)sender;
-    
-    switch (employementStatusButton.tag)
+    [self updateOccupation:[sender tag]];
+}
+
+-(void)updateOccupation:(EmployementStatus)inTag
+{
+    switch (inTag)
     {
         case EmployementStatusEmployed:
         {
@@ -47,6 +85,7 @@
             [self.othersBtn setSelected:NO];
             [self.unemployedBtn setSelected:NO];
             [self.studentBtn setSelected:NO];
+            [self.occupationInfoDict setValue:[[[self.employedBtn titleLabel] text] stringByReplacingOccurrencesOfString:@" " withString:@""] forKey:@"employment_status"];
             break;
         }
         case EmployementStatusUnEmployed:
@@ -55,6 +94,7 @@
             [self.othersBtn setSelected:NO];
             [self.unemployedBtn setSelected:YES];
             [self.studentBtn setSelected:NO];
+            [self.occupationInfoDict setValue:[[[self.unemployedBtn titleLabel] text] stringByReplacingOccurrencesOfString:@" " withString:@""] forKey:@"employment_status"];
             break;
         }
         case EmployementStatusStudent:
@@ -63,6 +103,7 @@
             [self.othersBtn setSelected:NO];
             [self.unemployedBtn setSelected:NO];
             [self.studentBtn setSelected:YES];
+            [self.occupationInfoDict setValue:[[[self.studentBtn titleLabel] text] stringByReplacingOccurrencesOfString:@" " withString:@""] forKey:@"employment_status"];
             break;
         }
         case EmployementStatusOthers:
@@ -71,40 +112,9 @@
             [self.othersBtn setSelected:YES];
             [self.unemployedBtn setSelected:NO];
             [self.studentBtn setSelected:NO];
-            break;
+            [self.occupationInfoDict setValue:[[[self.othersBtn titleLabel] text] stringByReplacingOccurrencesOfString:@" " withString:@""] forKey:@"employment_status"];            break;
         }
         default: break;
     }
 }
-
--(void)updateProfile
-{
-    
-}
-//{
-//    [self.parentVC startActivityIndicator:YES];
-//
-//    NSDictionary *parameters = nil;
-//    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
-//                   @"gender": @"Male",
-//                   @"height_feet": self.feetStr,
-//                   @"height_inch":self.inchStr,
-//                   @"maritial_status": self.maritalStatusTF.text,
-//                   @"location": self.radiusLabel.text,
-//
-//                   };
-//
-//    NSString *baseURl = @"http://app.thebureauapp.com/admin/update_profile_step1";
-//    [[BUWebServicesManager sharedManager] queryServer:parameters
-//                                              baseURL:baseURl
-//                                         successBlock:^(id response, NSError *error)
-//     {
-//         [self.parentVC stopActivityIndicator];
-//
-//     }
-//                                         failureBlock:^(id response, NSError *error) {
-//                                             [self.parentVC stopActivityIndicator];
-//                                         }
-//     ];
-//}
 @end

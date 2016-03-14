@@ -21,6 +21,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *unemployedBtn;
 @property (weak, nonatomic) IBOutlet UIButton *studentBtn;
 @property (weak, nonatomic) IBOutlet UIButton *othersBtn;
+@property (weak, nonatomic) IBOutlet UITextField *positionTitleTF,*companyTF;
+@property (strong, nonatomic) NSMutableDictionary *occupationInfoDict;
+
 
 -(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict;
 @end

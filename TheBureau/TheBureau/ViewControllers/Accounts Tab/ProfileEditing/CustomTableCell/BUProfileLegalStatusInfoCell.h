@@ -14,4 +14,17 @@
 @property(weak, nonatomic) IBOutlet BUProfileEditingVC *parentVC;
 
 -(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict;
+@property(nonatomic,weak) IBOutlet UIButton *twoYearBtn;
+@property(nonatomic,weak) IBOutlet UIButton *two_sixYearBtn;
+@property(nonatomic,weak) IBOutlet UIButton *sixPlusYearBtn;
+@property(nonatomic,weak) IBOutlet UIButton *bornAndRaisedBtn;
+
+@property(nonatomic,weak) IBOutlet UIButton *US_CitizenBtn;
+@property(nonatomic,weak) IBOutlet UIButton *greenCardBtn;
+@property(nonatomic,weak) IBOutlet UIButton *greenCardProcessingBtn;
+@property(nonatomic,weak) IBOutlet UIButton *h1VisaBtn;
+@property(nonatomic,weak) IBOutlet UIButton *othersBtn;
+@property(nonatomic,weak) IBOutlet UIButton *studentVisaBtn;
+
+@property (strong, nonatomic) NSMutableDictionary *legalStausrInfo;
 @end

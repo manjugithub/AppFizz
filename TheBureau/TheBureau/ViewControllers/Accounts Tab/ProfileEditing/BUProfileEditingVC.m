@@ -118,43 +118,43 @@
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileBasicInfoCell"];
             
-//            [(BUProfileBasicInfoCell *)cell setDatasource:self.basicInfoDict];
+            [(BUProfileBasicInfoCell *)cell setDatasource:self.basicInfoDict];
             break;
         }
         case 1:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileEducationInfoCell"];
-//            [(BUProfileEducationInfoCell *)cell setDatasource:self.educationDict];
+            [(BUProfileEducationInfoCell *)cell setDatasource:self.educationDict];
             break;
         }
         case 2:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileOccupationInfoCell"];
-//            [(BUProfileOccupationInfoCell *)cell setDatasource:self.occupationDict];
+            [(BUProfileOccupationInfoCell *)cell setDatasource:self.occupationDict];
             break;
         }
         case 3:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileLegalStatusInfoCell"];
-//            [(BUProfileLegalStatusInfoCell *)cell setDatasource:self.legalStatus];
+            [(BUProfileLegalStatusInfoCell *)cell setDatasource:self.legalStatus];
             break;
         }
         case 4:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileHeritageInfoCell"];
-//            [(BUProfileHeritageInfoCell *)cell setDatasource:self.heritageDict];
+            [(BUProfileHeritageInfoCell *)cell setDatasource:self.heritageDict];
             break;
         }
         case 5:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileSocialHabitsInfoCell"];
-//            [(BUProfileSocialHabitsInfoCell *)cell setDatasource:self.socialHabitsDict];
+            [(BUProfileSocialHabitsInfoCell *)cell setDatasource:self.socialHabitsDict];
             break;
         }
         case 6:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileHoroscopeInfoCell"];
-//            [(BUProfileHoroscopeInfoCell *)cell setDatasource:self.horoscopeDict];
+            [(BUProfileHoroscopeInfoCell *)cell setDatasource:self.horoscopeDict];
             break;
         }
         default:
@@ -179,7 +179,7 @@
     switch (indexPath.section) {
         case 0:
         {
-            expandedHeight = 300;
+            expandedHeight = 390;
             break;
         }
         case 1:
@@ -194,7 +194,7 @@
         }
         case 3:
         {
-            expandedHeight = 160;
+            expandedHeight = 487;
             break;
         }
         case 4:
@@ -269,6 +269,68 @@
     
     [self startActivityIndicator:YES];
 
+    
+/*
+ 
+ 
+ {
+ age = 0;
+ college = "MCE ashkjsd";
+ company = asjhdjksdd;
+ "country_residing" = India;
+ "created_by" = Mother;
+ "current_zip_code" = 45323437126;
+ diet = "Non Vegetarian";
+ dob = "2016-01-27";
+ drinking = Never;
+ email = "test@test.com";
+ "employment_status" = Student;
+ "family_origin_id" = 3;
+ "family_origin_name" = Vaishya;
+ "first_name" = aa;
+ gender = Male;
+ gothra = "gothra tested again";
+ "graduated_year" = 2008;
+ "height_feet" = 6;
+ "height_inch" = 0;
+ "highest_education" = "";
+ honors = honors;
+ "horoscope_path" = "http://app.thebureauapp.com/user_horoscope/8/pdf-sample.pdf";
+ id = 54;
+ "last_name" = vv;
+ latitude = "22.3159047";
+ "legal_status" = "<null>";
+ location = "<null>";
+ longitude = "-97.8549341";
+ major = "<null>";
+ "maritial_status" = "";
+ "mother_tongue" = "<null>";
+ "mother_tongue_id" = 0;
+ "other_legal_status" = "<null>";
+ "phone_number" = 0009898765;
+ "position_title" = "<null>";
+ "profile_dob" = "1969-12-31";
+ "profile_first_name" = "<null>";
+ "profile_for" = "<null>";
+ "profile_gender" = "";
+ "profile_last_name" = "<null>";
+ "religion_id" = 0;
+ "religion_name" = "<null>";
+ smoking = "";
+ "specification_id" = 0;
+ "user_status" = "";
+ userid = 8;
+ "years_in_usa" = "<null>";
+ }
+
+*/
+ 
+ 
+ 
+ 
+ 
+ 
+ 
     [[BUWebServicesManager sharedManager] queryServer:parameters
                                               baseURL:@"http://app.thebureauapp.com/admin/readProfileDetails"
                                          successBlock:^(id response, NSError *error) {
@@ -278,9 +340,9 @@
                                              NSDictionary *respDict = response;
                                              self.basicInfoDict = [[NSMutableDictionary alloc] init];
                                              
-                                             [self.basicInfoDict setValue:([respDict valueForKey:@"first_name"] != nil && NO == [[respDict valueForKey:@"first_name"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"first_name"] : @"" forKey:@"name"];
+                                             [self.basicInfoDict setValue:([respDict valueForKey:@"profile_first_name"] != nil && NO == [[respDict valueForKey:@"profile_first_name"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"profile_first_name"] : [respDict valueForKey:@"first_name"] forKey:@"first_name"];
                                              
-                                             [self.basicInfoDict setValue:([respDict valueForKey:@"dob"] != nil && NO == [[respDict valueForKey:@"dob"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"dob"] : @""  forKey:@"dob"];
+                                             [self.basicInfoDict setValue:([respDict valueForKey:@"age"] != nil && NO == [[respDict valueForKey:@"age"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"age"] : @""  forKey:@"age"];
                                              
                                              [self.basicInfoDict setValue:([respDict valueForKey:@"gender"] != nil && NO == [[respDict valueForKey:@"gender"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"gender"] : @""  forKey:@"gender"];
                                              
@@ -295,17 +357,17 @@
                                              
                                              
                                              self.educationDict = [[NSMutableDictionary alloc] init];
-                                             [self.educationDict setValue:([respDict valueForKey:@"highest_level_edu"] != nil && NO == [[respDict valueForKey:@"highest_level_edu"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"highest_level_edu"] : @""  forKey:@"highest_level_edu"];
+                                             [self.educationDict setValue:([respDict valueForKey:@"highest_education"] != nil && NO == [[respDict valueForKey:@"highest_education"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"highest_education"] : @""  forKey:@"highest_education"];
                                              
                                              
-                                             [self.educationDict setValue:([respDict valueForKey:@"honor"] != nil && NO == [[respDict valueForKey:@"honor"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"honor"] : @""  forKey:@"honor"];
+                                             [self.educationDict setValue:([respDict valueForKey:@"honors"] != nil && NO == [[respDict valueForKey:@"honors"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"honors"] : @""  forKey:@"honors"];
                                              
                                              [self.educationDict setValue:([respDict valueForKey:@"major"] != nil && NO == [[respDict valueForKey:@"major"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"major"] : @""  forKey:@"major"];
                                              
                                              
                                              [self.educationDict setValue:([respDict valueForKey:@"college"] != nil && NO == [[respDict valueForKey:@"college"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"college"] : @""  forKey:@"college"];
                                              
-                                             [self.educationDict setValue:([respDict valueForKey:@"year"] != nil && NO == [[respDict valueForKey:@"year"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"year"] : @""  forKey:@"year"];
+                                             [self.educationDict setValue:([respDict valueForKey:@"graduated_year"] != nil && NO == [[respDict valueForKey:@"graduated_year"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"graduated_year"] : @""  forKey:@"graduated_year"];
 
                                              
                                              self.occupationDict = [[NSMutableDictionary alloc] init];
@@ -313,17 +375,30 @@
                                              
                                              [self.occupationDict setValue:([respDict valueForKey:@"position_title"] != nil && NO == [[respDict valueForKey:@"position_title"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"position_title"] : @""  forKey:@"position_title"];
                                              
+                                             
+
                                              [self.occupationDict setValue:([respDict valueForKey:@"company"] != nil && NO == [[respDict valueForKey:@"company"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"company"] : @""  forKey:@"company"];
                                              
                                              self.heritageDict = [[NSMutableDictionary alloc] init];
                                              [self.heritageDict setValue:([respDict valueForKey:@"religion_id"] != nil && NO == [[respDict valueForKey:@"religion_id"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"religion_id"] : @""  forKey:@"religion_id"];
+
+                                             [self.heritageDict setValue:([respDict valueForKey:@"family_origin_name"] != nil && NO == [[respDict valueForKey:@"family_origin_name"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"family_origin_name"] : @""  forKey:@"family_origin_name"];
+
+                                             [self.heritageDict setValue:([respDict valueForKey:@"gothra"] != nil && NO == [[respDict valueForKey:@"gothra"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"gothra"] : @""  forKey:@"gothra"];
+
+                                             [self.heritageDict setValue:([respDict valueForKey:@"mother_tongue"] != nil && NO == [[respDict valueForKey:@"mother_tongue"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"mother_tongue"] : @""  forKey:@"mother_tongue"];
+
+                                             [self.heritageDict setValue:([respDict valueForKey:@"religion_name"] != nil && NO == [[respDict valueForKey:@"religion_name"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"religion_name"] : @""  forKey:@"religion_name"];
+
                                              
                                              [self.heritageDict setValue:([respDict valueForKey:@"mother_tongue_id"] != nil && NO == [[respDict valueForKey:@"mother_tongue_id"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"mother_tongue_id"] : @""  forKey:@"mother_tongue_id"];
                                              
                                              [self.heritageDict setValue:([respDict valueForKey:@"family_origin_id"] != nil && NO == [[respDict valueForKey:@"family_origin_id"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"family_origin_id"] : @""  forKey:@"family_origin_id"];
                                              
                                              [self.heritageDict setValue:([respDict valueForKey:@"specification_id"] != nil && NO == [[respDict valueForKey:@"specification_id"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"specification_id"] : @""  forKey:@"specification_id"];
-                                             
+
+                                             [self.heritageDict setValue:([respDict valueForKey:@"specification_name"] != nil && NO == [[respDict valueForKey:@"specification_name"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"specification_name"] : @""  forKey:@"specification_name"];
+
                                              [self.heritageDict setValue:([respDict valueForKey:@"gothra"] != nil && NO == [[respDict valueForKey:@"gothra"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"gothra"] : @""  forKey:@"gothra"];
 
                                              self.socialHabitsDict = [[NSMutableDictionary alloc] init];
@@ -358,31 +433,15 @@
 
 -(void)updateProfile
 {
-    NSDictionary *parameters = nil;
- parameters = @{
-        @"college"  :  @"MCE ashkjsd",
-        @"company"  :  @"asjhdjksdd",
-        @"country_residing" : @"India",
-        @"created_by" : @"Self",
-        @"current_zip_code" : @"45323437126",
-        @"diet" : @"Non Vegetarian",
-        @"dob" : @"1996-01-27",
-        @"drinking" : @"Never",
-        @"email" : @"testedagain@test.com",
-        @"employment_status" : @"Student",
-        @"family_origin_id" : @"3",
-        @"first_name" : @"Manjunath",
-        @"gender" : @"Male",
-        @"gothra" : @"gothra tested again",
-        @"userid": [BUWebServicesManager sharedManager].userID,
-        @"graduated_year" : @"2008",
-        @"height_feet" : @"6",
-        @"height_inch" : @"0",
-        @"highest_education" : @"BE",
-        @"maritial_status" : @"alskdhsa",
-        @"honors" : @"honors" };
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc]init];
 
-    
+    [parameters addEntriesFromDictionary:self.basicInfoDict];
+    [parameters addEntriesFromDictionary:self.educationDict];
+    [parameters addEntriesFromDictionary:self.occupationDict];
+    [parameters addEntriesFromDictionary:self.horoscopeDict];
+    [parameters addEntriesFromDictionary:self.legalStatus];
+    [parameters addEntriesFromDictionary:self.heritageDict];
+    [parameters setValue:[BUWebServicesManager sharedManager].userID forKey:@"userid"];
     
     [self startActivityIndicator:YES];
     
