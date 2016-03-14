@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LQSViewController.h"
 
 @interface BUChatContact : NSObject
 /*
@@ -20,7 +21,7 @@
  
  */
 
-
+@property(nonatomic, strong) LYRConversation *conversation;
 @property(nonatomic, strong) NSString *fName,*lName,*imgURL,*userID,*lastmessageLbl;
 - (instancetype)initWithDict:(NSDictionary *)inDictionary;
 @end

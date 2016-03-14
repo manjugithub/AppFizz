@@ -23,7 +23,7 @@ static NSDateFormatter *LQSDateFormatter()
     return dateFormatter;
 }
 @interface BUProfileMatchChatVC ()<LYRQueryControllerDelegate>
-@property(nonatomic) NSArray * imageArray;
+@property(nonatomic) NSMutableArray * historyList;
 @property (nonatomic) LYRQueryController *queryController;
 @property (nonatomic)LYRClient *layerClient;
 @property (nonatomic) IBOutlet UITableView *conversationListTableView;
@@ -36,7 +36,6 @@ static NSDateFormatter *LQSDateFormatter()
     [super viewDidLoad];
     
     self.layerClient = [BULayerHelper sharedHelper].layerClient;
-    _imageArray = [[NSArray alloc]initWithObjects:@"img_photo1",@"img_photo1",@"img_photo1",@"img_photo1", @"img_photo2",@"img_photo2",@"img_photo2",@"img_photo2",nil];
     
     [self setupConversationDataSource];
     // Do any additional setup after loading the view.
@@ -74,25 +73,20 @@ static NSDateFormatter *LQSDateFormatter()
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.queryController numberOfObjectsInSection:section];
+    return [self.queryController numberOfObjectsInSection:0];// [[self historyList] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LYRConversation *conversation = [self.queryController objectAtIndexPath:indexPath];
+    BUChatContact *contact = [[self historyList] objectAtIndex:indexPath.row];
+    LYRConversation *conversation = contact.conversation;
     LYRMessage * lastMessage = conversation.lastMessage;
     LYRMessagePart *messagePart = lastMessage.parts[0];
     
     //If it is type image
    
     BUContactListTableViewCell *cell = (BUContactListTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"BUContactListTableViewCell" ];//forIndexPath:indexPath];
-    for (NSString *participant in conversation.participants) {
-        if (![participant isEqualToString:self.layerClient.authenticatedUserID] ) {
-            cell.userName.text = @"vinay";
-            cell.userImageView.image = [UIImage imageNamed:[_imageArray objectAtIndex:indexPath.row]];
-            
-        }
-    }
+    [cell setContactListDataSource:contact];
     
     if ([messagePart.MIMEType isEqualToString:@"image/png"]) {
         cell.lastmessageLbl.text = @""; //
@@ -113,10 +107,6 @@ static NSDateFormatter *LQSDateFormatter()
         timestampText = [NSString stringWithFormat:@"%@",[LQSDateFormatter() stringFromDate:lastMessage.receivedAt]];
     }
         cell.timeLbl.text = [NSString stringWithFormat:@"%@",timestampText];
- 
-
-
-    
     return cell;
 }
 
@@ -177,7 +167,8 @@ static NSDateFormatter *LQSDateFormatter()
 
 - (void)queryControllerDidChangeContent:(LYRQueryController *)queryController
 {
-    [self.conversationListTableView endUpdates];
+    if([[self historyList] count] > 1)
+        [self.conversationListTableView endUpdates];
 }
 
 
@@ -187,8 +178,6 @@ static NSDateFormatter *LQSDateFormatter()
 
 {
     return 1;
-    
-    
 }
 //
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
@@ -221,22 +210,41 @@ static NSDateFormatter *LQSDateFormatter()
 -(void)getContactDetails
 {
     
-//    LYRConversation *conversation = [self.queryController objectAtIndexPath:indexPath];
-//    for (NSString *participant in conversation.participants) {
-//        if (![participant isEqualToString:self.layerClient.authenticatedUserID] ) {
-//            [[BULayerHelper sharedHelper] setParticipantUserID:participant];
-//            
-//        }
-//    }
-//
+    NSInteger row = 0;
+    NSInteger count = [self.queryController numberOfObjectsInSection:row];
+    NSMutableArray *useridsArray = [[NSMutableArray alloc] init];
+    [self.historyList removeAllObjects];
+    self.historyList = [[NSMutableArray alloc] init];
     
+    for (row =0 ; row < count; row++)
+    {
+        LYRConversation *conversation = [self.queryController objectAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
+        for (NSString *participant in conversation.participants) {
+            if (![participant isEqualToString:self.layerClient.authenticatedUserID] )
+            {
+                
+                if(1)// ([participant rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]].location == NSNotFound)
+                {
+                    BUChatContact *contact = [[BUChatContact alloc] init];
+                    contact.userID = participant;
+                    contact.conversation = conversation;
+                    [self.historyList addObject:contact];
+                    [useridsArray addObject:participant];
+                }
+            }
+            
+        }
+    }
     
-    
-    NSArray *params = @[@"12",@"7",@"152",@"16"];
+    NSDictionary *parameters = nil;
+    parameters = @{@"userids": useridsArray
+                   };
+
+//    NSArray *params = @[@"12",@"7",@"152",@"16"];
     NSString *baseURL = @"http://app.thebureauapp.com/admin/getUserDetails";
     
     [self startActivityIndicator:YES];
-    [[BUWebServicesManager sharedManager] queryServerWithList:params
+    [[BUWebServicesManager sharedManager] queryServer:parameters
                                               baseURL:baseURL
                                          successBlock:^(id inResult, NSError *error)
      {
@@ -260,7 +268,20 @@ static NSDateFormatter *LQSDateFormatter()
          }
          if(nil != inResult && 0 < [inResult count])
          {
-             //Liked Passed
+             for (NSDictionary *userData in inResult)
+             {
+                 for (BUChatContact *contact in self.historyList)
+                 {
+                     if([contact.userID isEqualToString:[userData valueForKey:@"userid"]])
+                     {
+                         contact.fName = [userData valueForKey:@"First Name"];
+                         contact.lName = [userData valueForKey:@"Last Name"];
+                         contact.imgURL = [userData valueForKey:@"img_url"];
+                         
+                         NSLog(@"Name ==> %@ \n user id ==> %@",contact.fName,contact.userID);
+                     }
+                 }
+             }
              [self.conversationListTableView reloadData];
          }
          else
