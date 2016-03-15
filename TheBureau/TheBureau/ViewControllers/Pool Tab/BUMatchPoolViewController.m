@@ -100,6 +100,18 @@ static NSString * const reuseIdentifier = @"Cell";
                                                               successBlock:^(id inResult, NSError *error)
     {
         [self stopActivityIndicator];
+        if([inResult isKindOfClass:[NSDictionary class]])
+        {
+            [self stopActivityIndicator];
+            NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"No matches found yet"];
+            [message addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"comfortaa" size:15]
+                            range:NSMakeRange(0, message.length)];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+            [alertController setValue:message forKey:@"attributedTitle"];            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+            [self presentViewController:alertController animated:YES completion:nil];
+            return;
+        }
         if(nil != inResult && 0 < [inResult count])
         {
             self.datasourceList = inResult;

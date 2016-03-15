@@ -1192,7 +1192,7 @@
                                             <action selector="continueButtonClicked:" destination="fZs-4K-Y51" eventType="touchUpInside" id="PR8-bS-Gug"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" date of birth" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hcP-wY-8y9">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" date of birth" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hcP-wY-8y9">
                                         <rect key="frame" x="40" y="181" width="520" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="YZ1-8a-ANW"/>

@@ -12,5 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBarButton;
 @property (strong, nonatomic) NSDictionary *preferenceDict;
+@property (nonatomic, strong) UIView *activityView;
+@property (atomic, assign) int activityIndicatorCount;
 
 @end

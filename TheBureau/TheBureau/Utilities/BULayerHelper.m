@@ -30,7 +30,9 @@
 {
     // Initializes a LYRClient object
     NSURL *appID = [NSURL URLWithString:LQSLayerAppIDString];
-    self.layerClient = [LYRClient clientWithAppID:appID];
+    if(nil == self.layerClient)
+        self.layerClient = [LYRClient clientWithAppID:appID];
+    
     self.layerClient.delegate = self;
     self.layerClient.autodownloadMIMETypes = [NSSet setWithObjects:@"image/png", nil];
     // Connect to Layer

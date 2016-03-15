@@ -26,6 +26,10 @@
     return YES;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    
+}
 -(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict
 {
     

@@ -329,6 +329,11 @@
 
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     [self.currentTextField resignFirstResponder];
@@ -389,38 +394,79 @@
 
 -(IBAction)continueButtonClicked:(id)sender;
 {
-
+    
     if (![self.firstNameTF.text length]) {
         [self alertMessage:@"First Name"];
-        }
+    }
     else if (![self.lastNameTF.text length]){
         [self alertMessage:@"Last Name"];
     }
     else if (![self.dateofbirthTF.text length]){
-
+        
         [self alertMessage:@"Date Of Birth"];
     }
     else if (![self.mobileNumTF.text length]){
         [self alertMessage:@"Mobile Number"];
-
+        
     }
     else if (![self.emailIdTF.text length]){
-
+        
         [self alertMessage:@"Email Address"];
-
+        
     }
     else
     {
-        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
-        BUProfileSelectionVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileSelectionVC"];
+        /*
+         
+         userid => User's ID
+         first_name => First name of account holder
+         last_name => Last name of account holder
+         dob => Date of birth (dd-mm-yyyy)
+         gender => Gender - enum('Male', 'Female')
+         phone_number => Phone number of account holder
+         email => Email of account holder
+         */
         
-        vc.firstName = self.firstNameTF.text;
-        vc.lastName = self.lastNameTF.text;
         
-        [self.navigationController pushViewController:vc animated:YES];
+        NSDictionary *parameters = nil;
+        
+        parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                       @"first_name":self.firstNameTF.text,
+                       @"last_name":self.lastNameTF.text,
+                       @"dob":self.dateofbirthTF.text,
+                       @"gender":self.genderSelectionBtn.tag == 1 ? @"Male" : @"Female",
+                       @"phone_number":self.mobileNumTF.text,
+                       @"email":self.emailIdTF.text
+                       };
+        
+        [self startActivityIndicator:YES];
+        
+        [[BUWebServicesManager sharedManager] queryServer:parameters
+                                                  baseURL:@"http://app.thebureauapp.com/admin/create_account_ws"
+                                             successBlock:^(id response, NSError *error) {
+                                                 [self stopActivityIndicator];
+                                                 UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
+                                                 BUProfileSelectionVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileSelectionVC"];
+                                                 
+                                                 vc.firstName = self.firstNameTF.text;
+                                                 vc.lastName = self.lastNameTF.text;
+                                                 
+                                                 [self.navigationController pushViewController:vc animated:YES];
+                                             } failureBlock:^(id response, NSError *error) {
+                                                 [self stopActivityIndicator];
+                                                 NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
+                                                 [message addAttribute:NSFontAttributeName
+                                                                 value:[UIFont fontWithName:@"comfortaa" size:15]
+                                                                 range:NSMakeRange(0, message.length)];
+                                                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+                                                 [alertController setValue:message forKey:@"attributedTitle"];            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                                                 [self presentViewController:alertController animated:YES completion:nil];
+                                             }
+         ];
+        
     }
-    
 }
+    
 
 
 @end

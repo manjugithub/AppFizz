@@ -23,5 +23,7 @@
 @property(nonatomic) eHeritageList heritageList;
 @property(nonatomic, assign) BOOL isUpdatingProfile;
 
+@property (strong, nonatomic) NSMutableDictionary *heritageDict;
+
 -(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict;
 @end

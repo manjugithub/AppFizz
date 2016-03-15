@@ -1664,8 +1664,8 @@
 			baseConfigurationReference = 6502757F3F1ACF97331C1C80 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Manjunath HS (3D4G79WZ29)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Manjunath HS (3D4G79WZ29)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods",
@@ -1676,7 +1676,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) '@executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bureau.bureauapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0c737a1e-67eb-4d01-8534-e0d78a954e62";
 			};
 			name = Debug;
 		};
@@ -1685,8 +1685,8 @@
 			baseConfigurationReference = F1221E9735CB633F12051843 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Manjunath HS (3D4G79WZ29)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Manjunath HS (3D4G79WZ29)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods",
@@ -1697,7 +1697,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) '@executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bureau.bureauapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0c737a1e-67eb-4d01-8534-e0d78a954e62";
 			};
 			name = Release;
 		};

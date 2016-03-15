@@ -137,9 +137,15 @@
             
             self.datasourceList = [response lastObject];
             
-//            self.imagesList = [[NSMutableArray alloc] initWithArray:[[[response lastObject]valueForKey:@"img_url"] allValues]];
-
-            self.imagesList = [[NSMutableArray alloc] initWithArray:[[response lastObject]valueForKey:@"img_url"]];
+            if([[[response lastObject]valueForKey:@"img_url"] isKindOfClass:[NSDictionary class]])
+            {
+                self.imagesList = [[NSMutableArray alloc] initWithArray:[[[response lastObject]valueForKey:@"img_url"] allValues]];
+            }
+            else
+            {
+                self.imagesList = [[NSMutableArray alloc] initWithArray:[[response lastObject]valueForKey:@"img_url"]];
+                
+            }
 
             
             NSString *userAction = [[response lastObject]valueForKey:@"user_action"];

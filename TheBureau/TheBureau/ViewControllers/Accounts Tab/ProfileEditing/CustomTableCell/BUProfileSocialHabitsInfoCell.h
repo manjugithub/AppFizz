@@ -29,7 +29,7 @@
 
 @property(nonatomic,weak)IBOutlet UILabel *yesLabel;
 @property(nonatomic,weak)IBOutlet UILabel *noLabel;
-
+@property(nonatomic,strong) NSMutableDictionary *socialHabitsDict;
 -(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict;
 
 @end

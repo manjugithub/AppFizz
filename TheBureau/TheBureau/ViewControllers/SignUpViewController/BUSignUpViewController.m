@@ -12,7 +12,7 @@
 #import "BUConstants.h"
 #import "BUAccountCreationVC.h"
 #import <DigitsKit/DigitsKit.h>
-
+#import "BULayerHelper.h"
 
 
 @interface BUSignUpViewController ()
@@ -174,8 +174,10 @@
                 }
                 else
                 {
+//                    parameters =  @{@"reg_type": @"digits",
+//                                    @"digits":session.phoneNumber};
                     parameters =  @{@"reg_type": @"digits",
-                                    @"digits":session.phoneNumber};
+                                    @"digits":@"44444555557"};
                 }
                 [self startActivityIndicator:YES];
                 
@@ -187,9 +189,11 @@
                      if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
                      {
                          [BUWebServicesManager sharedManager].userID = [inResult valueForKey:@"userid"];
-                         
+                         [[BULayerHelper sharedHelper] setCurrentUserID:[inResult valueForKey:@"userid"]];
+
                          NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Registration Successful"];
                          [message addAttribute:NSFontAttributeName
+                
                                          value:[UIFont fontWithName:@"comfortaa" size:15]
                                          range:NSMakeRange(0, message.length)];
                          UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
@@ -200,10 +204,33 @@
                                                                             style:UIAlertActionStyleDefault
                                                                           handler:^(UIAlertAction *action)
                                                     {
-                                                        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                                                        BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];
-                                                        vc.socialChannel = self.socialChannel;
-                                                        [self.navigationController pushViewController:vc animated:YES];
+                                                        
+                                                        
+                                                        [self startActivityIndicator:YES];
+                                                        
+
+                                                        [[BULayerHelper sharedHelper] authenticateLayerWithsuccessBlock:^(id response, NSError *error) {
+                                                            [self stopActivityIndicator];
+                                                            
+                                                            UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                                            BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];
+                                                            vc.socialChannel = self.socialChannel;
+                                                            [self.navigationController pushViewController:vc animated:YES];
+                                                        } failureBlock:^(id response, NSError *error) {
+                                                            {
+                                                                [self stopActivityIndicator];
+                                                                NSLog(@"Failed Authenticating Layer Client with error:%@", error);
+                                                                NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Failed Authenticating Layer Client with error:%@", error]];
+                                                                [message addAttribute:NSFontAttributeName
+                                                                                value:[UIFont fontWithName:@"comfortaa" size:15]
+                                                                                range:NSMakeRange(0, message.length)];
+                                                                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+                                                                [alertController setValue:message forKey:@"attributedTitle"];
+                                                                [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                                                                [self presentViewController:alertController animated:YES completion:nil];
+                                                                
+                                                            }                                                        }];
+                                                        
                                                     }];
                          
                          [alertController addAction:okAction];

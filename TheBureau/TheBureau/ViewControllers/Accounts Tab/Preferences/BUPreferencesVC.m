@@ -11,6 +11,8 @@
 #import "BUConstants.h"
 #import "BUUtilities.h"
 #import "BUWebServicesManager.h"
+#import "UIColor+APColor.h"
+
 @interface BUPreferencesVC ()<UIActionSheetDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 
 @property (assign, nonatomic) BOOL shouldAddPref;
@@ -637,13 +639,18 @@ numberOfRowsInComponent:(NSInteger)component{
     {
      baseURl = @"http://app.thebureauapp.com/admin/update_match_preference_ws";
     }
+    
+    [self startActivityIndicator:YES];
+
     [[BUWebServicesManager sharedManager] queryServer:self.preferenceDict
                                               baseURL:baseURl
                                          successBlock:^(id response, NSError *error)
     {
+        [self stopActivityIndicator];
                                          }
                                          failureBlock:^(id response, NSError *error) {
                                              
+                                             [self stopActivityIndicator];
                                          }
      ];
 }
@@ -654,11 +661,13 @@ numberOfRowsInComponent:(NSInteger)component{
 {
     self.shouldAddPref = NO;
 
+    [self startActivityIndicator:YES];
     NSString *baseURl = @"http://app.thebureauapp.com/admin/readPreference";
     [[BUWebServicesManager sharedManager] queryServer:self.preferenceDict
                                               baseURL:baseURl
                                          successBlock:^(id response, NSError *error)
      {
+         [self stopActivityIndicator];
          if([response isKindOfClass:[NSDictionary class]])
          {
              self.shouldAddPref = YES;
@@ -671,14 +680,82 @@ numberOfRowsInComponent:(NSInteger)component{
                                          failureBlock:^(id response, NSError *error)
     {
         self.shouldAddPref = YES;
+        [self stopActivityIndicator];
+
         
-                                         }
+    }
      ];
 }
 
 -(void)populatePreerences:(NSMutableDictionary *)inDict
 {
     
+}
+
+
+- (void)startActivityIndicator:(BOOL)isWhite {
+    _activityIndicatorCount++;
+    if (_activityIndicatorCount > 1) {
+        return;
+    }
+    [[[UIApplication sharedApplication].keyWindow viewWithTag:987] removeFromSuperview];
+    [self.activityView removeFromSuperview];
+    [self.view layoutIfNeeded];
+    //    UIView *activityView = [[UIView alloc] initWithFrame:self.view.bounds];
+    if (!self.activityView){
+        self.activityView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        self.activityView.tag = 987;
+        self.activityView.backgroundColor = [UIColor clearColor];
+        self.activityView.alpha = 0.0f;
+        //    [self.view addSubview:activityView];
+        
+        
+        UIView *bgView = [[UIView alloc]initWithFrame:self.activityView.bounds];
+        bgView.alpha = 0.0f;
+        if ( isWhite ){
+            [bgView setBackgroundColor:[UIColor XMApplicationColor]];
+        }
+        else{
+            [bgView setBackgroundColor:[UIColor XMApplicationColor]];
+        }
+        [self.activityView addSubview:bgView];
+        
+        
+        UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [self.activityView addSubview:spinner];
+        spinner.center = self.activityView.center;
+        //    spinner.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+        if ( isWhite ){
+            [spinner setColor:[UIColor redIndicatorColor]];
+        }else{
+            [spinner setColor:[UIColor whiteColor]];
+        }
+        [spinner startAnimating];
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            bgView.alpha = 0.5f;
+            self.activityView.alpha = 1;
+        }];
+    }
+    else{
+        [UIView animateWithDuration:0.2 animations:^{
+            self.activityView.alpha = 1;
+        }];
+    }
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:self.activityView];
+}
+
+- (void)stopActivityIndicator {
+    _activityIndicatorCount--;
+    if (_activityIndicatorCount <= 0) {
+        _activityIndicatorCount = 0;
+        [UIView animateWithDuration:0.2 animations:^{
+            self.activityView.alpha = 0;
+        } completion:^(BOOL finished) {
+            [self.activityView removeFromSuperview];
+        }];
+    }
 }
 
 @end

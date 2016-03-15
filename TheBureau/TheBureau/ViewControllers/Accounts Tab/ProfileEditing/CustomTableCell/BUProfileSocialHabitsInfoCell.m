@@ -26,289 +26,211 @@
     return YES;
 }
 
--(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict
+- (void)textFieldDidEndEditing:(UITextField *)textField
 {
     
 }
+-(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict
+{
+    self.socialHabitsDict = inBasicInfoDict;
+    [self dietUpdate];
+    [self updateSmoking];
+    [self updateDrinking];
+}
 
+
+-(void)updateSmoking
+{
+    NSString *occupationStr = [self.socialHabitsDict valueForKey:@"smoking"];
+    occupationStr = occupationStr == nil ? @"" : occupationStr;
+    NSInteger tag = 1;
+    if([[self.yesLabel text] containsString:occupationStr])
+    {
+        tag = 0;
+    }
+    else
+    {
+        tag = 1;
+    }
+    [self updateSmokingForTag:tag];
+}
+
+-(void)updateDrinking
+{
+    NSString *occupationStr = [self.socialHabitsDict valueForKey:@"drinking"];
+    occupationStr = occupationStr == nil ? @"" : occupationStr;
+    NSInteger tag = 1;
+    if([[self.sociallyLabel text] containsString:occupationStr])
+    {
+        tag = 0;
+    }
+    else
+    {
+        tag = 1;
+    }
+    [self updateDrinkingForTag:tag];
+}
+
+-(void)dietUpdate
+{
+    NSString *occupationStr = [self.socialHabitsDict valueForKey:@"diet"];
+    occupationStr = occupationStr == nil ? @"" : occupationStr;
+    NSInteger tag = 1;
+    
+    if([[[_vegetarianBtn titleLabel] text] containsString:occupationStr])
+    {
+        tag = ButtonTypeVegetarian;
+    }
+    else if([[[_eegetarianBtn titleLabel] text] containsString:occupationStr])
+    {
+        tag = ButtonTypeEegetarian;
+    }
+    else if([[[_nonVegetarianBtn titleLabel] text] containsString:occupationStr])
+    {
+        tag = ButtonTypeNonvegetarian;
+    }
+    else if([[[_veganBtn titleLabel] text] containsString:occupationStr])
+    {
+        tag = ButtonTypeVegan;
+    }
+    [self updateDietForTag:tag];
+}
 
 #pragma mark -
 #pragma mark - Social habits
 
--(IBAction)setDiet:(id)sender{
-    
-    UIButton *setYearBtn = (UIButton *)sender;
-    
-    if (setYearBtn.tag == ButtonTypeVegetarian) {
-        
+-(void)updateDietForTag:(NSInteger)inTag
+{
+    UIButton *selectedBtn;
+    if (inTag == ButtonTypeVegetarian)
+    {
+        selectedBtn = _vegetarianBtn;
         [_vegetarianBtn setSelected:YES];
         [_eegetarianBtn setSelected:NO];
         [_nonVegetarianBtn setSelected:NO];
         [_veganBtn setSelected:NO];
-        
     }
-    else if (setYearBtn.tag == ButtonTypeEegetarian){
-        
+    else if (inTag == ButtonTypeEegetarian)
+    {
         [_vegetarianBtn setSelected:NO];
         [_eegetarianBtn setSelected:YES];
         [_nonVegetarianBtn setSelected:NO];
         [_veganBtn setSelected:NO];
-        
+        selectedBtn = _eegetarianBtn;
     }
-    else if (setYearBtn.tag == ButtonTypeNonvegetarian){
-        
+    else if (inTag == ButtonTypeNonvegetarian)
+    {
         [_vegetarianBtn setSelected:NO];
         [_eegetarianBtn setSelected:NO];
         [_nonVegetarianBtn setSelected:YES];
         [_veganBtn setSelected:NO];
-        
+        selectedBtn = _nonVegetarianBtn;
     }
-    else{
+    else
+    {
         [_vegetarianBtn setSelected:NO];
         [_eegetarianBtn setSelected:NO];
         [_nonVegetarianBtn setSelected:NO];
         [_veganBtn setSelected:YES];
-        
-        
+        selectedBtn = _veganBtn;
     }
-    
-    
-    
+    [self.socialHabitsDict setValue:[[selectedBtn titleLabel] text] forKey:@"diet"];
+}
+
+-(void)updateDrinkingForTag:(NSInteger)inTag
+{
+    NSString *switchBtnStr;
+    if(1 == inTag)
+    {
+        _sociallyLabel.textColor = [UIColor lightGrayColor];
+        _neverLabel.textColor = [UIColor blackColor];
+        switchBtnStr = @"switch_ON";
+        [self.socialHabitsDict setValue:[_neverLabel text]
+                                 forKey:@"drinking"];
+    }
+    else
+    {
+        _sociallyLabel.textColor = [UIColor blackColor];
+        _neverLabel.textColor = [UIColor lightGrayColor];
+        switchBtnStr = @"switch_OFF";
+        [self.socialHabitsDict setValue:[_sociallyLabel text] forKey:@"drinking"];
+    }
+    [self.drinkingSelectionBtn setBackgroundImage:[UIImage imageNamed:switchBtnStr]
+                                         forState:UIControlStateNormal];
+}
+
+-(void)updateSmokingForTag:(NSInteger)inTag
+{
+    NSString *switchBtnStr;
+    if(1 == inTag)
+    {
+        _yesLabel.textColor = [UIColor blackColor];
+        _noLabel.textColor = [UIColor lightGrayColor];
+        switchBtnStr = @"switch_ON";
+        [self.socialHabitsDict setValue:[_yesLabel text] forKey:@"smoking"];
+    }
+    else
+    {
+        _yesLabel.textColor = [UIColor lightGrayColor];
+        _noLabel.textColor = [UIColor blackColor];
+        switchBtnStr = @"switch_OFF";
+        [self.socialHabitsDict setValue:[_noLabel text] forKey:@"smoking"];
+    }
+    [self.smokingSelectionBtn setBackgroundImage:[UIImage imageNamed:switchBtnStr]
+                                        forState:UIControlStateNormal];
+}
+
+-(IBAction)setDiet:(id)sender
+{
+    UIButton *setYearBtn = (UIButton *)sender;
+    [self updateDietForTag:setYearBtn.tag];
 }
 
 -(IBAction)setDrinking:(id)sender
 {
     NSString *switchBtnStr;
-    
     if(0 == self.drinkingSelectionBtn.tag)
     {
         _sociallyLabel.textColor = [UIColor lightGrayColor];
         _neverLabel.textColor = [UIColor blackColor];
-        
         switchBtnStr = @"switch_ON";
         self.drinkingSelectionBtn.tag = 1;
-    }
+        [self.socialHabitsDict setValue:[_neverLabel text]
+                                 forKey:@"drinking"];
+   }
     else
     {
         self.drinkingSelectionBtn.tag = 0;
         _sociallyLabel.textColor = [UIColor blackColor];
         _neverLabel.textColor = [UIColor lightGrayColor];
-        
         switchBtnStr = @"switch_OFF";
+        [self.socialHabitsDict setValue:[_sociallyLabel text] forKey:@"drinking"];
     }
-    
     [self.drinkingSelectionBtn setBackgroundImage:[UIImage imageNamed:switchBtnStr]
                                          forState:UIControlStateNormal];
-    
 }
 
 -(IBAction)setSmoking:(id)sender
 {
     NSString *switchBtnStr;
-    
     if(0 == self.smokingSelectionBtn.tag)
     {
-        
         _yesLabel.textColor = [UIColor blackColor];
         _noLabel.textColor = [UIColor lightGrayColor];
-        
         switchBtnStr = @"switch_ON";
         self.smokingSelectionBtn.tag = 1;
+        [self.socialHabitsDict setValue:[_yesLabel text] forKey:@"smoking"];
     }
     else
     {
         self.smokingSelectionBtn.tag = 0;
         _yesLabel.textColor = [UIColor lightGrayColor];
         _noLabel.textColor = [UIColor blackColor];
-        
         switchBtnStr = @"switch_OFF";
+        [self.socialHabitsDict setValue:[_noLabel text] forKey:@"smoking"];
     }
-    
     [self.smokingSelectionBtn setBackgroundImage:[UIImage imageNamed:switchBtnStr]
                                         forState:UIControlStateNormal];
-    
 }
 
--(void)updateProfile
-{
-    
-}
-
-/*
- 
- {
- [self.parentVC startActivityIndicator:YES];
- 
- /*
- 
- userid => User's ID
- first_name => First name of account holder
- last_name => Last name of account holder
- dob => date of birth (dd-mm-yyyy)
- gender => Gender - enum('Male', 'Female')
- phone_number => phone number of account holder
- email => email of account holder
- 
- 1. API for screen 4_profile_setup (Of the mockup screens)
- 
- http://app.thebureauapp.com/admin/update_profile_step1
- 
- Parameters to be sent to this API :
- 
- userid => user id of user
- profile_for => profile for eg. self, brother, sister =>One of these values
- profile_first_name => first name for profile
- profile_last_name => last name for profile
- 
- API to view the above details for a user :
- 
- http://app.thebureauapp.com/admin/view_profile_step1
- 
- Parameters to be sent :
- userid => user id of user
- 
- As an output it will return all the fields (profile_for, profile_first_name, profile_last_name) with value in json format.
- 
- 2. API for screen 4a_profile_setup1 (Of the mockup screens)
- 
- http://app.thebureauapp.com/admin/update_profile_step2
- 
- Parameters to be sent :
- 
- userid => user id of user
- profile_gender =>gender (Male,Female)
- profile_dob =>date of birth (dd-mm-yy format)
- country_residing => country residing (India, America) =>one of these values
- current_zip_code => current zip code
- height_feet => person height in feet
- height_inch => person height in inch
- maritial_status => marital status
- 
- 
- API to  view the above  :
- http://app.thebureauapp.com/admin/view_profile_step2
- 
- Parameter => userid => user id of user
- 
- * as an output it will return all the fields (profile_gender, profile_dob, country_residing, current_zip_code, height_feet, height_inch, maritial_status) with value.
- 
- 
- 3. API for screen 4b_profile_setup2
- 
- API  to  Call
- http://app.thebureauapp.com/admin/update_profile_step3
- 
- Parameter
- userid => user id of user
- religion_id =>religion id
- mother_tongue_id => mother tongue id
- family_origin_id => family origin id
- specification_id => specification id
- gothra => gothra(text)
- 
- API to  view the above details for a user
- 
- http://app.thebureauapp.com/admin/view_profile_step3
- 
- Parameter
- userid => user id of user
- 
- * as an output it will return all the fields (religion_id, mother_tongue_id, family_origin_id, specification_id, gothra) with value.
- 
- 
- 4. API for screen 4c_profile_setup3
- 
- API to  upload :
- http://app.thebureauapp.com/admin/update_profile_step4
- 
- Parameter
- userid => user id of user
- diet => e.g. Vegetarian, Eggetarian, Non Vegetarian
- drinking => e.g. Socially, Never
- smoking => e.g. Yes, No
- 
- API to  view the above
- http://app.thebureauapp.com/admin/view_profile_step4
- 
- Parameter
- userid => user id of user
- 
- * as an output it will return all the fields (diet, drinking, smoking) with value.
- 
- 5. API for screen 4d_profile_setup4
- 
- API to  upload
- http://app.thebureauapp.com/admin/update_profile_step5
- 
- Parameter
- 
- userid => user id of user
- employment_status=> e.g. Employed, Unemployed
- position_title => position title
- company => company name
- highest_education=> e.g. Doctorate, Masters
- honors=> honors (text)
- major=> major
- college=> college
- graduated_year=> graduated year
- 
- API to view the above  :
- 
- http://app.thebureauapp.com/admin/view_profile_step5
- 
- Parameter
- userid => user id of user
- 
- * as an output it will return all the fields (employment_status,position_title,company,highest_education,honors,major,college,graduated_year) with value.
- 
- 6. API for screen 4e_profile_setup5
- 
- API to call
- 
- http://app.thebureauapp.com/admin/update_profile_step6
- 
- Parameters
- 
- userid => user id of user
- years_in_usa => e.g. 0 - 2, 2 - 6
- legal_status => e.g. Citizen/Green Card, Greencard
- 
- * /
- 
- 
- 
- //    gender => Gender - enum('Male', 'Female')
- //    userid => user id of user
- //    profile_first_name => first name for profile
- //        profile_last_name => last name for profile
- //            height_feet => person height in feet
- //            height_inch => person height in inch
- //            maritial_status => marital status
- 
- 
- NSDictionary *parameters = nil;
- parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
- @"gender": [BUWebServicesManager sharedManager].userID,
- @"height_feet": self.feetStr,
- @"height_inch":self.inchStr,
- @"maritial_status": self.maritalStatusTF.text,
- @"location": self.radiusLabel.text,
- 
- };
- 
- NSString *baseURl = @"http://app.thebureauapp.com/admin/update_profile_step1";
- [[BUWebServicesManager sharedManager] queryServer:nil
- baseURL:baseURl
- successBlock:^(id response, NSError *error)
- {
- [self.parentVC stopActivityIndicator];
- 
- }
- failureBlock:^(id response, NSError *error) {
- [self.parentVC stopActivityIndicator];
- }
- ];
- }
- 
- */
 @end

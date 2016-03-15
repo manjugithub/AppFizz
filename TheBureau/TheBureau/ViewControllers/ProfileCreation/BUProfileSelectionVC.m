@@ -233,6 +233,11 @@
     
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     

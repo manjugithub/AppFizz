@@ -22,7 +22,19 @@
 
 -(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict
 {
+    self.heritageDict = inBasicInfoDict;
+    self.religionTF.text = [self.heritageDict valueForKey:@"religion_name"];
+    self.motherToungueTF.text = [self.heritageDict valueForKey:@"mother_tongue"];
+    self.familyOriginTF.text = [self.heritageDict valueForKey:@"family_origin_name"];
+    self.specificationTF.text = [self.heritageDict valueForKey:@"specification_name"];
+    self.gothraTF.text = [self.heritageDict valueForKey:@"gothra"];
     
+    
+    self.religionID = [self.heritageDict valueForKey:@"religion_id"];
+    self.motherToungueID = [self.heritageDict valueForKey:@"mother_tongue_id"];
+    self.famliyID = [self.heritageDict valueForKey:@"family_origin_id"];
+    self.specificationID = [self.heritageDict valueForKey:@"specification_id"];
+
 }
 
 
@@ -83,7 +95,7 @@
 {
     
     
-    if(nil == self.famliyID)
+    if(nil == self.famliyID || [self.famliyID isEqualToString:@""])
     {
         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Please Select Family Origin"];
         [message addAttribute:NSFontAttributeName
@@ -124,7 +136,7 @@
 
 -(IBAction)getFamilyOrigin:(id)sender
 {
-    if(nil == self.religionID)
+    if(nil == self.religionID || [self.religionID isEqualToString:@""])
     {
         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Please Select Relegion"];
         [message addAttribute:NSFontAttributeName
@@ -162,92 +174,28 @@
     }
 }
 
--(IBAction)continueClicked:(id)sender
-{
-    NSDictionary *parameters = nil;
-    /*
-     
-     3. API for screen 4b_profile_setup2
-     
-     API  to  Call
-     http://app.thebureauapp.com/admin/update_profile_step3
-     
-     Parameter
-     userid => user id of user
-     religion_id =>religion id
-     mother_tongue_id => mother tongue id
-     family_origin_id => family origin id
-     specification_id => specification id
-     gothra => gothra(text)
-     
-     */
-    
-    if(self.religionID == nil ||
-       self.motherToungueID == nil ||
-       self.famliyID == nil ||
-       self.specificationID == nil ||
-       [self.gothraTF.text isEqualToString:@""])
-    {
-        return;
-    }
-    
-    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
-                   @"religion_id":self.religionID,
-                   @"mother_tongue_id":self.motherToungueID,
-                   @"family_origin_id":self.famliyID,
-                   @"specification_id":self.specificationID,
-                   @"gothra":self.gothraTF.text
-                   };
-    
-    [self.parentVC startActivityIndicator:YES];
-    self.isUpdatingProfile = YES;
-    [[BUWebServicesManager sharedManager] updateProfileHeritagewithParameters:parameters
-                                                                 successBlock:^(id inResult, NSError *error)
-     {
-         self.isUpdatingProfile = NO;
-         if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
-         {
-             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Updated Successfully"];
-             [message addAttribute:NSFontAttributeName
-                             value:[UIFont fontWithName:@"comfortaa" size:15]
-                             range:NSMakeRange(0, message.length)];
-             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-             [alertController setValue:message forKey:@"attributedTitle"];
-             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-             [self.parentVC presentViewController:alertController animated:YES completion:nil];
-         }
-         else
-         {
-             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
-             [message addAttribute:NSFontAttributeName
-                             value:[UIFont fontWithName:@"comfortaa" size:15]
-                             range:NSMakeRange(0, message.length)];
-             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-             [alertController setValue:message forKey:@"attributedTitle"];
-             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-             [self.parentVC presentViewController:alertController animated:YES completion:nil];
-         }
-     }
-                                                                 failureBlock:^(id response, NSError *error) {
-                                                                     [self showFailureAlert];
-                                                                 }];
-}
-
 
 - (void)didItemSelected:(NSMutableDictionary *)inSelectedRow
 {
+    
     switch (self.heritageList)
     {
         case eReligionList:
         {
             self.religionTF.text = [inSelectedRow valueForKey:@"religion_name"];
             self.religionID = [inSelectedRow valueForKey:@"religion_id"];
+            
+            [self.heritageDict setValue:[inSelectedRow valueForKey:@"religion_name"] forKey:@"religion_name"];
+            [self.heritageDict setValue:[inSelectedRow valueForKey:@"religion_id"] forKey:@"religion_id"];
+
             break;
         }
         case eMotherToungueList:
         {
             self.motherToungueTF.text = [inSelectedRow valueForKey:@"mother_tongue"];
             self.motherToungueID = [inSelectedRow valueForKey:@"mother_tongue_id"];
+            [self.heritageDict setValue:[inSelectedRow valueForKey:@"mother_tongue"] forKey:@"mother_tongue"];
+            [self.heritageDict setValue:[inSelectedRow valueForKey:@"mother_tongue_id"] forKey:@"mother_tongue_id"];
             break;
         }
         case eFamilyOriginList:
@@ -255,12 +203,16 @@
             
             self.familyOriginTF.text = [inSelectedRow valueForKey:@"family_origin_name"];
             self.famliyID = [inSelectedRow valueForKey:@"family_origin_id"];
+            [self.heritageDict setValue:[inSelectedRow valueForKey:@"family_origin_name"] forKey:@"family_origin_name"];
+            [self.heritageDict setValue:[inSelectedRow valueForKey:@"family_origin_id"] forKey:@"family_origin_id"];
             break;
         }
         case eSpecificationList:
         {
             self.specificationTF.text = [inSelectedRow valueForKey:@"specification_name"];
             self.specificationID = [inSelectedRow valueForKey:@"specification_id"];
+            [self.heritageDict setValue:[inSelectedRow valueForKey:@"specification_name"] forKey:@"specification_name"];
+            [self.heritageDict setValue:[inSelectedRow valueForKey:@"specification_id"] forKey:@"specification_id"];
             break;
         }
         case eGothraList:
@@ -292,42 +244,16 @@
 //    [self endEditing:YES];
 //}
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.heritageDict setValue:textField.text forKey:@"gothra"];
     [textField resignFirstResponder];
     return YES;
 }
 
--(void)updateProfile
+- (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    
+    [self.heritageDict setValue:textField.text forKey:@"gothra"];
 }
-//{
-//    [self.parentVC startActivityIndicator:YES];
-//
-//    NSDictionary *parameters = nil;
-//    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
-//                   @"gender": @"Male",
-//                   @"height_feet": self.feetStr,
-//                   @"height_inch":self.inchStr,
-//                   @"maritial_status": self.maritalStatusTF.text,
-//                   @"location": self.radiusLabel.text,
-//
-//                   };
-//
-//    NSString *baseURl = @"http://app.thebureauapp.com/admin/update_profile_step1";
-//    [[BUWebServicesManager sharedManager] queryServer:parameters
-//                                              baseURL:baseURl
-//                                         successBlock:^(id response, NSError *error)
-//     {
-//         [self.parentVC stopActivityIndicator];
-//
-//     }
-//                                         failureBlock:^(id response, NSError *error) {
-//                                             [self.parentVC stopActivityIndicator];
-//                                         }
-//     ];
-//}
-
 
 @end

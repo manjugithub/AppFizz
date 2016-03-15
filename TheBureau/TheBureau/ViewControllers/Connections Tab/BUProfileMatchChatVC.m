@@ -37,8 +37,14 @@ static NSDateFormatter *LQSDateFormatter()
     
     self.layerClient = [BULayerHelper sharedHelper].layerClient;
     
-    [self setupConversationDataSource];
     // Do any additional setup after loading the view.
+}
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    if(self.historyList.count == 0)
+        [self setupConversationDataSource];
 }
 
 - (void)didReceiveMemoryWarning {

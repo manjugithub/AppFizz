@@ -135,11 +135,14 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     self.currentTextField = textField;
-    
-    [textField becomeFirstResponder];
     return YES;
 }
 
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    self.currentTextField = textField;
+}
 
 #pragma mark - HighLevelEducationTVCellDelegate
 

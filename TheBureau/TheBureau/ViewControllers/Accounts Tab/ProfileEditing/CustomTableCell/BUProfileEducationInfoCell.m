@@ -21,6 +21,59 @@
     // Configure the view for the selected state
 }
 
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    switch ([textField tag])
+    {
+        case 0:
+        {
+            [self.educationInfo setValue:textField.text forKey:@"honors"];
+            break;
+        }
+        case 1:
+        {
+            [self.educationInfo setValue:textField.text forKey:@"major"];
+            break;
+        }
+        case 2:
+        {
+            [self.educationInfo setValue:textField.text forKey:@"college"];
+            break;
+        }
+        case 3:
+        {
+            [self.educationInfo setValue:textField.text forKey:@"graduated_year"];
+            break;
+        }
+        case 4:
+        {
+            [self.educationInfo setValue:textField.text forKey:@"second_honor"];
+            break;
+        }
+        case 5:
+        {
+            [self.educationInfo setValue:textField.text forKey:@"second_major"];
+            break;
+        }
+        case 6:
+        {
+            [self.educationInfo setValue:textField.text forKey:@"second_college"];
+            break;
+        }
+        case 7:
+        {
+            [self.educationInfo setValue:textField.text forKey:@"second_year"];
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];

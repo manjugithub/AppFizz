@@ -166,10 +166,11 @@
                 }
                 else
                 {
+                parameters = @{@"login_type": @"digits",
+                               @"digits":@"44444555557"};
+//
 //                    parameters = @{@"login_type": @"digits",
-//                                   @"digits":@"+919844183444"};
-                    parameters = @{@"login_type": @"digits",
-                                   @"digits":session.phoneNumber};
+//                                   @"digits":session.phoneNumber};
                 }
                 [self startActivityIndicator:YES];
                 [[BUWebServicesManager sharedManager] loginWithDelegeatewithParameters:parameters
@@ -227,7 +228,7 @@
                      }
                      else
                      {
-                         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[inResult valueForKey:@"response"] ];
+                         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Login Failed"];
                          [message addAttribute:NSFontAttributeName
                                          value:[UIFont fontWithName:@"comfortaa" size:15]
                                          range:NSMakeRange(0, message.length)];

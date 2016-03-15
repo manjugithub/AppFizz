@@ -30,6 +30,14 @@ else
     return YES;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if([textField tag] == 0)
+        [self.occupationInfoDict setValue:self.positionTitleTF.text forKey:@"position_title"];
+    else
+        [self.occupationInfoDict setValue:self.companyTF.text forKey:@"company"];
+    [textField resignFirstResponder];
+}
 
 -(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict
 {

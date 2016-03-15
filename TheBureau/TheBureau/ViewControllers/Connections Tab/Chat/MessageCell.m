@@ -81,6 +81,7 @@
     self.profilePic = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
     self.profilePic.layer.cornerRadius = 20.0;
     
+    self.profilePic.image = [UIImage imageNamed:@"logo44"];
     self.profilePicBtn =[UIButton buttonWithType:UIButtonTypeCustom];
     self.profilePicBtn.frame = CGRectMake(5, 5, 40, 40);
     [self.profilePicBtn addTarget:self
@@ -132,7 +133,7 @@
     if (self.message.sender == MessageSenderMyself)
     {
         
-        self.profilePic.backgroundColor = [UIColor blueColor];
+        self.profilePic.backgroundColor = [UIColor clearColor];
 
         textView_marginLeft = 10;
         textView_marginRight = 20;
@@ -156,7 +157,7 @@
     {
         
         self.profilePic.frame = CGRectMake(5, textView_height-25, 40, 40);
-        self.profilePic.backgroundColor = [UIColor grayColor];
+        self.profilePic.backgroundColor = [UIColor clearColor];
 
         bubble_x = 2+45;
         bubble_y = 1;

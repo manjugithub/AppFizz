@@ -103,7 +103,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 7;
+    return 6;
 }
 
 
@@ -399,7 +399,6 @@
 
                                              [self.heritageDict setValue:([respDict valueForKey:@"specification_name"] != nil && NO == [[respDict valueForKey:@"specification_name"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"specification_name"] : @""  forKey:@"specification_name"];
 
-                                             [self.heritageDict setValue:([respDict valueForKey:@"gothra"] != nil && NO == [[respDict valueForKey:@"gothra"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"gothra"] : @""  forKey:@"gothra"];
 
                                              self.socialHabitsDict = [[NSMutableDictionary alloc] init];
                                              [self.socialHabitsDict setValue:([respDict valueForKey:@"diet"] != nil && NO == [[respDict valueForKey:@"diet"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"diet"] : @""  forKey:@"diet"];

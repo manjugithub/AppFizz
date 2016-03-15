@@ -190,12 +190,28 @@ static NSString * const reuseIdentifier = @"Cell";
         content.appLinkURL = [NSURL URLWithString:@"https://app.cancerlife.com/fb.html"];
     
         [FBSDKAppInviteDialog showFromViewController:self withContent:content delegate:self];
-        //    [_facebookLoginButton setEnabled:NO];
-        //    _activeIndicator.hidden = NO;
-        //    [_activeIndicator startAnimating];
-        //    [NB_FBLoginPaser login:self];
-    
 }
+
+/*!
+ @abstract Sent to the delegate when the app invite completes without error.
+ @param appInviteDialog The FBSDKAppInviteDialog that completed.
+ @param results The results from the dialog.  This may be nil or empty.
+ */
+- (void)appInviteDialog:(FBSDKAppInviteDialog *)appInviteDialog didCompleteWithResults:(NSDictionary *)results;
+{
+    [self showSuccessMessage];
+}
+/*!
+ @abstract Sent to the delegate when the app invite encounters an error.
+ @param appInviteDialog The FBSDKAppInviteDialog that completed.
+ @param error The error.
+ */
+- (void)appInviteDialog:(FBSDKAppInviteDialog *)appInviteDialog didFailWithError:(NSError *)error;
+{
+    [self showSuccessMessage];
+}
+
+
 -(void)showSuccessMessage
 {
     NSInteger gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];

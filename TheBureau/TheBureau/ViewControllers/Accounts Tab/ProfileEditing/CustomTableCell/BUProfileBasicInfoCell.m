@@ -63,6 +63,16 @@
     return YES;
 }
 
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    
+    [self.basicInfoDict setValue:textField.text forKey:@"first_name"];
+    
+    [self.basicInfoDict setValue:textField.text forKey:@"profile_first_name"];
+    
+    [textField resignFirstResponder];
+}
 #pragma mark - Gender selection
 
 
