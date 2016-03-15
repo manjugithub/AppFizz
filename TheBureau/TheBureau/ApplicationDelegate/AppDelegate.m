@@ -15,11 +15,13 @@
 #import <LayerKit/LayerKit.h>
 #import <Smooch/Smooch.h>
 #import "BULayerHelper.h"
+#import "AirshipLib.h"
+#import "AirshipKit.h"
+#import "AirshipCore.h"
 
 
 
-
-@interface AppDelegate ()//<LYRClientDelegate>
+@interface AppDelegate ()<UAPushNotificationDelegate>
 
 @end
 
@@ -37,23 +39,45 @@
 
     
     // Checking if app is running iOS 8
-    if ([application respondsToSelector:@selector(registerForRemoteNotifications)]) {
-        // Register device for iOS8
-        UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-        [application registerUserNotificationSettings:notificationSettings];
-        [application registerForRemoteNotifications];
-    } else {
-        // Register device for iOS7
-        [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge];
-    }
+//    if ([application respondsToSelector:@selector(registerForRemoteNotifications)]) {
+//        // Register device for iOS8
+//        UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+//        [application registerUserNotificationSettings:notificationSettings];
+//        [application registerForRemoteNotifications];
+//    } else {
+//        // Register device for iOS7
+//        [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge];
+//    }
 
     
     [self setupLayers];
     [self setAppearence];
     
     
+    // Call takeOff (which creates the UAirship singleton)
+    [UAirship takeOff];
+    
+    // User notifications will not be enabled until userPushNotificationsEnabled is
+    // set YES on UAPush. Once enabled, the setting will be persisted and the user
+    // will be prompted to allow notifications. Normally, you should wait for a more
+    // appropriate time to enable push to increase the likelihood that the user will
+    // accept notifications.
+    [UAirship push].userPushNotificationsEnabled = YES;
+
+    [UAirship push].pushNotificationDelegate = self;
+
+    
     return YES;
 }
+
+- (void)displayNotificationAlert:(NSString *)alertMessage
+{
+    NSLog(@"displayNotificationAlert ==> %@",alertMessage);
+}
+//- (void)displayNotificationAlert:(NSString *)alertMessage;
+//{
+//    
+//}
 
 - (void)setupLayers
 {
@@ -79,10 +103,6 @@
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor],NSFontAttributeName : [UIFont fontWithName:@"Comfortaa" size:20]}];
     [UINavigationBar appearance].translucent = NO;
        
-       
-    
-    
-    
   
 }
 
@@ -219,4 +239,13 @@
     }
 }
 
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    NSLog(@"Received Remote notification");
+}
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    NSLog(@"Received Local notification");
+}
 @end
