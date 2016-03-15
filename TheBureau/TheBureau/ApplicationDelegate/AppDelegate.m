@@ -14,6 +14,7 @@
 #import <DigitsKit/DigitsKit.h>
 #import <LayerKit/LayerKit.h>
 #import <Smooch/Smooch.h>
+#import "BULayerHelper.h"
 
 
 
@@ -33,6 +34,18 @@
                              didFinishLaunchingWithOptions:launchOptions];
     [Smooch initWithSettings:
      [SKTSettings settingsWithAppToken:@"98vczyf814ei6h4nyyasqhnxv"]];
+
+    
+    // Checking if app is running iOS 8
+    if ([application respondsToSelector:@selector(registerForRemoteNotifications)]) {
+        // Register device for iOS8
+        UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+        [application registerUserNotificationSettings:notificationSettings];
+        [application registerForRemoteNotifications];
+    } else {
+        // Register device for iOS7
+        [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge];
+    }
 
     
     [self setupLayers];
@@ -71,6 +84,19 @@
     
     
   
+}
+
+#pragma Remote  Notification Delegates 
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSError *error;
+    BOOL success = [[BULayerHelper sharedHelper].layerClient updateRemoteNotificationDeviceToken:deviceToken error:&error];
+    if (success) {
+        NSLog(@"Application did register for remote notifications");
+    } else {
+        NSLog(@"Error updating Layer device token for push:%@", error);
+    }
 }
 
 

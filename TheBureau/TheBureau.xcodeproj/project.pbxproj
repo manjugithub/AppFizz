@@ -1265,6 +1265,14 @@
 					784622581C0711E100EA589C = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = P29PTWJ79Z;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					784622741C0711E100EA589C = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -1664,8 +1672,8 @@
 			baseConfigurationReference = 6502757F3F1ACF97331C1C80 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Manjunath HS (3D4G79WZ29)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Manjunath HS (3D4G79WZ29)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods",
@@ -1676,7 +1684,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) '@executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bureau.bureauapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c737a1e-67eb-4d01-8534-e0d78a954e62";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1685,8 +1693,8 @@
 			baseConfigurationReference = F1221E9735CB633F12051843 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Manjunath HS (3D4G79WZ29)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Manjunath HS (3D4G79WZ29)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods",
@@ -1697,7 +1705,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) '@executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bureau.bureauapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c737a1e-67eb-4d01-8534-e0d78a954e62";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

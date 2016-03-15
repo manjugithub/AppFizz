@@ -357,10 +357,11 @@ static UIColor *LSRandomColor(void)
     NSString *pushMessage= [NSString stringWithFormat:@"%@ says %@",self.layerClient.authenticatedUserID ,messageText];
     
     LYRPushNotificationConfiguration *defaultConfiguration = [LYRPushNotificationConfiguration new];
+    defaultConfiguration.sound = @"layerbell.caf";
+    
     defaultConfiguration.alert = pushMessage;
     defaultConfiguration.category = LQSCategoryIdentifier;
     // The following dictionary will appear in push payload
-    defaultConfiguration.data = @{ @"test_key": @"test_value"};
     NSDictionary *pushOptions = @{ LYRMessageOptionsPushNotificationConfigurationKey: defaultConfiguration };
     
     LYRMessage *message = [self.layerClient newMessageWithParts:@[messagePart] options:pushOptions error:nil];
