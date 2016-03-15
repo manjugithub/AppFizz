@@ -166,11 +166,11 @@
                 }
                 else
                 {
-                parameters = @{@"login_type": @"digits",
-                               @"digits":@"44444555557"};
+//                parameters = @{@"login_type": @"digits",
+//                               @"digits":@"44444555557"};
 //
-//                    parameters = @{@"login_type": @"digits",
-//                                   @"digits":session.phoneNumber};
+                    parameters = @{@"login_type": @"digits",
+                                   @"digits":session.phoneNumber};
                 }
                 [self startActivityIndicator:YES];
                 [[BUWebServicesManager sharedManager] loginWithDelegeatewithParameters:parameters
