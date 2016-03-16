@@ -28,7 +28,9 @@
     {
         self.fName = [inDictionary valueForKey:@"First Name"];
         self.lName = [inDictionary valueForKey:@"Last Name"];
-        self.imgURL = [inDictionary valueForKey:@"img_url"];
+     
+            self.imgURL = [inDictionary valueForKey:@"img_url"];
+
         self.userID = [inDictionary valueForKey:@"userid"];
     }
     return self;
