@@ -8,6 +8,7 @@
 
 #import "BUAppNotificationCell.h"
 #import <DigitsKit/DigitsKit.h>
+#import "BULayerHelper.h"
 
 @implementation BUAppNotificationCell
 
@@ -66,7 +67,12 @@
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSLog(@"OK");
             
-            [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
+            [self.parentVC startActivityIndicator:YES];
+            [[Digits sharedInstance]logOut];
+            [[BULayerHelper sharedHelper]deauthenticateWithCompletion:^(BOOL success, NSError * _Nullable error) {
+                [self.parentVC stopActivityIndicator];
+                [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
+            }];
         }];
         
         action;
@@ -96,7 +102,12 @@
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSLog(@"OK");
             
-            [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
+            [self.parentVC startActivityIndicator:YES];
+            [[Digits sharedInstance]logOut];
+            [[BULayerHelper sharedHelper]deauthenticateWithCompletion:^(BOOL success, NSError * _Nullable error) {
+                [self.parentVC stopActivityIndicator];
+                [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
+            }];
         }];
         
         action;
@@ -119,9 +130,13 @@
     [alertController addAction:({
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSLog(@"OK");
+            
+            [self.parentVC startActivityIndicator:YES];
             [[Digits sharedInstance]logOut];
-
-            [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
+            [[BULayerHelper sharedHelper]deauthenticateWithCompletion:^(BOOL success, NSError * _Nullable error) {
+                [self.parentVC stopActivityIndicator];
+                [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
+            }];
         }];
         
         action;

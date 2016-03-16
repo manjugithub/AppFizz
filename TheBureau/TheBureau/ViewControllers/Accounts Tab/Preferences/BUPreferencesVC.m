@@ -134,7 +134,7 @@
     // Do any additional setup after loading the view.
     _relationCircle = [NSArray arrayWithObjects:@"Father",@"Mother",@"Family member", @"Friend", @"Sister", @"Brother",@"Self",nil];
 
-    _educationLevelArray = [[NSArray alloc]initWithObjects:@"Post Graduate",@"Bachelor's",@"12th",@"10th", nil];
+    _educationLevelArray = [[NSArray alloc]initWithObjects:@"Doctorate",@"Masters",@"Bachelors",@"Associates",@"Grade School", nil];
 
     if (YES == [[NSUserDefaults standardUserDefaults] boolForKey:@"isUSCitizen"])
     {

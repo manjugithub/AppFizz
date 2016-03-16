@@ -43,7 +43,7 @@ static NSDateFormatter *LQSDateFormatter()
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    if(self.historyList.count == 0)
+    [self.historyList removeAllObjects];
         [self setupConversationDataSource];
 }
 

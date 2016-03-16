@@ -12,7 +12,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    _educationLevelArray = [[NSArray alloc]initWithObjects:@"Post Graduate",@"Bachelor's",@"12th",@"10th", nil];
+    _educationLevelArray = [[NSArray alloc]initWithObjects:@"Doctorate",@"Masters",@"Bachelors",@"Associates",@"Grade School", nil];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

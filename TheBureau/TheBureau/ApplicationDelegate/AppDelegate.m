@@ -32,10 +32,10 @@
     // Override point for customization after application launch.
     
     [Fabric with:@[[Crashlytics class],[DigitsKit class]]];
-   [[FBSDKApplicationDelegate sharedInstance] application:application
-                             didFinishLaunchingWithOptions:launchOptions];
-    [Smooch initWithSettings:
-     [SKTSettings settingsWithAppToken:@"98vczyf814ei6h4nyyasqhnxv"]];
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                            didFinishLaunchingWithOptions:launchOptions];
+
+    [Smooch initWithSettings:[SKTSettings settingsWithAppToken:@"98vczyf814ei6h4nyyasqhnxv"]];
 
     
     // Checking if app is running iOS 8
@@ -53,48 +53,25 @@
     [self setupLayers];
     [self setAppearence];
     
-    
-    // Call takeOff (which creates the UAirship singleton)
-    [UAirship takeOff];
-    
-    // User notifications will not be enabled until userPushNotificationsEnabled is
-    // set YES on UAPush. Once enabled, the setting will be persisted and the user
-    // will be prompted to allow notifications. Normally, you should wait for a more
-    // appropriate time to enable push to increase the likelihood that the user will
-    // accept notifications.
-    [UAirship push].userPushNotificationsEnabled = YES;
-
-    [UAirship push].pushNotificationDelegate = self;
-
-    
     return YES;
 }
 
-- (void)displayNotificationAlert:(NSString *)alertMessage
-{
-    NSLog(@"displayNotificationAlert ==> %@",alertMessage);
-}
-//- (void)displayNotificationAlert:(NSString *)alertMessage;
-//{
-//    
-//}
 
 - (void)setupLayers
 {
 }
-
-
 
 - (void)setAppearence
 {
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -6000)
                                                          forBarMetrics:UIBarMetricsDefault];
     
-    
-    
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:213.0f/255.0f green:15.0f/255.0f blue:17.0f/255.0f alpha:1.0f]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:213.0f/255.0f
+                                                                  green:15.0f/255.0f
+                                                                   blue:17.0f/255.0f
+                                                                  alpha:1.0f]];
     [[UINavigationBar appearance] setTranslucent:NO];
     
     
@@ -103,7 +80,6 @@
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor],NSFontAttributeName : [UIFont fontWithName:@"Comfortaa" size:20]}];
     [UINavigationBar appearance].translucent = NO;
        
-  
 }
 
 #pragma Remote  Notification Delegates 
@@ -111,7 +87,8 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     NSError *error;
-    BOOL success = [[BULayerHelper sharedHelper].layerClient updateRemoteNotificationDeviceToken:deviceToken error:&error];
+    BOOL success = [[BULayerHelper sharedHelper].layerClient updateRemoteNotificationDeviceToken:deviceToken
+                                                                                           error:&error];
     if (success) {
         NSLog(@"Application did register for remote notifications");
     } else {
@@ -192,13 +169,19 @@
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"TheBureau.sqlite"];
     NSError *error = nil;
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                                   configuration:nil
+                                                             URL:storeURL
+                                                         options:nil
+                                                           error:&error]) {
         // Report any error we got.
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         dict[NSLocalizedDescriptionKey] = @"Failed to initialize the application's saved data";
         dict[NSLocalizedFailureReasonErrorKey] = failureReason;
         dict[NSUnderlyingErrorKey] = error;
-        error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
+        error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN"
+                                    code:9999
+                                userInfo:dict];
         // Replace this with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);

@@ -25,5 +25,6 @@
 
 +(instancetype)sharedHelper;
 -(void)authenticateLayerWithsuccessBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+- (void)deauthenticateWithCompletion:(nullable void (^)(BOOL success, NSError * _Nullable error))completion;
 @end
 

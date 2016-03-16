@@ -64,6 +64,16 @@
 
 #pragma mark - Layer Authentication Methods
 
+- (void)deauthenticateWithCompletion:(nullable void (^)(BOOL success, NSError * _Nullable error))completion;
+{
+    if (self.layerClient.authenticatedUserID)
+    {
+        [self.layerClient deauthenticateWithCompletion:^(BOOL success, NSError * _Nullable error) {
+            if (completion) completion(YES, nil);
+        }];
+    }
+}
+
 - (void)authenticateLayerWithUserID:(NSString *)userID completion:(void (^)(BOOL success, NSError * error))completion
 {
     if (self.layerClient.authenticatedUserID) {

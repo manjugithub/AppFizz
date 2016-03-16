@@ -18,6 +18,8 @@
 #import "BUProfileHeritageVC.h"
 #import "BUProfileRematchVC.h"
 #import "BUContactListViewController.h"
+
+
 @interface BUSplashViewController ()
 {
     
