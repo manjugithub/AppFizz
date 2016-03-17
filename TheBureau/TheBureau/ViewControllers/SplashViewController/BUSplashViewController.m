@@ -34,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"TheBureau_Splash" withExtension:@"gif"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"splash_new" withExtension:@"gif"];
     self.dataImageView.image = [UIImage animatedImageWithAnimatedGIFData:[NSData dataWithContentsOfURL:url]];
     
     self.navigationController.navigationBarHidden = YES;
@@ -47,7 +47,7 @@
     [super viewDidAppear:YES];
     
     
-   splashTimer  = [NSTimer scheduledTimerWithTimeInterval:4.5 target:self selector:@selector(setSplashTimer) userInfo:nil repeats:NO];
+   splashTimer  = [NSTimer scheduledTimerWithTimeInterval:5.2 target:self selector:@selector(setSplashTimer) userInfo:nil repeats:NO];
 
     
 }

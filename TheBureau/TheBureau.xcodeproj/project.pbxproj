@@ -11,6 +11,7 @@
 		5B08024F1C6CD13C00DAD5A5 /* BUProfileDietVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B08024E1C6CD13C00DAD5A5 /* BUProfileDietVC.m */; };
 		5B0802551C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0802541C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m */; };
 		5B0802611C7344BC00DAD5A5 /* BUEmptySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0802601C7344BC00DAD5A5 /* BUEmptySegue.m */; };
+		5B08286D1C9AE80300F6EEF6 /* splash_new.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5B08286C1C9AE80300F6EEF6 /* splash_new.gif */; settings = {ASSET_TAGS = (); }; };
 		5B0AEDC61C22B94A00877C24 /* BULoginWithEmailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0AEDC51C22B94A00877C24 /* BULoginWithEmailVC.m */; };
 		5B0AEDC91C22C69D00877C24 /* BUAuthButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0AEDC81C22C69D00877C24 /* BUAuthButton.m */; };
 		5B0AEDCC1C23591400877C24 /* BUSignUpWithEmailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0AEDCB1C23591400877C24 /* BUSignUpWithEmailVC.m */; };
@@ -228,6 +229,7 @@
 		5B0802541C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BUCustomerServiceChatVC.m; path = ../HomeViewController/BUCustomerServiceChatVC.m; sourceTree = "<group>"; };
 		5B08025F1C7344BC00DAD5A5 /* BUEmptySegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUEmptySegue.h; sourceTree = "<group>"; };
 		5B0802601C7344BC00DAD5A5 /* BUEmptySegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUEmptySegue.m; sourceTree = "<group>"; };
+		5B08286C1C9AE80300F6EEF6 /* splash_new.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash_new.gif; sourceTree = "<group>"; };
 		5B0AEDC41C22B94A00877C24 /* BULoginWithEmailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BULoginWithEmailVC.h; sourceTree = "<group>"; };
 		5B0AEDC51C22B94A00877C24 /* BULoginWithEmailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BULoginWithEmailVC.m; sourceTree = "<group>"; };
 		5B0AEDC71C22C69D00877C24 /* BUAuthButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BUAuthButton.h; path = TheBureau/ViewControllers/LoginViewController/BUAuthButton.h; sourceTree = SOURCE_ROOT; };
@@ -1027,6 +1029,7 @@
 		7846225C1C0711E100EA589C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5B08286C1C9AE80300F6EEF6 /* splash_new.gif */,
 				5B16288C1C4D04B80034FA33 /* TheBureau_Splash.gif */,
 				78F4A9261C0CCC11001C76A6 /* Fonts */,
 				7846226D1C0711E100EA589C /* LaunchScreen.storyboard */,
@@ -1671,6 +1674,7 @@
 				783F851E1C9824210002386B /* copy_header_imports.sh in Resources */,
 				783F851A1C9824210002386B /* AirshipResources.bundle in Resources */,
 				78CF17281C60979600779203 /* CustomPicker.storyboard in Resources */,
+				5B08286D1C9AE80300F6EEF6 /* splash_new.gif in Resources */,
 				5B16288F1C4D252A0034FA33 /* ALLURA-REGULAR.TTF in Resources */,
 				78345E4C1C983A3D00236520 /* AirshipConfig.plist in Resources */,
 				5BA796071C7F9683009B65E1 /* Connections.Storyboard in Resources */,
