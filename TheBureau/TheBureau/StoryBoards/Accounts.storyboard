@@ -201,7 +201,7 @@
                                                                     <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="12"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                     <connections>
-                                                                        <outlet property="delegate" destination="eQg-4I-oLv" id="cH6-0B-DxQ"/>
+                                                                        <outlet property="delegate" destination="eQg-4I-oLv" id="Ypl-TI-Vib"/>
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>
@@ -564,7 +564,7 @@
                                             <outlet property="genderSelectionBtn" destination="7Zq-iw-9MK" id="fHf-ok-kDC"/>
                                             <outlet property="heighTextField" destination="fh1-zE-17x" id="4Kt-J6-hT1"/>
                                             <outlet property="maleImgView" destination="PUF-fH-Pqw" id="ilE-Oe-XUo"/>
-                                            <outlet property="nameTF" destination="lhk-NO-ZEP" id="4Fw-he-K0G"/>
+                                            <outlet property="nameTF" destination="lhk-NO-ZEP" id="Ve6-Xv-Tmi"/>
                                             <outlet property="neverMarriedBtn" destination="DLJ-cG-2qj" id="US0-wr-SxA"/>
                                             <outlet property="parentVC" destination="DA2-eY-bxN" id="wJs-MO-aat"/>
                                             <outlet property="radiusLabel" destination="0Zx-cp-aGh" id="BUr-Vf-H8V"/>

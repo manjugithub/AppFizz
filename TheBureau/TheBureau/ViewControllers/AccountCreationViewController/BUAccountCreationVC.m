@@ -7,10 +7,10 @@
 //
 
 #import "BUAccountCreationVC.h"
-#import "BUProfileSelectionVC.h"
+#import "BUProfileDetailsVC.h"
 #import "UIView+FLKAutoLayout.h"
 
-@interface BUAccountCreationVC ()
+@interface BUAccountCreationVC ()<UIActionSheetDelegate>
 
 
 @property(nonatomic,weak) IBOutlet UITextField *firstNameTF;
@@ -24,7 +24,6 @@
 @property(nonatomic,weak) IBOutlet UIButton *genderSelectionBtn;
 
 @property (nonatomic, assign) CGSize keyboardSize;
-@property (nonatomic, strong) UITextField *currentTextField;
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollview;
 @property (nonatomic, strong) UIView *keyboarAccessoryview;
 
@@ -37,10 +36,77 @@
 
 @implementation BUAccountCreationVC
 
+
+-(IBAction)dropDownBtn:(id)sender
+{
+    
+    if([self.currentTextField isFirstResponder]){
+        [self.currentTextField resignFirstResponder];
+    }
+    
+if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualToString:@""])
+{
+    [self alertMessage:@"First name and last name"];
+    return;
+}
+
+    
+    UIActionSheet *acSheet = [[UIActionSheet alloc] initWithTitle:@"Select Relationship" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles: nil];
+    
+    for (NSString *str in _relationCircle)
+    {
+        [acSheet addButtonWithTitle:str];
+    }
+    
+    [acSheet showInView:self.view];
+    
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != 0)
+    {
+        self.relationLabel.text = _relationCircle[buttonIndex - 1];
+    }
+    if ([self.relationLabel.text isEqualToString:@"Self"]) {
+        
+        self.profileFirstNameTF.text = self.firstNameTF.text;
+        self.profileLastNameTF.text = self.lastNameTF.text;
+    }
+    else{
+        
+        self.profileFirstNameTF.text = nil;
+        self.profileLastNameTF.text = nil;
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"Account Creation";
+    
+    _relationCircle = [NSArray arrayWithObjects:@"Father",@"Mother",@"Family member", @"Friend", @"Sister", @"Brother",@"Self",nil];
+    
+    
+    UIImageView * leftView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
+    leftView1.image =  [UIImage imageNamed:@"ic_user"];
+    leftView1.contentMode = UIViewContentModeCenter;
+    self.profileFirstNameTF.leftView = leftView1;
+    self.profileFirstNameTF.leftViewMode = UITextFieldViewModeAlways;
+    self.profileFirstNameTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    
+    
+    
+    UIImageView * leftView2 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
+    leftView2.image =  [UIImage imageNamed:@"ic_user"];
+    leftView2.contentMode = UIViewContentModeCenter;
+    
+    
+    self.profileLastNameTF.leftViewMode = UITextFieldViewModeAlways;
+    self.profileLastNameTF.leftView = leftView2;
+    self.profileLastNameTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    // Do any additional setup after loading the view.
+    
     
     
     UIImageView * leftView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
@@ -58,43 +124,43 @@
     self.lastNameTF.leftViewMode = UITextFieldViewModeAlways;
     self.lastNameTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
-
     
     
-//    self.lastNameTF.leftViewMode = UITextFieldViewModeAlways;
-//    self.lastNameTF.leftView = leftView;
-//    self.lastNameTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-
+    
+    //    self.lastNameTF.leftViewMode = UITextFieldViewModeAlways;
+    //    self.lastNameTF.leftView = leftView;
+    //    self.lastNameTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    
     //[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_user"]];
     
-    UIImageView * leftView1 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
-    leftView.image =  [UIImage imageNamed:@"ic_email"];
-    leftView.contentMode = UIViewContentModeCenter;
-    self.emailIdTF.leftView = leftView1;
+    UIImageView * leftView11 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
+    leftView11.image =  [UIImage imageNamed:@"ic_email"];
+    leftView11.contentMode = UIViewContentModeCenter;
+    self.emailIdTF.leftView = leftView11;
     self.emailIdTF.leftViewMode = UITextFieldViewModeAlways;
     self.emailIdTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
     
-    UIImageView * leftView2 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
-    leftView.image =  [UIImage imageNamed:@"ic_mobile"];
-    leftView.contentMode = UIViewContentModeCenter;
-    self.mobileNumTF.leftView = leftView2;
+    UIImageView * leftView21 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
+    leftView21.image =  [UIImage imageNamed:@"ic_mobile"];
+    leftView21.contentMode = UIViewContentModeCenter;
+    self.mobileNumTF.leftView = leftView21;
     self.mobileNumTF.leftViewMode = UITextFieldViewModeAlways;
     self.mobileNumTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
-
+    
     UIImageView * leftView3 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
     leftView.image =  [UIImage imageNamed:@"ic_dob"];
     leftView.contentMode = UIViewContentModeCenter;
     self.dateofbirthTF.leftView = leftView3;
     self.dateofbirthTF.leftViewMode = UITextFieldViewModeAlways;
     self.dateofbirthTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-
     
-      
+    
+    
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.scrollview addGestureRecognizer:gestureRecognizer];
-
+    
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_back"] style:UIBarButtonItemStylePlain target:self action:@selector(viewPopOnBackButton)];
     
@@ -138,8 +204,8 @@
         self.dateofbirthTF.text = [NSString stringWithFormat:@" %@",self.socialChannel.profileDetails.dob];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
 }
 
@@ -213,61 +279,61 @@
     
     
 }
-- (void)keyboardWillHide:(NSNotification *)notification {
-    self.keyboardSize = CGSizeZero;
-    
-    [self.scrollview setContentOffset:CGPointZero animated:YES];
-    
-}
-
-- (void)textFieldGotFocus:(UITextField *)sender {
-    sender.inputAccessoryView = self.keyboarAccessoryview;
-    self.currentTextField = sender;
-    [self adjustScrollViewOffsetToCenterTextField:sender];
-}
-
-- (void)keyboardWillShow:(NSNotification *)notification {
-    NSDictionary *info = [notification userInfo];
-    NSValue *keyBoardEndFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
-    CGSize keyboardSize = [keyBoardEndFrame CGRectValue].size;
-    self.keyboardSize = keyboardSize;
-    
-    CGPoint textFieldOrigin = self.currentTextField.frame.origin;
-    
-    CGFloat textfieldHeight = self.currentTextField.frame.size.height;
-    
-    CGRect visibleRect = self.scrollview.frame;
-    
-    visibleRect.size.height -= _keyboardSize.height+100;
-    
-    if (!CGRectContainsPoint(visibleRect, textFieldOrigin)){
-        
-        CGPoint scrollPoint = CGPointMake(0.0, textFieldOrigin.y - visibleRect.size.height + textfieldHeight);
-        
-        [self.scrollview setContentOffset:scrollPoint animated:YES];
-        
-        
-    }
-    
-    
-}
-
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField;
-{
-    
-    [self textFieldGotFocus:textField];
-    
-   }
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField;        // return NO to disallow editing.
-{
-    
-
-    return YES;
-    
-    
-}
+//- (void)keyboardWillHide:(NSNotification *)notification {
+//    self.keyboardSize = CGSizeZero;
+//    
+//    [self.scrollview setContentOffset:CGPointZero animated:YES];
+//    
+//}
+//
+//- (void)textFieldGotFocus:(UITextField *)sender {
+//    sender.inputAccessoryView = self.keyboarAccessoryview;
+//    self.currentTextField = sender;
+//    [self adjustScrollViewOffsetToCenterTextField:sender];
+//}
+//
+//- (void)keyboardWillShow:(NSNotification *)notification {
+//    NSDictionary *info = [notification userInfo];
+//    NSValue *keyBoardEndFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+//    CGSize keyboardSize = [keyBoardEndFrame CGRectValue].size;
+//    self.keyboardSize = keyboardSize;
+//    
+//    CGPoint textFieldOrigin = self.currentTextField.frame.origin;
+//    
+//    CGFloat textfieldHeight = self.currentTextField.frame.size.height;
+//    
+//    CGRect visibleRect = self.scrollview.frame;
+//    
+//    visibleRect.size.height -= _keyboardSize.height+100;
+//    
+//    if (!CGRectContainsPoint(visibleRect, textFieldOrigin)){
+//        
+//        CGPoint scrollPoint = CGPointMake(0.0, textFieldOrigin.y - visibleRect.size.height + textfieldHeight);
+//        
+//        [self.scrollview setContentOffset:scrollPoint animated:YES];
+//        
+//        
+//    }
+//    
+//    
+//}
+//
+//
+//- (void)textFieldDidBeginEditing:(UITextField *)textField;
+//{
+//    
+//    [self textFieldGotFocus:textField];
+//    
+//   }
+//
+//- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField;        // return NO to disallow editing.
+//{
+//    
+//
+//    return YES;
+//    
+//    
+//}
 -(IBAction)dateofbirthBtn:(id)sender{
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Birthday\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
@@ -414,6 +480,21 @@
         [self alertMessage:@"Email Address"];
         
     }
+    else if (![self.relationLabel.text length]){
+        
+        [self alertMessage:@"Relationship"];
+        
+    }
+    else if (![self.profileFirstNameTF.text length]){
+        
+        [self alertMessage:@"Profile First Name"];
+        
+    }
+    else if (![self.profileLastNameTF.text length]){
+        
+        [self alertMessage:@"Profile Last Name"];
+        
+    }
     else
     {
         /*
@@ -433,6 +514,9 @@
         parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
                        @"first_name":self.firstNameTF.text,
                        @"last_name":self.lastNameTF.text,
+                       @"profile_first_name":self.firstNameTF.text,
+                       @"profile_last_name":self.lastNameTF.text,
+                       @"profile_for":@"Self",
                        @"dob":self.dateofbirthTF.text,
                        @"gender":self.genderSelectionBtn.tag == 1 ? @"Male" : @"Female",
                        @"phone_number":self.mobileNumTF.text,
@@ -446,10 +530,8 @@
                                              successBlock:^(id response, NSError *error) {
                                                  [self stopActivityIndicator];
                                                  UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
-                                                 BUProfileSelectionVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileSelectionVC"];
-                                                 
-                                                 vc.firstName = self.firstNameTF.text;
-                                                 vc.lastName = self.lastNameTF.text;
+                                                 BUProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDetailsVC"];
+                                                 [self.navigationController pushViewController:vc animated:YES];
                                                  
                                                  [self.navigationController pushViewController:vc animated:YES];
                                              } failureBlock:^(id response, NSError *error) {

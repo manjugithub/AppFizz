@@ -151,7 +151,7 @@
                 
                 self.socialChannel.mobileNumber = session.phoneNumber;
                 self.socialChannel.emailID = session.emailAddress;
-           
+                
                 NSDictionary *parameters = nil;
                 
                 if(nil == self.socialChannel.profileDetails.fbID)
@@ -166,11 +166,11 @@
                 }
                 else
                 {
-//                parameters = @{@"login_type": @"digits",
-//                               @"digits":@"44444555557"};
-//
                     parameters = @{@"login_type": @"digits",
-                                   @"digits":session.phoneNumber};
+                                   @"digits":@"334445556723"};
+                    
+//                                        parameters = @{@"login_type": @"digits",
+//                                                       @"digits":session.phoneNumber};
                 }
                 [self startActivityIndicator:YES];
                 [[BUWebServicesManager sharedManager] loginWithDelegeatewithParameters:parameters
@@ -182,12 +182,12 @@
                      {
                          
                          [BUWebServicesManager sharedManager].userID = [inResult valueForKey:@"userid"];
-                     //    [inResult valueForKey:@"userid"];
+                         //    [inResult valueForKey:@"userid"];
                          
                          [[BULayerHelper sharedHelper] setCurrentUserID:[inResult valueForKey:@"userid"]];
                          
-//                         [[BULayerHelper sharedHelper] setCurrentUserID:@"126"];
-
+                         //                         [[BULayerHelper sharedHelper] setCurrentUserID:@"126"];
+                         
                          NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Login Successful"];
                          [message addAttribute:NSFontAttributeName
                                          value:[UIFont fontWithName:@"comfortaa" size:15]
@@ -200,26 +200,24 @@
                                                                           handler:^(UIAlertAction *action)
                                                     {
                                                         [self startActivityIndicator:YES];
-                                                        
-                                                        [[BULayerHelper sharedHelper] authenticateLayerWithsuccessBlock:^(id response, NSError *error) {
-                                                                [self stopActivityIndicator];
-                                                            
-                                                                    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-                                                                    BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-                                                                    [self.navigationController pushViewController:vc animated:YES];
-                                                        } failureBlock:^(id response, NSError *error) {
-                                                            {
-                                                                NSLog(@"Failed Authenticating Layer Client with error:%@", error);
-                                                                NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Failed Authenticating Layer Client with error:%@", error]];
-                                                                [message addAttribute:NSFontAttributeName
-                                                                                value:[UIFont fontWithName:@"comfortaa" size:15]
-                                                                                range:NSMakeRange(0, message.length)];
-                                                                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-                                                                [alertController setValue:message forKey:@"attributedTitle"];
-                                                                [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-                                                                [self presentViewController:alertController animated:YES completion:nil];
-                                                                
-                                                            }                                                        }];
+
+                                                        [[BULayerHelper sharedHelper] authenticateLayerWithsuccessBlock:^(id response, NSError *error)
+                                                         {
+                                                             [self checkForAccountCreation];
+                                                         } failureBlock:^(id response, NSError *error)
+                                                         {
+                                                             NSLog(@"Failed Authenticating Layer Client with error:%@", error);
+                                                             [self stopActivityIndicator];
+                                                             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Failed Authenticating Layer Client with error:%@", error]];
+                                                             [message addAttribute:NSFontAttributeName
+                                                                             value:[UIFont fontWithName:@"comfortaa" size:15]
+                                                                             range:NSMakeRange(0, message.length)];
+                                                             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+                                                             [alertController setValue:message forKey:@"attributedTitle"];
+                                                             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                                                             [self presentViewController:alertController animated:YES completion:nil];
+                                                             
+                                                         }];
                                                     }];
                          
                          [alertController addAction:okAction];
@@ -258,6 +256,52 @@
             NSLog(@"Authentication error: %@", error.localizedDescription);
         }
     }];
+    
+}
+
+-(void)checkForAccountCreation
+{
+    NSDictionary *parameters = nil;
+    
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID};
+
+    [self startActivityIndicator:YES];
+    [[BUWebServicesManager sharedManager] queryServer:parameters
+                                              baseURL:@"http://app.thebureauapp.com/admin/ValidateUserAccount"
+                                         successBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         [self stopActivityIndicator];
+         [self stopActivityIndicator];
+         [self stopActivityIndicator];
+         if(YES == [[response valueForKey:@"msg"] isEqualToString:@"Success"])
+         {
+             UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+             BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+             [self.navigationController pushViewController:vc animated:YES];
+         }
+         else
+         {
+             UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+             BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];
+             vc.socialChannel = self.socialChannel;
+             [self.navigationController pushViewController:vc animated:YES];
+         }
+     }
+                                         failureBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Login Failed"];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];
+         [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+         [self presentViewController:alertController animated:YES completion:nil];
+         
+     }];
+
 
 }
 

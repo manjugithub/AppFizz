@@ -12,4 +12,13 @@
 @interface BUAccountCreationVC : BUBaseViewController
 
 @property(nonatomic, strong) BUSocialChannel *socialChannel;
+@property(nonatomic,weak) IBOutlet UITextField *profileFirstNameTF;
+@property(nonatomic,weak) IBOutlet UITextField *profileLastNameTF;
+@property(nonatomic)IBOutlet UITextField *currentTextField;
+
+@property (weak, nonatomic) IBOutlet UILabel *relationLabel;
+
+@property(nonatomic,strong)NSArray* relationCircle;
+
+-(void)viewPopOnBackButton;
 @end

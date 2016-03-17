@@ -397,7 +397,7 @@ numberOfRowsInComponent:(NSInteger)component{
 
     NSInteger tag = 1;
     
-    if([self.maritalStatus  isEqualToString:@"Never married"] || [self.maritalStatus  isEqualToString:@""])
+    if([self.maritalStatus  isEqualToString:@"Never Married"] || [self.maritalStatus  isEqualToString:@""])
     {
         tag = 1;
     }
