@@ -46,11 +46,11 @@
     NSInteger tag = 1;
     if([[self.yesLabel text] containsString:occupationStr])
     {
-        tag = 0;
+        tag = 1;
     }
     else
     {
-        tag = 1;
+        tag = 0;
     }
     [self updateSmokingForTag:tag];
 }

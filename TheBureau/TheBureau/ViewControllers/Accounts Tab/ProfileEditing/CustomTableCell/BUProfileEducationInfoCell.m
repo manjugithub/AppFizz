@@ -50,22 +50,22 @@
         }
         case 4:
         {
-            [self.educationInfo setValue:textField.text forKey:@"second_honor"];
+            [self.educationInfo setValue:textField.text forKey:@"honors_second"];
             break;
         }
         case 5:
         {
-            [self.educationInfo setValue:textField.text forKey:@"second_major"];
+            [self.educationInfo setValue:textField.text forKey:@"majors_second"];
             break;
         }
         case 6:
         {
-            [self.educationInfo setValue:textField.text forKey:@"second_college"];
+            [self.educationInfo setValue:textField.text forKey:@"college_second"];
             break;
         }
         case 7:
         {
-            [self.educationInfo setValue:textField.text forKey:@"second_year"];
+            [self.educationInfo setValue:textField.text forKey:@"graduation_years_second"];
             break;
         }
             
@@ -102,22 +102,22 @@
         }
         case 4:
         {
-            [self.educationInfo setValue:textField.text forKey:@"second_honor"];
+            [self.educationInfo setValue:textField.text forKey:@"honors_second"];
             break;
         }
         case 5:
         {
-            [self.educationInfo setValue:textField.text forKey:@"second_major"];
+            [self.educationInfo setValue:textField.text forKey:@"majors_second"];
             break;
         }
         case 6:
         {
-            [self.educationInfo setValue:textField.text forKey:@"second_college"];
+            [self.educationInfo setValue:textField.text forKey:@"college_second"];
             break;
         }
         case 7:
         {
-            [self.educationInfo setValue:textField.text forKey:@"second_year"];
+            [self.educationInfo setValue:textField.text forKey:@"graduation_years_second"];
             break;
         }
             
@@ -145,7 +145,7 @@
         else if(actionSheet.tag == 102)
         {
             self.educationlevelLbl2.text = _educationLevelArray[buttonIndex - 1];
-            [self.educationInfo setValue:self.educationlevelLbl2.text forKey:@"Second_highest_level_edu"];
+            [self.educationInfo setValue:self.educationlevelLbl2.text forKey:@"highest_education_second"];
         }
     }
 }
@@ -196,6 +196,14 @@
    self.majorTextField.text =     [inBasicInfoDict valueForKey:@"major"];
    self.collegeTextField.text =     [inBasicInfoDict valueForKey:@"college"];
    self.yearTextField.text =     [inBasicInfoDict valueForKey:@"graduated_year"];
+
+    
+    self.educationlevelLbl2.text = [inBasicInfoDict valueForKey:@"highest_education_second"];
+    self.honorTextField2.text =     [inBasicInfoDict valueForKey:@"honors_second"];
+    self.majorTextField2.text =     [inBasicInfoDict valueForKey:@"majors_second"];
+    self.collegeTextField2.text =     [inBasicInfoDict valueForKey:@"college_second"];
+    self.yearTextField2.text =     [inBasicInfoDict valueForKey:@"graduation_years_second"];
+
     
 }
 

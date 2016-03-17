@@ -369,6 +369,20 @@
                                              
                                              [self.educationDict setValue:([respDict valueForKey:@"graduated_year"] != nil && NO == [[respDict valueForKey:@"graduated_year"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"graduated_year"] : @""  forKey:@"graduated_year"];
 
+
+                                             [self.educationDict setValue:([respDict valueForKey:@"highest_education_second"] != nil && NO == [[respDict valueForKey:@"highest_education_second"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"highest_education_second"] : @""  forKey:@"highest_education_second"];
+                                             
+                                             
+                                             [self.educationDict setValue:([respDict valueForKey:@"honors_second"] != nil && NO == [[respDict valueForKey:@"honors_second"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"honors_second"] : @""  forKey:@"honors_second"];
+                                             
+                                             [self.educationDict setValue:([respDict valueForKey:@"majors_second"] != nil && NO == [[respDict valueForKey:@"majors_second"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"majors_second"] : @""  forKey:@"majors_second"];
+                                             
+                                             
+                                             [self.educationDict setValue:([respDict valueForKey:@"college_second"] != nil && NO == [[respDict valueForKey:@"college_second"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"college_second"] : @""  forKey:@"college_second"];
+                                             
+                                             [self.educationDict setValue:([respDict valueForKey:@"graduation_years_second"] != nil && NO == [[respDict valueForKey:@"graduation_years_second"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"graduation_years_second"] : @""  forKey:@"graduation_years_second"];
+                                             
+
                                              
                                              self.occupationDict = [[NSMutableDictionary alloc] init];
                                              [self.occupationDict setValue:([respDict valueForKey:@"employment_status"] != nil && NO == [[respDict valueForKey:@"employment_status"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"employment_status"] : @""  forKey:@"employment_status"];
@@ -438,6 +452,7 @@
     [parameters addEntriesFromDictionary:self.educationDict];
     [parameters addEntriesFromDictionary:self.occupationDict];
     [parameters addEntriesFromDictionary:self.horoscopeDict];
+    [parameters addEntriesFromDictionary:self.socialHabitsDict];
     [parameters addEntriesFromDictionary:self.legalStatus];
     [parameters addEntriesFromDictionary:self.heritageDict];
     [parameters setValue:[BUWebServicesManager sharedManager].userID forKey:@"userid"];
