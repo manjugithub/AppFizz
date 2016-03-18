@@ -181,9 +181,10 @@
                      if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
                      {
                          
+                        
                          
                          [BUWebServicesManager sharedManager].userID = [inResult valueForKey:@"userid"];
-                         [BUWebServicesManager sharedManager].userName = [NSString stringWithFormat:@"%@ %@",[inResult valueForKey:@"first_name"],[inResult valueForKey:@"last_name"]];
+                         [BUWebServicesManager sharedManager].userName = [NSString stringWithFormat:@"%@ %@",[[[inResult valueForKey:@"profile_details"] valueForKey:@"first_name"] lastObject],[[[inResult valueForKey:@"profile_details"] valueForKey:@"last_name"] lastObject]];
                          //    [inResult valueForKey:@"userid"];
                          
                          [[BULayerHelper sharedHelper] setCurrentUserID:[inResult valueForKey:@"userid"]];
