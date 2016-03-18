@@ -17,6 +17,7 @@
 @property (nonatomic, assign) id <PWPickerViewDelegate> delegate;
 @property (nonatomic) eHeritageList selectedHeritage;
 @property (strong, nonatomic) NSMutableArray *pickerDataSource;
+@property (nonatomic, assign) BOOL allowMultipleSelection;
 - (IBAction)closePickerView:(id)sender;
 -(void)showCusptomPickeWithDelegate:(id<PWPickerViewDelegate>) inDelegate;
 
@@ -25,4 +26,6 @@
 
 @protocol PWPickerViewDelegate
 - (void)didItemSelected:(NSMutableDictionary *)inSelectedRow;
+@optional
+- (void)didItemDeselectedSelected:(NSMutableDictionary *)inSelectedRow;
 @end

@@ -56,7 +56,7 @@
     
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"CustomPicker" bundle:nil];
     self.customPickerView = [sb instantiateViewControllerWithIdentifier:@"PWCustomPickerView"];
-    
+    self.customPickerView.allowMultipleSelection = NO;
     self.customPickerView.pickerDataSource = inResult;
     self.customPickerView.selectedHeritage = self.heritageList;
     [self.customPickerView showCusptomPickeWithDelegate:self];

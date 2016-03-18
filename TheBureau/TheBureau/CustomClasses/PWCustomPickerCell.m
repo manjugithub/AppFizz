@@ -32,7 +32,13 @@
 -(void)setDatasource:(NSMutableDictionary *)inDataSourceDict
 {
     self.titleLabel.text = [inDataSourceDict valueForKey:@"title"];
+//    ic_tick_grey
 }
 
+-(void)selectDatasource:(BOOL)inBool
+{
+    self.isCellSelected = inBool;
+    self.radioBtnImgView.hidden = !inBool;
+}
 
 @end

@@ -15,4 +15,6 @@
 @property (nonatomic, strong) UIView *activityView;
 @property (atomic, assign) int activityIndicatorCount;
 
+- (void)startActivityIndicator:(BOOL)isWhite;
+- (void)stopActivityIndicator;
 @end

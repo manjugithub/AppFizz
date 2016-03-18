@@ -44,7 +44,7 @@
     
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"CustomPicker" bundle:nil];
     self.customPickerView = [sb instantiateViewControllerWithIdentifier:@"PWCustomPickerView"];
-    
+    self.customPickerView.allowMultipleSelection = NO;
     self.customPickerView.pickerDataSource = inResult;
     self.customPickerView.selectedHeritage = self.heritageList;
     [self.customPickerView showCusptomPickeWithDelegate:self];
@@ -256,4 +256,13 @@
     [self.heritageDict setValue:textField.text forKey:@"gothra"];
 }
 
+
+-(void)setPreference:(NSMutableDictionary *)inBasicInfoDict
+{
+    self.heritageDict = inBasicInfoDict;
+    self.religionTF.text = [self.heritageDict valueForKey:@"religion_name"];
+    self.motherToungueTF.text = [self.heritageDict valueForKey:@"mother_tongue"];
+    self.familyOriginTF.text = [self.heritageDict valueForKey:@"family_origin_name"];
+    
+}
 @end

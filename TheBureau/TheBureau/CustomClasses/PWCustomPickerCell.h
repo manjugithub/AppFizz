@@ -12,7 +12,9 @@
 @property (assign, nonatomic) id parentDelegate;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *radioBtnImgView;
+@property (nonatomic, assign) BOOL isCellSelected;
 +(PWCustomPickerCell *)createPWCustomPickerCell;
 -(void)setDatasource:(NSMutableDictionary *)inDataSourceDict;
+-(void)selectDatasource:(BOOL)inBool;
 
 @end

@@ -106,10 +106,31 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSMutableDictionary *dict =  [self.pickerDataSource objectAtIndex:indexPath.row];
-    [self.delegate didItemSelected:dict];
-    [self.view removeFromSuperview];
-}
+    
+    if(NO == self.allowMultipleSelection)
+    {
+        NSMutableDictionary *dict =  [self.pickerDataSource objectAtIndex:indexPath.row];
+        [self.delegate didItemSelected:dict];
+        [self.view removeFromSuperview];
+    }
+    else
+    {
+        
+        PWCustomPickerCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        if(NO == [cell isCellSelected])
+        {
+            NSMutableDictionary *dict =  [self.pickerDataSource objectAtIndex:indexPath.row];
+            [self.delegate didItemSelected:dict];
+        }
+        else
+        {
+            NSMutableDictionary *dict =  [self.pickerDataSource objectAtIndex:indexPath.row];
+            [self.delegate didItemDeselectedSelected:dict];
+        }
+        
+        [cell selectDatasource:![cell isCellSelected]];
+    }}
 
 -(void)resetDataSource
 {

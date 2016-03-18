@@ -370,7 +370,7 @@
                                              [self.educationDict setValue:([respDict valueForKey:@"graduated_year"] != nil && NO == [[respDict valueForKey:@"graduated_year"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"graduated_year"] : @""  forKey:@"graduated_year"];
 
 
-                                             [self.educationDict setValue:([respDict valueForKey:@"highest_education_second"] != nil && NO == [[respDict valueForKey:@"highest_education_second"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"highest_education_second"] : @""  forKey:@"highest_education_second"];
+                                             [self.educationDict setValue:([respDict valueForKey:@"education_second"] != nil && NO == [[respDict valueForKey:@"education_second"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"education_second"] : @""  forKey:@"education_second"];
                                              
                                              
                                              [self.educationDict setValue:([respDict valueForKey:@"honors_second"] != nil && NO == [[respDict valueForKey:@"honors_second"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"honors_second"] : @""  forKey:@"honors_second"];

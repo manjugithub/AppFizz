@@ -145,7 +145,7 @@
         else if(actionSheet.tag == 102)
         {
             self.educationlevelLbl2.text = _educationLevelArray[buttonIndex - 1];
-            [self.educationInfo setValue:self.educationlevelLbl2.text forKey:@"highest_education_second"];
+            [self.educationInfo setValue:self.educationlevelLbl2.text forKey:@"education_second"];
         }
     }
 }
@@ -198,7 +198,7 @@
    self.yearTextField.text =     [inBasicInfoDict valueForKey:@"graduated_year"];
 
     
-    self.educationlevelLbl2.text = [inBasicInfoDict valueForKey:@"highest_education_second"];
+    self.educationlevelLbl2.text = [inBasicInfoDict valueForKey:@"education_second"];
     self.honorTextField2.text =     [inBasicInfoDict valueForKey:@"honors_second"];
     self.majorTextField2.text =     [inBasicInfoDict valueForKey:@"majors_second"];
     self.collegeTextField2.text =     [inBasicInfoDict valueForKey:@"college_second"];

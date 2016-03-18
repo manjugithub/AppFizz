@@ -1,22 +1,22 @@
 //
-//  BUProfileHeritageInfoCell.h
+//  BUPrefHeritageCell.h
 //  TheBureau
 //
-//  Created by Manjunath on 25/02/16.
+//  Created by Manjunath on 18/03/16.
 //  Copyright © 2016 Bureau. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "BUProfileEditingVC.h"
 #import "PWCustomPickerView.h"
 #import "BUPreferencesVC.h"
-@interface BUProfileHeritageInfoCell : UITableViewCell<PWPickerViewDelegate,UITextFieldDelegate>
-@property(weak, nonatomic) IBOutlet BUProfileEditingVC *parentVC;
+#import "BUWebServicesManager.h"
+@interface BUPrefHeritageCell : UITableViewCell<PWPickerViewDelegate,UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 
 @property(weak, nonatomic) IBOutlet BUPreferencesVC *prefVC;
 
 @property(nonatomic, strong) PWCustomPickerView *customPickerView;
-@property(nonatomic, strong) NSString *religionID,*famliyID,*specificationID,*motherToungueID;
+@property(nonatomic, strong) NSMutableArray *religionIDList,*famliyIDList,*motherToungueIDList;
+@property(nonatomic, strong) NSMutableArray *religionList,*famliyList,*motherToungueList;
 
 @property(nonatomic, strong) IBOutlet UITextField *religionTF,*motherToungueTF,*specificationTF,*gothraTF,*familyOriginTF;
 

@@ -67,13 +67,19 @@
                 CGFloat offset = (self.leftViewLeftConstraint.constant / self.interval)+1;
                 NSInteger feet =  4 + (NSInteger)offset / 12;
                 NSInteger inch =  (NSInteger)offset % 12;
+                self.minFeet = feet;
+                self.minInch = inch;
                 self.minValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
             }
-            else
-            {
-
-            self.minValueLabel.text = [NSString stringWithFormat:@"%0.0f",(self.leftViewLeftConstraint.constant / self.interval)+1];
+            else if(2 == self.cellType){
+                
+                self.minValueLabel.text = [NSString stringWithFormat:@"%0.0f",(self.leftViewLeftConstraint.constant / self.interval)+1];
             }
+            else{
+                self.minValueLabel.text = [NSString stringWithFormat:@"%0.0f",(self.leftViewLeftConstraint.constant / self.interval)+19];
+            }
+            
+        
         }
     }
     else if(self.shouldMoveRightView)
@@ -85,17 +91,23 @@
             self.rightView.frame = frame;
             self.rightViewRightConstraint.constant -= newX;
             self.maxLabelRightConstraint.constant -= newX;
-            
+            NSLog(@"right constant ==> %0.0f",self.rightViewRightConstraint.constant);
             if(2 == self.cellType)
             {
                 CGFloat offset = (((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+1);
                 NSInteger feet =  4 + (NSInteger)offset / 12;
                 NSInteger inch =  (NSInteger)offset % 12;
+                self.maxFeet = feet;
+                self.maxInch = inch;
                 self.maxValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
+            }
+            else if(1 == self.cellType)
+            {
+                self.maxValueLabel.text = [NSString stringWithFormat:@"%0.0f",((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+1];
             }
             else
             {
-                self.maxValueLabel.text = [NSString stringWithFormat:@"%0.0f",((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+1];
+                self.maxValueLabel.text = [NSString stringWithFormat:@"%0.0f",((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+19];
             }
         }
     }
@@ -105,25 +117,23 @@
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSDictionary *prefDict1 = [[NSUserDefaults standardUserDefaults] valueForKey:@"Preferences"];
-    
-    NSMutableDictionary *prefDict = [[NSMutableDictionary alloc]initWithDictionary:prefDict1];
 
     if(2 == self.cellType)
     {
-        
+        [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",self.minFeet] forKey:@"height_from_feet"];
+        [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",self.minInch] forKey:@"height_from_inch"];
+        [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",self.maxFeet] forKey:@"height_to_feet"];
+        [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",self.maxInch] forKey:@"height_to_inch"];
     }
     else if(0 == self.cellType)
     {
-        [prefDict setValue:self.minValueLabel.text forKey:@"age_from"];
-        [prefDict setValue:self.minValueLabel.text forKey:@"age_to"];
+        [self.preferenceDict setValue:self.minValueLabel.text forKey:@"age_from"];
+        [self.preferenceDict setValue:self.maxValueLabel.text forKey:@"age_to"];
     }
     else
     {
-        [prefDict setValue:self.minValueLabel.text forKey:@"location_radius"];
+        [self.preferenceDict setValue:self.maxValueLabel.text forKey:@"location_radius"];
     }
-    [[NSUserDefaults standardUserDefaults] setValue:prefDict forKey:@"Preferences"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 -(void)layoutSubviews
@@ -132,6 +142,189 @@
     [self performSelector:@selector(setupInterval) withObject:nil afterDelay:2.0];
 }
 
+-(void)setDatasource:(NSMutableDictionary *)inDict
+{
+    self.preferenceDict = inDict;
+    [self performSelector:@selector(updatePrefValues) withObject:nil afterDelay:2.0];
+}
+
+
+-(void)updatePointersForHeight
+{
+
+    NSInteger feet = [[self.preferenceDict valueForKey:@"height_from_feet"] intValue];
+    NSInteger inch = [[self.preferenceDict valueForKey:@"height_from_inch"] intValue];
+    self.minValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
+    
+    NSInteger feet1 = [[self.preferenceDict valueForKey:@"height_to_feet"] intValue];
+    NSInteger inch1 = [[self.preferenceDict valueForKey:@"height_to_inch"] intValue];
+
+    
+    CGFloat newX1 = 0.0;
+    CGFloat newX = newX1 + self.interval * (((feet - 4) *11 ) + inch);
+    
+    {
+        CGRect frame = self.leftView.frame;
+        frame.origin.x = newX;
+        if(0 <= frame.origin.x && self.overLayView.frame.size.width >= (frame.origin.x + frame.size.width))
+        {
+            
+            
+            [UIView animateWithDuration:0.6 animations:^{
+                self.leftView.frame = frame;
+                self.leftViewLeftConstraint.constant = newX;
+                self.minLabelLeftConstraint.constant = newX;
+            }completion:^(BOOL finished) {
+                CGFloat offset = (self.leftViewLeftConstraint.constant / self.interval)+1;
+                NSInteger feet =  4 + (NSInteger)offset / 12;
+                NSInteger inch =  (NSInteger)offset % 12;
+                self.minFeet = feet;
+                self.minInch = inch;
+                self.minValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
+            }];
+            
+            
+        }
+    }
+    {
+        newX1 = 0.0;
+        newX = newX1 + self.interval * (((feet1 - 4) *11 ) + inch1);
+        CGRect frame = self.leftView.frame;
+        frame.origin.x = newX;
+        if(0 <= frame.origin.x && self.overLayView.frame.size.width >= (frame.origin.x + frame.size.width))
+        {
+            
+            
+            
+            [UIView animateWithDuration:0.6 animations:^{
+                self.rightView.frame = frame;
+                self.rightViewRightConstraint.constant = self.overLayView.frame.size.width-newX;
+                self.maxLabelRightConstraint.constant = self.overLayView.frame.size.width-newX;
+            } completion:^(BOOL finished) {
+                CGFloat offset = (((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+1);
+                NSInteger feet =  4 + (NSInteger)offset / 12;
+                NSInteger inch =  (NSInteger)offset % 12;
+                self.maxFeet = feet;
+                self.maxInch = inch;
+                self.maxValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
+            }];
+
+        }
+    }
+}
+
+-(void)updatePointersForRadius
+{
+    
+    NSInteger radius = [[self.preferenceDict valueForKey:@"location_radius"] intValue];
+
+    CGFloat newX1 = 0.0;
+    CGFloat newX = newX1 + self.interval * radius;
+
+        CGRect frame = self.leftView.frame;
+        frame.origin.x = newX;
+        if(0 <= frame.origin.x && self.overLayView.frame.size.width >= (frame.origin.x + frame.size.width))
+        {
+            
+            [UIView animateWithDuration:0.6 animations:^{
+                self.rightView.frame = frame;
+                self.rightViewRightConstraint.constant = self.overLayView.frame.size.width-newX;
+                self.maxLabelRightConstraint.constant = self.overLayView.frame.size.width-newX;
+            }completion:^(BOOL finished) {
+                self.maxValueLabel.text = [NSString stringWithFormat:@"%0.0f",((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+1];
+            }];
+
+        }
+}
+
+-(void)updatePointersForAge
+{
+    
+    NSInteger ageFrom = [[self.preferenceDict valueForKey:@"age_from"] intValue]-19;
+    CGFloat newX1 = 0.0;
+    CGFloat newX = newX1 + self.interval * ageFrom;
+
+    
+    {
+        CGRect frame = self.leftView.frame;
+        frame.origin.x = newX;
+        if(0 <= frame.origin.x && self.overLayView.frame.size.width >= (frame.origin.x + frame.size.width))
+        {
+            
+            [UIView animateWithDuration:0.6 animations:^{
+                self.leftView.frame = frame;
+                self.leftViewLeftConstraint.constant = newX;
+                self.minLabelLeftConstraint.constant = newX;
+            }completion:^(BOOL finished) {
+                self.minValueLabel.text = [NSString stringWithFormat:@"%0.0f",(self.leftViewLeftConstraint.constant / self.interval)+19];
+            }];
+
+            
+            
+        }
+    }
+    {
+        
+        NSInteger ageTo = [[self.preferenceDict valueForKey:@"age_to"] intValue] - 19;
+        newX1 = 0.0;
+        CGFloat newX = newX1 + self.interval * ageTo;
+
+        CGRect frame = self.rightView.frame;
+        frame.origin.x = newX;
+        if(0 <= frame.origin.x && self.overLayView.frame.size.width >= (frame.origin.x + frame.size.width))
+        {
+            
+            [UIView animateWithDuration:0.6 animations:^{
+                self.rightView.frame = frame;
+                self.rightViewRightConstraint.constant = self.overLayView.frame.size.width-newX;
+                self.maxLabelRightConstraint.constant = self.overLayView.frame.size.width-newX;
+            }completion:^(BOOL finished) {
+                self.maxValueLabel.text = [NSString stringWithFormat:@"%0.0f",((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval) + 19];
+            }];
+            
+            
+        }
+    }
+    
+    self.prevLocation = self.currentLocation;
+}
+
+
+-(void)updatePrefValues
+{
+    
+    if(1 == self.cellType)
+    {
+        NSInteger ageTo = [[self.preferenceDict valueForKey:@"location_radius"] intValue];
+        self.maxValueLabel.text = [NSString stringWithFormat:@"%ld",ageTo];
+        [self performSelector:@selector(updatePointersForRadius) withObject:nil afterDelay:0.0];
+
+    }
+    else if(0 == self.cellType)
+    {
+        
+        NSInteger ageFrom = [[self.preferenceDict valueForKey:@"age_from"] intValue];
+        self.minValueLabel.text = [NSString stringWithFormat:@"%ld",ageFrom];
+        
+        NSInteger ageTo = [[self.preferenceDict valueForKey:@"age_to"] intValue];
+        self.maxValueLabel.text = [NSString stringWithFormat:@"%ld",ageTo];
+        [self performSelector:@selector(updatePointersForAge) withObject:nil afterDelay:0.0];
+
+    }
+    else
+    {
+        
+        NSInteger feet = [[self.preferenceDict valueForKey:@"height_from_feet"] intValue];
+        NSInteger inch = [[self.preferenceDict valueForKey:@"height_from_inch"] intValue];
+        self.minValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
+    
+        NSInteger feet1 = [[self.preferenceDict valueForKey:@"height_to_feet"] intValue];
+        NSInteger inch1 = [[self.preferenceDict valueForKey:@"height_to_inch"] intValue];
+        self.maxValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet1,(long)inch1];
+
+        [self performSelector:@selector(updatePointersForHeight) withObject:nil afterDelay:0.0];
+    }
+}
 
 -(void)setupInterval
 {
@@ -141,45 +334,15 @@
     }
     else if(1 == self.cellType)
     {
-        self.interval = self.overLayView.frame.size.width / 50.0;
+        self.interval = self.overLayView.frame.size.width / 50;
     }
     else
     {
-        self.interval = self.overLayView.frame.size.width / 40;
+        self.interval = self.overLayView.frame.size.width / 22.0;
 //        [self setminAge:15 maxAge:34];
     }
 }
 
 
--(void)setminAge:(NSInteger)inMinAge maxAge:(NSInteger) inMaxAge
-{
-    CGFloat newX = 0;
-    
-    {
-        CGRect frame = self.rightView.frame;
-        frame.origin.x = frame.origin.x + self.interval*inMinAge;
-        newX =  frame.origin.x + self.interval*inMinAge;
-        
-        if(0 <= frame.origin.x && self.overLayView.frame.size.width >= (frame.origin.x + frame.size.width))
-        {
-            self.leftView.frame = frame;
-            self.leftViewLeftConstraint.constant += newX;
-            self.minLabelLeftConstraint.constant += newX;
-            
-            self.minValueLabel.text = [NSString stringWithFormat:@"%0.0f",(self.leftViewLeftConstraint.constant / self.interval)+1];
-            
-        }
-    }
-    {
-        CGRect frame = self.rightView.frame;
-        frame.origin.x = frame.origin.x + self.interval*inMaxAge;
-        newX =  frame.origin.x + self.interval*inMaxAge;
-        {
-            self.rightView.frame = frame;
-            self.rightViewRightConstraint.constant -= newX;
-            self.maxLabelRightConstraint.constant -= newX;
-            self.maxValueLabel.text = [NSString stringWithFormat:@"%0.0f",((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+1];
-        }
-    }
-}
+
 @end

@@ -15,8 +15,8 @@
 @property(nonatomic, assign) BOOL shouldMoveLeftView,shouldMoveRightView;
 @property(nonatomic, assign) CGPoint prevLocation,currentLocation;
 @property(nonatomic, assign) CGFloat interval;
-
-
+@property(nonatomic, strong) NSMutableDictionary *preferenceDict;
+@property(nonatomic, assign) NSInteger minFeet,minInch,maxFeet,maxInch;
 @property(nonatomic, assign) IBInspectable int cellType;
 
 
@@ -25,5 +25,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *minLabelLeftConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *maxLabelRightConstraint;
+
+-(void)setDatasource:(NSMutableDictionary *)inDict;
 
 @end

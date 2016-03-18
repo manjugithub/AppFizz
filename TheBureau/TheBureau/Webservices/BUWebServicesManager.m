@@ -115,7 +115,7 @@ constructingBodyWithBlock:nil
 -(void)getFamilyOriginListwithParameters:(NSDictionary *)inParams  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack
 {
     
-     
+//     family_origin_multiple_religions_ws
     
     NSString *baseURL = [NSString stringWithFormat:@"%@%@",kBaseURL,@"family_origin_ws"];
     
@@ -133,6 +133,29 @@ constructingBodyWithBlock:nil
           failure:^(NSURLSessionDataTask *operation, NSError *error)
      {
           failureCallBack(nil,error);
+         NSLog(@"Error: %@", error);
+     }];
+}
+
+
+-(void)getMultipleFamilyOriginListwithParameters:(NSDictionary *)inParams  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack
+{
+    NSString *baseURL = [NSString stringWithFormat:@"%@%@",kBaseURL,@"family_origin_multiple_religions_ws"];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:baseURL
+       parameters:inParams
+constructingBodyWithBlock:nil
+         progress:nil
+          success:^(NSURLSessionDataTask *operation, id responseObject)
+     {
+         successCallBack(responseObject,nil);
+         ;
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(NSURLSessionDataTask *operation, NSError *error)
+     {
+         failureCallBack(nil,error);
          NSLog(@"Error: %@", error);
      }];
 }

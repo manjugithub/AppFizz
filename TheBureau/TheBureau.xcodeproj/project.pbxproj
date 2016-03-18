@@ -11,7 +11,7 @@
 		5B08024F1C6CD13C00DAD5A5 /* BUProfileDietVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B08024E1C6CD13C00DAD5A5 /* BUProfileDietVC.m */; };
 		5B0802551C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0802541C733B0E00DAD5A5 /* BUCustomerServiceChatVC.m */; };
 		5B0802611C7344BC00DAD5A5 /* BUEmptySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0802601C7344BC00DAD5A5 /* BUEmptySegue.m */; };
-		5B08286D1C9AE80300F6EEF6 /* splash_new.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5B08286C1C9AE80300F6EEF6 /* splash_new.gif */; settings = {ASSET_TAGS = (); }; };
+		5B08286D1C9AE80300F6EEF6 /* splash_new.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5B08286C1C9AE80300F6EEF6 /* splash_new.gif */; };
 		5B0AEDC61C22B94A00877C24 /* BULoginWithEmailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0AEDC51C22B94A00877C24 /* BULoginWithEmailVC.m */; };
 		5B0AEDC91C22C69D00877C24 /* BUAuthButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0AEDC81C22C69D00877C24 /* BUAuthButton.m */; };
 		5B0AEDCC1C23591400877C24 /* BUSignUpWithEmailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0AEDCB1C23591400877C24 /* BUSignUpWithEmailVC.m */; };
@@ -92,6 +92,7 @@
 		7846227A1C0711E100EA589C /* TheBureauTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 784622791C0711E100EA589C /* TheBureauTests.m */; };
 		784622851C0711E100EA589C /* TheBureauUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 784622841C0711E100EA589C /* TheBureauUITests.m */; };
 		784622951C0718B700EA589C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 784622941C0718B700EA589C /* AppDelegate.m */; };
+		78520B711C9BB8EE0033ACD0 /* BUPrefHeritageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78520B701C9BB8EE0033ACD0 /* BUPrefHeritageCell.m */; };
 		78626F301C8DA0C400914F35 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78626F2F1C8DA0C400914F35 /* CoreText.framework */; };
 		789D88E21C7E3CED00772EED /* BUProfileEditingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 789D88E11C7E3CED00772EED /* BUProfileEditingVC.m */; };
 		789D88E71C7E3F0D00772EED /* BUProfileBasicInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 789D88E61C7E3F0D00772EED /* BUProfileBasicInfoCell.m */; };
@@ -458,6 +459,8 @@
 		784622861C0711E100EA589C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		784622931C0718B700EA589C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		784622941C0718B700EA589C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		78520B6F1C9BB8EE0033ACD0 /* BUPrefHeritageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUPrefHeritageCell.h; sourceTree = "<group>"; };
+		78520B701C9BB8EE0033ACD0 /* BUPrefHeritageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUPrefHeritageCell.m; sourceTree = "<group>"; };
 		78626F2F1C8DA0C400914F35 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		789D88E01C7E3CED00772EED /* BUProfileEditingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUProfileEditingVC.h; sourceTree = "<group>"; };
 		789D88E11C7E3CED00772EED /* BUProfileEditingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfileEditingVC.m; sourceTree = "<group>"; };
@@ -1208,6 +1211,8 @@
 				78E4F28B1C85B3C30034CFE2 /* BUPreferencesVC.m */,
 				78BD7D5A1C8D3A67000AD38B /* BUPrefAgeSeekCell.h */,
 				78BD7D5B1C8D3A67000AD38B /* BUPrefAgeSeekCell.m */,
+				78520B6F1C9BB8EE0033ACD0 /* BUPrefHeritageCell.h */,
+				78520B701C9BB8EE0033ACD0 /* BUPrefHeritageCell.m */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -1781,6 +1786,7 @@
 				5BA7960A1C7F980C009B65E1 /* BURematchCollectionViewCell.m in Sources */,
 				78FEE2331C071EAC0013E9D2 /* BUBaseViewController.m in Sources */,
 				78BF55241C688E8D00B5F1A4 /* BUAcountsTabViewController.m in Sources */,
+				78520B711C9BB8EE0033ACD0 /* BUPrefHeritageCell.m in Sources */,
 				7800D4A81C91AD3A003F409D /* BULayerHelper.m in Sources */,
 				5BFF6EA71C8D80E300596381 /* AFNetworkReachabilityManager.m in Sources */,
 				5BDA47201C22596200C875AB /* BURootViewController.m in Sources */,
