@@ -79,7 +79,7 @@ static UIColor *LSRandomColor(void)
     self.layerClient = [[BULayerHelper sharedHelper] layerClient];
     [self setupLayerNotificationObservers];
     [self fetchLayerConversation];
-    self.title =@"message";
+    self.title = self.recipientName;
     
     // Setup for Shake
     [self becomeFirstResponder];
@@ -96,6 +96,8 @@ static UIColor *LSRandomColor(void)
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    self.title = self.recipientName;
+
     if (self.queryController) {
         [self scrollToBottom];
     }
@@ -305,12 +307,11 @@ static UIColor *LSRandomColor(void)
 {
     // For more information about Typing Indicators, check out https://developer.layer.com/docs/integration/ios#typing-indicator
     
-    NSString *participantID = notification.userInfo[LYRTypingIndicatorParticipantUserInfoKey];
     LYRTypingIndicator typingIndicator = [notification.userInfo[LYRTypingIndicatorValueUserInfoKey] unsignedIntegerValue];
     
     if (typingIndicator == LYRTypingDidBegin) {
         self.typingIndicatorLabel.alpha = 1;
-        self.typingIndicatorLabel.text = [NSString stringWithFormat:@"%@ is typing...",participantID];
+        self.typingIndicatorLabel.text = [NSString stringWithFormat:@"%@ is typing...",self.recipientName];
     } else {
         self.typingIndicatorLabel.alpha = 0;
         self.typingIndicatorLabel.text = @"";

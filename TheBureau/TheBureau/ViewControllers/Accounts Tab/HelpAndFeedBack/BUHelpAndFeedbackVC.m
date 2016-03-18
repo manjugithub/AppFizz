@@ -23,6 +23,7 @@
     // Do any additional setup after loading the view.
     self.feedbackTextView.layer.cornerRadius = 5.0;
     self.feedbackTextView.layer.borderWidth = 1.0;
+    self.title = @"How it works";
 }
 
 - (void)didReceiveMemoryWarning

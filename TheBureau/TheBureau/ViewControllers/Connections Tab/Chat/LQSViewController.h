@@ -18,6 +18,7 @@
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UILabel *typingIndicatorLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *messageImageView;
+@property (nonatomic, strong) NSString *recipientName;
 @property (nonatomic) LYRConversation *conversation;
 
 

@@ -9,7 +9,7 @@
 #import "BUConfigurationVC.h"
 #import "UIColor+APColor.h"
 #import "BUAppNotificationCell.h"
-
+#import "BUUtilities.h"
 @interface BUConfigurationVC ()
 
 @end
@@ -20,12 +20,34 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"CONFIGURATION";
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    [BUUtilities removeLogo:self.navigationController];
+    //    self.navigationItem.rightBarButtonItem = self.rightBarButton;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"logo44"]
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:nil
+                                                                             action:nil];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [BUUtilities setNavBarLogo:self.navigationController image:[UIImage imageNamed:@"logo44"]];
+    self.navigationItem.rightBarButtonItem = nil;
+    
+}
+
 
 -(void)viewDidAppear:(BOOL)animated
 {
