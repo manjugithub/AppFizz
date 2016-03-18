@@ -536,7 +536,6 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
                                                  BUProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDetailsVC"];
                                                  [self.navigationController pushViewController:vc animated:YES];
                                                  
-                                                 [self.navigationController pushViewController:vc animated:YES];
                                              } failureBlock:^(id response, NSError *error) {
                                                  [self stopActivityIndicator];
                                                  NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
