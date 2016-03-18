@@ -501,6 +501,7 @@
 
          if([[response valueForKey:@"msg"] isEqualToString:@"Error"])
          {
+             self.profDict = [[NSMutableDictionary alloc] init];
              self.shouldAddPref = YES;
          }
          else
