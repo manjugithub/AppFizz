@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Contact List";
+    self.title = @"Chat History";
     
 }
 
@@ -124,6 +124,10 @@
     [[BULayerHelper sharedHelper] setParticipantUserID:[(BUChatContact *)[self.contactList objectAtIndex:indexPath.row] userID]];
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Connections" bundle:nil];
     LQSViewController *vc = [sb instantiateViewControllerWithIdentifier:@"LQSViewController"];
+    
+    BUChatContact *contact = [self.contactList objectAtIndex:indexPath.row];
+    vc.recipientName = [NSString stringWithFormat:@"%@ %@",contact.fName,contact.lName];
+
     [self.navigationController pushViewController:vc animated:YES];
 }
 

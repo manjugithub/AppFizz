@@ -19,7 +19,7 @@
     [super viewDidLoad];
     self.selectedRow = -1;
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"How it works";
+    self.title = @"How it works";
     
 }
 

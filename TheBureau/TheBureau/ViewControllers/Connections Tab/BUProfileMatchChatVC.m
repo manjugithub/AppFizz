@@ -37,6 +37,8 @@ static NSDateFormatter *LQSDateFormatter()
     
     self.layerClient = [BULayerHelper sharedHelper].layerClient;
     
+    self.title = @"Chat History";
+
     // Do any additional setup after loading the view.
 }
 
@@ -139,9 +141,13 @@ static NSDateFormatter *LQSDateFormatter()
             
         }
     }
+    
+    BUChatContact *contact = [[self historyList] objectAtIndex:indexPath.row];
+
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Connections" bundle:nil];
     LQSViewController *vc = [sb instantiateViewControllerWithIdentifier:@"LQSViewController"];
     vc.conversation = conversation;
+    vc.recipientName = [NSString stringWithFormat:@"%@ %@",contact.fName,contact.lName];
     
     [self.navigationController pushViewController:vc animated:YES];
     
