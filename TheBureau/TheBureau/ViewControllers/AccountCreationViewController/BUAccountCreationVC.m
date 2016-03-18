@@ -523,6 +523,9 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
                        @"email":self.emailIdTF.text
                        };
         
+        
+        [BUWebServicesManager sharedManager].userName = [NSString stringWithFormat:@"%@ %@",self.firstNameTF.text,self.lastNameTF.text];
+
         [self startActivityIndicator:YES];
         
         [[BUWebServicesManager sharedManager] queryServer:parameters

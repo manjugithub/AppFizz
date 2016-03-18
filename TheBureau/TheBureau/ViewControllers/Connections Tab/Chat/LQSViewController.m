@@ -12,7 +12,7 @@
 #import "BUConstants.h"
 #import "BULayerHelper.h"
 #import "MessageCell.h"
-
+#import "BUWebServicesManager.h"
 // Defined in LQSAppDelegate.m
 
 // Metadata keys related to navbar color
@@ -233,7 +233,7 @@ static UIColor *LSRandomColor(void)
     {
         message.sender = MessageSenderSomeone;
     }
-    message.sent = [NSDate date];
+    message.sent = [lyrMessage sentAt];
     
     cell.message = message;
     
@@ -354,7 +354,7 @@ static UIColor *LSRandomColor(void)
     }
     
     // Creates and returns a new message object with the given conversation and array of message parts
-    NSString *pushMessage= [NSString stringWithFormat:@"%@ says %@",self.layerClient.authenticatedUserID ,messageText];
+    NSString *pushMessage= [NSString stringWithFormat:@"%@ says %@",[BUWebServicesManager sharedManager].userName ,messageText];
     
     LYRPushNotificationConfiguration *defaultConfiguration = [LYRPushNotificationConfiguration new];
     defaultConfiguration.sound = @"layerbell.caff";

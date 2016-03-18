@@ -223,7 +223,7 @@
     //Set Text to Label
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     df.timeStyle = NSDateFormatterShortStyle;
-    df.dateStyle = NSDateFormatterNoStyle;
+    df.dateStyle = kCFDateFormatterShortStyle;
     df.doesRelativeDateFormatting = YES;
     self.timeLabel.text = [df stringFromDate:self.message.sent];
     [self.timeLabel sizeToFit];

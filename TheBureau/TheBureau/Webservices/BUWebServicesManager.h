@@ -14,7 +14,7 @@
 
 
 @interface BUWebServicesManager : NSObject
-@property (nonatomic, strong) NSString *userID;
+@property (nonatomic, strong) NSString *userID,*userName;
 @property (nonatomic, strong) NSString *participantUserID;
 
 @property (nonatomic) LYRClient *layerClient;

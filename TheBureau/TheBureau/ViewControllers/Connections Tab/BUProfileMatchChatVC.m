@@ -108,10 +108,22 @@ static NSDateFormatter *LQSDateFormatter()
     // If the message was sent by current user, show Receipent Status Indicator
     if ([lastMessage.sender.userID isEqualToString:[[BULayerHelper sharedHelper] currentUserID]]) {
         
-      timestampText = [NSString stringWithFormat:@"%@",[LQSDateFormatter() stringFromDate:lastMessage.sentAt]];
-    } else {
-        timestampText = [NSString stringWithFormat:@"%@",[LQSDateFormatter() stringFromDate:lastMessage.receivedAt]];
+        NSDate *date = lastMessage.sentAt;
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        df.dateStyle = kCFDateFormatterShortStyle;
+        df.doesRelativeDateFormatting = YES;
+      timestampText = [df stringFromDate:date];
+    } else
+    {
+        
+        NSDate *date = lastMessage.receivedAt;
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        df.dateStyle = kCFDateFormatterShortStyle;
+        df.doesRelativeDateFormatting = YES;
+        timestampText = [df stringFromDate:date];
     }
+    
+    
         cell.timeLbl.text = [NSString stringWithFormat:@"%@",timestampText];
     return cell;
 }
