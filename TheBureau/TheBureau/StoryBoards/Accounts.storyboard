@@ -3180,10 +3180,17 @@
                             <outlet property="delegate" destination="odO-SY-IS5" id="dkq-SE-b5P"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="cell1" destination="iLm-OO-Yu8" id="0Ex-ja-O72"/>
+                        <outlet property="cell2" destination="z73-dO-yye" id="K71-x2-6g5"/>
+                        <outlet property="cell3" destination="6fb-tO-l8K" id="Fgv-fa-lrT"/>
+                        <outlet property="cell4" destination="Ueu-1r-OW9" id="msw-br-g8R"/>
+                        <outlet property="cell5" destination="BjE-Ej-EgY" id="Rjw-su-Gj9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQM-XI-yfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-92" y="179"/>
+            <point key="canvasLocation" x="-142" y="105"/>
         </scene>
         <!--How It WorksVC-->
         <scene sceneID="iBT-EA-sAK">

@@ -37,20 +37,168 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)changeNotificationSettings:(UIButton *)sender
+
+-(void)updateBtnStatus
 {
-    if(0 == [sender tag])
+    BOOL status = NO;
+    NSUserDefaults *usDef = [NSUserDefaults standardUserDefaults];
+    switch (self.appNotificationCellType)
     {
-        sender.tag = 1;
-        [sender setImage:[UIImage imageNamed:@"switch_disable"]
-                forState:UIControlStateNormal];
+        case BUAppNotificationCellTypeDailyMatch:
+        {
+         status =   [usDef boolForKey:@"BUAppNotificationCellTypeDailyMatch"];
+            break;
+        }
+        case BUAppNotificationCellTypeChatNotifications:
+        {
+            status =[usDef boolForKey:@"BUAppNotificationCellTypeChatNotifications"];
+            break;
+        }
+        case BUAppNotificationCellTypeCustomerService:
+        {
+            status =[usDef boolForKey:@"BUAppNotificationCellTypeCustomerService"];
+            break;
+        }
+        case BUAppNotificationCellTypeBlogRelease:
+        {
+            status =[usDef boolForKey:@"BUAppNotificationCellTypeBlogRelease"];
+            break;
+        }
+        case BUAppNotificationCellTypeSounds:
+        {
+            status =[usDef boolForKey:@"BUAppNotificationCellTypeSounds"];
+            break;
+        }
+            
+        default:
+            break;
+    }
+    
+    
+    if(YES == status)
+    {
+        self.switchBtn.tag = 0;
+        [self.switchBtn setImage:[UIImage imageNamed:@"switch_disable"]
+                           forState:UIControlStateNormal];
     }
     else
     {
-        [sender setImage:[UIImage imageNamed:@"switch_ON"]
-                forState:UIControlStateNormal];
-        sender.tag = 0;
+        [self.switchBtn setImage:[UIImage imageNamed:@"switch_ON"]
+                           forState:UIControlStateNormal];
+        self.switchBtn.tag = 1;
     }
+
+}
+
+- (IBAction)changeNotificationSettings:(UIButton *)sender
+{
+    
+    NSUserDefaults *usDef = [NSUserDefaults standardUserDefaults];
+    switch (self.appNotificationCellType)
+    {
+        case BUAppNotificationCellTypeDailyMatch:
+        {
+            if(0 == [sender tag])
+            {
+                sender.tag = 1;
+                [sender setImage:[UIImage imageNamed:@"switch_ON"]
+                        forState:UIControlStateNormal];
+
+                [usDef setBool:NO forKey:@"BUAppNotificationCellTypeDailyMatch"];
+            }
+            else
+            {
+                [sender setImage:[UIImage imageNamed:@"switch_disable"]
+                        forState:UIControlStateNormal];
+
+                sender.tag = 0;
+                [usDef setBool:YES forKey:@"BUAppNotificationCellTypeDailyMatch"];
+            }
+            
+            break;
+        }
+        case BUAppNotificationCellTypeChatNotifications:
+        {
+            if(0 == [sender tag])
+            {
+                sender.tag = 1;
+                [sender setImage:[UIImage imageNamed:@"switch_ON"]
+                        forState:UIControlStateNormal];
+                [usDef setBool:NO forKey:@"BUAppNotificationCellTypeChatNotifications"];
+            }
+            else
+            {
+                [sender setImage:[UIImage imageNamed:@"switch_disable"]
+                        forState:UIControlStateNormal];
+                sender.tag = 0;
+                [usDef setBool:YES forKey:@"BUAppNotificationCellTypeChatNotifications"];
+            }
+            
+            break;
+        }
+        case BUAppNotificationCellTypeCustomerService:
+        {
+            if(0 == [sender tag])
+            {
+                sender.tag = 1;
+                [sender setImage:[UIImage imageNamed:@"switch_ON"]
+                        forState:UIControlStateNormal];
+                [usDef setBool:NO forKey:@"BUAppNotificationCellTypeCustomerService"];
+            }
+            else
+            {
+                [sender setImage:[UIImage imageNamed:@"switch_disable"]
+                        forState:UIControlStateNormal];
+                sender.tag = 0;
+                [usDef setBool:YES forKey:@"BUAppNotificationCellTypeCustomerService"];
+            }
+            
+            break;
+        }
+        case BUAppNotificationCellTypeBlogRelease:
+        {
+            if(0 == [sender tag])
+            {
+                sender.tag = 1;
+                [sender setImage:[UIImage imageNamed:@"switch_ON"]
+                        forState:UIControlStateNormal];
+                [usDef setBool:NO forKey:@"BUAppNotificationCellTypeBlogRelease"];
+            }
+            else
+            {
+                [sender setImage:[UIImage imageNamed:@"switch_disable"]
+                        forState:UIControlStateNormal];
+                sender.tag = 0;
+                [usDef setBool:YES forKey:@"BUAppNotificationCellTypeBlogRelease"];
+            }
+            
+            break;
+        }
+        case BUAppNotificationCellTypeSounds:
+        {
+            if(0 == [sender tag])
+            {
+                sender.tag = 1;
+                [sender setImage:[UIImage imageNamed:@"switch_ON"]
+                        forState:UIControlStateNormal];
+                [usDef setBool:NO forKey:@"BUAppNotificationCellTypeSounds"];
+            }
+            else
+            {
+                [sender setImage:[UIImage imageNamed:@"switch_disable"]
+                        forState:UIControlStateNormal];
+                sender.tag = 0;
+                [usDef setBool:YES forKey:@"BUAppNotificationCellTypeSounds"];
+            }
+            
+            break;
+        }
+            
+        default:
+            break;
+    }
+    
+    [usDef synchronize];
     
 }
 

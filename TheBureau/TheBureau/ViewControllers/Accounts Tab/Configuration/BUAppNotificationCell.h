@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BUConfigurationVC.h"
 typedef NS_ENUM(NSInteger, BUAppNotificationCellType) {
-    BUAppNotificationCellTypeDailyMatch,
+    BUAppNotificationCellTypeDailyMatch = 0,
     BUAppNotificationCellTypeChatNotifications,
     BUAppNotificationCellTypeCustomerService,
     BUAppNotificationCellTypeBlogRelease,
     BUAppNotificationCellTypeSounds
 };
 
-#import "BUConfigurationVC.h"
 
 @interface BUAppNotificationCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *notificationTitleLabel;
@@ -31,5 +31,6 @@ typedef NS_ENUM(NSInteger, BUAppNotificationCellType) {
 - (IBAction)deactivateAccount:(id)sender;
 - (IBAction)deleteAccount:(id)sender;
 - (IBAction)logout:(id)sender;
+-(void)updateBtnStatus;
 
 @end

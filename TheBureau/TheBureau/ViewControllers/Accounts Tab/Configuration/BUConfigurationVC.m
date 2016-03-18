@@ -8,6 +8,7 @@
 
 #import "BUConfigurationVC.h"
 #import "UIColor+APColor.h"
+#import "BUAppNotificationCell.h"
 
 @interface BUConfigurationVC ()
 
@@ -24,6 +25,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self.cell1 updateBtnStatus];
+    [self.cell2 updateBtnStatus];
+    [self.cell3 updateBtnStatus];
+    [self.cell4 updateBtnStatus];
+    [self.cell5 updateBtnStatus];
 }
 
 /*

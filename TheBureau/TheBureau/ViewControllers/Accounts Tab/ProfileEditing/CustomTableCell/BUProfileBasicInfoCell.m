@@ -55,7 +55,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     
-    [self.basicInfoDict setValue:textField.text forKey:@"first_name"];
+    [self.basicInfoDict setValue:textField.text forKey:@"profile_first_name"];
 
     [self.basicInfoDict setValue:textField.text forKey:@"profile_first_name"];
 
@@ -67,7 +67,8 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     
-    [self.basicInfoDict setValue:textField.text forKey:@"first_name"];
+    
+    [self.basicInfoDict setValue:textField.text forKey:@"profile_first_name"];
     
     [self.basicInfoDict setValue:textField.text forKey:@"profile_first_name"];
     
@@ -359,7 +360,7 @@ numberOfRowsInComponent:(NSInteger)component{
     
     
     self.basicInfoDict = inBasicInfoDict;
-    self.nameTF.text = [inBasicInfoDict valueForKey:@"first_name"];
+    self.nameTF.text = [inBasicInfoDict valueForKey:@"profile_first_name"];
     
     self.ageLabel.text = [inBasicInfoDict valueForKey:@"age"];
     
