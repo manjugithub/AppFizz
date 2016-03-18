@@ -947,11 +947,11 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ieK-rb-LDK">
                                                             <rect key="frame" x="20" y="59" width="560" height="50"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mother Toungue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GB8-Hm-neV">
-                                                                    <rect key="frame" x="8" y="15" width="119" height="20"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mother Toungue" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GB8-Hm-neV">
+                                                                    <rect key="frame" x="8" y="0.0" width="66" height="50"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="119" id="tR6-4n-zMj"/>
-                                                                        <constraint firstAttribute="height" constant="20" id="vm9-TM-Tqz"/>
+                                                                        <constraint firstAttribute="width" constant="66" id="tR6-4n-zMj"/>
+                                                                        <constraint firstAttribute="height" constant="50" id="vm9-TM-Tqz"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1006,7 +1006,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="8rk-b7-K7k"/>
                                                                 <constraint firstAttribute="trailing" secondItem="afW-xz-dHo" secondAttribute="trailing" constant="60" id="JtE-AB-4XL"/>
-                                                                <constraint firstItem="GB8-Hm-neV" firstAttribute="top" secondItem="ieK-rb-LDK" secondAttribute="top" constant="15" id="UA2-dy-Pnv"/>
+                                                                <constraint firstItem="GB8-Hm-neV" firstAttribute="top" secondItem="ieK-rb-LDK" secondAttribute="top" id="UA2-dy-Pnv"/>
                                                                 <constraint firstAttribute="trailing" secondItem="jXC-Wa-SEk" secondAttribute="trailing" constant="60" id="dOL-kF-jem"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Cdg-li-sca" secondAttribute="trailing" constant="60" id="plW-d5-qNP"/>
                                                                 <constraint firstItem="GB8-Hm-neV" firstAttribute="leading" secondItem="ieK-rb-LDK" secondAttribute="leading" constant="8" id="qaH-u4-jRD"/>
@@ -1020,11 +1020,11 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="piM-u5-UIz">
                                                             <rect key="frame" x="20" y="110" width="560" height="50"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Family Origin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0t-c1-KQd">
-                                                                    <rect key="frame" x="8" y="15" width="96" height="20"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Family Origin" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0t-c1-KQd">
+                                                                    <rect key="frame" x="8" y="0.0" width="67" height="50"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="20" id="HvL-iH-BB4"/>
-                                                                        <constraint firstAttribute="width" constant="96" id="TUZ-d2-LuI"/>
+                                                                        <constraint firstAttribute="height" constant="50" id="HvL-iH-BB4"/>
+                                                                        <constraint firstAttribute="width" constant="67" id="TUZ-d2-LuI"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1086,7 +1086,7 @@
                                                                 <constraint firstAttribute="trailing" secondItem="CYe-vR-MM6" secondAttribute="trailing" constant="60" id="fTW-Q8-L89"/>
                                                                 <constraint firstAttribute="trailing" secondItem="P0x-YJ-GmE" secondAttribute="trailing" constant="5" id="fz5-xC-P9P"/>
                                                                 <constraint firstItem="CYe-vR-MM6" firstAttribute="top" secondItem="piM-u5-UIz" secondAttribute="top" constant="8" id="pLS-D9-PYA"/>
-                                                                <constraint firstItem="Y0t-c1-KQd" firstAttribute="top" secondItem="piM-u5-UIz" secondAttribute="top" constant="15" id="tPS-uT-dhK"/>
+                                                                <constraint firstItem="Y0t-c1-KQd" firstAttribute="top" secondItem="piM-u5-UIz" secondAttribute="top" id="tPS-uT-dhK"/>
                                                                 <constraint firstItem="Y0t-c1-KQd" firstAttribute="leading" secondItem="piM-u5-UIz" secondAttribute="leading" constant="8" id="tRa-vW-6af"/>
                                                             </constraints>
                                                         </view>
