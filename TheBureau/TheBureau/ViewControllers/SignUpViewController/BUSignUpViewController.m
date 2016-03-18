@@ -174,10 +174,10 @@
                 }
                 else
                 {
+                   parameters =  @{@"reg_type": @"digits",
+                                 @"digits":session.phoneNumber};
 //                    parameters =  @{@"reg_type": @"digits",
-//                                    @"digits":session.phoneNumber};
-                    parameters =  @{@"reg_type": @"digits",
-                                    @"digits":@"334445556723"};
+//                                    @"digits":@"334445556723"};
                 }
                 [self startActivityIndicator:YES];
                 

@@ -123,6 +123,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"Preferences";
+
+    
     NSDictionary *prefDict = [[NSUserDefaults standardUserDefaults] valueForKey:@"Preferences"];
     
     if(nil == prefDict)
@@ -136,7 +139,6 @@
 
     self.feetMutableArray = [[NSMutableArray alloc]init];
     
-    self.navigationItem.title = @"Match Preferences";
     self.inchesMutableArray = [[NSMutableArray alloc]init];
     self.ageArray = [[NSMutableArray alloc]init];
     self.radiusArray = [[NSMutableArray alloc]init];
@@ -144,7 +146,7 @@
     _relationCircle = [NSArray arrayWithObjects:@"Father",@"Mother",@"Family member", @"Friend", @"Sister", @"Brother",@"Self",nil];
 
     _educationLevelArray = [[NSArray alloc]initWithObjects:@"Doctorate",@"Masters",@"Bachelors",@"Associates",@"Grade School", nil];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(editProfileDetails:)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(editProfileDetails:)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -276,7 +278,15 @@
 
 
     [BUUtilities removeLogo:self.navigationController];
+    
+
+    
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(editProfileDetails:)];
+    
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+
     
     [self readPreferences];
 }

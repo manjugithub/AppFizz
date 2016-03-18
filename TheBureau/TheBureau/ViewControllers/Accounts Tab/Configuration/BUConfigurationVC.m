@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"CONFIGURATION";
+    self.title = @"Configuration";
     
 }
 
@@ -34,10 +34,14 @@
     [BUUtilities removeLogo:self.navigationController];
     //    self.navigationItem.rightBarButtonItem = self.rightBarButton;
     
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"logo44"]
                                                                               style:UIBarButtonItemStylePlain
                                                                              target:nil
                                                                              action:nil];
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated

@@ -47,7 +47,7 @@
     [super viewDidAppear:YES];
     
     
-   splashTimer  = [NSTimer scheduledTimerWithTimeInterval:5.2 target:self selector:@selector(setSplashTimer) userInfo:nil repeats:NO];
+   splashTimer  = [NSTimer scheduledTimerWithTimeInterval:6.2 target:self selector:@selector(setSplashTimer) userInfo:nil repeats:NO];
 
     
 }
