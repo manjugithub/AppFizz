@@ -573,7 +573,10 @@
              
              NSString *femaleImgName,*maleImgName,*genderImgName;
              
-             if([[self.profDict valueForKey:@"gender"] containsString:@"Female"])
+             
+             NSString *genderStr = (([self.profDict valueForKey:@"gender"] == nil || [[self.profDict valueForKey:@"gender"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"gender"] isEqualToString:@""]) ? @"" : [self.profDict valueForKey:@"gender"]);
+
+             if([genderStr containsString:@"Female"])
              {
                  self.genderSelectionBtn.tag = 0;
                  femaleImgName = @"ic_female_s1.png";
