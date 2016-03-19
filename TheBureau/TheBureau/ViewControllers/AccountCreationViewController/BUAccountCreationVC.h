@@ -16,6 +16,10 @@
 @property(nonatomic,weak) IBOutlet UITextField *profileLastNameTF;
 @property(nonatomic)IBOutlet UITextField *currentTextField;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollBottomConstraint;
+
+//@property(nonatomic,weak) IBOutlet NSLayoutConstraint
+
 @property (weak, nonatomic) IBOutlet UILabel *relationLabel;
 
 @property(nonatomic,strong)NSArray* relationCircle;

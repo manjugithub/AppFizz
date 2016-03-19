@@ -11,5 +11,6 @@
 #import "BUWebServicesManager.h"
 
 @interface BUProfileHeritageVC : BUBaseViewController<PWPickerViewDelegate>
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *scrollBottomConstraint;
 
 @end

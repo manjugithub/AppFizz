@@ -39,6 +39,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"%0.0f",self.scrollBottomConstraint.constant);
+}
+
 /*
 #pragma mark - Navigation
 
@@ -319,7 +326,15 @@
     [self.view endEditing:YES];
 }
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField{
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.scrollBottomConstraint.constant = -50;
+    
+}
+
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
     
     [textField resignFirstResponder];
     return YES;
@@ -327,6 +342,7 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    self.scrollBottomConstraint.constant = 44;
     [textField resignFirstResponder];
 }
 
