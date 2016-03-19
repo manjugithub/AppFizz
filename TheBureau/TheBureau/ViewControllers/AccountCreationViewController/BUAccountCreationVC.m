@@ -109,10 +109,10 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
     
     
     
-    UIImageView * leftView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
-    leftView.image =  [UIImage imageNamed:@"ic_user"];
-    leftView.contentMode = UIViewContentModeCenter;
-    self.firstNameTF.leftView = leftView;
+    UIImageView * leftView3 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
+    leftView3.image =  [UIImage imageNamed:@"ic_user"];
+    leftView3.contentMode = UIViewContentModeCenter;
+    self.firstNameTF.leftView = leftView3;
     self.firstNameTF.leftViewMode = UITextFieldViewModeAlways;
     self.firstNameTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
@@ -133,26 +133,26 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
     
     //[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_user"]];
     
-    UIImageView * leftView11 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
-    leftView11.image =  [UIImage imageNamed:@"ic_email"];
-    leftView11.contentMode = UIViewContentModeCenter;
-    self.emailIdTF.leftView = leftView11;
+    UIImageView * leftView5 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
+    leftView5.image =  [UIImage imageNamed:@"ic_email"];
+    leftView5.contentMode = UIViewContentModeCenter;
+    self.emailIdTF.leftView = leftView5;
     self.emailIdTF.leftViewMode = UITextFieldViewModeAlways;
     self.emailIdTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
     
-    UIImageView * leftView21 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
-    leftView21.image =  [UIImage imageNamed:@"ic_mobile"];
-    leftView21.contentMode = UIViewContentModeCenter;
-    self.mobileNumTF.leftView = leftView21;
+    UIImageView * leftView6 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
+    leftView6.image =  [UIImage imageNamed:@"ic_mobile"];
+    leftView6.contentMode = UIViewContentModeCenter;
+    self.mobileNumTF.leftView = leftView6;
     self.mobileNumTF.leftViewMode = UITextFieldViewModeAlways;
     self.mobileNumTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
     
-    UIImageView * leftView3 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
-    leftView.image =  [UIImage imageNamed:@"ic_dob"];
-    leftView.contentMode = UIViewContentModeCenter;
-    self.dateofbirthTF.leftView = leftView3;
+    UIImageView * leftView7 = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,25,25)];
+    leftView7.image =  [UIImage imageNamed:@"ic_dob"];
+    leftView7.contentMode = UIViewContentModeCenter;
+    self.dateofbirthTF.leftView = leftView7;
     self.dateofbirthTF.leftViewMode = UITextFieldViewModeAlways;
     self.dateofbirthTF.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     
@@ -393,6 +393,13 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
     
     
 
+}
+- (void)textFieldDidBeginEditing:(UITextField *)textField;           // became first responder
+{
+    
+    self.currentTextField = textField;
+    
+    
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
