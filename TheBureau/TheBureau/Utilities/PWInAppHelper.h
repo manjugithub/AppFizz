@@ -7,7 +7,6 @@
 //
 
 #import "IAPHelper.h"
-
 @interface PWInAppHelper : IAPHelper
 
 + (PWInAppHelper *)sharedInstance;

@@ -100,6 +100,7 @@ NSString *const IAPHelperProductPurchaseFailedNotification = @"IAPHelperProductP
 
 - (void)buyProduct:(SKProduct *)product {
     
+    [self.parentCtrllr startActivityIndicator:YES];
     NSLog(@"Buying %@...", product.productIdentifier);
     
     SKPayment * payment = [SKPayment paymentWithProduct:product];
@@ -128,6 +129,8 @@ NSString *const IAPHelperProductPurchaseFailedNotification = @"IAPHelperProductP
 }
 
 - (void)completeTransaction:(SKPaymentTransaction *)transaction {
+    [self.parentCtrllr stopActivityIndicator];
+
     NSLog(@"completeTransaction...");
     
     [self provideContentForProductIdentifier:transaction.payment.productIdentifier];
@@ -136,14 +139,16 @@ NSString *const IAPHelperProductPurchaseFailedNotification = @"IAPHelperProductP
 
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction {
     NSLog(@"restoreTransaction...");
-    
+    [self.parentCtrllr stopActivityIndicator];
+
     [self provideContentForProductIdentifier:transaction.originalTransaction.payment.productIdentifier];
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 }
 
 - (void)failedTransaction:(SKPaymentTransaction *)transaction {
     
-    NSLog(@"failedTransaction...");
+    [self.parentCtrllr stopActivityIndicator];
+  NSLog(@"failedTransaction...");
     if (transaction.error.code != SKErrorPaymentCancelled)
     {
         NSLog(@"Transaction error: %@", transaction.error.localizedDescription);

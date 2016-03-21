@@ -52,12 +52,12 @@
                   moduleName = "TheBureau"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/accion/Skype%20Downloads/TheBureau/AppFizz/TheBureau/TheBureau/ViewControllers/Accounts%20Tab/Preferences/BUPreferencesVC.m"
-                  timestampString = "480109254.180197"
+                  timestampString = "480151752.623209"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "507"
                   endingLineNumber = "507"
-                  offsetFromSymbolStart = "529">
+                  offsetFromSymbolStart = "504">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -67,12 +67,12 @@
                   moduleName = "TheBureau"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/accion/Skype%20Downloads/TheBureau/AppFizz/TheBureau/TheBureau/ViewControllers/Accounts%20Tab/Preferences/BUPreferencesVC.m"
-                  timestampString = "480109254.180441"
+                  timestampString = "480151752.623404"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "507"
                   endingLineNumber = "507"
-                  offsetFromSymbolStart = "537">
+                  offsetFromSymbolStart = "520">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -218,6 +218,70 @@
             startingLineNumber = "516"
             endingLineNumber = "516"
             landmarkName = "-readPreferences"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBureau/ViewControllers/Gold Tab/BUGoldTabVC.m"
+            timestampString = "480153059.504274"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "-collectionView:didSelectItemAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBureau/Utilities/IAPHelper.m"
+            timestampString = "480152072.885454"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "-completeTransaction:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBureau/Utilities/IAPHelper.m"
+            timestampString = "480152072.885454"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "-restoreTransaction:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBureau/Utilities/IAPHelper.m"
+            timestampString = "480152072.885454"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "-failedTransaction:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

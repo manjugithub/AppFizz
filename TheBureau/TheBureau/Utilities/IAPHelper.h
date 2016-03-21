@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <StoreKit/StoreKit.h>
+#import "BUBaseViewController.h"
 UIKIT_EXTERN NSString *const IAPHelperProductPurchasedNotification;
 UIKIT_EXTERN NSString *const IAPHelperProductPurchaseFailedNotification;
 
@@ -15,6 +16,7 @@ typedef void (^RequestProductsCompletionHandler)(BOOL success, NSArray * product
 
 @interface IAPHelper : NSObject
 
+@property(nonatomic, assign) BUBaseViewController *parentCtrllr;
 - (id)initWithProductIdentifiers:(NSSet *)productIdentifiers;
 - (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler;
 - (void)buyProduct:(SKProduct *)product;
