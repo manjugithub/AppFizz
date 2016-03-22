@@ -52,12 +52,12 @@
                   moduleName = "TheBureau"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/accion/Skype%20Downloads/TheBureau/AppFizz/TheBureau/TheBureau/ViewControllers/Accounts%20Tab/Preferences/BUPreferencesVC.m"
-                  timestampString = "480365009.458584"
+                  timestampString = "480367846.880393"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "507"
                   endingLineNumber = "507"
-                  offsetFromSymbolStart = "529">
+                  offsetFromSymbolStart = "504">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -67,12 +67,12 @@
                   moduleName = "TheBureau"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/accion/Skype%20Downloads/TheBureau/AppFizz/TheBureau/TheBureau/ViewControllers/Accounts%20Tab/Preferences/BUPreferencesVC.m"
-                  timestampString = "480365009.458855"
+                  timestampString = "480367846.880588"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "507"
                   endingLineNumber = "507"
-                  offsetFromSymbolStart = "537">
+                  offsetFromSymbolStart = "520">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -250,22 +250,6 @@
             startingLineNumber = "150"
             endingLineNumber = "150"
             landmarkName = "-failedTransaction:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TheBureau/ViewControllers/ProfileCreation/BUProfileOccupationVC.m"
-            timestampString = "480364284.223474"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
-            landmarkName = "-continueClicked:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

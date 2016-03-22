@@ -277,7 +277,7 @@
          [self stopActivityIndicator];
          [self stopActivityIndicator];
          [self stopActivityIndicator];
-         if(0)//(YES == [[response valueForKey:@"msg"] isEqualToString:@"Success"])
+         if(YES == [[response valueForKey:@"msg"] isEqualToString:@"Success"])
          {
              UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
              BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
