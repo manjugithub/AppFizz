@@ -228,8 +228,15 @@ HighLevelEducationTVCell *cell =(HighLevelEducationTVCell*) [_tableView cellForR
     
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    [self slideTableDown];
+    [self.view endEditing:YES];
+}
+
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
+    [self slideTableDown];
     [self.view endEditing:YES];
 }
 

@@ -39,6 +39,8 @@
 
 -(IBAction)dropDownBtn:(id)sender
 {
+    [self.view endEditing:YES];
+
     
     if([self.currentTextField isFirstResponder]){
         [self.currentTextField resignFirstResponder];
@@ -226,6 +228,8 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
 
 -(IBAction)setGender:(id)sender
 {
+    [self.view endEditing:YES];
+
     NSString *femaleImgName,*maleImgName,*genderImgName;
     
     if(0 == self.genderSelectionBtn.tag)
@@ -336,6 +340,8 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
 //}
 -(IBAction)dateofbirthBtn:(id)sender{
     
+    [self.view endEditing:YES];
+
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Birthday\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIDatePicker *picker = [[UIDatePicker alloc] init];
     [picker setDatePickerMode:UIDatePickerModeDate];
@@ -398,19 +404,20 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
 {
     
     self.currentTextField = textField;
-    
+    self.scrollBottomConstraint.constant = 250;
     
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    
+    self.scrollBottomConstraint.constant = 0;
+    [self.currentTextField resignFirstResponder];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     [self.currentTextField resignFirstResponder];
-    
+    self.scrollBottomConstraint.constant = 0;
     return YES;
 }
 
@@ -429,6 +436,7 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
 
 -(void)viewPopOnBackButton {
     
+    [self.view endEditing:YES];
     NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Do you wish to leave this appication? Your Information has not been saved"];
     [message addAttribute:NSFontAttributeName
                     value:[UIFont fontWithName:@"comfortaa" size:15]
@@ -467,7 +475,8 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
 
 -(IBAction)continueButtonClicked:(id)sender;
 {
-    
+    [self.view endEditing:YES];
+
     if (![self.firstNameTF.text length]) {
         [self alertMessage:@"First Name"];
     }

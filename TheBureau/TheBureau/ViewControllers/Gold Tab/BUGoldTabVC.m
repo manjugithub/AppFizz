@@ -26,13 +26,14 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-//    [self reload];
+    [self reload];
 }
 
 - (void)reload {
     _products = nil;
     
     [self startActivityIndicator:YES];
+    [PWInAppHelper sharedInstance].parentCtrllr = self;
     [[PWInAppHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
         if (success) {
             _products = products;
@@ -157,6 +158,14 @@ static NSString * const reuseIdentifier = @"Cell";
         default:
             break;
     }
+    
+    
+    
+    [[PWInAppHelper sharedInstance] buyProduct:[self.products objectAtIndex:indexPath.row]];
+    
+    return;
+    
+    
     
     [[NSUserDefaults standardUserDefaults] setInteger:gold + purchasedGold forKey:@"purchasedGold"];
     [[NSUserDefaults standardUserDefaults] synchronize];

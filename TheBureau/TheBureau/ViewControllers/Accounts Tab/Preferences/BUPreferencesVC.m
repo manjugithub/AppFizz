@@ -493,21 +493,6 @@
      {
          [self stopActivityIndicator];
          
-         NSInteger locRadius = (([response valueForKey:@"location_radius"] == nil || [[response valueForKey:@"location_radius"] isKindOfClass:[NSNull class]] || [[response valueForKey:@"location_radius"] isEqualToString:@""]) ? 50 : [[response valueForKey:@"location_radius"] intValue]);
-         
-         NSInteger ageFrom = (([response valueForKey:@"age_from"] == nil || [[response valueForKey:@"age_from"] isKindOfClass:[NSNull class]] || [[response valueForKey:@"age_from"] isEqualToString:@""]) ? 18 : [[response valueForKey:@"age_from"] intValue]);
-         
-         
-         NSInteger ageTo = (([response valueForKey:@"age_to"] == nil || [[response valueForKey:@"age_to"] isKindOfClass:[NSNull class]] || [[response valueForKey:@"age_to"] isEqualToString:@""]) ? 40 : [[response valueForKey:@"age_to"] intValue]);
-         
-
-         NSInteger feet = (([response valueForKey:@"height_from_feet"] == nil || [[response valueForKey:@"height_from_feet"] isKindOfClass:[NSNull class]] || [[response valueForKey:@"height_from_feet"] isEqualToString:@""]) ? 4 : [[response valueForKey:@"height_from_feet"] intValue]);
-         
-         NSInteger inch = (([response valueForKey:@"height_from_inch"] == nil || [[response valueForKey:@"height_from_inch"] isKindOfClass:[NSNull class]] || [[response valueForKey:@"height_from_inch"] isEqualToString:@""]) ? 11 : [[response valueForKey:@"height_from_inch"] intValue]);
-         NSInteger feet1 = (([response valueForKey:@"height_to_feet"] == nil || [[response valueForKey:@"height_to_feet"] isKindOfClass:[NSNull class]] || [[response valueForKey:@"height_to_feet"] isEqualToString:@""]) ? 7 : [[response valueForKey:@"height_to_feet"] intValue]);
-         
-         
-         NSInteger inch1 = (([response valueForKey:@"height_to_inch"] == nil || [[response valueForKey:@"height_to_inch"] isKindOfClass:[NSNull class]] || [[response valueForKey:@"height_to_inch"] isEqualToString:@""]) ? 0 : [[response valueForKey:@"height_to_inch"] intValue]);
 
          if([[response valueForKey:@"msg"] isEqualToString:@"Error"])
          {
@@ -516,8 +501,35 @@
          }
          else
          {
-             self.shouldAddPref = NO;
              self.profDict = [[NSMutableDictionary alloc] initWithDictionary:response];
+
+             
+             for (NSString *key in [self.profDict allKeys])
+             {
+                 id str =   (([self.profDict valueForKey:key] == nil || [[self.profDict valueForKey:key] isKindOfClass:[NSNull class]]) ? @"" : [self.profDict valueForKey:key]);
+                 [self.profDict setValue:str forKey:key];
+                 if([str isKindOfClass:[NSString class]])
+                     if([str isEqualToString:@""] && ([key isEqualToString:@"diets"] || [key isEqualToString:@"marital_status"]  || [key isEqualToString:@"years_in_usa"]))
+                         [self.profDict setValue:[[NSArray alloc] init] forKey:key];
+             }
+             
+             NSInteger locRadius = (([self.profDict valueForKey:@"location_radius"] == nil || [[self.profDict valueForKey:@"location_radius"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"location_radius"] isEqualToString:@""]) ? 50 : [[self.profDict valueForKey:@"location_radius"] intValue]);
+             
+             NSInteger ageFrom = (([self.profDict valueForKey:@"age_from"] == nil || [[self.profDict valueForKey:@"age_from"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"age_from"] isEqualToString:@""]) ? 18 : [[self.profDict valueForKey:@"age_from"] intValue]);
+             
+             
+             NSInteger ageTo = (([self.profDict valueForKey:@"age_to"] == nil || [[self.profDict valueForKey:@"age_to"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"age_to"] isEqualToString:@""]) ? 40 : [[self.profDict valueForKey:@"age_to"] intValue]);
+             
+             
+             NSInteger feet = (([self.profDict valueForKey:@"height_from_feet"] == nil || [[self.profDict valueForKey:@"height_from_feet"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"height_from_feet"] isEqualToString:@""]) ? 4 : [[self.profDict valueForKey:@"height_from_feet"] intValue]);
+             
+             NSInteger inch = (([self.profDict valueForKey:@"height_from_inch"] == nil || [[self.profDict valueForKey:@"height_from_inch"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"height_from_inch"] isEqualToString:@""]) ? 11 : [[self.profDict valueForKey:@"height_from_inch"] intValue]);
+             NSInteger feet1 = (([self.profDict valueForKey:@"height_to_feet"] == nil || [[self.profDict valueForKey:@"height_to_feet"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"height_to_feet"] isEqualToString:@""]) ? 7 : [[self.profDict valueForKey:@"height_to_feet"] intValue]);
+             
+             
+             NSInteger inch1 = (([self.profDict valueForKey:@"height_to_inch"] == nil || [[self.profDict valueForKey:@"height_to_inch"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"height_to_inch"] isEqualToString:@""]) ? 0 : [[self.profDict valueForKey:@"height_to_inch"] intValue]);
+
+             self.shouldAddPref = NO;
              
              [self.profDict setValue:[NSString stringWithFormat:@"%ld",locRadius] forKey:@"location_radius"];
 
@@ -532,16 +544,16 @@
 
              
              
-             self.maritalStatusList = [[NSMutableArray alloc] initWithArray:([response valueForKey:@"marital_status"] == nil || [[response valueForKey:@"marital_status"] isKindOfClass:[NSNull class]] ? nil : [response valueForKey:@"marital_status"])];
+             self.maritalStatusList = [[NSMutableArray alloc] initWithArray:([self.profDict valueForKey:@"marital_status"] == nil || [[self.profDict valueForKey:@"marital_status"] isKindOfClass:[NSNull class]] ? nil : [self.profDict valueForKey:@"marital_status"])];
              
              [self updateMaritalStatus];
              
-             self.dietList = [[NSMutableArray alloc] initWithArray:([response valueForKey:@"diets"] == nil || [[response valueForKey:@"diets"] isKindOfClass:[NSNull class]] ? nil : [response valueForKey:@"diets"])];
+             self.dietList = [[NSMutableArray alloc] initWithArray:([self.profDict valueForKey:@"diets"] == nil || [[self.profDict valueForKey:@"diets"] isKindOfClass:[NSNull class]] ? nil : [self.profDict valueForKey:@"diets"])];
 
              [self updateDiet];
 
-             self.relationLabel.text = [response valueForKey:@"account_created_by"];
-             self.educationlevelLbl.text = [response valueForKey:@"minimum_education_requirement"];
+             self.relationLabel.text = [self.profDict valueForKey:@"account_created_by"];
+             self.educationlevelLbl.text = [self.profDict valueForKey:@"minimum_education_requirement"];
              
              
              
@@ -573,7 +585,10 @@
              
              NSString *femaleImgName,*maleImgName,*genderImgName;
              
-             if([[self.profDict valueForKey:@"gender"] containsString:@"Female"])
+             
+             NSString *genderStr = (([self.profDict valueForKey:@"gender"] == nil || [[self.profDict valueForKey:@"gender"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"gender"] isEqualToString:@""]) ? @"" : [self.profDict valueForKey:@"gender"]);
+
+             if([genderStr containsString:@"Female"])
              {
                  self.genderSelectionBtn.tag = 0;
                  femaleImgName = @"ic_female_s1.png";
@@ -597,20 +612,20 @@
              
              
              self.originListDict = [[NSMutableDictionary alloc] init];
-             for (NSDictionary *dict in [response valueForKey:@"family_origin_data"])
+             for (NSDictionary *dict in [self.profDict valueForKey:@"family_origin_data"])
              {
                  [self.originListDict setValue:dict forKey:[dict valueForKey:@"family_origin_id"]];
              }
 
              
              self.religionListDict = [[NSMutableDictionary alloc] init];
-             for (NSDictionary *dict in [response valueForKey:@"religion_data"])
+             for (NSDictionary *dict in [self.profDict valueForKey:@"religion_data"])
              {
                  [self.religionListDict setValue:dict forKey:[dict valueForKey:@"religion_id"]];
              }
 
              self.motherToungueListDict = [[NSMutableDictionary alloc] init];
-             for (NSDictionary *dict in [response valueForKey:@"mother_tongue_data"])
+             for (NSDictionary *dict in [self.profDict valueForKey:@"mother_tongue_data"])
              {
                  [self.motherToungueListDict setValue:dict forKey:[dict valueForKey:@"mother_tongue_id"]];
              }
