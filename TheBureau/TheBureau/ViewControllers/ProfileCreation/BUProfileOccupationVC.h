@@ -7,7 +7,9 @@
 //
 
 #import "BUBaseViewController.h"
-
+#import "BUWebServicesManager.h"
 @interface BUProfileOccupationVC : BUBaseViewController
+
+@property(nonatomic) NSMutableDictionary *dataSourceDict;
 
 @end

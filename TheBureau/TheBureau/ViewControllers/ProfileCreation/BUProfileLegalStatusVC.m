@@ -25,6 +25,9 @@
 @property(nonatomic,weak) IBOutlet UIButton *studentVisaBtn;
 
 
+@property(nonatomic,strong) NSString *yearsInUSA,*citizenShip;
+
+
 
 
 
@@ -85,7 +88,7 @@
         
     }
     
-    
+    self.yearsInUSA = setYearBtn.titleLabel.text;
     
 }
 
@@ -161,16 +164,51 @@
         
     }
 
-    
+    self.citizenShip = setLegalStatusBtn.titleLabel.text;
+
 }
 
 -(IBAction)continueClicked:(id)sender
 {
-    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-    BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-    [self.navigationController pushViewController:vc animated:YES];
+    /*
+     API to  upload :
+     http://app.thebureauapp.com/admin/update_profile_step6
+     
+     Parameters
+     
+     userid => user id of user
+     years_in_usa => e.g. 0 - 2, 2 - 6
+     legal_status => e.g. Citizen/Green Card, Greencard
+     
+     */
+    NSDictionary *parameters = nil;
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                   @"years_in_usa":self.yearsInUSA,
+                   @"legal_status":self.citizenShip
+                   };
+    
+    
+    [self startActivityIndicator:YES];
+    [[BUWebServicesManager sharedManager]queryServer:parameters
+                                             baseURL:@"http://app.thebureauapp.com/admin/update_profile_step6"
+                                        successBlock:^(id response, NSError *error)
+     {
+         UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+         BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+         [self.navigationController pushViewController:vc animated:YES];
+         
+     }
+                                        failureBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         
+         [self showFailureAlert];
+     }];
+    
+    
     
 }
+
 
 
 -(void)viewPopOnBackButton {

@@ -185,7 +185,7 @@ http://app.thebureauapp.com/admin/update_profile_step4
 
     
     [self startActivityIndicator:YES];
-    [[BUWebServicesManager sharedManager]queryServer:nil
+    [[BUWebServicesManager sharedManager]queryServer:parameters
                                              baseURL:@"http://app.thebureauapp.com/admin/update_profile_step4"
                                         successBlock:^(id response, NSError *error)
      {

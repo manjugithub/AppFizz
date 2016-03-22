@@ -169,6 +169,7 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
     
     self.navigationItem.leftBarButtonItem = backButton;
     
+    self.genderSelectionBtn.tag = 0;
     
     // Do any additional setup after loading the view.
 }
@@ -232,16 +233,16 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
 
     NSString *femaleImgName,*maleImgName,*genderImgName;
     
-    if(0 == self.genderSelectionBtn.tag)
+    if(1 == self.genderSelectionBtn.tag)
     {
         femaleImgName = @"ic_female_s2.png";
         maleImgName = @"ic_male_s1.png";
         genderImgName = @"switch_female.png";
-        self.genderSelectionBtn.tag = 1;
+        self.genderSelectionBtn.tag = 0;
     }
     else
     {
-        self.genderSelectionBtn.tag = 0;
+        self.genderSelectionBtn.tag = 1;
         femaleImgName = @"ic_female_s1.png";
         maleImgName = @"ic_male_s2.png";
         genderImgName = @"switch_male.png";
@@ -530,9 +531,9 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
         parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
                        @"first_name":self.firstNameTF.text,
                        @"last_name":self.lastNameTF.text,
-                       @"profile_first_name":self.firstNameTF.text,
-                       @"profile_last_name":self.lastNameTF.text,
-                       @"profile_for":@"Self",
+                       @"profile_first_name":self.profileFirstNameTF.text,
+                       @"profile_last_name":self.profileLastNameTF.text,
+                       @"profile_for":self.relationLabel.text,
                        @"dob":self.dateofbirthTF.text,
                        @"gender":self.genderSelectionBtn.tag == 1 ? @"Male" : @"Female",
                        @"phone_number":self.mobileNumTF.text,

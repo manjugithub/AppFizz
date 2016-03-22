@@ -98,6 +98,10 @@
         }
         default: break;
     }
+    
+    [self.dataSourceDict setValue:employementStatusButton.titleLabel.text forKey:@"employment_status"];
+
+    
 }
 
 
@@ -107,6 +111,25 @@
     
     return YES;
     
+}
+
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+        switch(textField.tag)
+        {
+            case 0:
+            {
+                [self.dataSourceDict setValue:textField.text forKey:@"position_title"];
+                break;
+            }
+            case 1:
+            {
+                [self.dataSourceDict setValue:textField.text forKey:@"company"];
+                break;
+            }
+        }
+    [textField resignFirstResponder];
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

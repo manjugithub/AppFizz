@@ -20,8 +20,11 @@
 
 @interface HighLevelEducationTVCell : UITableViewCell<UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UIButton *addEducationLevelBtn;
 @property (nonatomic,assign) id <HighLevelEducationTVCellDelegate> delegate;
 @property(nonatomic) NSIndexPath *indexpath;
+@property(nonatomic) NSInteger educationLevel;
+@property(nonatomic) NSMutableDictionary *dataSourceDict;
 
 @property (nonatomic,weak) IBOutlet UILabel *educationlevelLbl;
 @property (nonatomic,weak) IBOutlet UITextField *honorTextField;

@@ -50,7 +50,7 @@
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     [self.view addGestureRecognizer:gestureRecognizer];
     
-    
+    self.dataSourceDict = [[NSMutableDictionary alloc] init];
     self.navigationItem.leftBarButtonItem = backButton;
 }
 
@@ -100,6 +100,7 @@
         static NSString *employementCellIdentifier = @"EmployementStatusTVCell";
         EmployementStatusTVCell *cell = [tableView dequeueReusableCellWithIdentifier:employementCellIdentifier];
         cell.delegate = self;
+        cell.dataSourceDict = self.dataSourceDict;
         cellToReturn = cell;
     }
     else
@@ -107,7 +108,11 @@
         static NSString *educationCellIdentifier = @"HighLevelEducationTVCell";
         HighLevelEducationTVCell *cell = [tableView dequeueReusableCellWithIdentifier:educationCellIdentifier];
         cell.indexpath = indexPath;
+        cell.educationLevel = indexPath.row;
+        if(indexPath.row >= 2)
+            cell.addEducationLevelBtn.hidden = YES;
         cell.delegate = self;
+        cell.dataSourceDict = self.dataSourceDict;
         cellToReturn = cell;
     }
     
@@ -204,29 +209,80 @@ for (NSString *str in _educationLevelArray)
 HighLevelEducationTVCell *cell =(HighLevelEducationTVCell*) [_tableView cellForRowAtIndexPath:_selectedIndexpath];
         
         cell.educationlevelLbl.text = _educationLevelArray[buttonIndex - 1];
+        if(cell.educationLevel == 1)
+            [self.dataSourceDict setValue:cell.educationlevelLbl.text forKey:@"highest_education"];
+        else
+            [self.dataSourceDict setValue:cell.educationlevelLbl.text forKey:@"education_second"];
+
     }
 }
 
 
 -(IBAction)continueClicked:(id)sender
 {
+    /*
+    
+    userid => user id of user
+    employment_status=> e.g. Employed, Unemployed
+    position_title => position title
+    company => company name
+    highest_education=> e.g. Doctorate, Masters
+    honors=> honors (text)
+    major=> major
+    college=> college
+    graduated_year=> graduated year
+    education_second => secondary education
+    honors_second => honors (if second education is there)
+    majors_second => major
+    college_second => college
+    graduation_years_second => graduation year
+*/
+    
+    [self.dataSourceDict setValue:[BUWebServicesManager sharedManager].userID forKey:@"userid"];
+    
+//    NSDictionary *parameters = nil;
+//    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+//                   @"diet":self.dieting,
+//                   @"drinking":self.drink,
+//                   @"smoking":self.smoke
+//                   };
     
     
-    if([[NSUserDefaults standardUserDefaults] boolForKey:@"isUSCitizen"])
-    {
-        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
-        BUProfileLegalStatusVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileLegalStatusVC"];
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    else
-    {
-        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-        BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-        [self.navigationController pushViewController:vc animated:YES];
-        
-    }
+    [self startActivityIndicator:YES];
+    [[BUWebServicesManager sharedManager]queryServer:self.dataSourceDict
+                                             baseURL:@"http://app.thebureauapp.com/admin/update_profile_step5"
+                                        successBlock:^(id response, NSError *error)
+     {
+         
+         [self stopActivityIndicator];
+         if([[NSUserDefaults standardUserDefaults] boolForKey:@"isUSCitizen"])
+         {
+             UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
+             BUProfileLegalStatusVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileLegalStatusVC"];
+             [self.navigationController pushViewController:vc animated:YES];
+         }
+         else
+         {
+             UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+             BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+             [self.navigationController pushViewController:vc animated:YES];
+             
+         }
+         
+     }
+                                        failureBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         
+         [self showFailureAlert];
+     }];
+    
+    
     
 }
+
+
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 {

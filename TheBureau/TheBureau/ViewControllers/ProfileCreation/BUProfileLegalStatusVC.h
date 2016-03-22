@@ -7,7 +7,7 @@
 //
 
 #import "BUBaseViewController.h"
-
+#import "BUWebServicesManager.h"
 @interface BUProfileLegalStatusVC : BUBaseViewController
 
 @end
