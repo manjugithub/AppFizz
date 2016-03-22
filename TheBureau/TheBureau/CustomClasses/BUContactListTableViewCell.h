@@ -14,6 +14,7 @@
 @property(nonatomic,weak)IBOutlet UILabel *userName;
 @property(nonatomic,weak)IBOutlet UILabel *lastmessageLbl;
 @property(nonatomic,weak)IBOutlet UILabel *timeLbl;
+@property (nonatomic)IBOutlet UIView *unreadMessageIndicator;
 
 
 -(void)setContactListDataSource:(BUChatContact *)inContact;

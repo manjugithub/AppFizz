@@ -127,6 +127,12 @@ static NSDateFormatter *LQSDateFormatter()
     
     
         cell.timeLbl.text = [NSString stringWithFormat:@"%@",timestampText];
+    
+    if (conversation.hasUnreadMessages) {
+        cell.unreadMessageIndicator.hidden = NO;
+    } else {
+        cell.unreadMessageIndicator.hidden = YES;
+    }
     return cell;
 }
 
