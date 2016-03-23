@@ -7,7 +7,8 @@
 //
 
 #import "BUBaseViewController.h"
-
+#import "BUWebServicesManager.h"
 @interface BUGoldTabVC : BUBaseViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
+@property(nonatomic,strong) NSIndexPath *selectedIndexPath;
 @end

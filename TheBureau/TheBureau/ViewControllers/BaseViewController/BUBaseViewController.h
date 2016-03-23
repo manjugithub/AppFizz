@@ -60,4 +60,7 @@ typedef enum {
 
 -(void)showFailureAlert;
 
+-(void)purchaseSuccess;
+-(void)purchaseFailed;
+
 @end

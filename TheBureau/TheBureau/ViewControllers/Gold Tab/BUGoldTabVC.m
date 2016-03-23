@@ -95,7 +95,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 4;
+    return 6;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -109,16 +109,24 @@ static NSString * const reuseIdentifier = @"Cell";
             cell.priceLabel.text = @"$ 9.99";
             break;
         case 1:
-            cell.goldLabel.text = @"750";
-            cell.priceLabel.text = @"$ 7.99";
+            cell.goldLabel.text = @"100";
+            cell.priceLabel.text = @"$ 1.99";
             break;
         case 2:
+            cell.goldLabel.text = @"250";
+            cell.priceLabel.text = @"$ 2.99";
+            break;
+        case 3:
+            cell.goldLabel.text = @"300";
+            cell.priceLabel.text = @"$ 3.99";
+            break;
+        case 4:
             cell.goldLabel.text = @"500";
             cell.priceLabel.text = @"$ 4.99";
             break;
-        case 3:
-            cell.goldLabel.text = @"100";
-            cell.priceLabel.text = @"$ 1.99";
+        case 5:
+            cell.goldLabel.text = @"750";
+            cell.priceLabel.text = @"$ 6.99";
             break;
             
         default:
@@ -137,7 +145,8 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
+    
+    self.selectedIndexPath = indexPath;
     NSInteger purchasedGold = 0;
 
     switch (indexPath.row)
@@ -146,13 +155,19 @@ static NSString * const reuseIdentifier = @"Cell";
             purchasedGold = 1000;
             break;
         case 1:
-            purchasedGold = 750;
+            purchasedGold = 100;
             break;
         case 2:
-            purchasedGold = 500;
+            purchasedGold = 250;
             break;
         case 3:
-            purchasedGold = 100;
+            purchasedGold = 300;
+            break;
+        case 4:
+            purchasedGold = 500;
+            break;
+        case 5:
+            purchasedGold = 750;
             break;
             
         default:
@@ -167,28 +182,6 @@ static NSString * const reuseIdentifier = @"Cell";
     
     
     
-    [[NSUserDefaults standardUserDefaults] setInteger:gold + purchasedGold forKey:@"purchasedGold"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
-
-    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"You have purchased %ld Gold, Your total purchased gold is %ld",purchasedGold,gold]];
-    [message addAttribute:NSFontAttributeName
-                    value:[UIFont fontWithName:@"comfortaa" size:15]
-                    range:NSMakeRange(0, message.length)];
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alertController setValue:message forKey:@"attributedTitle"];
-    
-    
-    [alertController addAction:({
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            NSLog(@"OK");
-            self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
-        }];
-        
-        action;
-    })];
-    [self presentViewController:alertController  animated:YES completion:nil];
     
 }
 
@@ -288,4 +281,177 @@ static NSString * const reuseIdentifier = @"Cell";
     
 }
 
+
+-(void)purchaseSuccess
+{
+    /*
+     API to  upload :
+     http://app.thebureauapp.com/admin/update_profile_step6
+     
+     Parameters
+     
+     userid => user id of user
+     years_in_usa => e.g. 0 - 2, 2 - 6
+     legal_status => e.g. Citizen/Green Card, Greencard
+     
+     */
+    
+    NSInteger purchasedGold = 0;
+    
+    
+    switch (self.selectedIndexPath.row)
+    {
+        case 0:
+            purchasedGold = 1000;
+            break;
+        case 1:
+            purchasedGold = 100;
+            break;
+        case 2:
+            purchasedGold = 250;
+            break;
+        case 3:
+            purchasedGold = 300;
+            break;
+        case 4:
+            purchasedGold = 500;
+            break;
+        case 5:
+            purchasedGold = 750;
+            break;
+            
+        default:
+            break;
+    }
+    NSDictionary *parameters = nil;
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                   @"gold_to_add":[NSString stringWithFormat:@"%ld",purchasedGold]
+                   };
+    
+    
+    [self startActivityIndicator:YES];
+    [[BUWebServicesManager sharedManager]queryServer:parameters
+                                             baseURL:@"http://app.thebureauapp.com/admin/add_Gold"
+                                        successBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         
+         
+         NSInteger gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
+         NSInteger purchasedGold = 0;
+         
+         
+         switch (self.selectedIndexPath.row)
+         {
+             case 0:
+                 purchasedGold = 1000;
+                 break;
+             case 1:
+                 purchasedGold = 100;
+                 break;
+             case 2:
+                 purchasedGold = 250;
+                 break;
+             case 3:
+                 purchasedGold = 300;
+                 break;
+             case 4:
+                 purchasedGold = 500;
+                 break;
+             case 5:
+                 purchasedGold = 750;
+                 break;
+                 
+             default:
+                 break;
+         }
+         
+         [[NSUserDefaults standardUserDefaults] setInteger:gold + purchasedGold forKey:@"purchasedGold"];
+         [[NSUserDefaults standardUserDefaults] synchronize];
+         
+         gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
+         
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"You have purchased %ld Gold, Your total purchased gold is %ld",purchasedGold,gold]];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];
+         
+         
+         [alertController addAction:({
+             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                 NSLog(@"OK");
+                 self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+             }];
+             
+             action;
+         })];
+         [self presentViewController:alertController  animated:YES completion:nil];
+         
+     }
+                                        failureBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         NSInteger gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
+         NSInteger purchasedGold = 0;
+         
+         
+         switch (self.selectedIndexPath.row)
+         {
+             case 0:
+                 purchasedGold = 1000;
+                 break;
+             case 1:
+                 purchasedGold = 750;
+                 break;
+             case 2:
+                 purchasedGold = 500;
+                 break;
+             case 3:
+                 purchasedGold = 100;
+                 break;
+                 
+             default:
+                 break;
+         }
+         
+         [[NSUserDefaults standardUserDefaults] setInteger:gold + purchasedGold forKey:@"purchasedGold"];
+         [[NSUserDefaults standardUserDefaults] synchronize];
+         
+         gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
+         
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"You have purchased %ld Gold, Your total purchased gold is %ld",purchasedGold,gold]];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];
+         
+         
+         [alertController addAction:({
+             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                 NSLog(@"OK");
+                 self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+             }];
+             
+             action;
+         })];
+         [self presentViewController:alertController  animated:YES completion:nil];
+         
+     }];
+    //         {
+    //             [self stopActivityIndicator];
+    //
+    //             [self showFailureAlert];
+    //         }];
+    
+    
+    
+}
+
+-(void)purchaseFailed
+{
+    
+}
 @end

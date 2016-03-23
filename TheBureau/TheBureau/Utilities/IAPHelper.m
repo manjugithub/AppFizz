@@ -130,6 +130,8 @@ NSString *const IAPHelperProductPurchaseFailedNotification = @"IAPHelperProductP
 
 - (void)completeTransaction:(SKPaymentTransaction *)transaction {
     [self.parentCtrllr stopActivityIndicator];
+    [self.parentCtrllr purchaseSuccess];
+    
 
     NSLog(@"completeTransaction...");
     
@@ -148,6 +150,8 @@ NSString *const IAPHelperProductPurchaseFailedNotification = @"IAPHelperProductP
 - (void)failedTransaction:(SKPaymentTransaction *)transaction {
     
     [self.parentCtrllr stopActivityIndicator];
+    [self.parentCtrllr purchaseFailed];
+
   NSLog(@"failedTransaction...");
     if (transaction.error.code != SKErrorPaymentCancelled)
     {
