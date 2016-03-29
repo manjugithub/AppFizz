@@ -197,10 +197,29 @@
     
     if(self.religionID == nil ||
        self.motherToungueID == nil ||
-       self.famliyID == nil ||
-       self.specificationID == nil ||
-       [self.gothraTF.text isEqualToString:@""])
+       self.famliyID == nil)
     {
+        
+        NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Please fill the mandatory fields"];
+        [message addAttribute:NSFontAttributeName
+                        value:[UIFont fontWithName:@"comfortaa" size:15]
+                        range:NSMakeRange(0, message.length)];
+        
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alertController setValue:message forKey:@"attributedTitle"];
+        [alertController addAction:({
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+            {
+                NSLog(@"OK");
+                
+            }];
+            
+            action;
+        })];
+        
+        [self presentViewController:alertController  animated:YES completion:nil];
         return;
     }
     
@@ -254,6 +273,12 @@
         {
             self.religionTF.text = [inSelectedRow valueForKey:@"religion_name"];
             self.religionID = [inSelectedRow valueForKey:@"religion_id"];
+            
+            self.familyOriginTF.text = @"";
+            self.specificationTF.text = @"";
+            self.gothraTF.text = @"";
+            self.famliyID = nil;
+            self.specificationID = nil;
             break;
         }
         case eMotherToungueList:
@@ -267,12 +292,18 @@
             
             self.familyOriginTF.text = [inSelectedRow valueForKey:@"family_origin_name"];
             self.famliyID = [inSelectedRow valueForKey:@"family_origin_id"];
+            
+            self.specificationTF.text = @"";
+            self.specificationID = nil;
+            self.gothraTF.text = @"";
+
             break;
         }
         case eSpecificationList:
         {
             self.specificationTF.text = [inSelectedRow valueForKey:@"specification_name"];
             self.specificationID = [inSelectedRow valueForKey:@"specification_id"];
+            self.gothraTF.text = @"";
             break;
         }
         case eGothraList:

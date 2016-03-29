@@ -489,7 +489,7 @@ numberOfRowsInComponent:(NSInteger)component{
     }
     else{
         
-        self.maritalStatus = @"Widow";
+        self.maritalStatus = @"Widowed";
         
         [self.widowedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
         [self.neverMarriedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];

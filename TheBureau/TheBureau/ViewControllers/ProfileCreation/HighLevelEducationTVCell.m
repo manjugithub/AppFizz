@@ -24,6 +24,7 @@
 - (IBAction)addSecondLevelButtonTapped:(id)sender
 {
     [self.delegate addNextLevelButtonTapped];
+    self.addEducationLevelBtn.hidden = YES;
 }
 
 - (IBAction)HighLevelEducationButtonTapped:(id)sender
@@ -45,19 +46,6 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
-
-    /*
-     honors=> honors (text)
-     major=> major
-     college=> college
-     graduated_year=> graduated year
-     
-     honors_second => honors (if second education is there)
-     majors_second => major
-     college_second => college
-     graduation_years_second => graduation year
-     */
-    
     if(self.educationLevel == 1)
     {
         switch(textField.tag)

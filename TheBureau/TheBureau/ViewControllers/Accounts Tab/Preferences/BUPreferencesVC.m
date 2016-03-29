@@ -732,7 +732,7 @@
             self.divorcedBtn.tag = 1;
             [self.divorcedBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         }
-        if([maritalStatusStr containsString:@"Widow"])
+        if([maritalStatusStr containsString:@"Widowed"])
         {
             [self.widowedBtn setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
             self.widowedBtn.tag = 1;
