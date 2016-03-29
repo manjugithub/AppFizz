@@ -28,6 +28,7 @@
     dispatch_once(&once, ^{
         instance = [[FBController alloc] init];
         instance.loginManager = [[FBSDKLoginManager alloc] init];
+        instance.loginManager.loginBehavior =  FBSDKLoginBehaviorNative;
         instance.permissionsRequired = @[@"public_profile",@"user_friends", @"user_about_me",@"email"];
     });
     return instance;
