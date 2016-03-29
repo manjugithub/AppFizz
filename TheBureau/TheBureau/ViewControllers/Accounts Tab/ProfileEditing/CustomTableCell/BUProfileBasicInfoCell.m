@@ -54,10 +54,10 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    
-    [self.basicInfoDict setValue:textField.text forKey:@"profile_first_name"];
-
-    [self.basicInfoDict setValue:textField.text forKey:@"profile_first_name"];
+    if(textField.tag == 0)
+        [self.basicInfoDict setValue:textField.text forKey:@"profile_first_name"];
+    else
+        [self.basicInfoDict setValue:textField.text forKey:@"current_zip_code"];
 
     [textField resignFirstResponder];
     return YES;
@@ -67,10 +67,10 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     
-    
-    [self.basicInfoDict setValue:textField.text forKey:@"profile_first_name"];
-    
-    [self.basicInfoDict setValue:textField.text forKey:@"profile_first_name"];
+    if(textField.tag == 0)
+        [self.basicInfoDict setValue:textField.text forKey:@"profile_first_name"];
+    else
+        [self.basicInfoDict setValue:textField.text forKey:@"current_zip_code"];
     
     [textField resignFirstResponder];
 }
@@ -87,7 +87,7 @@
         maleImgName = @"ic_male_s1.png";
         genderImgName = @"switch_female.png";
         self.genderSelectionBtn.tag = 1;
-        [self.basicInfoDict setValue:@"Female" forKey:@"gender"];
+        [self.basicInfoDict setValue:@"Female" forKey:@"profile_gender"];
     }
     else
     {
@@ -95,7 +95,7 @@
         femaleImgName = @"ic_female_s1.png";
         maleImgName = @"ic_male_s2.png";
         genderImgName = @"switch_male.png";
-        [self.basicInfoDict setValue:@"Male" forKey:@"gender"];
+        [self.basicInfoDict setValue:@"Male" forKey:@"profile_gender"];
     }
     
     self.femaleImgView.image = [UIImage imageNamed:femaleImgName];
@@ -232,7 +232,7 @@
             self.radiusLabel.text = [NSString stringWithFormat:@"%@ miles",text];
             
             
-            [self.basicInfoDict setValue:text forKey:@"location"];
+            [self.basicInfoDict setValue:text forKey:@"current_zip_code"];
 
         }];
         action;
@@ -364,7 +364,7 @@ numberOfRowsInComponent:(NSInteger)component{
     
     self.ageLabel.text = [inBasicInfoDict valueForKey:@"age"];
     
-    NSString *genderStr  = [inBasicInfoDict valueForKey:@"gender"];
+    NSString *genderStr  = [inBasicInfoDict valueForKey:@"profile_gender"];
     
     NSString *femaleImgName,*maleImgName,*genderImgName;
 
@@ -389,7 +389,7 @@ numberOfRowsInComponent:(NSInteger)component{
                              forState:UIControlStateNormal];
     
     
-    self.radiusLabel.text = [inBasicInfoDict valueForKey:@"location"];
+    self.radiusLabel.text = [inBasicInfoDict valueForKey:@"current_zip_code"];
     
     self.heighTextField.text = [NSString stringWithFormat:@"%@' %@''",[inBasicInfoDict valueForKey:@"height_feet"],[inBasicInfoDict valueForKey:@"height_inch"]];
     
@@ -398,11 +398,11 @@ numberOfRowsInComponent:(NSInteger)component{
 
     NSInteger tag = 1;
     
-    if([self.maritalStatus  isEqualToString:@"Never Married"] || [self.maritalStatus  isEqualToString:@""])
+    if([self.maritalStatus  containsString:@"Never"] || [self.maritalStatus  isEqualToString:@""])
     {
         tag = 1;
     }
-    else if([self.maritalStatus  isEqualToString:@"Divorced"])
+    else if([self.maritalStatus  containsString:@"Divor"])
     {
         tag = 2;
     }
@@ -420,11 +420,11 @@ numberOfRowsInComponent:(NSInteger)component{
     
     NSDictionary *parameters = nil;
     parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
-                   @"gender": @"Male",
+                   @"profile_gender": @"Male",
                    @"height_feet": self.feetStr,
                    @"height_inch":self.inchStr,
                    @"maritial_status": self.maritalStatusTF.text,
-                   @"location": self.radiusLabel.text,
+                   @"current_zip_code": self.radiusLabel.text,
                    
                    };
 

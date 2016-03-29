@@ -85,6 +85,10 @@ else
 
 -(void)updateOccupation:(EmployementStatus)inTag
 {
+    
+    self.positionTitleTF.enabled = YES;
+    self.companyTF.enabled = YES;
+
     switch (inTag)
     {
         case EmployementStatusEmployed:
@@ -103,6 +107,14 @@ else
             [self.unemployedBtn setSelected:YES];
             [self.studentBtn setSelected:NO];
             [self.occupationInfoDict setValue:[[[self.unemployedBtn titleLabel] text] stringByReplacingOccurrencesOfString:@" " withString:@""] forKey:@"employment_status"];
+            
+            self.positionTitleTF.enabled = NO;
+            self.companyTF.enabled = NO;
+
+            
+            self.positionTitleTF.text = @"";
+            self.companyTF.text = @"";
+
             break;
         }
         case EmployementStatusStudent:
@@ -112,6 +124,14 @@ else
             [self.unemployedBtn setSelected:NO];
             [self.studentBtn setSelected:YES];
             [self.occupationInfoDict setValue:[[[self.studentBtn titleLabel] text] stringByReplacingOccurrencesOfString:@" " withString:@""] forKey:@"employment_status"];
+
+            self.positionTitleTF.enabled = NO;
+            self.companyTF.enabled = NO;
+            
+            
+            self.positionTitleTF.text = @"";
+            self.companyTF.text = @"";
+
             break;
         }
         case EmployementStatusOthers:

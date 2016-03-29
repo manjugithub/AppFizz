@@ -43,6 +43,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    self.genderSelectionBtn.tag = 0;
+
     self.title = @"Information";
     
     self.feetMutableArray = [[NSMutableArray alloc]init];
@@ -434,6 +437,10 @@ numberOfRowsInComponent:(NSInteger)component{
             [self alertMessage:@"Height"];
             
         }
+        else if (![self.dateofbirthTF.text length]){
+            
+            [self alertMessage:@"Date Of Birth"];
+        }
         else
         {
             NSDictionary *parameters = nil;
@@ -468,6 +475,8 @@ numberOfRowsInComponent:(NSInteger)component{
                            @"current_zip_code":self.currentLocTF.text,
                            @"height_feet":self.feetStr,
                            @"height_inch":self.inchStr,
+                           @"profile_dob":self.dateofbirthTF.text,
+                           @"profile_gender":self.genderSelectionBtn.tag == 1 ? @"Male" : @"Female",
                            @"maritial_status":self.maritalStatus
                            };
             

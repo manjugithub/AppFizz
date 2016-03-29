@@ -346,14 +346,17 @@
                                              
                                              [self.basicInfoDict setValue:([respDict valueForKey:@"gender"] != nil && NO == [[respDict valueForKey:@"gender"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"gender"] : @""  forKey:@"gender"];
                                              
-                                             [self.basicInfoDict setValue:([respDict valueForKey:@"location"] != nil && NO == [[respDict valueForKey:@"location"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@""] : @""  forKey:@"location"];
+                                             [self.basicInfoDict setValue:([respDict valueForKey:@"current_zip_code"] != nil && NO == [[respDict valueForKey:@"current_zip_code"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@""] : @""  forKey:@"current_zip_code"];
                                              
                                              [self.basicInfoDict setValue:([respDict valueForKey:@"height_feet"] != nil && NO == [[respDict valueForKey:@"height_feet"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"height_feet"] : @""  forKey:@"height_feet"];
                                              
                                              [self.basicInfoDict setValue:([respDict valueForKey:@"height_inch"] != nil && NO == [[respDict valueForKey:@"height_inch"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"height_inch"] : @""  forKey:@"height_inch"];
                                              
                                              [self.basicInfoDict setValue:([respDict valueForKey:@"maritial_status"] != nil && NO == [[respDict valueForKey:@"maritial_status"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"maritial_status"] : @""  forKey:@"maritial_status"];
+
                                              
+                                             [self.basicInfoDict setValue:([respDict valueForKey:@"current_zip_code"] != nil && NO == [[respDict valueForKey:@"current_zip_code"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"current_zip_code"] : @""  forKey:@"current_zip_code"];
+
                                              
                                              
                                              self.educationDict = [[NSMutableDictionary alloc] init];

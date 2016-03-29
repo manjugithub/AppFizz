@@ -459,6 +459,9 @@
                                               baseURL:baseURl
                                          successBlock:^(id response, NSError *error)
     {
+        
+        self.shouldAddPref = NO;
+
         [self stopActivityIndicator];
                                          }
                                          failureBlock:^(id response, NSError *error) {
@@ -496,7 +499,52 @@
 
          if([[response valueForKey:@"msg"] isEqualToString:@"Error"])
          {
-             self.profDict = [[NSMutableDictionary alloc] init];
+             self.profDict = [[NSMutableDictionary alloc] initWithDictionary:response];
+             
+             
+             for (NSString *key in [self.profDict allKeys])
+             {
+                 id str =   (([self.profDict valueForKey:key] == nil || [[self.profDict valueForKey:key] isKindOfClass:[NSNull class]]) ? @"" : [self.profDict valueForKey:key]);
+                 [self.profDict setValue:str forKey:key];
+                 if([str isKindOfClass:[NSString class]])
+                     if([str isEqualToString:@""] && ([key isEqualToString:@"diets"] || [key isEqualToString:@"marital_status"]  || [key isEqualToString:@"years_in_usa"]))
+                         [self.profDict setValue:[[NSArray alloc] init] forKey:key];
+             }
+             
+             NSInteger locRadius = (([self.profDict valueForKey:@"location_radius"] == nil || [[self.profDict valueForKey:@"location_radius"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"location_radius"] isEqualToString:@""]) ? 50 : [[self.profDict valueForKey:@"location_radius"] intValue]);
+             
+             NSInteger ageFrom = (([self.profDict valueForKey:@"age_from"] == nil || [[self.profDict valueForKey:@"age_from"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"age_from"] isEqualToString:@""]) ? 18 : [[self.profDict valueForKey:@"age_from"] intValue]);
+             
+             
+             NSInteger ageTo = (([self.profDict valueForKey:@"age_to"] == nil || [[self.profDict valueForKey:@"age_to"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"age_to"] isEqualToString:@""]) ? 40 : [[self.profDict valueForKey:@"age_to"] intValue]);
+             
+             
+             NSInteger feet = (([self.profDict valueForKey:@"height_from_feet"] == nil || [[self.profDict valueForKey:@"height_from_feet"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"height_from_feet"] isEqualToString:@""]) ? 4 : [[self.profDict valueForKey:@"height_from_feet"] intValue]);
+             
+             NSInteger inch = (([self.profDict valueForKey:@"height_from_inch"] == nil || [[self.profDict valueForKey:@"height_from_inch"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"height_from_inch"] isEqualToString:@""]) ? 0 : [[self.profDict valueForKey:@"height_from_inch"] intValue]);
+             NSInteger feet1 = (([self.profDict valueForKey:@"height_to_feet"] == nil || [[self.profDict valueForKey:@"height_to_feet"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"height_to_feet"] isEqualToString:@""]) ? 7 : [[self.profDict valueForKey:@"height_to_feet"] intValue]);
+             
+             
+             NSInteger inch1 = (([self.profDict valueForKey:@"height_to_inch"] == nil || [[self.profDict valueForKey:@"height_to_inch"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"height_to_inch"] isEqualToString:@""]) ? 0 : [[self.profDict valueForKey:@"height_to_inch"] intValue]);
+             
+             self.shouldAddPref = NO;
+             
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",locRadius] forKey:@"location_radius"];
+             
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",ageFrom] forKey:@"age_from"];
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",ageTo] forKey:@"age_to"];
+             
+             
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",feet] forKey:@"height_from_feet"];
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",inch] forKey:@"height_from_inch"];
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",feet1] forKey:@"height_to_feet"];
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",inch1] forKey:@"height_to_inch"];
+             
+             
+             
+             self.maritalStatusList = [[NSMutableArray alloc] initWithArray:([self.profDict valueForKey:@"marital_status"] == nil || [[self.profDict valueForKey:@"marital_status"] isKindOfClass:[NSNull class]] ? nil : [self.profDict valueForKey:@"marital_status"])];
+             
+             [self updateMaritalStatus];
              self.shouldAddPref = YES;
          }
          else
@@ -523,7 +571,7 @@
              
              NSInteger feet = (([self.profDict valueForKey:@"height_from_feet"] == nil || [[self.profDict valueForKey:@"height_from_feet"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"height_from_feet"] isEqualToString:@""]) ? 4 : [[self.profDict valueForKey:@"height_from_feet"] intValue]);
              
-             NSInteger inch = (([self.profDict valueForKey:@"height_from_inch"] == nil || [[self.profDict valueForKey:@"height_from_inch"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"height_from_inch"] isEqualToString:@""]) ? 11 : [[self.profDict valueForKey:@"height_from_inch"] intValue]);
+             NSInteger inch = (([self.profDict valueForKey:@"height_from_inch"] == nil || [[self.profDict valueForKey:@"height_from_inch"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"height_from_inch"] isEqualToString:@""]) ? 0 : [[self.profDict valueForKey:@"height_from_inch"] intValue]);
              NSInteger feet1 = (([self.profDict valueForKey:@"height_to_feet"] == nil || [[self.profDict valueForKey:@"height_to_feet"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"height_to_feet"] isEqualToString:@""]) ? 7 : [[self.profDict valueForKey:@"height_to_feet"] intValue]);
              
              

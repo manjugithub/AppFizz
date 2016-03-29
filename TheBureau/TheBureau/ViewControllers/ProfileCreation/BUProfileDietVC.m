@@ -46,7 +46,7 @@
     
     
     self.dieting = @"Vegetarian";
-    self.drink = @"Social";
+    self.drink = @"Socially";
     self.smoke = @"No";
 
     
@@ -117,15 +117,15 @@
         _sociallyLabel.textColor = [UIColor lightGrayColor];
         _neverLabel.textColor = [UIColor blackColor];
         switchBtnStr = @"switch_ON";
+        self.drink = @"Never";
         self.drinkingSelectionBtn.tag = 1;
-        self.smoke = @"Socially";
     }
     else
     {
         self.drinkingSelectionBtn.tag = 0;
         _sociallyLabel.textColor = [UIColor blackColor];
         _neverLabel.textColor = [UIColor lightGrayColor];
-        self.smoke = @"Never";
+        self.drink = @"Socially";
         switchBtnStr = @"switch_OFF";
     }
     

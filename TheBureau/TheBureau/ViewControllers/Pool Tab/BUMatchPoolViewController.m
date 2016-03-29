@@ -92,15 +92,18 @@ static NSString * const reuseIdentifier = @"Cell";
 -(void)getMatchPoolFortheDay
 {
     NSDictionary *parameters = nil;
-    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
+//    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
+//                   };
+
+    parameters = @{@"userid": @"152"
                    };
-    
+
     [self startActivityIndicator:YES];
     [[BUWebServicesManager sharedManager] matchPoolForTheDaywithParameters:parameters
                                                               successBlock:^(id inResult, NSError *error)
     {
         [self stopActivityIndicator];
-        if([inResult isKindOfClass:[NSDictionary class]])
+        if([inResult valueForKey:@"msg"] != nil && [[inResult valueForKey:@"msg"] isEqualToString:@"Error"])
         {
             [self stopActivityIndicator];
             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"No matches found yet"];
@@ -112,27 +115,21 @@ static NSString * const reuseIdentifier = @"Cell";
             [self presentViewController:alertController animated:YES completion:nil];
             return;
         }
-        if(nil != inResult && 0 < [inResult count])
+        else
         {
-            self.datasourceList = inResult;
+            self.datasourceList = [[NSMutableArray alloc] init];
             
             self.imagesList = [[NSMutableArray alloc] init];
-            for (NSDictionary *dict in inResult)
+            for (NSString *key in [inResult allKeys])
             {
-                [self.imagesList addObject:[[dict valueForKey:@"img_url"] firstObject]];
+                if((NO == [[inResult valueForKey:key] isKindOfClass:[NSNull class]]) && (NO == [[inResult valueForKey:key] isKindOfClass:[NSString class]]))
+                {
+                    [self.datasourceList addObject:[inResult valueForKey:key]];
+                    [self.imagesList addObject:[[[self.datasourceList lastObject] valueForKey:@"img_url"] firstObject]];
+                }
             }
             
             [self.collectionView reloadData];
-        }
-        else
-        {
-            NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
-            [message addAttribute:NSFontAttributeName
-                            value:[UIFont fontWithName:@"comfortaa" size:15]
-                            range:NSMakeRange(0, message.length)];
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-            [alertController setValue:message forKey:@"attributedTitle"];            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-            [self presentViewController:alertController animated:YES completion:nil];
         }
     }
                                                               failureBlock:^(id response, NSError *error)

@@ -99,7 +99,7 @@
         default: break;
     }
     
-    [self.dataSourceDict setValue:employementStatusButton.titleLabel.text forKey:@"employment_status"];
+    [self.dataSourceDict setValue:[employementStatusButton.titleLabel.text stringByReplacingOccurrencesOfString:@" " withString:@""] forKey:@"employment_status"];
 
     
 }

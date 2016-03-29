@@ -345,7 +345,7 @@ constructingBodyWithBlock:nil
 
 -(void)matchPoolForTheDaywithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack
 {
-    NSString *baseURL = [NSString stringWithFormat:@"%@%@",kBaseURL,@"pool"];
+    NSString *baseURL = [NSString stringWithFormat:@"%@%@",kBaseURL,@"pool_final"];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
        parameters:inParams

@@ -128,6 +128,55 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(IBAction)payAnonymousClicked:(id)sende
 {
+    
+//    http://app.thebureauapp.com/admin/accessUserProfile
+    
+    
+    
+//http://app.thebureauapp.com/admin/accessUserProfile
+    
+    
+//    Parameters :
+//    
+//    userid => User id of the user who is visiting/accessing the other users profile
+//    
+//    visited_userid => User id of the user whose profile is being visited/accessed by the above user
+//    
+//    access_type => Takes only two values => Anonymous / Direct
+//    
+//    gold_amount => Amount of gold to be deducted from the users account for visiting the other users profile
+
+    
+    [self startActivityIndicator:YES];
+    NSString *baseURl = @"http://app.thebureauapp.com/admin/accessUserProfile";
+    
+    NSDictionary *parameters = nil;
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                   @"visited_userid": [self.datasourceList valueForKey:@"userid"],
+                   @"access_type": @"Anonymous",
+                   @"gold_amount": @"500"
+                   };
+    
+    [[BUWebServicesManager sharedManager] queryServer:parameters
+                                              baseURL:baseURl
+                                         successBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         
+         if([response valueForKey:@"msg"] != nil && [[response valueForKey:@"msg"] isEqualToString:@"Error"])
+         {
+             [self stopActivityIndicator];
+             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[response valueForKey:@"response"]];
+             [message addAttribute:NSFontAttributeName
+                             value:[UIFont fontWithName:@"comfortaa" size:15]
+                             range:NSMakeRange(0, message.length)];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+             [alertController setValue:message forKey:@"attributedTitle"];            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+             [self presentViewController:alertController animated:YES completion:nil];
+             return;
+         }
+else
+{
     NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"You have sent interest anonymously!"];
     [message addAttribute:NSFontAttributeName
                     value:[UIFont fontWithName:@"comfortaa" size:15]
@@ -147,6 +196,22 @@ static NSString * const reuseIdentifier = @"Cell";
     })];
     
     [self presentViewController:alertController  animated:YES completion:nil];
+}
+     }
+                                         failureBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+         [self presentViewController:alertController animated:YES completion:nil];
+     }
+     ];
+
+    
     
 }
 
@@ -161,25 +226,74 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(IBAction)payDirectClicked:(id)sender
 {
-    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"You have sent an interest!"];
-    [message addAttribute:NSFontAttributeName
-                    value:[UIFont fontWithName:@"comfortaa" size:15]
-                    range:NSMakeRange(0, message.length)];
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alertController setValue:message forKey:@"attributedTitle"];
     
-    [alertController addAction:({
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            self.anonymousBtn.enabled = NO;
-            self.anonymousPayBtn.enabled = NO;
-            self.directBtn.enabled = NO;
-            self.directPayBtn.enabled = NO;
-        }];
-        
-        action;
-    })];
+    [self startActivityIndicator:YES];
+    NSString *baseURl = @"http://app.thebureauapp.com/admin/accessUserProfile";
     
-    [self presentViewController:alertController  animated:YES completion:nil];
+    NSDictionary *parameters = nil;
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                   @"visited_userid": [self.datasourceList valueForKey:@"userid"],
+                   @"access_type": @"Direct",
+                   @"gold_amount": @"500"
+                   };
+    
+    [[BUWebServicesManager sharedManager] queryServer:parameters
+                                              baseURL:baseURl
+                                         successBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         
+         if([response valueForKey:@"msg"] != nil && [[response valueForKey:@"msg"] isEqualToString:@"Error"])
+         {
+             [self stopActivityIndicator];
+             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[response valueForKey:@"response"]];
+             [message addAttribute:NSFontAttributeName
+                             value:[UIFont fontWithName:@"comfortaa" size:15]
+                             range:NSMakeRange(0, message.length)];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+             [alertController setValue:message forKey:@"attributedTitle"];            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+             [self presentViewController:alertController animated:YES completion:nil];
+             return;
+         }
+         else
+         {
+             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"You have sent an interest!"];
+             [message addAttribute:NSFontAttributeName
+                             value:[UIFont fontWithName:@"comfortaa" size:15]
+                             range:NSMakeRange(0, message.length)];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+             [alertController setValue:message forKey:@"attributedTitle"];
+             
+             [alertController addAction:({
+                 UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                     self.anonymousBtn.enabled = NO;
+                     self.anonymousPayBtn.enabled = NO;
+                     self.directBtn.enabled = NO;
+                     self.directPayBtn.enabled = NO;
+                 }];
+                 
+                 action;
+             })];
+             
+             [self presentViewController:alertController  animated:YES completion:nil];
+         }
+     }
+     
+                                         failureBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+         [self presentViewController:alertController animated:YES completion:nil];
+     }
+     ];
+    
+    
+
 }
 
 

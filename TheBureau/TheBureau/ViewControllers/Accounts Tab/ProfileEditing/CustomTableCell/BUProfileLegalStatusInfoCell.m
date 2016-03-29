@@ -86,15 +86,15 @@
     }
     else if([[[self.h1VisaBtn titleLabel] text] containsString:occupationStr])
     {
-        tag = 4;
+        tag = 5;
     }
     else if([[[self.othersBtn titleLabel] text] containsString:occupationStr])
     {
-        tag = 5;
+        tag = 6;
     }
     else if([[[self.studentVisaBtn titleLabel] text] containsString:occupationStr])
     {
-        tag = 6;
+        tag = 4;
     }
     [self updateLegalStatusForTag:tag];
 
@@ -147,7 +147,7 @@
         selectedButton = _bornAndRaisedBtn;
     }
     
-    [self.legalStausrInfo setValue:[[[selectedButton titleLabel] text] stringByReplacingOccurrencesOfString:@" " withString:@""] forKey:@"years_in_usa"];
+    [self.legalStausrInfo setValue:[[selectedButton titleLabel] text] forKey:@"years_in_usa"];
     
 }
 -(IBAction)setLegalStatus:(id)sender
@@ -228,7 +228,7 @@
         selectedButton = _othersBtn;
     }
     
-    [self.legalStausrInfo setValue:[[[selectedButton titleLabel] text] stringByReplacingOccurrencesOfString:@" " withString:@""] forKey:@"legal_status"];
+    [self.legalStausrInfo setValue:[[selectedButton titleLabel] text] forKey:@"legal_status"];
 
 }
 

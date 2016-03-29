@@ -76,6 +76,8 @@
             <string>Comfortaa</string>
             <string>Comfortaa</string>
             <string>Comfortaa</string>
+            <string>Comfortaa</string>
+            <string>Comfortaa</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -317,7 +319,7 @@
                                                     <constraint firstAttribute="height" constant="34" id="pnn-gK-n9n"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
-                                                <state key="normal" title="  Widowed" backgroundImage="bg_radiobutton_bubble_s1">
+                                                <state key="normal" title="  Widow" backgroundImage="bg_radiobutton_bubble_s1">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -542,10 +544,10 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="( All fields are mandatory )" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnD-om-Uva">
-                                <rect key="frame" x="192" y="327" width="217" height="21"/>
+                                <rect key="frame" x="192" y="400" width="217" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="217" id="5Ps-Wx-go5"/>
-                                    <constraint firstAttribute="height" constant="21" id="yv1-c4-PRW"/>
+                                    <constraint firstAttribute="height" constant="21" id="c53-oL-Lfq"/>
+                                    <constraint firstAttribute="width" constant="217" id="g2h-uA-ccp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -566,31 +568,100 @@
                                     <action selector="continueClicked:" destination="6VZ-Zr-YPZ" eventType="touchUpInside" id="58L-5w-Pq7"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwb-Dg-0CK">
+                                <rect key="frame" x="20" y="349" width="560" height="1"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.46999999999999997" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="hOR-Di-13I"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" date of birth" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NRT-Es-6iW">
+                                <rect key="frame" x="20" y="316" width="560" height="30"/>
+                                <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_female_s2" translatesAutoresizingMaskIntoConstraints="NO" id="Y1D-A2-Ygz">
+                                <rect key="frame" x="100" y="362" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="FFE-C1-Zr7"/>
+                                    <constraint firstAttribute="height" constant="22" id="yvD-ea-zhV"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_male_s1" translatesAutoresizingMaskIntoConstraints="NO" id="VuR-75-Q29">
+                                <rect key="frame" x="230" y="362" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="9Og-Op-TFR"/>
+                                    <constraint firstAttribute="height" constant="22" id="f3N-C4-SUS"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JHQ-di-k0n">
+                                <rect key="frame" x="140" y="359" width="68" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="8E5-cl-Ykc"/>
+                                    <constraint firstAttribute="width" constant="68" id="UOC-FP-6E1"/>
+                                </constraints>
+                                <state key="normal" image="switch_female"/>
+                                <connections>
+                                    <action selector="setGender:" destination="6VZ-Zr-YPZ" eventType="touchUpInside" id="GaY-rs-wlq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rQ-s7-MmC">
+                                <rect key="frame" x="20" y="316" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="yoR-kz-sIK"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="selectDateofBirthBtn:" destination="6VZ-Zr-YPZ" eventType="touchUpInside" id="5jV-qK-ehv"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text=" Gender :" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mqC-EP-JXw">
+                                <rect key="frame" x="20" y="358" width="67" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Dde-KG-MmY"/>
+                                    <constraint firstAttribute="width" constant="67" id="MrQ-7E-Iha"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xnS-hb-75o" firstAttribute="leading" secondItem="dya-Ks-hDE" secondAttribute="leading" constant="20" id="0MH-As-754"/>
+                            <constraint firstItem="7rQ-s7-MmC" firstAttribute="top" secondItem="Gyf-k3-RDz" secondAttribute="bottom" constant="8" id="0hI-dg-bpd"/>
                             <constraint firstItem="Gyf-k3-RDz" firstAttribute="leading" secondItem="dya-Ks-hDE" secondAttribute="leading" constant="20" id="21B-CA-cC0"/>
                             <constraint firstItem="xnS-hb-75o" firstAttribute="top" secondItem="QaF-lb-b4O" secondAttribute="bottom" id="4Gy-l3-CTj"/>
+                            <constraint firstItem="7rQ-s7-MmC" firstAttribute="leading" secondItem="dya-Ks-hDE" secondAttribute="leading" constant="20" id="6Ee-6d-1s1"/>
                             <constraint firstItem="Rlf-mT-LRF" firstAttribute="top" secondItem="dya-Ks-hDE" secondAttribute="top" constant="28" id="6RB-mx-Hoh"/>
                             <constraint firstItem="Rlf-mT-LRF" firstAttribute="leading" secondItem="dya-Ks-hDE" secondAttribute="leading" constant="20" id="87W-k0-SwU"/>
+                            <constraint firstAttribute="trailing" secondItem="7rQ-s7-MmC" secondAttribute="trailing" constant="20" id="ALd-RK-Sh7"/>
+                            <constraint firstItem="VuR-75-Q29" firstAttribute="leading" secondItem="JHQ-di-k0n" secondAttribute="trailing" constant="22" id="AYP-PP-e5R"/>
+                            <constraint firstAttribute="trailing" secondItem="cwb-Dg-0CK" secondAttribute="trailing" constant="20" id="Asf-Ks-gsN"/>
+                            <constraint firstItem="Y1D-A2-Ygz" firstAttribute="top" secondItem="cwb-Dg-0CK" secondAttribute="bottom" constant="12" id="Dbc-hE-3mv"/>
                             <constraint firstItem="o8Z-Iq-CWb" firstAttribute="top" secondItem="FJO-BG-u9d" secondAttribute="bottom" id="JKN-Td-yOA"/>
                             <constraint firstItem="QaF-lb-b4O" firstAttribute="top" secondItem="Rlf-mT-LRF" secondAttribute="bottom" id="NpO-KG-bkO"/>
                             <constraint firstItem="QaF-lb-b4O" firstAttribute="top" secondItem="Rlf-mT-LRF" secondAttribute="bottom" id="OiV-jY-0u7"/>
+                            <constraint firstItem="mqC-EP-JXw" firstAttribute="top" secondItem="cwb-Dg-0CK" secondAttribute="bottom" constant="8" id="SR1-s8-F16"/>
+                            <constraint firstItem="mnD-om-Uva" firstAttribute="centerX" secondItem="dya-Ks-hDE" secondAttribute="centerX" id="XUk-1b-jGj"/>
+                            <constraint firstItem="cwb-Dg-0CK" firstAttribute="leading" secondItem="dya-Ks-hDE" secondAttribute="leading" constant="20" id="ZiG-bE-MPM"/>
+                            <constraint firstItem="mqC-EP-JXw" firstAttribute="leading" secondItem="dya-Ks-hDE" secondAttribute="leadingMargin" id="Zx0-qV-3iV"/>
+                            <constraint firstItem="JHQ-di-k0n" firstAttribute="top" secondItem="cwb-Dg-0CK" secondAttribute="bottom" constant="9" id="aZh-TK-nOE"/>
                             <constraint firstAttribute="trailing" secondItem="Gyf-k3-RDz" secondAttribute="trailing" constant="20" id="baB-zT-BKi"/>
                             <constraint firstAttribute="trailing" secondItem="Rlf-mT-LRF" secondAttribute="trailing" constant="20" id="bbu-nQ-Zv3"/>
                             <constraint firstItem="o8Z-Iq-CWb" firstAttribute="top" secondItem="FJO-BG-u9d" secondAttribute="bottom" id="cJs-7l-B3N"/>
                             <constraint firstAttribute="trailing" secondItem="FJO-BG-u9d" secondAttribute="trailing" id="cpx-hG-jcF"/>
-                            <constraint firstItem="mnD-om-Uva" firstAttribute="centerX" secondItem="dya-Ks-hDE" secondAttribute="centerX" id="i7h-jc-RTN"/>
+                            <constraint firstItem="mnD-om-Uva" firstAttribute="top" secondItem="JHQ-di-k0n" secondAttribute="bottom" constant="12" id="cvS-t3-AmK"/>
+                            <constraint firstItem="Y1D-A2-Ygz" firstAttribute="leading" secondItem="mqC-EP-JXw" secondAttribute="trailing" constant="13" id="ezq-4h-0on"/>
                             <constraint firstItem="FJO-BG-u9d" firstAttribute="leading" secondItem="dya-Ks-hDE" secondAttribute="leading" id="jth-QB-96I"/>
                             <constraint firstAttribute="trailing" secondItem="xnS-hb-75o" secondAttribute="trailing" constant="20" id="mr2-Rk-YRo"/>
+                            <constraint firstItem="VuR-75-Q29" firstAttribute="top" secondItem="cwb-Dg-0CK" secondAttribute="bottom" constant="12" id="n3r-pk-Gf7"/>
                             <constraint firstItem="mnD-om-Uva" firstAttribute="centerY" secondItem="dya-Ks-hDE" secondAttribute="centerY" id="nGd-Da-4ls"/>
                             <constraint firstItem="FJO-BG-u9d" firstAttribute="leading" secondItem="dya-Ks-hDE" secondAttribute="leading" id="noC-bF-dlQ"/>
                             <constraint firstAttribute="trailing" secondItem="FJO-BG-u9d" secondAttribute="trailing" id="o2E-B0-czc"/>
+                            <constraint firstItem="JHQ-di-k0n" firstAttribute="leading" secondItem="Y1D-A2-Ygz" secondAttribute="trailing" constant="18" id="pjK-G7-Noi"/>
                             <constraint firstItem="QaF-lb-b4O" firstAttribute="leading" secondItem="dya-Ks-hDE" secondAttribute="leading" constant="20" id="rko-0o-wZB"/>
-                            <constraint firstItem="mnD-om-Uva" firstAttribute="top" secondItem="Gyf-k3-RDz" secondAttribute="bottom" constant="19" id="sip-K4-pBx"/>
                             <constraint firstItem="xnS-hb-75o" firstAttribute="top" secondItem="QaF-lb-b4O" secondAttribute="bottom" id="sq3-fh-D53"/>
                             <constraint firstAttribute="trailing" secondItem="QaF-lb-b4O" secondAttribute="trailing" constant="20" id="wKX-yJ-ov2"/>
+                            <constraint firstItem="cwb-Dg-0CK" firstAttribute="top" secondItem="7rQ-s7-MmC" secondAttribute="bottom" constant="3" id="y9r-tS-tF9"/>
                             <constraint firstItem="Gyf-k3-RDz" firstAttribute="top" secondItem="xnS-hb-75o" secondAttribute="bottom" id="zgk-9u-xqN"/>
                         </constraints>
                         <variation key="default">
@@ -605,8 +676,12 @@
                         <outlet property="btn_India" destination="dXr-c5-HEX" id="wHq-pv-dFh"/>
                         <outlet property="btn_USA" destination="Ld8-X9-Bse" id="OgS-cS-4kx"/>
                         <outlet property="currentLocTF" destination="cd9-YT-65O" id="TXe-Kq-CUM"/>
+                        <outlet property="dateofbirthTF" destination="NRT-Es-6iW" id="3la-dZ-0Yt"/>
                         <outlet property="divorcedBtn" destination="tH9-sw-oKQ" id="7dk-cV-EP0"/>
+                        <outlet property="femaleImgView" destination="Y1D-A2-Ygz" id="OZa-RR-zB1"/>
+                        <outlet property="genderSelectionBtn" destination="JHQ-di-k0n" id="XLg-Zn-SP4"/>
                         <outlet property="heighTextField" destination="Kn7-NW-dfY" id="5ET-vu-Zhl"/>
+                        <outlet property="maleImgView" destination="VuR-75-Q29" id="RYW-Ms-yyr"/>
                         <outlet property="neverMarriedBtn" destination="Usq-rB-qdh" id="UZX-n8-z0p"/>
                         <outlet property="widowedBtn" destination="YcL-eB-Oz3" id="sxO-XN-age"/>
                     </connections>
@@ -1529,7 +1604,7 @@
                                                             <rect key="frame" x="169" y="218" width="100" height="34"/>
                                                             <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <state key="normal" title="   Others" backgroundImage="bg_radiobutton_bubble_s1">
+                                                            <state key="normal" title="   Other" backgroundImage="bg_radiobutton_bubble_s1">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <state key="selected" title="   Others" backgroundImage="bg_radiobutton_bubble_s2">
@@ -2482,6 +2557,9 @@
         <image name="bg_dropdown" width="159" height="34"/>
         <image name="bg_radiobutton_bubble_s1" width="116" height="34"/>
         <image name="bg_radiobutton_bubble_s2" width="116" height="34"/>
+        <image name="ic_female_s2" width="22" height="22"/>
+        <image name="ic_male_s1" width="22" height="22"/>
         <image name="switch_OFF" width="68" height="32"/>
+        <image name="switch_female" width="68" height="32"/>
     </resources>
 </document>

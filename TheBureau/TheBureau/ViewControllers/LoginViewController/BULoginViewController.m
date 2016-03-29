@@ -167,7 +167,7 @@
                 else
                 {
 //                    parameters = @{@"login_type": @"digits",
-//                                   @"digits":@"334445556723"};
+//                                   @"digits":@"9902924732"};
                     
                     parameters = @{@"login_type": @"digits",
                                    @"digits":session.phoneNumber};

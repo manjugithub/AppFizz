@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "BUBaseViewController.h"
-@interface BUProfileMatchChatVC : BUBaseViewController
+@interface BUProfileMatchChatVC : BUBaseViewController<UITableViewDataSource,UITableViewDelegate>
 
 @end
