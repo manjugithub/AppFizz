@@ -111,8 +111,12 @@
 -(void)getMatchMakingfortheDay
 {
     NSDictionary *parameters = nil;
-    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
+//    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
+//                   };
+    
+    parameters = @{@"userid": @"152"
                    };
+
     
     [self startActivityIndicator:YES];
     [[BUWebServicesManager sharedManager] matchMakingForTheDaywithParameters:parameters successBlock:^(id response, NSError *error) {

@@ -10,6 +10,14 @@
 
 @implementation BUHomeImagePreviewCell
 
+
+-(void)awakeFromNib
+{
+    self.profileImgView.layer.cornerRadius = 5.0;
+    self.profileImgView.layer.borderColor = [[UIColor blackColor] CGColor];
+    self.profileImgView.layer.borderWidth = 2.0;
+}
+
 -(void)setImageURL:(NSString *)inImageURL;
 {
     [self.activityIndicatorView startAnimating];
@@ -21,4 +29,6 @@
                                       self.activityIndicatorView.hidden = YES;
                                   }];
 }
+
+
 @end

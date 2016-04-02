@@ -167,7 +167,7 @@
                 else
                 {
 //                    parameters = @{@"login_type": @"digits",
-//                                   @"digits":@"9902924732"};
+//                                   @"digits":@"990292473210"};
                     
                     parameters = @{@"login_type": @"digits",
                                    @"digits":session.phoneNumber};
@@ -188,8 +188,6 @@
                          //    [inResult valueForKey:@"userid"];
                          
                          [[BULayerHelper sharedHelper] setCurrentUserID:[inResult valueForKey:@"userid"]];
-                         
-                         //                         [[BULayerHelper sharedHelper] setCurrentUserID:@"126"];
                          
                          NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Login Successful"];
                          [message addAttribute:NSFontAttributeName

@@ -30,8 +30,15 @@
     self.prevLocation = [touch locationInView:self.overLayView];
     if(CGRectContainsPoint(self.leftView.frame, self.prevLocation))
     {
-        self.shouldMoveLeftView = YES;
-        self.shouldMoveRightView = NO;
+        if(1 == self.cellType)
+        {
+            self.shouldMoveRightView = NO;
+            self.shouldMoveLeftView = NO;
+        }
+        else{
+            self.shouldMoveLeftView = YES;
+            self.shouldMoveRightView = NO;
+        }
     }
     else if(CGRectContainsPoint(self.rightView.frame, self.prevLocation))
     {
@@ -91,7 +98,6 @@
             self.rightView.frame = frame;
             self.rightViewRightConstraint.constant -= newX;
             self.maxLabelRightConstraint.constant -= newX;
-            NSLog(@"right constant ==> %0.0f",self.rightViewRightConstraint.constant);
             if(2 == self.cellType)
             {
                 CGFloat offset = (((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+1);
@@ -100,6 +106,13 @@
                 self.maxFeet = feet;
                 self.maxInch = inch;
                 self.maxValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
+                
+                
+                [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",(long)self.minFeet] forKey:@"height_from_feet"];
+                [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",(long)self.minInch] forKey:@"height_from_inch"];
+                [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",(long)self.maxFeet] forKey:@"height_to_feet"];
+                [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",(long)self.maxInch] forKey:@"height_to_inch"];
+
             }
             else if(1 == self.cellType)
             {
@@ -120,10 +133,10 @@
 
     if(2 == self.cellType)
     {
-        [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",self.minFeet] forKey:@"height_from_feet"];
-        [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",self.minInch] forKey:@"height_from_inch"];
-        [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",self.maxFeet] forKey:@"height_to_feet"];
-        [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",self.maxInch] forKey:@"height_to_inch"];
+        [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",(long)self.minFeet] forKey:@"height_from_feet"];
+        [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",(long)self.minInch] forKey:@"height_from_inch"];
+        [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",(long)self.maxFeet] forKey:@"height_to_feet"];
+        [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",(long)self.maxInch] forKey:@"height_to_inch"];
     }
     else if(0 == self.cellType)
     {
@@ -139,13 +152,13 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    [self performSelector:@selector(setupInterval) withObject:nil afterDelay:2.0];
+    [self performSelector:@selector(setupInterval) withObject:nil afterDelay:0.5];
 }
 
 -(void)setDatasource:(NSMutableDictionary *)inDict
 {
     self.preferenceDict = inDict;
-    [self performSelector:@selector(updatePrefValues) withObject:nil afterDelay:2.0];
+    [self performSelector:@selector(updatePrefValues) withObject:nil afterDelay:0.5];
 }
 
 
@@ -177,7 +190,7 @@
             }completion:^(BOOL finished) {
                 CGFloat offset = (self.leftViewLeftConstraint.constant / self.interval)+1;
                 NSInteger feet =  4 + (NSInteger)offset / 12;
-                NSInteger inch =  (NSInteger)offset % 12;
+                NSInteger inch =  (NSInteger)offset % 12 - 1;
                 self.minFeet = feet;
                 self.minInch = inch;
                 self.minValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];

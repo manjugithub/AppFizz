@@ -66,4 +66,7 @@
 -(void)queryServerWithList:(NSArray *)inParams baseURL:(NSString *)inBaseURL  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
 
 -(void)getMultipleFamilyOriginListwithParameters:(NSDictionary *)inParams  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+
+-(void)uploadProfilePicture:(UIImage *)inImage;
+-(void)uploadHoroscope:(UIImage *)inImage;
 @end

@@ -339,7 +339,8 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
 //    
 //    
 //}
--(IBAction)dateofbirthBtn:(id)sender{
+-(IBAction)dateofbirthBtn:(id)sender
+{
     
     [self.view endEditing:YES];
 

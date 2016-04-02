@@ -222,14 +222,27 @@
         [self presentViewController:alertController  animated:YES completion:nil];
         return;
     }
+
     
-    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
-                   @"religion_id":self.religionID,
-                   @"mother_tongue_id":self.motherToungueID,
-                   @"family_origin_id":self.famliyID,
-                   @"specification_id":self.specificationID,
-                   @"gothra":self.gothraTF.text
-                   };
+//    if(nil != self.specificationID)
+//    {
+        parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                       @"religion_id":self.religionID,
+                       @"mother_tongue_id":self.motherToungueID,
+                       @"family_origin_id":self.famliyID,
+                       @"specification_id":self.specificationID != nil ? self.specificationID : @"",
+                       @"gothra":self.gothraTF.text
+                       };
+//    }
+//    else
+//    {
+//        parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+//                       @"religion_id":self.religionID,
+//                       @"mother_tongue_id":self.motherToungueID,
+//                       @"family_origin_id":self.famliyID,
+//                       @"gothra":self.gothraTF.text
+//                       };
+//    }
     
     [self startActivityIndicator:YES];
     self.isUpdatingProfile = YES;

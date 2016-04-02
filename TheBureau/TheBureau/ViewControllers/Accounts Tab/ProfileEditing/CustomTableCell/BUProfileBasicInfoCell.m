@@ -153,36 +153,38 @@
 #pragma mark -
 #pragma mark - Age selection
 
--(IBAction)setAge {
+-(IBAction)setAge
+{
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Age\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    UIPickerView *picker = [[UIPickerView alloc] init];
-    picker.tag = 100;
+    [self.parentVC.view endEditing:YES];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Birthday\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIDatePicker *picker = [[UIDatePicker alloc] init];
+    [picker setDatePickerMode:UIDatePickerModeDate];
     [alertController.view addSubview:picker];
+    
     [picker alignCenterYWithView:alertController.view predicate:@"0.0"];
     [picker alignCenterXWithView:alertController.view predicate:@"0.0"];
     [picker constrainWidth:@"270" ];
-    picker.dataSource = self;
-    picker.delegate = self ;
+    //
     
     
-    [picker reloadAllComponents];
+    
+    
+    NSDate *todayDate = [NSDate date];
+    NSDate *newDate = [todayDate dateByAddingTimeInterval:(-1*18*365*24*60*60)];
+    picker.maximumDate = newDate;
+    picker.date = newDate;
     
     [alertController addAction:({
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSLog(@"OK");
-            
-            NSUInteger numComponents = [[picker dataSource] numberOfComponentsInPickerView:picker];
-            
-            NSMutableString * text = [NSMutableString string];
-            for(NSUInteger i = 0; i < numComponents; ++i) {
-                NSString *title = [self pickerView:picker titleForRow:[picker selectedRowInComponent:i] forComponent:i];
-                [text appendFormat:@"%@", title];
-            }
-            
-            NSLog(@"%@", text);
-            self.ageLabel.text = [NSString stringWithFormat:@"%@ years",text];
-            [self.basicInfoDict setValue:text forKey:@"age"];
+            NSLog(@"%@",picker.date);
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"MM-dd-yyyy"];
+            NSString *dateString = [dateFormat stringFromDate:picker.date];
+            self.ageLabel.text = dateString;
+            [self.basicInfoDict setValue:dateString forKey:@"profile_dob"];
         }];
         action;
     })];
@@ -190,11 +192,13 @@
     [alertController addAction:({
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSLog(@"cancel");
+            //NSLog(@"%@",picker.date);
         }];
         action;
     })];
     [self.parentVC presentViewController:alertController  animated:YES completion:nil];
 }
+
 
 
 #pragma mark -
@@ -362,7 +366,7 @@ numberOfRowsInComponent:(NSInteger)component{
     self.basicInfoDict = inBasicInfoDict;
     self.nameTF.text = [inBasicInfoDict valueForKey:@"profile_first_name"];
     
-    self.ageLabel.text = [inBasicInfoDict valueForKey:@"age"];
+    self.ageLabel.text = [inBasicInfoDict valueForKey:@"profile_dob"];
     
     NSString *genderStr  = [inBasicInfoDict valueForKey:@"profile_gender"];
     

@@ -177,7 +177,7 @@
                    parameters =  @{@"reg_type": @"digits",
                                  @"digits":session.phoneNumber};
 //                    parameters =  @{@"reg_type": @"digits",
-//                                    @"digits":@"9902924732"};
+//                                    @"digits":@"990292473210"};
                 }
                 [self startActivityIndicator:YES];
                 

@@ -1240,7 +1240,7 @@
                                         <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Who is Creating This Profile?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="bZP-wZ-Ddo">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Who are you creating this profile for?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="bZP-wZ-Ddo">
                                         <rect key="frame" x="40" y="305" width="520" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="Qsc-i6-trB"/>
@@ -1259,7 +1259,7 @@
                                                     <action selector="dropDownBtn:" destination="fZs-4K-Y51" eventType="touchUpInside" id="Oaa-BO-EBn"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="J4w-6H-sOE">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="J4w-6H-sOE">
                                                 <rect key="frame" x="6" y="6" width="119" height="21"/>
                                                 <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1401,6 +1401,9 @@
                         <outlet property="lastNameTF" destination="X5h-VN-uHy" id="dKl-RX-yW2"/>
                         <outlet property="maleImgView" destination="8IH-AI-azf" id="tKA-kh-GWS"/>
                         <outlet property="mobileNumTF" destination="kLT-ZZ-RoX" id="3xY-sK-5We"/>
+                        <outlet property="profileFirstNameTF" destination="QgJ-KN-wRl" id="Zzu-cm-aOL"/>
+                        <outlet property="profileLastNameTF" destination="Bwd-PQ-Oxg" id="HiU-44-MAw"/>
+                        <outlet property="relationLabel" destination="J4w-6H-sOE" id="MXJ-fD-3bf"/>
                         <outlet property="scrollBottomConstraint" destination="3hE-6x-D6L" id="nxL-a2-iUq"/>
                         <outlet property="scrollview" destination="WAK-H9-CYp" id="eTD-j9-825"/>
                     </connections>

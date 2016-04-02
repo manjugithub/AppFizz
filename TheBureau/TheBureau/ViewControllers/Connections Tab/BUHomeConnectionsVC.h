@@ -10,4 +10,5 @@
 
 @interface BUHomeConnectionsVC : UIViewController
 
+@property(nonatomic, weak) IBOutlet UITabBarItem *connectionTabItem;
 @end

@@ -134,7 +134,8 @@
 {
     NSDictionary *parameters = nil;
     parameters = @{@"userid1": [BUWebServicesManager sharedManager].userID,
-                   @"userid2": [self.datasourceList valueForKey:@"userid"]
+                   @"userid2": [self.datasourceList valueForKey:@"userid"],
+                   @"gold_amount": @"500"
                    };
     
     [self startActivityIndicator:YES];

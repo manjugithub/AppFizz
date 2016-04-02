@@ -125,7 +125,10 @@ static NSString * const reuseIdentifier = @"Cell";
                 if((NO == [[inResult valueForKey:key] isKindOfClass:[NSNull class]]) && (NO == [[inResult valueForKey:key] isKindOfClass:[NSString class]]))
                 {
                     [self.datasourceList addObject:[inResult valueForKey:key]];
-                    [self.imagesList addObject:[[[self.datasourceList lastObject] valueForKey:@"img_url"] firstObject]];
+                    if([[[self.datasourceList lastObject] valueForKey:@"img_url"] count] > 0)
+                    {
+                        [self.imagesList addObject:[[[self.datasourceList lastObject] valueForKey:@"img_url"] firstObject]];
+                    }
                 }
             }
             

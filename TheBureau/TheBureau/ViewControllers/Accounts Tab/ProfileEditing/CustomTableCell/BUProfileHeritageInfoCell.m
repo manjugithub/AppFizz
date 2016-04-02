@@ -188,6 +188,14 @@
             [self.heritageDict setValue:[inSelectedRow valueForKey:@"religion_name"] forKey:@"religion_name"];
             [self.heritageDict setValue:[inSelectedRow valueForKey:@"religion_id"] forKey:@"religion_id"];
 
+            
+            
+            self.familyOriginTF.text = @"";
+            self.specificationTF.text = @"";
+            self.gothraTF.text = @"";
+            self.famliyID = @"";
+            self.specificationID = @"";
+            
             break;
         }
         case eMotherToungueList:
@@ -196,6 +204,7 @@
             self.motherToungueID = [inSelectedRow valueForKey:@"mother_tongue_id"];
             [self.heritageDict setValue:[inSelectedRow valueForKey:@"mother_tongue"] forKey:@"mother_tongue"];
             [self.heritageDict setValue:[inSelectedRow valueForKey:@"mother_tongue_id"] forKey:@"mother_tongue_id"];
+            
             break;
         }
         case eFamilyOriginList:
@@ -205,6 +214,10 @@
             self.famliyID = [inSelectedRow valueForKey:@"family_origin_id"];
             [self.heritageDict setValue:[inSelectedRow valueForKey:@"family_origin_name"] forKey:@"family_origin_name"];
             [self.heritageDict setValue:[inSelectedRow valueForKey:@"family_origin_id"] forKey:@"family_origin_id"];
+            
+            self.specificationTF.text = @"";
+            self.specificationID = @"";
+
             break;
         }
         case eSpecificationList:
@@ -213,6 +226,7 @@
             self.specificationID = [inSelectedRow valueForKey:@"specification_id"];
             [self.heritageDict setValue:[inSelectedRow valueForKey:@"specification_name"] forKey:@"specification_name"];
             [self.heritageDict setValue:[inSelectedRow valueForKey:@"specification_id"] forKey:@"specification_id"];
+            self.gothraTF.text = @"";
             break;
         }
         case eGothraList:
@@ -227,7 +241,6 @@
     
     
     NSDictionary *prefDict1 = [[NSUserDefaults standardUserDefaults] valueForKey:@"Preferences"];
-    
     NSMutableDictionary *preferenceDict = [[NSMutableDictionary alloc]initWithDictionary:prefDict1];
     
     [preferenceDict setValue:self.religionID forKey:@"religion_id"];

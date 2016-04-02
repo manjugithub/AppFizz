@@ -480,4 +480,57 @@ constructingBodyWithBlock:nil
      }];
 }
 
+
+
+-(void)uploadProfilePicture:(UIImage *)inImage
+{
+    NSData *imageData = UIImageJPEGRepresentation(inImage, 0.5);
+    NSDictionary *parameters = @{@"userid": self.userID};
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:@"http://app.thebureauapp.com/admin/multi_upload"
+       parameters:parameters
+constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
+     {
+         [formData appendPartWithFileData:imageData name:@"userfile" fileName:@"photo.jpg" mimeType:@"image/jpeg"];
+     }
+         progress:nil
+          success:^(NSURLSessionDataTask *operation, id responseObject)
+     {
+         //         successCallBack(responseObject,nil);
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(NSURLSessionDataTask *operation, NSError *error)
+     {
+         //         failureCallBack(nil,error);
+         NSLog(@"Error: %@", error);
+     }];
+}
+
+-(void)uploadHoroscope:(UIImage *)inImage
+{
+    NSData *imageData = UIImageJPEGRepresentation(inImage, 0.5);
+    NSDictionary *parameters = @{@"userid": @"8"};
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:@"http://app.thebureauapp.com/admin/uploadHoroscope"
+       parameters:parameters
+constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
+    {
+    [formData appendPartWithFileData:imageData name:@"userfile" fileName:@"photo.jpg" mimeType:@"image/jpeg"];
+    }
+         progress:nil
+          success:^(NSURLSessionDataTask *operation, id responseObject)
+     {
+//         successCallBack(responseObject,nil);
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(NSURLSessionDataTask *operation, NSError *error)
+     {
+//         failureCallBack(nil,error);
+         NSLog(@"Error: %@", error);
+     }];
+}
+
+
 @end

@@ -147,6 +147,8 @@
 		78E4F28C1C85B3C30034CFE2 /* BUPreferencesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E4F28B1C85B3C30034CFE2 /* BUPreferencesVC.m */; };
 		78E4F28F1C85B3E40034CFE2 /* BUHowItWorksVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E4F28E1C85B3E40034CFE2 /* BUHowItWorksVC.m */; };
 		78E4F2921C85B4010034CFE2 /* BUHelpAndFeedbackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E4F2911C85B4010034CFE2 /* BUHelpAndFeedbackVC.m */; };
+		78F3C17C1CAE0EC800CBA15E /* BUProfileImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F3C17B1CAE0EC800CBA15E /* BUProfileImageCell.m */; };
+		78F3C1811CAEE2E100CBA15E /* BUImagePreviewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F3C1801CAEE2E100CBA15E /* BUImagePreviewVC.m */; };
 		78F4A92A1C0CCC11001C76A6 /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78F4A9271C0CCC11001C76A6 /* Comfortaa-Bold.ttf */; };
 		78F4A92B1C0CCC11001C76A6 /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78F4A9281C0CCC11001C76A6 /* Comfortaa-Light.ttf */; };
 		78F4A92C1C0CCC11001C76A6 /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78F4A9291C0CCC11001C76A6 /* Comfortaa-Regular.ttf */; };
@@ -551,6 +553,10 @@
 		78E4F28E1C85B3E40034CFE2 /* BUHowItWorksVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUHowItWorksVC.m; sourceTree = "<group>"; };
 		78E4F2901C85B4010034CFE2 /* BUHelpAndFeedbackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUHelpAndFeedbackVC.h; sourceTree = "<group>"; };
 		78E4F2911C85B4010034CFE2 /* BUHelpAndFeedbackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUHelpAndFeedbackVC.m; sourceTree = "<group>"; };
+		78F3C17A1CAE0EC800CBA15E /* BUProfileImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUProfileImageCell.h; sourceTree = "<group>"; };
+		78F3C17B1CAE0EC800CBA15E /* BUProfileImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfileImageCell.m; sourceTree = "<group>"; };
+		78F3C17F1CAEE2E100CBA15E /* BUImagePreviewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUImagePreviewVC.h; sourceTree = "<group>"; };
+		78F3C1801CAEE2E100CBA15E /* BUImagePreviewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUImagePreviewVC.m; sourceTree = "<group>"; };
 		78F4A9271C0CCC11001C76A6 /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
 		78F4A9281C0CCC11001C76A6 /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Light.ttf"; sourceTree = "<group>"; };
 		78F4A9291C0CCC11001C76A6 /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
@@ -1072,6 +1078,7 @@
 		784622961C0718E500EA589C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				78F3C17E1CAEE2C700CBA15E /* ImagePreview */,
 				78BD7D501C8CC63D000AD38B /* Gold Tab */,
 				5B2D3E831C7C6927006B7674 /* Connections Tab */,
 				78CA18551C7AFDEA00CF091A /* Pool Tab */,
@@ -1245,6 +1252,8 @@
 				789D88F51C7E3FAD00772EED /* BUProfileSocialHabitsInfoCell.m */,
 				789D88F71C7E3FC000772EED /* BUProfileHoroscopeInfoCell.h */,
 				789D88F81C7E3FC000772EED /* BUProfileHoroscopeInfoCell.m */,
+				78F3C17A1CAE0EC800CBA15E /* BUProfileImageCell.h */,
+				78F3C17B1CAE0EC800CBA15E /* BUProfileImageCell.m */,
 			);
 			path = CustomTableCell;
 			sourceTree = "<group>";
@@ -1347,6 +1356,15 @@
 				78CA185A1C7B0B0100CF091A /* BUPoolProfileDetailsVC.m */,
 			);
 			path = "Pool Tab";
+			sourceTree = "<group>";
+		};
+		78F3C17E1CAEE2C700CBA15E /* ImagePreview */ = {
+			isa = PBXGroup;
+			children = (
+				78F3C17F1CAEE2E100CBA15E /* BUImagePreviewVC.h */,
+				78F3C1801CAEE2E100CBA15E /* BUImagePreviewVC.m */,
+			);
+			path = ImagePreview;
 			sourceTree = "<group>";
 		};
 		78F4A9261C0CCC11001C76A6 /* Fonts */ = {
@@ -1788,6 +1806,7 @@
 				78BF55241C688E8D00B5F1A4 /* BUAcountsTabViewController.m in Sources */,
 				78520B711C9BB8EE0033ACD0 /* BUPrefHeritageCell.m in Sources */,
 				7800D4A81C91AD3A003F409D /* BULayerHelper.m in Sources */,
+				78F3C17C1CAE0EC800CBA15E /* BUProfileImageCell.m in Sources */,
 				5BFF6EA71C8D80E300596381 /* AFNetworkReachabilityManager.m in Sources */,
 				5BDA47201C22596200C875AB /* BURootViewController.m in Sources */,
 				789D88ED1C7E3F6700772EED /* BUProfileOccupationInfoCell.m in Sources */,
@@ -1823,6 +1842,7 @@
 				789D88EA1C7E3F2300772EED /* BUProfileEducationInfoCell.m in Sources */,
 				78B5B7301C56792000E3C531 /* BUProfileLegalStatusVC.m in Sources */,
 				78E4F28C1C85B3C30034CFE2 /* BUPreferencesVC.m in Sources */,
+				78F3C1811CAEE2E100CBA15E /* BUImagePreviewVC.m in Sources */,
 				5B1628841C4CFA620034FA33 /* BUSplashViewController.m in Sources */,
 				78ABA0381C935022009F369A /* BUChatContact.m in Sources */,
 				5B2D3E8F1C7C6927006B7674 /* BUProfileRematchVC.m in Sources */,
@@ -2054,9 +2074,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Airship",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bureau.bureauapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0c2a688b-cfca-42ab-9822-8489125696fe";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -2079,9 +2101,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Airship",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bureau.bureauapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0c2a688b-cfca-42ab-9822-8489125696fe";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};

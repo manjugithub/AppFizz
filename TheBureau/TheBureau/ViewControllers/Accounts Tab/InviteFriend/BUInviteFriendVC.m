@@ -7,8 +7,8 @@
 //
 
 #import "BUInviteFriendVC.h"
-
-@interface BUInviteFriendVC ()
+#import "BUProfileImageCell.h"
+@interface BUInviteFriendVC ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
 
@@ -36,5 +36,47 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+
+#pragma mark - Table view data source
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    UITableViewCell *cell = nil;
+    
+    switch (indexPath.section)
+    {
+        case 0:
+        {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileImageCell"];
+            [(BUProfileImageCell *)cell setProfileImageList:[NSArray array]];
+            break;
+        }
+        default:
+            break;
+    }
+    //Clip whatever is out the cell frame
+    cell.clipsToBounds = YES;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    return cell;
+}
+
 
 @end

@@ -9,7 +9,7 @@
 #import "BUAppNotificationCell.h"
 #import <DigitsKit/DigitsKit.h>
 #import "BULayerHelper.h"
-
+#import "BUWebServicesManager.h"
 @implementation BUAppNotificationCell
 
 /*
@@ -92,12 +92,14 @@
 
 - (IBAction)changeNotificationSettings:(UIButton *)sender
 {
-    
+    NSString *baseURL;
+    NSDictionary *parameters = nil;
     NSUserDefaults *usDef = [NSUserDefaults standardUserDefaults];
     switch (self.appNotificationCellType)
     {
         case BUAppNotificationCellTypeDailyMatch:
         {
+            baseURL = @"http://app.thebureauapp.com/admin/conf_dailyMatch";
             if(0 == [sender tag])
             {
                 sender.tag = 1;
@@ -105,6 +107,11 @@
                         forState:UIControlStateNormal];
 
                 [usDef setBool:NO forKey:@"BUAppNotificationCellTypeDailyMatch"];
+
+                
+                parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                               @"daily_match": @"YES"
+                               };
             }
             else
             {
@@ -113,18 +120,25 @@
 
                 sender.tag = 0;
                 [usDef setBool:YES forKey:@"BUAppNotificationCellTypeDailyMatch"];
+                parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                               @"daily_match": @"NO"
+                               };
             }
             
             break;
         }
         case BUAppNotificationCellTypeChatNotifications:
         {
+            baseURL = @"http://app.thebureauapp.com/admin/conf_chatNotifications";
             if(0 == [sender tag])
             {
                 sender.tag = 1;
                 [sender setImage:[UIImage imageNamed:@"switch_ON"]
                         forState:UIControlStateNormal];
                 [usDef setBool:NO forKey:@"BUAppNotificationCellTypeChatNotifications"];
+                parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                               @"chat_notification": @"YES"
+                               };
             }
             else
             {
@@ -132,18 +146,25 @@
                         forState:UIControlStateNormal];
                 sender.tag = 0;
                 [usDef setBool:YES forKey:@"BUAppNotificationCellTypeChatNotifications"];
+                parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                               @"chat_notification": @"NO"
+                               };
             }
             
             break;
         }
         case BUAppNotificationCellTypeCustomerService:
         {
+            baseURL = @"http://app.thebureauapp.com/admin/conf_customerService";
             if(0 == [sender tag])
             {
                 sender.tag = 1;
                 [sender setImage:[UIImage imageNamed:@"switch_ON"]
                         forState:UIControlStateNormal];
                 [usDef setBool:NO forKey:@"BUAppNotificationCellTypeCustomerService"];
+                parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                               @"customer_service": @"YES"
+                               };
             }
             else
             {
@@ -151,18 +172,25 @@
                         forState:UIControlStateNormal];
                 sender.tag = 0;
                 [usDef setBool:YES forKey:@"BUAppNotificationCellTypeCustomerService"];
+                parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                               @"customer_service": @"NO"
+                               };
             }
             
             break;
         }
         case BUAppNotificationCellTypeBlogRelease:
         {
+            baseURL = @"http://app.thebureauapp.com/admin/conf_blogRelease";
             if(0 == [sender tag])
             {
                 sender.tag = 1;
                 [sender setImage:[UIImage imageNamed:@"switch_ON"]
                         forState:UIControlStateNormal];
                 [usDef setBool:NO forKey:@"BUAppNotificationCellTypeBlogRelease"];
+                parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                               @"blog_release": @"YES"
+                               };
             }
             else
             {
@@ -170,18 +198,25 @@
                         forState:UIControlStateNormal];
                 sender.tag = 0;
                 [usDef setBool:YES forKey:@"BUAppNotificationCellTypeBlogRelease"];
+                parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                               @"blog_release": @"NO"
+                               };
             }
             
             break;
         }
         case BUAppNotificationCellTypeSounds:
         {
+            baseURL = @"http://app.thebureauapp.com/admin/conf_sound";
             if(0 == [sender tag])
             {
                 sender.tag = 1;
                 [sender setImage:[UIImage imageNamed:@"switch_ON"]
                         forState:UIControlStateNormal];
                 [usDef setBool:NO forKey:@"BUAppNotificationCellTypeSounds"];
+                parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                               @"sound": @"YES"
+                               };
             }
             else
             {
@@ -189,6 +224,9 @@
                         forState:UIControlStateNormal];
                 sender.tag = 0;
                 [usDef setBool:YES forKey:@"BUAppNotificationCellTypeSounds"];
+                parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                               @"sound": @"NO"
+                               };
             }
             
             break;
@@ -199,6 +237,24 @@
     }
     
     [usDef synchronize];
+    
+    
+    
+    [self.parentVC startActivityIndicator:YES];
+    
+    [[BUWebServicesManager sharedManager] queryServer:parameters
+                                              baseURL:baseURL
+                                         successBlock:^(id response, NSError *error)
+    {
+        [self.parentVC stopActivityIndicator];
+
+        
+                                         } failureBlock:^(id response, NSError *error)
+    {
+        [self.parentVC stopActivityIndicator];
+        
+    }];
+
     
 }
 

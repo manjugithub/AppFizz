@@ -128,7 +128,6 @@ else
             self.positionTitleTF.enabled = NO;
             self.companyTF.enabled = NO;
             
-            
             self.positionTitleTF.text = @"";
             self.companyTF.text = @"";
 
@@ -140,9 +139,20 @@ else
             [self.othersBtn setSelected:YES];
             [self.unemployedBtn setSelected:NO];
             [self.studentBtn setSelected:NO];
-            [self.occupationInfoDict setValue:[[[self.othersBtn titleLabel] text] stringByReplacingOccurrencesOfString:@" " withString:@""] forKey:@"employment_status"];            break;
+            [self.occupationInfoDict setValue:[[[self.othersBtn titleLabel] text] stringByReplacingOccurrencesOfString:@" " withString:@""] forKey:@"employment_status"];
+            
+            self.positionTitleTF.enabled = NO;
+            self.companyTF.enabled = NO;
+            
+            self.positionTitleTF.text = @"";
+            self.companyTF.text = @"";
+            break;
         }
         default: break;
     }
+    
+    [self.occupationInfoDict setValue:self.positionTitleTF.text forKey:@"position_title"];
+    [self.occupationInfoDict setValue:self.companyTF.text forKey:@"company"];
+
 }
 @end

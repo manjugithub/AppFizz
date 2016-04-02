@@ -143,7 +143,7 @@
     self.ageArray = [[NSMutableArray alloc]init];
     self.radiusArray = [[NSMutableArray alloc]init];
     // Do any additional setup after loading the view.
-    _relationCircle = [NSArray arrayWithObjects:@"Father",@"Mother",@"Family member", @"Friend", @"Sister", @"Brother",@"Self",nil];
+    _relationCircle = [NSArray arrayWithObjects:@"Self",@"Other",@"Both",nil];
 
     _educationLevelArray = [[NSArray alloc]initWithObjects:@"Doctorate",@"Masters",@"Bachelors",@"Associates",@"Grade School", nil];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(editProfileDetails:)];
@@ -171,21 +171,21 @@
 {
     NSString *femaleImgName,*maleImgName,*genderImgName;
     
-    if(0 == self.genderSelectionBtn.tag)
+    if(1 == self.genderSelectionBtn.tag)
     {
         femaleImgName = @"ic_female_s2.png";
         maleImgName = @"ic_male_s1.png";
         genderImgName = @"switch_female.png";
-        self.genderSelectionBtn.tag = 1;
-        self.genderStr = @"Male";
+        self.genderSelectionBtn.tag = 0;
+        self.genderStr = @"Female";
     }
     else
     {
-        self.genderSelectionBtn.tag = 0;
+        self.genderSelectionBtn.tag = 1;
         femaleImgName = @"ic_female_s1.png";
         maleImgName = @"ic_male_s2.png";
         genderImgName = @"switch_male.png";
-        self.genderStr = @"Female";
+        self.genderStr = @"Male";
     }
     
     self.femaleImgView.image = [UIImage imageNamed:femaleImgName];
@@ -511,7 +511,7 @@
                          [self.profDict setValue:[[NSArray alloc] init] forKey:key];
              }
              
-             NSInteger locRadius = (([self.profDict valueForKey:@"location_radius"] == nil || [[self.profDict valueForKey:@"location_radius"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"location_radius"] isEqualToString:@""]) ? 50 : [[self.profDict valueForKey:@"location_radius"] intValue]);
+             NSInteger locRadius = (([self.profDict valueForKey:@"location_radius"] == nil || [[self.profDict valueForKey:@"location_radius"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"location_radius"] isEqualToString:@""]) ? 10 : [[self.profDict valueForKey:@"location_radius"] intValue]);
              
              NSInteger ageFrom = (([self.profDict valueForKey:@"age_from"] == nil || [[self.profDict valueForKey:@"age_from"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"age_from"] isEqualToString:@""]) ? 18 : [[self.profDict valueForKey:@"age_from"] intValue]);
              
@@ -529,23 +529,59 @@
              
              self.shouldAddPref = NO;
              
-             [self.profDict setValue:[NSString stringWithFormat:@"%ld",locRadius] forKey:@"location_radius"];
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",(long)locRadius] forKey:@"location_radius"];
              
-             [self.profDict setValue:[NSString stringWithFormat:@"%ld",ageFrom] forKey:@"age_from"];
-             [self.profDict setValue:[NSString stringWithFormat:@"%ld",ageTo] forKey:@"age_to"];
-             
-             
-             [self.profDict setValue:[NSString stringWithFormat:@"%ld",feet] forKey:@"height_from_feet"];
-             [self.profDict setValue:[NSString stringWithFormat:@"%ld",inch] forKey:@"height_from_inch"];
-             [self.profDict setValue:[NSString stringWithFormat:@"%ld",feet1] forKey:@"height_to_feet"];
-             [self.profDict setValue:[NSString stringWithFormat:@"%ld",inch1] forKey:@"height_to_inch"];
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",(long)ageFrom] forKey:@"age_from"];
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",(long)ageTo] forKey:@"age_to"];
              
              
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",(long)feet] forKey:@"height_from_feet"];
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",(long)inch] forKey:@"height_from_inch"];
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",(long)feet1] forKey:@"height_to_feet"];
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",(long)inch1] forKey:@"height_to_inch"];
+             
+             
+             
+             
+             NSString *femaleImgName,*maleImgName,*genderImgName;
+             
+             
+             NSString *genderStr = (([self.profDict valueForKey:@"gender"] == nil || [[self.profDict valueForKey:@"gender"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"gender"] isEqualToString:@""]) ? @"Female" : [self.profDict valueForKey:@"gender"]);
+             
+             if([genderStr containsString:@"Female"])
+             {
+                 self.genderSelectionBtn.tag = 0;
+                 femaleImgName = @"ic_female_s2.png";
+                 maleImgName = @"ic_male_s1.png";
+                 genderImgName = @"switch_female.png";
+                 self.genderStr = @"Female";
+             }
+             else
+             {
+                 femaleImgName = @"ic_female_s1.png";
+                 maleImgName = @"ic_male_s2.png";
+                 genderImgName = @"switch_male.png";
+                 self.genderSelectionBtn.tag = 1;
+                 self.genderStr = @"Male";
+             }
+             
+             self.femaleImgView.image = [UIImage imageNamed:femaleImgName];
+             self.maleImgView.image = [UIImage imageNamed:maleImgName];
+             [self.genderSelectionBtn setImage:[UIImage imageNamed:genderImgName]
+                                      forState:UIControlStateNormal];
+             
+
+             [self.profDict setValue:self.genderStr forKey:@"gender"];
              
              self.maritalStatusList = [[NSMutableArray alloc] initWithArray:([self.profDict valueForKey:@"marital_status"] == nil || [[self.profDict valueForKey:@"marital_status"] isKindOfClass:[NSNull class]] ? nil : [self.profDict valueForKey:@"marital_status"])];
              
              [self updateMaritalStatus];
              self.shouldAddPref = YES;
+             
+             [self.radiusCell setDatasource:self.profDict];
+             [self.ageCell setDatasource:self.profDict];
+             [self.heightCell setDatasource:self.profDict];
+
          }
          else
          {
@@ -561,7 +597,7 @@
                          [self.profDict setValue:[[NSArray alloc] init] forKey:key];
              }
              
-             NSInteger locRadius = (([self.profDict valueForKey:@"location_radius"] == nil || [[self.profDict valueForKey:@"location_radius"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"location_radius"] isEqualToString:@""]) ? 50 : [[self.profDict valueForKey:@"location_radius"] intValue]);
+             NSInteger locRadius = (([self.profDict valueForKey:@"location_radius"] == nil || [[self.profDict valueForKey:@"location_radius"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"location_radius"] isEqualToString:@""]) ? 10 : [[self.profDict valueForKey:@"location_radius"] intValue]);
              
              NSInteger ageFrom = (([self.profDict valueForKey:@"age_from"] == nil || [[self.profDict valueForKey:@"age_from"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"age_from"] isEqualToString:@""]) ? 18 : [[self.profDict valueForKey:@"age_from"] intValue]);
              
@@ -579,16 +615,16 @@
 
              self.shouldAddPref = NO;
              
-             [self.profDict setValue:[NSString stringWithFormat:@"%ld",locRadius] forKey:@"location_radius"];
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",(long)locRadius] forKey:@"location_radius"];
 
-             [self.profDict setValue:[NSString stringWithFormat:@"%ld",ageFrom] forKey:@"age_from"];
-             [self.profDict setValue:[NSString stringWithFormat:@"%ld",ageTo] forKey:@"age_to"];
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",(long)ageFrom] forKey:@"age_from"];
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",(long)ageTo] forKey:@"age_to"];
              
              
-             [self.profDict setValue:[NSString stringWithFormat:@"%ld",feet] forKey:@"height_from_feet"];
-             [self.profDict setValue:[NSString stringWithFormat:@"%ld",inch] forKey:@"height_from_inch"];
-             [self.profDict setValue:[NSString stringWithFormat:@"%ld",feet1] forKey:@"height_to_feet"];
-             [self.profDict setValue:[NSString stringWithFormat:@"%ld",inch1] forKey:@"height_to_inch"];
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",(long)feet] forKey:@"height_from_feet"];
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",(long)inch] forKey:@"height_from_inch"];
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",(long)feet1] forKey:@"height_to_feet"];
+             [self.profDict setValue:[NSString stringWithFormat:@"%ld",(long)inch1] forKey:@"height_to_inch"];
 
              
              
@@ -634,24 +670,28 @@
              NSString *femaleImgName,*maleImgName,*genderImgName;
              
              
-             NSString *genderStr = (([self.profDict valueForKey:@"gender"] == nil || [[self.profDict valueForKey:@"gender"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"gender"] isEqualToString:@""]) ? @"" : [self.profDict valueForKey:@"gender"]);
+             NSString *genderStr = (([self.profDict valueForKey:@"gender"] == nil || [[self.profDict valueForKey:@"gender"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"gender"] isEqualToString:@""]) ? @"Female" : [self.profDict valueForKey:@"gender"]);
 
              if([genderStr containsString:@"Female"])
              {
                  self.genderSelectionBtn.tag = 0;
-                 femaleImgName = @"ic_female_s1.png";
-                 maleImgName = @"ic_male_s2.png";
-                 genderImgName = @"switch_male.png";
+                 femaleImgName = @"ic_female_s2.png";
+                 maleImgName = @"ic_male_s1.png";
+                 genderImgName = @"switch_female.png";
                  self.genderStr = @"Female";
              }
              else
              {
-                 femaleImgName = @"ic_female_s2.png";
-                 maleImgName = @"ic_male_s1.png";
-                 genderImgName = @"switch_female.png";
+                 femaleImgName = @"ic_female_s1.png";
+                 maleImgName = @"ic_male_s2.png";
+                 genderImgName = @"switch_male.png";
                  self.genderSelectionBtn.tag = 1;
                  self.genderStr = @"Male";
              }
+             
+             
+             [self.profDict setValue:self.genderStr forKey:@"gender"];
+
              
              self.femaleImgView.image = [UIImage imageNamed:femaleImgName];
              self.maleImgView.image = [UIImage imageNamed:maleImgName];
@@ -805,7 +845,7 @@
         [self.btn_USA setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         
     }
-    self.genderStr = @"Female";
+//    self.genderStr = @"Female";
 }
 
 

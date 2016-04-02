@@ -23,10 +23,11 @@
 @implementation BUGoldTabVC
 
 
+
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self reload];
 }
 
 - (void)reload {
@@ -41,6 +42,7 @@
         [self stopActivityIndicator];
     }];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -64,6 +66,9 @@
     self.likeUsOnFBButton.layer.borderColor = [[UIColor lightGrayColor]CGColor];
     self.likeUsOnFBButton.layer.shadowOffset = CGSizeMake(2, 2);
     self.likeUsOnFBButton.layer.shadowColor = [[UIColor darkGrayColor]CGColor];
+
+
+    [self reload];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -234,7 +239,9 @@ static NSString * const reuseIdentifier = @"Cell";
     
     
     [alertController addAction:({
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+        {
+            [self updateGold];
             NSLog(@"OK");
             self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
         }];
@@ -244,6 +251,98 @@ static NSString * const reuseIdentifier = @"Cell";
     [self presentViewController:alertController  animated:YES completion:nil];
     
 }
+
+
+
+-(void)updateGold
+{
+    /*
+     API to  upload :
+     http://app.thebureauapp.com/admin/update_profile_step6
+     
+     Parameters
+     
+     userid => user id of user
+     years_in_usa => e.g. 0 - 2, 2 - 6
+     legal_status => e.g. Citizen/Green Card, Greencard
+     
+     */
+    
+    NSInteger purchasedGold = 500;
+    NSDictionary *parameters = nil;
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                   @"gold_to_add":[NSString stringWithFormat:@"%ld",purchasedGold]
+                   };
+    
+    
+    [self startActivityIndicator:YES];
+    [[BUWebServicesManager sharedManager]queryServer:parameters
+                                             baseURL:@"http://app.thebureauapp.com/admin/add_Gold"
+                                        successBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         
+         
+         NSInteger gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
+         NSInteger purchasedGold = 500;
+
+         [[NSUserDefaults standardUserDefaults] setInteger:gold + purchasedGold forKey:@"purchasedGold"];
+         [[NSUserDefaults standardUserDefaults] synchronize];
+         
+         gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
+         
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"You have purchased %ld Gold, Your total purchased gold is %ld",purchasedGold,gold]];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];
+         
+         
+         [alertController addAction:({
+             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                 NSLog(@"OK");
+                 self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+             }];
+             
+             action;
+         })];
+         [self presentViewController:alertController  animated:YES completion:nil];
+         
+     }
+                                        failureBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         NSInteger gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
+         NSInteger purchasedGold = 500;
+         
+         [[NSUserDefaults standardUserDefaults] setInteger:gold + purchasedGold forKey:@"purchasedGold"];
+         [[NSUserDefaults standardUserDefaults] synchronize];
+         
+         gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
+         
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"You have purchased %ld Gold, Your total purchased gold is %ld",purchasedGold,gold]];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];
+         
+         
+         [alertController addAction:({
+             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                 NSLog(@"OK");
+                 self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+             }];
+             
+             action;
+         })];
+         [self presentViewController:alertController  animated:YES completion:nil];
+         
+     }];
+}
+
+
 -(IBAction)likeUsOnFB:(id)sender
 {
     

@@ -7,6 +7,7 @@
 //
 
 #import "BUProfileEditingVC.h"
+#import "BUProfileImageCell.h"
 #import "BUProfileBasicInfoCell.h"
 #import "BUProfileEducationInfoCell.h"
 #import "BUProfileOccupationInfoCell.h"
@@ -26,7 +27,7 @@
 @property (assign, nonatomic) NSIndexPath *selectedCellIndex;
 
 
-@property (strong, nonatomic) NSMutableDictionary *basicInfoDict,*educationDict,*occupationDict,*heritageDict,*socialHabitsDict,*horoscopeDict,*legalStatus;
+@property (strong, nonatomic) NSMutableDictionary *profileImageDict,*basicInfoDict,*educationDict,*occupationDict,*heritageDict,*socialHabitsDict,*horoscopeDict,*legalStatus;
 
 
 
@@ -40,7 +41,7 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"Profile";
     // Do any additional setup after loading the view.
-    
+    [self getProfileDetails];
     self.isEditing = NO;
 }
 
@@ -53,7 +54,6 @@
 //    self.navigationItem.rightBarButtonItem = self.rightBarButton;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(editProfileDetails:)];
-    [self getProfileDetails];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyboard) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyBoard) name:UIKeyboardWillHideNotification object:nil];
@@ -90,7 +90,7 @@
 - (IBAction)editProfileDetails:(id)sender
 {
     [self updateProfile];
-    [self.profileTableView reloadData];
+//    [self.profileTableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -103,7 +103,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 6;
+    return 7;
 }
 
 
@@ -113,45 +113,52 @@
     
     UITableViewCell *cell = nil;
     
-    switch (indexPath.section) {
+    switch (indexPath.section)
+    {
         case 0:
+        {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileImageCell"];
+            [(BUProfileImageCell *)cell setProfileImageDict:self.profileImageDict];
+            break;
+        }
+        case 1:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileBasicInfoCell"];
             
             [(BUProfileBasicInfoCell *)cell setDatasource:self.basicInfoDict];
             break;
         }
-        case 1:
+        case 2:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileEducationInfoCell"];
             [(BUProfileEducationInfoCell *)cell setDatasource:self.educationDict];
             break;
         }
-        case 2:
+        case 3:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileOccupationInfoCell"];
             [(BUProfileOccupationInfoCell *)cell setDatasource:self.occupationDict];
             break;
         }
-        case 3:
+        case 4:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileLegalStatusInfoCell"];
             [(BUProfileLegalStatusInfoCell *)cell setDatasource:self.legalStatus];
             break;
         }
-        case 4:
+        case 5:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileHeritageInfoCell"];
             [(BUProfileHeritageInfoCell *)cell setDatasource:self.heritageDict];
             break;
         }
-        case 5:
+        case 6:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileSocialHabitsInfoCell"];
             [(BUProfileSocialHabitsInfoCell *)cell setDatasource:self.socialHabitsDict];
             break;
         }
-        case 6:
+        case 7:
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileHoroscopeInfoCell"];
             [(BUProfileHoroscopeInfoCell *)cell setDatasource:self.horoscopeDict];
@@ -179,35 +186,40 @@
     switch (indexPath.section) {
         case 0:
         {
-            expandedHeight = 390;
+            expandedHeight = 200;
             break;
         }
         case 1:
         {
-            expandedHeight = 380;
+            expandedHeight = 390;
             break;
         }
         case 2:
         {
-            expandedHeight = 300;
+            expandedHeight = 380;
             break;
         }
         case 3:
         {
-            expandedHeight = 487;
+            expandedHeight = 300;
             break;
         }
         case 4:
         {
-            expandedHeight = 330;
+            expandedHeight = 487;
             break;
         }
         case 5:
         {
-            expandedHeight = 320;
+            expandedHeight = 330;
             break;
         }
         case 6:
+        {
+            expandedHeight = 320;
+            break;
+        }
+        case 7:
         {
             expandedHeight = 300;
             break;
@@ -224,7 +236,7 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(IBAction)hideShowDetails:(id)inSender
 {
     
     [self.view endEditing:YES];
@@ -234,8 +246,8 @@
     imgName = @"ic_edit";
     self.isEditing = NO;
     self.rightBarButton.image = [UIImage imageNamed:imgName];
-
-    if(self.selectedRow == indexPath.section)
+    
+    if(self.selectedRow == [inSender tag])
     {
         self.shouldExpand = !self.shouldExpand;
     }
@@ -243,13 +255,41 @@
     {
         self.shouldExpand = YES;
     }
-    self.selectedRow = indexPath.section;
+    self.selectedRow = [inSender tag];
     [self.profileTableView beginUpdates];
     [self.profileTableView endUpdates];
     
-   [self performSelector:@selector(scrollToTop:) withObject:indexPath afterDelay:1.0];
-    self.selectedCellIndex = indexPath;
+    self.selectedCellIndex = [NSIndexPath indexPathForRow:0 inSection:[inSender tag]];
+    
+    [self performSelector:@selector(scrollToTop:) withObject:self.selectedCellIndex afterDelay:1.0];
 }
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    
+//    [self.view endEditing:YES];
+//    NSString *imgName = @"";
+//    
+//    self.rightBarButton.tag = 0;
+//    imgName = @"ic_edit";
+//    self.isEditing = NO;
+//    self.rightBarButton.image = [UIImage imageNamed:imgName];
+//
+//    if(self.selectedRow == indexPath.section)
+//    {
+//        self.shouldExpand = !self.shouldExpand;
+//    }
+//    else
+//    {
+//        self.shouldExpand = YES;
+//    }
+//    self.selectedRow = indexPath.section;
+//    [self.profileTableView beginUpdates];
+//    [self.profileTableView endUpdates];
+//    
+//   [self performSelector:@selector(scrollToTop:) withObject:indexPath afterDelay:1.0];
+//    self.selectedCellIndex = indexPath;
+//}
 
 
 -(void)scrollToTop:(NSIndexPath *)indexPath
@@ -325,12 +365,6 @@
 
 */
  
- 
- 
- 
- 
- 
- 
     [[BUWebServicesManager sharedManager] queryServer:parameters
                                               baseURL:@"http://app.thebureauapp.com/admin/readProfileDetails"
                                          successBlock:^(id response, NSError *error) {
@@ -338,11 +372,16 @@
                                              [self stopActivityIndicator];
 
                                              NSDictionary *respDict = response;
+                                             
+                                             self.profileImageDict = [[NSMutableDictionary alloc] init];
+                                             
+                                             
+                                             [self.profileImageDict setValue:([respDict valueForKey:@"img_url"] != nil && NO == [[respDict valueForKey:@"img_url"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"img_url"] : [respDict valueForKey:@"img_url"] forKey:@"img_url"];
                                              self.basicInfoDict = [[NSMutableDictionary alloc] init];
                                              
                                              [self.basicInfoDict setValue:([respDict valueForKey:@"profile_first_name"] != nil && NO == [[respDict valueForKey:@"profile_first_name"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"profile_first_name"] : [respDict valueForKey:@"profile_first_name"] forKey:@"profile_first_name"];
                                              
-                                             [self.basicInfoDict setValue:([respDict valueForKey:@"age"] != nil && NO == [[respDict valueForKey:@"age"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"age"] : @""  forKey:@"age"];
+                                             [self.basicInfoDict setValue:([respDict valueForKey:@"profile_dob"] != nil && NO == [[respDict valueForKey:@"profile_dob"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"profile_dob"] : @""  forKey:@"profile_dob"];
                                              
                                              [self.basicInfoDict setValue:([respDict valueForKey:@"gender"] != nil && NO == [[respDict valueForKey:@"gender"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"gender"] : @""  forKey:@"gender"];
                                              
@@ -487,13 +526,13 @@
     CGFloat constant = 0;
     constant = 280;
     self.tableBottomConstraint.constant = constant;
-    [self.profileTableView scrollToRowAtIndexPath:self.selectedCellIndex atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//    [self.profileTableView scrollToRowAtIndexPath:self.selectedCellIndex atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 -(void)hideKeyBoard
 {
     CGFloat constant = 0;
     self.tableBottomConstraint.constant = constant;
-    [self.profileTableView scrollToRowAtIndexPath:self.selectedCellIndex atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//    [self.profileTableView scrollToRowAtIndexPath:self.selectedCellIndex atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 @end

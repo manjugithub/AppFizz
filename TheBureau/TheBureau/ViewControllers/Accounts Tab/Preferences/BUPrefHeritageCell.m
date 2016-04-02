@@ -192,7 +192,22 @@ numberOfRowsInComponent:(NSInteger)component{
     NSDictionary *parameters = nil;
     [self.prefVC startActivityIndicator:YES];
     self.heritageList = eReligionList;
-    [[BUWebServicesManager sharedManager] getReligionListwithParameters:parameters successBlock:^(id response, NSError *error) {
+    [[BUWebServicesManager sharedManager] getReligionListwithParameters:parameters successBlock:^(id response, NSError *error)
+     {
+         self.religionTF.text = @"";
+         [self.religionIDList removeAllObjects];
+         [self.religionList removeAllObjects];
+
+         
+         self.familyOriginTF.text = @"";
+         [self.famliyIDList removeAllObjects];
+         [self.famliyList removeAllObjects];
+
+         
+         [self.heritageDict setValue:self.religionIDList forKey:@"religion_id"];
+         [self.heritageDict setValue:self.famliyIDList forKey:@"family_origin_id"];
+
+         
         [self showPickerWithDataSource:response];
     } failureBlock:^(id response, NSError *error) {
         [self showFailureAlert];
@@ -208,6 +223,12 @@ numberOfRowsInComponent:(NSInteger)component{
     self.heritageList = eMotherToungueList;
     [[BUWebServicesManager sharedManager] getMotherTongueListwithParameters:parameters successBlock:^(id response, NSError *error) {
         [self showPickerWithDataSource:response];
+        self.familyOriginTF.text = @"";
+        [self.famliyIDList removeAllObjects];
+        [self.famliyList removeAllObjects];
+        
+        
+        [self.heritageDict setValue:self.famliyIDList forKey:@"family_origin_id"];
     } failureBlock:^(id response, NSError *error) {
         [self showFailureAlert];
         

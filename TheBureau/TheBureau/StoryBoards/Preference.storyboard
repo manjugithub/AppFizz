@@ -502,14 +502,14 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YNz-Rs-QFo">
-                                                            <rect key="frame" x="23" y="40" width="474" height="2"/>
+                                                            <rect key="frame" x="0.0" y="40" width="497" height="2"/>
                                                             <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="2" id="hXi-T6-Xlu"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uqJ-le-rHB">
-                                                            <rect key="frame" x="0.0" y="28" width="23" height="23"/>
+                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uqJ-le-rHB">
+                                                            <rect key="frame" x="-22" y="28" width="23" height="23"/>
                                                             <color key="backgroundColor" red="0.90196078430000004" green="0.26274509800000001" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="23" id="Iwl-sP-wY3"/>
@@ -524,7 +524,7 @@
                                                                 <constraint firstAttribute="width" constant="23" id="vbj-E3-r6Y"/>
                                                             </constraints>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcU-5t-8sL">
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcU-5t-8sL">
                                                             <rect key="frame" x="0.0" y="8" width="23" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="0qx-aX-QLa"/>
@@ -547,7 +547,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="uqJ-le-rHB" firstAttribute="leading" secondItem="aNk-FH-yOb" secondAttribute="leading" id="AzN-Js-Go9"/>
+                                                        <constraint firstItem="uqJ-le-rHB" firstAttribute="leading" secondItem="aNk-FH-yOb" secondAttribute="leading" constant="-22" id="AzN-Js-Go9"/>
                                                         <constraint firstItem="S6q-LQ-XGI" firstAttribute="leading" secondItem="YNz-Rs-QFo" secondAttribute="trailing" id="FEX-8b-ZzQ"/>
                                                         <constraint firstAttribute="trailing" secondItem="S6q-LQ-XGI" secondAttribute="trailing" id="FsR-9S-viC"/>
                                                         <constraint firstItem="LTu-tP-bqf" firstAttribute="top" secondItem="aNk-FH-yOb" secondAttribute="top" constant="8" id="G3x-b0-pVF"/>
@@ -560,7 +560,7 @@
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="61" id="XA9-hf-afC"/>
                                                         <constraint firstAttribute="trailing" secondItem="LTu-tP-bqf" secondAttribute="trailing" id="YFv-ve-INz"/>
                                                         <constraint firstItem="uvp-tM-qEO" firstAttribute="leading" secondItem="aNk-FH-yOb" secondAttribute="leading" id="e17-ET-9RE"/>
-                                                        <constraint firstItem="YNz-Rs-QFo" firstAttribute="leading" secondItem="uqJ-le-rHB" secondAttribute="trailing" id="sX4-zm-Gpl"/>
+                                                        <constraint firstItem="YNz-Rs-QFo" firstAttribute="leading" secondItem="uqJ-le-rHB" secondAttribute="trailing" constant="-1" id="sX4-zm-Gpl"/>
                                                         <constraint firstItem="gcU-5t-8sL" firstAttribute="top" secondItem="aNk-FH-yOb" secondAttribute="top" constant="8" id="we5-Gs-MSy"/>
                                                         <constraint firstAttribute="height" constant="61" id="y72-OU-JbC"/>
                                                     </constraints>
