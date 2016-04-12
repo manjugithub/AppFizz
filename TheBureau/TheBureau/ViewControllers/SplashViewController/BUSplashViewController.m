@@ -55,6 +55,12 @@
 -(void)setSplashTimer
 {
     [splashTimer invalidate];
+    
+    
+//    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
+//    BUProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDetailsVC"];
+//    [self.navigationController pushViewController:vc animated:YES];
+
   [self performSegueWithIdentifier:@"main" sender:self];
     
     

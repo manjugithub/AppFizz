@@ -87,37 +87,81 @@
 
 
 
--(IBAction)getResidingDetails:(id)sender{
+-(IBAction)setUSA:(id)sender
+{
     
     UIButton *selectedBtn = (UIButton *)sender;
     
-    if (selectedBtn.tag == 1) {
+    if (selectedBtn.tag == 0)
+    {
         [self.btn_USA setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
-        [self.btn_India setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
-        
         [self.btn_USA setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [self.btn_India setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isUSCitizen"];
-        [self.profDict setValue:@"USA" forKey:@"country"];
+        if([[[self.profDict valueForKey:@"country"] uppercaseString] containsString:@"INDIA"])
+        {
+            [self.profDict setValue:@"Both" forKey:@"country"];
+        }
+        else
+        {
+            [self.profDict setValue:@"USA" forKey:@"country"];
+        }
+        
+        selectedBtn.tag = 1;
     }
     else
     {
-        [self.btn_India setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
         [self.btn_USA setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
-        
-        [self.btn_India setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self.btn_USA setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
+        if([[[self.profDict valueForKey:@"country"] uppercaseString] containsString:@"USA"])
+        {
+            [self.profDict setValue:@"" forKey:@"country"];
+        }
+        else
+        {
+            [self.profDict setValue:@"INDIA" forKey:@"country"];
+        }
         
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isUSCitizen"];
-        [self.profDict setValue:@"India" forKey:@"country"];
+        selectedBtn.tag = 0;
     }
     
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-  
 }
 
+-(IBAction)setIndia:(id)sender
+{
+    
+    UIButton *selectedBtn = (UIButton *)sender;
+    
+    if (selectedBtn.tag == 0)
+    {
+        [self.btn_India setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
+        [self.btn_India setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        if([[[self.profDict valueForKey:@"country"] uppercaseString] containsString:@"USA"])
+        {
+            [self.profDict setValue:@"Both" forKey:@"country"];
+        }
+        else
+        {
+            [self.profDict setValue:@"INDIA" forKey:@"country"];
+        }
+        selectedBtn.tag = 1;
+    }
+    else
+    {
+        [self.btn_India setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
+        [self.btn_India setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        if([[[self.profDict valueForKey:@"country"] uppercaseString] containsString:@"INDIA"])
+        {
+            [self.profDict setValue:@"" forKey:@"country"];
+        }
+        else
+        {
+            [self.profDict setValue:@"USA" forKey:@"country"];
+        }
+        selectedBtn.tag = 0;
+    }
+    
+}
 
 
 - (void)viewDidLoad {
@@ -511,7 +555,7 @@
                          [self.profDict setValue:[[NSArray alloc] init] forKey:key];
              }
              
-             NSInteger locRadius = (([self.profDict valueForKey:@"location_radius"] == nil || [[self.profDict valueForKey:@"location_radius"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"location_radius"] isEqualToString:@""]) ? 10 : [[self.profDict valueForKey:@"location_radius"] intValue]);
+             NSInteger locRadius = (([self.profDict valueForKey:@"location_radius"] == nil || [[self.profDict valueForKey:@"location_radius"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"location_radius"] isEqualToString:@""]) ? 300 : [[self.profDict valueForKey:@"location_radius"] intValue]);
              
              NSInteger ageFrom = (([self.profDict valueForKey:@"age_from"] == nil || [[self.profDict valueForKey:@"age_from"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"age_from"] isEqualToString:@""]) ? 18 : [[self.profDict valueForKey:@"age_from"] intValue]);
              
@@ -597,7 +641,7 @@
                          [self.profDict setValue:[[NSArray alloc] init] forKey:key];
              }
              
-             NSInteger locRadius = (([self.profDict valueForKey:@"location_radius"] == nil || [[self.profDict valueForKey:@"location_radius"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"location_radius"] isEqualToString:@""]) ? 10 : [[self.profDict valueForKey:@"location_radius"] intValue]);
+             NSInteger locRadius = (([self.profDict valueForKey:@"location_radius"] == nil || [[self.profDict valueForKey:@"location_radius"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"location_radius"] isEqualToString:@""]) ? 300 : [[self.profDict valueForKey:@"location_radius"] intValue]);
              
              NSInteger ageFrom = (([self.profDict valueForKey:@"age_from"] == nil || [[self.profDict valueForKey:@"age_from"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"age_from"] isEqualToString:@""]) ? 18 : [[self.profDict valueForKey:@"age_from"] intValue]);
              
@@ -642,28 +686,35 @@
              
              
              
-             if ([[self.profDict valueForKey:@"country"] containsString:@"USA"])
+             if ([[[self.profDict valueForKey:@"country"] lowercaseString] containsString:@"usa"])
              {
                  [self.btn_USA setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
-                 [self.btn_India setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
                  
                  [self.btn_USA setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                 [self.btn_India setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
                  
-                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isUSCitizen"];
+                 self.btn_USA.tag = 1;
+                 
              }
-             else
+             if ([[[self.profDict valueForKey:@"country"] lowercaseString] containsString:@"india"])
              {
                  [self.btn_India setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
-                 [self.btn_USA setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s1"] forState:UIControlStateNormal];
                  
                  [self.btn_India setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                 [self.btn_USA setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
                  
-                 [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isUSCitizen"];
+                 self.btn_India.tag = 1;
              }
-             
-             [[NSUserDefaults standardUserDefaults] synchronize];
+             if ([[[self.profDict valueForKey:@"country"] lowercaseString] containsString:@"both"])
+             {
+                 [self.btn_USA setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
+                 [self.btn_USA setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                 
+                 [self.btn_India setBackgroundImage:[UIImage imageNamed:@"bg_radiobutton_bubble_s2"] forState:UIControlStateNormal];
+                 [self.btn_India setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+
+                 self.btn_USA.tag = 1;
+                 self.btn_India.tag = 1;
+
+             }
              
 
              

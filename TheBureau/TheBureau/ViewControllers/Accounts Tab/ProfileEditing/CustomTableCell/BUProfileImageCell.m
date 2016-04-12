@@ -76,7 +76,6 @@
     
     [self.collectionView reloadData];
     
-    [[BUWebServicesManager sharedManager] uploadProfilePicture:[info objectForKey:UIImagePickerControllerEditedImage]];
 }
 
 -(void)setProfileImageDict:(NSMutableDictionary *)imageDict;
@@ -119,8 +118,17 @@
     return CGSizeMake(80, 100);
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.imagesList.count + 1;
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    if(self.isEditing)
+    {
+        return self.imagesList.count;
+    }
+    else
+    {
+        return self.imagesList.count + 1;
+    }
+
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -139,6 +147,16 @@
         {
             [cell.profileImgView setImage:[self.imagesList objectAtIndex:indexPath.row]];
             cell.activityIndicatorView.hidden = YES;
+        }
+        cell.deleteBtn.tag = indexPath.row;
+        
+        if(self.isEditing)
+        {
+            cell.deleteBtn.hidden = NO;
+        }
+        else
+        {
+            cell.deleteBtn.hidden = YES;
         }
         return cell;
     }
@@ -165,6 +183,52 @@
     self.imagePreviewVC.imagesList = self.imagesList;
     self.imagePreviewVC.indexPathToScroll = indexPath;
     [self.parentVC presentViewController:self.imagePreviewVC animated:NO completion:nil];
+}
+
+-(IBAction)deletePicture:(id)sender
+{
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
+
+    [UIView animateWithDuration:0.6 animations:^{
+        [cell setAlpha:0.0];
+    }
+                     completion:^(BOOL finished)
+     {
+         if([[self.imagesList objectAtIndex:[sender tag]] isKindOfClass:[NSString class]])
+             [[BUWebServicesManager sharedManager] deleteProfilePicture:[self.imagesList objectAtIndex:[sender tag]]];
+
+         [self.imagesList removeObjectAtIndex:[sender tag]];
+         [self.collectionView reloadData];
+     }];
+}
+
+-(IBAction)editProfilePic:(id)sender
+{
+    if ([sender tag] == 0)
+    {
+        self.isEditing = YES;
+        [sender setTag:1];
+        [(UIButton *)sender setImage:[UIImage imageNamed:@"done"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        self.isEditing = NO;
+        [sender setTag:0];
+        [(UIButton *)sender setImage:[UIImage imageNamed:@"edit"] forState:UIControlStateNormal];
+    }
+    
+    [self.collectionView reloadData];
+
+}
+
+
+-(void)saveProfileImages
+{
+    for (id pic in self.imagesList)
+    {
+        if(NO == [pic isKindOfClass:[NSString class]])
+            [[BUWebServicesManager sharedManager] uploadProfilePicture:pic];
+    }
 }
 
 @end

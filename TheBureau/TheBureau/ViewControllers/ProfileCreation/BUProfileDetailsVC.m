@@ -40,9 +40,13 @@
 
 @implementation BUProfileDetailsVC
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
     self.genderSelectionBtn.tag = 0;
 
@@ -125,12 +129,18 @@
     [picker alignCenterXWithView:alertController.view predicate:@"0.0"];
     [picker constrainWidth:@"270" ];
 
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:1];
+    [comps setMonth:1];
+    [comps setYear:1990];
+    NSDate *currentDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
+    
+    
+    
     NSDate *todayDate = [NSDate date];
     NSDate *newDate = [todayDate dateByAddingTimeInterval:(-1*18*365*24*60*60)];
-    
     picker.maximumDate = newDate;
-    picker.date = newDate;
-
+    picker.date = currentDate;
     
     [alertController addAction:({
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -163,11 +173,89 @@
     
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField;           // became first responder
+
+
+-(void)checkPinCode
 {
     
+    NSDictionary *parameters = nil;
+    parameters = @{@"zip_code": self.currentLocTF.text
+                   };
+    [self startActivityIndicator:YES];
     
     
+    NSString *baseURl = @"http://app.thebureauapp.com/admin/checkZipcodes";
+    
+    [[BUWebServicesManager sharedManager] queryServer:parameters
+                                              baseURL:baseURl
+                                         successBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+
+         if([[[response valueForKey:@"msg"] lowercaseString] isEqualToString:@"success"])
+         {
+             
+         }
+         else
+         {
+             self.currentLocTF.text = @"";
+             [self stopActivityIndicator];
+             
+             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Invalid zip code"];
+             [message addAttribute:NSFontAttributeName
+                             value:[UIFont fontWithName:@"comfortaa" size:15]
+                             range:NSMakeRange(0, message.length)];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+             [alertController setValue:message forKey:@"attributedTitle"];
+             
+             [alertController addAction:({
+                 UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                                          {
+                                              
+                                          }];
+                 
+                 action;
+             })];
+             
+             [self presentViewController:alertController  animated:YES completion:nil];
+             
+             
+         }
+         
+     }
+                                         failureBlock:^(id response, NSError *error)
+     {
+         
+         self.currentLocTF.text = @"";
+         
+         [self stopActivityIndicator];
+         
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Invalid zip code"];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];
+         
+         [alertController addAction:({
+             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                                      {
+                                          
+                                      }];
+             
+             action;
+         })];
+         
+         [self presentViewController:alertController  animated:YES completion:nil];
+         
+         
+     }];
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self checkPinCode];
     
 }
 

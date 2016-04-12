@@ -21,6 +21,7 @@
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
     self.imgCollectionVC = [sb instantiateViewControllerWithIdentifier:@"BUHomeCollectionVC"];
     [self.contentView addSubview:self.imgCollectionVC.view];
+    self.contentView.backgroundColor = [UIColor clearColor];
 
     self.imgCollectionVC.collectionView.dataSource = self.imgCollectionVC;
     self.imgCollectionVC.collectionView.delegate = self.imgCollectionVC;

@@ -311,7 +311,7 @@
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Pl-h5-mSi">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Pl-h5-mSi">
                                                             <rect key="frame" x="436" y="9" width="116" height="34"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="34" id="evf-gr-yAX"/>
@@ -321,10 +321,10 @@
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="getResidingDetails:" destination="Uwt-3x-DiF" eventType="touchUpInside" id="CYP-k0-HYw"/>
+                                                                <action selector="setIndia:" destination="Uwt-3x-DiF" eventType="touchUpInside" id="0lB-zE-u0x"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VdF-d0-GXe">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VdF-d0-GXe">
                                                             <rect key="frame" x="296" y="9" width="116" height="34"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="34" id="ilo-Ev-JlC"/>
@@ -334,7 +334,7 @@
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="getResidingDetails:" destination="Uwt-3x-DiF" eventType="touchUpInside" id="ENc-Kv-Bc4"/>
+                                                                <action selector="setUSA:" destination="Uwt-3x-DiF" eventType="touchUpInside" id="A8m-pj-ABD"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -1276,7 +1276,7 @@
                     </connections>
                 </barButtonItem>
             </objects>
-            <point key="canvasLocation" x="625" y="306"/>
+            <point key="canvasLocation" x="302" y="95"/>
         </scene>
     </scenes>
     <resources>

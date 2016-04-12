@@ -356,11 +356,18 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
        
    
 
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:1];
+    [comps setMonth:1];
+    [comps setYear:1990];
+    NSDate *currentDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
+
+    
     
     NSDate *todayDate = [NSDate date];
     NSDate *newDate = [todayDate dateByAddingTimeInterval:(-1*18*365*24*60*60)];
     picker.maximumDate = newDate;
-    picker.date = newDate;
+    picker.date = currentDate;
     
     [alertController addAction:({
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {

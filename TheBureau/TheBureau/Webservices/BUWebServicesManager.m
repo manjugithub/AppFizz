@@ -481,10 +481,30 @@ constructingBodyWithBlock:nil
 }
 
 
+-(void)deleteProfilePicture:(NSString *)inImageURLStr
+{
+    NSDictionary *parameters = @{@"img_url": inImageURLStr};
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:@"http://app.thebureauapp.com/admin/deleteImages"
+       parameters:parameters
+constructingBodyWithBlock:nil
+         progress:nil
+          success:^(NSURLSessionDataTask *operation, id responseObject)
+     {
+         ;
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(NSURLSessionDataTask *operation, NSError *error)
+     {
+         NSLog(@"Error: %@", error);
+     }];
+}
+
 
 -(void)uploadProfilePicture:(UIImage *)inImage
 {
-    NSData *imageData = UIImageJPEGRepresentation(inImage, 0.5);
+    NSData *imageData = UIImageJPEGRepresentation(inImage, 0.8);
     NSDictionary *parameters = @{@"userid": self.userID};
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -509,7 +529,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
 
 -(void)uploadHoroscope:(UIImage *)inImage
 {
-    NSData *imageData = UIImageJPEGRepresentation(inImage, 0.5);
+    NSData *imageData = UIImageJPEGRepresentation(inImage, 0.8);
     NSDictionary *parameters = @{@"userid": @"8"};
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

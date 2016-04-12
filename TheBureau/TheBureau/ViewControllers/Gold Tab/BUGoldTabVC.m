@@ -33,7 +33,6 @@
 - (void)reload {
     _products = nil;
     
-    [self startActivityIndicator:YES];
     [PWInAppHelper sharedInstance].parentCtrllr = self;
     [[PWInAppHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
         if (success) {
@@ -51,7 +50,7 @@
     
     [self.view addSubview:likeButton];
 
-    self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+    self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
 
     
     self.inviteFriendButton.layer.cornerRadius = 5.0;
@@ -67,8 +66,7 @@
     self.likeUsOnFBButton.layer.shadowOffset = CGSizeMake(2, 2);
     self.likeUsOnFBButton.layer.shadowColor = [[UIColor darkGrayColor]CGColor];
 
-
-    [self reload];
+    [self getGoldDetails];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -145,7 +143,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"collectionView willDisplayCell: %ld",indexPath.row);
+    NSLog(@"collectionView willDisplayCell: %ld",(long)indexPath.row);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -230,7 +228,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
     
-    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"You have Earned %ld Gold, Your total purchased gold is %ld",purchasedGold,gold]];
+    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"You have Earned %ld Gold, Your total purchased gold is %ld",(long)purchasedGold,gold]];
     [message addAttribute:NSFontAttributeName
                     value:[UIFont fontWithName:@"comfortaa" size:15]
                     range:NSMakeRange(0, message.length)];
@@ -243,7 +241,7 @@ static NSString * const reuseIdentifier = @"Cell";
         {
             [self updateGold];
             NSLog(@"OK");
-            self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+            self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
         }];
         
         action;
@@ -268,10 +266,10 @@ static NSString * const reuseIdentifier = @"Cell";
      
      */
     
-    NSInteger purchasedGold = 500;
+    NSInteger purchasedGold = 100;
     NSDictionary *parameters = nil;
     parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
-                   @"gold_to_add":[NSString stringWithFormat:@"%ld",purchasedGold]
+                   @"gold_to_add":[NSString stringWithFormat:@"%ld",(long)purchasedGold]
                    };
     
     
@@ -291,7 +289,7 @@ static NSString * const reuseIdentifier = @"Cell";
          
          gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
          
-         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"You have purchased %ld Gold, Your total purchased gold is %ld",purchasedGold,gold]];
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"You have purchased %ld Gold, Your total purchased gold is %ld",(long)purchasedGold,gold]];
          [message addAttribute:NSFontAttributeName
                          value:[UIFont fontWithName:@"comfortaa" size:15]
                          range:NSMakeRange(0, message.length)];
@@ -302,7 +300,7 @@ static NSString * const reuseIdentifier = @"Cell";
          [alertController addAction:({
              UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                  NSLog(@"OK");
-                 self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+                 self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
              }];
              
              action;
@@ -321,7 +319,7 @@ static NSString * const reuseIdentifier = @"Cell";
          
          gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
          
-         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"You have purchased %ld Gold, Your total purchased gold is %ld",purchasedGold,gold]];
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"You have purchased %ld Gold, Your total purchased gold is %ld",(long)purchasedGold,gold]];
          [message addAttribute:NSFontAttributeName
                          value:[UIFont fontWithName:@"comfortaa" size:15]
                          range:NSMakeRange(0, message.length)];
@@ -332,7 +330,7 @@ static NSString * const reuseIdentifier = @"Cell";
          [alertController addAction:({
              UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                  NSLog(@"OK");
-                 self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+                 self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
              }];
              
              action;
@@ -424,7 +422,7 @@ static NSString * const reuseIdentifier = @"Cell";
     }
     NSDictionary *parameters = nil;
     parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
-                   @"gold_to_add":[NSString stringWithFormat:@"%ld",purchasedGold]
+                   @"gold_to_add":[NSString stringWithFormat:@"%ld",(long)purchasedGold]
                    };
     
     
@@ -470,7 +468,7 @@ static NSString * const reuseIdentifier = @"Cell";
          
          gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
          
-         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"You have purchased %ld Gold, Your total purchased gold is %ld",purchasedGold,gold]];
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"You have purchased %ld Gold, Your total purchased gold is %ld",(long)purchasedGold,gold]];
          [message addAttribute:NSFontAttributeName
                          value:[UIFont fontWithName:@"comfortaa" size:15]
                          range:NSMakeRange(0, message.length)];
@@ -481,7 +479,7 @@ static NSString * const reuseIdentifier = @"Cell";
          [alertController addAction:({
              UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                  NSLog(@"OK");
-                 self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+                 self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
              }];
              
              action;
@@ -520,7 +518,7 @@ static NSString * const reuseIdentifier = @"Cell";
          
          gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
          
-         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"You have purchased %ld Gold, Your total purchased gold is %ld",purchasedGold,gold]];
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"You have purchased %ld Gold, Your total purchased gold is %ld",(long)purchasedGold,gold]];
          [message addAttribute:NSFontAttributeName
                          value:[UIFont fontWithName:@"comfortaa" size:15]
                          range:NSMakeRange(0, message.length)];
@@ -531,7 +529,7 @@ static NSString * const reuseIdentifier = @"Cell";
          [alertController addAction:({
              UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                  NSLog(@"OK");
-                 self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+                 self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
              }];
              
              action;
@@ -551,6 +549,59 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(void)purchaseFailed
 {
+    
+}
+
+
+
+-(void)getGoldDetails
+{
+    
+    NSDictionary *parameters = nil;
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
+                   };
+    [self startActivityIndicator:YES];
+
+    
+    NSString *baseURl = @"http://app.thebureauapp.com/admin/getGoldAvailable";
+    
+    [[BUWebServicesManager sharedManager] queryServer:parameters
+                                              baseURL:baseURl
+                                         successBlock:^(id response, NSError *error)
+     {
+         
+         [self reload];
+
+                                             [[NSUserDefaults standardUserDefaults] setInteger:[[response valueForKey:@"available_gold"] intValue] forKey:@"purchasedGold"];
+                                             [[NSUserDefaults standardUserDefaults] synchronize];
+                                             
+                                             self.totalGoldLabel.text = [response valueForKey:@"available_gold"];
+                                         }
+                                         failureBlock:^(id response, NSError *error) {
+                                             
+                                             [self stopActivityIndicator];
+
+                                             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error!"];
+                                             [message addAttribute:NSFontAttributeName
+                                                             value:[UIFont fontWithName:@"comfortaa" size:15]
+                                                             range:NSMakeRange(0, message.length)];
+                                             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+                                             [alertController setValue:message forKey:@"attributedTitle"];
+                                             
+                                             [alertController addAction:({
+                                                 UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                                                                          {
+                                                                              [self startActivityIndicator:YES];
+                                                                              [self reload];
+                                                     
+                                                 }];
+                                                 
+                                                 action;
+                                             })];
+                                             
+                                             [self presentViewController:alertController  animated:YES completion:nil];
+                                             
+                                         }];
     
 }
 @end

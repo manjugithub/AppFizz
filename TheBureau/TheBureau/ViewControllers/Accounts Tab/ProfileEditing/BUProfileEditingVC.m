@@ -25,6 +25,7 @@
 #pragma mark - Account selection
 @property (assign, nonatomic) BOOL shouldExpand,isEditing;
 @property (assign, nonatomic) NSIndexPath *selectedCellIndex;
+@property (assign, nonatomic) BUProfileImageCell *profileImageCell;
 
 
 @property (strong, nonatomic) NSMutableDictionary *profileImageDict,*basicInfoDict,*educationDict,*occupationDict,*heritageDict,*socialHabitsDict,*horoscopeDict,*legalStatus;
@@ -103,7 +104,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 7;
+    return 8;
 }
 
 
@@ -119,6 +120,7 @@
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileImageCell"];
             [(BUProfileImageCell *)cell setProfileImageDict:self.profileImageDict];
+            self.profileImageCell = (BUProfileImageCell *)cell;
             break;
         }
         case 1:
@@ -221,7 +223,7 @@
         }
         case 7:
         {
-            expandedHeight = 300;
+            expandedHeight = 350;
             break;
         }
         default:
@@ -469,6 +471,23 @@
                                              
                                              [self.legalStatus setValue:([respDict valueForKey:@"legal_status"] != nil && NO == [[respDict valueForKey:@"legal_status"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"legal_status"] : @""  forKey:@"legal_status"];
                                              
+                                             
+                                             
+                                             
+                                             self.horoscopeDict = [[NSMutableDictionary alloc] init];
+
+                                             [self.horoscopeDict setValue:([respDict valueForKey:@"horoscope_dob"] != nil && NO == [[respDict valueForKey:@"horoscope_dob"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"horoscope_dob"] : @""  forKey:@"horoscope_dob"];
+
+                                             [self.horoscopeDict setValue:([respDict valueForKey:@"horoscope_tob"] != nil && NO == [[respDict valueForKey:@"horoscope_tob"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"horoscope_tob"] : @""  forKey:@"horoscope_tob"];
+
+                                             [self.horoscopeDict setValue:([respDict valueForKey:@"horoscope_lob"] != nil && NO == [[respDict valueForKey:@"horoscope_lob"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"horoscope_lob"] : @""  forKey:@"horoscope_lob"];
+
+                                             [self.horoscopeDict setValue:([respDict valueForKey:@"about_me"] != nil && NO == [[respDict valueForKey:@"about_me"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"about_me"] : @""  forKey:@"about_me"];
+                                             
+                                             [self.horoscopeDict setValue:([respDict valueForKey:@"horoscope_path"] != nil && NO == [[respDict valueForKey:@"horoscope_path"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"horoscope_path"] : @""  forKey:@"horoscope_path"];
+                                             
+                                             
+                                             
                                              [self.profileTableView reloadData];
                                          }
                                          failureBlock:^(id response, NSError *error)
@@ -488,6 +507,9 @@
 
 -(void)updateProfile
 {
+    
+    [self.profileImageCell saveProfileImages];
+    
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc]init];
 
     [parameters addEntriesFromDictionary:self.basicInfoDict];

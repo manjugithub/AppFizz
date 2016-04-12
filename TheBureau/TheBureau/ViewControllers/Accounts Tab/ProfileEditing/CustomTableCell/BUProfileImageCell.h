@@ -16,11 +16,21 @@
 
 @property(nonatomic, strong) NSMutableArray *imagesList;
 
+@property(nonatomic, assign) BOOL isEditing;
+
+
 @property(nonatomic, strong) NSMutableDictionary *imagesDict;
 //img_url
 
 @property(nonatomic, strong) IBOutlet UICollectionView *collectionView;
+
+-(IBAction)deletePicture:(id)sender;
+
+
+-(IBAction)editProfilePic:(id)sender;
+
 -(void)setProfileImageList:(NSArray *)imageListArray;
 -(void)setProfileImageDict:(NSMutableDictionary *)imageDict;
+-(void)saveProfileImages;
 @property(weak, nonatomic) BUImagePreviewVC *imagePreviewVC;
 @end

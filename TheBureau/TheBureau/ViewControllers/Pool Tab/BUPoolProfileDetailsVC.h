@@ -11,5 +11,5 @@
 @interface BUPoolProfileDetailsVC : BUBaseViewController<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource,UICollisionBehaviorDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic, strong) IBOutlet UICollectionView *collectionView;
-@property(nonatomic, strong) NSDictionary *datasourceList;
+@property(nonatomic, strong) NSMutableDictionary *datasourceList;
 @end

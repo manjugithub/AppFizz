@@ -180,14 +180,19 @@ static UIColor *LSRandomColor(void)
         self.queryController.delegate = self;
         
         BOOL success = [self.queryController execute:&error];
-        if (success) {
+        if (success)
+        {
             NSLog(@"Query fetched %tu message objects", [self.queryController numberOfObjectsInSection:0]);
-        } else {
+        }
+        else
+        {
             NSLog(@"Query failed with error: %@", error);
         }
         [self.tableView reloadData];
         [self.conversation markAllMessagesAsRead:nil];
-    } else {
+    }
+    else
+    {
         NSLog(@"Query Controller initialization failed with error: %@", error);
     }
 }

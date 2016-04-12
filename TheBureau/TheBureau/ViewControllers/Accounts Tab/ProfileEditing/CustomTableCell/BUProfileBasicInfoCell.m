@@ -64,18 +64,99 @@
 }
 
 
+-(void)checkPinCode
+{
+    
+    NSDictionary *parameters = nil;
+    parameters = @{@"zip_code": self.radiusLabel.text
+                   };
+    [self.parentVC startActivityIndicator:YES];
+    
+    
+    NSString *baseURl = @"http://app.thebureauapp.com/admin/checkZipcodes";
+    
+    [[BUWebServicesManager sharedManager] queryServer:parameters
+                                              baseURL:baseURl
+                                         successBlock:^(id response, NSError *error)
+     {
+         [self.parentVC stopActivityIndicator];
+         
+         if([[[response valueForKey:@"msg"] lowercaseString] isEqualToString:@"success"])
+         {
+             [self.basicInfoDict setValue:self.radiusLabel.text forKey:@"current_zip_code"];
+         }
+         else
+         {
+             self.radiusLabel.text = @"";
+             [self.parentVC stopActivityIndicator];
+             
+             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Invalid zip code"];
+             [message addAttribute:NSFontAttributeName
+                             value:[UIFont fontWithName:@"comfortaa" size:15]
+                             range:NSMakeRange(0, message.length)];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+             [alertController setValue:message forKey:@"attributedTitle"];
+             
+             [alertController addAction:({
+                 UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                                          {
+                                              
+                                          }];
+                 
+                 action;
+             })];
+             
+             [self.parentVC presentViewController:alertController  animated:YES completion:nil];
+             
+             
+         }
+         
+     }
+                                         failureBlock:^(id response, NSError *error)
+     {
+         
+         self.radiusLabel.text = @"";
+         
+         [self.parentVC stopActivityIndicator];
+         
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Invalid zip code"];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];
+         
+         [alertController addAction:({
+             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                                      {
+                                          
+                                      }];
+             
+             action;
+         })];
+         
+         [self.parentVC presentViewController:alertController  animated:YES completion:nil];
+         
+         
+     }];
+    
+}
+
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     
     if(textField.tag == 0)
         [self.basicInfoDict setValue:textField.text forKey:@"profile_first_name"];
     else
-        [self.basicInfoDict setValue:textField.text forKey:@"current_zip_code"];
-    
+        [self checkPinCode];
     [textField resignFirstResponder];
 }
 #pragma mark - Gender selection
 
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self endEditing:YES];
+}
 
 -(IBAction)setGender:(id)sender
 {
@@ -171,10 +252,18 @@
     
     
     
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:1];
+    [comps setMonth:1];
+    [comps setYear:1990];
+    NSDate *currentDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
+    
+    
+    
     NSDate *todayDate = [NSDate date];
     NSDate *newDate = [todayDate dateByAddingTimeInterval:(-1*18*365*24*60*60)];
     picker.maximumDate = newDate;
-    picker.date = newDate;
+    picker.date = currentDate;
     
     [alertController addAction:({
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {

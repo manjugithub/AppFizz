@@ -365,9 +365,19 @@ numberOfRowsInComponent:(NSInteger)component{
     self.heritageDict = inBasicInfoDict;
     self.famliyIDList = [[NSMutableArray alloc] init];
     self.famliyList = [[NSMutableArray alloc] init];
+    
+    if([[self.heritageDict valueForKey:@"family_origin_data"] count] > 1)
+    {
+        self.familyOriginTF.text = @"Multiple";
+    }
+    else
+    {
+        self.familyOriginTF.text = [[[self.heritageDict valueForKey:@"family_origin_data"] lastObject] valueForKey:@"family_origin_name"];
+    }
+
+    
     for (NSDictionary *familyOriginDict in [self.heritageDict valueForKey:@"family_origin_data"])
     {
-        self.familyOriginTF.text = [NSString stringWithFormat:@"%@   %@",self.familyOriginTF.text,[familyOriginDict valueForKey:@"family_origin_name"]];
         [self.famliyIDList addObject:[familyOriginDict valueForKey:@"family_origin_id"]];
         [self.famliyList addObject:[familyOriginDict valueForKey:@"family_origin_name"]];
     }
@@ -376,9 +386,18 @@ numberOfRowsInComponent:(NSInteger)component{
     
     self.religionIDList = [[NSMutableArray alloc] init];
     self.religionList = [[NSMutableArray alloc] init];
+    
+    if([[self.heritageDict valueForKey:@"religion_data"] count] > 1)
+    {
+        self.religionTF.text = @"Multiple";
+    }
+    else
+    {
+        self.religionTF.text = [[[self.heritageDict valueForKey:@"religion_data"] lastObject] valueForKey:@"religion_name"];
+    }
+    
     for (NSDictionary *familyOriginDict in [self.heritageDict valueForKey:@"religion_data"])
     {
-        self.religionTF.text = [NSString stringWithFormat:@"%@   %@",self.religionTF.text,[familyOriginDict valueForKey:@"religion_name"]];
         [self.religionIDList addObject:[familyOriginDict valueForKey:@"religion_id"]];
         [self.religionList addObject:[familyOriginDict valueForKey:@"religion_name"]];
     }
@@ -386,9 +405,21 @@ numberOfRowsInComponent:(NSInteger)component{
 
     self.motherToungueIDList = [[NSMutableArray alloc] init];
     self.motherToungueList = [[NSMutableArray alloc] init];
+    
+    
+    if([[self.heritageDict valueForKey:@"mother_tongue_data"] count] > 1)
+    {
+        self.motherToungueTF.text = @"Multiple";
+    }
+    else
+    {
+        self.motherToungueTF.text = [[[self.heritageDict valueForKey:@"mother_tongue_data"] lastObject] valueForKey:@"mother_tongue"];
+    }
+    
+    
+    
     for (NSDictionary *familyOriginDict in [self.heritageDict valueForKey:@"mother_tongue_data"])
     {
-        self.motherToungueTF.text = [NSString stringWithFormat:@"%@   %@",self.motherToungueTF.text,[familyOriginDict valueForKey:@"mother_tongue"]];
         [self.motherToungueIDList addObject:[familyOriginDict valueForKey:@"mother_tongue_id"]];
         [self.motherToungueList addObject:[familyOriginDict valueForKey:@"mother_tongue"]];
     }

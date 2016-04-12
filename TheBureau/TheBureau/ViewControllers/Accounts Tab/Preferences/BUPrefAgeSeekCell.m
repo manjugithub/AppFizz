@@ -73,17 +73,14 @@
             {
                 CGFloat offset = (self.leftViewLeftConstraint.constant / self.interval)+1;
                 NSInteger feet =  4 + (NSInteger)offset / 12;
-                NSInteger inch =  (NSInteger)offset % 12;
+                NSInteger inch =  (NSInteger)offset % 12 + 1;
                 self.minFeet = feet;
                 self.minInch = inch;
                 self.minValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
             }
-            else if(2 == self.cellType){
-                
-                self.minValueLabel.text = [NSString stringWithFormat:@"%0.0f",(self.leftViewLeftConstraint.constant / self.interval)+1];
-            }
-            else{
-                self.minValueLabel.text = [NSString stringWithFormat:@"%0.0f",(self.leftViewLeftConstraint.constant / self.interval)+19];
+            else if(0 == self.cellType)
+            {
+                self.minValueLabel.text = [NSString stringWithFormat:@"%0.0f",(self.leftViewLeftConstraint.constant / self.interval)+18];
             }
             
         
@@ -102,7 +99,7 @@
             {
                 CGFloat offset = (((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+1);
                 NSInteger feet =  4 + (NSInteger)offset / 12;
-                NSInteger inch =  (NSInteger)offset % 12;
+                NSInteger inch =  (NSInteger)offset % 12 + 1;
                 self.maxFeet = feet;
                 self.maxInch = inch;
                 self.maxValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
@@ -116,11 +113,16 @@
             }
             else if(1 == self.cellType)
             {
-                self.maxValueLabel.text = [NSString stringWithFormat:@"%0.0f",((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+1];
+                NSInteger currentValue = (((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)) * 25;
+                
+                currentValue = currentValue - (currentValue % 25) ;
+                NSLog(@"Radius ====> %ld",currentValue);
+                
+                self.maxValueLabel.text = [NSString stringWithFormat:@"%ld",currentValue];
             }
             else
             {
-                self.maxValueLabel.text = [NSString stringWithFormat:@"%0.0f",((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+19];
+                self.maxValueLabel.text = [NSString stringWithFormat:@"%0.0f",((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+18];
             }
         }
     }
@@ -216,7 +218,7 @@
             } completion:^(BOOL finished) {
                 CGFloat offset = (((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+1);
                 NSInteger feet =  4 + (NSInteger)offset / 12;
-                NSInteger inch =  (NSInteger)offset % 12;
+                NSInteger inch =  (NSInteger)offset % 12 + 1;
                 self.maxFeet = feet;
                 self.maxInch = inch;
                 self.maxValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
@@ -228,26 +230,15 @@
 
 -(void)updatePointersForRadius
 {
-    
     NSInteger radius = [[self.preferenceDict valueForKey:@"location_radius"] intValue];
-
-    CGFloat newX1 = 0.0;
-    CGFloat newX = newX1 + self.interval * radius;
-
-        CGRect frame = self.leftView.frame;
-        frame.origin.x = newX;
-        if(0 <= frame.origin.x && self.overLayView.frame.size.width >= (frame.origin.x + frame.size.width))
-        {
-            
-            [UIView animateWithDuration:0.6 animations:^{
-                self.rightView.frame = frame;
-                self.rightViewRightConstraint.constant = self.overLayView.frame.size.width-newX;
-                self.maxLabelRightConstraint.constant = self.overLayView.frame.size.width-newX;
-            }completion:^(BOOL finished) {
-                self.maxValueLabel.text = [NSString stringWithFormat:@"%0.0f",((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+1];
-            }];
-
-        }
+    NSLog(@"Radius ====> %ld",(long)radius);
+    CGFloat newX =  (radius / 25) * self.interval;
+    [UIView animateWithDuration:0.6 animations:^{
+        self.rightViewRightConstraint.constant = self.overLayView.frame.size.width-newX;
+        self.maxLabelRightConstraint.constant = self.overLayView.frame.size.width-newX;
+    }completion:^(BOOL finished) {
+        self.maxValueLabel.text = [NSString stringWithFormat:@"%ld",(long)radius];
+    }];
 }
 
 -(void)updatePointersForAge
@@ -278,7 +269,7 @@
     }
     {
         
-        NSInteger ageTo = [[self.preferenceDict valueForKey:@"age_to"] intValue] - 19;
+        NSInteger ageTo = [[self.preferenceDict valueForKey:@"age_to"] intValue] - 18;
         newX1 = 0.0;
         CGFloat newX = newX1 + self.interval * ageTo;
 
@@ -292,7 +283,7 @@
                 self.rightViewRightConstraint.constant = self.overLayView.frame.size.width-newX;
                 self.maxLabelRightConstraint.constant = self.overLayView.frame.size.width-newX;
             }completion:^(BOOL finished) {
-                self.maxValueLabel.text = [NSString stringWithFormat:@"%0.0f",((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval) + 19];
+                self.maxValueLabel.text = [NSString stringWithFormat:@"%0.0f",((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval) + 18];
             }];
             
             
@@ -308,8 +299,8 @@
     
     if(1 == self.cellType)
     {
-        NSInteger ageTo = [[self.preferenceDict valueForKey:@"location_radius"] intValue];
-        self.maxValueLabel.text = [NSString stringWithFormat:@"%ld",ageTo];
+        NSInteger Radius = [[self.preferenceDict valueForKey:@"location_radius"] intValue];
+        self.maxValueLabel.text = [NSString stringWithFormat:@"%ld",Radius];
         [self performSelector:@selector(updatePointersForRadius) withObject:nil afterDelay:0.0];
 
     }
@@ -347,7 +338,7 @@
     }
     else if(1 == self.cellType)
     {
-        self.interval = self.overLayView.frame.size.width / 50;
+        self.interval = self.overLayView.frame.size.width / 12.0;
     }
     else
     {

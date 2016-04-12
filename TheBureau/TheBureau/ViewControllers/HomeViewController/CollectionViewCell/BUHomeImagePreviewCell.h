@@ -10,8 +10,9 @@
 #import "UIImageView+WebCache.h"
 
 @interface BUHomeImagePreviewCell : UICollectionViewCell
-@property(nonatomic, strong) IBOutlet UIImageView *profileImgView;
+@property(nonatomic, strong) IBOutlet UIImageView *profileImgView,*overLayView;
 @property(nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+@property(nonatomic, strong) IBOutlet UIButton *deleteBtn;
 
 -(void)setImageURL:(NSString *)inImageURL;
 @end

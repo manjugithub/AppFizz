@@ -73,6 +73,19 @@
     {
         case eReligionList:
         {
+            
+//            
+//            for (NSString *idName in self.selectedItemsList)
+//            {
+//                if([[inDataSourceDict valueForKey:@"religion_id"] isEqualToString:idName])
+//                {
+//                    
+//                }
+//            }
+//            [self.heritageDict setValue:self.religionIDList forKey:@"religion_id"];
+//            [self.heritageDict setValue:self.motherToungueIDList forKey:@"mother_tongue_id"];
+//            [self.heritageDict setValue:self.famliyIDList forKey:@"family_origin_id"];
+
             cell.titleLabel.text = [inDataSourceDict valueForKey:@"religion_name"];
             break;
         }

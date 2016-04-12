@@ -69,4 +69,6 @@
 
 -(void)uploadProfilePicture:(UIImage *)inImage;
 -(void)uploadHoroscope:(UIImage *)inImage;
+-(void)deleteProfilePicture:(NSString *)inImageURLStr;
+
 @end

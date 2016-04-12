@@ -9,8 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "BUProfileEditingVC.h"
 
-@interface BUProfileHoroscopeInfoCell : UITableViewCell<UITextFieldDelegate>
+@interface BUProfileHoroscopeInfoCell : UITableViewCell<UITextViewDelegate,UITextFieldDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property(weak, nonatomic) IBOutlet BUProfileEditingVC *parentVC;
 
+
+@property(weak, nonatomic) IBOutlet UITextView *aboutMeTextView;
+@property(weak, nonatomic) IBOutlet UITextField *tobLabel,*dobLabel,*locLabel;
+
+@property(weak, nonatomic) IBOutlet UIButton *uploadBtn;
+@property(nonatomic, strong) NSMutableDictionary *horoscopeDict;
+
 -(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict;
+-(IBAction)setDOB:(id)sender;
+-(IBAction)setTOB:(id)sender;
+-(IBAction)uploadHoroscope:(id)sender;
 @end

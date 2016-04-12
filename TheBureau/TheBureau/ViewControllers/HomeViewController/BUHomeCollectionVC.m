@@ -19,6 +19,10 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.collectionView.layer.borderColor = [[UIColor redColor] CGColor];
+    self.collectionView.layer.borderWidth = 1.0;
+    self.collectionView.layer.cornerRadius = 5.0;
     
 }
 
@@ -50,7 +54,10 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+
     self.pageControl.numberOfPages = self.imagesList.count;
+    
+    (self.pageControl.numberOfPages < 2) ? (self.pageControl.hidden = YES) : (self.pageControl.hidden = NO);
     return self.imagesList.count;
 }
 

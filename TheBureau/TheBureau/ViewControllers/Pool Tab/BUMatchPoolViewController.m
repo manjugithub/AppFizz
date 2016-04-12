@@ -38,7 +38,7 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
     BUPoolProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUPoolProfileDetailsVC"];
-    vc.datasourceList = [self.datasourceList objectAtIndex:self.pageControl.currentPage];
+    vc.datasourceList = [[NSMutableDictionary alloc] initWithDictionary:[self.datasourceList objectAtIndex:self.pageControl.currentPage]];
     [self.tabBarController.navigationController pushViewController:vc animated:NO];
     
 }

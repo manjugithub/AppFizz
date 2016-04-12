@@ -7,11 +7,17 @@
 //
 
 #import "BUProfileHoroscopeInfoCell.h"
+#import "UIView+FLKAutoLayout.h"
 
 @implementation BUProfileHoroscopeInfoCell
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     // Initialization code
+    self.aboutMeTextView.layer.borderColor = [[UIColor blackColor]CGColor];
+    self.aboutMeTextView.layer.borderWidth = 1.0;
+    self.aboutMeTextView.layer.cornerRadius = 5.0;
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -20,202 +26,181 @@
     // Configure the view for the selected state
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    [textField resignFirstResponder];
-    return YES;
+    [self endEditing:YES];
+    [self showKeyBoard:NO];
+}
+
+-(void)showKeyBoard:(BOOL)inBool
+{
+//    CGFloat constant = 0;
+//    if(NO == inBool)
+//    {
+//        constant = 58;
+//    }
+//    else
+//    {
+//        constant = 320;
+//    }
+//    
+//    self.textViewBottomConstraint.constant = constant;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    
-}
--(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict
-{
-    
+    [self.horoscopeDict setValue:textField.text forKey:@"horoscope_lob"];
 }
 
+
+- (void)textViewDidEndEditing:(UITextView *)textView;
+{
+    [self.horoscopeDict setValue:textView.text forKey:@"about_me"];
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView;
+{
+    textView.text = [textView.text stringByReplacingOccurrencesOfString:@"Your text here ..." withString:@""];
+    [self showKeyBoard:YES];
+    return YES;
+}
+
+-(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict
+{
+
+    self.horoscopeDict = inBasicInfoDict;
+    
+   self.dobLabel.text  = [inBasicInfoDict valueForKey:@"horoscope_dob"];
+   self.tobLabel.text  = [inBasicInfoDict valueForKey:@"horoscope_tob"];
+   self.locLabel.text  = [inBasicInfoDict valueForKey:@"horoscope_lob"];
+   self.aboutMeTextView.text  = [inBasicInfoDict valueForKey:@"about_me"];
+//    [inBasicInfoDict valueForKey:@"horoscope_path"];
+    
+    
+}
 
 -(void)updateProfile
 {
     
 }
 
-/*
- 
- {
- [self.parentVC startActivityIndicator:YES];
- 
- /*
- 
- userid => User's ID
- first_name => First name of account holder
- last_name => Last name of account holder
- dob => date of birth (dd-mm-yyyy)
- gender => Gender - enum('Male', 'Female')
- phone_number => phone number of account holder
- email => email of account holder
- 
- 1. API for screen 4_profile_setup (Of the mockup screens)
- 
- http://app.thebureauapp.com/admin/update_profile_step1
- 
- Parameters to be sent to this API :
- 
- userid => user id of user
- profile_for => profile for eg. self, brother, sister =>One of these values
- profile_first_name => first name for profile
- profile_last_name => last name for profile
- 
- API to view the above details for a user :
- 
- http://app.thebureauapp.com/admin/view_profile_step1
- 
- Parameters to be sent :
- userid => user id of user
- 
- As an output it will return all the fields (profile_for, profile_first_name, profile_last_name) with value in json format.
- 
- 2. API for screen 4a_profile_setup1 (Of the mockup screens)
- 
- http://app.thebureauapp.com/admin/update_profile_step2
- 
- Parameters to be sent :
- 
- userid => user id of user
- profile_gender =>gender (Male,Female)
- profile_dob =>date of birth (dd-mm-yy format)
- country_residing => country residing (India, America) =>one of these values
- current_zip_code => current zip code
- height_feet => person height in feet
- height_inch => person height in inch
- maritial_status => marital status
- 
- 
- API to  view the above  :
- http://app.thebureauapp.com/admin/view_profile_step2
- 
- Parameter => userid => user id of user
- 
- * as an output it will return all the fields (profile_gender, profile_dob, country_residing, current_zip_code, height_feet, height_inch, maritial_status) with value.
- 
- 
- 3. API for screen 4b_profile_setup2
- 
- API  to  Call
- http://app.thebureauapp.com/admin/update_profile_step3
- 
- Parameter
- userid => user id of user
- religion_id =>religion id
- mother_tongue_id => mother tongue id
- family_origin_id => family origin id
- specification_id => specification id
- gothra => gothra(text)
- 
- API to  view the above details for a user
- 
- http://app.thebureauapp.com/admin/view_profile_step3
- 
- Parameter
- userid => user id of user
- 
- * as an output it will return all the fields (religion_id, mother_tongue_id, family_origin_id, specification_id, gothra) with value.
- 
- 
- 4. API for screen 4c_profile_setup3
- 
- API to  upload :
- http://app.thebureauapp.com/admin/update_profile_step4
- 
- Parameter
- userid => user id of user
- diet => e.g. Vegetarian, Eggetarian, Non Vegetarian
- drinking => e.g. Socially, Never
- smoking => e.g. Yes, No
- 
- API to  view the above
- http://app.thebureauapp.com/admin/view_profile_step4
- 
- Parameter
- userid => user id of user
- 
- * as an output it will return all the fields (diet, drinking, smoking) with value.
- 
- 5. API for screen 4d_profile_setup4
- 
- API to  upload
- http://app.thebureauapp.com/admin/update_profile_step5
- 
- Parameter
- 
- userid => user id of user
- employment_status=> e.g. Employed, Unemployed
- position_title => position title
- company => company name
- highest_education=> e.g. Doctorate, Masters
- honors=> honors (text)
- major=> major
- college=> college
- graduated_year=> graduated year
- 
- API to view the above  :
- 
- http://app.thebureauapp.com/admin/view_profile_step5
- 
- Parameter
- userid => user id of user
- 
- * as an output it will return all the fields (employment_status,position_title,company,highest_education,honors,major,college,graduated_year) with value.
- 
- 6. API for screen 4e_profile_setup5
- 
- API to call
- 
- http://app.thebureauapp.com/admin/update_profile_step6
- 
- Parameters
- 
- userid => user id of user
- years_in_usa => e.g. 0 - 2, 2 - 6
- legal_status => e.g. Citizen/Green Card, Greencard
- 
- * /
- 
- 
- 
- //    gender => Gender - enum('Male', 'Female')
- //    userid => user id of user
- //    profile_first_name => first name for profile
- //        profile_last_name => last name for profile
- //            height_feet => person height in feet
- //            height_inch => person height in inch
- //            maritial_status => marital status
- 
- 
- NSDictionary *parameters = nil;
- parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
- @"gender": [BUWebServicesManager sharedManager].userID,
- @"height_feet": self.feetStr,
- @"height_inch":self.inchStr,
- @"maritial_status": self.maritalStatusTF.text,
- @"location": self.radiusLabel.text,
- 
- };
- 
- NSString *baseURl = @"http://app.thebureauapp.com/admin/update_profile_step1";
- [[BUWebServicesManager sharedManager] queryServer:nil
- baseURL:baseURl
- successBlock:^(id response, NSError *error)
- {
- [self.parentVC stopActivityIndicator];
- 
- }
- failureBlock:^(id response, NSError *error) {
- [self.parentVC stopActivityIndicator];
- }
- ];
- }
- 
- */
+-(IBAction)setDOB:(id)sender
+{
+    
+    [self.parentVC.view endEditing:YES];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Birthday\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIDatePicker *picker = [[UIDatePicker alloc] init];
+    [picker setDatePickerMode:UIDatePickerModeDate];
+    [alertController.view addSubview:picker];
+    
+    [picker alignCenterYWithView:alertController.view predicate:@"0.0"];
+    [picker alignCenterXWithView:alertController.view predicate:@"0.0"];
+    [picker constrainWidth:@"270" ];
+    //
+    
+    
+    
+    
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:1];
+    [comps setMonth:1];
+    [comps setYear:1990];
+    NSDate *currentDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
+    
+    
+    
+    NSDate *todayDate = [NSDate date];
+    NSDate *newDate = [todayDate dateByAddingTimeInterval:(-1*18*365*24*60*60)];
+    picker.maximumDate = newDate;
+    picker.date = currentDate;
+    
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSLog(@"OK");
+            NSLog(@"%@",picker.date);
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"MM-dd-yyyy"];
+            NSString *dateString = [dateFormat stringFromDate:picker.date];
+            self.dobLabel.text = dateString;
+            [self.horoscopeDict setValue:dateString forKey:@"horoscope_dob"];
+        }];
+        action;
+    })];
+    
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSLog(@"cancel");
+            //NSLog(@"%@",picker.date);
+        }];
+        action;
+    })];
+    [self.parentVC presentViewController:alertController  animated:YES completion:nil];
+}
+-(IBAction)setTOB:(id)sender
+{
+    
+    [self.parentVC.view endEditing:YES];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Time of Birth\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIDatePicker *picker = [[UIDatePicker alloc] init];
+    [picker setDatePickerMode:UIDatePickerModeDate];
+    [alertController.view addSubview:picker];
+    
+    [picker alignCenterYWithView:alertController.view predicate:@"0.0"];
+    [picker alignCenterXWithView:alertController.view predicate:@"0.0"];
+    [picker constrainWidth:@"270" ];
+    //
+    
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:1];
+    [comps setMonth:1];
+    [comps setYear:1990];
+    NSDate *currentDate = [[NSCalendar currentCalendar] dateFromComponents:comps];
+    
+
+    picker.date = currentDate;
+    picker.datePickerMode = UIDatePickerModeTime;
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSLog(@"OK");
+            NSLog(@"%@",picker.date);
+            
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"HH:MM:ss"];
+            NSString *dateString = [dateFormat stringFromDate:picker.date];
+            self.tobLabel.text = dateString;
+            [self.horoscopeDict setValue:dateString forKey:@"horoscope_tob"];
+        }];
+        action;
+    })];
+    
+    [alertController addAction:({
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSLog(@"cancel");
+            //NSLog(@"%@",picker.date);
+        }];
+        action;
+    })];
+    [self.parentVC presentViewController:alertController  animated:YES completion:nil];
+}
+-(IBAction)uploadHoroscope:(id)sender
+{
+    
+         UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.allowsEditing = YES;
+        imagePicker.delegate = self;
+            imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [[self parentVC] presentViewController:imagePicker animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    
+    [[BUWebServicesManager sharedManager] uploadHoroscope:[info objectForKey:UIImagePickerControllerEditedImage]];
+
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 @end
