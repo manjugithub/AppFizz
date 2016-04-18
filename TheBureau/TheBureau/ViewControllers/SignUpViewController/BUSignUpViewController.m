@@ -188,6 +188,8 @@
                      
                      if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
                      {
+                         [[NSUserDefaults standardUserDefaults] setValue:[inResult valueForKey:@"userid"] forKey:@"userid"];
+                         [[NSUserDefaults standardUserDefaults] synchronize];
                          [BUWebServicesManager sharedManager].userID = [inResult valueForKey:@"userid"];
                          [[BULayerHelper sharedHelper] setCurrentUserID:[inResult valueForKey:@"userid"]];
 
@@ -275,6 +277,9 @@
 
     if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
     {
+        [[NSUserDefaults standardUserDefaults] setValue:[inResult valueForKey:@"userid"] forKey:@"userid"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+
         [BUWebServicesManager sharedManager].userID = [inResult valueForKey:@"userid"];
 
         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Registration Successful"];

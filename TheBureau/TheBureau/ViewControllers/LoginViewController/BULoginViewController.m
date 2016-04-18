@@ -166,11 +166,11 @@
                 }
                 else
                 {
-                    parameters = @{@"login_type": @"digits",
-                                   @"digits":@"+919844183444"};
-                    
 //                    parameters = @{@"login_type": @"digits",
-//                                   @"digits":session.phoneNumber};
+//                                   @"digits":@"+919844183444"};
+                    
+                    parameters = @{@"login_type": @"digits",
+                                   @"digits":session.phoneNumber};
                 }
                 [self startActivityIndicator:YES];
                 [[BUWebServicesManager sharedManager] loginWithDelegeatewithParameters:parameters
@@ -181,7 +181,8 @@
                      if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
                      {
                          
-                        
+                         [[NSUserDefaults standardUserDefaults] setValue:[inResult valueForKey:@"userid"] forKey:@"userid"];
+                         [[NSUserDefaults standardUserDefaults] synchronize];
                          
                          [BUWebServicesManager sharedManager].userID = [inResult valueForKey:@"userid"];
                          [BUWebServicesManager sharedManager].userName = [NSString stringWithFormat:@"%@ %@",[[[inResult valueForKey:@"profile_details"] valueForKey:@"first_name"] lastObject],[[[inResult valueForKey:@"profile_details"] valueForKey:@"last_name"] lastObject]];

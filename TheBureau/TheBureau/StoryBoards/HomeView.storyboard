@@ -455,11 +455,11 @@
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="tX8-j0-Bdw" firstAttribute="top" secondItem="8pe-ap-DgR" secondAttribute="top" id="667-9g-bIw"/>
-                                            <constraint firstAttribute="trailing" secondItem="tX8-j0-Bdw" secondAttribute="trailing" id="VSU-Fd-dY2"/>
-                                            <constraint firstItem="tX8-j0-Bdw" firstAttribute="leading" secondItem="8pe-ap-DgR" secondAttribute="leading" id="Woh-QD-HZF"/>
+                                            <constraint firstItem="tX8-j0-Bdw" firstAttribute="leading" secondItem="8pe-ap-DgR" secondAttribute="leading" id="CER-i3-U6K"/>
+                                            <constraint firstItem="tX8-j0-Bdw" firstAttribute="top" secondItem="8pe-ap-DgR" secondAttribute="top" id="Esm-u8-x3b"/>
+                                            <constraint firstAttribute="bottom" secondItem="tX8-j0-Bdw" secondAttribute="bottom" id="Rj7-tW-VRg"/>
+                                            <constraint firstAttribute="trailing" secondItem="tX8-j0-Bdw" secondAttribute="trailing" id="Srq-wL-aBd"/>
                                             <constraint firstItem="TC0-cZ-kNC" firstAttribute="centerY" secondItem="8pe-ap-DgR" secondAttribute="centerY" id="n6L-4D-u0a"/>
-                                            <constraint firstAttribute="bottom" secondItem="tX8-j0-Bdw" secondAttribute="bottom" id="svX-i8-Ch9"/>
                                             <constraint firstItem="TC0-cZ-kNC" firstAttribute="centerX" secondItem="8pe-ap-DgR" secondAttribute="centerX" id="t4p-FY-qQb"/>
                                         </constraints>
                                         <size key="customSize" width="600" height="550"/>

@@ -570,12 +570,12 @@ static NSString * const reuseIdentifier = @"Cell";
                                          successBlock:^(id response, NSError *error)
      {
          
+         
+         [[NSUserDefaults standardUserDefaults] setInteger:[[response valueForKey:@"available_gold"] intValue] forKey:@"purchasedGold"];
+         [[NSUserDefaults standardUserDefaults] synchronize];
+         
+         self.totalGoldLabel.text = [NSString stringWithFormat:@"%d",[[response valueForKey:@"available_gold"] intValue]];
          [self reload];
-
-                                             [[NSUserDefaults standardUserDefaults] setInteger:[[response valueForKey:@"available_gold"] intValue] forKey:@"purchasedGold"];
-                                             [[NSUserDefaults standardUserDefaults] synchronize];
-                                             
-                                             self.totalGoldLabel.text = [response valueForKey:@"available_gold"];
                                          }
                                          failureBlock:^(id response, NSError *error) {
                                              

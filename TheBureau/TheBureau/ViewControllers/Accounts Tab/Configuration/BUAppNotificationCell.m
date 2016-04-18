@@ -271,9 +271,14 @@
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSLog(@"OK");
             
+
             [self.parentVC startActivityIndicator:YES];
             [[Digits sharedInstance]logOut];
             [[BULayerHelper sharedHelper]deauthenticateWithCompletion:^(BOOL success, NSError * _Nullable error) {
+                [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"userid"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                [BUWebServicesManager sharedManager].userID = nil;
                 [self.parentVC stopActivityIndicator];
                 [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
             }];
@@ -306,9 +311,14 @@
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSLog(@"OK");
             
+
             [self.parentVC startActivityIndicator:YES];
             [[Digits sharedInstance]logOut];
             [[BULayerHelper sharedHelper]deauthenticateWithCompletion:^(BOOL success, NSError * _Nullable error) {
+                [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"userid"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                [BUWebServicesManager sharedManager].userID = nil;
                 [self.parentVC stopActivityIndicator];
                 [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
             }];
@@ -335,9 +345,15 @@
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSLog(@"OK");
             
+            
+
             [self.parentVC startActivityIndicator:YES];
             [[Digits sharedInstance]logOut];
             [[BULayerHelper sharedHelper]deauthenticateWithCompletion:^(BOOL success, NSError * _Nullable error) {
+                [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"userid"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                [BUWebServicesManager sharedManager].userID = nil;
                 [self.parentVC stopActivityIndicator];
                 [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
             }];

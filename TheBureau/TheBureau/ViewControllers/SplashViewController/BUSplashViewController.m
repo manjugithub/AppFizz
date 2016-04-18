@@ -61,7 +61,16 @@
 //    BUProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDetailsVC"];
 //    [self.navigationController pushViewController:vc animated:YES];
 
-  [self performSegueWithIdentifier:@"main" sender:self];
+    if(nil != [BUWebServicesManager sharedManager].userID)
+    {
+        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+        BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"main" sender:self];
+    }
     
     
 //    {

@@ -18,7 +18,7 @@
 #import "AirshipLib.h"
 #import "AirshipKit.h"
 #import "AirshipCore.h"
-
+#import "BUWebServicesManager.h"
 
 
 @interface AppDelegate ()<UAPushNotificationDelegate>
@@ -30,6 +30,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    if(nil != [[NSUserDefaults standardUserDefaults] valueForKey:@"userid"])
+    {
+        [BUWebServicesManager sharedManager].userID = [[NSUserDefaults standardUserDefaults] valueForKey:@"userid"];
+    }
+    else
+    {
+        [BUWebServicesManager sharedManager].userID =  nil;
+    }
     
     [Fabric with:@[[Crashlytics class],[DigitsKit class]]];
     [[FBSDKApplicationDelegate sharedInstance] application:application
