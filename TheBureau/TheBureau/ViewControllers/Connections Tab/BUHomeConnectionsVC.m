@@ -25,7 +25,7 @@
 {
     [super viewDidLoad];
     self.title =@"Connections";
-    [_csChatBtn setSelected:YES];
+    [_chatBtn setSelected:YES];
     self.connectionTabItem.badgeValue = [NSString stringWithFormat:@"%ld",[UIApplication sharedApplication].applicationIconBadgeNumber];
 }
 
