@@ -105,8 +105,8 @@
         [self.feetMutableArray addObject:feet];
     }
     
-    
-    
+    self.dateofbirthTF.text = self.dobStr;
+
 }
 
 - (void)didReceiveMemoryWarning {

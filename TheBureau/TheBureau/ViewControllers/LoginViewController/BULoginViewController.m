@@ -17,6 +17,7 @@
 #import <LayerKit/LayerKit.h>
 #import "BUWebServicesManager.h"
 #import "BULayerHelper.h"
+#import "Localytics.h"
 @interface BULoginViewController ()//<LYRClientDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *overLayViewTapConstraint;
@@ -167,7 +168,7 @@
                 else
                 {
 //                    parameters = @{@"login_type": @"digits",
-//                                   @"digits":@"+919844183444"};
+//                                   @"digits":@"+919902924732"};
                     
                     parameters = @{@"login_type": @"digits",
                                    @"digits":session.phoneNumber};
@@ -186,6 +187,11 @@
                          
                          [BUWebServicesManager sharedManager].userID = [inResult valueForKey:@"userid"];
                          [BUWebServicesManager sharedManager].userName = [NSString stringWithFormat:@"%@ %@",[[[inResult valueForKey:@"profile_details"] valueForKey:@"first_name"] lastObject],[[[inResult valueForKey:@"profile_details"] valueForKey:@"last_name"] lastObject]];
+                         
+                         [Localytics tagEvent:@"Login Successful"];
+                         [Localytics setCustomerId:[inResult valueForKey:@"userid"]];;
+
+                         
                          //    [inResult valueForKey:@"userid"];
                          
                          [[BULayerHelper sharedHelper] setCurrentUserID:[inResult valueForKey:@"userid"]];

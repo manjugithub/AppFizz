@@ -92,11 +92,11 @@ static NSString * const reuseIdentifier = @"Cell";
 -(void)getMatchPoolFortheDay
 {
     NSDictionary *parameters = nil;
-//    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
-//                   };
-
-    parameters = @{@"userid": @"152"
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
                    };
+
+//    parameters = @{@"userid": @"152"
+//                   };
 
     [self startActivityIndicator:YES];
     [[BUWebServicesManager sharedManager] matchPoolForTheDaywithParameters:parameters

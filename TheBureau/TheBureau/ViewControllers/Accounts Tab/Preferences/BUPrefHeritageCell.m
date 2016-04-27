@@ -8,6 +8,7 @@
 
 #import "BUPrefHeritageCell.h"
 #import "UIView+FLKAutoLayout.h"
+#import "PWHeritageObj.h"
 
 
 @implementation BUPrefHeritageCell
@@ -165,7 +166,7 @@ numberOfRowsInComponent:(NSInteger)component{
     [self.prefVC stopActivityIndicator];
     
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"CustomPicker" bundle:nil];
-    self.customPickerView = [sb instantiateViewControllerWithIdentifier:@"PWCustomPickerView"];
+    self.customPickerView = [sb instantiateViewControllerWithIdentifier:@"BUCustomPickerView"];
     
     self.customPickerView.pickerDataSource = inResult;
     self.customPickerView.allowMultipleSelection = YES;
@@ -194,10 +195,27 @@ numberOfRowsInComponent:(NSInteger)component{
     self.heritageList = eReligionList;
     [[BUWebServicesManager sharedManager] getReligionListwithParameters:parameters successBlock:^(id response, NSError *error)
      {
-         self.religionTF.text = @"";
-         [self.religionIDList removeAllObjects];
-         [self.religionList removeAllObjects];
-
+         {
+             self.relList = [[NSMutableArray alloc] init];
+             for (NSDictionary *dict in response)
+             {
+                 PWHeritageObj *heritageObj = [[PWHeritageObj alloc] init];
+                 heritageObj.name = [dict valueForKey:@"religion_name"];
+                 heritageObj.hId = [dict valueForKey:@"religion_id"];
+                 heritageObj.isSelected = NO;
+                 
+                 for (NSString *idStr in self.religionIDList)
+                 {
+                     if([heritageObj.hId isEqualToString:idStr])
+                         heritageObj.isSelected = YES;
+                     
+                 }
+                 [self.relList addObject:heritageObj];
+             }
+             
+             [self showPickerWithDataSource:self.relList];
+             
+         }
          
          self.familyOriginTF.text = @"";
          [self.famliyIDList removeAllObjects];
@@ -208,7 +226,6 @@ numberOfRowsInComponent:(NSInteger)component{
          [self.heritageDict setValue:self.famliyIDList forKey:@"family_origin_id"];
 
          
-        [self showPickerWithDataSource:response];
     } failureBlock:^(id response, NSError *error) {
         [self showFailureAlert];
         
@@ -221,12 +238,31 @@ numberOfRowsInComponent:(NSInteger)component{
     NSDictionary *parameters = nil;
     [self.prefVC startActivityIndicator:YES];
     self.heritageList = eMotherToungueList;
-    [[BUWebServicesManager sharedManager] getMotherTongueListwithParameters:parameters successBlock:^(id response, NSError *error) {
-        [self showPickerWithDataSource:response];
-        self.familyOriginTF.text = @"";
-        [self.famliyIDList removeAllObjects];
-        [self.famliyList removeAllObjects];
+    [[BUWebServicesManager sharedManager] getMotherTongueListwithParameters:parameters successBlock:^(id response, NSError *error)
+    {
         
+        {
+            self.mToungList = [[NSMutableArray alloc] init];
+            for (NSDictionary *dict in response)
+            {
+                PWHeritageObj *heritageObj = [[PWHeritageObj alloc] init];
+                heritageObj.name = [dict valueForKey:@"mother_tongue"];
+                heritageObj.hId = [dict valueForKey:@"mother_tongue_id"];
+                heritageObj.isSelected = NO;
+                
+                for (NSString *idStr in self.motherToungueIDList)
+                {
+                    if([heritageObj.hId isEqualToString:idStr])
+                        heritageObj.isSelected = YES;
+                    
+                }
+
+                [self.mToungList addObject:heritageObj];
+            }
+            
+            [self showPickerWithDataSource:self.mToungList];
+            
+        }
         
         [self.heritageDict setValue:self.famliyIDList forKey:@"family_origin_id"];
     } failureBlock:^(id response, NSError *error) {
@@ -262,8 +298,26 @@ numberOfRowsInComponent:(NSInteger)component{
         NSDictionary *parameters = nil;
         parameters = @{@"religionids": self.religionIDList};
         [self.prefVC startActivityIndicator:YES];
-        [[BUWebServicesManager sharedManager] getMultipleFamilyOriginListwithParameters:parameters successBlock:^(id response, NSError *error) {
-            [self showPickerWithDataSource:response];
+        [[BUWebServicesManager sharedManager] getMultipleFamilyOriginListwithParameters:parameters successBlock:^(id response, NSError *error)
+         {
+             self.famList = [[NSMutableArray alloc] init];
+            for (NSDictionary *dict in response)
+            {
+                PWHeritageObj *heritageObj = [[PWHeritageObj alloc] init];
+                heritageObj.name = [dict valueForKey:@"family_origin_name"];
+                heritageObj.hId = [dict valueForKey:@"family_origin_id"];
+                heritageObj.isSelected = NO;
+
+                for (NSString *idStr in self.famliyIDList)
+                {
+                    if([heritageObj.hId isEqualToString:idStr])
+                        heritageObj.isSelected = YES;
+                    
+                }
+                [self.famList addObject:heritageObj];
+            }
+            
+            [self showPickerWithDataSource:self.famList];
             
         } failureBlock:^(id response, NSError *error) {
             [self showFailureAlert];
@@ -272,34 +326,34 @@ numberOfRowsInComponent:(NSInteger)component{
     }
 }
 
-- (void)didItemDeselectedSelected:(NSMutableDictionary *)inSelectedRow;
+- (void)didItemDeselectedSelected:(PWHeritageObj *)inSelectedRow;
 {
     
     switch (self.heritageList)
     {
         case eReligionList:
         {
-            self.religionTF.text = [NSString stringWithFormat:@"%@",[self.religionTF.text stringByReplacingOccurrencesOfString:[inSelectedRow valueForKey:@"religion_name"] withString:@""]];
-            [self.religionIDList removeObject:[inSelectedRow valueForKey:@"religion_id"]];
-            [self.religionList removeObject:[inSelectedRow valueForKey:@"religion_name"]];
+            self.religionTF.text = [NSString stringWithFormat:@"%@",[self.religionTF.text stringByReplacingOccurrencesOfString:inSelectedRow.name withString:@""]];
+            [self.religionIDList removeObject:inSelectedRow.hId];
+            [self.religionList removeObject:inSelectedRow.name];
 
             break;
         }
         case eMotherToungueList:
         {
-            self.motherToungueTF.text = [NSString stringWithFormat:@"%@",[self.motherToungueTF.text stringByReplacingOccurrencesOfString:[inSelectedRow valueForKey:@"mother_tongue"] withString:@""]];
+            self.motherToungueTF.text = [NSString stringWithFormat:@"%@",[self.motherToungueTF.text stringByReplacingOccurrencesOfString:inSelectedRow.name withString:@""]];
             
-            [self.motherToungueIDList removeObject:[inSelectedRow valueForKey:@"mother_tongue_id"]];
-            [self.motherToungueList removeObject:[inSelectedRow valueForKey:@"mother_tongue"]];
+            [self.motherToungueIDList removeObject:inSelectedRow.hId];
+            [self.motherToungueList removeObject:inSelectedRow.name];
             break;
         }
         case eFamilyOriginList:
         {
             
-            self.familyOriginTF.text = [NSString stringWithFormat:@"%@",[self.familyOriginTF.text stringByReplacingOccurrencesOfString:[inSelectedRow valueForKey:@"family_origin_name"] withString:@""]];
+            self.familyOriginTF.text = [NSString stringWithFormat:@"%@",[self.familyOriginTF.text stringByReplacingOccurrencesOfString:inSelectedRow.name withString:@""]];
             
-            [self.famliyIDList removeObject:[inSelectedRow valueForKey:@"family_origin_id"]];
-            [self.famliyList removeObject:[inSelectedRow valueForKey:@"family_origin_name"]];
+            [self.famliyIDList removeObject:inSelectedRow.hId];
+            [self.famliyList removeObject:inSelectedRow.name];
             break;
         }
         default:
@@ -312,32 +366,32 @@ numberOfRowsInComponent:(NSInteger)component{
     
 }
 
-- (void)didItemSelected:(NSMutableDictionary *)inSelectedRow
+- (void)didItemSelected:(PWHeritageObj *)inSelectedRow
 {
     
     switch (self.heritageList)
     {
         case eReligionList:
         {
-            self.religionTF.text = [NSString stringWithFormat:@"%@  %@",self.religionTF.text,[inSelectedRow valueForKey:@"religion_name"]];
-            [self.religionIDList addObject:[inSelectedRow valueForKey:@"religion_id"]];
-            [self.religionList addObject:[inSelectedRow valueForKey:@"religion_name"]];
+            self.religionTF.text = [NSString stringWithFormat:@"%@  %@",self.religionTF.text,inSelectedRow.name];
+            [self.religionIDList addObject:inSelectedRow.hId];
+            [self.religionList addObject:inSelectedRow.name];
             
             break;
         }
         case eMotherToungueList:
         {
-            self.motherToungueTF.text = [NSString stringWithFormat:@"%@   %@",self.motherToungueTF.text,[inSelectedRow valueForKey:@"mother_tongue"]];
-            [self.motherToungueIDList addObject:[inSelectedRow valueForKey:@"mother_tongue_id"]];
-            [self.motherToungueList addObject:[inSelectedRow valueForKey:@"mother_tongue"]];
+            self.motherToungueTF.text = [NSString stringWithFormat:@"%@   %@",self.motherToungueTF.text,inSelectedRow.name];
+            [self.motherToungueIDList addObject:inSelectedRow.hId];
+            [self.motherToungueList addObject:inSelectedRow.name];
             break;
         }
         case eFamilyOriginList:
         {
             
-            self.familyOriginTF.text = [NSString stringWithFormat:@"%@   %@",self.familyOriginTF.text,[inSelectedRow valueForKey:@"family_origin_name"]];
-            [self.famliyIDList addObject:[inSelectedRow valueForKey:@"family_origin_id"]];
-            [self.famliyList addObject:[inSelectedRow valueForKey:@"family_origin_name"]];
+            self.familyOriginTF.text = [NSString stringWithFormat:@"%@   %@",self.familyOriginTF.text,inSelectedRow.name];
+            [self.famliyIDList addObject:inSelectedRow.hId];
+            [self.famliyList addObject:inSelectedRow.name];
             break;
         }
         default:

@@ -9,7 +9,10 @@
 #import "BUHomeViewController.h"
 #import "BUHomeProfileImgPrevCell.h"
 #import "BUMatchInfoCell.h"
+#import "BUAboutMeCell.h"
+#import "BUCreatedByCell.h"
 #import "AFHTTPSessionManager.h"
+
 @interface BUHomeViewController ()
 @property(nonatomic, strong) NSMutableArray *imagesList;
 @property(nonatomic, strong) IBOutlet UITableView *imgScrollerTableView;
@@ -28,7 +31,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 
     self.imagesList = [NSMutableArray arrayWithObjects:@"1",@"5",@"4",@"3",@"2", nil];
     self.datasourceList = nil;
@@ -78,6 +80,10 @@
     {
         return self.imgScrollerTableView.frame.size.height;
     }
+    if(self.keysList.count  == indexPath.row)
+    {
+        return 100;
+    }
     return 20;
     
 }
@@ -98,20 +104,44 @@
     }
     else
     {
-        BUMatchInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BUMatchInfoCell"];
-        NSString *key = [self.keysList objectAtIndex:indexPath.row - 1];
         
+        if(1 == indexPath.row)
+        {
+            BUCreatedByCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BUCreatedByCell"];
+            NSString *key = [self.keysList objectAtIndex:indexPath.row - 1];
+            
+            cell.matchDescritionLabel.text = [NSString stringWithFormat:@"Created by: %@",[self.datasourceList valueForKey:key]];
+            return cell;
+        }
+        if(self.keysList.count  == indexPath.row)
+        {
+            BUAboutMeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BUAboutMeCell"];
+            NSString *key = [self.keysList objectAtIndex:indexPath.row - 1];
+            
+            
+            {
+                cell.matchTitleLabel.text = [NSString stringWithFormat:@"    %@",key];
+            }
+            cell.aboutMeDetailTV.text = [NSString stringWithFormat:@"%@",[self.datasourceList valueForKey:key]];
+            return cell;
+        }
+        else{
+            BUMatchInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BUMatchInfoCell"];
+            NSString *key = [self.keysList objectAtIndex:indexPath.row - 1];
+            
+            
+            if([key isEqualToString:@"Honors"] || [key isEqualToString:@"Major"] || [key isEqualToString:@"College"] || [key isEqualToString:@"Year"])
+            {
+                cell.matchTitleLabel.text = [NSString stringWithFormat:@"            %@",key];
+            }
+            else
+            {
+                cell.matchTitleLabel.text = [NSString stringWithFormat:@"    %@",key];
+            }
+            cell.matchDescritionLabel.text = [NSString stringWithFormat:@"    %@",[self.datasourceList valueForKey:key]];
+            return cell;
+        }
         
-        if([key isEqualToString:@"Honors"] || [key isEqualToString:@"Major"] || [key isEqualToString:@"College"] || [key isEqualToString:@"Year"])
-        {
-            cell.matchTitleLabel.text = [NSString stringWithFormat:@"            %@",key];
-        }
-        else
-        {
-            cell.matchTitleLabel.text = [NSString stringWithFormat:@"    %@",key];
-        }
-        cell.matchDescritionLabel.text = [NSString stringWithFormat:@"    %@",[self.datasourceList valueForKey:key]];
-        return cell;
     }
     return nil;
 }
@@ -120,11 +150,11 @@
 -(void)getMatchMakingfortheDay
 {
     NSDictionary *parameters = nil;
-//    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
-//                   };
-    
-    parameters = @{@"userid": @"152"
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
                    };
+    
+//    parameters = @{@"userid": @"152"
+//                   };
 
     
     [self startActivityIndicator:YES];
@@ -156,6 +186,12 @@
             
             self.keysList = [[NSMutableArray alloc] init];
             self.matchUserID = [respDict valueForKey:@"userid"];
+            
+            
+            
+            [self.datasourceList setValue:[respDict valueForKey:@"created_by"] forKey:@"created_by"];
+            [self.keysList addObject:@"created_by"];
+
             NSString *profileName = [NSString stringWithFormat:@"%@ %@",[respDict valueForKey:@"profile_first_name"],[respDict valueForKey:@"profile_last_name"]];
             
             [self.datasourceList setValue:profileName forKey:@"Name"];
@@ -163,9 +199,6 @@
 
             [self.datasourceList setValue:[respDict valueForKey:@"age"] forKey:@"Age"];
             [self.keysList addObject:@"Age"];
-            
-            [self.datasourceList setValue:[respDict valueForKey:@"profile_gender"] forKey:@"Gender"];
-            [self.keysList addObject:@"Gender"];
             
             [self.datasourceList setValue:[respDict valueForKey:@"location"] forKey:@"Location"];
             [self.keysList addObject:@"Location"];
@@ -176,15 +209,17 @@
             [self.keysList addObject:@"Height"];
             
             
-            [self.datasourceList setValue:[respDict valueForKey:@"profile_dob"] forKey:@"Date of Birth"];
-            [self.keysList addObject:@"Date of Birth"];
-            
-
             [self.datasourceList setValue:[respDict valueForKey:@"mother_tongue"] forKey:@"Mother Toungue"];
             [self.keysList addObject:@"Mother Toungue"];
             
             [self.datasourceList setValue:[respDict valueForKey:@"religion_name"] forKey:@"Religion"];
             [self.keysList addObject:@"Religion"];
+
+            [self.datasourceList setValue:[respDict valueForKey:@"family_origin_name"] forKey:@"Family Origin"];
+            [self.keysList addObject:@"Family Origin"];
+
+            [self.datasourceList setValue:@"" forKey:@"Specification"];
+            [self.keysList addObject:@"Specification"];
             
             [self.datasourceList setValue:[respDict valueForKey:@"highest_education"] forKey:@"Education"];
             [self.keysList addObject:@"Education"];
@@ -204,6 +239,10 @@
             [self.datasourceList setValue:[respDict valueForKey:@"employment_status"] forKey:@"Occupation"];
             [self.keysList addObject:@"Occupation"];
             
+            [self.datasourceList setValue:[respDict valueForKey:@"company"] forKey:@"Employer"];
+            [self.keysList addObject:@"Employer"];
+            
+            
             [self.datasourceList setValue:[respDict valueForKey:@"diet"] forKey:@"Diet"];
             [self.keysList addObject:@"Diet"];
             
@@ -218,6 +257,16 @@
             
             [self.datasourceList setValue:[respDict valueForKey:@"legal_status"] forKey:@"Legal Status"];
             [self.keysList addObject:@"Legal Status"];
+
+            [self.datasourceList setValue:[respDict valueForKey:@"profile_dob"] forKey:@"Date of Birth"];
+            [self.keysList addObject:@"Date of Birth"];
+
+            [self.datasourceList setValue:@"" forKey:@"Time of Birth"];
+            [self.keysList addObject:@"Time of Birth"];
+
+            [self.datasourceList setValue:[respDict valueForKey:@"about_me"] forKey:@"About Me"];
+            [self.keysList addObject:@"About Me"];
+
             
             
             

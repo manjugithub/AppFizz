@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"The Bureau";
+    self.navigationItem.title = @"TheBureau";
     
     self.navigationItem.hidesBackButton = YES;
     // Call takeOff (which creates the UAirship singleton)

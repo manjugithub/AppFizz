@@ -10,6 +10,7 @@
 #import "UIColor+APColor.h"
 #import "BUAppNotificationCell.h"
 #import "BUUtilities.h"
+#import "BUDocumentViewVC.h"
 @interface BUConfigurationVC ()
 
 @end
@@ -135,5 +136,21 @@
             [self.activityView removeFromSuperview];
         }];
     }
+}
+
+-(IBAction)showTerms:(id)sender
+{
+    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"BUDocumentViewer" bundle:nil];
+    BUDocumentViewVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUDocumentViewVC"];
+    vc.documentName = @"TOS.docx";
+    [self.navigationController pushViewController:vc animated:YES];
+}
+-(IBAction)showPrivacy:(id)sender
+{
+    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"BUDocumentViewer" bundle:nil];
+    BUDocumentViewVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUDocumentViewVC"];
+    vc.documentName = @"PrivacyPolicy.docx";
+
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end

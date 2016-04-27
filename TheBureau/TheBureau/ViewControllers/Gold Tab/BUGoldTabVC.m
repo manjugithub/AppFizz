@@ -10,29 +10,44 @@
 #import "BUGoldTabCell.h"
 #import "PWInAppHelper.h"
 #import <FBSDKShareKit/FBSDKShareKit.h>
+#import "InstagramMedia.h"
+#import "InstagramKit.h"
+#import "IKLoginViewController.h"
+
 @interface BUGoldTabVC ()<FBSDKAppInviteDialogDelegate>
 
 @property(nonatomic, weak) IBOutlet UILabel *totalGoldLabel;
 @property(nonatomic, strong) NSArray *products;
-@property(nonatomic, weak) IBOutlet UIButton *inviteFriendButton,*likeUsOnFBButton;
+@property(nonatomic, weak) IBOutlet UIButton *inviteFriendButton,*followFriendButton;
+@property(nonatomic, weak) IBOutlet FBSDKLikeButton *likeUsOnFBButton;
+
+@property (nonatomic, strong)   InstagramPaginationInfo *currentPaginationInfo;
+@property (nonatomic, weak)     InstagramEngine *instagramEngine;
 
 -(IBAction)inviteFriend:(id)sender;
 -(IBAction)likeUsOnFB:(id)sender;
+-(IBAction)followUsInInstagram:(id)sender;
 @end
 
 @implementation BUGoldTabVC
 
 
+//https://www.instagram.com/itsthebureau/
 
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    self.likeUsOnFBButton.objectID = @"https://www.facebook.com/thebureauapp/";
+    
+    self.likeUsOnFBButton.backgroundColor = [UIColor clearColor];
+
 }
 
 - (void)reload {
     _products = nil;
-    
+
     [PWInAppHelper sharedInstance].parentCtrllr = self;
     [[PWInAppHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
         if (success) {
@@ -50,6 +65,7 @@
     
     [self.view addSubview:likeButton];
 
+    likeButton.hidden = YES;
     self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
 
     
@@ -59,12 +75,19 @@
     self.inviteFriendButton.layer.shadowOffset = CGSizeMake(2, 2);
     self.inviteFriendButton.layer.shadowColor = [[UIColor darkGrayColor]CGColor];
 
+    
+    self.followFriendButton.layer.cornerRadius = 5.0;
+    self.followFriendButton.layer.borderWidth = 1.0;
+    self.followFriendButton.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    self.followFriendButton.layer.shadowOffset = CGSizeMake(2, 2);
+    self.followFriendButton.layer.shadowColor = [[UIColor darkGrayColor]CGColor];
 
-    self.likeUsOnFBButton.layer.cornerRadius = 5.0;
-    self.likeUsOnFBButton.layer.borderWidth = 1.0;
-    self.likeUsOnFBButton.layer.borderColor = [[UIColor lightGrayColor]CGColor];
-    self.likeUsOnFBButton.layer.shadowOffset = CGSizeMake(2, 2);
-    self.likeUsOnFBButton.layer.shadowColor = [[UIColor darkGrayColor]CGColor];
+    
+//    self.likeUsOnFBButton.layer.cornerRadius = 5.0;
+//    self.likeUsOnFBButton.layer.borderWidth = 1.0;
+//    self.likeUsOnFBButton.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+//    self.likeUsOnFBButton.layer.shadowOffset = CGSizeMake(2, 2);
+//    self.likeUsOnFBButton.layer.shadowColor = [[UIColor darkGrayColor]CGColor];
 
     [self getGoldDetails];
 }
@@ -188,6 +211,26 @@ static NSString * const reuseIdentifier = @"Cell";
     
 }
 
+-(IBAction)followUsInInstagram:(id)sender
+{
+    if (![self.instagramEngine isSessionValid])
+    {
+        IKLoginViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginNavigationViewController"];
+        loginViewController.parentController = self;
+        UINavigationController *navCtr = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+        
+        [self presentViewController:navCtr animated:YES completion:nil];
+    }
+    else
+    {
+        [self.instagramEngine logout];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"InstagramKit" message:@"You are now logged out." delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+
+}
+
 -(IBAction)inviteFriend:(id)sender
 {
     
@@ -204,7 +247,7 @@ static NSString * const reuseIdentifier = @"Cell";
  */
 - (void)appInviteDialog:(FBSDKAppInviteDialog *)appInviteDialog didCompleteWithResults:(NSDictionary *)results;
 {
-    [self showSuccessMessage];
+    [self showSuccessMessageWithGold:100];
 }
 /*!
  @abstract Sent to the delegate when the app invite encounters an error.
@@ -213,14 +256,13 @@ static NSString * const reuseIdentifier = @"Cell";
  */
 - (void)appInviteDialog:(FBSDKAppInviteDialog *)appInviteDialog didFailWithError:(NSError *)error;
 {
-    [self showSuccessMessage];
+    [self showSuccessMessageWithGold:100];
 }
 
 
--(void)showSuccessMessage
+-(void)showSuccessMessageWithGold:(NSInteger)purchasedGold
 {
     NSInteger gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
-    NSInteger purchasedGold = 100;
     
     
     [[NSUserDefaults standardUserDefaults] setInteger:gold + purchasedGold forKey:@"purchasedGold"];
@@ -239,7 +281,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [alertController addAction:({
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
         {
-            [self updateGold];
+            [self updateGold:purchasedGold];
             NSLog(@"OK");
             self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
         }];
@@ -252,7 +294,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 
 
--(void)updateGold
+-(void)updateGold:(NSInteger)purchasedGold
 {
     /*
      API to  upload :
@@ -266,7 +308,6 @@ static NSString * const reuseIdentifier = @"Cell";
      
      */
     
-    NSInteger purchasedGold = 100;
     NSDictionary *parameters = nil;
     parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
                    @"gold_to_add":[NSString stringWithFormat:@"%ld",(long)purchasedGold]
@@ -282,7 +323,6 @@ static NSString * const reuseIdentifier = @"Cell";
          
          
          NSInteger gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
-         NSInteger purchasedGold = 500;
 
          [[NSUserDefaults standardUserDefaults] setInteger:gold + purchasedGold forKey:@"purchasedGold"];
          [[NSUserDefaults standardUserDefaults] synchronize];
@@ -312,7 +352,6 @@ static NSString * const reuseIdentifier = @"Cell";
      {
          [self stopActivityIndicator];
          NSInteger gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
-         NSInteger purchasedGold = 500;
          
          [[NSUserDefaults standardUserDefaults] setInteger:gold + purchasedGold forKey:@"purchasedGold"];
          [[NSUserDefaults standardUserDefaults] synchronize];
@@ -344,38 +383,7 @@ static NSString * const reuseIdentifier = @"Cell";
 -(IBAction)likeUsOnFB:(id)sender
 {
     
-//    FBSDKLikeControl *likeButton = [[FBSDKLikeControl alloc]initWithFrame:CGRectMake(20, 294, 560, 40)];
-//    likeButton.objectID = @"https://www.facebook.com/FacebookDevelopers";
-//    
-//    [self.view addSubview:likeButton];
-    
-//    NSInteger gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
-//    NSInteger purchasedGold = 100;
-//    
-//    
-//    [[NSUserDefaults standardUserDefaults] setInteger:gold + purchasedGold forKey:@"purchasedGold"];
-//    [[NSUserDefaults standardUserDefaults] synchronize];
-//    
-//    gold = [[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"];
-//    
-//    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"You have Earned %ld Gold, Your total purchased gold is %ld",purchasedGold,gold]];
-//    [message addAttribute:NSFontAttributeName
-//                    value:[UIFont fontWithName:@"comfortaa" size:15]
-//                    range:NSMakeRange(0, message.length)];
-//    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-//    [alertController setValue:message forKey:@"attributedTitle"];
-//    
-//    
-//    [alertController addAction:({
-//        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//            NSLog(@"OK");
-//            self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
-//        }];
-//        
-//        action;
-//    })];
-//    [self presentViewController:alertController  animated:YES completion:nil];
-    
+ 
 }
 
 

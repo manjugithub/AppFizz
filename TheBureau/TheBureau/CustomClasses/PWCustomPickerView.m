@@ -67,24 +67,12 @@
         [cell.contentView setBackgroundColor:[UIColor clearColor]];
         
     }
-    NSDictionary *inDataSourceDict = [self.pickerDataSource objectAtIndex:indexPath.row];
+    NSMutableDictionary *inDataSourceDict = [self.pickerDataSource objectAtIndex:indexPath.row];
     
     switch (self.selectedHeritage)
     {
         case eReligionList:
         {
-            
-//            
-//            for (NSString *idName in self.selectedItemsList)
-//            {
-//                if([[inDataSourceDict valueForKey:@"religion_id"] isEqualToString:idName])
-//                {
-//                    
-//                }
-//            }
-//            [self.heritageDict setValue:self.religionIDList forKey:@"religion_id"];
-//            [self.heritageDict setValue:self.motherToungueIDList forKey:@"mother_tongue_id"];
-//            [self.heritageDict setValue:self.famliyIDList forKey:@"family_origin_id"];
 
             cell.titleLabel.text = [inDataSourceDict valueForKey:@"religion_name"];
             break;
@@ -114,6 +102,14 @@
             break;
     }
     
+//    if(YES == self.allowMultipleSelection)
+//    {
+//        if([[inDataSourceDict valueForKey:@"isSelected"] isEqualToString:@"1"])
+//            [cell selectDatasource:YES];
+//        else
+//            [cell selectDatasource:NO];
+//    }
+    
     return cell;
 }
 
@@ -134,11 +130,13 @@
         if(NO == [cell isCellSelected])
         {
             NSMutableDictionary *dict =  [self.pickerDataSource objectAtIndex:indexPath.row];
+//            [dict setValue:@"1" forKey:@"isSelected"];
             [self.delegate didItemSelected:dict];
         }
         else
         {
             NSMutableDictionary *dict =  [self.pickerDataSource objectAtIndex:indexPath.row];
+//            [dict setValue:@"0" forKey:@"isSelected"];
             [self.delegate didItemDeselectedSelected:dict];
         }
         

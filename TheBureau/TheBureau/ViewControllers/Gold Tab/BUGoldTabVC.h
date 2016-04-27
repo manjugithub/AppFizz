@@ -11,4 +11,7 @@
 @interface BUGoldTabVC : BUBaseViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic,strong) NSIndexPath *selectedIndexPath;
+
+
+-(void)showSuccessMessageWithGold:(NSInteger)purchasedGold;
 @end

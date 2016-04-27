@@ -8,7 +8,8 @@
 
 #import "BUInviteFriendVC.h"
 #import "BUProfileImageCell.h"
-@interface BUInviteFriendVC ()<UITableViewDataSource,UITableViewDelegate>
+#import <MessageUI/MessageUI.h>
+@interface BUInviteFriendVC ()<UITableViewDataSource,UITableViewDelegate,MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate>
 
 @end
 
@@ -79,4 +80,85 @@
 }
 
 
+
+- (IBAction)showMailComposerAndSend:(id)sender
+{
+    if ([MFMailComposeViewController canSendMail])
+    {
+        MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+        
+        mailer.mailComposeDelegate = self;
+        
+        [mailer setSubject:@"Check out TheBureau App"];
+        
+        NSMutableString *emailBody = [NSMutableString string];
+        [emailBody appendString:@"Your text here ..."];
+        [mailer setMessageBody:emailBody isHTML:YES];
+        
+        [self.navigationController presentViewController:mailer animated:YES completion:^{}];
+        
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Mail Failure"
+                                                        message:@"Your device doesn't support in-app email"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    [controller dismissViewControllerAnimated:YES completion:^{}];
+}
+
+
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    switch (result)
+    {
+        case MessageComposeResultCancelled:
+            NSLog(@"Message was cancelled");
+            [self dismissViewControllerAnimated:YES completion:NULL];
+            break;
+        case MessageComposeResultFailed:
+            NSLog(@"Message failed");
+            [self dismissViewControllerAnimated:YES completion:NULL];
+            break;
+        case MessageComposeResultSent:
+            NSLog(@"Message was sent");
+            [self dismissViewControllerAnimated:YES completion:NULL];
+            break;
+        default:
+            break;
+    }
+}
+
+
+- (IBAction)sendMessage:(id)sender
+{
+    if ([MFMessageComposeViewController canSendText])
+    {
+        MFMessageComposeViewController *messageVC = [[MFMessageComposeViewController alloc] init];
+        
+        messageVC.body = @"Check out TheBureau App";
+        //    messageVC.recipients = @[@"+31646204287"];
+        messageVC.messageComposeDelegate = self;
+        [self presentViewController:messageVC animated:NO completion:NULL];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message Failure"
+                                                        message:@"Your device doesn't support in-app message"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+
+    
+}
 @end

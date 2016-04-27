@@ -27,11 +27,13 @@
 
 - (IBAction)capturePhoto:(id)sender
 {
-    
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil
-                                               destructiveButtonTitle:nil otherButtonTitles:@"Take Photo",@"Photo Library",@"Cancel", nil];
-    actionSheet.tag = 1000;
-    [actionSheet showInView:[self.parentVC view]];
+    if(self.imagesList.count < 4)
+    {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil
+                                                   destructiveButtonTitle:nil otherButtonTitles:@"Take Photo",@"Photo Library",@"Cancel", nil];
+        actionSheet.tag = 1000;
+        [actionSheet showInView:[self.parentVC view]];
+    }
 }
 #pragma mark - ActionSheet delegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;

@@ -16,9 +16,11 @@
 //    self.profileImgView.layer.cornerRadius = 5.0;
 //    self.profileImgView.layer.borderColor = [[UIColor blackColor] CGColor];
 //    self.profileImgView.layer.borderWidth = 2.0;
-    self.overLayView = [[UIImageView alloc] init];
-    self.overLayView.contentMode = UIViewContentModeScaleToFill;
-    [self.contentView insertSubview:self.overLayView belowSubview:self.profileImgView];
+//    self.overLayView = [[UIImageView alloc] init];
+//    self.overLayView.contentMode = UIViewContentModeScaleToFill;
+//    [self.contentView insertSubview:self.overLayView belowSubview:self.profileImgView];
+    
+    self.profileImgView.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 -(void)layoutSubviews

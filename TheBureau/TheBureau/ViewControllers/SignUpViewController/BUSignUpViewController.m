@@ -13,7 +13,7 @@
 #import "BUAccountCreationVC.h"
 #import <DigitsKit/DigitsKit.h>
 #import "BULayerHelper.h"
-
+#include "Localytics.h"
 
 @interface BUSignUpViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *overLayViewTapConstraint;
@@ -281,6 +281,10 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
 
         [BUWebServicesManager sharedManager].userID = [inResult valueForKey:@"userid"];
+
+        
+        [Localytics tagEvent:@"Registration Successful"];
+        [Localytics setCustomerId:[inResult valueForKey:@"userid"]];;
 
         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Registration Successful"];
         [message addAttribute:NSFontAttributeName

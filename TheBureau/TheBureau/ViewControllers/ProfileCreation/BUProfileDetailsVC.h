@@ -11,4 +11,5 @@
 
 @interface BUProfileDetailsVC : BUBaseViewController
 
+@property(nonatomic,strong) NSString *dobStr;
 @end

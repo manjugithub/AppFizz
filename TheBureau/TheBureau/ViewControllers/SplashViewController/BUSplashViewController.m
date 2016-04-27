@@ -18,7 +18,7 @@
 #import "BUProfileHeritageVC.h"
 #import "BUProfileRematchVC.h"
 #import "BUContactListViewController.h"
-
+#import "Localytics.h"
 
 @interface BUSplashViewController ()
 {
@@ -61,8 +61,11 @@
 //    BUProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDetailsVC"];
 //    [self.navigationController pushViewController:vc animated:YES];
 
-    if(nil != [BUWebServicesManager sharedManager].userID)
+    if(0)//(nil != [BUWebServicesManager sharedManager].userID)
     {
+        [Localytics tagEvent:@"Login Successful"];
+        [Localytics setCustomerId:[BUWebServicesManager sharedManager].userID];;
+
         UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
         BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
         [self.navigationController pushViewController:vc animated:YES];

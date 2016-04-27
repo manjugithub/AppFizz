@@ -19,6 +19,7 @@
 #import "AirshipKit.h"
 #import "AirshipCore.h"
 #import "BUWebServicesManager.h"
+#import "Localytics.h"
 
 
 @interface AppDelegate ()<UAPushNotificationDelegate>
@@ -31,6 +32,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    
+    [Localytics autoIntegrate:@"08d6b0f0e844a914db1a4ce-d7bc3a18-0a2b-11e6-b042-00342b7f5075" launchOptions:launchOptions];
+
     if(nil != [[NSUserDefaults standardUserDefaults] valueForKey:@"userid"])
     {
         [BUWebServicesManager sharedManager].userID = [[NSUserDefaults standardUserDefaults] valueForKey:@"userid"];
@@ -47,17 +51,30 @@
     [Smooch initWithSettings:[SKTSettings settingsWithAppToken:@"98vczyf814ei6h4nyyasqhnxv"]];
 
     
-    // Checking if app is running iOS 8
-    if ([application respondsToSelector:@selector(registerForRemoteNotifications)]) {
-        // Register device for iOS8
-        UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-        [application registerUserNotificationSettings:notificationSettings];
+    
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)])
+    {
+        UIUserNotificationType types = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound);
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [application registerUserNotificationSettings:settings];
         [application registerForRemoteNotifications];
-    } else {
-        // Register device for iOS7
-        [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge];
     }
-
+    else
+    {
+        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+    }
+    
+//    // Checking if app is running iOS 8
+//    if ([application respondsToSelector:@selector(registerForRemoteNotifications)]) {
+//        // Register device for iOS8
+//        UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+//        [application registerUserNotificationSettings:notificationSettings];
+//        [application registerForRemoteNotifications];
+//    } else {
+//        // Register device for iOS7
+//        [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge];
+//    }
+//
     
     [self setupLayers];
     [self setAppearence];

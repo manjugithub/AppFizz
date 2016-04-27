@@ -7,6 +7,7 @@
     <customFonts key="customFonts">
         <mutableArray key="Comfortaa-Regular.ttf">
             <string>Comfortaa</string>
+            <string>Comfortaa</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -87,6 +88,86 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eRb-5h-wFq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="301" y="357"/>
+        </scene>
+        <!--Custom Picker View-->
+        <scene sceneID="7v7-hb-MKa">
+            <objects>
+                <viewController storyboardIdentifier="BUCustomPickerView" id="GNm-Za-82K" customClass="BUCustomPickerView" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kxi-pk-8TX"/>
+                        <viewControllerLayoutGuide type="bottom" id="mk2-ac-S1F"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wHX-nX-R4w">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.55000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0LF-9U-XX4">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pa2-Er-p9B">
+                                <rect key="frame" x="20" y="54" width="560" height="507"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="tgD-fy-erX">
+                                        <rect key="frame" x="0.0" y="41" width="560" height="466"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="GNm-Za-82K" id="Leo-c2-AS9"/>
+                                            <outlet property="delegate" destination="GNm-Za-82K" id="ELJ-ln-kb6"/>
+                                        </connections>
+                                    </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0RF-zy-xWZ">
+                                        <rect key="frame" x="42" y="8" width="476" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="uOT-ko-EPi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="20"/>
+                                        <color key="textColor" red="0.90196078430000004" green="0.26274509800000001" blue="0.086274509799999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRe-ov-C5U">
+                                        <rect key="frame" x="9" y="6" width="30" height="30"/>
+                                        <state key="normal" image="btn_left">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closePickerView:" destination="GNm-Za-82K" eventType="touchUpInside" id="7YA-Sg-Fbu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="0RF-zy-xWZ" firstAttribute="leading" secondItem="pa2-Er-p9B" secondAttribute="leading" constant="42" id="0cm-dj-cRh"/>
+                                    <constraint firstItem="tgD-fy-erX" firstAttribute="leading" secondItem="pa2-Er-p9B" secondAttribute="leading" id="1ga-SB-8Gu"/>
+                                    <constraint firstAttribute="trailing" secondItem="tgD-fy-erX" secondAttribute="trailing" id="Yu8-LR-IN1"/>
+                                    <constraint firstAttribute="bottom" secondItem="tgD-fy-erX" secondAttribute="bottom" id="eso-fv-ql9"/>
+                                    <constraint firstItem="tgD-fy-erX" firstAttribute="top" secondItem="pa2-Er-p9B" secondAttribute="top" constant="41" id="lNI-Qj-dpq"/>
+                                    <constraint firstItem="0RF-zy-xWZ" firstAttribute="top" secondItem="pa2-Er-p9B" secondAttribute="top" constant="8" id="uJw-Lv-ktH"/>
+                                    <constraint firstAttribute="trailing" secondItem="0RF-zy-xWZ" secondAttribute="trailing" constant="42" id="xh3-zQ-dA7"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pa2-Er-p9B" firstAttribute="leading" secondItem="wHX-nX-R4w" secondAttribute="leading" constant="20" id="7Q0-th-Onx"/>
+                            <constraint firstItem="mk2-ac-S1F" firstAttribute="top" secondItem="0LF-9U-XX4" secondAttribute="bottom" id="8AA-RS-fXg"/>
+                            <constraint firstAttribute="trailing" secondItem="pa2-Er-p9B" secondAttribute="trailing" constant="20" id="EgK-EZ-wUc"/>
+                            <constraint firstItem="mk2-ac-S1F" firstAttribute="top" secondItem="pa2-Er-p9B" secondAttribute="bottom" constant="39" id="Isd-Nu-kgG"/>
+                            <constraint firstItem="pa2-Er-p9B" firstAttribute="top" secondItem="wHX-nX-R4w" secondAttribute="top" constant="54" id="RRS-5w-X8S"/>
+                            <constraint firstAttribute="trailing" secondItem="0LF-9U-XX4" secondAttribute="trailing" id="lr3-11-i88"/>
+                            <constraint firstItem="0LF-9U-XX4" firstAttribute="leading" secondItem="wHX-nX-R4w" secondAttribute="leading" id="vEi-wq-4YD"/>
+                            <constraint firstItem="0LF-9U-XX4" firstAttribute="top" secondItem="wHX-nX-R4w" secondAttribute="top" id="ygA-Df-NAl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pickerOverLay" destination="pa2-Er-p9B" id="YnS-5r-KxQ"/>
+                        <outlet property="pickerTableView" destination="tgD-fy-erX" id="kj5-ZY-kfK"/>
+                        <outlet property="titleLabel" destination="0RF-zy-xWZ" id="yfO-Fg-amd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vlS-gN-YSk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="301" y="357"/>
         </scene>

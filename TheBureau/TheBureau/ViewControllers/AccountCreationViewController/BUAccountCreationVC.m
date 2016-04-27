@@ -559,6 +559,17 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
                                                  [self stopActivityIndicator];
                                                  UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
                                                  BUProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDetailsVC"];
+                                                 
+                                                 if([self.relationLabel.text isEqualToString:@"Self"])
+                                                 {
+                                                     vc
+                                                     .dobStr = self.dateofbirthTF.text;
+                                                 }
+                                                 else
+                                                 {
+                                                     vc
+                                                     .dobStr = @"";
+                                                 }
                                                  [self.navigationController pushViewController:vc animated:YES];
                                                  
                                              } failureBlock:^(id response, NSError *error) {

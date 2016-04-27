@@ -3383,6 +3383,12 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqE-VN-YI5">
+                                                    <rect key="frame" x="8" y="3" width="514" height="30"/>
+                                                    <connections>
+                                                        <action selector="showPrivacy:" destination="odO-SY-IS5" eventType="touchUpInside" id="er5-vX-sd5"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="faY-mx-Yhh" firstAttribute="top" secondItem="Hoh-1q-Vdb" secondAttribute="top" constant="11" id="1Z7-W7-Upz"/>
@@ -3409,6 +3415,12 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YH5-57-bkQ">
+                                                    <rect key="frame" x="8" y="12" width="407" height="30"/>
+                                                    <connections>
+                                                        <action selector="showTerms:" destination="odO-SY-IS5" eventType="touchUpInside" id="gE6-nH-CCx"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ZmG-k5-epo" firstAttribute="leading" secondItem="bdx-o6-Xrd" secondAttribute="leading" constant="8" id="3nQ-Vr-TKA"/>
@@ -3463,7 +3475,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQM-XI-yfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-142" y="105"/>
+            <point key="canvasLocation" x="1" y="79"/>
         </scene>
         <!--How It WorksVC-->
         <scene sceneID="iBT-EA-sAK">
@@ -3524,7 +3536,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="112" id="wkO-vS-V9U"/>
                                                             </constraints>
-                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                            <string key="text">TheBureau App is an exciting new way to connect individuals with their perfect counterparts in life.  For all intents and purposes, our goal is to revolutionize the “arranged marriage” concept and bring it to the 21st century.  We understand that each generation thinks and acts very differently from the previous one.  Given this, we want to bridge the gap by fusing the old with the new and providing one distinctive platform that caters to everyone.  Whether creating an account for yourself or for a loved one, the app’s unique algorithm strives to match profiles and create meaningful relationships.</string>
                                                             <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
@@ -3597,7 +3609,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="112" id="9fp-tg-oiO"/>
                                                             </constraints>
-                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                            <string key="text">We give you Gold!  That’s how the app works.  We give you Gold, and you spend it.  If you run out of Gold, allyou have to do is visit our Gold Store and get some more.  The Gold provides you with a means to connect with your match and start discussing wedding plans.  Just kidding- don’t panic.  The Gold will indeed allow you to connect with a match as long as both sides decide to connect with each other, and then the individuals involved would take it from there!</string>
                                                             <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
@@ -3665,12 +3677,12 @@
                                                             </constraints>
                                                         </view>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QbW-bA-1lI">
-                                                            <rect key="frame" x="40" y="72" width="520" height="112"/>
+                                                            <rect key="frame" x="40" y="72" width="520" height="141"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="112" id="bPM-5W-3gE"/>
+                                                                <constraint firstAttribute="height" constant="141" id="bPM-5W-3gE"/>
                                                             </constraints>
-                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                            <string key="text">We have created this app because we identified an unmet need in the South Asian community.  While there are several dating apps that cater to Gen X and marriage websites that cater to Gen Y there are no apps that combine the two that also provide a highly intelligent structure and a modern, fun user experience.  As four single individuals in their twenties, we (the creators of the app) know the struggles associated with finding a partner in a very large world- and we want to help everyone facing the same predicament as well!</string>
                                                             <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
@@ -3743,7 +3755,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="112" id="ycv-ke-Hk4"/>
                                                             </constraints>
-                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                            <string key="text">This app is unique in its formula, its functionality, and its audience.  Utilizing our individual backgrounds, we have a creative, well thought out formula to identify perfect matches for you.  In terms of functionality, the app provides an ideal match for each user per day- we will send you a push notification so that you will be wasting neither time nor effort scrolling through hundreds of profiles a day.  Finally, our audience consists of both individuals planning to create a profile for themselves as well as friends and family that want to create a profile for their loved ones to help them find their soul mate.  No matter the age or knowledge of technology, TheBureau strives to make the app easy to use and rewarding for the user.</string>
                                                             <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
@@ -3816,7 +3828,8 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="112" id="znK-vt-orI"/>
                                                             </constraints>
-                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                            <string key="text">The idea for this application was realized by our Founder and CEO Anand Narayan in the summer of 2015.  He recruited three additional Founders to our team quickly: COO Vamsi Revuru, CTO Sai Kota, and CMO Amala Narayan.  Together, the four of us have been focused on building a durable, unique platform that addresses an unmet need.  Our main objective is to ensure that this app is useful to our users and that we accomplish what we have set out to do: provide the ideal dating/ matchmaking experience.  Every step of the way is exciting as it 
+brings us new surprises, new perspectives, and ultimately, closer to realizing our goals.</string>
                                                             <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
@@ -3874,7 +3887,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qns-QC-GiV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047" y="1074"/>
+            <point key="canvasLocation" x="1061" y="780"/>
         </scene>
         <!--ParentVC-->
         <scene sceneID="HAz-iv-0Ip">
@@ -3928,13 +3941,19 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9M-Li-qcc">
-                                        <rect key="frame" x="23" y="30" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9M-Li-qcc">
+                                        <rect key="frame" x="21" y="20" width="50" height="50"/>
+                                        <state key="normal" image="email"/>
+                                        <connections>
+                                            <action selector="showMailComposerAndSend:" destination="Hd6-wN-lk4" eventType="touchUpInside" id="3ZP-dU-ZTE"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZF-3s-N0E">
-                                        <rect key="frame" x="146" y="30" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZF-3s-N0E">
+                                        <rect key="frame" x="144" y="20" width="50" height="50"/>
+                                        <state key="normal" image="ic_mob"/>
+                                        <connections>
+                                            <action selector="sendMessage:" destination="Hd6-wN-lk4" eventType="touchUpInside" id="XDy-Fd-jNd"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -4157,10 +4176,12 @@
         <image name="btn_red" width="238" height="37"/>
         <image name="delete" width="35" height="45"/>
         <image name="edit" width="50" height="50"/>
+        <image name="email" width="50" height="50"/>
         <image name="ic_down_arrow" width="13" height="13"/>
         <image name="ic_edit" width="22" height="22"/>
         <image name="ic_female_s1" width="22" height="22"/>
         <image name="ic_male_s2" width="22" height="22"/>
+        <image name="ic_mob" width="50" height="50"/>
         <image name="img_gold_big" width="70" height="75"/>
         <image name="img_photo1" width="305" height="437"/>
         <image name="switch_OFF" width="68" height="32"/>

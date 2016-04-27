@@ -73,7 +73,28 @@
 		5BFF6EB51C8D80E300596381 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFF6EA51C8D80E300596381 /* UIWebView+AFNetworking.m */; };
 		7800D46A1C906EE5003F409D /* BUMyProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 7800D4691C906EE5003F409D /* BUMyProfile.m */; };
 		7800D4A81C91AD3A003F409D /* BULayerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7800D4A71C91AD3A003F409D /* BULayerHelper.m */; };
+		7805DE1E1CC7AC5600131162 /* BUCreatedByCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7805DE1D1CC7AC5600131162 /* BUCreatedByCell.m */; };
+		7805DE221CC7AC8600131162 /* BUAboutMeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7805DE211CC7AC8600131162 /* BUAboutMeCell.m */; };
+		7805DE251CC7EB5D00131162 /* PrivacyPolicy.docx in Resources */ = {isa = PBXBuildFile; fileRef = 7805DE231CC7EB5D00131162 /* PrivacyPolicy.docx */; };
+		7805DE261CC7EB5D00131162 /* TOS.docx in Resources */ = {isa = PBXBuildFile; fileRef = 7805DE241CC7EB5D00131162 /* TOS.docx */; };
+		7805DE2A1CC7EC4100131162 /* BUDocumentViewer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7805DE291CC7EC4100131162 /* BUDocumentViewer.storyboard */; };
+		7805DE2D1CC7F8D600131162 /* BUDocumentViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7805DE2C1CC7F8D600131162 /* BUDocumentViewVC.m */; };
+		7805DE311CC7FD7F00131162 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7805DE301CC7FD7F00131162 /* MessageUI.framework */; };
 		78345E4C1C983A3D00236520 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78345E4B1C983A3D00236520 /* AirshipConfig.plist */; };
+		783844DF1CCCDF5300FBC5C3 /* InstagramEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 783844CA1CCCDF5300FBC5C3 /* InstagramEngine.m */; };
+		783844E01CCCDF5300FBC5C3 /* InstagramKitConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 783844CD1CCCDF5300FBC5C3 /* InstagramKitConstants.m */; };
+		783844E11CCCDF5300FBC5C3 /* InstagramComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 783844D01CCCDF5300FBC5C3 /* InstagramComment.m */; };
+		783844E21CCCDF5300FBC5C3 /* InstagramLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 783844D21CCCDF5300FBC5C3 /* InstagramLocation.m */; };
+		783844E31CCCDF5300FBC5C3 /* InstagramMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 783844D41CCCDF5300FBC5C3 /* InstagramMedia.m */; };
+		783844E41CCCDF5300FBC5C3 /* InstagramModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 783844D61CCCDF5300FBC5C3 /* InstagramModel.m */; };
+		783844E51CCCDF5300FBC5C3 /* InstagramPaginationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 783844D81CCCDF5300FBC5C3 /* InstagramPaginationInfo.m */; };
+		783844E61CCCDF5300FBC5C3 /* InstagramTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 783844DA1CCCDF5300FBC5C3 /* InstagramTag.m */; };
+		783844E71CCCDF5300FBC5C3 /* InstagramUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 783844DC1CCCDF5300FBC5C3 /* InstagramUser.m */; };
+		783844E81CCCDF5300FBC5C3 /* UserInPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 783844DE1CCCDF5300FBC5C3 /* UserInPhoto.m */; };
+		7838450E1CCCE40400FBC5C3 /* IKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7838450D1CCCE40400FBC5C3 /* IKLoginViewController.m */; };
+		783845111CCCE41200FBC5C3 /* IKMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 783845101CCCE41200FBC5C3 /* IKMediaViewController.m */; };
+		783845161CCE54CA00FBC5C3 /* BUCustomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 783845151CCE54CA00FBC5C3 /* BUCustomPickerView.m */; };
+		7838451A1CCE550200FBC5C3 /* PWHeritageObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 783845191CCE550200FBC5C3 /* PWHeritageObj.m */; };
 		783ABEFE1C8E07AB00AA59BE /* PWInAppHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 783ABEFD1C8E07AB00AA59BE /* PWInAppHelper.m */; };
 		783ABF041C8E07D500AA59BE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783ABF031C8E07D500AA59BE /* StoreKit.framework */; };
 		783ABF071C8E1C8C00AA59BE /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 783ABF061C8E1C8C00AA59BE /* IAPHelper.m */; };
@@ -341,7 +362,46 @@
 		7800D4691C906EE5003F409D /* BUMyProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUMyProfile.m; sourceTree = "<group>"; };
 		7800D4A61C91AD3A003F409D /* BULayerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BULayerHelper.h; sourceTree = "<group>"; };
 		7800D4A71C91AD3A003F409D /* BULayerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BULayerHelper.m; sourceTree = "<group>"; };
+		7805DE1C1CC7AC5600131162 /* BUCreatedByCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUCreatedByCell.h; sourceTree = "<group>"; };
+		7805DE1D1CC7AC5600131162 /* BUCreatedByCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUCreatedByCell.m; sourceTree = "<group>"; };
+		7805DE201CC7AC8600131162 /* BUAboutMeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUAboutMeCell.h; sourceTree = "<group>"; };
+		7805DE211CC7AC8600131162 /* BUAboutMeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUAboutMeCell.m; sourceTree = "<group>"; };
+		7805DE231CC7EB5D00131162 /* PrivacyPolicy.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = PrivacyPolicy.docx; sourceTree = "<group>"; };
+		7805DE241CC7EB5D00131162 /* TOS.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = TOS.docx; sourceTree = "<group>"; };
+		7805DE291CC7EC4100131162 /* BUDocumentViewer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BUDocumentViewer.storyboard; sourceTree = "<group>"; };
+		7805DE2B1CC7F8D600131162 /* BUDocumentViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUDocumentViewVC.h; sourceTree = "<group>"; };
+		7805DE2C1CC7F8D600131162 /* BUDocumentViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUDocumentViewVC.m; sourceTree = "<group>"; };
+		7805DE301CC7FD7F00131162 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		78345E4B1C983A3D00236520 /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
+		783844C91CCCDF5300FBC5C3 /* InstagramEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramEngine.h; sourceTree = "<group>"; };
+		783844CA1CCCDF5300FBC5C3 /* InstagramEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramEngine.m; sourceTree = "<group>"; };
+		783844CB1CCCDF5300FBC5C3 /* InstagramKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramKit.h; sourceTree = "<group>"; };
+		783844CC1CCCDF5300FBC5C3 /* InstagramKitConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramKitConstants.h; sourceTree = "<group>"; };
+		783844CD1CCCDF5300FBC5C3 /* InstagramKitConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramKitConstants.m; sourceTree = "<group>"; };
+		783844CF1CCCDF5300FBC5C3 /* InstagramComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramComment.h; sourceTree = "<group>"; };
+		783844D01CCCDF5300FBC5C3 /* InstagramComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramComment.m; sourceTree = "<group>"; };
+		783844D11CCCDF5300FBC5C3 /* InstagramLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramLocation.h; sourceTree = "<group>"; };
+		783844D21CCCDF5300FBC5C3 /* InstagramLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramLocation.m; sourceTree = "<group>"; };
+		783844D31CCCDF5300FBC5C3 /* InstagramMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramMedia.h; sourceTree = "<group>"; };
+		783844D41CCCDF5300FBC5C3 /* InstagramMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramMedia.m; sourceTree = "<group>"; };
+		783844D51CCCDF5300FBC5C3 /* InstagramModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramModel.h; sourceTree = "<group>"; };
+		783844D61CCCDF5300FBC5C3 /* InstagramModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramModel.m; sourceTree = "<group>"; };
+		783844D71CCCDF5300FBC5C3 /* InstagramPaginationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramPaginationInfo.h; sourceTree = "<group>"; };
+		783844D81CCCDF5300FBC5C3 /* InstagramPaginationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramPaginationInfo.m; sourceTree = "<group>"; };
+		783844D91CCCDF5300FBC5C3 /* InstagramTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramTag.h; sourceTree = "<group>"; };
+		783844DA1CCCDF5300FBC5C3 /* InstagramTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramTag.m; sourceTree = "<group>"; };
+		783844DB1CCCDF5300FBC5C3 /* InstagramUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramUser.h; sourceTree = "<group>"; };
+		783844DC1CCCDF5300FBC5C3 /* InstagramUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramUser.m; sourceTree = "<group>"; };
+		783844DD1CCCDF5300FBC5C3 /* UserInPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInPhoto.h; sourceTree = "<group>"; };
+		783844DE1CCCDF5300FBC5C3 /* UserInPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInPhoto.m; sourceTree = "<group>"; };
+		7838450C1CCCE40400FBC5C3 /* IKLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKLoginViewController.h; sourceTree = "<group>"; };
+		7838450D1CCCE40400FBC5C3 /* IKLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKLoginViewController.m; sourceTree = "<group>"; };
+		7838450F1CCCE41200FBC5C3 /* IKMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKMediaViewController.h; sourceTree = "<group>"; };
+		783845101CCCE41200FBC5C3 /* IKMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKMediaViewController.m; sourceTree = "<group>"; };
+		783845141CCE54CA00FBC5C3 /* BUCustomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUCustomPickerView.h; sourceTree = "<group>"; };
+		783845151CCE54CA00FBC5C3 /* BUCustomPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUCustomPickerView.m; sourceTree = "<group>"; };
+		783845181CCE550200FBC5C3 /* PWHeritageObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWHeritageObj.h; sourceTree = "<group>"; };
+		783845191CCE550200FBC5C3 /* PWHeritageObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWHeritageObj.m; sourceTree = "<group>"; };
 		783ABEFC1C8E07AB00AA59BE /* PWInAppHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWInAppHelper.h; sourceTree = "<group>"; };
 		783ABEFD1C8E07AB00AA59BE /* PWInAppHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWInAppHelper.m; sourceTree = "<group>"; };
 		783ABF031C8E07D500AA59BE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -600,6 +660,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7805DE311CC7FD7F00131162 /* MessageUI.framework in Frameworks */,
 				783ABF041C8E07D500AA59BE /* StoreKit.framework in Frameworks */,
 				78626F301C8DA0C400914F35 /* CoreText.framework in Frameworks */,
 				5BFF6E7D1C8D68F200596381 /* QuartzCore.framework in Frameworks */,
@@ -792,6 +853,50 @@
 				7800D4691C906EE5003F409D /* BUMyProfile.m */,
 			);
 			path = ModelObj;
+			sourceTree = "<group>";
+		};
+		783844C71CCCDF5300FBC5C3 /* InstagramKit */ = {
+			isa = PBXGroup;
+			children = (
+				783844C81CCCDF5300FBC5C3 /* Engine */,
+				783844CB1CCCDF5300FBC5C3 /* InstagramKit.h */,
+				783844CC1CCCDF5300FBC5C3 /* InstagramKitConstants.h */,
+				783844CD1CCCDF5300FBC5C3 /* InstagramKitConstants.m */,
+				783844CE1CCCDF5300FBC5C3 /* Models */,
+			);
+			path = InstagramKit;
+			sourceTree = "<group>";
+		};
+		783844C81CCCDF5300FBC5C3 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				783844C91CCCDF5300FBC5C3 /* InstagramEngine.h */,
+				783844CA1CCCDF5300FBC5C3 /* InstagramEngine.m */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		783844CE1CCCDF5300FBC5C3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				783844CF1CCCDF5300FBC5C3 /* InstagramComment.h */,
+				783844D01CCCDF5300FBC5C3 /* InstagramComment.m */,
+				783844D11CCCDF5300FBC5C3 /* InstagramLocation.h */,
+				783844D21CCCDF5300FBC5C3 /* InstagramLocation.m */,
+				783844D31CCCDF5300FBC5C3 /* InstagramMedia.h */,
+				783844D41CCCDF5300FBC5C3 /* InstagramMedia.m */,
+				783844D51CCCDF5300FBC5C3 /* InstagramModel.h */,
+				783844D61CCCDF5300FBC5C3 /* InstagramModel.m */,
+				783844D71CCCDF5300FBC5C3 /* InstagramPaginationInfo.h */,
+				783844D81CCCDF5300FBC5C3 /* InstagramPaginationInfo.m */,
+				783844D91CCCDF5300FBC5C3 /* InstagramTag.h */,
+				783844DA1CCCDF5300FBC5C3 /* InstagramTag.m */,
+				783844DB1CCCDF5300FBC5C3 /* InstagramUser.h */,
+				783844DC1CCCDF5300FBC5C3 /* InstagramUser.m */,
+				783844DD1CCCDF5300FBC5C3 /* UserInPhoto.h */,
+				783844DE1CCCDF5300FBC5C3 /* UserInPhoto.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		783ABEFF1C8E07C500AA59BE /* InApp Purchase */ = {
@@ -1016,6 +1121,7 @@
 		7846225B1C0711E100EA589C /* TheBureau */ = {
 			isa = PBXGroup;
 			children = (
+				783844C71CCCDF5300FBC5C3 /* InstagramKit */,
 				78B5B7171C55EB9700E3C531 /* Webservices */,
 				78FEE2501C07252D0013E9D2 /* ModelObjects */,
 				784622961C0718E500EA589C /* ViewControllers */,
@@ -1038,6 +1144,8 @@
 		7846225C1C0711E100EA589C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7805DE231CC7EB5D00131162 /* PrivacyPolicy.docx */,
+				7805DE241CC7EB5D00131162 /* TOS.docx */,
 				5B08286C1C9AE80300F6EEF6 /* splash_new.gif */,
 				5B16288C1C4D04B80034FA33 /* TheBureau_Splash.gif */,
 				78F4A9261C0CCC11001C76A6 /* Fonts */,
@@ -1122,6 +1230,12 @@
 				5BA796151C8090B4009B65E1 /* BUContactListTableViewCell.h */,
 				5BA796161C8090B4009B65E1 /* BUContactListTableViewCell.m */,
 				5B1629091C5F61EE0034FA33 /* CustomAlertView */,
+				7805DE2B1CC7F8D600131162 /* BUDocumentViewVC.h */,
+				7805DE2C1CC7F8D600131162 /* BUDocumentViewVC.m */,
+				783845141CCE54CA00FBC5C3 /* BUCustomPickerView.h */,
+				783845151CCE54CA00FBC5C3 /* BUCustomPickerView.m */,
+				783845181CCE550200FBC5C3 /* PWHeritageObj.h */,
+				783845191CCE550200FBC5C3 /* PWHeritageObj.m */,
 			);
 			path = CustomClasses;
 			sourceTree = "<group>";
@@ -1152,6 +1266,7 @@
 				5BA796061C7F9683009B65E1 /* Connections.Storyboard */,
 				78E4F27F1C85A1120034CFE2 /* Accounts.storyboard */,
 				78F7555E1C8806EE007E5678 /* Preference.storyboard */,
+				7805DE291CC7EC4100131162 /* BUDocumentViewer.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -1289,6 +1404,10 @@
 		78BD7D501C8CC63D000AD38B /* Gold Tab */ = {
 			isa = PBXGroup;
 			children = (
+				7838450F1CCCE41200FBC5C3 /* IKMediaViewController.h */,
+				783845101CCCE41200FBC5C3 /* IKMediaViewController.m */,
+				7838450C1CCCE40400FBC5C3 /* IKLoginViewController.h */,
+				7838450D1CCCE40400FBC5C3 /* IKLoginViewController.m */,
 				78BD7D511C8CC665000AD38B /* BUGoldTabVC.h */,
 				78BD7D521C8CC665000AD38B /* BUGoldTabVC.m */,
 				78BD7D541C8D0B29000AD38B /* BUGoldTabCell.h */,
@@ -1328,6 +1447,10 @@
 				78BF551C1C68790B00B5F1A4 /* BUHomeProfileImgPrevCell.m */,
 				78CE0CFB1C69C23100FDA514 /* BUMatchInfoCell.h */,
 				78CE0CFC1C69C23100FDA514 /* BUMatchInfoCell.m */,
+				7805DE1C1CC7AC5600131162 /* BUCreatedByCell.h */,
+				7805DE1D1CC7AC5600131162 /* BUCreatedByCell.m */,
+				7805DE201CC7AC8600131162 /* BUAboutMeCell.h */,
+				7805DE211CC7AC8600131162 /* BUAboutMeCell.m */,
 			);
 			path = "TableView Cells";
 			sourceTree = "<group>";
@@ -1517,6 +1640,7 @@
 		C97FD13E9E7E87EBC189E7D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7805DE301CC7FD7F00131162 /* MessageUI.framework */,
 				5BFF6E6E1C89DBF300596381 /* FBSDKShareKit.framework */,
 				5BFF6E6C1C89DBCD00596381 /* FBSDKLoginKit.framework */,
 				5BFF6E6A1C89DBBD00596381 /* FBSDKCoreKit.framework */,
@@ -1697,9 +1821,12 @@
 				783F851E1C9824210002386B /* copy_header_imports.sh in Resources */,
 				783F851A1C9824210002386B /* AirshipResources.bundle in Resources */,
 				78CF17281C60979600779203 /* CustomPicker.storyboard in Resources */,
+				7805DE2A1CC7EC4100131162 /* BUDocumentViewer.storyboard in Resources */,
 				5B08286D1C9AE80300F6EEF6 /* splash_new.gif in Resources */,
 				5B16288F1C4D252A0034FA33 /* ALLURA-REGULAR.TTF in Resources */,
+				7805DE251CC7EB5D00131162 /* PrivacyPolicy.docx in Resources */,
 				78345E4C1C983A3D00236520 /* AirshipConfig.plist in Resources */,
+				7805DE261CC7EB5D00131162 /* TOS.docx in Resources */,
 				5BA796071C7F9683009B65E1 /* Connections.Storyboard in Resources */,
 				5B2A2CB51C182D7D006F3845 /* TwitterKitResources.bundle in Resources */,
 				78F7555F1C8806EE007E5678 /* Preference.storyboard in Resources */,
@@ -1794,17 +1921,21 @@
 			files = (
 				784622951C0718B700EA589C /* AppDelegate.m in Sources */,
 				78ABA0271C9205B9009F369A /* LQSAnnouncementsTableViewController.m in Sources */,
+				783844E81CCCDF5300FBC5C3 /* UserInPhoto.m in Sources */,
 				78FEE2481C07210F0013E9D2 /* NSString+Encode.m in Sources */,
 				5BFF6EB41C8D80E300596381 /* UIRefreshControl+AFNetworking.m in Sources */,
+				783844DF1CCCDF5300FBC5C3 /* InstagramEngine.m in Sources */,
 				5B0AEDCC1C23591400877C24 /* BUSignUpWithEmailVC.m in Sources */,
 				7846225E1C0711E100EA589C /* main.m in Sources */,
 				5B2D3E8C1C7C6927006B7674 /* BUHomeConnectionsVC.m in Sources */,
 				78BD7D5C1C8D3A67000AD38B /* BUPrefAgeSeekCell.m in Sources */,
+				783844E61CCCDF5300FBC5C3 /* InstagramTag.m in Sources */,
 				78BF55101C686F9400B5F1A4 /* BUHomeViewController.m in Sources */,
 				5BA7960A1C7F980C009B65E1 /* BURematchCollectionViewCell.m in Sources */,
 				78FEE2331C071EAC0013E9D2 /* BUBaseViewController.m in Sources */,
 				78BF55241C688E8D00B5F1A4 /* BUAcountsTabViewController.m in Sources */,
 				78520B711C9BB8EE0033ACD0 /* BUPrefHeritageCell.m in Sources */,
+				7838450E1CCCE40400FBC5C3 /* IKLoginViewController.m in Sources */,
 				7800D4A81C91AD3A003F409D /* BULayerHelper.m in Sources */,
 				78F3C17C1CAE0EC800CBA15E /* BUProfileImageCell.m in Sources */,
 				5BFF6EA71C8D80E300596381 /* AFNetworkReachabilityManager.m in Sources */,
@@ -1814,12 +1945,14 @@
 				5BB683501C64A58E0043C4FC /* EmployementStatusTVCell.m in Sources */,
 				78FEE2431C0720FE0013E9D2 /* UIColor+APColor.m in Sources */,
 				78B5B72C1C5678F900E3C531 /* BUProfileOccupationVC.m in Sources */,
+				7805DE221CC7AC8600131162 /* BUAboutMeCell.m in Sources */,
 				78CE0CFD1C69C23100FDA514 /* BUMatchInfoCell.m in Sources */,
 				5BFF6EB01C8D80E300596381 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				5BFF6EB31C8D80E300596381 /* UIProgressView+AFNetworking.m in Sources */,
 				78FEE25F1C0728660013E9D2 /* FCBaseSocialController.m in Sources */,
 				5BFF6EAA1C8D80E300596381 /* AFURLResponseSerialization.m in Sources */,
 				78BF551D1C68790B00B5F1A4 /* BUHomeProfileImgPrevCell.m in Sources */,
+				783844E01CCCDF5300FBC5C3 /* InstagramKitConstants.m in Sources */,
 				78B5B71A1C561A6900E3C531 /* BUWebServicesManager.m in Sources */,
 				78BF551A1C68789E00B5F1A4 /* BUHomeImagePreviewCell.m in Sources */,
 				1808029D1C079E7B00F5AEE5 /* BUSignUpViewController.m in Sources */,
@@ -1829,11 +1962,15 @@
 				5BA7964E1C85E973009B65E1 /* UIView+FLKAutoLayout.m in Sources */,
 				5BFF6EA81C8D80E300596381 /* AFSecurityPolicy.m in Sources */,
 				78BD7D591C8D229D000AD38B /* BURematchProfileDetailsVC.m in Sources */,
+				7838451A1CCE550200FBC5C3 /* PWHeritageObj.m in Sources */,
 				789D88F01C7E3F7F00772EED /* BUProfileLegalStatusInfoCell.m in Sources */,
 				78ABA0281C9205B9009F369A /* LQSChatMessageCell.m in Sources */,
+				783844E51CCCDF5300FBC5C3 /* InstagramPaginationInfo.m in Sources */,
 				5BA796171C8090B4009B65E1 /* BUContactListTableViewCell.m in Sources */,
+				7805DE2D1CC7F8D600131162 /* BUDocumentViewVC.m in Sources */,
 				78FEE2441C0720FE0013E9D2 /* UIColor+CrossFade.m in Sources */,
 				78FEE2541C07255C0013E9D2 /* BUSocialChannel.m in Sources */,
+				783844E11CCCDF5300FBC5C3 /* InstagramComment.m in Sources */,
 				5BA7964D1C85E973009B65E1 /* NSLayoutConstraint+FLKAutoLayoutDebug.m in Sources */,
 				78FEE24B1C0721590013E9D2 /* BUUtilities.m in Sources */,
 				78B5B7241C56789E00E3C531 /* BUProfileDetailsVC.m in Sources */,
@@ -1841,9 +1978,13 @@
 				5BB683511C64A58E0043C4FC /* HighLevelEducationTVCell.m in Sources */,
 				789D88EA1C7E3F2300772EED /* BUProfileEducationInfoCell.m in Sources */,
 				78B5B7301C56792000E3C531 /* BUProfileLegalStatusVC.m in Sources */,
+				783845161CCE54CA00FBC5C3 /* BUCustomPickerView.m in Sources */,
 				78E4F28C1C85B3C30034CFE2 /* BUPreferencesVC.m in Sources */,
+				783844E41CCCDF5300FBC5C3 /* InstagramModel.m in Sources */,
 				78F3C1811CAEE2E100CBA15E /* BUImagePreviewVC.m in Sources */,
+				783844E71CCCDF5300FBC5C3 /* InstagramUser.m in Sources */,
 				5B1628841C4CFA620034FA33 /* BUSplashViewController.m in Sources */,
+				783844E31CCCDF5300FBC5C3 /* InstagramMedia.m in Sources */,
 				78ABA0381C935022009F369A /* BUChatContact.m in Sources */,
 				5B2D3E8F1C7C6927006B7674 /* BUProfileRematchVC.m in Sources */,
 				78F755621C889340007E5678 /* logoImageView.m in Sources */,
@@ -1869,10 +2010,12 @@
 				7800D46A1C906EE5003F409D /* BUMyProfile.m in Sources */,
 				5BFF6EAF1C8D80E300596381 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				789D88E71C7E3F0D00772EED /* BUProfileBasicInfoCell.m in Sources */,
+				7805DE1E1CC7AC5600131162 /* BUCreatedByCell.m in Sources */,
 				5B1628921C4F63D10034FA33 /* BUProfileDetails.m in Sources */,
 				78FEE25E1C0728660013E9D2 /* FBController.m in Sources */,
 				789D88F31C7E3F9300772EED /* BUProfileHeritageInfoCell.m in Sources */,
 				78CE0CFA1C69BC7C00FDA514 /* BUHomeCollectionVC.m in Sources */,
+				783845111CCCE41200FBC5C3 /* IKMediaViewController.m in Sources */,
 				5BA7964F1C85E973009B65E1 /* UIView+FLKAutoLayoutDebug.m in Sources */,
 				78E4F2831C85A1560034CFE2 /* BUConfigurationVC.m in Sources */,
 				78E4F2891C85B3280034CFE2 /* BUInviteFriendVC.m in Sources */,
@@ -1885,6 +2028,7 @@
 				5B2A2CAE1C0CE72B006F3845 /* BUForgotPasswordVC.m in Sources */,
 				5B0AEDC91C22C69D00877C24 /* BUAuthButton.m in Sources */,
 				783ABEFE1C8E07AB00AA59BE /* PWInAppHelper.m in Sources */,
+				783844E21CCCDF5300FBC5C3 /* InstagramLocation.m in Sources */,
 				78F4A9411C0CD3F4001C76A6 /* BUAccountCreationVC.m in Sources */,
 				78CA18581C7AFE2900CF091A /* BUMatchPoolViewController.m in Sources */,
 				789D88E21C7E3CED00772EED /* BUProfileEditingVC.m in Sources */,
@@ -2074,7 +2218,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Airship",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bureau.bureauapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0c2a688b-cfca-42ab-9822-8489125696fe";
@@ -2101,7 +2245,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Airship",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bureau.bureauapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0c2a688b-cfca-42ab-9822-8489125696fe";

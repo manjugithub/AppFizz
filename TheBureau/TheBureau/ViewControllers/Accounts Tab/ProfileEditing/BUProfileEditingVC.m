@@ -90,6 +90,7 @@
 
 - (IBAction)editProfileDetails:(id)sender
 {
+    [self.view endEditing:YES];
     [self updateProfile];
 //    [self.profileTableView reloadData];
 }
