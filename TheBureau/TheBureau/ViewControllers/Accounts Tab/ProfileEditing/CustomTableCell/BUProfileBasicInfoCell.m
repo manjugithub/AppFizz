@@ -359,13 +359,13 @@
         {
             self.inchStr = [_inchesMutableArray objectAtIndex:row];
             
-            [self.basicInfoDict setValue:@"4" forKey:@"height_inch"];
+            [self.basicInfoDict setValue:self.inchStr forKey:@"height_inch"];
 
         }
         else
         {
             self.feetStr = [_feetMutableArray objectAtIndex:row];
-            [self.basicInfoDict setValue:@"5" forKey:@"height_feet"];
+            [self.basicInfoDict setValue:self.feetStr forKey:@"height_feet"];
    }
     }
 }

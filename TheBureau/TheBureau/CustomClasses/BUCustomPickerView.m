@@ -78,8 +78,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-        [self.delegate didItemSelected:[self.pickerDataSource objectAtIndex:indexPath.row]];
-        
         PWHeritageObj *obj = [self.pickerDataSource objectAtIndex:indexPath.row];
     
         if(NO == [obj isSelected])

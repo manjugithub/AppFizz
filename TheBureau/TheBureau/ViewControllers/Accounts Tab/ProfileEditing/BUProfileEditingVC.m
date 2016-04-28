@@ -549,13 +549,16 @@
     CGFloat constant = 0;
     constant = 280;
     self.tableBottomConstraint.constant = constant;
-//    [self.profileTableView scrollToRowAtIndexPath:self.selectedCellIndex atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    
+    
+    
+    [self.profileTableView scrollToRowAtIndexPath:[self.profileTableView indexPathForCell:[[self.profileTableView visibleCells] lastObject]] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 -(void)hideKeyBoard
 {
     CGFloat constant = 0;
     self.tableBottomConstraint.constant = constant;
-//    [self.profileTableView scrollToRowAtIndexPath:self.selectedCellIndex atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    [self.profileTableView scrollToRowAtIndexPath:[self.profileTableView indexPathForCell:[[self.profileTableView visibleCells] lastObject]] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 @end

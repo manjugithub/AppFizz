@@ -65,25 +65,31 @@
         frame.origin.x = frame.origin.x + newX;
         if(0 <= frame.origin.x && self.overLayView.frame.size.width >= (frame.origin.x + frame.size.width))
         {
-            self.leftView.frame = frame;
-            self.leftViewLeftConstraint.constant += newX;
-            self.minLabelLeftConstraint.constant += newX;
+//            NSLog(@"%0.0f is equal to %0.0f",self.currentLocation.x + (2 * self.interval),self.rightView.frame.origin.x);
             
-            if(2 == self.cellType)
-            {
-                CGFloat offset = (self.leftViewLeftConstraint.constant / self.interval)+1;
-                NSInteger feet =  4 + (NSInteger)offset / 12;
-                NSInteger inch =  (NSInteger)offset % 12 + 1;
-                self.minFeet = feet;
-                self.minInch = inch;
-                self.minValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
-            }
-            else if(0 == self.cellType)
-            {
-                self.minValueLabel.text = [NSString stringWithFormat:@"%0.0f",(self.leftViewLeftConstraint.constant / self.interval)+18];
-            }
             
-        
+            if(self.currentLocation.x + (2 * self.interval) < self.rightView.frame.origin.x)
+            {
+                self.leftView.frame = frame;
+                self.leftViewLeftConstraint.constant += newX;
+                self.minLabelLeftConstraint.constant += newX;
+                
+                if(2 == self.cellType)
+                {
+                    CGFloat offset = (self.leftViewLeftConstraint.constant / self.interval)+1;
+                    NSInteger feet =  4 + (NSInteger)offset / 12;
+                    NSInteger inch =  (NSInteger)offset % 12 + 1;
+                    self.minFeet = feet;
+                    self.minInch = inch;
+                    self.minValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
+                }
+                else if(0 == self.cellType)
+                {
+                    self.minValueLabel.text = [NSString stringWithFormat:@"%0.0f",(self.leftViewLeftConstraint.constant / self.interval)+18];
+                }
+                
+                
+            }
         }
     }
     else if(self.shouldMoveRightView)
@@ -92,37 +98,42 @@
         frame.origin.x = frame.origin.x + newX;
         if(0 <= frame.origin.x && self.overLayView.frame.size.width >= (frame.origin.x + frame.size.width))
         {
-            self.rightView.frame = frame;
-            self.rightViewRightConstraint.constant -= newX;
-            self.maxLabelRightConstraint.constant -= newX;
-            if(2 == self.cellType)
-            {
-                CGFloat offset = (((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+1);
-                NSInteger feet =  4 + (NSInteger)offset / 12;
-                NSInteger inch =  (NSInteger)offset % 12 + 1;
-                self.maxFeet = feet;
-                self.maxInch = inch;
-                self.maxValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
-                
-                
-                [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",(long)self.minFeet] forKey:@"height_from_feet"];
-                [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",(long)self.minInch] forKey:@"height_from_inch"];
-                [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",(long)self.maxFeet] forKey:@"height_to_feet"];
-                [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",(long)self.maxInch] forKey:@"height_to_inch"];
+//            NSLog(@"%0.0f is equal to %0.0f",self.currentLocation.x - (2 * self.interval),(self.leftView.frame.origin.x + self.leftView.frame.size.width));
 
-            }
-            else if(1 == self.cellType)
+            if(self.currentLocation.x - (2 * self.interval) > (self.leftView.frame.origin.x + self.leftView.frame.size.width))
             {
-                NSInteger currentValue = (((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)) * 25;
-                
-                currentValue = currentValue - (currentValue % 25) ;
-                NSLog(@"Radius ====> %ld",currentValue);
-                
-                self.maxValueLabel.text = [NSString stringWithFormat:@"%ld",currentValue];
-            }
-            else
-            {
-                self.maxValueLabel.text = [NSString stringWithFormat:@"%0.0f",((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+18];
+                self.rightView.frame = frame;
+                self.rightViewRightConstraint.constant -= newX;
+                self.maxLabelRightConstraint.constant -= newX;
+                if(2 == self.cellType)
+                {
+                    CGFloat offset = (((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+1);
+                    NSInteger feet =  4 + (NSInteger)offset / 12;
+                    NSInteger inch =  (NSInteger)offset % 12 + 1;
+                    self.maxFeet = feet;
+                    self.maxInch = inch;
+                    self.maxValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
+                    
+                    
+                    [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",(long)self.minFeet] forKey:@"height_from_feet"];
+                    [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",(long)self.minInch] forKey:@"height_from_inch"];
+                    [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",(long)self.maxFeet] forKey:@"height_to_feet"];
+                    [self.preferenceDict setValue:[NSString stringWithFormat:@"%ld",(long)self.maxInch] forKey:@"height_to_inch"];
+                    
+                }
+                else if(1 == self.cellType)
+                {
+                    NSInteger currentValue = (((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)) * 25;
+                    
+                    currentValue = currentValue - (currentValue % 25) ;
+                    NSLog(@"Radius ====> %ld",(long)currentValue);
+                    
+                    self.maxValueLabel.text = [NSString stringWithFormat:@"%ld",(long)currentValue];
+                }
+                else
+                {
+                    self.maxValueLabel.text = [NSString stringWithFormat:@"%0.0f",((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+18];
+                }
             }
         }
     }

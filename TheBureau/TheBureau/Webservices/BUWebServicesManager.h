@@ -69,6 +69,6 @@
 
 -(void)uploadProfilePicture:(UIImage *)inImage;
 -(void)uploadHoroscope:(UIImage *)inImage;
--(void)deleteProfilePicture:(NSString *)inImageURLStr;
+-(void)deleteProfilePicture:(NSString *)inImageURLStr  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
 
 @end

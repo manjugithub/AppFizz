@@ -14,6 +14,7 @@
 - (void)awakeFromNib
 {
     // Initialization code
+    self.aboutMeTextView.delegate = self;
     self.aboutMeTextView.layer.borderColor = [[UIColor blackColor]CGColor];
     self.aboutMeTextView.layer.borderWidth = 1.0;
     self.aboutMeTextView.layer.cornerRadius = 5.0;
@@ -29,7 +30,7 @@
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self endEditing:YES];
-    [self showKeyBoard:NO];
+    [self.parentVC hideKeyBoard];
 }
 
 -(void)showKeyBoard:(BOOL)inBool
@@ -61,9 +62,19 @@
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView;
 {
     textView.text = [textView.text stringByReplacingOccurrencesOfString:@"Your text here ..." withString:@""];
-    [self showKeyBoard:YES];
+    [self.parentVC performSelector:@selector(showKeyboard) withObject:nil afterDelay:1.0];
     return YES;
 }
+
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text;
+{
+    if(range.location == 180)
+        return NO;
+//    NSLog(@"Range ==> %@",NSStringFromRange(range));
+    return YES;
+}
+
 
 -(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict
 {
@@ -116,7 +127,8 @@
     picker.date = currentDate;
     
     [alertController addAction:({
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+        {
             NSLog(@"OK");
             NSLog(@"%@",picker.date);
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -128,7 +140,8 @@
         action;
     })];
     
-    [alertController addAction:({
+    [alertController addAction:(
+    {
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSLog(@"cancel");
             //NSLog(@"%@",picker.date);
@@ -162,7 +175,8 @@
     picker.date = currentDate;
     picker.datePickerMode = UIDatePickerModeTime;
     [alertController addAction:({
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+        {
             NSLog(@"OK");
             NSLog(@"%@",picker.date);
             
@@ -187,11 +201,11 @@
 -(IBAction)uploadHoroscope:(id)sender
 {
     
-         UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
-        imagePicker.allowsEditing = YES;
-        imagePicker.delegate = self;
-            imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        [[self parentVC] presentViewController:imagePicker animated:YES completion:nil];
+    UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.allowsEditing = YES;
+    imagePicker.delegate = self;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [[self parentVC] presentViewController:imagePicker animated:YES completion:nil];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info

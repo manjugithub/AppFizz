@@ -177,7 +177,7 @@ numberOfRowsInComponent:(NSInteger)component{
 
 -(void)showFailureAlert
 {
-    [self.prefVC startActivityIndicator:YES];
+    [self.prefVC stopActivityIndicator];
     NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
     [message addAttribute:NSFontAttributeName
                     value:[UIFont fontWithName:@"comfortaa" size:15]
@@ -333,18 +333,50 @@ numberOfRowsInComponent:(NSInteger)component{
     {
         case eReligionList:
         {
-            self.religionTF.text = [NSString stringWithFormat:@"%@",[self.religionTF.text stringByReplacingOccurrencesOfString:inSelectedRow.name withString:@""]];
+            
+
+            
             [self.religionIDList removeObject:inSelectedRow.hId];
             [self.religionList removeObject:inSelectedRow.name];
+
+            
+            
+            self.religionTF.text = @"";
+            
+            for(NSString *religinStr in self.religionList)
+            {
+                
+                if([self.religionTF.text isEqualToString:@""])
+                {
+                    self.religionTF.text = religinStr;
+                }
+                else
+                {
+                    self.religionTF.text = [self.religionTF.text stringByAppendingFormat:@", %@",religinStr];
+                }
+            }
+            
 
             break;
         }
         case eMotherToungueList:
         {
-            self.motherToungueTF.text = [NSString stringWithFormat:@"%@",[self.motherToungueTF.text stringByReplacingOccurrencesOfString:inSelectedRow.name withString:@""]];
-            
             [self.motherToungueIDList removeObject:inSelectedRow.hId];
             [self.motherToungueList removeObject:inSelectedRow.name];
+            self.motherToungueTF.text = @"";
+            
+            for(NSString *religinStr in self.motherToungueList)
+            {
+                
+                if([self.motherToungueTF.text isEqualToString:@""])
+                {
+                    self.motherToungueTF.text = religinStr;
+                }
+                else
+                {
+                    self.motherToungueTF.text = [self.motherToungueTF.text stringByAppendingFormat:@", %@",religinStr];
+                }
+            }
             break;
         }
         case eFamilyOriginList:
@@ -373,17 +405,48 @@ numberOfRowsInComponent:(NSInteger)component{
     {
         case eReligionList:
         {
-            self.religionTF.text = [NSString stringWithFormat:@"%@  %@",self.religionTF.text,inSelectedRow.name];
             [self.religionIDList addObject:inSelectedRow.hId];
             [self.religionList addObject:inSelectedRow.name];
+            
+            self.religionTF.text = @"";
+            
+            for(NSString *religinStr in self.religionList)
+            {
+                
+                if([self.religionTF.text isEqualToString:@""])
+                {
+                    self.religionTF.text = religinStr;
+                }
+                else
+                {
+                    self.religionTF.text = [self.religionTF.text stringByAppendingFormat:@", %@",religinStr];
+                }
+            }
+
             
             break;
         }
         case eMotherToungueList:
         {
-            self.motherToungueTF.text = [NSString stringWithFormat:@"%@   %@",self.motherToungueTF.text,inSelectedRow.name];
+            
             [self.motherToungueIDList addObject:inSelectedRow.hId];
             [self.motherToungueList addObject:inSelectedRow.name];
+            
+            self.motherToungueTF.text = @"";
+            
+            for(NSString *religinStr in self.motherToungueList)
+            {
+                
+                if([self.motherToungueTF.text isEqualToString:@""])
+                {
+                    self.motherToungueTF.text = religinStr;
+                }
+                else
+                {
+                    self.motherToungueTF.text = [self.motherToungueTF.text stringByAppendingFormat:@", %@",religinStr];
+                }
+            }
+
             break;
         }
         case eFamilyOriginList:
@@ -420,13 +483,21 @@ numberOfRowsInComponent:(NSInteger)component{
     self.famliyIDList = [[NSMutableArray alloc] init];
     self.famliyList = [[NSMutableArray alloc] init];
     
-    if([[self.heritageDict valueForKey:@"family_origin_data"] count] > 1)
+    if([[self.heritageDict valueForKey:@"family_origin_data"] count] > 0)
     {
-        self.familyOriginTF.text = @"Multiple";
-    }
-    else
-    {
-        self.familyOriginTF.text = [[[self.heritageDict valueForKey:@"family_origin_data"] lastObject] valueForKey:@"family_origin_name"];
+        
+        for(NSDictionary *originDict in [self.heritageDict valueForKey:@"family_origin_data"])
+        {
+            
+            if([self.familyOriginTF.text isEqualToString:@""])
+            {
+                self.familyOriginTF.text = [originDict valueForKey:@"family_origin_name"];
+            }
+            else
+            {
+                self.familyOriginTF.text = [self.familyOriginTF.text stringByAppendingFormat:@", %@",[originDict valueForKey:@"family_origin_name"]];
+            }
+        }
     }
 
     
@@ -441,13 +512,22 @@ numberOfRowsInComponent:(NSInteger)component{
     self.religionIDList = [[NSMutableArray alloc] init];
     self.religionList = [[NSMutableArray alloc] init];
     
-    if([[self.heritageDict valueForKey:@"religion_data"] count] > 1)
+    
+    if([[self.heritageDict valueForKey:@"religion_data"] count] > 0)
     {
-        self.religionTF.text = @"Multiple";
-    }
-    else
-    {
-        self.religionTF.text = [[[self.heritageDict valueForKey:@"religion_data"] lastObject] valueForKey:@"religion_name"];
+        
+        for(NSDictionary *originDict in [self.heritageDict valueForKey:@"religion_data"])
+        {
+            
+            if([self.religionTF.text isEqualToString:@""])
+            {
+                self.religionTF.text = [originDict valueForKey:@"religion_name"];
+            }
+            else
+            {
+                self.religionTF.text = [self.religionTF.text stringByAppendingFormat:@", %@",[originDict valueForKey:@"religion_name"]];
+            }
+        }
     }
     
     for (NSDictionary *familyOriginDict in [self.heritageDict valueForKey:@"religion_data"])
@@ -461,15 +541,23 @@ numberOfRowsInComponent:(NSInteger)component{
     self.motherToungueList = [[NSMutableArray alloc] init];
     
     
-    if([[self.heritageDict valueForKey:@"mother_tongue_data"] count] > 1)
-    {
-        self.motherToungueTF.text = @"Multiple";
-    }
-    else
-    {
-        self.motherToungueTF.text = [[[self.heritageDict valueForKey:@"mother_tongue_data"] lastObject] valueForKey:@"mother_tongue"];
-    }
     
+    if([[self.heritageDict valueForKey:@"mother_tongue_data"] count] > 0)
+    {
+        
+        for(NSDictionary *originDict in [self.heritageDict valueForKey:@"mother_tongue_data"])
+        {
+            
+            if([self.motherToungueTF.text isEqualToString:@""])
+            {
+                self.motherToungueTF.text = [originDict valueForKey:@"mother_tongue"];
+            }
+            else
+            {
+                self.motherToungueTF.text = [self.motherToungueTF.text stringByAppendingFormat:@", %@",[originDict valueForKey:@"mother_tongue"]];
+            }
+        }
+    }
     
     
     for (NSDictionary *familyOriginDict in [self.heritageDict valueForKey:@"mother_tongue_data"])

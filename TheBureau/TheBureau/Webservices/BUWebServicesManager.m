@@ -481,7 +481,7 @@ constructingBodyWithBlock:nil
 }
 
 
--(void)deleteProfilePicture:(NSString *)inImageURLStr
+-(void)deleteProfilePicture:(NSString *)inImageURLStr  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack
 {
     NSDictionary *parameters = @{@"img_url": inImageURLStr};
     
@@ -492,11 +492,13 @@ constructingBodyWithBlock:nil
          progress:nil
           success:^(NSURLSessionDataTask *operation, id responseObject)
      {
+         successCallBack(responseObject,nil);
          ;
          NSLog(@"Success: %@", responseObject);
      }
           failure:^(NSURLSessionDataTask *operation, NSError *error)
      {
+         failureCallBack(nil,error);
          NSLog(@"Error: %@", error);
      }];
 }
@@ -526,6 +528,7 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
          NSLog(@"Error: %@", error);
      }];
 }
+
 
 -(void)uploadHoroscope:(UIImage *)inImage
 {

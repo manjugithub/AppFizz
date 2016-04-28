@@ -8,6 +8,7 @@
 
 #import "BUHomeConnectionsVC.h"
 #import "BUHomeConnectionTabVC.h"
+#import <Smooch/Smooch.h>
 
 @interface BUHomeConnectionsVC ()
 
@@ -41,9 +42,12 @@
     if (sender.tag == 0)
     {
         
-        [_csChatBtn setSelected:YES];
-        [_chatBtn setSelected:NO];
-        [_rematchBtn setSelected:NO];
+        [Smooch showConversationFromViewController:self];
+
+        return;
+//        [_csChatBtn setSelected:YES];
+//        [_chatBtn setSelected:NO];
+//        [_rematchBtn setSelected:NO];
     }
     
     else if (sender.tag == 1)

@@ -145,7 +145,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg_with_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Vpd-ft-0jy">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_with_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Vpd-ft-0jy">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Wh-Md-08Q">
@@ -2857,7 +2857,7 @@
                         <constraints>
                             <constraint firstItem="7Wh-Md-08Q" firstAttribute="leading" secondItem="wiQ-4B-8vG" secondAttribute="leading" id="1dN-1W-Sdv"/>
                             <constraint firstAttribute="bottom" secondItem="7Wh-Md-08Q" secondAttribute="bottom" id="Mbz-5w-5FY"/>
-                            <constraint firstItem="nEX-gC-WYh" firstAttribute="top" secondItem="Vpd-ft-0jy" secondAttribute="bottom" id="Z09-iz-VzO"/>
+                            <constraint firstItem="nEX-gC-WYh" firstAttribute="top" secondItem="Vpd-ft-0jy" secondAttribute="bottom" constant="-44" id="Z09-iz-VzO"/>
                             <constraint firstItem="Vpd-ft-0jy" firstAttribute="leading" secondItem="wiQ-4B-8vG" secondAttribute="leading" id="h50-cb-k8f"/>
                             <constraint firstItem="Vpd-ft-0jy" firstAttribute="top" secondItem="wiQ-4B-8vG" secondAttribute="top" id="hM8-RS-73M"/>
                             <constraint firstAttribute="trailing" secondItem="7Wh-Md-08Q" secondAttribute="trailing" id="hUy-F4-Uzx"/>

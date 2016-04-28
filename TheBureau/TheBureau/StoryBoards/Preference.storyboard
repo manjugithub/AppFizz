@@ -882,9 +882,9 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Click here to select" textAlignment="natural" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="z5T-y5-elu">
-                                                                    <rect key="frame" x="360" y="8" width="140" height="30"/>
+                                                                    <rect key="frame" x="360" y="8" width="192" height="30"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="140" id="9uO-0u-cem"/>
+                                                                        <constraint firstAttribute="width" constant="192" id="9uO-0u-cem"/>
                                                                         <constraint firstAttribute="height" constant="30" id="aVU-PY-KbB"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="13"/>
@@ -921,7 +921,7 @@
                                                                 <constraint firstItem="dhQ-5U-xvD" firstAttribute="top" secondItem="yJN-gQ-Nxm" secondAttribute="top" constant="15" id="d5w-fM-ek9"/>
                                                                 <constraint firstAttribute="trailing" secondItem="uqH-zM-J70" secondAttribute="trailing" constant="8" id="if6-jX-ATs"/>
                                                                 <constraint firstAttribute="trailing" secondItem="5Gf-Pi-hhf" secondAttribute="trailing" constant="8" id="pAk-AG-QaQ"/>
-                                                                <constraint firstAttribute="trailing" secondItem="z5T-y5-elu" secondAttribute="trailing" constant="60" id="vBh-iy-U2g"/>
+                                                                <constraint firstAttribute="trailing" secondItem="z5T-y5-elu" secondAttribute="trailing" constant="8" id="vBh-iy-U2g"/>
                                                                 <constraint firstItem="5Gf-Pi-hhf" firstAttribute="top" secondItem="uqH-zM-J70" secondAttribute="bottom" constant="2" id="zJ5-sE-xIn"/>
                                                             </constraints>
                                                         </view>
@@ -939,9 +939,9 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Click here to select" textAlignment="natural" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="afW-xz-dHo">
-                                                                    <rect key="frame" x="360" y="8" width="140" height="30"/>
+                                                                    <rect key="frame" x="360" y="8" width="192" height="30"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="140" id="mkK-6E-rbW"/>
+                                                                        <constraint firstAttribute="width" constant="192" id="mkK-6E-rbW"/>
                                                                         <constraint firstAttribute="height" constant="30" id="pDJ-2y-C4c"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="13"/>
@@ -972,7 +972,7 @@
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="8rk-b7-K7k"/>
-                                                                <constraint firstAttribute="trailing" secondItem="afW-xz-dHo" secondAttribute="trailing" constant="60" id="JtE-AB-4XL"/>
+                                                                <constraint firstAttribute="trailing" secondItem="afW-xz-dHo" secondAttribute="trailing" constant="8" id="JtE-AB-4XL"/>
                                                                 <constraint firstItem="GB8-Hm-neV" firstAttribute="top" secondItem="ieK-rb-LDK" secondAttribute="top" id="UA2-dy-Pnv"/>
                                                                 <constraint firstAttribute="trailing" secondItem="jXC-Wa-SEk" secondAttribute="trailing" constant="8" id="dOL-kF-jem"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Cdg-li-sca" secondAttribute="trailing" constant="8" id="plW-d5-qNP"/>

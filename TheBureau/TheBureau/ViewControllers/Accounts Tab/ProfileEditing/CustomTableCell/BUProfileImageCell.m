@@ -8,6 +8,10 @@
 
 #import "BUProfileImageCell.h"
 #import "BUWebServicesManager.h"
+#import "AFHTTPSessionManager.h"
+#import "AFNetworking.h"
+#import "AFHTTPSessionManager.h"
+#import "BUConstants.h"
 @implementation BUProfileImageCell
 
 - (void)awakeFromNib {
@@ -191,17 +195,29 @@
 {
     UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:[sender tag] inSection:0]];
 
-    [UIView animateWithDuration:0.6 animations:^{
-        [cell setAlpha:0.0];
-    }
-                     completion:^(BOOL finished)
-     {
-         if([[self.imagesList objectAtIndex:[sender tag]] isKindOfClass:[NSString class]])
-             [[BUWebServicesManager sharedManager] deleteProfilePicture:[self.imagesList objectAtIndex:[sender tag]]];
+    
+    if([[self.imagesList objectAtIndex:[sender tag]] isKindOfClass:[NSString class]])
+    {
+        [self.parentVC startActivityIndicator:YES];
+        [[BUWebServicesManager sharedManager] deleteProfilePicture:[self.imagesList objectAtIndex:[sender tag]] successBlock:^(id response, NSError *error) {
+            [self.parentVC stopActivityIndicator];
 
-         [self.imagesList removeObjectAtIndex:[sender tag]];
-         [self.collectionView reloadData];
-     }];
+        } failureBlock:^(id response, NSError *error) {
+            [self.parentVC stopActivityIndicator];
+        }];
+    }
+    {
+        [UIView animateWithDuration:0.6 animations:^{
+            [cell setAlpha:0.0];
+        }
+                         completion:^(BOOL finished)
+         {
+             [self.imagesList removeObjectAtIndex:[sender tag]];
+             [self.collectionView reloadData];
+         }];
+    }
+    
+
 }
 
 -(IBAction)editProfilePic:(id)sender
@@ -226,11 +242,51 @@
 
 -(void)saveProfileImages
 {
+    self.activityCounter = 0;
     for (id pic in self.imagesList)
     {
         if(NO == [pic isKindOfClass:[NSString class]])
-            [[BUWebServicesManager sharedManager] uploadProfilePicture:pic];
+        {
+            [self.parentVC startActivityIndicator:YES];
+            self.activityCounter ++;
+            [self uploadProfilePicture:pic];
+        }
     }
+}
+
+
+-(void)uploadProfilePicture:(UIImage *)inImage
+{
+    NSData *imageData = UIImageJPEGRepresentation(inImage, 0.8);
+    NSDictionary *parameters = @{@"userid": [BUWebServicesManager sharedManager].userID};
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:@"http://app.thebureauapp.com/admin/multi_upload"
+       parameters:parameters
+constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
+     {
+         [formData appendPartWithFileData:imageData name:@"userfile" fileName:@"photo.jpg" mimeType:@"image/jpeg"];
+     }
+         progress:nil
+          success:^(NSURLSessionDataTask *operation, id responseObject)
+     {
+         self.activityCounter --;
+//         if(0 == self.activityCounter)
+         {
+             [self.parentVC stopActivityIndicator];
+         }
+
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(NSURLSessionDataTask *operation, NSError *error)
+     {
+         self.activityCounter --;
+//         if(0 == self.activityCounter)
+         {
+             [self.parentVC stopActivityIndicator];
+         }
+         NSLog(@"Error: %@", error);
+     }];
 }
 
 @end

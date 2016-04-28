@@ -99,86 +99,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TheBureau/ViewControllers/HomeViewController/CollectionViewCell/BUHomeImagePreviewCell.m"
-            timestampString = "483200259.057345"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "-setImageURL:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TheBureau/ViewControllers/Accounts Tab/Preferences/BUPrefHeritageCell.m"
-            timestampString = "483286299.659822"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "-getReligion:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__34-[BUPrefHeritageCell getReligion:]_block_invoke"
-                  moduleName = "TheBureau"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/accion/Skype%20Downloads/TheBureau/AppFizz/TheBureau/TheBureau/ViewControllers/Accounts%20Tab/Preferences/BUPrefHeritageCell.m"
-                  timestampString = "483443826.62591"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "207"
-                  endingLineNumber = "207"
-                  offsetFromSymbolStart = "798">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__34-[BUPrefHeritageCell getReligion:]_block_invoke"
-                  moduleName = "TheBureau"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/accion/Skype%20Downloads/TheBureau/AppFizz/TheBureau/TheBureau/ViewControllers/Accounts%20Tab/Preferences/BUPrefHeritageCell.m"
-                  timestampString = "483443826.626183"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "207"
-                  endingLineNumber = "207"
-                  offsetFromSymbolStart = "806">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TheBureau/ViewControllers/Connections Tab/BUHomeConnectionsVC.m"
-            timestampString = "483443638.343617"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "-showConnectionsSegment:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "TheBureau/ViewControllers/Connections Tab/BUHomeConnectionTabVC.m"
             timestampString = "483443785.58761"
             startingColumnNumber = "9223372036854775807"
@@ -196,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TheBureau/ViewControllers/Connections Tab/BUHomeConnectionsVC.m"
-            timestampString = "483443839.100214"
+            timestampString = "483449651.190877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "-showConnectionsSegment:"
             landmarkType = "5">
          </BreakpointContent>
@@ -211,13 +131,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TheBureau/ViewControllers/Connections Tab/BUHomeConnectionsVC.m"
-            timestampString = "483443840.237948"
+            filePath = "TheBureau/ViewControllers/Accounts Tab/Preferences/BUPrefHeritageCell.m"
+            timestampString = "483452162.459302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "-showConnectionsSegment:"
+            startingLineNumber = "402"
+            endingLineNumber = "402"
+            landmarkName = "-didItemSelected:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -227,13 +147,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TheBureau/ViewControllers/Connections Tab/BUHomeConnectionsVC.m"
-            timestampString = "483443841.487853"
+            filePath = "TheBureau/ViewControllers/Accounts Tab/Preferences/BUPrefHeritageCell.m"
+            timestampString = "483451889.526914"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "-showConnectionsSegment:"
+            startingLineNumber = "331"
+            endingLineNumber = "331"
+            landmarkName = "-didItemDeselectedSelected:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBureau/ViewControllers/Accounts Tab/ProfileEditing/BUProfileEditingVC.m"
+            timestampString = "483454348.59755"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "549"
+            endingLineNumber = "549"
+            landmarkName = "-showKeyboard"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheBureau/ViewControllers/Accounts Tab/ProfileEditing/CustomTableCell/BUProfileImageCell.m"
+            timestampString = "483473511.145566"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "-uploadProfilePicture:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
