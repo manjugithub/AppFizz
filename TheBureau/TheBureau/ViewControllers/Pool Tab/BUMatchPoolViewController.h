@@ -12,6 +12,7 @@
 @interface BUMatchPoolViewController : BUBaseViewController<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource,UICollisionBehaviorDelegate>
 
 @property(nonatomic, strong) IBOutlet UICollectionView *collectionView;
+@property(nonatomic, strong) IBOutlet UIButton *tapToContinueBtn;
 
 -(void)getMatchPoolFortheDay;
 @end

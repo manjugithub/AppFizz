@@ -186,6 +186,8 @@
     self.inchesMutableArray = [[NSMutableArray alloc]init];
     self.ageArray = [[NSMutableArray alloc]init];
     self.radiusArray = [[NSMutableArray alloc]init];
+    self.dietList = [[NSMutableArray alloc] init];
+    self.maritalStatusList = [[NSMutableArray alloc] init];
     // Do any additional setup after loading the view.
     _relationCircle = [NSArray arrayWithObjects:@"Self",@"Other",@"Both",nil];
 

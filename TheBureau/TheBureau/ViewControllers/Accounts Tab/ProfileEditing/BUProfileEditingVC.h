@@ -20,4 +20,6 @@
 
 -(void)showKeyboard;
 -(void)hideKeyBoard;
+-(void)hideKeyBoard123;
+-(void)showKeyboard123;
 @end

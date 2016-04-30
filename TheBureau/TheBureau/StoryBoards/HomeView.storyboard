@@ -102,7 +102,7 @@
                                     <outlet property="delegate" destination="XiU-Ep-I4p" id="LhZ-RW-QnZ"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHy-2a-Wtc">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHy-2a-Wtc">
                                 <rect key="frame" x="20" y="445" width="560" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="nsx-0C-gap"/>
@@ -143,11 +143,12 @@
                     <connections>
                         <outlet property="collectionView" destination="wGh-Ct-w4C" id="h2m-ct-Zjo"/>
                         <outlet property="pageControl" destination="1hm-Fv-Xcu" id="Cw3-2K-X2B"/>
+                        <outlet property="tapToContinueBtn" destination="xHy-2a-Wtc" id="AzJ-E3-S7d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xIM-3P-INx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-746" y="889"/>
+            <point key="canvasLocation" x="-826" y="878"/>
         </scene>
         <!--Image PreviewVC-->
         <scene sceneID="sCB-iL-Td9">

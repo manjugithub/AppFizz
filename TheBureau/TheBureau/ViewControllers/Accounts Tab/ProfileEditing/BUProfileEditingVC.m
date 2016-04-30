@@ -386,7 +386,7 @@
                                              
                                              [self.basicInfoDict setValue:([respDict valueForKey:@"profile_dob"] != nil && NO == [[respDict valueForKey:@"profile_dob"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"profile_dob"] : @""  forKey:@"profile_dob"];
                                              
-                                             [self.basicInfoDict setValue:([respDict valueForKey:@"gender"] != nil && NO == [[respDict valueForKey:@"gender"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"gender"] : @""  forKey:@"gender"];
+                                             [self.basicInfoDict setValue:([respDict valueForKey:@"profile_gender"] != nil && NO == [[respDict valueForKey:@"profile_gender"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@"profile_gender"] : @""  forKey:@"profile_gender"];
                                              
                                              [self.basicInfoDict setValue:([respDict valueForKey:@"current_zip_code"] != nil && NO == [[respDict valueForKey:@"current_zip_code"] isKindOfClass:[NSNull class]]) ?  [respDict valueForKey:@""] : @""  forKey:@"current_zip_code"];
                                              
@@ -544,7 +544,7 @@
      }];
 }
 
--(void)showKeyboard
+-(void)showKeyboard123
 {
     CGFloat constant = 0;
     constant = 280;
@@ -554,8 +554,17 @@
     
     [self.profileTableView scrollToRowAtIndexPath:[self.profileTableView indexPathForCell:[[self.profileTableView visibleCells] lastObject]] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
+-(void)showKeyboard
+{
+}
 
 -(void)hideKeyBoard
+{
+    CGFloat constant = 0;
+    self.tableBottomConstraint.constant = constant;
+    [self.profileTableView scrollToRowAtIndexPath:[self.profileTableView indexPathForCell:[[self.profileTableView visibleCells] lastObject]] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+-(void)hideKeyBoard123
 {
     CGFloat constant = 0;
     self.tableBottomConstraint.constant = constant;

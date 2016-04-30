@@ -164,7 +164,7 @@
         if([response isKindOfClass:[NSDictionary class]])
         {
             [self stopActivityIndicator];
-            NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"No matches found yet"];
+            NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[response valueForKey:@"response"]];
             [message addAttribute:NSFontAttributeName
                             value:[UIFont fontWithName:@"comfortaa" size:15]
                             range:NSMakeRange(0, message.length)];

@@ -30,7 +30,7 @@
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self endEditing:YES];
-    [self.parentVC hideKeyBoard];
+    [self.parentVC hideKeyBoard123];
 }
 
 -(void)showKeyBoard:(BOOL)inBool
@@ -62,7 +62,7 @@
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView;
 {
     textView.text = [textView.text stringByReplacingOccurrencesOfString:@"Your text here ..." withString:@""];
-    [self.parentVC performSelector:@selector(showKeyboard) withObject:nil afterDelay:1.0];
+    [self.parentVC performSelector:@selector(showKeyboard123) withObject:nil afterDelay:1.0];
     return YES;
 }
 
@@ -180,8 +180,9 @@
             NSLog(@"OK");
             NSLog(@"%@",picker.date);
             
+            
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            [dateFormat setDateFormat:@"HH:MM:ss"];
+            [dateFormat setDateFormat:@"HH:mm:ss"];
             NSString *dateString = [dateFormat stringFromDate:picker.date];
             self.tobLabel.text = dateString;
             [self.horoscopeDict setValue:dateString forKey:@"horoscope_tob"];

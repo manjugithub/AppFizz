@@ -22,13 +22,15 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self getMatchPoolFortheDay];
 }
 
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.tapToContinueBtn.hidden = YES;
+
+    [self getMatchPoolFortheDay];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -95,8 +97,7 @@ static NSString * const reuseIdentifier = @"Cell";
     parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
                    };
 
-//    parameters = @{@"userid": @"152"
-//                   };
+//    parameters = @{@"userid": @"300"};
 
     [self startActivityIndicator:YES];
     [[BUWebServicesManager sharedManager] matchPoolForTheDaywithParameters:parameters
@@ -106,7 +107,7 @@ static NSString * const reuseIdentifier = @"Cell";
         if([inResult valueForKey:@"msg"] != nil && [[inResult valueForKey:@"msg"] isEqualToString:@"Error"])
         {
             [self stopActivityIndicator];
-            NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"No matches found yet"];
+            NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[inResult valueForKey:@"response"]];
             [message addAttribute:NSFontAttributeName
                             value:[UIFont fontWithName:@"comfortaa" size:15]
                             range:NSMakeRange(0, message.length)];
@@ -117,6 +118,7 @@ static NSString * const reuseIdentifier = @"Cell";
         }
         else
         {
+            self.tapToContinueBtn.hidden = NO;
             self.datasourceList = [[NSMutableArray alloc] init];
             
             self.imagesList = [[NSMutableArray alloc] init];
