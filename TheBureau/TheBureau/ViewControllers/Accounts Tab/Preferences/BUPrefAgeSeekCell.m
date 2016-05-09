@@ -78,7 +78,8 @@
                 {
                     CGFloat offset = (self.leftViewLeftConstraint.constant / self.interval)+1;
                     NSInteger feet =  4 + (NSInteger)offset / 12;
-                    NSInteger inch =  (NSInteger)offset % 12 + 1;
+                    NSInteger inch =  (NSInteger)offset % 12 - 1;
+                    inch = inch < 0 ? 0 : inch;
                     self.minFeet = feet;
                     self.minInch = inch;
                     self.minValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
@@ -109,7 +110,8 @@
                 {
                     CGFloat offset = (((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+1);
                     NSInteger feet =  4 + (NSInteger)offset / 12;
-                    NSInteger inch =  (NSInteger)offset % 12 + 1;
+                    NSInteger inch =  (NSInteger)offset % 12 - 1;
+                    inch = inch < 0 ? 0 : inch;
                     self.maxFeet = feet;
                     self.maxInch = inch;
                     self.maxValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
@@ -204,6 +206,7 @@
                 CGFloat offset = (self.leftViewLeftConstraint.constant / self.interval)+1;
                 NSInteger feet =  4 + (NSInteger)offset / 12;
                 NSInteger inch =  (NSInteger)offset % 12 - 1;
+                inch = inch < 0 ? 0 : inch;
                 self.minFeet = feet;
                 self.minInch = inch;
                 self.minValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
@@ -229,7 +232,8 @@
             } completion:^(BOOL finished) {
                 CGFloat offset = (((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)+1);
                 NSInteger feet =  4 + (NSInteger)offset / 12;
-                NSInteger inch =  (NSInteger)offset % 12 + 1;
+                NSInteger inch =  (NSInteger)offset % 12 - 1;
+                inch = inch < 0 ? 0 : inch;
                 self.maxFeet = feet;
                 self.maxInch = inch;
                 self.maxValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
@@ -333,8 +337,14 @@
         NSInteger inch = [[self.preferenceDict valueForKey:@"height_from_inch"] intValue];
         self.minValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet,(long)inch];
     
+        self.minFeet = feet;
+        self.minInch = inch;
+
         NSInteger feet1 = [[self.preferenceDict valueForKey:@"height_to_feet"] intValue];
         NSInteger inch1 = [[self.preferenceDict valueForKey:@"height_to_inch"] intValue];
+        self.maxFeet = feet1;
+        self.maxInch = inch1;
+
         self.maxValueLabel.text = [NSString stringWithFormat:@"%ld' %ld\"",(long)feet1,(long)inch1];
 
         [self performSelector:@selector(updatePointersForHeight) withObject:nil afterDelay:0.0];

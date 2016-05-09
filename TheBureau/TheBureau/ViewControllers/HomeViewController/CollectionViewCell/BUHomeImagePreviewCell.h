@@ -14,5 +14,9 @@
 @property(nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property(nonatomic, strong) IBOutlet UIButton *deleteBtn;
 
+
+@property(nonatomic, assign) CGRect contentFrame;
+
 -(void)setImageURL:(NSString *)inImageURL;
+-(void)setFrameRect:(CGRect)inRect;
 @end

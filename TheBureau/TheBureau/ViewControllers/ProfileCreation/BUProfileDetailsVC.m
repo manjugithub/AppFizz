@@ -14,6 +14,7 @@
 
 @property(nonatomic,weak) IBOutlet UITextField *dateofbirthTF;
 @property(nonatomic,weak) IBOutlet UITextField *currentLocTF;
+@property(nonatomic,strong) BUProfileImageCell *profileImageCell;
 
 
 @property(nonatomic,weak) IBOutlet UIButton *neverMarriedBtn;
@@ -574,6 +575,7 @@ numberOfRowsInComponent:(NSInteger)component{
              {
                  [self stopActivityIndicator];
                  
+                 
                  if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
                  {
                      UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
@@ -684,6 +686,8 @@ numberOfRowsInComponent:(NSInteger)component{
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileImageCell"];
             [(BUProfileImageCell *)cell setProfileImageList:[NSArray array]];
+            [(BUProfileImageCell *)cell setParentVC:self];
+            [(BUProfileImageCell *)cell setIsProfileCreation:YES];
             break;
         }
         default:

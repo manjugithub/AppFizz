@@ -82,6 +82,11 @@
     
     [self.collectionView reloadData];
     
+    if(self.isProfileCreation)
+    {
+        [self saveProfileImages];
+    }
+    
 }
 
 -(void)setProfileImageDict:(NSMutableDictionary *)imageDict;

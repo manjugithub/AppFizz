@@ -41,6 +41,7 @@ static NSString * const reuseIdentifier = @"Cell";
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
     BUPoolProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUPoolProfileDetailsVC"];
     vc.datasourceList = [[NSMutableDictionary alloc] initWithDictionary:[self.datasourceList objectAtIndex:self.pageControl.currentPage]];
+    [vc cookupDataSource];
     [self.tabBarController.navigationController pushViewController:vc animated:NO];
     
 }
@@ -76,6 +77,8 @@ static NSString * const reuseIdentifier = @"Cell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BUHomeImagePreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BUHomeImagePreviewCell"
                                                                              forIndexPath:indexPath];
+    
+    [cell setFrameRect:self.collectionView.frame];
     [cell setImageURL:[self.imagesList objectAtIndex:indexPath.row]];
     return cell;
 }
@@ -97,7 +100,7 @@ static NSString * const reuseIdentifier = @"Cell";
     parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
                    };
 
-//    parameters = @{@"userid": @"300"};
+//    parameters = @{@"userid": @"327"};
 
     [self startActivityIndicator:YES];
     [[BUWebServicesManager sharedManager] matchPoolForTheDaywithParameters:parameters
@@ -130,6 +133,11 @@ static NSString * const reuseIdentifier = @"Cell";
                     if([[[self.datasourceList lastObject] valueForKey:@"img_url"] count] > 0)
                     {
                         [self.imagesList addObject:[[[self.datasourceList lastObject] valueForKey:@"img_url"] firstObject]];
+                    }
+                    else
+                    {
+                        [self.imagesList addObject:@"https://camo.githubusercontent.com/9ba96d7bcaa2481caa19be858a58f180ef236c7b/687474703a2f2f692e696d6775722e636f6d2f7171584a3246442e6a7067"];
+
                     }
                 }
             }

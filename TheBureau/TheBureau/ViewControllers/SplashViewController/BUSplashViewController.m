@@ -19,7 +19,7 @@
 #import "BUProfileRematchVC.h"
 #import "BUContactListViewController.h"
 #import "Localytics.h"
-
+#import "BULayerHelper.h"
 @interface BUSplashViewController ()
 {
     
@@ -55,20 +55,42 @@
 -(void)setSplashTimer
 {
     [splashTimer invalidate];
-    
-    
-//    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
-//    BUProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDetailsVC"];
-//    [self.navigationController pushViewController:vc animated:YES];
 
-    if(0)//(nil != [BUWebServicesManager sharedManager].userID)
+    [self performSegueWithIdentifier:@"main" sender:self];
+    return;
+    
+    if(nil != [BUWebServicesManager sharedManager].userID)
     {
-        [Localytics tagEvent:@"Login Successful"];
-        [Localytics setCustomerId:[BUWebServicesManager sharedManager].userID];;
-
         UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
         BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
         [self.navigationController pushViewController:vc animated:YES];
+
+        
+        [[BULayerHelper sharedHelper] setCurrentUserID:[BUWebServicesManager sharedManager].userID];
+        
+        [self startActivityIndicator:YES];
+        
+        [[BULayerHelper sharedHelper] authenticateLayerWithsuccessBlock:^(id response, NSError *error)
+         {
+             [Localytics tagEvent:@"Login Successful"];
+             [Localytics setCustomerId:[BUWebServicesManager sharedManager].userID];
+             
+         }
+                                                           failureBlock:^(id response, NSError *error)
+         {
+             NSLog(@"Failed Authenticating Layer Client with error:%@", error);
+             [self stopActivityIndicator];
+             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Failed Authenticating Layer Client with error:%@", error]];
+             [message addAttribute:NSFontAttributeName
+                             value:[UIFont fontWithName:@"comfortaa" size:15]
+                             range:NSMakeRange(0, message.length)];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+             [alertController setValue:message forKey:@"attributedTitle"];
+             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+             [self presentViewController:alertController animated:YES completion:nil];
+             
+         }];
+        
     }
     else
     {

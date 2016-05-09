@@ -20,12 +20,19 @@
 //    self.overLayView.contentMode = UIViewContentModeScaleToFill;
 //    [self.contentView insertSubview:self.overLayView belowSubview:self.profileImgView];
     
-    self.profileImgView.contentMode = UIViewContentModeScaleAspectFit;
+//    self.profileImgView.contentMode = UIViewContentModeScaleAspectFit;
+}
+
+-(void)setFrameRect:(CGRect)inRect
+{
+    NSLog(@"colection size ==> %@",NSStringFromCGRect(inRect));
+    self.contentView.frame = inRect;
+    self.profileImgView.frame = inRect;
 }
 
 -(void)layoutSubviews
 {
-    self.overLayView.frame = self.profileImgView.bounds;
+//    NSLog(@"colection size ==> %@",NSStringFromCGRect(self.contentView.bounds));
 }
 
 -(void)setImageURL:(NSString *)inImageURL;
@@ -36,6 +43,7 @@
     [self.profileImgView sd_setImageWithURL:[NSURL URLWithString:inImageURL]
                                   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL)
      {
+
                                       [self.activityIndicatorView stopAnimating];
                                       self.activityIndicatorView.hidden = YES;
          

@@ -12,4 +12,5 @@
 
 @property(nonatomic, strong) IBOutlet UICollectionView *collectionView;
 @property(nonatomic, strong) NSMutableDictionary *datasourceList;
+-(void)cookupDataSource;
 @end

@@ -122,6 +122,7 @@
             cell = [tableView dequeueReusableCellWithIdentifier:@"BUProfileImageCell"];
             [(BUProfileImageCell *)cell setProfileImageDict:self.profileImageDict];
             self.profileImageCell = (BUProfileImageCell *)cell;
+            self.profileImageCell.isProfileCreation = NO;
             break;
         }
         case 1:

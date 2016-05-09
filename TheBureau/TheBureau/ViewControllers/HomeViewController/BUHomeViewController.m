@@ -341,11 +341,18 @@
 
 -(IBAction)match:(id)sender
 {
+//    NSDictionary *parameters = nil;
+//    parameters = @{@"userid1": [BUWebServicesManager sharedManager].userID,
+//                   @"userid2": self.matchUserID
+//                   };
+
     NSDictionary *parameters = nil;
-    parameters = @{@"userid1": [BUWebServicesManager sharedManager].userID,
-                   @"userid2": self.matchUserID
+    parameters = @{@"passed_by": [BUWebServicesManager sharedManager].userID,
+                   @"userid_passed":self.matchUserID,
+                   @"action_taken": @"Liked"
                    };
     
+
     [self startActivityIndicator:YES];
     [self matchWithparameters:parameters];
 
@@ -353,7 +360,7 @@
 -(void)matchWithparameters:(NSDictionary *)inParams;
 {
     
-    NSString *baseURL = @"http://app.thebureauapp.com/admin/isMatched";
+    NSString *baseURL = @"http://app.thebureauapp.com/admin/pass_like_matches";
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
        parameters:inParams
@@ -418,7 +425,7 @@ constructingBodyWithBlock:nil
 
     
     
-    NSString *baseURL = @"http://app.thebureauapp.com/admin/passMatches";
+    NSString *baseURL = @"http://app.thebureauapp.com/admin/pass_like_matches";
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
        parameters:parameters

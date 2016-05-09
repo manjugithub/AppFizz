@@ -9,7 +9,7 @@
 #import "BUAccountCreationVC.h"
 #import "BUProfileDetailsVC.h"
 #import "UIView+FLKAutoLayout.h"
-
+#import "BUProfileImageCell.h"
 @interface BUAccountCreationVC ()<UIActionSheetDelegate>
 
 

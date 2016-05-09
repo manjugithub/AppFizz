@@ -2152,7 +2152,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "0c2a688b-cfca-42ab-9822-8489125696fe";
+				PROVISIONING_PROFILE = "0f9ff415-b7d1-4bfa-a98f-6897a68c9c0c";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2192,7 +2192,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "0c2a688b-cfca-42ab-9822-8489125696fe";
+				PROVISIONING_PROFILE = "0f9ff415-b7d1-4bfa-a98f-6897a68c9c0c";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -2221,8 +2221,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bureau.bureauapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c2a688b-cfca-42ab-9822-8489125696fe";
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				PROVISIONING_PROFILE = "0f9ff415-b7d1-4bfa-a98f-6897a68c9c0c";
+				VALID_ARCHS = "arm64 armv7 armv7s arm32";
 			};
 			name = Debug;
 		};
@@ -2248,8 +2248,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bureau.bureauapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c2a688b-cfca-42ab-9822-8489125696fe";
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				PROVISIONING_PROFILE = "0f9ff415-b7d1-4bfa-a98f-6897a68c9c0c";
+				VALID_ARCHS = "arm64 armv7 armv7s arm32";
 			};
 			name = Release;
 		};

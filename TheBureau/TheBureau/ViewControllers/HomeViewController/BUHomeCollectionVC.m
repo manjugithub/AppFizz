@@ -20,9 +20,9 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.collectionView.layer.borderColor = [[UIColor redColor] CGColor];
-    self.collectionView.layer.borderWidth = 1.0;
-    self.collectionView.layer.cornerRadius = 5.0;
+//    self.collectionView.layer.borderColor = [[UIColor redColor] CGColor];
+//    self.collectionView.layer.borderWidth = 1.0;
+//    self.collectionView.layer.cornerRadius = 5.0;
     
 }
 
@@ -50,6 +50,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
+//    NSLog(@"colection size ==> %@",NSStringFromCGSize(self.collectionView.frame.size));
     return self.collectionView.frame.size;
 }
 
@@ -65,6 +66,7 @@ static NSString * const reuseIdentifier = @"Cell";
     BUHomeImagePreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BUHomeImagePreviewCell"
                                                                              forIndexPath:indexPath];
     
+    [cell setFrameRect:self.collectionView.frame];
     [cell setImageURL:[self.imagesList objectAtIndex:indexPath.row]];
     return cell;
 }

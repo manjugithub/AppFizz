@@ -16,7 +16,7 @@
 
 @property(nonatomic, strong) NSMutableArray *imagesList;
 
-@property(nonatomic, assign) BOOL isEditing;
+@property(nonatomic, assign) BOOL isEditing,isProfileCreation;
 @property(nonatomic, assign) int activityCounter;
 
 

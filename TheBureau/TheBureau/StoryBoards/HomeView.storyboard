@@ -583,7 +583,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gE-nI-zlV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="250" y="870"/>
+            <point key="canvasLocation" x="310" y="835"/>
         </scene>
         <!--Home Tabbar Controller-->
         <scene sceneID="kOq-kL-5IN">
@@ -932,7 +932,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="68" id="Xf9-uc-8P4"/>
                                 </constraints>
-                                <string key="text">All sales are final, plase view out Terms and Conditions for product details. you can also visit our website to check if we are running any special promotionals</string>
+                                <string key="text">All sales are final, please view out Terms and Conditions for product details. you can also visit our website to check if we are running any special promotionals</string>
                                 <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>

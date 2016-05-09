@@ -30,7 +30,7 @@
 -(void)layoutSubviews
 {
     NSLog(@"%@",NSStringFromCGRect(self.contentView.bounds));
-    self.imgCollectionVC.view.frame = self.bounds;
+    self.imgCollectionVC.view.frame = self.contentView.bounds;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

@@ -34,8 +34,9 @@ static NSString * const reuseIdentifier = @"Cell";
     self.navigationItem.title = @"TheBureau";
     self.navigationItem.hidesBackButton = NO;
     
-    [self cookupDataSource];
 }
+
+
 
 -(void)cookupDataSource
 {
