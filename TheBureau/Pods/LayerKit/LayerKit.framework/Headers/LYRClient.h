@@ -13,9 +13,11 @@
 #import "LYRMessage.h"
 #import "LYRMessagePart.h"
 #import "LYRAnnouncement.h"
+#import "LYRIdentity.h"
 #import "LYRConstants.h"
 #import "LYRPolicy.h"
 #import "LYRProgress.h"
+#import "LYRSession.h"
 
 @class LYRClient, LYRQuery, LYRQueryController, LYRObjectChange;
 
@@ -37,6 +39,11 @@ extern NSString * _Nonnull const LYRClientAuthenticatedUserIDUserInfoKey;
  @abstract Posted when a client has deauthenticated.
  */
 extern NSString * _Nonnull const LYRClientDidDeauthenticateNotification;
+
+/**
+ @abstract Posted when the client has switched sessions.
+ */
+extern NSString * _Nonnull const LYRClientDidSwitchSessionNotification;
 
 /**
  @abstract Posted when a client is beginning a synchronization operation.
@@ -106,24 +113,6 @@ extern NSString * _Nonnull const LYRClientSynchronizationProgressUserInfoKey;
 extern NSString * _Nonnull const LYRClientOperationErrorUserInfoKey;
 
 /**
- @abstract Posted when a conversation object receives a change in typing indicator state.
- @discussion The `object` of the `NSNotification` is the `LYRConversation` that received the typing indicator.
- */
-extern NSString * _Nonnull const LYRConversationDidReceiveTypingIndicatorNotification;
-
-/**
- @abstract A key into the user info of a `LYRConversationDidReceiveTypingIndicatorNotification` notification whose value is
- a `NSNumber` containing a unsigned integer whose value corresponds to a `LYRTypingIndicator`.
- */
-extern NSString * _Nonnull const LYRTypingIndicatorValueUserInfoKey;
-
-/**
- @abstract A key into the user info of a `LYRConversationDidReceiveTypingIndicatorNotification` notification whose value is
- a `NSString` specifying the participant who changed typing state.
- */
-extern NSString * _Nonnull const LYRTypingIndicatorParticipantUserInfoKey;
-
-/**
  @abstract Posted when the client will begin transfering content.
  */
 extern NSString * _Nonnull const LYRClientWillBeginContentTransferNotification;
@@ -154,6 +143,34 @@ extern NSString * _Nonnull const LYRClientContentTransferObjectUserInfoKey;
  that tracks the transfer progress of object's content.
  */
 extern NSString * _Nonnull const LYRClientContentTransferProgressUserInfoKey;
+
+
+///-----------------------------
+/// @name Initialization Options
+///-----------------------------
+
+/**
+ @abstract A key into the `options` of client initialization method `+clientWithID:options:`
+ that sets the client synchronization behavior whose value should be one of the
+ `LYRClientSynchronizationPolicy`'s enum values.
+ @see LYRClientSynchronizationPolicy enum.
+ */
+extern NSString * _Nonnull const LYRClientOptionSynchronizationPolicy;
+
+/**
+ @abstract A key into the `options` of client initialization method `+clientWithID:options:`
+ that should be used in conjuction with `LYRClientOptionSynchronizationPolicy : @(LYRClientSynchronizationPolicyMessageCount)`.
+ @see LYRClientSynchronizationPolicy enum.
+ */
+extern NSString * _Nonnull const LYRClientOptionSynchronizationMessageCount;
+
+/**
+ @abstract A key into the `options` of client initialization method `+clientWithID:options:`
+ that configures the client deauthentication behavior whose value should be one of the
+ `LYRClientDeauthenticationPolicy`'s enum values.
+ @see LYRClientDeauthenticationPolicy enum.
+ */
+extern NSString * _Nonnull const LYRClientOptionDeauthenticationPolicy;
 
 ///----------------------
 /// @name Client Delegate
@@ -272,12 +289,13 @@ extern NSString * _Nonnull const LYRClientContentTransferProgressUserInfoKey;
 /**
  @abstract Creates and returns a new Layer client instance.
  @param appID An app id url obtained from the Layer Developer Portal. https://developer.layer.com/projects
+ @param options Options to the client initialization. @see LYRClientOptionSynchronizationPolicy.
  @return Returns a newly created Layer client object, or `nil` in the case the client cannot not be initialized due to file protection.
  @warning Throws `NSInternalInconsistencyException` when creating another Layer Client instance with the same `appID` value under the same process (application).
  However multiple instances of Layer Client with the same `appID` are allowed if running the code under Unit Tests.  Make sure to initialize the client when the 
  file access is available if the app uses NSFileProtection.
  */
-+ (nullable instancetype)clientWithAppID:(nonnull NSURL *)appID;
++ (nullable instancetype)clientWithAppID:(nonnull NSURL *)appID options:(nullable NSDictionary<NSString *, id> *)options;
 
 /**
  @abstract The object that acts as the delegate of the receiving client.
@@ -316,16 +334,55 @@ extern NSString * _Nonnull const LYRClientContentTransferProgressUserInfoKey;
  */
 @property (nonatomic, readonly) BOOL isConnected;
 
+///--------------
+/// @name Session
+///--------------
+
+/**
+ @abstract The current session for the client.
+ @discussion When a new `LYRClient` instance is initialized, it will check for an existing, persisted session. If a session exists, it will resume that session. If not, a new one will be created.
+ */
+@property (nonatomic, readonly, nonnull) LYRSession *currentSession;
+
+/**
+ @abstract The set of sessions that can be used with the client.
+ @discussion `LYRClient` instances can maintain multiple sessions at any given time. Each session is tied to a single, distinct, authenticated user.
+ */
+@property (nonatomic, readonly, nonnull) NSOrderedSet<LYRSession *> *sessions;
+
+/**
+ @abstract Creates and returns a new `LYRSession` object with the supplied identifier;
+ @param identifier The identifier to be used for the session. If an identifier is not supplied, one will be created.
+ @discussion Applications can create an unlimited number of sessions. If a session already exists with the supplied identitifer, the method will return nil and the existing seesion can be found under the `NSRecoveryAttempterErrorKey` in the userInfo dictionary of the error.
+ */
+- (nullable LYRSession *)newSessionWithIdentifier:(nullable NSString *)identifier error:(NSError  * _Nullable * _Nullable)error;
+
+/**
+ @abstract Informs the client that it should switch to the supplied session.
+ @param session The `LYRSession` instance the client should switch to.
+ @param error An error object describing a failure that has occured.
+ @discussion If a client is connected and authenticated during a call to `switchSession:error:`, the client will immediately deauthenticate. If the client has previously been authenticated with the supplied session, the client will restore its authentication state. 
+ */
+- (BOOL)switchToSession:(nonnull LYRSession *)session error:(NSError * _Nullable * _Nullable)error;
+
+/**
+ @abstract Destoys an existing `LYRSession` object;
+ @param session The session object that should be destroyed.
+ @param error An error object describing a failure that has occured.
+ @discussion If a client is authenticated during a call to `destroySession:error:`, the client will immediately deauthenticate.
+ */
+- (BOOL)destroySession:(nonnull LYRSession *)session error:(NSError * _Nullable * _Nullable)error;
+
 ///--------------------------
 /// @name User Authentication
 ///--------------------------
 
 /**
- @abstract Returns a string object specifying the user ID of the currently authenticated user or `nil` if the client is not authenticated.
+ @abstract Returns a `LYRIdentity` object specifying the user ID of the currently authenticated user or `nil` if the client is not authenticated.
  @discussion A client is considered authenticated if it has previously established identity via the submission of an identity token
  and the token has not yet expired. The Layer server may at any time issue an authentication challenge and deauthenticate the client.
-*/
-@property (nonatomic, readonly, nullable) NSString *authenticatedUserID;
+ */
+@property (nonatomic, readonly, nullable) LYRIdentity *authenticatedUser;
 
 /**
  @abstract Requests an authentication nonce from Layer.
@@ -346,15 +403,15 @@ extern NSString * _Nonnull const LYRClientContentTransferProgressUserInfoKey;
  Identity Provider on behalf of your application. The Identity Token is a JSON Web Signature (JWS) string that encodes a cryptographically signed set of claims
  about the identity of a Layer client. An Identity Token must be obtained from your provider via an application defined mechanism (most commonly a JSON over HTTP
  request). Once an Identity Token has been obtained, it must be submitted to Layer via this method in ordr to authenticate the client and begin utilizing communication
- services. Upon successful authentication, the client remains in an authenticated state until explicitly deauthenticated by a call to `deauthenticateWithCompletion:` or
+ services. If and identity token is submitted with a userID for which the client already has an authenticated session, that session will be resumed. Upon successful authentication, the client remains in an authenticated state until explicitly deauthenticated by a call to `deauthenticateWithCompletion:` or
  via a server-issued authentication challenge.
  @param identityToken A string object encoding a JSON Web Signature that asserts a set of claims about the identity of the client. Must be obtained from a remote identity
  provider and include a nonce value that was previously obtained by a call to `requestAuthenticationNonceWithCompletion:` or via a server initiated authentication challenge.
- @param completion A block to be called upon completion of the asynchronous request for authentication. The block takes two parameters: a string encoding the remote user ID that
+ @param completion A block to be called upon completion of the asynchronous request for authentication. The block takes two parameters: an `LYRIdentity` object with the remote user ID that
  was authenticated (or `nil` if authentication was unsuccessful) and an error object that upon failure describes the nature of the failure.
  @see http://tools.ietf.org/html/draft-ietf-jose-json-web-signature-25
  */
-- (void)authenticateWithIdentityToken:(nonnull NSString *)identityToken completion:(nonnull void (^)(NSString * _Nullable authenticatedUserID, NSError * _Nullable error))completion;
+- (void)authenticateWithIdentityToken:(nonnull NSString *)identityToken completion:(nonnull void (^)(LYRIdentity * _Nullable authenticatedUser, NSError * _Nullable error))completion;
 
 /**
  @abstract Deauthenticates the client, disposing of any previously established user identity and disallowing access to the Layer communication services until a new identity is established. All existing messaging data is purged from the database.
@@ -379,7 +436,7 @@ extern NSString * _Nonnull const LYRClientContentTransferProgressUserInfoKey;
  @abstract Inspects an incoming push notification and synchronizes the client if it was sent by Layer.
  @param userInfo The user info dictionary received from the UIApplicaton delegate method application:didReceiveRemoteNotification:fetchCompletionHandler:'s `userInfo` parameter.
  @param completion The block that will be called once Layer has successfully downloaded new data associated with the `userInfo` dictionary passed in. It is your responsibility to call the UIApplication delegate method's fetch completion handler with an appropriate fetch result for the given objects. Note that this block is only called if the method returns `YES`.
- @return A Boolean value that determines whether the push was handled. Will be `NO` if this was not a push notification meant for Layer and the completion block will not be called.
+ @return A Boolean value that determines whether the push was handled. Will be `NO` if this was not a push notification meant for Layer or if called while the application is active, and the completion block will not be called.
  @discussion The completion block will either return an error or one or both of the resulting objects depending on the information provided in the userInfo parameter.  In valid cases, just `message` is returned for an announcement payload, and both `message` and `conversation` for a message payload.
  @note The receiver must be authenticated else a warning will be logged and `NO` will be returned. The completion is only invoked if the return value is `YES`.
  */
@@ -391,7 +448,7 @@ extern NSString * _Nonnull const LYRClientContentTransferProgressUserInfoKey;
 
 /**
  @abstract Creates a new Conversation with the given set of participants.
- @discussion This method will create a new `LYRConversation` instance, creating new message instances with a new `LYRConversation` object instance and sending them will also result in creation of a new conversation for other participants. If you wish to ensure that only one Conversation exists for a set of participants then set the value for the `LYRConversationOptionsDistinctByParticipantsKey` key to true in the `options` parameter.
+ @discussion This method will create a new `LYRConversation` instance. Creating new message instances with a new `LYRConversation` object instance and sending them will also result in creation of a new conversation for other participants. An attempt to create a 1:1 conversation with a blocked participant will result in an error. If you wish to ensure that only one Conversation exists for a set of participants then set the value for the `LYRConversationOptionsDistinctByParticipantsKey` key to true in the `options` parameter.
  @param participants A set of participants with which to initialize the new Conversation.
  @param options A dictionary of options to apply to the conversation.
  @param error A pointer to an error that upon failure is set to an error object describing why execution failed.
@@ -465,6 +522,29 @@ extern NSString * _Nonnull const LYRClientContentTransferProgressUserInfoKey;
 - (BOOL)markMessagesAsRead:(nonnull NSSet<LYRMessage *> *)messages error:(NSError * _Nullable * _Nullable)error;
 
 ///---------------
+/// @name Identity
+///---------------
+
+/**
+ @abstract Follows a set of userIDs and creates local queryable identities.
+ @param userIDs A set of userIDs to be followed.
+ @param error A pointer to an error object that, upon failure, will be set to an error describing why the userIDs could not be followed.
+ @return A Boolean value indicating if the operation of following userIDs was successful.
+ @discussion Successfully following a set of userIDs will post queryable `LYRIdentity` objects, with initial state `followed` equalling `NO`.  If any identity information
+ is available on the Layer platform it will be synchronized to the client when possible.
+ */
+- (BOOL)followUserIDs:(nonnull NSSet<NSString *> *)userIDs error:(NSError * _Nullable * _Nullable)error;
+
+/**
+ @abstract Unfollows a set of userIDs.
+ @param userIDs A set of userIDs to be unfollowed.
+ @param error A pointer to an error object that, upon failure, will be set to an error describing why the userIDs could not be unfollowed.
+ @return A Boolean value indicating if the operation of unfollowing userIDs was successful.
+ @discussion userIDs that are conversation participants cannot be explicity unfollowed, and any attempt to do so will be ignored.
+ */
+- (BOOL)unfollowUserIDs:(nonnull NSSet<NSString *> *)userIDs error:(NSError * _Nullable * _Nullable)error;
+
+///---------------
 /// @name Policies
 ///---------------
 
@@ -483,11 +563,12 @@ extern NSString * _Nonnull const LYRClientContentTransferProgressUserInfoKey;
 - (BOOL)validatePolicy:(nonnull LYRPolicy *)policy error:(NSError * _Nullable * _Nullable)error;
 
 /**
- @abstract Adds the given policy to the receiver.
- @param policy The policy to be added to the client.
+ @abstract Adds the given policies to the receiver.
+ @param policies The set of policies to be added to the client.
  @param error A pointer to an error that upon failure is set to an error object describing the policy could not be added.
+ @return A Boolean value that indicates if the given policies were added.
  */
-- (BOOL)addPolicy:(nonnull LYRPolicy *)policy error:(NSError * _Nullable * _Nullable)error;
+- (BOOL)addPolicies:(nonnull NSSet<LYRPolicy *> *)policies error:(NSError * _Nullable * _Nullable)error;
 
 /**
  @abstract Inserts the given policy in the receiver's policy set at the specified index.
@@ -498,12 +579,12 @@ extern NSString * _Nonnull const LYRClientContentTransferProgressUserInfoKey;
 - (BOOL)insertPolicy:(nonnull LYRPolicy *)policy atIndex:(NSUInteger)index error:(NSError * _Nullable * _Nullable)error;
 
 /**
- @abstract Removes the specified policy from the receiver.
- @param policy The policy to be removed from the client.
+ @abstract Removes the specified policies from the receiver.
+ @param policy The set of polices to be removed from the client.
  @param error A pointer to an error that upon failure is set to an error object describing the policy could not be added.
- @return A Boolean value that indicates if the given policy was removed.
+ @return A Boolean value that indicates if the given policies were removed.
  */
-- (BOOL)removePolicy:(nonnull LYRPolicy *)policy error:(NSError * _Nullable * _Nullable)error;
+- (BOOL)removePolicies:(nonnull NSSet<LYRPolicy *> *)policies error:(NSError * _Nullable * _Nullable)error;
 
 ///---------------------------------
 /// @name Managing Content Transfers
@@ -553,6 +634,20 @@ extern NSString * _Nonnull const LYRClientContentTransferProgressUserInfoKey;
  */
 @property (nonatomic) LYRSize autodownloadMaximumContentSize;
 
+///-------------------------------
+/// @name Synchronization Policies
+///-------------------------------
+
+/**
+ @abstract The synchronization policy the client was initialized with.
+ */
+@property (nonatomic, readonly) LYRClientSynchronizationPolicy synchronizationPolicy;
+
+/**
+ @abstract The synchronization policy options the client was initialized with.
+ */
+@property (nonatomic, readonly, nonnull) NSDictionary *synchronizationPolicyOptions;
+
 ///---------------------
 /// @name Helper Methods
 ///---------------------
@@ -590,3 +685,19 @@ extern NSString * _Nonnull const LYRClientContentTransferProgressUserInfoKey;
 - (void)setLogLevel:(LYRLogLevel)level forComponent:(LYRLogComponent)component;
 
 @end
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+@interface LYRClient (Deprecated)
+
+// DEPRECATED: Use `LYRClient`'s `+clientWithAppID:options:` instead.
++ (nullable instancetype)clientWithAppID:(nonnull NSURL *)appID;
+
+// DEPRECATED: Use `LYRClient`'s `-addPolicies:error:` instead.
+- (BOOL)addPolicy:(nonnull LYRPolicy *)policy error:(NSError * _Nullable * _Nullable)error;
+
+// DEPRECATED: Use `LYRClient`'s `-removePolicies:error:` instead.
+- (BOOL)removePolicy:(nonnull LYRPolicy *)policy error:(NSError * _Nullable * _Nullable)error;
+
+@end
+

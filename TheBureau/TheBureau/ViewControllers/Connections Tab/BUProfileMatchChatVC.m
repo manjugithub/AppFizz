@@ -58,7 +58,7 @@ static NSDateFormatter *LQSDateFormatter()
 {
     
     LYRQuery *query = [LYRQuery queryWithQueryableClass:[LYRConversation class]];
-    query.predicate = [LYRPredicate predicateWithProperty:@"participants" predicateOperator:LYRPredicateOperatorIsIn value:self.layerClient.authenticatedUserID];
+    query.predicate = [LYRPredicate predicateWithProperty:@"participants" predicateOperator:LYRPredicateOperatorIsIn value:self.layerClient.authenticatedUser];
     query.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"lastMessage.receivedAt" ascending:NO]];
     
     
@@ -142,7 +142,7 @@ static NSDateFormatter *LQSDateFormatter()
 {
     LYRConversation *conversation = [self.queryController objectAtIndexPath:indexPath];
     for (NSString *participant in conversation.participants) {
-        if (![participant isEqualToString:self.layerClient.authenticatedUserID] ) {
+        if (![participant isEqualToString:self.layerClient.authenticatedUser.userID] ) {
             [[BULayerHelper sharedHelper] setParticipantUserID:participant];
             
         }
@@ -250,7 +250,7 @@ static NSDateFormatter *LQSDateFormatter()
     {
         LYRConversation *conversation = [self.queryController objectAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
         for (NSString *participant in conversation.participants) {
-            if (![participant isEqualToString:self.layerClient.authenticatedUserID] )
+            if (![participant isEqualToString:self.layerClient.authenticatedUser.userID] )
             {
                 
                 if(1)// ([participant rangeOfCharacterFromSet:[NSCharacterSet letterCharacterSet]].location == NSNotFound)

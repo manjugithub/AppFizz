@@ -120,7 +120,7 @@
     NSString *announcementMessage = [[NSString alloc]initWithData:messagePart.data encoding:NSUTF8StringEncoding];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     [cell updateDate:[NSString stringWithFormat:@"%@",[dateFormat stringFromDate:announcementsInfo.sentAt]]];
-    [cell updateSenderName:announcementsInfo.sender.name];
+    [cell updateSenderName:announcementsInfo.sender.firstName];
     [cell updateMessageLabel:announcementMessage];
     
     if (announcementsInfo.isUnread) {

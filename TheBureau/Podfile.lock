@@ -1,20 +1,20 @@
 PODS:
-  - Crashlytics (3.7.0):
+  - Crashlytics (3.7.1):
     - Fabric (~> 1.6.3)
-  - Digits (1.15.1):
-    - TwitterCore (= 1.15.1)
-  - Fabric (1.6.6)
-  - LayerKit (0.19.3)
+  - Digits (2.2.0):
+    - TwitterCore (= 2.2.0)
+  - Fabric (1.6.7)
+  - LayerKit (0.21.1)
   - Localytics (3.8.0)
   - MBProgressHUD (0.9.2)
-  - SDWebImage (3.7.5):
-    - SDWebImage/Core (= 3.7.5)
-  - SDWebImage/Core (3.7.5)
-  - Smooch (4.0.2)
-  - TwitterCore (1.15.1):
+  - SDWebImage (3.8.1):
+    - SDWebImage/Core (= 3.8.1)
+  - SDWebImage/Core (3.8.1)
+  - Smooch (4.2.2)
+  - TwitterCore (2.2.0):
     - Fabric
-  - TwitterKit (1.15.1):
-    - TwitterCore (= 1.15.1)
+  - TwitterKit (2.2.0):
+    - TwitterCore (= 2.2.0)
 
 DEPENDENCIES:
   - Crashlytics
@@ -29,15 +29,15 @@ DEPENDENCIES:
   - TwitterKit
 
 SPEC CHECKSUMS:
-  Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
-  Digits: 369c517143ab4f9f35d77628540493a2042f8cc2
-  Fabric: 1abc1e59f11fa39ede6f690ef7309d8563e3ec59
-  LayerKit: 6918e2b204f63bab38e6284fe212713b7294e317
+  Crashlytics: 3cdd4c9655be68032a0cf0379e0fb5ef6af22cad
+  Digits: 335c479574eb2bbc50be326c1daf505b68d87135
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
+  LayerKit: 7d77cfa591a3b82e76dfa1c7b477d90ccd87feb0
   Localytics: 8fd8455e92c5d5d507d1302e704e7db5ca2a33bf
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
-  Smooch: 14c51841a0889b34f29ca54312275506363ce85a
-  TwitterCore: 12983a7464e34afbbf18881347898a9db526ac71
-  TwitterKit: b5821570887ec2d77650fa232eaec175665dc443
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  Smooch: eac65a9b9e888e3325fde725ce1a6a1ec2137dfc
+  TwitterCore: 115527630bb2986954adc928b8c895a92bcd57e5
+  TwitterKit: 2c64ec342a6261ae6bab565bad85dcbbfd3888b7
 
 COCOAPODS: 0.39.0

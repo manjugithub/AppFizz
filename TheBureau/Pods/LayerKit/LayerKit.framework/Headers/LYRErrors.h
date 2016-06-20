@@ -29,6 +29,7 @@ typedef NS_ENUM(NSUInteger, LYRError) {
     LYRErrorDistinctConversationExists              = 1013,
     LYRErrorParticipantNotAParticipantInConversation= 1014,
     LYRErrorDistinctDeletedConversationExists       = 1015,
+    LYRErrorParticipantsContainsBlockedUser         = 1016,
     
     // Validation Errors
     LYRErrorInvalidKey                              = 2000,
@@ -50,6 +51,7 @@ typedef NS_ENUM(NSUInteger, LYRClientError) {
     LYRClientErrorConnectionTimeout                 = 6003,
     LYRClientErrorAsyncTimeout                      = 6004,
     LYRClientErrorInvalidIdentifier                 = 6005,
+    LYRClientErrorNotConnected                      = 6006,
     
     // Crypto Configuration Errors
     LYRClientErrorKeyPairNotFound                   = 7000,
@@ -59,15 +61,20 @@ typedef NS_ENUM(NSUInteger, LYRClientError) {
     // Authentication
     LYRClientErrorNotAuthenticated                  = 7004,
     LYRClientErrorAlreadyAuthenticated              = 7005,
+    LYRClientErrorInvalidToken                      = 7006,
     
     // Push Notification Errors
     LYRClientErrorDeviceTokenInvalid                = 8000,
     
     // Synchronization Errors
-    LYRClientErrorUndefinedSyncFailure              = 9000,
-    LYRClientErrorDevicePersistenceFailure          = 9001,
-    LYRClientErrorSynchronizationFailure            = 9002,
-    LYRClientErrorManualSyncIgnoredInForeground     = 9003,
+    LYRClientErrorUndefinedSyncFailure                  = 9000,
+    LYRClientErrorDevicePersistenceFailure              = 9001,
+    LYRClientErrorSynchronizationFailure                = 9002,
+    LYRClientErrorManualSyncIgnoredInForeground         = 9003,
+    LYRClientErrorManualSyncFailedNoConnection          = 9004,
+    LYRClientErrorManualSyncIgnoredAlreadyInProgress    = 9005,
+    LYRClientErrorManualSyncIgnoredAlreadyFullySynced   = 9006,
+    LYRClientErrorManualSyncIgnoredNothingToSync        = 9007,
     
     // Debug Errors
     LYRClientErrorZipArchiveCreationFailure         = 10001,
@@ -81,6 +88,10 @@ typedef NS_ENUM(NSUInteger, LYRClientError) {
     LYRClientErrorMessageDeleted                    = 11001,
     LYRClientErrorConversationDeleted               = 11002,
     LYRClientErrorInvalidClassType                  = 11003,
+    
+    // Session Errors
+    LYRClientErrorInvalidSession                    = 12001,
+    LYRClientErrorDuplicateSession                  = 12002,
 };
 
 extern NSString * _Nonnull const LYRErrorAuthenticatedUserIDUserInfoKey;
@@ -90,3 +101,9 @@ extern NSString * _Nonnull const LYRErrorUnderlyingErrorsKey;
  @abstract A key into the `userInfo` dictionary of an error returned when attempting to create a new distinct conversation. That key's value represents an existing distinct conversation object.
  */
 extern NSString * _Nonnull const LYRExistingDistinctConversationKey;
+
+/**
+ @abstract A key into the `userInfo` dictionary of an error passed when attempting to run a partial sync for a specific conversation. The key's value represents an `LYRProgress` instance of an existing synchronization process.
+ */
+extern NSString * _Nonnull const LYRExistingSynchronizationProgress;
+

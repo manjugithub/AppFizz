@@ -63,7 +63,16 @@ typedef NS_ENUM(NSUInteger, LYRPredicateOperator) {
     /**
      @abstract The property's value is not contained in the given collection of values.
      */
-    LYRPredicateOperatorIsNotIn
+    LYRPredicateOperatorIsNotIn,
+    
+    ///---------------------
+    /// @name Like Operators
+    ///---------------------
+    
+    /**
+     @abstract The property's value partial string matches the given value.
+     */
+    LYRPredicateOperatorLike
 };
 
 /**

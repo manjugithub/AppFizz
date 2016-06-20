@@ -11,6 +11,7 @@
 #import "LYRConstants.h"
 
 @class LYRMessage;
+@class LYRIdentity;
 
 ///---------------------------
 /// @name Conversation Options
@@ -43,6 +44,50 @@ extern NSString * _Nonnull const LYRConversationOptionsDeliveryReceiptsEnabledKe
  */
 extern NSString * _Nonnull const LYRConversationOptionsDistinctByParticipantsKey;
 
+///------------------------------------
+/// @name Typing Indicator Notification
+///------------------------------------
+
+/**
+ @abstract Posted when a conversation object receives a change in typing indicator state.
+ @discussion The `object` of the `NSNotification` is the `LYRConversation` that received the typing indicator.
+ */
+extern NSString * _Nonnull const LYRConversationDidReceiveTypingIndicatorNotification;
+
+/**
+ @abstract A key into the user info of a `LYRConversationDidReceiveTypingIndicatorNotification` notification whose value is
+ a `NSNumber` containing a unsigned integer whose value corresponds to a `LYRTypingIndicator`.
+ */
+extern NSString * _Nonnull const LYRTypingIndicatorValueUserInfoKey;
+
+/**
+ @abstract A key into the user info of a `LYRConversationDidReceiveTypingIndicatorNotification` notification whose value is
+ a `NSString` specifying the participant who changed typing state.
+ */
+extern NSString * _Nonnull const LYRTypingIndicatorParticipantUserInfoKey;
+
+///-------------------------------------------------
+/// @name Conversation Synchronization Notifications
+///-------------------------------------------------
+
+/**
+ @abstract Posted when a synchronization process for a specific conversation will begin.
+ @discussion The `object` of the `NSNotification` is the `LYRConversation` that will begin the synchronization process.
+ */
+extern NSString * _Nonnull const LYRConversationWillBeginSynchronizingNotification;
+
+/**
+ @abstract Posted when a synchronization process for a specific conversation finished.
+ @discussion The `object` of the `NSNotification` is the `LYRConversation` that has finished the synchronization process.
+ */
+extern NSString * _Nonnull const LYRConversationDidFinishSynchronizingNotification;
+
+/**
+ @abstract A key into the user info of a `LYRConversationWillBeginSynchronizingNotification` notification whose value is
+ an `LYRProgress` tracking the progress of the synchronization process.
+ */
+extern NSString * _Nonnull const LYRConversationSynchronizationProgressUserInfoKey;
+
 //------------------------------------------------------------
 
 /**
@@ -66,7 +111,7 @@ extern NSString * _Nonnull const LYRConversationOptionsDistinctByParticipantsKey
  The `participants` property is queryable via the `LYRPredicateOperatorIsEqualTo`, `LYRPredicateOperatorIsNotEqualTo`, `LYRPredicateOperatorIsIn`, and `LYRPredicateOperatorIsNotIn` operators. For convenience, 
  queries with an equality predicate (`LYRPredicateOperatorIsEqualTo` and `LYRPredicateOperatorIsNotEqualTo`) for the `participants` property will implicitly include the authenticated user.
  */
-@property (nonatomic, readonly, nonnull) NSSet<NSString *> *participants LYR_QUERYABLE_PROPERTY;
+@property (nonatomic, readonly, nonnull) NSSet<LYRIdentity *> *participants LYR_QUERYABLE_PROPERTY;
 
 /**
  @abstract The date and time that the conversation was created.
@@ -199,9 +244,21 @@ extern NSString * _Nonnull const LYRConversationOptionsDistinctByParticipantsKey
  @param mode The deletion mode, specifying how the message is to be deleted (i.e. for only the currently authenticated user' devices or synchronized across participants).
  @param error A pointer to an error that upon failure is set to an error object describing why the deletion failed.
  @return A Boolean value indicating if the request to delete the conversation was submitted for synchronization.
- @raises NSInvalidArgumentException Raised if `message` is `nil`.
  */
 - (BOOL)delete:(LYRDeletionMode)deletionMode error:(NSError * _Nullable * _Nullable)error __attribute__((swift_error(none)));
+
+///--------------------------------
+/// @name Leaving the Conversation
+///--------------------------------
+
+/**
+ @abstract Leaves the conversation.
+ @discussion This method removes the authenticated user from the conversation and deletes the conversation from all of their devices.
+ @param error A pointer to an error that upon failure is set to an error object describing why the deletion failed.
+ @return A Boolean value indicating if the request to leave the conversation was submitted for synchronization.
+ @discussion A user can only leave a conversation if they are a current participant and the conversation has not been deleted.
+ */
+- (BOOL)leave:(NSError * _Nullable * _Nullable)error __attribute__((swift_error(none)));
 
 ///-----------------------------------
 /// @name Marking All Messages as Read
@@ -213,5 +270,36 @@ extern NSString * _Nonnull const LYRConversationOptionsDistinctByParticipantsKey
  @return `YES` if all unread messages were marked as read or `NO` if an error occurred.
  */
 - (BOOL)markAllMessagesAsRead:(NSError * _Nullable * _Nullable)error;
+
+///-------------------------------------------
+/// @name Synchronization of Historic Messages
+///-------------------------------------------
+
+/**
+ @abstract Property gives the total number of messages in the conversation, even in case when not all the messages have been synchronized with the client.
+ */
+@property (nonatomic, readonly) NSUInteger totalNumberOfMessages;
+
+/**
+ @abstract Property gives the total number of unread messages in the conversation, even in case when not all the messages have been synchronized with the client.
+ */
+@property (nonatomic, readonly) NSUInteger totalNumberOfUnreadMessages;
+
+/**
+ @abstract Tells the client to synchronize more historic messages that are in the conversation.
+ @param minimumNumberOfMessages The number of historic messages the client should try to fetch during synchronization; value should be greated than zero.
+ @param error A pointer to an error object that, upon failure, will be set to an error describing why the synchronization process could not be performed.
+ @return `YES` in case the request for the operation was successfull; otherwise `NO`.
+ */
+- (BOOL)synchronizeMoreMessages:(NSUInteger)minimumNumberOfMessages error:(NSError * _Nullable * _Nullable)error;
+
+/**
+ @abstract Tells the client to synchronize all historic messages or all unread messages that haven't been synchronized with this client yet.
+ @param messageSyncOption If used with `LYRMessageSyncToFirstUnread`, the client will try to only synchronize all messages up to the first unread message found in the conversation;
+ if `LYRMessageSyncAll` is passed, the client will load all historic messages in the conversation.
+ @param error A pointer to an error object that, upon failure, will be set to an error describing why the synchronization process could not be performed.
+ @return `YES` in case the request for the operation was successfull; otherwise `NO`.
+ */
+- (BOOL)synchronizeAllMessages:(LYRMessageSyncOptions)messageSyncOption error:(NSError * _Nullable * _Nullable)error;
 
 @end

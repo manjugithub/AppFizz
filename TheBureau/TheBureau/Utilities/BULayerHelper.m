@@ -66,7 +66,7 @@
 
 - (void)deauthenticateWithCompletion:(nullable void (^)(BOOL success, NSError * _Nullable error))completion;
 {
-    if (self.layerClient.authenticatedUserID)
+    if (self.layerClient.authenticatedUser)
     {
         [self.layerClient deauthenticateWithCompletion:^(BOOL success, NSError * _Nullable error) {
             if (completion) completion(YES, nil);
@@ -76,8 +76,8 @@
 
 - (void)authenticateLayerWithUserID:(NSString *)userID completion:(void (^)(BOOL success, NSError * error))completion
 {
-    if (self.layerClient.authenticatedUserID) {
-        NSLog(@"Layer Authenticated as User %@", self.layerClient.authenticatedUserID);
+    if (self.layerClient.authenticatedUser) {
+        NSLog(@"Layer Authenticated as User %@", self.layerClient.authenticatedUser);
         if (completion) completion(YES, nil);
         return;
     }
@@ -117,16 +117,28 @@
                                        /*
                                         * 3. Submit identity token to Layer for validation
                                         */
-                                       [self.layerClient authenticateWithIdentityToken:identityToken completion:^(NSString *authenticatedUserID, NSError *error) {
-                                           if (authenticatedUserID) {
+//                                       [self.layerClient authenticateWithIdentityToken:identityToken completion:^(NSString *authenticatedUserID, NSError *error) {
+//                                           if (authenticatedUserID) {
+//                                               if (completion) {
+//                                                   completion(YES, nil);
+//                                               }
+//                                               NSLog(@"Layer Authenticated as User: %@", authenticatedUserID);
+//                                           } else {
+//                                               completion(NO, error);
+//                                           }
+//                                       }];
+                                       
+                                       [self.layerClient authenticateWithIdentityToken:identityToken completion:^(LYRIdentity *authenticatedUser, NSError *error) {
+                                           if (authenticatedUser) {
                                                if (completion) {
                                                    completion(YES, nil);
                                                }
-                                               NSLog(@"Layer Authenticated as User: %@", authenticatedUserID);
+                                               NSLog(@"Layer Authenticated as User: %@", authenticatedUser.userID);
                                            } else {
                                                completion(NO, error);
                                            }
                                        }];
+
                                    }];
     }];
 }

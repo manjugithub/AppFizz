@@ -25,7 +25,7 @@ CREATE TABLE "conversations" (
   deleted_at DATETIME,
   object_identifier TEXT UNIQUE NOT NULL,
   version INT NOT NULL
-, has_unread_messages INTEGER NOT NULL DEFAULT 0, is_distinct INTEGER NOT NULL DEFAULT 0, type INTEGER NOT NULL DEFAULT 1, deletion_mode INTEGER DEFAULT 0);
+, has_unread_messages INTEGER NOT NULL DEFAULT 0, is_distinct INTEGER NOT NULL DEFAULT 0, type INTEGER NOT NULL DEFAULT 1, deletion_mode INTEGER DEFAULT 0, total_message_count INTEGER NOT NULL DEFAULT 0, unread_message_count INTEGER NOT NULL DEFAULT 0);
 
 CREATE TABLE "deleted_message_parts" (
   database_identifier INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -71,6 +71,24 @@ CREATE TABLE fts_trigger_mime_type_mapping (
 	database_identifier INTEGER PRIMARY KEY AUTOINCREMENT,
 	mime_type TEXT NOT NULL,
 	fts_trigger_name TEXT UNIQUE NOT NULL
+);
+
+CREATE TABLE "identities" (
+  database_identifier INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  object_identifier TEXT NOT NULL,
+  user_id TEXT,
+  display_name TEXT,
+  first_name TEXT,
+  last_name TEXT,
+  email_address TEXT,
+  phone_number TEXT,
+  avatar_image_url TEXT,
+  public_key TEXT,
+  followed BOOLEAN NOT NULL DEFAULT 0,
+  should_follow INTEGER NOT NULL DEFAULT 0,
+  version INTEGER NOT NULL,
+  deleted_at DATETIME,
+  UNIQUE(database_identifier)
 );
 
 CREATE TABLE local_keyed_values (
@@ -143,6 +161,10 @@ CREATE TABLE "mutations" (
     FOREIGN KEY(stream_database_identifier) REFERENCES streams(database_identifier) ON DELETE CASCADE
 );
 
+CREATE TABLE "mutations_sequence" (
+  identity_sequence INTEGER NOT NULL DEFAULT 0
+);
+
 CREATE TABLE "remote_keyed_values" (
   database_identifier INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
   object_type TEXT NOT NULL,
@@ -178,7 +200,7 @@ CREATE TABLE "streams" (
   deleted_at DATETIME, 
   min_synced_seq INTEGER, 
   max_synced_seq INTEGER, metadata_timestamp INTEGER, is_distinct INTEGER NOT NULL DEFAULT 0
-, type INTEGER NOT NULL DEFAULT 1, total_message_event_count INTEGER NOT NULL DEFAULT 0, unread_message_event_count INTEGER NOT NULL DEFAULT 0, least_recent_unread_message_event_seq INTEGER, last_message_event_received_at DATETIME, last_message_event_seq INTEGER, deletion_mode INTEGER DEFAULT 0);
+, type INTEGER NOT NULL DEFAULT 1, total_message_event_count INTEGER NOT NULL DEFAULT 0, unread_message_event_count INTEGER NOT NULL DEFAULT 0, least_recent_unread_message_event_seq INTEGER, last_message_event_received_at DATETIME, last_message_event_seq INTEGER, deletion_mode INTEGER DEFAULT 0, starting_seq INTEGER, mutation_seq INTEGER);
 
 CREATE TABLE syncable_changes (
   change_identifier INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -220,6 +242,8 @@ CREATE INDEX events_client_id_idx ON events(client_id);
 CREATE INDEX events_seq_idx ON events(seq);
 
 CREATE INDEX events_stream_database_identifier_idx ON events(stream_database_identifier);
+
+CREATE INDEX identities_user_id_idx ON identities(user_id);
 
 CREATE INDEX message_recipient_status_message_database_identifier_idx ON message_recipient_status(message_database_identifier);
 
@@ -417,7 +441,7 @@ INSERT INTO syncable_changes(table_name, row_identifier, change_type) VALUES ('m
 END;
 
 CREATE TRIGGER track_syncable_changes_for_message_receipts AFTER INSERT ON message_recipient_status
-WHEN NEW.seq IS NULL
+WHEN NEW.seq IS NULL AND ((SELECT seq FROM messages WHERE database_identifier = NEW.message_database_identifier) >= 0 OR (SELECT seq FROM messages WHERE database_identifier = NEW.message_database_identifier) IS NULL)
 BEGIN
     INSERT INTO syncable_changes(table_name, row_identifier, change_type) VALUES ('message_recipient_status', NEW.database_identifier, 0);
 END;
@@ -451,6 +475,12 @@ CREATE TRIGGER track_updates_of_remote_keyed_values AFTER UPDATE OF timestamp ON
 WHEN NEW.timestamp NOT NULL AND OLD.deleted_at IS NULL AND (NEW.value != OLD.value)
 BEGIN
   INSERT INTO synced_changes(table_name, row_identifier, change_type) VALUES ('remote_keyed_values', NEW.database_identifier, 1);
+END;
+
+CREATE TRIGGER track_updates_of_starting_seq AFTER UPDATE OF starting_seq ON streams
+WHEN OLD.starting_seq IS NULL AND NEW.starting_seq IS NOT NULL
+BEGIN
+  INSERT INTO synced_changes(table_name, row_identifier, change_type) VALUES ('streams', NEW.database_identifier, 1);
 END;
 
 CREATE TRIGGER track_updates_of_stream_database_identifier_for_conversation AFTER UPDATE OF stream_database_identifier ON conversations
@@ -562,3 +592,13 @@ INSERT INTO schema_migrations (version) VALUES (20151028150015461);
 INSERT INTO schema_migrations (version) VALUES (20151120145829172);
 
 INSERT INTO schema_migrations (version) VALUES (20151217104323799);
+
+INSERT INTO schema_migrations (version) VALUES (20160201112739075);
+
+INSERT INTO schema_migrations (version) VALUES (20160209160045563);
+
+INSERT INTO schema_migrations (version) VALUES (20160222121515239);
+
+INSERT INTO schema_migrations (version) VALUES (20160314154801167);
+
+INSERT INTO schema_migrations (version) VALUES (20160414154223977);

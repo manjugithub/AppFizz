@@ -11,6 +11,7 @@
 #import "LYRConstants.h"
 #import "LYRActor.h"
 #import "LYRPushNotificationConfiguration.h"
+#import "LYRIdentity.h"
 
 @class LYRConversation, LYRMessagePart;
 
@@ -109,7 +110,7 @@ extern NSString * _Nonnull const LYRMessageOptionsPushNotificationConfigurationK
  @abstract The sender who sent the message.
  @discussion The `sender` can be an authenticated user or from a platform, specificed by the sender's properties `userID` and `name`.  They are mutually exclusive.  Both properties are queryable from `LYRMessage`.
  */
-@property (nonatomic, readonly, nonnull) LYRActor *sender;
+@property (nonatomic, readonly, nonnull) LYRIdentity *sender;
 
 ///----------------------
 /// @name Marking as Read
