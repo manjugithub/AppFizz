@@ -85,8 +85,15 @@
    self.tobLabel.text  = [inBasicInfoDict valueForKey:@"horoscope_tob"];
    self.locLabel.text  = [inBasicInfoDict valueForKey:@"horoscope_lob"];
    self.aboutMeTextView.text  = [inBasicInfoDict valueForKey:@"about_me"];
-//    [inBasicInfoDict valueForKey:@"horoscope_path"];
     
+    if((nil != [self.horoscopeDict valueForKey:@"horoscope_path"]) && (NO == [[self.horoscopeDict valueForKey:@"horoscope_path"] isEqualToString:@""]))
+    {
+        [self.uploadBtn setTitle:@"View Horoscope" forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.uploadBtn setTitle:@"Upload Horoscope" forState:UIControlStateNormal];
+    }
     
 }
 
@@ -201,18 +208,51 @@
 }
 -(IBAction)uploadHoroscope:(id)sender
 {
-    
-    UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
-    imagePicker.allowsEditing = YES;
-    imagePicker.delegate = self;
-    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    [[self parentVC] presentViewController:imagePicker animated:YES completion:nil];
+    if((nil != [self.horoscopeDict valueForKey:@"horoscope_path"]) && (NO == [[self.horoscopeDict valueForKey:@"horoscope_path"] isEqualToString:@""]))
+    {
+        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+        self.imagePreviewVC = [sb instantiateViewControllerWithIdentifier:@"BUImagePreviewVC"];
+        self.imagePreviewVC.imagesList = [[NSMutableArray alloc] initWithObjects:[self.horoscopeDict valueForKey:@"horoscope_path"], nil];
+        self.imagePreviewVC.indexPathToScroll = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.parentVC presentViewController:self.imagePreviewVC animated:NO completion:nil];
+    }
+    else
+    {
+        
+        UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.allowsEditing = YES;
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [[self parentVC] presentViewController:imagePicker animated:YES completion:nil];
+    }
 }
+
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    [self.horoscopeDict setValue:[info objectForKey:UIImagePickerControllerEditedImage] forKey:@"horoscope_path"];
     
-    [[BUWebServicesManager sharedManager] uploadHoroscope:[info objectForKey:UIImagePickerControllerEditedImage]];
+    [self.parentVC startActivityIndicator:YES];
+    [[BUWebServicesManager sharedManager] uploadHoroscope:[info objectForKey:UIImagePickerControllerEditedImage] successBlock:^(id response, NSError *error)
+    {
+        [self.parentVC stopActivityIndicator];
+        
+        if((nil != [self.horoscopeDict valueForKey:@"horoscope_path"]) && (NO == [[self.horoscopeDict valueForKey:@"horoscope_path"] isEqualToString:@""]))
+        {
+            [self.uploadBtn setTitle:@"View Horoscope" forState:UIControlStateNormal];
+        }
+        else
+        {
+            [self.uploadBtn setTitle:@"Upload Horoscope" forState:UIControlStateNormal];
+        }
+
+    }
+                                             failureBlock:^(id response, NSError *error)
+    {
+        [self.horoscopeDict setValue:nil forKey:@"horoscope_path"];
+
+        [self.parentVC stopActivityIndicator];
+    }];
 
     [picker dismissViewControllerAnimated:YES completion:nil];
 }

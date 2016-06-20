@@ -10,9 +10,10 @@
 #import "AirshipLib.h"
 #import "AirshipKit.h"
 #import "AirshipCore.h"
-
+#import "BUWebServicesManager.h"
 @interface BUHomeTabbarController ()<UAPushNotificationDelegate>
 
+@property(nonatomic, strong) NSTimer *urbanAirshipTimer;
 @end
 
 @implementation BUHomeTabbarController
@@ -36,8 +37,49 @@
     [UAirship push].pushNotificationDelegate = self;
     
     
+    self.urbanAirshipTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(setUrbanAirshipChannel) userInfo:nil repeats:YES];
+    
+    NSArray *xibViews = [[NSBundle mainBundle] loadNibNamed:@"rightButtonView" owner:nil options:nil];
+    self.rightBtnView = [xibViews lastObject];
+    
+    
+    UIBarButtonItem *rightBtnItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightBtnView];
+    
+    [[self navigationItem] setRightBarButtonItem:rightBtnItem];
 }
 
+
+
+
+-(void)setUrbanAirshipChannel
+{
+    if(nil != [UAirship push].channelID)
+    {
+        [self setiOSChannel:[UAirship push].channelID];
+        [self.urbanAirshipTimer invalidate];
+    }
+}
+-(void)setiOSChannel:(NSString *)inChannel
+{
+    
+    NSDictionary *parameters = nil;
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                   @"ios_channel" : inChannel
+                   };
+    
+    
+    NSString *baseURl = @"http://dev.thebureauapp.com/admin/getIOSChannel";
+    
+    [[BUWebServicesManager sharedManager] queryServer:parameters
+                                              baseURL:baseURl
+                                         successBlock:^(id response, NSError *error) {
+                                             NSLog(@"Success Block %@",response);
+                                         }
+                                         failureBlock:^(id response, NSError *error) {
+                                             NSLog(@"failureBlock  %@",[error description]);
+                                         }];
+    
+}
 
 
 - (void)displayNotificationAlert:(NSString *)alertMessage
@@ -47,7 +89,7 @@
                      value:[UIFont fontWithName:@"comfortaa" size:15]
                      range:NSMakeRange(0, titleStr.length)];
     
-    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Do you want to View?"];
+    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@""];
     
     [message addAttribute:NSFontAttributeName
                     value:[UIFont fontWithName:@"comfortaa" size:15]
@@ -103,5 +145,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
+{
+    return YES;
+}
+
+-(void)updateGoldValue:(NSInteger)inGoldValue
+{
+    self.rightBtnView.goldLabel.text = [NSString stringWithFormat:@"%ld",inGoldValue];
+}
 
 @end

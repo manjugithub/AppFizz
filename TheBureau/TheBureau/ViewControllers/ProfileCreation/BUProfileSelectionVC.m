@@ -162,7 +162,7 @@
          
          1. API for screen 4_profile_setup (Of the mockup screens)
          
-         http://app.thebureauapp.com/admin/matchMaking
+         http://dev.thebureauapp.com/admin/matchMaking
          
          Parameters to be sent to this API :
          

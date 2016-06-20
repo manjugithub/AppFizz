@@ -64,8 +64,8 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [BUUtilities setNavBarLogo:self.navigationController image:[UIImage imageNamed:@"logo44"]];
-    self.navigationItem.rightBarButtonItem = nil;
+//    [BUUtilities setNavBarLogo:self.navigationController image:[UIImage imageNamed:@"logo44"]];
+//    self.navigationItem.rightBarButtonItem = nil;
     
 }
 
@@ -301,7 +301,7 @@
     [self.profileTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 
 
-    [self.profileTableView reloadData];
+//    [self.profileTableView reloadData];
 }
 
 
@@ -339,7 +339,7 @@
  "height_inch" = 0;
  "highest_education" = "";
  honors = honors;
- "horoscope_path" = "http://app.thebureauapp.com/user_horoscope/8/pdf-sample.pdf";
+ "horoscope_path" = "http://dev.thebureauapp.com/user_horoscope/8/pdf-sample.pdf";
  id = 54;
  "last_name" = vv;
  latitude = "22.3159047";
@@ -370,7 +370,7 @@
 */
  
     [[BUWebServicesManager sharedManager] queryServer:parameters
-                                              baseURL:@"http://app.thebureauapp.com/admin/readProfileDetails"
+                                              baseURL:@"http://dev.thebureauapp.com/admin/readProfileDetails"
                                          successBlock:^(id response, NSError *error) {
                                              
                                              [self stopActivityIndicator];
@@ -526,12 +526,31 @@
     [self startActivityIndicator:YES];
     
     [[BUWebServicesManager sharedManager] queryServer:parameters
-                                              baseURL:@"http://app.thebureauapp.com/admin/update_profile_ws"
-                                         successBlock:^(id response, NSError *error) {
-                                             
-                                             [self stopActivityIndicator];
-                                             
-                                         }
+                                              baseURL:@"http://dev.thebureauapp.com/admin/update_profile_ws"
+                                         successBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         
+         
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Profile updated"];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];
+         
+         [alertController addAction:({
+             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                 NSLog(@"OK");
+                 [self.navigationController popViewControllerAnimated:YES];
+             }];
+             
+             action;
+         })];
+         
+         [self presentViewController:alertController  animated:YES completion:nil];
+         
+     }
                                          failureBlock:^(id response, NSError *error)
      {
          [self stopActivityIndicator];
@@ -550,11 +569,16 @@
     CGFloat constant = 0;
     constant = 280;
     self.tableBottomConstraint.constant = constant;
+    [self performSelector:@selector(scrollTable) withObject:nil afterDelay:1.0];
     
-    
-    
-    [self.profileTableView scrollToRowAtIndexPath:[self.profileTableView indexPathForCell:[[self.profileTableView visibleCells] lastObject]] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
+
+
+-(void)scrollTable
+{
+    [self.profileTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:7] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
 -(void)showKeyboard
 {
 }
@@ -563,12 +587,12 @@
 {
     CGFloat constant = 0;
     self.tableBottomConstraint.constant = constant;
-    [self.profileTableView scrollToRowAtIndexPath:[self.profileTableView indexPathForCell:[[self.profileTableView visibleCells] lastObject]] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    [self.profileTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:7]atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 -(void)hideKeyBoard123
 {
     CGFloat constant = 0;
     self.tableBottomConstraint.constant = constant;
-    [self.profileTableView scrollToRowAtIndexPath:[self.profileTableView indexPathForCell:[[self.profileTableView visibleCells] lastObject]] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    [self.profileTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:7]atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 @end

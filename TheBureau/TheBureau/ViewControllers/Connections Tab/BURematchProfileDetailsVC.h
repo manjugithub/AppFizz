@@ -11,5 +11,5 @@
 
 @interface BURematchProfileDetailsVC : BUBaseViewController<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic, strong) NSMutableArray *imagesList;
-@property(nonatomic, strong) NSDictionary *datasourceList;
+@property(nonatomic, strong) NSMutableDictionary *datasourceList;
 @end

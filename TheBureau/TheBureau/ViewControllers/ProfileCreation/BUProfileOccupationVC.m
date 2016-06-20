@@ -11,6 +11,7 @@
 #import "HighLevelEducationTVCell.h"
 #import "BUProfileLegalStatusVC.h"
 #import "BUHomeTabbarController.h"
+#import "Localytics.h"
 
 @interface BUProfileOccupationVC ()<UITableViewDataSource,UITableViewDelegate, HighLevelEducationTVCellDelegate,EmployementStatusTVCellDelegate,UIActionSheetDelegate>
 
@@ -250,7 +251,7 @@ HighLevelEducationTVCell *cell =(HighLevelEducationTVCell*) [_tableView cellForR
     
     [self startActivityIndicator:YES];
     [[BUWebServicesManager sharedManager]queryServer:self.dataSourceDict
-                                             baseURL:@"http://app.thebureauapp.com/admin/update_profile_step5"
+                                             baseURL:@"http://dev.thebureauapp.com/admin/update_profile_step5"
                                         successBlock:^(id response, NSError *error)
      {
          
@@ -263,6 +264,10 @@ HighLevelEducationTVCell *cell =(HighLevelEducationTVCell*) [_tableView cellForR
          }
          else
          {
+             [Localytics tagEvent:@"Login Successful"];
+             [Localytics setCustomerId:[BUWebServicesManager sharedManager].userID];;
+
+             
              UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
              BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
              [self.navigationController pushViewController:vc animated:YES];

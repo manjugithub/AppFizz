@@ -43,6 +43,11 @@
     [self performSegueWithIdentifier:SegueIdentifierSecond sender:nil];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self getGoldDetails];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -173,4 +178,31 @@
 }
 */
 
-@end
+-(void)getGoldDetails
+{
+    
+    //    [self startActivityIndicator:YES];
+    
+    
+    NSDictionary *parameters = nil;
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
+                   };
+    
+    
+    NSString *baseURl = @"http://dev.thebureauapp.com/admin/getGoldAvailable";
+    
+    [[BUWebServicesManager sharedManager] queryServer:parameters
+                                              baseURL:baseURl
+                                         successBlock:^(id response, NSError *error) {
+                                             
+                                             [[NSUserDefaults standardUserDefaults] setInteger:[[response valueForKey:@"available_gold"] intValue] forKey:@"purchasedGold"];
+                                             [[NSUserDefaults standardUserDefaults] synchronize];
+                                             
+                                             
+                                             [(BUHomeTabbarController *)[self tabBarController] updateGoldValue:[[response valueForKey:@"available_gold"] integerValue]];
+                                         }
+                                         failureBlock:^(id response, NSError *error) {
+                                             
+                                         }];
+    
+}@end

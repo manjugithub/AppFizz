@@ -185,7 +185,7 @@
     [self startActivityIndicator:YES];
     
     
-    NSString *baseURl = @"http://app.thebureauapp.com/admin/checkZipcodes";
+    NSString *baseURl = @"http://dev.thebureauapp.com/admin/checkZipcodes";
     
     [[BUWebServicesManager sharedManager] queryServer:parameters
                                               baseURL:baseURl
@@ -544,7 +544,7 @@ numberOfRowsInComponent:(NSInteger)component{
              
              2. API for screen 4a_profile_setup1 (Of the mockup screens)
              
-             http://app.thebureauapp.com/admin/update_profile_step2
+             http://dev.thebureauapp.com/admin/update_profile_step2
              
              Parameters to be sent :
              

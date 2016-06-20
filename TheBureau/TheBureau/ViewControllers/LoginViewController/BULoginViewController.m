@@ -167,11 +167,11 @@
                 }
                 else
                 {
-                    parameters = @{@"login_type": @"digits",
-                                   @"digits":@"+919902924732"};
-                    
 //                    parameters = @{@"login_type": @"digits",
-//                                   @"digits":session.phoneNumber};
+//                                   @"digits":@"+919902924732"};
+                    
+                    parameters = @{@"login_type": @"digits",
+                                   @"digits":session.phoneNumber};
                 }
                 [self startActivityIndicator:YES];
                 [[BUWebServicesManager sharedManager] loginWithDelegeatewithParameters:parameters
@@ -182,14 +182,18 @@
                      if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
                      {
                          
-                         [[NSUserDefaults standardUserDefaults] setValue:[inResult valueForKey:@"userid"] forKey:@"userid"];
-                         [[NSUserDefaults standardUserDefaults] synchronize];
                          
                          [BUWebServicesManager sharedManager].userID = [inResult valueForKey:@"userid"];
-                         [BUWebServicesManager sharedManager].userName = [NSString stringWithFormat:@"%@ %@",[[[inResult valueForKey:@"profile_details"] valueForKey:@"first_name"] lastObject],[[[inResult valueForKey:@"profile_details"] valueForKey:@"last_name"] lastObject]];
+                         [BUWebServicesManager sharedManager].userName = [[[inResult valueForKey:@"profile_details"] valueForKey:@"first_name"] lastObject];
                          
-                         [Localytics tagEvent:@"Login Successful"];
-                         [Localytics setCustomerId:[inResult valueForKey:@"userid"]];;
+                         
+                         [[NSUserDefaults standardUserDefaults] setValue:[inResult valueForKey:@"userid"] forKey:@"userid"];
+                         [[NSUserDefaults standardUserDefaults] synchronize];
+
+                         
+                         [[NSUserDefaults standardUserDefaults] setValue:[BUWebServicesManager sharedManager].userName forKey:@"username"];
+                         [[NSUserDefaults standardUserDefaults] synchronize];
+
 
                          
                          //    [inResult valueForKey:@"userid"];
@@ -214,6 +218,8 @@
                                                              [self checkForAccountCreation];
                                                          } failureBlock:^(id response, NSError *error)
                                                          {
+                                                             [self checkForAccountCreation];
+                                                             return ;
                                                              NSLog(@"Failed Authenticating Layer Client with error:%@", error);
                                                              [self stopActivityIndicator];
                                                              NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Failed Authenticating Layer Client with error:%@", error]];
@@ -275,7 +281,7 @@
 
     [self startActivityIndicator:YES];
     [[BUWebServicesManager sharedManager] queryServer:parameters
-                                              baseURL:@"http://app.thebureauapp.com/admin/ValidateUserAccount"
+                                              baseURL:@"http://dev.thebureauapp.com/admin/ValidateUserAccount"
                                          successBlock:^(id response, NSError *error)
      {
          [self stopActivityIndicator];

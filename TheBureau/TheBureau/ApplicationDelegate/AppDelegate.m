@@ -49,6 +49,8 @@
 //
 
     
+    [Localytics integrate:@"dbe88822c4782953d1e04b3-d2c983b2-18c7-11e6-842c-0086bc74ca0f"];
+
     
     if(nil != [[NSUserDefaults standardUserDefaults] valueForKey:@"userid"])
     {
@@ -109,6 +111,11 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
+    if(nil == deviceToken)
+        return;
+    
+    [Localytics setPushToken:deviceToken];
+
     NSError *error;
     BOOL success = [[BULayerHelper sharedHelper].layerClient updateRemoteNotificationDeviceToken:deviceToken
                                                                                            error:&error];
@@ -139,15 +146,24 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [Localytics dismissCurrentInAppMessage];
+    [Localytics closeSession];
+    [Localytics upload];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    [Localytics openSession];
+    [Localytics upload];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     [application setApplicationIconBadgeNumber:0];
+    
+    [Localytics openSession];
+    [Localytics upload];
 
 }
 
@@ -248,12 +264,23 @@
 }
 
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-{
-    NSLog(@"Received Remote notification");
-}
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
-{
-    NSLog(@"Received Local notification");
-}
+//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+//{
+//    NSLog(@"Received Remote notification");
+//
+//    if (application.applicationState == UIApplicationStateActive)
+//    {
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"TheBureau" message:userInfo[@"aps"][@"alert"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        
+//        [alertView show];
+//    }
+//    else if (application.applicationState == UIApplicationStateBackground || application.applicationState == UIApplicationStateInactive)
+//    {
+//        // Do something else rather than showing an alert view, because it won't be displayed.
+//    }
+//}
+//- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+//{
+//    NSLog(@"Received Local notification");
+//}
 @end

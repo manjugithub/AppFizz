@@ -150,7 +150,7 @@
         
         autoresizing = UIViewAutoresizingFlexibleLeftMargin;
         
-        self.profilePic.frame = CGRectMake(self.contentView.frame.size.width+10, textView_height-25, 40, 40);
+        self.profilePic.frame = CGRectMake(self.contentView.frame.size.width - 45, textView_height-25, 40, 40);
 
     }
     else

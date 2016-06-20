@@ -8,6 +8,7 @@
 
 #import "BUProfileLegalStatusVC.h"
 #import "BUHomeTabbarController.h"
+#import "Localytics.h"
 
 
 @interface BUProfileLegalStatusVC ()
@@ -172,7 +173,7 @@
 {
     /*
      API to  upload :
-     http://app.thebureauapp.com/admin/update_profile_step6
+     http://dev.thebureauapp.com/admin/update_profile_step6
      
      Parameters
      
@@ -190,9 +191,11 @@
     
     [self startActivityIndicator:YES];
     [[BUWebServicesManager sharedManager]queryServer:parameters
-                                             baseURL:@"http://app.thebureauapp.com/admin/update_profile_step6"
+                                             baseURL:@"http://dev.thebureauapp.com/admin/update_profile_step6"
                                         successBlock:^(id response, NSError *error)
      {
+         [Localytics tagEvent:@"Login Successful"];
+         [Localytics setCustomerId:[BUWebServicesManager sharedManager].userID];;
          UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
          BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
          [self.navigationController pushViewController:vc animated:YES];

@@ -15,7 +15,7 @@
 {
     "First Name" = test;
     "Last Name" = test;
-    "img_url" = "http://app.thebureauapp.com/uploads/8/3314/images_2.jpg";
+    "img_url" = "http://dev.thebureauapp.com/uploads/8/3314/images_2.jpg";
     userid = 7;
 },
 

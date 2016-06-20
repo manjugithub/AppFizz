@@ -271,7 +271,7 @@ static NSDateFormatter *LQSDateFormatter()
                    };
 
 //    NSArray *params = @[@"12",@"7",@"152",@"16"];
-    NSString *baseURL = @"http://app.thebureauapp.com/admin/getUserDetails";
+    NSString *baseURL = @"http://dev.thebureauapp.com/admin/getUserDetails";
     
     [self startActivityIndicator:YES];
     [[BUWebServicesManager sharedManager] queryServer:parameters

@@ -136,7 +136,7 @@
 -(void)getLayerAuthTokenwithParameters:(NSDictionary *)inParams completion:(void(^)(NSString *identityToken, NSError *error))completion
 {
     
-    NSString *baseURL = @"http://app.thebureauapp.com/layer/public/authenticate.php";
+    NSString *baseURL = @"http://dev.thebureauapp.com/layer/public/authenticate.php";
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL

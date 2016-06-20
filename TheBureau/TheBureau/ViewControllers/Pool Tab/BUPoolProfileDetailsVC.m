@@ -51,8 +51,8 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.datasourceList setValue:[respDict valueForKey:@"created_by"] forKey:@"Profile created by"];
     [self.keysList addObject:@"Profile created by"];
     
-    [self.datasourceList setValue:[respDict valueForKey:@"dob"] forKey:@"DOB"];
-    [self.keysList addObject:@"DOB"];
+    [self.datasourceList setValue:[respDict valueForKey:@"age"] forKey:@"Age"];
+    [self.keysList addObject:@"Age"];
     
     [self.datasourceList setValue:[respDict valueForKey:@"location"] forKey:@"Location"];
     [self.keysList addObject:@"Location"];
@@ -148,7 +148,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    return CGSizeMake(80, 100);
+    return CGSizeMake(120, 140);
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -213,11 +213,11 @@ static NSString * const reuseIdentifier = @"Cell";
 -(IBAction)payAnonymousClicked:(id)sende
 {
     
-//    http://app.thebureauapp.com/admin/accessUserProfile
+//    http://dev.thebureauapp.com/admin/accessUserProfile
     
     
     
-//http://app.thebureauapp.com/admin/accessUserProfile
+//http://dev.thebureauapp.com/admin/accessUserProfile
     
     
 //    Parameters :
@@ -232,13 +232,13 @@ static NSString * const reuseIdentifier = @"Cell";
 
     
     [self startActivityIndicator:YES];
-    NSString *baseURl = @"http://app.thebureauapp.com/admin/accessUserProfile";
+    NSString *baseURl = @"http://dev.thebureauapp.com/admin/accessUserProfile";
     
     NSDictionary *parameters = nil;
     parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
                    @"visited_userid": [self.datasourceList valueForKey:@"userid"],
                    @"access_type": @"Anonymous",
-                   @"gold_amount": @"500"
+                   @"gold_amount": @"150"
                    };
     
     [[BUWebServicesManager sharedManager] queryServer:parameters
@@ -274,6 +274,9 @@ static NSString * const reuseIdentifier = @"Cell";
                      self.anonymousPayBtn.enabled = NO;
                      self.directBtn.enabled = NO;
                      self.directPayBtn.enabled = NO;
+                     
+                     [self.navigationController popViewControllerAnimated:YES];
+
                  }];
                  
                  action;
@@ -312,13 +315,13 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     
     [self startActivityIndicator:YES];
-    NSString *baseURl = @"http://app.thebureauapp.com/admin/accessUserProfile";
+    NSString *baseURl = @"http://dev.thebureauapp.com/admin/accessUserProfile";
     
     NSDictionary *parameters = nil;
     parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
                    @"visited_userid": [self.datasourceList valueForKey:@"userid"],
                    @"access_type": @"Direct",
-                   @"gold_amount": @"500"
+                   @"gold_amount": @"250"
                    };
     
     [[BUWebServicesManager sharedManager] queryServer:parameters
@@ -354,6 +357,7 @@ static NSString * const reuseIdentifier = @"Cell";
                      self.anonymousPayBtn.enabled = NO;
                      self.directBtn.enabled = NO;
                      self.directPayBtn.enabled = NO;
+                     [self.navigationController popViewControllerAnimated:YES];
                  }];
                  
                  action;

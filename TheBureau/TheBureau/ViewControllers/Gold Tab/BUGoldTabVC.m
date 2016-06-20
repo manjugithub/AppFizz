@@ -16,6 +16,7 @@
 
 @interface BUGoldTabVC ()<FBSDKAppInviteDialogDelegate>
 
+@property(nonatomic, weak) IBOutlet UICollectionView *goldCollectionView;
 @property(nonatomic, weak) IBOutlet UILabel *totalGoldLabel;
 @property(nonatomic, strong) NSArray *products;
 @property(nonatomic, weak) IBOutlet UIButton *inviteFriendButton,*followFriendButton;
@@ -35,6 +36,29 @@
 //https://www.instagram.com/itsthebureau/
 
 
+
+-(void)resetGoldTable
+{
+    
+//    NSString *titleStr = @"";
+//    UIImage *statusImg = [UIImage imageNamed:@""];
+//    titleStr = [NSString stringWithFormat:@"     Invite a Friend"];
+//    NSMutableAttributedString *statusString = [[NSMutableAttributedString alloc] init];
+//    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:titleStr];
+//    NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
+//    textAttachment.image = statusImg;
+//    NSAttributedString *attrStringWithImage = [NSAttributedString attributedStringWithAttachment:textAttachment];
+//    
+//    [statusString appendAttributedString:attrStringWithImage];
+//    [statusString appendAttributedString:attributedString];
+
+//    [followFriendButton setAttributedTitle:<#(nullable NSAttributedString *)#> forState:<#(UIControlState)#>]
+    
+    [self.goldCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+                                    atScrollPosition:UICollectionViewScrollPositionLeft
+                                            animated:YES];
+}
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -43,6 +67,22 @@
     
     self.likeUsOnFBButton.backgroundColor = [UIColor clearColor];
 
+    
+
+    
+    
+    [self.goldCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]
+                                    atScrollPosition:UICollectionViewScrollPositionLeft
+                                            animated:YES];
+
+    [self performSelector:@selector(resetGoldTable) withObject:nil afterDelay:0.6];
+    
+    
+
+    
+    [self getGoldDetails];
+    
+    
 }
 
 - (void)reload {
@@ -89,7 +129,6 @@
 //    self.likeUsOnFBButton.layer.shadowOffset = CGSizeMake(2, 2);
 //    self.likeUsOnFBButton.layer.shadowColor = [[UIColor darkGrayColor]CGColor];
 
-    [self getGoldDetails];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -247,7 +286,7 @@ static NSString * const reuseIdentifier = @"Cell";
  */
 - (void)appInviteDialog:(FBSDKAppInviteDialog *)appInviteDialog didCompleteWithResults:(NSDictionary *)results;
 {
-    [self showSuccessMessageWithGold:100];
+    [self updateGold:100];
 }
 /*!
  @abstract Sent to the delegate when the app invite encounters an error.
@@ -256,7 +295,7 @@ static NSString * const reuseIdentifier = @"Cell";
  */
 - (void)appInviteDialog:(FBSDKAppInviteDialog *)appInviteDialog didFailWithError:(NSError *)error;
 {
-    [self showSuccessMessageWithGold:100];
+    [self updateGold:100];
 }
 
 
@@ -284,6 +323,8 @@ static NSString * const reuseIdentifier = @"Cell";
             [self updateGold:purchasedGold];
             NSLog(@"OK");
             self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+            
+            [(BUHomeTabbarController *)[self tabBarController] updateGoldValue:[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
         }];
         
         action;
@@ -298,7 +339,7 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     /*
      API to  upload :
-     http://app.thebureauapp.com/admin/update_profile_step6
+     http://dev.thebureauapp.com/admin/update_profile_step6
      
      Parameters
      
@@ -316,7 +357,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     [self startActivityIndicator:YES];
     [[BUWebServicesManager sharedManager]queryServer:parameters
-                                             baseURL:@"http://app.thebureauapp.com/admin/add_Gold"
+                                             baseURL:@"http://dev.thebureauapp.com/admin/add_Gold"
                                         successBlock:^(id response, NSError *error)
      {
          [self stopActivityIndicator];
@@ -341,6 +382,9 @@ static NSString * const reuseIdentifier = @"Cell";
              UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                  NSLog(@"OK");
                  self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+                 
+                 [(BUHomeTabbarController *)[self tabBarController] updateGoldValue:[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+
              }];
              
              action;
@@ -370,6 +414,9 @@ static NSString * const reuseIdentifier = @"Cell";
              UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                  NSLog(@"OK");
                  self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+                 
+                 [(BUHomeTabbarController *)[self tabBarController] updateGoldValue:[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+
              }];
              
              action;
@@ -391,7 +438,7 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     /*
      API to  upload :
-     http://app.thebureauapp.com/admin/update_profile_step6
+     http://dev.thebureauapp.com/admin/update_profile_step6
      
      Parameters
      
@@ -436,7 +483,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     [self startActivityIndicator:YES];
     [[BUWebServicesManager sharedManager]queryServer:parameters
-                                             baseURL:@"http://app.thebureauapp.com/admin/add_Gold"
+                                             baseURL:@"http://dev.thebureauapp.com/admin/add_Gold"
                                         successBlock:^(id response, NSError *error)
      {
          [self stopActivityIndicator];
@@ -488,6 +535,9 @@ static NSString * const reuseIdentifier = @"Cell";
              UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                  NSLog(@"OK");
                  self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+                 
+                 [(BUHomeTabbarController *)[self tabBarController] updateGoldValue:[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+
              }];
              
              action;
@@ -538,6 +588,9 @@ static NSString * const reuseIdentifier = @"Cell";
              UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                  NSLog(@"OK");
                  self.totalGoldLabel.text = [NSString stringWithFormat:@"%ld",(long)[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+                 
+                 [(BUHomeTabbarController *)[self tabBarController] updateGoldValue:[[NSUserDefaults standardUserDefaults] integerForKey:@"purchasedGold"]];
+
              }];
              
              action;
@@ -571,7 +624,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [self startActivityIndicator:YES];
 
     
-    NSString *baseURl = @"http://app.thebureauapp.com/admin/getGoldAvailable";
+    NSString *baseURl = @"http://dev.thebureauapp.com/admin/getGoldAvailable";
     
     [[BUWebServicesManager sharedManager] queryServer:parameters
                                               baseURL:baseURl
@@ -583,6 +636,9 @@ static NSString * const reuseIdentifier = @"Cell";
          [[NSUserDefaults standardUserDefaults] synchronize];
          
          self.totalGoldLabel.text = [NSString stringWithFormat:@"%d",[[response valueForKey:@"available_gold"] intValue]];
+         
+         [(BUHomeTabbarController *)[self tabBarController] updateGoldValue:[[response valueForKey:@"available_gold"] intValue]];
+
          [self reload];
                                          }
                                          failureBlock:^(id response, NSError *error) {

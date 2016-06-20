@@ -266,7 +266,7 @@
     NSDictionary *parameters = @{@"userid": [BUWebServicesManager sharedManager].userID};
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:@"http://app.thebureauapp.com/admin/multi_upload"
+    [manager POST:@"http://dev.thebureauapp.com/admin/multi_upload"
        parameters:parameters
 constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
      {

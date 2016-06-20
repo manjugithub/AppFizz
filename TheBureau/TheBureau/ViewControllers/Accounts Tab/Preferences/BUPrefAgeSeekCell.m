@@ -127,10 +127,18 @@
                 {
                     NSInteger currentValue = (((self.overLayView.frame.size.width - self.rightViewRightConstraint.constant) / self.interval)) * 25;
                     
-                    currentValue = currentValue - (currentValue % 25) ;
-                    NSLog(@"Radius ====> %ld",(long)currentValue);
                     
-                    self.maxValueLabel.text = [NSString stringWithFormat:@"%ld",(long)currentValue];
+                    if(currentValue > 322)
+                    {
+                        self.maxValueLabel.text = @"No Limit";
+                    }
+                    else
+                    {
+                        NSLog(@"currentValue ====> %ld",(long)currentValue);
+                        currentValue = currentValue - (currentValue % 25) ;
+                        NSLog(@"Radius ====> %ld",(long)currentValue);
+                        self.maxValueLabel.text = [NSString stringWithFormat:@"%ld",(long)currentValue];
+                    }
                 }
                 else
                 {
@@ -160,7 +168,14 @@
     }
     else
     {
-        [self.preferenceDict setValue:self.maxValueLabel.text forKey:@"location_radius"];
+        if([self.maxValueLabel.text isEqualToString:@"No Limit"])
+        {
+            [self.preferenceDict setValue:@"325" forKey:@"location_radius"];
+        }
+        else
+        {
+            [self.preferenceDict setValue:self.maxValueLabel.text forKey:@"location_radius"];
+        }
     }
 }
 
@@ -251,8 +266,17 @@
     [UIView animateWithDuration:0.6 animations:^{
         self.rightViewRightConstraint.constant = self.overLayView.frame.size.width-newX;
         self.maxLabelRightConstraint.constant = self.overLayView.frame.size.width-newX;
-    }completion:^(BOOL finished) {
-        self.maxValueLabel.text = [NSString stringWithFormat:@"%ld",(long)radius];
+    }completion:^(BOOL finished)
+    {
+        
+        if(radius > 322)
+        {
+            self.maxValueLabel.text = @"No Limit";
+        }
+        else
+        {
+            self.maxValueLabel.text = [NSString stringWithFormat:@"%ld",(long)radius];
+        }
     }];
 }
 
@@ -359,7 +383,7 @@
     }
     else if(1 == self.cellType)
     {
-        self.interval = self.overLayView.frame.size.width / 12.0;
+        self.interval = self.overLayView.frame.size.width / 13.0;
     }
     else
     {

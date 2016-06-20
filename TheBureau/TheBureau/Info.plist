@@ -23,7 +23,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb726893447443225</string>
+				<string>fb242375646143920</string>
 			</array>
 		</dict>
 		<dict>
@@ -36,7 +36,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>3</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -63,9 +63,9 @@
 		</array>
 	</dict>
 	<key>FacebookAppID</key>
-	<string>726893447443225</string>
+	<string>242375646143920</string>
 	<key>FacebookDisplayName</key>
-	<string>TheBureau</string>
+	<string>thebureauapp</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

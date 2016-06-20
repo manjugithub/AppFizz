@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BUHomeTabbarController.h"
 
 @interface BUHomeConnectionTabVC : UIViewController
 
 - (void)showViewControllerFromIndex:(NSInteger)index;
-
 
 @end

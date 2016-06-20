@@ -38,7 +38,7 @@
 -(void)signUpWithDelegeatewithParameters:(NSDictionary *)inParams  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack
 {
      
-    NSString *baseURL = @"http://app.thebureauapp.com/login/userRegister";
+    NSString *baseURL = @"http://dev.thebureauapp.com/login/userRegister";
 
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
@@ -65,7 +65,7 @@ constructingBodyWithBlock:nil
     
      
 
-    NSString *baseURL = @"http://app.thebureauapp.com/login/checkLogin";
+    NSString *baseURL = @"http://dev.thebureauapp.com/login/checkLogin";
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
@@ -325,7 +325,7 @@ constructingBodyWithBlock:nil
 
 -(void)matchMakingForTheDaywithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack
 {
-    NSString *baseURL =[NSString stringWithFormat:@"%@%@",kBaseURL,@"matchMaking"];
+    NSString *baseURL =[NSString stringWithFormat:@"%@%@",kBaseURL,@"matchtab"];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
        parameters:inParams
@@ -416,7 +416,7 @@ constructingBodyWithBlock:nil
 -(void)getLayerAuthTokenwithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
 {
     
-    NSString *baseURL = @"http://app.thebureauapp.com/layer/public/authenticate.php";
+    NSString *baseURL = @"http://dev.thebureauapp.com/layer/public/authenticate.php";
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
@@ -486,7 +486,7 @@ constructingBodyWithBlock:nil
     NSDictionary *parameters = @{@"img_url": inImageURLStr};
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:@"http://app.thebureauapp.com/admin/deleteImages"
+    [manager POST:@"http://dev.thebureauapp.com/admin/deleteImages"
        parameters:parameters
 constructingBodyWithBlock:nil
          progress:nil
@@ -510,7 +510,7 @@ constructingBodyWithBlock:nil
     NSDictionary *parameters = @{@"userid": self.userID};
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:@"http://app.thebureauapp.com/admin/multi_upload"
+    [manager POST:@"http://dev.thebureauapp.com/admin/multi_upload"
        parameters:parameters
 constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
      {
@@ -530,13 +530,13 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
 }
 
 
--(void)uploadHoroscope:(UIImage *)inImage
+-(void)uploadHoroscope:(UIImage *)inImage  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack
 {
     NSData *imageData = UIImageJPEGRepresentation(inImage, 0.8);
-    NSDictionary *parameters = @{@"userid": @"8"};
+    NSDictionary *parameters = @{@"userid": self.userID};
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:@"http://app.thebureauapp.com/admin/uploadHoroscope"
+    [manager POST:@"http://dev.thebureauapp.com/admin/uploadHoroscope"
        parameters:parameters
 constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
     {
@@ -545,12 +545,12 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
          progress:nil
           success:^(NSURLSessionDataTask *operation, id responseObject)
      {
-//         successCallBack(responseObject,nil);
+         successCallBack(responseObject,nil);
          NSLog(@"Success: %@", responseObject);
      }
           failure:^(NSURLSessionDataTask *operation, NSError *error)
      {
-//         failureCallBack(nil,error);
+         failureCallBack(nil,error);
          NSLog(@"Error: %@", error);
      }];
 }

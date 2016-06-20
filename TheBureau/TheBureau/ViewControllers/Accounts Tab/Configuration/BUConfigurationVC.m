@@ -48,8 +48,8 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [BUUtilities setNavBarLogo:self.navigationController image:[UIImage imageNamed:@"logo44"]];
-    self.navigationItem.rightBarButtonItem = nil;
+//    [BUUtilities setNavBarLogo:self.navigationController image:[UIImage imageNamed:@"logo44"]];
+//    self.navigationItem.rightBarButtonItem = nil;
     
 }
 

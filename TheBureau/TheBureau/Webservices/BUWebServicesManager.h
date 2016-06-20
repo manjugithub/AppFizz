@@ -68,7 +68,7 @@
 -(void)getMultipleFamilyOriginListwithParameters:(NSDictionary *)inParams  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
 
 -(void)uploadProfilePicture:(UIImage *)inImage;
--(void)uploadHoroscope:(UIImage *)inImage;
+-(void)uploadHoroscope:(UIImage *)inImage  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
 -(void)deleteProfilePicture:(NSString *)inImageURLStr  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
 
 @end

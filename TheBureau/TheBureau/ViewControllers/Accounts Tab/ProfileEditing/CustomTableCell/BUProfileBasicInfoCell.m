@@ -73,7 +73,7 @@
     [self.parentVC startActivityIndicator:YES];
     
     
-    NSString *baseURl = @"http://app.thebureauapp.com/admin/checkZipcodes";
+    NSString *baseURl = @"http://dev.thebureauapp.com/admin/checkZipcodes";
     
     [[BUWebServicesManager sharedManager] queryServer:parameters
                                               baseURL:baseURl
@@ -521,7 +521,7 @@ numberOfRowsInComponent:(NSInteger)component{
                    
                    };
 
-    NSString *baseURl = @"http://app.thebureauapp.com/admin/update_profile_step1";
+    NSString *baseURl = @"http://dev.thebureauapp.com/admin/update_profile_step1";
     [[BUWebServicesManager sharedManager] queryServer:parameters
                                               baseURL:baseURl
                                          successBlock:^(id response, NSError *error)

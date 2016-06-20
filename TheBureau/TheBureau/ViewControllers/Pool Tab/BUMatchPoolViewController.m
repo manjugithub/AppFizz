@@ -24,6 +24,11 @@ static NSString * const reuseIdentifier = @"Cell";
     [super viewDidLoad];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self getGoldDetails];
+}
+
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -107,6 +112,10 @@ static NSString * const reuseIdentifier = @"Cell";
                                                               successBlock:^(id inResult, NSError *error)
     {
         [self stopActivityIndicator];
+        
+        self.datasourceList = [[NSMutableArray alloc] init];
+        self.imagesList = [[NSMutableArray alloc] init];
+
         if([inResult valueForKey:@"msg"] != nil && [[inResult valueForKey:@"msg"] isEqualToString:@"Error"])
         {
             [self stopActivityIndicator];
@@ -117,14 +126,13 @@ static NSString * const reuseIdentifier = @"Cell";
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
             [alertController setValue:message forKey:@"attributedTitle"];            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
             [self presentViewController:alertController animated:YES completion:nil];
+            [self.collectionView reloadData];
             return;
         }
         else
         {
             self.tapToContinueBtn.hidden = NO;
-            self.datasourceList = [[NSMutableArray alloc] init];
             
-            self.imagesList = [[NSMutableArray alloc] init];
             for (NSString *key in [inResult allKeys])
             {
                 if((NO == [[inResult valueForKey:key] isKindOfClass:[NSNull class]]) && (NO == [[inResult valueForKey:key] isKindOfClass:[NSString class]]))
@@ -199,6 +207,33 @@ static NSString * const reuseIdentifier = @"Cell";
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-
+-(void)getGoldDetails
+{
+    
+    //    [self startActivityIndicator:YES];
+    
+    
+    NSDictionary *parameters = nil;
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
+                   };
+    
+    
+    NSString *baseURl = @"http://dev.thebureauapp.com/admin/getGoldAvailable";
+    
+    [[BUWebServicesManager sharedManager] queryServer:parameters
+                                              baseURL:baseURl
+                                         successBlock:^(id response, NSError *error) {
+                                             
+                                             [[NSUserDefaults standardUserDefaults] setInteger:[[response valueForKey:@"available_gold"] intValue] forKey:@"purchasedGold"];
+                                             [[NSUserDefaults standardUserDefaults] synchronize];
+                                             
+                                             
+                                             [(BUHomeTabbarController *)[self tabBarController] updateGoldValue:[[response valueForKey:@"available_gold"] integerValue]];
+                                         }
+                                         failureBlock:^(id response, NSError *error) {
+                                             
+                                         }];
+    
+}
 
 @end

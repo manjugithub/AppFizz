@@ -34,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"splash_new" withExtension:@"gif"];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"splash_new_iPhone" withExtension:@"gif"];
     self.dataImageView.image = [UIImage animatedImageWithAnimatedGIFData:[NSData dataWithContentsOfURL:url]];
     
     self.navigationController.navigationBarHidden = YES;
@@ -52,45 +52,95 @@
     
 }
 
+
+
+-(void)checkForAccountCreation
+{
+    NSDictionary *parameters = nil;
+    
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID};
+    
+    [self startActivityIndicator:YES];
+    [[BUWebServicesManager sharedManager] queryServer:parameters
+                                              baseURL:@"http://dev.thebureauapp.com/admin/ValidateUserAccount"
+                                         successBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         [self stopActivityIndicator];
+         [self stopActivityIndicator];
+         [self stopActivityIndicator];
+         if(YES == [[response valueForKey:@"msg"] isEqualToString:@"Success"])
+         {
+             
+             UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+             BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
+             [self.navigationController pushViewController:vc animated:YES];
+             
+             
+             [[BULayerHelper sharedHelper] setCurrentUserID:[BUWebServicesManager sharedManager].userID];
+             
+             [self startActivityIndicator:YES];
+             
+             [[BULayerHelper sharedHelper] authenticateLayerWithsuccessBlock:^(id response, NSError *error)
+              {
+                  
+              }
+                                                                failureBlock:^(id response, NSError *error)
+              {
+                  NSLog(@"Failed Authenticating Layer Client with error:%@", error);
+                  [self stopActivityIndicator];
+                  return ;
+                  
+                  NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Failed Authenticating Layer Client with error:%@", error]];
+                  [message addAttribute:NSFontAttributeName
+                                  value:[UIFont fontWithName:@"comfortaa" size:15]
+                                  range:NSMakeRange(0, message.length)];
+                  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+                  [alertController setValue:message forKey:@"attributedTitle"];
+                  [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                  [self presentViewController:alertController animated:YES completion:nil];
+                  
+              }];
+         }
+         else
+         {
+             UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+             BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];
+             vc.socialChannel = nil;
+             [self.navigationController pushViewController:vc animated:YES];
+         }
+     }
+                                         failureBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Login Failed"];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];
+         [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+         [self presentViewController:alertController animated:YES completion:nil];
+         
+     }];
+    
+    
+}
+
+
 -(void)setSplashTimer
 {
     [splashTimer invalidate];
 
-    [self performSegueWithIdentifier:@"main" sender:self];
-    return;
+//    [self performSegueWithIdentifier:@"main" sender:self];
+//    return;
     
     if(nil != [BUWebServicesManager sharedManager].userID)
     {
-        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-        BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-        [self.navigationController pushViewController:vc animated:YES];
+        
+        [BUWebServicesManager sharedManager].userName =        [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
 
-        
-        [[BULayerHelper sharedHelper] setCurrentUserID:[BUWebServicesManager sharedManager].userID];
-        
-        [self startActivityIndicator:YES];
-        
-        [[BULayerHelper sharedHelper] authenticateLayerWithsuccessBlock:^(id response, NSError *error)
-         {
-             [Localytics tagEvent:@"Login Successful"];
-             [Localytics setCustomerId:[BUWebServicesManager sharedManager].userID];
-             
-         }
-                                                           failureBlock:^(id response, NSError *error)
-         {
-             NSLog(@"Failed Authenticating Layer Client with error:%@", error);
-             [self stopActivityIndicator];
-             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Failed Authenticating Layer Client with error:%@", error]];
-             [message addAttribute:NSFontAttributeName
-                             value:[UIFont fontWithName:@"comfortaa" size:15]
-                             range:NSMakeRange(0, message.length)];
-             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-             [alertController setValue:message forKey:@"attributedTitle"];
-             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-             [self presentViewController:alertController animated:YES completion:nil];
-             
-         }];
-        
+        [self checkForAccountCreation];
     }
     else
     {

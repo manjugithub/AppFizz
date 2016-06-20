@@ -221,6 +221,12 @@
                                                         } failureBlock:^(id response, NSError *error) {
                                                             {
                                                                 [self stopActivityIndicator];
+                                                                UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                                                BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];
+                                                                vc.socialChannel = self.socialChannel;
+                                                                [self.navigationController pushViewController:vc animated:YES];
+
+                                                                return ;
                                                                 NSLog(@"Failed Authenticating Layer Client with error:%@", error);
                                                                 NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Failed Authenticating Layer Client with error:%@", error]];
                                                                 [message addAttribute:NSFontAttributeName

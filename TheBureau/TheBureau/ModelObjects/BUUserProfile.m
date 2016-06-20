@@ -33,11 +33,11 @@
  id = 1;
  "img_names" = "img2.jpg,img3.jpg,img4.jpg,img5.jpg,img1.jpg";
  "img_url" =         {
- 1 = "http://app.thebureauapp.com/uploads/1/9403/img2.jpg";
- 2 = "http://app.thebureauapp.com/uploads/1/8608/img3.jpg";
- 3 = "http://app.thebureauapp.com/uploads/1/9931/img4.jpg";
- 4 = "http://app.thebureauapp.com/uploads/1/1644/img5.jpg";
- 5 = "http://app.thebureauapp.com/uploads/1/6862/img1.jpg";
+ 1 = "http://dev.thebureauapp.com/uploads/1/9403/img2.jpg";
+ 2 = "http://dev.thebureauapp.com/uploads/1/8608/img3.jpg";
+ 3 = "http://dev.thebureauapp.com/uploads/1/9931/img4.jpg";
+ 4 = "http://dev.thebureauapp.com/uploads/1/1644/img5.jpg";
+ 5 = "http://dev.thebureauapp.com/uploads/1/6862/img1.jpg";
  };
  "last_name" = Padukone;
  latitude = "-31.4488192";

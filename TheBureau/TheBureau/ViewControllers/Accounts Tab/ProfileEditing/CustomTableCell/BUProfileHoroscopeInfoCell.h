@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BUProfileEditingVC.h"
+#import "BUImagePreviewVC.h"
 
 @interface BUProfileHoroscopeInfoCell : UITableViewCell<UITextViewDelegate,UITextFieldDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property(weak, nonatomic) IBOutlet BUProfileEditingVC *parentVC;
@@ -19,6 +20,7 @@
 @property(weak, nonatomic) IBOutlet UIButton *uploadBtn;
 @property(nonatomic, strong) NSMutableDictionary *horoscopeDict;
 
+@property(weak, nonatomic) BUImagePreviewVC *imagePreviewVC;
 -(void)setDatasource:(NSMutableDictionary *)inBasicInfoDict;
 -(IBAction)setDOB:(id)sender;
 -(IBAction)setTOB:(id)sender;

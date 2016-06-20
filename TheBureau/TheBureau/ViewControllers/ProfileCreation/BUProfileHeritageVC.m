@@ -183,7 +183,7 @@
      3. API for screen 4b_profile_setup2
      
      API  to  Call
-     http://app.thebureauapp.com/admin/update_profile_step3
+     http://dev.thebureauapp.com/admin/update_profile_step3
      
      Parameter
      userid => user id of user

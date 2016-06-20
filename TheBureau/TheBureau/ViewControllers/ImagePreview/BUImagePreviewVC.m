@@ -71,6 +71,8 @@
     BUHomeImagePreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BUHomeImagePreviewCell"
                                                                              forIndexPath:indexPath];
     
+    [cell setFrameRect:self.collectionView.frame];
+
     if([[self.imagesList objectAtIndex:indexPath.row] isKindOfClass:[NSString class]])
     {
         [cell setImageURL:[self.imagesList objectAtIndex:indexPath.row]];

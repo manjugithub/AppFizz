@@ -80,7 +80,7 @@
 -(void)dismissVC
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    [self.parentController showSuccessMessageWithGold:50];
+    [self.parentController updateGold:50];
 }
 
 @end

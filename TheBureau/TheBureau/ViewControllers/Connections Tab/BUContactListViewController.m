@@ -54,7 +54,7 @@
                                                    successBlock:^(id inResult, NSError *error)
      {
          [self stopActivityIndicator];
-         if(nil != inResult && 0 < [inResult count])
+         if(nil != inResult)
          {
              
              [self.contactList removeAllObjects];

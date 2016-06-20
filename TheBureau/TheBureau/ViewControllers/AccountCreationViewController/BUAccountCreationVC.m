@@ -187,6 +187,7 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = NO;
+    self.navigationItem.rightBarButtonItem = nil;
     
     [self.scrollview setContentOffset:CGPointZero animated:YES];
     
@@ -549,12 +550,15 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
                        };
         
         
-        [BUWebServicesManager sharedManager].userName = [NSString stringWithFormat:@"%@ %@",self.firstNameTF.text,self.lastNameTF.text];
+        [BUWebServicesManager sharedManager].userName = self.firstNameTF.text;
+
+        [[NSUserDefaults standardUserDefaults] setValue:[BUWebServicesManager sharedManager].userName forKey:@"username"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
 
         [self startActivityIndicator:YES];
         
         [[BUWebServicesManager sharedManager] queryServer:parameters
-                                                  baseURL:@"http://app.thebureauapp.com/admin/create_account_ws"
+                                                  baseURL:@"http://dev.thebureauapp.com/admin/create_account_ws"
                                              successBlock:^(id response, NSError *error) {
                                                  [self stopActivityIndicator];
                                                  UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];

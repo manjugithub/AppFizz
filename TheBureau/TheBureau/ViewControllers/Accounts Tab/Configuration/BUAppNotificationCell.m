@@ -16,13 +16,13 @@
  
  Logout API
  
- URL: http://app.thebureauapp.com/admin/logout_ws
+ URL: http://dev.thebureauapp.com/admin/logout_ws
  Parameter:
  userid => id of a user
  
  Deactivate account API
  
- URL: http://app.thebureauapp.com/admin/deactivate_account_ws
+ URL: http://dev.thebureauapp.com/admin/deactivate_account_ws
  Parameter:
  userid => id of a user
 
@@ -99,7 +99,7 @@
     {
         case BUAppNotificationCellTypeDailyMatch:
         {
-            baseURL = @"http://app.thebureauapp.com/admin/conf_dailyMatch";
+            baseURL = @"http://dev.thebureauapp.com/admin/conf_dailyMatch";
             if(0 == [sender tag])
             {
                 sender.tag = 1;
@@ -129,7 +129,7 @@
         }
         case BUAppNotificationCellTypeChatNotifications:
         {
-            baseURL = @"http://app.thebureauapp.com/admin/conf_chatNotifications";
+            baseURL = @"http://dev.thebureauapp.com/admin/conf_chatNotifications";
             if(0 == [sender tag])
             {
                 sender.tag = 1;
@@ -155,7 +155,7 @@
         }
         case BUAppNotificationCellTypeCustomerService:
         {
-            baseURL = @"http://app.thebureauapp.com/admin/conf_customerService";
+            baseURL = @"http://dev.thebureauapp.com/admin/conf_customerService";
             if(0 == [sender tag])
             {
                 sender.tag = 1;
@@ -181,7 +181,7 @@
         }
         case BUAppNotificationCellTypeBlogRelease:
         {
-            baseURL = @"http://app.thebureauapp.com/admin/conf_blogRelease";
+            baseURL = @"http://dev.thebureauapp.com/admin/conf_blogRelease";
             if(0 == [sender tag])
             {
                 sender.tag = 1;
@@ -207,7 +207,7 @@
         }
         case BUAppNotificationCellTypeSounds:
         {
-            baseURL = @"http://app.thebureauapp.com/admin/conf_sound";
+            baseURL = @"http://dev.thebureauapp.com/admin/conf_sound";
             if(0 == [sender tag])
             {
                 sender.tag = 1;
@@ -271,18 +271,47 @@
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSLog(@"OK");
             
-
-            [self.parentVC startActivityIndicator:YES];
-            [[Digits sharedInstance]logOut];
-            [[BULayerHelper sharedHelper]deauthenticateWithCompletion:^(BOOL success, NSError * _Nullable error) {
-                [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"userid"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
+            {
                 
-                [BUWebServicesManager sharedManager].userID = nil;
-                [self.parentVC stopActivityIndicator];
-                [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
-            }];
-        }];
+                
+                [self.parentVC startActivityIndicator:YES];
+                NSString *baseURl = @"http://dev.thebureauapp.com/admin/deactivateUsers";
+                
+                NSDictionary *parameters = nil;
+                parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
+                               };
+                
+                [[BUWebServicesManager sharedManager] queryServer:parameters
+                                                          baseURL:baseURl
+                                                     successBlock:^(id response, NSError *error)
+                 {
+                     [[Digits sharedInstance]logOut];
+                     [[BULayerHelper sharedHelper]deauthenticateWithCompletion:^(BOOL success, NSError * _Nullable error) {
+                         [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"userid"];
+                         [[NSUserDefaults standardUserDefaults] synchronize];
+                         
+                         [BUWebServicesManager sharedManager].userID = nil;
+                         [self.parentVC stopActivityIndicator];
+                         [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
+                     }];
+                     
+                 }
+                 
+                                                     failureBlock:^(id response, NSError *error)
+                 {
+                     [[Digits sharedInstance]logOut];
+                     [[BULayerHelper sharedHelper]deauthenticateWithCompletion:^(BOOL success, NSError * _Nullable error) {
+                         [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"userid"];
+                         [[NSUserDefaults standardUserDefaults] synchronize];
+                         
+                         [BUWebServicesManager sharedManager].userID = nil;
+                         [self.parentVC stopActivityIndicator];
+                         [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
+                     }];
+                     
+                 }
+                 ];
+            }        }];
         
         action;
     })];
@@ -311,17 +340,52 @@
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSLog(@"OK");
             
-
-            [self.parentVC startActivityIndicator:YES];
-            [[Digits sharedInstance]logOut];
-            [[BULayerHelper sharedHelper]deauthenticateWithCompletion:^(BOOL success, NSError * _Nullable error) {
-                [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"userid"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            
+            {
                 
-                [BUWebServicesManager sharedManager].userID = nil;
-                [self.parentVC stopActivityIndicator];
-                [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
-            }];
+                
+                [self.parentVC startActivityIndicator:YES];
+                NSString *baseURl = @"http://dev.thebureauapp.com/admin/delete_account_ws";
+                
+                NSDictionary *parameters = nil;
+                parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
+                               };
+                
+                [[BUWebServicesManager sharedManager] queryServer:parameters
+                                                          baseURL:baseURl
+                                                     successBlock:^(id response, NSError *error)
+                 {
+                     [[Digits sharedInstance]logOut];
+                     [[BULayerHelper sharedHelper]deauthenticateWithCompletion:^(BOOL success, NSError * _Nullable error) {
+                         [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"userid"];
+                         [[NSUserDefaults standardUserDefaults] synchronize];
+                         
+                         [BUWebServicesManager sharedManager].userID = nil;
+                         [self.parentVC stopActivityIndicator];
+                         [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
+                     }];
+
+                 }
+                 
+                                                     failureBlock:^(id response, NSError *error)
+                 {
+                     [[Digits sharedInstance]logOut];
+                     [[BULayerHelper sharedHelper]deauthenticateWithCompletion:^(BOOL success, NSError * _Nullable error) {
+                         [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"userid"];
+                         [[NSUserDefaults standardUserDefaults] synchronize];
+                         
+                         [BUWebServicesManager sharedManager].userID = nil;
+                         [self.parentVC stopActivityIndicator];
+                         [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
+                     }];
+
+                 }
+                 ];
+            }
+            
+            
+
         }];
         
         action;
@@ -347,17 +411,47 @@
             
             
 
-            [self.parentVC startActivityIndicator:YES];
-            [[Digits sharedInstance]logOut];
-            [[BULayerHelper sharedHelper]deauthenticateWithCompletion:^(BOOL success, NSError * _Nullable error) {
-                [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"userid"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
+            {
                 
-                [BUWebServicesManager sharedManager].userID = nil;
-                [self.parentVC stopActivityIndicator];
-                [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
-            }];
-        }];
+                
+                [self.parentVC startActivityIndicator:YES];
+                NSString *baseURl = @"http://dev.thebureauapp.com/admin/logout_ws";
+                
+                NSDictionary *parameters = nil;
+                parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
+                               };
+                
+                [[BUWebServicesManager sharedManager] queryServer:parameters
+                                                          baseURL:baseURl
+                                                     successBlock:^(id response, NSError *error)
+                 {
+                     [[Digits sharedInstance]logOut];
+                     [[BULayerHelper sharedHelper]deauthenticateWithCompletion:^(BOOL success, NSError * _Nullable error) {
+                         [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"userid"];
+                         [[NSUserDefaults standardUserDefaults] synchronize];
+                         
+                         [BUWebServicesManager sharedManager].userID = nil;
+                         [self.parentVC stopActivityIndicator];
+                         [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
+                     }];
+                     
+                 }
+                 
+                                                     failureBlock:^(id response, NSError *error)
+                 {
+                     [[Digits sharedInstance]logOut];
+                     [[BULayerHelper sharedHelper]deauthenticateWithCompletion:^(BOOL success, NSError * _Nullable error) {
+                         [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"userid"];
+                         [[NSUserDefaults standardUserDefaults] synchronize];
+                         
+                         [BUWebServicesManager sharedManager].userID = nil;
+                         [self.parentVC stopActivityIndicator];
+                         [self.parentVC.navigationController popToRootViewControllerAnimated:YES];
+                     }];
+                     
+                 }
+                 ];
+            }        }];
         
         action;
     })];

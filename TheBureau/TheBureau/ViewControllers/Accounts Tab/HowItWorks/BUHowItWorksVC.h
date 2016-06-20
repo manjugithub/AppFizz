@@ -10,6 +10,7 @@
 
 @interface BUHowItWorksVC : BUBaseViewController<UITableViewDataSource,UITableViewDelegate>
 
-@property(nonatomic , strong) IBOutlet UITableView *profileTableView;
+@property(nonatomic , weak) IBOutlet UITableView *profileTableView;
+
 
 @end

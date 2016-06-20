@@ -45,11 +45,14 @@
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_back"] style:UIBarButtonItemStylePlain target:self action:@selector(viewPopOnBackButton)];
     
     
+    [_vegetarianBtn setSelected:YES];
+    [_eegetarianBtn setSelected:NO];
+    [_nonVegetarianBtn setSelected:NO];
+    [_veganBtn setSelected:NO];
     self.dieting = @"Vegetarian";
     self.drink = @"Socially";
     self.smoke = @"No";
 
-    
     self.navigationItem.leftBarButtonItem = backButton;
 
     // Do any additional setup after loading the view.
@@ -163,12 +166,24 @@
 }
 
 
+-(void)alertMessage : (NSString *)message
+{
+    
+    
+    [[[UIAlertView alloc] initWithTitle:@"Alert"
+                                message:[NSString stringWithFormat:@"Please Enter %@",message]
+                               delegate:nil
+                      cancelButtonTitle:@"OK"
+                      otherButtonTitles:nil] show];
+    
+}
+
 
 -(IBAction)continueClicked:(id)sender
 {
   /*
     API to  upload :
-http://app.thebureauapp.com/admin/update_profile_step4
+http://dev.thebureauapp.com/admin/update_profile_step4
     
     Parameter
     userid => user id of user
@@ -176,6 +191,26 @@ http://app.thebureauapp.com/admin/update_profile_step4
     drinking => e.g. Socially, Never
     smoking => e.g. Yes, No
 */
+    
+    if (YES == [self.dieting isEqualToString:@""] || nil == self.dieting)
+    {
+        [self alertMessage:@"Diet"];
+    }
+    
+    else    if (YES == [self.drink isEqualToString:@""] || nil == self.drink)
+    {
+        [self alertMessage:@"Diet"];
+    }
+    
+
+    else     if (YES == [self.smoke isEqualToString:@""] || nil == self.smoke)
+    {
+        [self alertMessage:@"Diet"];
+    }
+    
+
+
+    
     NSDictionary *parameters = nil;
     parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
                    @"diet":self.dieting,
@@ -186,7 +221,7 @@ http://app.thebureauapp.com/admin/update_profile_step4
     
     [self startActivityIndicator:YES];
     [[BUWebServicesManager sharedManager]queryServer:parameters
-                                             baseURL:@"http://app.thebureauapp.com/admin/update_profile_step4"
+                                             baseURL:@"http://dev.thebureauapp.com/admin/update_profile_step4"
                                         successBlock:^(id response, NSError *error)
      {
          [self stopActivityIndicator];

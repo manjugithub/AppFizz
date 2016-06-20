@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -117,7 +117,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="dLE-oc-3q4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="dLE-oc-3q4"/>
@@ -140,7 +140,7 @@
                                     <constraint firstAttribute="height" constant="30" id="wBg-Vw-Akf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                 <connections>
                                     <outlet property="delegate" destination="rZM-x0-yvY" id="fH2-5n-PZD"/>
                                 </connections>
@@ -1118,7 +1118,7 @@
                                             <constraint firstAttribute="height" constant="30" id="mFY-jk-cg3"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="12"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                         <connections>
                                             <outlet property="delegate" destination="3OX-NB-hj5" id="jVU-QP-9de"/>
                                         </connections>
@@ -1333,7 +1333,7 @@
                                             <action selector="setYearsInUs:" destination="Jkz-9W-prh" eventType="touchUpInside" id="7Qx-Es-E4w"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvb-5q-dDZ">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvb-5q-dDZ">
                                         <rect key="frame" x="112" y="24" width="9" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.83529411760000005" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1531,7 +1531,7 @@
                                             <action selector="setLegalStatus:" destination="Jkz-9W-prh" eventType="touchUpInside" id="Xy0-aa-F1Y"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIL-0S-Ced">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIL-0S-Ced">
                                         <rect key="frame" x="112" y="24" width="9" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.83529411760000005" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1685,7 +1685,7 @@
                                                                     <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="16"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9l-le-Mc2">
+                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9l-le-Mc2">
                                                                     <rect key="frame" x="106" y="0.0" width="7" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="7" id="FOw-lw-IQV"/>
@@ -1813,7 +1813,7 @@
                                                                         <constraint firstAttribute="height" constant="17" id="1gh-jg-f4j"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits"/>
+                                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
                                                                     <connections>
                                                                         <outlet property="delegate" destination="zop-3A-46m" id="afG-VE-JmF"/>
                                                                     </connections>
@@ -1824,7 +1824,7 @@
                                                                         <constraint firstAttribute="height" constant="17" id="NTm-q9-3JH"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits"/>
+                                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
                                                                     <connections>
                                                                         <outlet property="delegate" destination="zop-3A-46m" id="eTn-Kf-Cft"/>
                                                                     </connections>
@@ -1934,7 +1934,7 @@
                                                                     <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="16"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hjl-Yt-qJL">
+                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hjl-Yt-qJL">
                                                                     <rect key="frame" x="106" y="0.0" width="7" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="7" id="4Me-X6-v3N"/>
@@ -2055,7 +2055,7 @@
                                                                         <constraint firstAttribute="height" constant="30" id="beU-58-dJ1"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                                    <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                                     <connections>
                                                                         <outlet property="delegate" destination="FpM-nT-Aqu" id="pXn-dA-1nc"/>
                                                                     </connections>
@@ -2066,7 +2066,7 @@
                                                                         <constraint firstAttribute="height" constant="30" id="sb0-Hq-iDg"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                                    <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                                     <connections>
                                                                         <outlet property="delegate" destination="FpM-nT-Aqu" id="anQ-xM-gAp"/>
                                                                     </connections>
@@ -2077,7 +2077,7 @@
                                                                         <constraint firstAttribute="height" constant="30" id="HwZ-fD-R4t"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                                                    <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                                     <connections>
                                                                         <outlet property="delegate" destination="FpM-nT-Aqu" id="FDl-4Q-rCT"/>
                                                                     </connections>

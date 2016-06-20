@@ -12,7 +12,7 @@
 #import "BUAboutMeCell.h"
 #import "BUCreatedByCell.h"
 #import "AFHTTPSessionManager.h"
-
+#import "Localytics.h"
 @interface BUHomeViewController ()
 @property(nonatomic, strong) NSMutableArray *imagesList;
 @property(nonatomic, strong) IBOutlet UITableView *imgScrollerTableView;
@@ -25,6 +25,12 @@
 @property(nonatomic, strong) IBOutlet UIButton *matchBtn,*passBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *profileStatusImgView;
 
+@property (weak, nonatomic) IBOutlet UIButton *flagBtn;
+
+
+
+
+
 @end
 
 @implementation BUHomeViewController
@@ -32,6 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    
     self.imagesList = [NSMutableArray arrayWithObjects:@"1",@"5",@"4",@"3",@"2", nil];
     self.datasourceList = nil;
     // Do any additional setup after loading the view.
@@ -40,7 +47,7 @@
 
     self.profileStatusImgView.hidden = YES;
 
-    [self getGoldDetails];
+    
 }
 
 
@@ -48,6 +55,7 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;    
+    [self getGoldDetails];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -57,6 +65,8 @@
     self.imgScrollerTableView.hidden = NO;
     [self.imgScrollerTableView reloadData];
     [self getMatchMakingfortheDay];
+    
+
 }
 
 
@@ -163,7 +173,6 @@
         
         if([response isKindOfClass:[NSDictionary class]])
         {
-            [self stopActivityIndicator];
             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[response valueForKey:@"response"]];
             [message addAttribute:NSFontAttributeName
                             value:[UIFont fontWithName:@"comfortaa" size:15]
@@ -178,138 +187,206 @@
             
             self.noProfileImgView.hidden = YES;
             
-//            self.datasourceList = [response lastObject];
+//            self.datasourceList = respDict ;
             
             self.datasourceList = [[NSMutableDictionary alloc] init];
-            
-            NSDictionary *respDict = [response lastObject];
-            
-            self.keysList = [[NSMutableArray alloc] init];
-            self.matchUserID = [respDict valueForKey:@"userid"];
-            
-            
-            
-            [self.datasourceList setValue:[respDict valueForKey:@"created_by"] forKey:@"created_by"];
-            [self.keysList addObject:@"created_by"];
-
-            NSString *profileName = [NSString stringWithFormat:@"%@ %@",[respDict valueForKey:@"profile_first_name"],[respDict valueForKey:@"profile_last_name"]];
-            
-            [self.datasourceList setValue:profileName forKey:@"Name"];
-            [self.keysList addObject:@"Name"];
-
-            [self.datasourceList setValue:[respDict valueForKey:@"age"] forKey:@"Age"];
-            [self.keysList addObject:@"Age"];
-            
-            [self.datasourceList setValue:[respDict valueForKey:@"location"] forKey:@"Location"];
-            [self.keysList addObject:@"Location"];
-            
-
-            NSString *height = [NSString stringWithFormat:@"%@' %@\"",[respDict valueForKey:@"height_feet"],[respDict valueForKey:@"height_inch"]];
-            [self.datasourceList setValue:height forKey:@"Height"];
-            [self.keysList addObject:@"Height"];
-            
-            
-            [self.datasourceList setValue:[respDict valueForKey:@"mother_tongue"] forKey:@"Mother Toungue"];
-            [self.keysList addObject:@"Mother Toungue"];
-            
-            [self.datasourceList setValue:[respDict valueForKey:@"religion_name"] forKey:@"Religion"];
-            [self.keysList addObject:@"Religion"];
-
-            [self.datasourceList setValue:[respDict valueForKey:@"family_origin_name"] forKey:@"Family Origin"];
-            [self.keysList addObject:@"Family Origin"];
-
-            [self.datasourceList setValue:@"" forKey:@"Specification"];
-            [self.keysList addObject:@"Specification"];
-            
-            [self.datasourceList setValue:[respDict valueForKey:@"highest_education"] forKey:@"Education"];
-            [self.keysList addObject:@"Education"];
-            
-            [self.datasourceList setValue:[respDict valueForKey:@"honors"] forKey:@"Honors"];
-            [self.keysList addObject:@"Honors"];
-            
-            [self.datasourceList setValue:[respDict valueForKey:@"major"] forKey:@"Major"];
-            [self.keysList addObject:@"Major"];
-            
-            [self.datasourceList setValue:[respDict valueForKey:@"college"] forKey:@"College"];
-            [self.keysList addObject:@"College"];
-            
-            [self.datasourceList setValue:[respDict valueForKey:@"graduated_year"] forKey:@"Year"];
-            [self.keysList addObject:@"Year"];
-            
-            [self.datasourceList setValue:[respDict valueForKey:@"employment_status"] forKey:@"Occupation"];
-            [self.keysList addObject:@"Occupation"];
-            
-            [self.datasourceList setValue:[respDict valueForKey:@"company"] forKey:@"Employer"];
-            [self.keysList addObject:@"Employer"];
-            
-            
-            [self.datasourceList setValue:[respDict valueForKey:@"diet"] forKey:@"Diet"];
-            [self.keysList addObject:@"Diet"];
-            
-            [self.datasourceList setValue:[respDict valueForKey:@"smoking"] forKey:@"Smoking"];
-            [self.keysList addObject:@"Smoking"];
-            
-            [self.datasourceList setValue:[respDict valueForKey:@"drinking"] forKey:@"Drinking"];
-            [self.keysList addObject:@"Drinking"];
-            
-            [self.datasourceList setValue:[respDict valueForKey:@"years_in_usa"] forKey:@"Years in USA"];
-            [self.keysList addObject:@"Years in USA"];
-            
-            [self.datasourceList setValue:[respDict valueForKey:@"legal_status"] forKey:@"Legal Status"];
-            [self.keysList addObject:@"Legal Status"];
-
-            [self.datasourceList setValue:[respDict valueForKey:@"profile_dob"] forKey:@"Date of Birth"];
-            [self.keysList addObject:@"Date of Birth"];
-
-            [self.datasourceList setValue:@"" forKey:@"Time of Birth"];
-            [self.keysList addObject:@"Time of Birth"];
-
-            [self.datasourceList setValue:[respDict valueForKey:@"about_me"] forKey:@"About Me"];
-            [self.keysList addObject:@"About Me"];
-
-            
-            
-            
-            
-            
-            
-            if([[[response lastObject]valueForKey:@"img_url"] isKindOfClass:[NSDictionary class]])
+            [self.keysList removeAllObjects];
+            [self.imagesList removeAllObjects];
+            NSDictionary *respDict  = [response firstObject];
             {
-                self.imagesList = [[NSMutableArray alloc] initWithArray:[[[response lastObject]valueForKey:@"img_url"] allValues]];
-            }
-            else
-            {
-                self.imagesList = [[NSMutableArray alloc] initWithArray:[[response lastObject]valueForKey:@"img_url"]];
                 
-            }
-
-            
-            NSString *userAction = [[response lastObject]valueForKey:@"user_action"];
-            
-            if([userAction isKindOfClass:[NSNull class]])
-            {
                 self.matchBtn.hidden = NO;
                 self.passBtn.hidden = NO;
-                self.profileStatusImgView.hidden = YES;
-            }
-            else if([userAction isEqualToString:@"Passed"])
-            {
-                self.matchBtn.hidden = YES;
-                self.passBtn.hidden = YES;
                 self.profileStatusImgView.hidden = NO;
-                self.profileStatusImgView.image = [UIImage imageNamed:@"btn_passed"];
+                
+                NSString *userAction = [respDict valueForKey:@"user_action"];
+                
+                if([userAction isKindOfClass:[NSNull class]])
+                {
+                    self.matchBtn.hidden = NO;
+                    self.passBtn.hidden = NO;
+                    self.profileStatusImgView.hidden = YES;
+                }
+                else if([userAction isEqualToString:@"Passed"])
+                {
+                    self.matchBtn.hidden = YES;
+                    self.passBtn.hidden = YES;
+                    self.profileStatusImgView.hidden = YES;
+                    self.profileStatusImgView.image = [UIImage imageNamed:@"btn_passed"];
+                }
+                else if([userAction isEqualToString:@"Liked"])
+                {
+                    self.matchBtn.hidden = YES;
+                    self.passBtn.hidden = YES;
+                    self.profileStatusImgView.hidden = YES;
+                    self.profileStatusImgView.image = [UIImage imageNamed:@"btn_liked"];
+                }
+//                else
+                {
+                    self.noProfileImgView.hidden = YES;
+
+                    self.keysList = [[NSMutableArray alloc] init];
+                    self.matchUserID = [respDict valueForKey:@"userid"];
+                    
+                    
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"created_by"] forKey:@"created_by"];
+                    [self.keysList addObject:@"created_by"];
+                    
+                    NSString *profileName = [NSString stringWithFormat:@"%@ %@",[respDict valueForKey:@"profile_first_name"],[respDict valueForKey:@"profile_last_name"]];
+                    
+                    [self.datasourceList setValue:profileName forKey:@"Name"];
+                    [self.keysList addObject:@"Name"];
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"age"] forKey:@"Age"];
+                    [self.keysList addObject:@"Age"];
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"location"] forKey:@"Location"];
+                    [self.keysList addObject:@"Location"];
+                    
+                    
+                    NSString *height = [NSString stringWithFormat:@"%@' %@\"",[respDict valueForKey:@"height_feet"],[respDict valueForKey:@"height_inch"]];
+                    [self.datasourceList setValue:height forKey:@"Height"];
+                    [self.keysList addObject:@"Height"];
+                    
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"mother_tongue"] forKey:@"Mother Toungue"];
+                    [self.keysList addObject:@"Mother Toungue"];
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"religion_name"] forKey:@"Religion"];
+                    [self.keysList addObject:@"Religion"];
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"family_origin_name"] forKey:@"Family Origin"];
+                    [self.keysList addObject:@"Family Origin"];
+                    
+                    [self.datasourceList setValue:@"" forKey:@"Specification"];
+                    [self.keysList addObject:@"Specification"];
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"highest_education"] forKey:@"Education"];
+                    [self.keysList addObject:@"Education"];
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"honors"] forKey:@"Honors"];
+                    [self.keysList addObject:@"Honors"];
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"major"] forKey:@"Major"];
+                    [self.keysList addObject:@"Major"];
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"college"] forKey:@"College"];
+                    [self.keysList addObject:@"College"];
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"graduated_year"] forKey:@"Year"];
+                    [self.keysList addObject:@"Year"];
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"employment_status"] forKey:@"Occupation"];
+                    [self.keysList addObject:@"Occupation"];
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"company"] forKey:@"Employer"];
+                    [self.keysList addObject:@"Employer"];
+                    
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"diet"] forKey:@"Diet"];
+                    [self.keysList addObject:@"Diet"];
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"smoking"] forKey:@"Smoking"];
+                    [self.keysList addObject:@"Smoking"];
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"drinking"] forKey:@"Drinking"];
+                    [self.keysList addObject:@"Drinking"];
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"years_in_usa"] forKey:@"Years in USA"];
+                    [self.keysList addObject:@"Years in USA"];
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"legal_status"] forKey:@"Legal Status"];
+                    [self.keysList addObject:@"Legal Status"];
+                    
+                    NSString *userAction = [respDict valueForKey:@"user_action"];
+                    
+                    if([userAction isKindOfClass:[NSNull class]])
+                    {
+                        self.matchBtn.hidden = NO;
+                        self.passBtn.hidden = NO;
+                        self.profileStatusImgView.hidden = YES;
+                    }
+                    else if([[userAction lowercaseString] isEqualToString:@"connected"])
+                    {
+                        [self.datasourceList setValue:[respDict valueForKey:@"profile_dob"] forKey:@"Date of Birth"];
+                        [self.keysList addObject:@"Date of Birth"];
+                        
+                        [self.datasourceList setValue:@"" forKey:@"Time of Birth"];
+                        [self.keysList addObject:@"Time of Birth"];
+                    }
+                    
+                    
+                    [self.datasourceList setValue:[respDict valueForKey:@"about_me"] forKey:@"About Me"];
+                    [self.keysList addObject:@"About Me"];
+                    
+                    
+                    
+                    
+                    
+                    
+                    if([[respDict valueForKey:@"img_url"] count] > 0)
+                    {
+                        [self.imagesList addObject:[[respDict valueForKey:@"img_url"] firstObject]];
+                    }
+                    else
+                    {
+                        [self.imagesList addObject:@"https://camo.githubusercontent.com/9ba96d7bcaa2481caa19be858a58f180ef236c7b/687474703a2f2f692e696d6775722e636f6d2f7171584a3246442e6a7067"];
+                        
+                    }
+
+                    
+                    
+                    
+                    
+                    self.matchBtn.hidden = NO;
+                    self.passBtn.hidden = NO;
+                    self.profileStatusImgView.hidden = YES;
+                    
+                    
+                    if([userAction isKindOfClass:[NSNull class]])
+                    {
+                        self.matchBtn.hidden = NO;
+                        self.passBtn.hidden = NO;
+                        self.profileStatusImgView.hidden = YES;
+                    }
+                    else if([userAction isEqualToString:@"Passed"])
+                    {
+                        self.matchBtn.hidden = YES;
+                        self.passBtn.hidden = YES;
+                        self.profileStatusImgView.hidden = NO;
+                        self.profileStatusImgView.image = [UIImage imageNamed:@"btn_passed"];
+                    }
+                    else if([userAction isEqualToString:@"Liked"])
+                    {
+                        self.matchBtn.hidden = YES;
+                        self.passBtn.hidden = YES;
+                        self.profileStatusImgView.hidden = NO;
+                        self.profileStatusImgView.image = [UIImage imageNamed:@"btn_liked"];
+                    }
+                    else if([[userAction lowercaseString] isEqualToString:@"connected"])
+                    {
+                        self.matchBtn.hidden = YES;
+                        self.passBtn.hidden = YES;
+                        self.profileStatusImgView.hidden = NO;
+                        self.profileStatusImgView.image = [UIImage imageNamed:@"btn_connected"];
+                    }
+                    
+                    
+                    [self.imgScrollerTableView reloadData];
+                    return;
+                }
+
+                
+                
             }
-            else if([userAction isEqualToString:@"Liked"])
-            {
-                self.matchBtn.hidden = YES;
-                self.passBtn.hidden = YES;
-                self.profileStatusImgView.hidden = NO;
-                self.profileStatusImgView.image = [UIImage imageNamed:@"btn_liked"];
-            }
-            [self.imgScrollerTableView reloadData];
+//            NSDictionary *respDict = respDict ;
+            
+//            [self.imgScrollerTableView reloadData];
         }
         else
         {
+            self.flagBtn.hidden = YES;
             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
             [message addAttribute:NSFontAttributeName
                             value:[UIFont fontWithName:@"comfortaa" size:15]
@@ -341,10 +418,6 @@
 
 -(IBAction)match:(id)sender
 {
-//    NSDictionary *parameters = nil;
-//    parameters = @{@"userid1": [BUWebServicesManager sharedManager].userID,
-//                   @"userid2": self.matchUserID
-//                   };
 
     NSDictionary *parameters = nil;
     parameters = @{@"passed_by": [BUWebServicesManager sharedManager].userID,
@@ -360,7 +433,7 @@
 -(void)matchWithparameters:(NSDictionary *)inParams;
 {
     
-    NSString *baseURL = @"http://app.thebureauapp.com/admin/pass_like_matches";
+    NSString *baseURL = @"http://dev.thebureauapp.com/admin/pass_like_matches";
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
        parameters:inParams
@@ -370,28 +443,55 @@ constructingBodyWithBlock:nil
      {
          [self stopActivityIndicator];
          
-         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Your interest is sent!"];
-         [message addAttribute:NSFontAttributeName
-                         value:[UIFont fontWithName:@"comfortaa" size:15]
-                         range:NSMakeRange(0, message.length)];
-         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-         [alertController setValue:message forKey:@"attributedTitle"];
-         
-         [alertController addAction:({
-             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                 NSLog(@"OK");
-
-                 self.matchBtn.hidden = YES;
-                 self.passBtn.hidden = YES;
-                 self.profileStatusImgView.hidden = NO;
-                 self.profileStatusImgView.image = [UIImage imageNamed:@"btn_liked"];
-             }];
+         if([responseObject valueForKey:@"msg"] != nil && [[responseObject valueForKey:@"msg"] isEqualToString:@"Error"])
+         {
+             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[responseObject valueForKey:@"response"]];
+             [message addAttribute:NSFontAttributeName
+                             value:[UIFont fontWithName:@"comfortaa" size:15]
+                             range:NSMakeRange(0, message.length)];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+             [alertController setValue:message forKey:@"attributedTitle"];
              
-             action;
-         })];
+             [alertController addAction:({
+                 UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                     NSLog(@"OK");
+                     
+                 }];
+                 
+                 action;
+             })];
+             
+             [self presentViewController:alertController  animated:YES completion:nil];
+             
+         }
+         else
+         {
+             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[responseObject valueForKey:@"response"]];
+             [message addAttribute:NSFontAttributeName
+                             value:[UIFont fontWithName:@"comfortaa" size:15]
+                             range:NSMakeRange(0, message.length)];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+             [alertController setValue:message forKey:@"attributedTitle"];
+             
+             [alertController addAction:({
+                 UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                     NSLog(@"OK");
+                     
+                     self.matchBtn.hidden = YES;
+                     self.passBtn.hidden = YES;
+                     self.profileStatusImgView.hidden = NO;
+                     self.profileStatusImgView.image = [UIImage imageNamed:@"btn_liked"];
+                     
+                     [self getGoldDetails];
+                 }];
+                 
+                 action;
+             })];
+             
+             [self presentViewController:alertController  animated:YES completion:nil];
+             
+         }
          
-         [self presentViewController:alertController  animated:YES completion:nil];
-
          NSLog(@"Success: %@", responseObject);
      }
           failure:^(NSURLSessionDataTask *operation, NSError *error)
@@ -406,7 +506,7 @@ constructingBodyWithBlock:nil
     
 
     /*
-     http://app.thebureauapp.com/admin/passMatches
+     http://dev.thebureauapp.com/admin/passMatches
      
      Parameters :
      
@@ -425,7 +525,7 @@ constructingBodyWithBlock:nil
 
     
     
-    NSString *baseURL = @"http://app.thebureauapp.com/admin/pass_like_matches";
+    NSString *baseURL = @"http://dev.thebureauapp.com/admin/pass_like_matches";
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:baseURL
        parameters:parameters
@@ -435,7 +535,7 @@ constructingBodyWithBlock:nil
      {
          [self stopActivityIndicator];
          
-         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"You have passed the profile!"];
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[responseObject valueForKey:@"response"]];
          [message addAttribute:NSFontAttributeName
                          value:[UIFont fontWithName:@"comfortaa" size:15]
                          range:NSMakeRange(0, message.length)];
@@ -450,6 +550,7 @@ constructingBodyWithBlock:nil
                  self.passBtn.hidden = YES;
                  self.profileStatusImgView.hidden = NO;
                  self.profileStatusImgView.image = [UIImage imageNamed:@"btn_passed"];
+                 [self getGoldDetails];
              }];
              
              action;
@@ -472,45 +573,111 @@ constructingBodyWithBlock:nil
 -(void)getGoldDetails
 {
     
+    //    [self startActivityIndicator:YES];
+    
+    
     NSDictionary *parameters = nil;
     parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
                    };
     
     
-    NSString *baseURl = @"http://app.thebureauapp.com/admin/getGoldAvailable";
+    NSString *baseURl = @"http://dev.thebureauapp.com/admin/getGoldAvailable";
     
     [[BUWebServicesManager sharedManager] queryServer:parameters
                                               baseURL:baseURl
                                          successBlock:^(id response, NSError *error) {
+                                             
                                              [[NSUserDefaults standardUserDefaults] setInteger:[[response valueForKey:@"available_gold"] intValue] forKey:@"purchasedGold"];
                                              [[NSUserDefaults standardUserDefaults] synchronize];
+                                             
+                                             
+                                             [(BUHomeTabbarController *)[self tabBarController] updateGoldValue:[[response valueForKey:@"available_gold"] integerValue]];
                                          }
                                          failureBlock:^(id response, NSError *error) {
                                              
-                                             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error!"];
-                                             [message addAttribute:NSFontAttributeName
-                                                             value:[UIFont fontWithName:@"comfortaa" size:15]
-                                                             range:NSMakeRange(0, message.length)];
-                                             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-                                             [alertController setValue:message forKey:@"attributedTitle"];
-                                             
-                                             [alertController addAction:({
-                                                 UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                                                     NSLog(@"OK");
-                                                     
-                                                     self.matchBtn.hidden = YES;
-                                                     self.passBtn.hidden = YES;
-                                                     self.profileStatusImgView.hidden = NO;
-                                                     self.profileStatusImgView.image = [UIImage imageNamed:@"btn_liked"];
-                                                 }];
-                                                 
-                                                 action;
-                                             })];
-                                             
-                                             [self presentViewController:alertController  animated:YES completion:nil];
-                                             
                                          }];
-
+    
 }
+
+-(IBAction)flagUSer:(id)sender
+
+{
+    UIAlertController *alertControllerK2 = [UIAlertController
+                                            alertControllerWithTitle:@"\u00A0"
+                                            message:@"Please provide reason"
+                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *K2okAction = [UIAlertAction
+                                 actionWithTitle:@"OK"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action) {
+                                     // access text from text field
+                                     NSString *text = ((UITextField *)[alertControllerK2.textFields firstObject]).text;
+                                     [self flagWithText:text];
+                                     
+                                 }];
+    [alertControllerK2 addTextFieldWithConfigurationHandler:^(UITextField *K2TextField)
+     {
+         K2TextField.placeholder = NSLocalizedString(@"Please provide reason", @"Please provide reason");
+     }];
+    [alertControllerK2 addAction:K2okAction];
+    [self presentViewController:alertControllerK2 animated:YES completion:nil];
+}
+
+
+-(void)flagWithText:(NSString *)inText
+{
+    
+    NSDictionary *parameters = nil;
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                   @"flagged_userid":self.matchUserID,
+                   @"reason":inText
+                   };
+    [self startActivityIndicator:YES];
+    
+    NSString *baseURl = @"http://dev.thebureauapp.com/admin/flagUsers";
+    
+    [[BUWebServicesManager sharedManager] queryServer:parameters
+                                              baseURL:baseURl
+                                         successBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[response valueForKey:@"response"]];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+         [self presentViewController:alertController animated:YES completion:nil];
+     }
+                                         failureBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error!"];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];
+         
+         [alertController addAction:({
+             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                 NSLog(@"OK");
+                 
+                 self.matchBtn.hidden = YES;
+                 self.passBtn.hidden = YES;
+                 self.profileStatusImgView.hidden = NO;
+                 self.profileStatusImgView.image = [UIImage imageNamed:@"btn_liked"];
+             }];
+             
+             action;
+         })];
+         
+         [self presentViewController:alertController  animated:YES completion:nil];
+         
+     }];
+    
+}
+
 
 @end

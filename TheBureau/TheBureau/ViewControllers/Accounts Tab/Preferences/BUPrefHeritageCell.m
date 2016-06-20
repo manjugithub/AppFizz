@@ -405,6 +405,12 @@ numberOfRowsInComponent:(NSInteger)component{
     {
         case eReligionList:
         {
+            if(nil == self.religionIDList)
+                self.religionIDList = [[NSMutableArray alloc] init];
+            
+            if(nil == self.religionList)
+                self.religionList = [[NSMutableArray alloc] init];
+
             [self.religionIDList addObject:inSelectedRow.hId];
             [self.religionList addObject:inSelectedRow.name];
             
@@ -429,6 +435,13 @@ numberOfRowsInComponent:(NSInteger)component{
         case eMotherToungueList:
         {
             
+            if(nil == self.motherToungueIDList)
+                self.motherToungueIDList = [[NSMutableArray alloc] init];
+
+            if(nil == self.motherToungueList)
+                self.motherToungueList = [[NSMutableArray alloc] init];
+
+            
             [self.motherToungueIDList addObject:inSelectedRow.hId];
             [self.motherToungueList addObject:inSelectedRow.name];
             
@@ -451,6 +464,14 @@ numberOfRowsInComponent:(NSInteger)component{
         }
         case eFamilyOriginList:
         {
+            
+            if(nil == self.famliyIDList)
+                self.famliyIDList = [[NSMutableArray alloc] init];
+            
+            if(nil == self.famliyList)
+                self.famliyList = [[NSMutableArray alloc] init];
+
+            
             
             self.familyOriginTF.text = [NSString stringWithFormat:@"%@   %@",self.familyOriginTF.text,inSelectedRow.name];
             [self.famliyIDList addObject:inSelectedRow.hId];

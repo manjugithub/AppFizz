@@ -340,14 +340,30 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [BUUtilities setNavBarLogo:self.navigationController image:[UIImage imageNamed:@"logo44"]];
-    self.navigationItem.rightBarButtonItem = nil;
+//    [BUUtilities setNavBarLogo:self.navigationController image:[UIImage imageNamed:@"logo44"]];
+//    self.navigationItem.rightBarButtonItem = nil;
 }
 
 
 
 #pragma mark -
 #pragma mark - Social habits
+
+
+-(IBAction)resetDiet:(id)sender
+{
+    
+    [_vegetarianBtn setSelected:NO];
+    _vegetarianBtn.tag = 0;
+    [_eegetarianBtn setSelected:NO];
+    _eegetarianBtn.tag = 0;
+    [_nonVegetarianBtn setSelected:NO];
+    _nonVegetarianBtn.tag = 0;
+    [_veganBtn setSelected:NO];
+    _veganBtn.tag = 0;
+
+    [self.dietList removeAllObjects];
+}
 
 
 -(IBAction)vegeterianBtnClicked:(id)sender
@@ -493,10 +509,10 @@
     [self.profDict setValue:self.maritalStatusList forKey:@"marital_status"];
     [self.profDict setValue:self.dietList forKey:@"diet"];
  
-    NSString *baseURl = @"http://app.thebureauapp.com/admin/add_match_preference_ws";
+    NSString *baseURl = @"http://dev.thebureauapp.com/admin/add_match_preference_ws";
     if(self.shouldAddPref == NO)
     {
-     baseURl = @"http://app.thebureauapp.com/admin/update_match_preference_ws";
+     baseURl = @"http://dev.thebureauapp.com/admin/update_match_preference_ws";
     }
     
     [self startActivityIndicator:YES];
@@ -504,16 +520,56 @@
     [[BUWebServicesManager sharedManager] queryServer:self.profDict
                                               baseURL:baseURl
                                          successBlock:^(id response, NSError *error)
+     {
+         [self stopActivityIndicator];
+         
+         
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Preferences updated"];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];
+         
+         [alertController addAction:({
+             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                 NSLog(@"OK");
+                 self.shouldAddPref = NO;
+                 
+                 [self.navigationController popViewControllerAnimated:YES];
+             }];
+             
+             action;
+         })];
+         
+         [self presentViewController:alertController  animated:YES completion:nil];
+         
+     }
+                                         failureBlock:^(id response, NSError *error)
     {
-        
-        self.shouldAddPref = NO;
-
-        [self stopActivityIndicator];
-                                         }
-                                         failureBlock:^(id response, NSError *error) {
-                                             
                                              [self stopActivityIndicator];
-                                         }
+        
+        
+        NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Preferences updated"];
+        [message addAttribute:NSFontAttributeName
+                        value:[UIFont fontWithName:@"comfortaa" size:15]
+                        range:NSMakeRange(0, message.length)];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alertController setValue:message forKey:@"attributedTitle"];
+        
+        [alertController addAction:({
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                NSLog(@"OK");
+                
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+            
+            action;
+        })];
+        
+        [self presentViewController:alertController  animated:YES completion:nil];
+
+    }
      ];
 }
 
@@ -530,7 +586,7 @@
     
     self.shouldAddPref = NO;
     [self startActivityIndicator:YES];
-    NSString *baseURl = @"http://app.thebureauapp.com/admin/readPreference";
+    NSString *baseURl = @"http://dev.thebureauapp.com/admin/readPreference";
     
     NSDictionary *parameters = nil;
     parameters = @{@"userid": [BUWebServicesManager sharedManager].userID

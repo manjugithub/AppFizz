@@ -7,6 +7,7 @@
 //
 
 #import "BUHowItWorksVC.h"
+#import "BUHowItWorksCell.h"
 
 @interface BUHowItWorksVC ()
 @property(nonatomic) NSInteger selectedRow;
@@ -19,7 +20,7 @@
     [super viewDidLoad];
     self.selectedRow = -1;
     // Do any additional setup after loading the view.
-    self.title = @"How it works";
+    self.title = @"How we work";
     
 }
 
@@ -57,7 +58,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    UITableViewCell *cell = nil;
+    BUHowItWorksCell *cell = nil;
     
     switch (indexPath.section) {
         case 0:
@@ -112,6 +113,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    BUHowItWorksCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    [cell.tV setContentOffset:CGPointZero animated:NO];
+    
     self.selectedRow = indexPath.section;
     [self.profileTableView beginUpdates];
     [self.profileTableView endUpdates];

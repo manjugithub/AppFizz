@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -455,13 +455,27 @@
                                     <action selector="pass:" destination="U3C-Nv-blz" eventType="touchUpInside" id="mJE-Wi-2Lf"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_with_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ch4-a6-IHu">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ph3-Oz-NvM">
+                                <rect key="frame" x="551" y="28" width="42" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Mfb-aR-D8F"/>
+                                    <constraint firstAttribute="width" constant="42" id="sYZ-nW-O6L"/>
+                                </constraints>
+                                <state key="normal" image="flag"/>
+                                <connections>
+                                    <action selector="flagUSer:" destination="U3C-Nv-blz" eventType="touchUpInside" id="ttp-0V-46o"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg_with_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ch4-a6-IHu">
+                                <rect key="frame" x="0.0" y="580" width="600" height="600"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ph3-Oz-NvM" secondAttribute="trailing" constant="7" id="1Ph-mw-biE"/>
                             <constraint firstItem="0UX-WQ-1oo" firstAttribute="top" secondItem="oXk-6L-Jg3" secondAttribute="bottom" id="6A3-mi-gCC"/>
+                            <constraint firstItem="ph3-Oz-NvM" firstAttribute="top" secondItem="1mY-5h-Yqb" secondAttribute="bottom" constant="8" id="9al-uT-vnm"/>
                             <constraint firstItem="Ch4-a6-IHu" firstAttribute="leading" secondItem="wyD-Xb-5f5" secondAttribute="leading" id="Edw-Kb-2bu"/>
                             <constraint firstItem="0UX-WQ-1oo" firstAttribute="top" secondItem="bAQ-Qi-3az" secondAttribute="bottom" constant="37" id="Hfj-Ud-XwF"/>
                             <constraint firstItem="0UX-WQ-1oo" firstAttribute="top" secondItem="8fN-Id-igF" secondAttribute="bottom" constant="37" id="JIx-Mq-pTt"/>
@@ -483,6 +497,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Match" image="tab_match_icon" selectedImage="tab_match_red_icon" id="mNv-Tn-TCP"/>
                     <connections>
+                        <outlet property="flagBtn" destination="ph3-Oz-NvM" id="TDW-NK-Rbz"/>
                         <outlet property="imgScrollerTableView" destination="oXk-6L-Jg3" id="oe0-Bw-Har"/>
                         <outlet property="matchBtn" destination="ygq-7W-tFF" id="MbU-3h-qJA"/>
                         <outlet property="noProfileImgView" destination="Ch4-a6-IHu" id="MQA-5Y-Iqo"/>
@@ -492,7 +507,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kup-Z5-ZGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1257" y="730"/>
+            <point key="canvasLocation" x="962" y="781"/>
         </scene>
         <!--Home CollectionVC-->
         <scene sceneID="UjR-k4-mjB">
@@ -610,7 +625,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6lF-kT-gkv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1352" y="-323"/>
+            <point key="canvasLocation" x="-2428" y="-1239"/>
         </scene>
         <!--Tab 3-->
         <scene sceneID="shh-gq-cDa">
@@ -798,23 +813,23 @@
                                 <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OF2-mq-YFG" customClass="FBSDKLikeButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OF2-mq-YFG" customClass="FBSDKLikeButton">
                                 <rect key="frame" x="20" y="294" width="560" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Shy-PY-CPY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                <state key="normal" title="       Like us on Facebook" image="ic_fb_like">
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="   Like us on Facebook" image="ic_fb_like">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PD5-FM-IQr">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PD5-FM-IQr">
                                 <rect key="frame" x="20" y="342" width="560" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Ehm-Xq-e3M"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="iFG-nq-HUZ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <state key="normal" title="   Follow us on Instagram" image="ic_instagram">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -822,13 +837,13 @@
                                     <action selector="followUsInInstagram:" destination="AaH-SU-ujX" eventType="touchUpInside" id="UYo-SY-V0i"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkC-Do-N4k">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkC-Do-N4k">
                                 <rect key="frame" x="20" y="246" width="560" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="DyE-1q-AWr"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                <state key="normal" title="     Invite a Friend" image="ic_invite_friend">
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="   Invite a Friend" image="ic_invite_friend">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -927,10 +942,10 @@
                                     <outlet property="delegate" destination="AaH-SU-ujX" id="tcj-DR-i0x"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Apx-5E-G7b">
-                                <rect key="frame" x="61" y="390" width="478" height="68"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Apx-5E-G7b">
+                                <rect key="frame" x="61" y="390" width="478" height="95"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="68" id="Xf9-uc-8P4"/>
+                                    <constraint firstAttribute="height" constant="95" id="Xf9-uc-8P4"/>
                                 </constraints>
                                 <string key="text">All sales are final, please view out Terms and Conditions for product details. you can also visit our website to check if we are running any special promotionals</string>
                                 <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="14"/>
@@ -1042,6 +1057,7 @@
                     <tabBarItem key="tabBarItem" title="Gold" image="tab_gold_icon" selectedImage="tab_gold_red_icon" id="xf2-Fm-Fpn"/>
                     <connections>
                         <outlet property="followFriendButton" destination="PD5-FM-IQr" id="bOL-EP-CiZ"/>
+                        <outlet property="goldCollectionView" destination="Yyw-9T-QvI" id="6Xh-mg-JMH"/>
                         <outlet property="inviteFriendButton" destination="AkC-Do-N4k" id="Qhs-Dc-bUR"/>
                         <outlet property="likeUsOnFBButton" destination="OF2-mq-YFG" id="OX8-op-AKb"/>
                         <outlet property="totalGoldLabel" destination="vhh-wM-scr" id="4uc-sy-HT0"/>
@@ -1049,7 +1065,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UU9-WW-RAz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-368" y="-912"/>
+            <point key="canvasLocation" x="-310" y="-915"/>
         </scene>
         <!--Accounts-->
         <scene sceneID="6r6-tz-gb4">
@@ -1295,29 +1311,29 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EPm-hX-5Jh">
-                                <rect key="frame" x="20" y="20" width="560" height="100"/>
+                                <rect key="frame" x="20" y="20" width="560" height="154"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="0iI-P0-f9N"/>
+                                    <constraint firstAttribute="height" constant="154" id="0iI-P0-f9N"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="15" id="YQa-1Y-CMn">
-                                    <size key="itemSize" width="80" height="100"/>
+                                    <size key="itemSize" width="120" height="140"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BUHomeImagePreviewCell" id="uza-9v-P4b" customClass="BUHomeImagePreviewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+                                        <rect key="frame" x="0.0" y="7" width="120" height="140"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_photo1" translatesAutoresizingMaskIntoConstraints="NO" id="RdB-x7-7zF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
                                                 </imageView>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="aKf-iy-UKg">
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="aKf-iy-UKg">
                                                     <rect key="frame" x="30" y="40" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="DOx-r6-VVp"/>
@@ -1369,7 +1385,7 @@
                                     <constraint firstAttribute="width" constant="132" id="Hyx-5H-PaP"/>
                                     <constraint firstAttribute="height" constant="46" id="sj5-wH-Elh"/>
                                 </constraints>
-                                <state key="normal" title="500" image="img_gold_small" backgroundImage="btn_selected"/>
+                                <state key="normal" title="150" image="img_gold_small" backgroundImage="btn_selected"/>
                                 <connections>
                                     <action selector="payAnonymousClicked:" destination="BVB-E0-LoW" eventType="touchUpInside" id="HSg-kY-iRD"/>
                                 </connections>
@@ -1392,7 +1408,7 @@
                                     <constraint firstAttribute="height" constant="43" id="5Kj-aR-Nir"/>
                                     <constraint firstAttribute="width" constant="132" id="ZFG-33-Wk5"/>
                                 </constraints>
-                                <state key="normal" title="500" image="img_gold_small" backgroundImage="btn_selected"/>
+                                <state key="normal" title="250" image="img_gold_small" backgroundImage="btn_selected"/>
                                 <connections>
                                     <action selector="payDirectClicked:" destination="BVB-E0-LoW" eventType="touchUpInside" id="Hvh-EI-Q2N"/>
                                 </connections>
@@ -1418,7 +1434,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q33-Ju-Mdp">
-                                <rect key="frame" x="20" y="135" width="560" height="301"/>
+                                <rect key="frame" x="20" y="182" width="560" height="254"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUMatchInfoCell" rowHeight="20" id="GSZ-SJ-n3g" customClass="BUMatchInfoCell">
@@ -1500,7 +1516,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="vrx-i7-R8u" secondAttribute="trailing" constant="-3" id="DHz-gM-u1F"/>
                             <constraint firstItem="1Za-gF-4fD" firstAttribute="centerX" secondItem="iI2-kQ-bLA" secondAttribute="centerX" id="Dhb-FS-Wp0"/>
                             <constraint firstAttribute="trailing" secondItem="RwK-kI-hBc" secondAttribute="trailing" constant="10" id="ERw-E5-Aw8"/>
-                            <constraint firstItem="Q33-Ju-Mdp" firstAttribute="top" secondItem="EPm-hX-5Jh" secondAttribute="bottom" constant="15" id="EeA-ND-nvO"/>
+                            <constraint firstItem="Q33-Ju-Mdp" firstAttribute="top" secondItem="EPm-hX-5Jh" secondAttribute="bottom" constant="8" id="EeA-ND-nvO"/>
                             <constraint firstItem="b4p-Ox-yuH" firstAttribute="top" secondItem="vrx-i7-R8u" secondAttribute="bottom" constant="7" id="G4k-7i-sHg"/>
                             <constraint firstItem="fUb-YS-QZu" firstAttribute="leading" secondItem="iI2-kQ-bLA" secondAttribute="leading" constant="10" id="I4i-1m-QHV"/>
                             <constraint firstItem="YPf-pj-BO8" firstAttribute="leading" secondItem="iI2-kQ-bLA" secondAttribute="leading" constant="28" id="OCY-es-aBf"/>
@@ -1932,13 +1948,14 @@
         <image name="ac_invite" width="151" height="132"/>
         <image name="ac_pref" width="151" height="132"/>
         <image name="ac_profile" width="151" height="132"/>
-        <image name="bg_with_logo" width="53" height="95"/>
+        <image name="bg_with_logo" width="320" height="568"/>
         <image name="btn_liked" width="104" height="40"/>
         <image name="btn_match" width="129" height="50"/>
         <image name="btn_pass" width="129" height="50"/>
         <image name="btn_red" width="238" height="37"/>
         <image name="btn_selected" width="132" height="53"/>
         <image name="btn_tap_to_view" width="264" height="49"/>
+        <image name="flag" width="40" height="40"/>
         <image name="ic_fb_like" width="27" height="27"/>
         <image name="ic_instagram" width="27" height="27"/>
         <image name="ic_invite_friend" width="27" height="27"/>

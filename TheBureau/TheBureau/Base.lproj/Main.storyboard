@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MpA-nz-T4m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MpA-nz-T4m">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -1099,7 +1099,7 @@
                                             <constraint firstAttribute="height" constant="30" id="KNi-bH-UVz"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                                         <connections>
                                             <outlet property="delegate" destination="fZs-4K-Y51" id="bHa-wJ-2fA"/>
                                         </connections>
@@ -1110,7 +1110,7 @@
                                             <constraint firstAttribute="height" constant="30" id="Ozh-U9-fC9"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                         <connections>
                                             <outlet property="delegate" destination="fZs-4K-Y51" id="FMs-BK-2El"/>
                                         </connections>
@@ -1121,7 +1121,7 @@
                                             <constraint firstAttribute="height" constant="30" id="igu-o0-qat"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                                         <connections>
                                             <outlet property="delegate" destination="fZs-4K-Y51" id="MEY-8F-xNS"/>
                                         </connections>
@@ -1278,7 +1278,7 @@
                                             <constraint firstAttribute="height" constant="30" id="ddb-6t-arr"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                                         <connections>
                                             <outlet property="delegate" destination="fZs-4K-Y51" id="FMN-SK-Hu3"/>
                                         </connections>
@@ -1298,7 +1298,7 @@
                                             <constraint firstAttribute="height" constant="30" id="TIS-qz-8kx"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                                         <connections>
                                             <outlet property="delegate" destination="fZs-4K-Y51" id="cXP-Gj-di3"/>
                                         </connections>

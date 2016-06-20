@@ -17,12 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setNavBarLogo];
+//    [self setNavBarLogo];
 
 }
 - (void)setNavBarLogo {
     
-    [BUUtilities setNavBarLogo:self.navigationController image:[UIImage imageNamed:@"logo44"]];
+//    [BUUtilities setNavBarLogo:self.navigationController image:[UIImage imageNamed:@"logo44"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

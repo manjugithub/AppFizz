@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BURightBtnView.h"
 @interface BUHomeTabbarController : UITabBarController
 
+@property(nonatomic,strong) BURightBtnView *rightBtnView;
+
+-(void)updateGoldValue:(NSInteger)inGoldValue;
 @end

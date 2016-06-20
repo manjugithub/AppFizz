@@ -57,6 +57,8 @@
                                                               successBlock:^(id inResult, NSError *error)
      {
          [self stopActivityIndicator];
+         [self.imagesList removeAllObjects];
+
          if([inResult isKindOfClass:[NSDictionary class]])
          {
              if([[inResult valueForKey:@"msg"] isEqualToString:@"Error"])
@@ -71,6 +73,7 @@
                  [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
                  [self presentViewController:alertController animated:YES completion:nil];
                  
+                 [self.rematchCollectionView reloadData];
                  return ;
              }
          }
@@ -87,9 +90,21 @@
              {
                  [self.userStatus addObject:[dict valueForKey:@"user_action"]];
 
-                 if ([[dict valueForKey:@"img_url"] firstObject]) {
+                 
+                 if([[dict valueForKey:@"img_url"] count] > 0)
+                 {
                      [self.imagesList addObject:[[dict valueForKey:@"img_url"] firstObject]];
                  }
+                 else
+                 {
+                     [self.imagesList addObject:@"https://camo.githubusercontent.com/9ba96d7bcaa2481caa19be858a58f180ef236c7b/687474703a2f2f692e696d6775722e636f6d2f7171584a3246442e6a7067"];
+                     
+                 }
+
+                 
+//                 if ([[dict valueForKey:@"img_url"] firstObject]) {
+//                     [self.imagesList addObject:[[dict valueForKey:@"img_url"] firstObject]];
+//                 }
                  
              }
 //Liked Passed
@@ -151,7 +166,7 @@
     UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Connections" bundle:nil];
     BURematchProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BURematchProfileDetailsVC"];
     
-    vc.datasourceList = [self.datasourceList objectAtIndex:indexPath.row];
+    vc.datasourceList = [[NSMutableDictionary alloc] initWithDictionary:[self.datasourceList objectAtIndex:indexPath.row]];
     [self.tabBarController.navigationController pushViewController:vc animated:YES];
     
 }
