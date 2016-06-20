@@ -14,6 +14,12 @@
 //Store message
 @property (strong, nonatomic) Message *message;
 
+
+@property (nonatomic, weak) IBOutlet UIImageView *messageStatus;
+
+- (void)updateWithImage:(UIImage *)image;
+- (void)removeImage;
+
 //Estimate BubbleCell Height
 -(CGFloat)height;
 

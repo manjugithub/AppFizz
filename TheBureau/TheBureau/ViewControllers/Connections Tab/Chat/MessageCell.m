@@ -15,11 +15,15 @@
 @property (strong, nonatomic) UIImageView *statusIcon;
 @property (strong, nonatomic) UIImageView *profilePic;
 @property (strong, nonatomic) UIButton *profilePicBtn;
+@property (nonatomic) UIImageView *messageImageView;
+
 
 -(IBAction)showProfileDetails:(id)sender;
 @end
 
 @implementation MessageCell
+
+
 
 
 -(IBAction)showProfileDetails:(id)sender
@@ -35,6 +39,25 @@
 {
     return _bubbleImage.frame.size.width;
 }
+
+- (void)updateWithImage:(UIImage *)image
+{
+    
+    [self addImageView];
+    self.messageImageView.image = image;
+
+    [self addBubbleforImage];
+    [self setBubbleForImage];
+}
+
+- (void)removeImage
+{
+    if (self.messageImageView.image) {
+        self.messageImageView.image = nil;
+    }
+}
+
+
 -(void)setMessage:(Message *)message
 {
     _message = message;
@@ -72,6 +95,34 @@
     _bubbleImage = nil;
 }
 
+#pragma mark - ImageView
+-(void)addImageView
+{
+    CGFloat max_witdh = 0.7*self.contentView.frame.size.width;
+    
+    self.profilePic = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 40, 40)];
+    self.profilePic.layer.cornerRadius = 20.0;
+    
+    self.profilePic.image = [UIImage imageNamed:@"logo44"];
+    self.profilePicBtn =[UIButton buttonWithType:UIButtonTypeCustom];
+    self.profilePicBtn.frame = CGRectMake(5, 5, 40, 40);
+    [self.profilePicBtn addTarget:self
+                           action:@selector(showProfileDetails:)
+                 forControlEvents:UIControlEventTouchUpInside];
+    
+    self.messageImageView = [[UIImageView alloc]init];
+    self.messageImageView.tag = 1;
+    self.messageImageView.frame = CGRectMake(100, 30, 150, 90);
+
+
+    [self.contentView addSubview:self.messageImageView];
+    [self.contentView addSubview:self.profilePic];
+    [self.contentView addSubview:self.profilePicBtn];
+
+    
+}
+
+
 #pragma mark - TextView
 
 -(void)addTextView
@@ -101,6 +152,98 @@
 {
     _textView.text = _message.text;
     [_textView sizeToFit];
+}
+
+#pragma mark - BubbleImageforImageView
+
+
+-(void)addBubbleforImage
+{
+    _bubbleImage = [[UIImageView alloc] init];
+    _bubbleImage.userInteractionEnabled = YES;
+    [self.contentView insertSubview:_bubbleImage belowSubview:self.messageImageView];
+}
+- (void)setBubbleForImage
+{
+    //Estimation of TextView Size
+    CGFloat textView_x;
+    CGFloat textView_y;
+    CGFloat textView_width = _messageImageView.frame.size.width;
+    CGFloat textView_height = _messageImageView.frame.size.height;
+    CGFloat textView_marginLeft;
+    CGFloat textView_marginRight;
+    CGFloat textView_marginBottom = 5;
+    
+    //Bubble positions
+    CGFloat bubble_x;
+    CGFloat bubble_y;
+    CGFloat bubble_width;
+    CGFloat bubble_height;
+    
+    UIViewAutoresizing autoresizing;
+    
+    if (self.message.sender == MessageSenderMyself)
+    {
+        
+        self.profilePic.backgroundColor = [UIColor clearColor];
+        
+        textView_marginLeft = 10;
+        textView_marginRight = 20;
+        bubble_x = self.contentView.frame.size.width - textView_width - textView_marginLeft - textView_marginRight - 45 - 1;
+        bubble_y = 0;
+        
+        self.bubbleImage.image = [[UIImage imageNamed:@"bubbleMine"]
+                                  stretchableImageWithLeftCapWidth:15 topCapHeight:14];
+        
+        textView_x = bubble_x + textView_marginLeft;
+        textView_y = 0;
+        
+        bubble_width = textView_width + 20;
+        
+        autoresizing = UIViewAutoresizingFlexibleLeftMargin;
+        
+        self.profilePic.frame = CGRectMake(self.contentView.frame.size.width - 45, textView_height-25, 40, 40);
+        
+    }
+    else
+    {
+        
+        self.profilePic.frame = CGRectMake(5, textView_height-25, 40, 40);
+        self.profilePic.backgroundColor = [UIColor clearColor];
+        
+        bubble_x = 2+45;
+        bubble_y = 1;
+        
+        self.bubbleImage.image = [[UIImage imageNamed:@"bubbleSomeone"]
+                                  stretchableImageWithLeftCapWidth:21 topCapHeight:14];
+        
+        
+        //        230,133,142
+        //
+        //        210,205,202
+        textView_marginLeft = 15;
+        textView_marginRight = 15;
+        textView_x = bubble_x + textView_marginLeft;
+        textView_y = 0;
+        
+        autoresizing = UIViewAutoresizingFlexibleRightMargin;
+    }
+    
+    
+    self.profilePicBtn.frame = self.profilePic.frame;
+    
+    bubble_width = textView_width + textView_marginLeft + textView_marginRight;
+    bubble_height = textView_height + textView_marginBottom;
+    
+    //Set frame
+    self.messageImageView.frame = CGRectMake(textView_x, textView_y, textView_width, textView_height);
+    self.bubbleImage.frame = CGRectMake(bubble_x, bubble_y, bubble_width, bubble_height);
+    
+    //Set textView
+    self.messageImageView.autoresizingMask = autoresizing;
+    self.bubbleImage.autoresizingMask = autoresizing;
+    
+    [self addShadowToBubble];
 }
 
 #pragma mark - BubbleImage

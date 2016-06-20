@@ -229,6 +229,13 @@ static UIColor *LSRandomColor(void)
     
     LYRMessage *lyrMessage = [self.queryController objectAtIndexPath:indexPath];
     LYRMessagePart *messagePart = lyrMessage.parts[0];
+    
+    if ([messagePart.MIMEType isEqualToString:@"image/png"]) {
+        cell.message.text = @""; //
+        [cell updateWithImage:[[UIImage alloc]initWithData:messagePart.data]];
+        
+    } else {
+        [cell removeImage];
     Message *message = [[Message alloc] init];
     message.text = [[NSString alloc]initWithData:messagePart.data
                                         encoding:NSUTF8StringEncoding];
@@ -244,6 +251,7 @@ static UIColor *LSRandomColor(void)
     
     cell.message = message;
     
+    }
     cell.backgroundColor = [UIColor clearColor];
     cell.contentView.backgroundColor = [UIColor clearColor];
     
