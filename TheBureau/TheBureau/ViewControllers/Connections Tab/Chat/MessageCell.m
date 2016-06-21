@@ -116,8 +116,8 @@
 
 
     [self.contentView addSubview:self.messageImageView];
-    [self.contentView addSubview:self.profilePic];
-    [self.contentView addSubview:self.profilePicBtn];
+//    [self.contentView addSubview:self.profilePic];
+//    [self.contentView addSubview:self.profilePicBtn];
 
     
 }
@@ -145,8 +145,8 @@
     _textView.backgroundColor = [UIColor clearColor];
     _textView.userInteractionEnabled = NO;
     [self.contentView addSubview:_textView];
-    [self.contentView addSubview:self.profilePic];
-    [self.contentView addSubview:self.profilePicBtn];
+//    [self.contentView addSubview:self.profilePic];
+//    [self.contentView addSubview:self.profilePicBtn];
 }
 -(void)setTextView
 {
@@ -189,7 +189,7 @@
         
         textView_marginLeft = 10;
         textView_marginRight = 20;
-        bubble_x = self.contentView.frame.size.width - textView_width - textView_marginLeft - textView_marginRight - 45 - 1;
+        bubble_x = self.contentView.frame.size.width - textView_width - textView_marginLeft - textView_marginRight - 1;
         bubble_y = 0;
         
         self.bubbleImage.image = [[UIImage imageNamed:@"bubbleMine"]
@@ -202,7 +202,7 @@
         
         autoresizing = UIViewAutoresizingFlexibleLeftMargin;
         
-        self.profilePic.frame = CGRectMake(self.contentView.frame.size.width - 45, textView_height-25, 40, 40);
+//        self.profilePic.frame = CGRectMake(self.contentView.frame.size.width - 45, textView_height-25, 40, 40);
         
     }
     else
@@ -211,7 +211,7 @@
         self.profilePic.frame = CGRectMake(5, textView_height-25, 40, 40);
         self.profilePic.backgroundColor = [UIColor clearColor];
         
-        bubble_x = 2+45;
+        bubble_x = 2;
         bubble_y = 1;
         
         self.bubbleImage.image = [[UIImage imageNamed:@"bubbleSomeone"]
@@ -280,7 +280,7 @@
 
         textView_marginLeft = 10;
         textView_marginRight = 20;
-        bubble_x = self.contentView.frame.size.width - textView_width - textView_marginLeft - textView_marginRight - 45 - 1;
+        bubble_x = self.contentView.frame.size.width - textView_width - textView_marginLeft - textView_marginRight - 1;
         bubble_y = 0;
         
         self.bubbleImage.image = [[UIImage imageNamed:@"bubbleMine"]
@@ -302,7 +302,7 @@
         self.profilePic.frame = CGRectMake(5, textView_height-25, 40, 40);
         self.profilePic.backgroundColor = [UIColor clearColor];
 
-        bubble_x = 2+45;
+        bubble_x = 2;
         bubble_y = 1;
         
         self.bubbleImage.image = [[UIImage imageNamed:@"bubbleSomeone"]

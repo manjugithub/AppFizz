@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Chat History";
+    self.title = @"Contacts";
     
 }
 
@@ -127,7 +127,8 @@
     
     BUChatContact *contact = [self.contactList objectAtIndex:indexPath.row];
     vc.recipientName = [NSString stringWithFormat:@"%@ %@",contact.fName,contact.lName];
-
+    vc.recipientID = contact.userID;
+    vc.recipientDPURL = contact.imgURL;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

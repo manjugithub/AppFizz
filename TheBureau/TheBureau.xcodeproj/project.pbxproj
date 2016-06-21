@@ -172,6 +172,7 @@
 		78E4F28C1C85B3C30034CFE2 /* BUPreferencesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E4F28B1C85B3C30034CFE2 /* BUPreferencesVC.m */; };
 		78E4F28F1C85B3E40034CFE2 /* BUHowItWorksVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E4F28E1C85B3E40034CFE2 /* BUHowItWorksVC.m */; };
 		78E4F2921C85B4010034CFE2 /* BUHelpAndFeedbackVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E4F2911C85B4010034CFE2 /* BUHelpAndFeedbackVC.m */; };
+		78EE8C201D18E99C00F44EFC /* BUChattinProfileDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EE8C1F1D18E99C00F44EFC /* BUChattinProfileDetailsVC.m */; };
 		78EFC2161D14CFA5001C70EE /* BUHowItWorksCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EFC2151D14CFA5001C70EE /* BUHowItWorksCell.m */; };
 		78F3C17C1CAE0EC800CBA15E /* BUProfileImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F3C17B1CAE0EC800CBA15E /* BUProfileImageCell.m */; };
 		78F3C1811CAEE2E100CBA15E /* BUImagePreviewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F3C1801CAEE2E100CBA15E /* BUImagePreviewVC.m */; };
@@ -623,6 +624,8 @@
 		78E4F28E1C85B3E40034CFE2 /* BUHowItWorksVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUHowItWorksVC.m; sourceTree = "<group>"; };
 		78E4F2901C85B4010034CFE2 /* BUHelpAndFeedbackVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUHelpAndFeedbackVC.h; sourceTree = "<group>"; };
 		78E4F2911C85B4010034CFE2 /* BUHelpAndFeedbackVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUHelpAndFeedbackVC.m; sourceTree = "<group>"; };
+		78EE8C1E1D18E99C00F44EFC /* BUChattinProfileDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUChattinProfileDetailsVC.h; sourceTree = "<group>"; };
+		78EE8C1F1D18E99C00F44EFC /* BUChattinProfileDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUChattinProfileDetailsVC.m; sourceTree = "<group>"; };
 		78EFC2141D14CFA5001C70EE /* BUHowItWorksCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUHowItWorksCell.h; sourceTree = "<group>"; };
 		78EFC2151D14CFA5001C70EE /* BUHowItWorksCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUHowItWorksCell.m; sourceTree = "<group>"; };
 		78F3C17A1CAE0EC800CBA15E /* BUProfileImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUProfileImageCell.h; sourceTree = "<group>"; };
@@ -1407,6 +1410,8 @@
 				78ABA0231C9205B9009F369A /* LQSChatMessageCell.m */,
 				78ABA0241C9205B9009F369A /* LQSViewController.h */,
 				78ABA0251C9205B9009F369A /* LQSViewController.m */,
+				78EE8C1E1D18E99C00F44EFC /* BUChattinProfileDetailsVC.h */,
+				78EE8C1F1D18E99C00F44EFC /* BUChattinProfileDetailsVC.m */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -2013,6 +2018,7 @@
 				5B2D3E8F1C7C6927006B7674 /* BUProfileRematchVC.m in Sources */,
 				78F755621C889340007E5678 /* logoImageView.m in Sources */,
 				5B2D3E8E1C7C6927006B7674 /* BUProfileMatchChatVC.m in Sources */,
+				78EE8C201D18E99C00F44EFC /* BUChattinProfileDetailsVC.m in Sources */,
 				5B16290C1C5F61EE0034FA33 /* BUCustomAlertView.m in Sources */,
 				5BFF6EAE1C8D80E300596381 /* AFImageDownloader.m in Sources */,
 				78E4F28F1C85B3E40034CFE2 /* BUHowItWorksVC.m in Sources */,

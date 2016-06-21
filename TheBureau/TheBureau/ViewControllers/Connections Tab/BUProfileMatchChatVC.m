@@ -23,7 +23,7 @@ static NSDateFormatter *LQSDateFormatter()
     return dateFormatter;
 }
 @interface BUProfileMatchChatVC ()<LYRQueryControllerDelegate>
-@property(nonatomic) NSMutableArray * historyList;
+@property(nonatomic) NSMutableArray * historyList,*contactList;
 @property (nonatomic) LYRQueryController *queryController;
 @property (nonatomic)LYRClient *layerClient;
 @property (nonatomic) IBOutlet UITableView *conversationListTableView;
@@ -37,6 +37,10 @@ static NSDateFormatter *LQSDateFormatter()
     
     self.layerClient = [BULayerHelper sharedHelper].layerClient;
     
+    self.conversationListTableView.allowsMultipleSelectionDuringEditing = NO;
+
+    
+    
     self.title = @"Chat History";
 
     // Do any additional setup after loading the view.
@@ -46,7 +50,8 @@ static NSDateFormatter *LQSDateFormatter()
 -(void)viewDidAppear:(BOOL)animated
 {
     [self.historyList removeAllObjects];
-        [self setupConversationDataSource];
+    [self setupConversationDataSource];
+    [self getContactsList];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,6 +66,8 @@ static NSDateFormatter *LQSDateFormatter()
     query.predicate = [LYRPredicate predicateWithProperty:@"participants" predicateOperator:LYRPredicateOperatorIsIn value:self.layerClient.authenticatedUser];
     query.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"lastMessage.receivedAt" ascending:NO]];
     
+    
+
     
     NSError *error;
     self.queryController = [self.layerClient queryControllerWithQuery:query error:&error];
@@ -79,83 +86,188 @@ static NSDateFormatter *LQSDateFormatter()
 
 #pragma mark - UITableViewDataSource
 
+
+- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if(section == 0)
+        return @"Recent Chats";
+    return @"Connections";
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 20;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.queryController numberOfObjectsInSection:0];// [[self historyList] count];
+    if(section == 0)
+        return [self.queryController numberOfObjectsInSection:0];
+    return self.contactList.count;
 }
+
+
+
+
+// Override to support conditional editing of the table view.
+// This only needs to be implemented if you are going to be returning NO
+// for some items. By default, all items are editable.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        //add code here for when you hit delete
+        
+        switch (indexPath.section) {
+            case 0:
+            {
+                BUChatContact *contact = [[self historyList] objectAtIndex:indexPath.row];
+                LYRConversation *conversation = contact.conversation;
+                // Deletes a conversation
+                NSError *error = nil;
+                [conversation delete:LYRDeletionModeAllParticipants error:&error];
+                [[self historyList] removeObjectAtIndex:indexPath.row];
+                [self.conversationListTableView reloadData];
+            }
+                break;
+            case 1:
+            {
+                [self.contactList removeObjectAtIndex:indexPath.row];
+                [self.conversationListTableView reloadData];
+            }
+                break;
+        }
+    }
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BUChatContact *contact = [[self historyList] objectAtIndex:indexPath.row];
-    LYRConversation *conversation = contact.conversation;
-    LYRMessage * lastMessage = conversation.lastMessage;
-    LYRMessagePart *messagePart = lastMessage.parts[0];
-    
-    //If it is type image
-   
-    BUContactListTableViewCell *cell = (BUContactListTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"BUContactListTableViewCell" ];//forIndexPath:indexPath];
-    [cell setContactListDataSource:contact];
-    
-    if ([messagePart.MIMEType isEqualToString:@"image/png"]) {
-        cell.lastmessageLbl.text = @""; //
-        
-    } else {
-        cell.lastmessageLbl.text =[[NSString alloc]initWithData:messagePart.data
-                                              encoding:NSUTF8StringEncoding];
+    switch (indexPath.section) {
+        case 0:
+        {
+            BUChatContact *contact = [[self historyList] objectAtIndex:indexPath.row];
+            LYRConversation *conversation = contact.conversation;
+            LYRMessage * lastMessage = conversation.lastMessage;
+            LYRMessagePart *messagePart = lastMessage.parts[0];
+            
+            
+            NSError *error = nil;
+            BOOL success = [conversation delete:LYRDeletionModeAllParticipants error:&error];
+
+            //If it is type image
+            
+            BUContactListTableViewCell *cell = (BUContactListTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"BUContactListTableViewCell" ];//forIndexPath:indexPath];
+            [cell setContactListDataSource:contact];
+            
+            if ([messagePart.MIMEType isEqualToString:@"image/png"]) {
+                cell.lastmessageLbl.text = @""; //
+                
+            } else {
+                cell.lastmessageLbl.text =[[NSString alloc]initWithData:messagePart.data
+                                                               encoding:NSUTF8StringEncoding];
+            }
+            
+            NSString *timestampText = @"";
+            
+            
+            // If the message was sent by current user, show Receipent Status Indicator
+            if ([lastMessage.sender.userID isEqualToString:[[BULayerHelper sharedHelper] currentUserID]]) {
+                
+                NSDate *date = lastMessage.sentAt;
+                NSDateFormatter *df = [[NSDateFormatter alloc] init];
+                df.dateStyle = kCFDateFormatterShortStyle;
+                df.doesRelativeDateFormatting = YES;
+                timestampText = [df stringFromDate:date];
+            } else
+            {
+                
+                NSDate *date = lastMessage.receivedAt;
+                NSDateFormatter *df = [[NSDateFormatter alloc] init];
+                df.dateStyle = kCFDateFormatterShortStyle;
+                df.doesRelativeDateFormatting = YES;
+                timestampText = [df stringFromDate:date];
+            }
+            
+            
+            cell.timeLbl.text = [NSString stringWithFormat:@"%@",timestampText];
+            
+            if (conversation.hasUnreadMessages) {
+                cell.unreadMessageIndicator.hidden = NO;
+            } else {
+                cell.unreadMessageIndicator.hidden = YES;
+            }
+            return cell;
+
+        }break;
+           
+        case 1:
+        {
+            BUContactListTableViewCell *cell = (BUContactListTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"BUContactListTableViewCell1" ];//forIndexPath:indexPath];
+            [cell setContactListDataSource:[self.contactList objectAtIndex:indexPath.row]];
+            return cell;
+        }
+            break;
+            
+        default:
+            break;
     }
-    
-    NSString *timestampText = @"";
-    
-    
-    // If the message was sent by current user, show Receipent Status Indicator
-    if ([lastMessage.sender.userID isEqualToString:[[BULayerHelper sharedHelper] currentUserID]]) {
-        
-        NSDate *date = lastMessage.sentAt;
-        NSDateFormatter *df = [[NSDateFormatter alloc] init];
-        df.dateStyle = kCFDateFormatterShortStyle;
-        df.doesRelativeDateFormatting = YES;
-      timestampText = [df stringFromDate:date];
-    } else
-    {
-        
-        NSDate *date = lastMessage.receivedAt;
-        NSDateFormatter *df = [[NSDateFormatter alloc] init];
-        df.dateStyle = kCFDateFormatterShortStyle;
-        df.doesRelativeDateFormatting = YES;
-        timestampText = [df stringFromDate:date];
-    }
-    
-    
-        cell.timeLbl.text = [NSString stringWithFormat:@"%@",timestampText];
-    
-    if (conversation.hasUnreadMessages) {
-        cell.unreadMessageIndicator.hidden = NO;
-    } else {
-        cell.unreadMessageIndicator.hidden = YES;
-    }
-    return cell;
+    return nil;
 }
 
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LYRConversation *conversation = [self.queryController objectAtIndexPath:indexPath];
-    for (NSString *participant in conversation.participants) {
-        if (![participant isEqualToString:self.layerClient.authenticatedUser.userID] ) {
-            [[BULayerHelper sharedHelper] setParticipantUserID:participant];
+    
+    switch (indexPath.section)
+    {
+        case 0:
+        {
+            LYRConversation *conversation = [self.queryController objectAtIndexPath:indexPath];
+            for (NSString *participant in conversation.participants) {
+                if (![participant isEqualToString:self.layerClient.authenticatedUser.userID] ) {
+                    [[BULayerHelper sharedHelper] setParticipantUserID:participant];
+                    
+                }
+            }
             
+            BUChatContact *contact = [[self historyList] objectAtIndex:indexPath.row];
+            
+            UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Connections" bundle:nil];
+            LQSViewController *vc = [sb instantiateViewControllerWithIdentifier:@"LQSViewController"];
+            vc.conversation = conversation;
+            vc.recipientName = [NSString stringWithFormat:@"%@ %@",contact.fName,contact.lName];
+            vc.recipientID = contact.userID;
+            vc.recipientDPURL = contact.imgURL;
+            
+            [self.navigationController pushViewController:vc animated:YES];
         }
+        break;
+        case 1:
+        {
+            [[BULayerHelper sharedHelper] setParticipantUserID:[(BUChatContact *)[self.contactList objectAtIndex:indexPath.row] userID]];
+            UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Connections" bundle:nil];
+            LQSViewController *vc = [sb instantiateViewControllerWithIdentifier:@"LQSViewController"];
+            
+            BUChatContact *contact = [self.contactList objectAtIndex:indexPath.row];
+            vc.recipientName = [NSString stringWithFormat:@"%@ %@",contact.fName,contact.lName];
+            vc.recipientID = contact.userID;
+            vc.recipientDPURL = contact.imgURL;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
     }
     
-    BUChatContact *contact = [[self historyList] objectAtIndex:indexPath.row];
-
-    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Connections" bundle:nil];
-    LQSViewController *vc = [sb instantiateViewControllerWithIdentifier:@"LQSViewController"];
-    vc.conversation = conversation;
-    vc.recipientName = [NSString stringWithFormat:@"%@ %@",contact.fName,contact.lName];
-    
-    [self.navigationController pushViewController:vc animated:YES];
     
 }
 
@@ -204,11 +316,6 @@ static NSDateFormatter *LQSDateFormatter()
 
 #pragma TableView DataSource & Delegates
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
-
-{
-    return 1;
-}
 //
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 //{
@@ -331,5 +438,40 @@ static NSDateFormatter *LQSDateFormatter()
 
 }
 
+
+
+-(void)getContactsList
+{
+    NSDictionary *parameters = nil;
+    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID
+                   };
+    
+    [self startActivityIndicator:YES];
+    [[BUWebServicesManager sharedManager] getContactListwithParameters:parameters
+                                                          successBlock:^(id inResult, NSError *error)
+     {
+         [self stopActivityIndicator];
+         if(nil != inResult)
+         {
+             
+             [self.contactList removeAllObjects];
+             self.contactList = [[NSMutableArray alloc] init];
+             for (NSDictionary *dict in inResult)
+             {
+                 BUChatContact *contact = [[BUChatContact alloc] initWithDict:dict];
+                 [self.contactList addObject:contact];
+             }
+             [self.conversationListTableView reloadData];
+         }
+         else
+         {
+             
+         }
+     }
+                                                          failureBlock:^(id response, NSError *error)
+     {
+         
+     }];
+}
 
 @end

@@ -708,7 +708,7 @@
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="13"/>
                                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <state key="normal" title="Reset" backgroundImage="bg_radiobutton_bubble_s1">
+                                                            <state key="normal" title="No Preference" backgroundImage="bg_radiobutton_bubble_s1">
                                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <state key="selected" backgroundImage="bg_radiobutton_bubble_s2">

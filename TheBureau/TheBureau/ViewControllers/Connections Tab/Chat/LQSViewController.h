@@ -19,10 +19,16 @@
 @property (nonatomic, weak) IBOutlet UILabel *typingIndicatorLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *messageImageView;
 @property (nonatomic, strong) NSString *recipientName;
+@property (nonatomic, strong) NSString *recipientID;
+@property (nonatomic, strong) NSString *recipientDPURL;
 @property (nonatomic) LYRConversation *conversation;
+@property (nonatomic, weak) IBOutlet UIButton *profileImageBtn;
+@property (nonatomic, weak) IBOutlet UIView *backButtoonView;
+@property(nonatomic,weak)IBOutlet UIImageView *userImageView;
 
-
+- (IBAction)showProfile:(UIBarButtonItem *)sender;
 - (IBAction)clearButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)cameraButtonPressed:(UIButton *)sender;
+- (IBAction)goBack:(UIBarButtonItem *)sender;
 
 @end

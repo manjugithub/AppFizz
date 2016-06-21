@@ -1731,12 +1731,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rWj-aR-NF4">
-                                <rect key="frame" x="0.0" y="-1" width="600" height="561"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="60" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="rWj-aR-NF4">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BUContactListTableViewCell" id="IwE-RI-tmu" customClass="BUContactListTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="60"/>
+                                        <rect key="frame" x="0.0" y="50" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IwE-RI-tmu" id="lKh-hN-lBf">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
@@ -1825,35 +1827,62 @@
                                             <outlet property="userName" destination="V3V-E7-TOB" id="mSJ-HY-fte"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BUContactListTableViewCell1" id="9aP-zm-Iso" customClass="BUContactListTableViewCell">
+                                        <rect key="frame" x="0.0" y="110" width="600" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9aP-zm-Iso" id="iul-Vq-BIP">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0v1-PA-YQ2">
+                                                    <rect key="frame" x="10" y="10" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="9MW-me-rDX"/>
+                                                        <constraint firstAttribute="height" constant="40" id="oFu-Kz-eD8"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqn-pi-Cxf">
+                                                    <rect key="frame" x="71" y="19" width="463" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="KnR-Wt-Y6V"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Oqn-pi-Cxf" secondAttribute="bottom" constant="19" id="5SP-rM-Oqd"/>
+                                                <constraint firstItem="Oqn-pi-Cxf" firstAttribute="top" secondItem="iul-Vq-BIP" secondAttribute="top" constant="19" id="Dhq-tu-Iow"/>
+                                                <constraint firstItem="0v1-PA-YQ2" firstAttribute="leading" secondItem="iul-Vq-BIP" secondAttribute="leading" constant="10" id="EUm-Sf-QRl"/>
+                                                <constraint firstAttribute="bottom" secondItem="0v1-PA-YQ2" secondAttribute="bottom" constant="9" id="GiR-V8-dgI"/>
+                                                <constraint firstItem="Oqn-pi-Cxf" firstAttribute="leading" secondItem="0v1-PA-YQ2" secondAttribute="trailing" constant="21" id="SSa-f2-Zar"/>
+                                                <constraint firstAttribute="trailing" secondItem="Oqn-pi-Cxf" secondAttribute="trailing" constant="66" id="gJF-MH-SQY"/>
+                                                <constraint firstItem="0v1-PA-YQ2" firstAttribute="top" secondItem="iul-Vq-BIP" secondAttribute="top" constant="10" id="lPb-yg-9dq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="userImageView" destination="0v1-PA-YQ2" id="8U3-iZ-JaR"/>
+                                            <outlet property="userName" destination="Oqn-pi-Cxf" id="1Bt-PK-DXl"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="042-u4-1Rf" id="3NP-wu-orT"/>
                                     <outlet property="delegate" destination="042-u4-1Rf" id="sr3-wG-BTB"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lc-pp-5KM">
-                                <rect key="frame" x="0.0" y="560" width="600" height="40"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="MW2-rD-l6W"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
-                                <state key="normal" title="Compose New Conversation">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="kVU-Gd-Wpn" kind="show" id="2P0-ip-W0F"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rWj-aR-NF4" firstAttribute="top" secondItem="xd9-E9-zvm" secondAttribute="top" constant="-1" id="3ek-hf-wes"/>
-                            <constraint firstAttribute="trailing" secondItem="6lc-pp-5KM" secondAttribute="trailing" id="DIf-ei-AWm"/>
-                            <constraint firstItem="6lc-pp-5KM" firstAttribute="leading" secondItem="xd9-E9-zvm" secondAttribute="leading" id="NnU-PR-IKq"/>
-                            <constraint firstItem="Olv-Tv-x2F" firstAttribute="top" secondItem="rWj-aR-NF4" secondAttribute="bottom" constant="40" id="iAH-nJ-b60"/>
-                            <constraint firstItem="Olv-Tv-x2F" firstAttribute="top" secondItem="6lc-pp-5KM" secondAttribute="bottom" id="nL0-q2-DYo"/>
-                            <constraint firstItem="6lc-pp-5KM" firstAttribute="top" secondItem="rWj-aR-NF4" secondAttribute="bottom" id="rPm-Sc-Q7d"/>
+                            <constraint firstItem="rWj-aR-NF4" firstAttribute="top" secondItem="xd9-E9-zvm" secondAttribute="top" id="3ek-hf-wes"/>
+                            <constraint firstItem="Olv-Tv-x2F" firstAttribute="top" secondItem="rWj-aR-NF4" secondAttribute="bottom" id="iAH-nJ-b60"/>
                             <constraint firstItem="rWj-aR-NF4" firstAttribute="leading" secondItem="xd9-E9-zvm" secondAttribute="leading" id="roo-a7-KGe"/>
                             <constraint firstAttribute="trailing" secondItem="rWj-aR-NF4" secondAttribute="trailing" id="vSV-TD-dUg"/>
                         </constraints>
@@ -1875,7 +1904,7 @@
                     </state>
                 </button>
             </objects>
-            <point key="canvasLocation" x="1244" y="-2164"/>
+            <point key="canvasLocation" x="1025" y="-2271"/>
         </scene>
         <!--Instagram-->
         <scene sceneID="WaE-Aa-N0g">

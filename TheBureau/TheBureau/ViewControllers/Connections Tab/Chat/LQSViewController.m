@@ -13,6 +13,7 @@
 #import "BULayerHelper.h"
 #import "MessageCell.h"
 #import "BUWebServicesManager.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 // Defined in LQSAppDelegate.m
 
 // Metadata keys related to navbar color
@@ -88,8 +89,15 @@ static UIColor *LSRandomColor(void)
 //    logoImageView.frame = CGRectMake(0, 0, 36, 36);
 //    logoImageView.contentMode = UIViewContentModeScaleAspectFit;
 //    self.navigationItem.titleView = logoImageView;
-   self.navigationItem.hidesBackButton = NO;
-    self.navigationItem.rightBarButtonItem = nil;
+    
+    
+    
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:self.backButtoonView];
+   self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem = backBtn;
+    
+    
+    
     self.inputTextView.delegate = self;
   //  self.inputTextView.text = LQSInitialMessageText;
     
@@ -98,10 +106,34 @@ static UIColor *LSRandomColor(void)
 - (void)viewWillAppear:(BOOL)animated {
     self.title = self.recipientName;
 
+    
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle:@"Clear" style:UIBarButtonItemStylePlain target:self action:@selector(clearButtonPressed:)];
+    self.navigationItem.rightBarButtonItem = rightBtn;
+
     if (self.queryController) {
         [self scrollToBottom];
     }
+    
+    
+    self.userImageView.layer.cornerRadius = 21.0;
+    self.profileImageBtn.layer.cornerRadius = 21.0;
+
+    
+    [self.userImageView sd_setImageWithURL:[NSURL URLWithString:self.recipientDPURL]
+                          placeholderImage:[UIImage imageNamed:@"logo44"]
+                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL)
+     {
+         
+     }];
+
 }
+
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    self.navigationItem.rightBarButtonItem = nil;
+}
+
 
 - (void)dealloc
 {
@@ -216,6 +248,12 @@ static UIColor *LSRandomColor(void)
     MessageCell *cell = (MessageCell *) [self tableView:tableView cellForRowAtIndexPath:indexPath];
     return cell?cell.height > 60 ? cell.height : 60 :200;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    [self.view endEditing:YES];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -661,6 +699,16 @@ static UIColor *LSRandomColor(void)
             anncementsController.layerClient = self.layerClient;
         }
     }
+}
+
+
+- (IBAction)showProfile:(UIBarButtonItem *)sender
+{
+    
+}
+- (IBAction)goBack:(UIBarButtonItem *)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
