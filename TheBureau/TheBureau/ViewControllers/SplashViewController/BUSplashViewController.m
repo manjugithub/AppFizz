@@ -128,7 +128,7 @@
 //    [self performSegueWithIdentifier:@"main" sender:self];
 //    return;
     
-    [BUWebServicesManager sharedManager].userID = @"39";
+//    [BUWebServicesManager sharedManager].userID = @"39";
 //    7
     if(nil != [BUWebServicesManager sharedManager].userID)
     {

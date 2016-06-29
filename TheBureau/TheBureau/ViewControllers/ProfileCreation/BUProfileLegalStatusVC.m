@@ -169,6 +169,18 @@
 
 }
 
+
+-(void)showMandatoryFieldError
+{
+    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Please select mandatory fields."];
+    [message addAttribute:NSFontAttributeName
+                    value:[UIFont fontWithName:@"comfortaa" size:15]
+                    range:NSMakeRange(0, message.length)];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertController setValue:message forKey:@"attributedTitle"];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 -(IBAction)continueClicked:(id)sender
 {
     /*
@@ -182,35 +194,43 @@
      legal_status => e.g. Citizen/Green Card, Greencard
      
      */
-    NSDictionary *parameters = nil;
-    parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
-                   @"years_in_usa":self.yearsInUSA,
-                   @"legal_status":self.citizenShip
-                   };
     
-    
-    [self startActivityIndicator:YES];
-    [[BUWebServicesManager sharedManager]queryServer:parameters
-                                             baseURL:@"http://dev.thebureauapp.com/admin/update_profile_step6"
-                                        successBlock:^(id response, NSError *error)
-     {
-         [self stopActivityIndicator];
-
-         [Localytics tagEvent:@"Login Successful"];
-         [Localytics setCustomerId:[BUWebServicesManager sharedManager].userID];;
-
-         BUReferalVC *referalVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BUReferalVC"];
-         [self.navigationController pushViewController:referalVC animated:YES];
-         
-     }
-                                        failureBlock:^(id response, NSError *error)
-     {
-         [self stopActivityIndicator];
-         
-         [self showFailureAlert];
-     }];
-    
-    
+    if(nil == self.yearsInUSA || nil == self.citizenShip)
+    {
+        [self showMandatoryFieldError];
+    }
+    else
+    {
+        NSDictionary *parameters = nil;
+        parameters = @{@"userid": [BUWebServicesManager sharedManager].userID,
+                       @"years_in_usa":self.yearsInUSA,
+                       @"legal_status":self.citizenShip
+                       };
+        
+        
+        [self startActivityIndicator:YES];
+        [[BUWebServicesManager sharedManager]queryServer:parameters
+                                                 baseURL:@"http://dev.thebureauapp.com/admin/update_profile_step6"
+                                            successBlock:^(id response, NSError *error)
+         {
+             [self stopActivityIndicator];
+             
+             [Localytics tagEvent:@"Login Successful"];
+             [Localytics setCustomerId:[BUWebServicesManager sharedManager].userID];;
+             
+             BUReferalVC *referalVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BUReferalVC"];
+             [self.navigationController pushViewController:referalVC animated:YES];
+             
+         }
+                                            failureBlock:^(id response, NSError *error)
+         {
+             [self stopActivityIndicator];
+             
+             [self showFailureAlert];
+         }];
+        
+        
+    }
     
 }
 
