@@ -35,24 +35,33 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"splash_new_iPhone" withExtension:@"gif"];
+    
+    if ( IDIOM == IPAD )
+    {
+        url = [[NSBundle mainBundle] URLForResource:@"splash_new_iPad" withExtension:@"gif"];
+    }
+    else
+    {
+        url = [[NSBundle mainBundle] URLForResource:@"splash_new_iPhone" withExtension:@"gif"];
+    }
+
     self.dataImageView.image = [UIImage animatedImageWithAnimatedGIFData:[NSData dataWithContentsOfURL:url]];
     
     self.navigationController.navigationBarHidden = YES;
     
     
+    splashTimer  = [NSTimer scheduledTimerWithTimeInterval:6.2 target:self selector:@selector(setSplashTimer) userInfo:nil repeats:NO];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     
     [super viewDidAppear:YES];
     
-    
-   splashTimer  = [NSTimer scheduledTimerWithTimeInterval:6.2 target:self selector:@selector(setSplashTimer) userInfo:nil repeats:NO];
-
-    
+    if(nil == splashTimer)
+    {
+        [self setSplashTimer];
+    }
 }
-
-
 
 -(void)checkForAccountCreation
 {
@@ -71,12 +80,9 @@
          [self stopActivityIndicator];
          if(YES == [[response valueForKey:@"msg"] isEqualToString:@"Success"])
          {
-             
              UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
              BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
              [self.navigationController pushViewController:vc animated:YES];
-             
-             
              [[BULayerHelper sharedHelper] setCurrentUserID:[BUWebServicesManager sharedManager].userID];
              
              [self startActivityIndicator:YES];
@@ -90,16 +96,6 @@
                   NSLog(@"Failed Authenticating Layer Client with error:%@", error);
                   [self stopActivityIndicator];
                   return ;
-                  
-                  NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Failed Authenticating Layer Client with error:%@", error]];
-                  [message addAttribute:NSFontAttributeName
-                                  value:[UIFont fontWithName:@"comfortaa" size:15]
-                                  range:NSMakeRange(0, message.length)];
-                  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-                  [alertController setValue:message forKey:@"attributedTitle"];
-                  [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-                  [self presentViewController:alertController animated:YES completion:nil];
-                  
               }];
          }
          else
@@ -121,20 +117,19 @@
          [alertController setValue:message forKey:@"attributedTitle"];
          [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
          [self presentViewController:alertController animated:YES completion:nil];
-         
      }];
-    
-    
 }
-
 
 -(void)setSplashTimer
 {
     [splashTimer invalidate];
+    splashTimer = nil;
 
 //    [self performSegueWithIdentifier:@"main" sender:self];
 //    return;
     
+    [BUWebServicesManager sharedManager].userID = @"39";
+//    7
     if(nil != [BUWebServicesManager sharedManager].userID)
     {
         
@@ -146,34 +141,6 @@
     {
         [self performSegueWithIdentifier:@"main" sender:self];
     }
-    
-    
-//    {
-//        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-//        BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-//        [self.navigationController pushViewController:vc animated:YES];
-    
-//
-
-    
-    
-//    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    BUAccountCreationVC *vc = [sb instantiateViewControllerWithIdentifier:@"AccountCreationVC"];
-//    [self.navigationController presentViewController:vc animated:YES completion:nil];
-//
-//    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
-//    BUProfileSelectionVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileSelectionVC"];
-//    [self.navigationController pushViewController:vc animated:YES];
-
-    
-//  UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Connections" bundle:nil];
-//   BUContactListViewController *vc = [sb instantiateViewControllerWithIdentifier:@"BUContactListViewController"];
-//   [self.navigationController pushViewController:vc animated:YES];
-    
-//    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-//    BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-//    [self.navigationController pushViewController:vc animated:YES];
-    
 
 }
 

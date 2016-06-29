@@ -125,6 +125,8 @@
 		789D88F31C7E3F9300772EED /* BUProfileHeritageInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 789D88F21C7E3F9300772EED /* BUProfileHeritageInfoCell.m */; };
 		789D88F61C7E3FAD00772EED /* BUProfileSocialHabitsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 789D88F51C7E3FAD00772EED /* BUProfileSocialHabitsInfoCell.m */; };
 		789D88F91C7E3FC000772EED /* BUProfileHoroscopeInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 789D88F81C7E3FC000772EED /* BUProfileHoroscopeInfoCell.m */; };
+		789F49EF1D213882000C6CB7 /* BUReferalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F49EE1D213882000C6CB7 /* BUReferalVC.m */; };
+		789F49F31D216AC7000C6CB7 /* BUChattingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F49F21D216AC7000C6CB7 /* BUChattingCell.m */; };
 		78ABA0261C9205B9009F369A /* LQSAnnouncementsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78ABA01F1C9205B9009F369A /* LQSAnnouncementsTableViewCell.m */; };
 		78ABA0271C9205B9009F369A /* LQSAnnouncementsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78ABA0211C9205B9009F369A /* LQSAnnouncementsTableViewController.m */; };
 		78ABA0281C9205B9009F369A /* LQSChatMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78ABA0231C9205B9009F369A /* LQSChatMessageCell.m */; };
@@ -548,6 +550,10 @@
 		789D88F51C7E3FAD00772EED /* BUProfileSocialHabitsInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfileSocialHabitsInfoCell.m; sourceTree = "<group>"; };
 		789D88F71C7E3FC000772EED /* BUProfileHoroscopeInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUProfileHoroscopeInfoCell.h; sourceTree = "<group>"; };
 		789D88F81C7E3FC000772EED /* BUProfileHoroscopeInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUProfileHoroscopeInfoCell.m; sourceTree = "<group>"; };
+		789F49ED1D213882000C6CB7 /* BUReferalVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUReferalVC.h; sourceTree = "<group>"; };
+		789F49EE1D213882000C6CB7 /* BUReferalVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUReferalVC.m; sourceTree = "<group>"; };
+		789F49F11D216AC7000C6CB7 /* BUChattingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUChattingCell.h; sourceTree = "<group>"; };
+		789F49F21D216AC7000C6CB7 /* BUChattingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUChattingCell.m; sourceTree = "<group>"; };
 		78ABA01E1C9205B9009F369A /* LQSAnnouncementsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQSAnnouncementsTableViewCell.h; sourceTree = "<group>"; };
 		78ABA01F1C9205B9009F369A /* LQSAnnouncementsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQSAnnouncementsTableViewCell.m; sourceTree = "<group>"; };
 		78ABA0201C9205B9009F369A /* LQSAnnouncementsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQSAnnouncementsTableViewController.h; sourceTree = "<group>"; };
@@ -1412,6 +1418,8 @@
 				78ABA0251C9205B9009F369A /* LQSViewController.m */,
 				78EE8C1E1D18E99C00F44EFC /* BUChattinProfileDetailsVC.h */,
 				78EE8C1F1D18E99C00F44EFC /* BUChattinProfileDetailsVC.m */,
+				789F49F11D216AC7000C6CB7 /* BUChattingCell.h */,
+				789F49F21D216AC7000C6CB7 /* BUChattingCell.m */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1554,6 +1562,8 @@
 				5BB6834D1C64A58E0043C4FC /* EmployementStatusTVCell.m */,
 				5BB6834E1C64A58E0043C4FC /* HighLevelEducationTVCell.h */,
 				5BB6834F1C64A58E0043C4FC /* HighLevelEducationTVCell.m */,
+				789F49ED1D213882000C6CB7 /* BUReferalVC.h */,
+				789F49EE1D213882000C6CB7 /* BUReferalVC.m */,
 			);
 			path = ProfileCreation;
 			sourceTree = "<group>";
@@ -1992,6 +2002,7 @@
 				5BFF6EA81C8D80E300596381 /* AFSecurityPolicy.m in Sources */,
 				78BD7D591C8D229D000AD38B /* BURematchProfileDetailsVC.m in Sources */,
 				7838451A1CCE550200FBC5C3 /* PWHeritageObj.m in Sources */,
+				789F49EF1D213882000C6CB7 /* BUReferalVC.m in Sources */,
 				789D88F01C7E3F7F00772EED /* BUProfileLegalStatusInfoCell.m in Sources */,
 				78ABA0281C9205B9009F369A /* LQSChatMessageCell.m in Sources */,
 				783844E51CCCDF5300FBC5C3 /* InstagramPaginationInfo.m in Sources */,
@@ -2035,6 +2046,7 @@
 				783ABF071C8E1C8C00AA59BE /* IAPHelper.m in Sources */,
 				78FEE2571C0726D20013E9D2 /* NSObject+FCKeyPathHelper.m in Sources */,
 				5BA7964C1C85E973009B65E1 /* FLKAutoLayoutPredicateList.m in Sources */,
+				789F49F31D216AC7000C6CB7 /* BUChattingCell.m in Sources */,
 				5BA796501C85E973009B65E1 /* UIView+FLKAutoLayoutPredicate.m in Sources */,
 				78FEE2391C0720B60013E9D2 /* UIKit+Extensions.m in Sources */,
 				7800D46A1C906EE5003F409D /* BUMyProfile.m in Sources */,

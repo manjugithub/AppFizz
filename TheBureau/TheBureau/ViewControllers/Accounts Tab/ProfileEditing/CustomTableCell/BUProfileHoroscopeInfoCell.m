@@ -53,6 +53,10 @@
     [self.horoscopeDict setValue:textField.text forKey:@"horoscope_lob"];
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self.parentVC performSelector:@selector(showKeyboard123) withObject:nil afterDelay:1.0];
+}
 
 - (void)textViewDidEndEditing:(UITextView *)textView;
 {
@@ -214,6 +218,7 @@
         self.imagePreviewVC = [sb instantiateViewControllerWithIdentifier:@"BUImagePreviewVC"];
         self.imagePreviewVC.imagesList = [[NSMutableArray alloc] initWithObjects:[self.horoscopeDict valueForKey:@"horoscope_path"], nil];
         self.imagePreviewVC.indexPathToScroll = [NSIndexPath indexPathForRow:0 inSection:0];
+        self.imagePreviewVC.isHoroscope = YES;
         [self.parentVC presentViewController:self.imagePreviewVC animated:NO completion:nil];
     }
     else
@@ -234,19 +239,45 @@
     
     [self.parentVC startActivityIndicator:YES];
     [[BUWebServicesManager sharedManager] uploadHoroscope:[info objectForKey:UIImagePickerControllerEditedImage] successBlock:^(id response, NSError *error)
-    {
-        [self.parentVC stopActivityIndicator];
-        
-        if((nil != [self.horoscopeDict valueForKey:@"horoscope_path"]) && (NO == [[self.horoscopeDict valueForKey:@"horoscope_path"] isEqualToString:@""]))
-        {
-            [self.uploadBtn setTitle:@"View Horoscope" forState:UIControlStateNormal];
-        }
-        else
-        {
-            [self.uploadBtn setTitle:@"Upload Horoscope" forState:UIControlStateNormal];
-        }
-
-    }
+     {
+         [self.parentVC stopActivityIndicator];
+         
+         if([[self.horoscopeDict valueForKey:@"horoscope_path"] isKindOfClass:[UIImage class]])
+         {
+             [self.uploadBtn setTitle:@"View Horoscope" forState:UIControlStateNormal];
+         }
+         else
+         {
+             if((nil != [self.horoscopeDict valueForKey:@"horoscope_path"]) && (NO == [[self.horoscopeDict valueForKey:@"horoscope_path"] isEqualToString:@""]))
+             {
+                 [self.uploadBtn setTitle:@"View Horoscope" forState:UIControlStateNormal];
+             }
+             else
+             {
+                 [self.uploadBtn setTitle:@"Upload Horoscope" forState:UIControlStateNormal];
+             }
+         }
+         
+         
+         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[response valueForKey:@"response"]];
+         [message addAttribute:NSFontAttributeName
+                         value:[UIFont fontWithName:@"comfortaa" size:15]
+                         range:NSMakeRange(0, message.length)];
+         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+         [alertController setValue:message forKey:@"attributedTitle"];
+         
+         [alertController addAction:({
+             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                 NSLog(@"OK");
+                 [self.parentVC getProfileDetails];
+             }];
+             
+             action;
+         })];
+         
+         [self.parentVC presentViewController:alertController  animated:YES completion:nil];
+         
+     }
                                              failureBlock:^(id response, NSError *error)
     {
         [self.horoscopeDict setValue:nil forKey:@"horoscope_path"];

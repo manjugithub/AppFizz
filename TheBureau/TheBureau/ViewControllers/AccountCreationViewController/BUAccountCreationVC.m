@@ -458,6 +458,7 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
     [alertController addAction:({
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             NSLog(@"OK");
+            [BUWebServicesManager sharedManager].userID = nil;
             [self.navigationController popViewControllerAnimated:YES];
 
         }];
@@ -564,6 +565,7 @@ if([self.firstNameTF.text isEqualToString:@""] || [self.lastNameTF.text isEqualT
                                                  UIStoryboard *sb =[UIStoryboard storyboardWithName:@"ProfileCreation" bundle:nil];
                                                  BUProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUProfileDetailsVC"];
                                                  
+                                                 vc.isMale = self.genderSelectionBtn.tag;
                                                  if([self.relationLabel.text isEqualToString:@"Self"])
                                                  {
                                                      vc

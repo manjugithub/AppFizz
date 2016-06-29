@@ -90,6 +90,29 @@
         [self.divorcedBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
     
+    NSString *femaleImgName,*maleImgName,*genderImgName;
+
+    if(NO == self.isMale)
+    {
+        femaleImgName = @"ic_female_s2.png";
+        maleImgName = @"ic_male_s1.png";
+        genderImgName = @"switch_female.png";
+        self.genderSelectionBtn.tag = 0;
+    }
+    else
+    {
+        self.genderSelectionBtn.tag = 1;
+        femaleImgName = @"ic_female_s1.png";
+        maleImgName = @"ic_male_s2.png";
+        genderImgName = @"switch_male.png";
+    }
+    
+    self.femaleImgView.image = [UIImage imageNamed:femaleImgName];
+    self.maleImgView.image = [UIImage imageNamed:maleImgName];
+    [self.genderSelectionBtn setImage:[UIImage imageNamed:genderImgName]
+                             forState:UIControlStateNormal];
+    
+    
     // Do any additional setup after loading the view.
 }
 

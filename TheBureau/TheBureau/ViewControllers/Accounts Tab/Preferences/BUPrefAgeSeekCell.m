@@ -54,6 +54,9 @@
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    
+//    NSLog(@"Right constraint => %0.0f \n Left constraint = %0.0f",self.rightViewRightConstraint.constant,self.leftViewLeftConstraint.constant);
+    
     UITouch *touch = [[event allTouches] anyObject];
     self.currentLocation = [touch locationInView:self.overLayView];
     
@@ -68,7 +71,7 @@
 //            NSLog(@"%0.0f is equal to %0.0f",self.currentLocation.x + (2 * self.interval),self.rightView.frame.origin.x);
             
             
-            if(self.currentLocation.x + (2 * self.interval) < self.rightView.frame.origin.x)
+            if(self.currentLocation.x + (2.4 * self.interval) < self.rightView.frame.origin.x)
             {
                 self.leftView.frame = frame;
                 self.leftViewLeftConstraint.constant += newX;
@@ -95,13 +98,16 @@
     }
     else if(self.shouldMoveRightView)
     {
+        
+//        if(abs(self.rightViewRightConstraint.constant - self.leftViewLeftConstraint.constant) < )
+        
         CGRect frame = self.rightView.frame;
         frame.origin.x = frame.origin.x + newX;
         if(0 <= frame.origin.x && self.overLayView.frame.size.width >= (frame.origin.x + frame.size.width))
         {
 //            NSLog(@"%0.0f is equal to %0.0f",self.currentLocation.x - (2 * self.interval),(self.leftView.frame.origin.x + self.leftView.frame.size.width));
 
-            if(self.currentLocation.x - (2 * self.interval) > (self.leftView.frame.origin.x + self.leftView.frame.size.width))
+            if(self.currentLocation.x - (2.4 * self.interval) > (self.leftView.frame.origin.x + self.leftView.frame.size.width))
             {
                 self.rightView.frame = frame;
                 self.rightViewRightConstraint.constant -= newX;

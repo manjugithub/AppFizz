@@ -8,9 +8,12 @@
 
 #import "BUBaseViewController.h"
 
+@class LQSViewController;
 @interface BUImagePreviewVC : BUBaseViewController<UICollectionViewDelegateFlowLayout,UICollectionViewDelegate,UICollectionViewDataSource,UICollisionBehaviorDelegate>
 
 @property(nonatomic, strong) IBOutlet UICollectionView *collectionView;
 @property(nonatomic, strong) NSMutableArray *imagesList;
-@property(nonatomic, strong) NSIndexPath *indexPathToScroll;
+@property(nonatomic, strong) NSIndexPath *indexPathToScroll,*currentIndex;
+@property(nonatomic, assign) BOOL isHoroscope;
+@property(nonatomic, weak) LQSViewController *chatVC;
 @end

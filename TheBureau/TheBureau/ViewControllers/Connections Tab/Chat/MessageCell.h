@@ -26,4 +26,5 @@
 //Estimate BubbleCell Witdh
 -(CGFloat)width;
 
+-(void)updateStatus;
 @end

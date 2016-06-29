@@ -87,7 +87,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="dataImageView" destination="gVu-wv-Kvw" id="AvQ-ap-LsP"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="main" id="U0W-bO-Oki"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="main" animates="NO" id="U0W-bO-Oki"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5cG-T0-Y4A" userLabel="First Responder" sceneMemberID="firstResponder"/>

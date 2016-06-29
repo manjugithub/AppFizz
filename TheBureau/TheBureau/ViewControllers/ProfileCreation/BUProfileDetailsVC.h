@@ -12,4 +12,5 @@
 @interface BUProfileDetailsVC : BUBaseViewController
 
 @property(nonatomic,strong) NSString *dobStr;
+@property(nonatomic,assign) BOOL isMale;
 @end

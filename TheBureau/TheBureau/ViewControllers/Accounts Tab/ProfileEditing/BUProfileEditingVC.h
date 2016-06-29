@@ -22,4 +22,5 @@
 -(void)hideKeyBoard;
 -(void)hideKeyBoard123;
 -(void)showKeyboard123;
+-(void)getProfileDetails;
 @end

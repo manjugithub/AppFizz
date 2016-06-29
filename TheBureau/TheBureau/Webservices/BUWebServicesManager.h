@@ -71,4 +71,7 @@
 -(void)uploadHoroscope:(UIImage *)inImage  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
 -(void)deleteProfilePicture:(NSString *)inImageURLStr  successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
 
+-(void)getProfileDetailsWithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
+
+-(void)deleteContactWithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack;
 @end

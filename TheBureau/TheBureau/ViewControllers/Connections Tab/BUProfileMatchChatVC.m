@@ -141,8 +141,30 @@ static NSDateFormatter *LQSDateFormatter()
                 break;
             case 1:
             {
-                [self.contactList removeObjectAtIndex:indexPath.row];
-                [self.conversationListTableView reloadData];
+                
+                
+                BUChatContact *contact = [self.contactList objectAtIndex:indexPath.row];
+                
+                //                http://app.thebureauapp.com/admin/deleteChatContact
+                //
+                //                Parameter:
+                //                    userid1 => logged in user
+                //                    userid2 => user to get deleted
+                
+                NSDictionary *parameters = nil;
+                parameters = @{@"userid1": [BUWebServicesManager sharedManager].userID,
+                               @"userid2": contact.userID};
+                
+                [self startActivityIndicator:YES];
+                [[BUWebServicesManager sharedManager] deleteContactWithParameters:parameters successBlock:^(id response, NSError *error)
+                 {
+                     [self stopActivityIndicator];
+                     [self.contactList removeObjectAtIndex:indexPath.row];
+                     [self.conversationListTableView reloadData];
+                 } failureBlock:^(id response, NSError *error) {
+                     [self stopActivityIndicator];
+                 }];
+                
             }
                 break;
         }

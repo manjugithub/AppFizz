@@ -54,9 +54,9 @@
 
 @property(nonatomic,weak)IBOutlet UIButton *vegetarianBtn;
 @property(nonatomic,weak)IBOutlet UIButton *eegetarianBtn;
-
 @property(nonatomic,weak)IBOutlet UIButton *veganBtn;
 @property(nonatomic,weak)IBOutlet UIButton *nonVegetarianBtn;
+@property(nonatomic,weak)IBOutlet UIButton *noPrefBtn;
 
 @property(nonatomic,weak)IBOutlet UIButton *drinkingSelectionBtn;
 @property(nonatomic,weak)IBOutlet UIButton *smokingSelectionBtn;
@@ -352,19 +352,53 @@
 
 -(IBAction)resetDiet:(id)sender
 {
-    
-    [_vegetarianBtn setSelected:NO];
-    _vegetarianBtn.tag = 0;
-    [_eegetarianBtn setSelected:NO];
-    _eegetarianBtn.tag = 0;
-    [_nonVegetarianBtn setSelected:NO];
-    _nonVegetarianBtn.tag = 0;
-    [_veganBtn setSelected:NO];
-    _veganBtn.tag = 0;
-
-    [self.dietList removeAllObjects];
+    if(self.noPrefBtn.selected == NO)
+    {
+        [_vegetarianBtn setSelected:YES];
+        _vegetarianBtn.tag = 1;
+        [_eegetarianBtn setSelected:YES];
+        _eegetarianBtn.tag = 1;
+        [_nonVegetarianBtn setSelected:YES];
+        _nonVegetarianBtn.tag = 1;
+        [_veganBtn setSelected:YES];
+        _veganBtn.tag = 1;
+        [self.dietList addObject:self.vegetarianBtn.titleLabel.text];
+        [self.dietList addObject:self.eegetarianBtn.titleLabel.text];
+        [self.dietList addObject:self.nonVegetarianBtn.titleLabel.text];
+        [self.dietList addObject:self.nonVegetarianBtn.titleLabel.text];
+        
+        self.noPrefBtn.selected = YES;
+    }
+    else
+    {
+        [_vegetarianBtn setSelected:NO];
+        _vegetarianBtn.tag = 0;
+        [_eegetarianBtn setSelected:NO];
+        _eegetarianBtn.tag = 0;
+        [_nonVegetarianBtn setSelected:NO];
+        _nonVegetarianBtn.tag = 0;
+        [_veganBtn setSelected:NO];
+        _veganBtn.tag = 0;
+        [self.dietList removeAllObjects];
+        self.noPrefBtn.selected = NO;
+    }
 }
 
+
+-(void)validateNoPrefBtn
+{
+    
+
+    if([_vegetarianBtn isSelected] && [_eegetarianBtn isSelected] && [_nonVegetarianBtn isSelected] && [_veganBtn isSelected])
+    {
+        self.noPrefBtn.selected = YES;
+    }
+    else
+    {
+        self.noPrefBtn.selected = NO;
+    }
+    
+}
 
 -(IBAction)vegeterianBtnClicked:(id)sender
 {
@@ -380,6 +414,8 @@
         _vegetarianBtn.tag = 0;
         [self.dietList removeObject:self.vegetarianBtn.titleLabel.text];
     }
+    
+    [self validateNoPrefBtn];
     
 }
 -(IBAction)eggtarianBtnClicked:(id)sender
@@ -397,6 +433,8 @@
         [self.dietList removeObject:self.eegetarianBtn.titleLabel.text];
     }
     
+    [self validateNoPrefBtn];
+
 }
 -(IBAction)nonVegBtnClicked:(id)sender
 {
@@ -412,7 +450,8 @@
         _nonVegetarianBtn.tag = 0;
         [self.dietList removeObject:self.nonVegetarianBtn.titleLabel.text];
     }
-    
+    [self validateNoPrefBtn];
+
 }
 
 -(IBAction)veganBtnClicked:(id)sender
@@ -429,7 +468,8 @@
         _veganBtn.tag = 0;
         [self.dietList removeObject:self.veganBtn.titleLabel.text];
     }
-    
+    [self validateNoPrefBtn];
+
 }
 
 - (IBAction)editProfileDetails:(id)sender
@@ -508,6 +548,8 @@
 
     [self.profDict setValue:self.maritalStatusList forKey:@"marital_status"];
     [self.profDict setValue:self.dietList forKey:@"diet"];
+    [self.profDict setValue:self.religionListDict forKey:@"religion_data"];
+    [self.profDict setValue:self.motherToungueListDict forKey:@"mother_tongue_data"];
  
     NSString *baseURl = @"http://dev.thebureauapp.com/admin/add_match_preference_ws";
     if(self.shouldAddPref == NO)
@@ -613,7 +655,7 @@
                          [self.profDict setValue:[[NSArray alloc] init] forKey:key];
              }
              
-             NSInteger locRadius = (([self.profDict valueForKey:@"location_radius"] == nil || [[self.profDict valueForKey:@"location_radius"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"location_radius"] isEqualToString:@""]) ? 300 : [[self.profDict valueForKey:@"location_radius"] intValue]);
+             NSInteger locRadius = (([self.profDict valueForKey:@"location_radius"] == nil || [[self.profDict valueForKey:@"location_radius"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"location_radius"] isEqualToString:@""]) ? 325 : [[self.profDict valueForKey:@"location_radius"] intValue]);
              
              NSInteger ageFrom = (([self.profDict valueForKey:@"age_from"] == nil || [[self.profDict valueForKey:@"age_from"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"age_from"] isEqualToString:@""]) ? 18 : [[self.profDict valueForKey:@"age_from"] intValue]);
              
@@ -684,6 +726,12 @@
              [self.ageCell setDatasource:self.profDict];
              [self.heightCell setDatasource:self.profDict];
 
+             
+             [self.heritageCell setPreference:self.profDict];
+             
+             
+             [self validateNoPrefBtn];
+
          }
          else
          {
@@ -699,7 +747,7 @@
                          [self.profDict setValue:[[NSArray alloc] init] forKey:key];
              }
              
-             NSInteger locRadius = (([self.profDict valueForKey:@"location_radius"] == nil || [[self.profDict valueForKey:@"location_radius"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"location_radius"] isEqualToString:@""]) ? 300 : [[self.profDict valueForKey:@"location_radius"] intValue]);
+             NSInteger locRadius = (([self.profDict valueForKey:@"location_radius"] == nil || [[self.profDict valueForKey:@"location_radius"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"location_radius"] isEqualToString:@""]) ? 325 : [[self.profDict valueForKey:@"location_radius"] intValue]);
              
              NSInteger ageFrom = (([self.profDict valueForKey:@"age_from"] == nil || [[self.profDict valueForKey:@"age_from"] isKindOfClass:[NSNull class]] || [[self.profDict valueForKey:@"age_from"] isEqualToString:@""]) ? 18 : [[self.profDict valueForKey:@"age_from"] intValue]);
              
@@ -839,6 +887,10 @@
               */
              
              [self.heritageCell setPreference:self.profDict];
+             
+             
+             [self validateNoPrefBtn];
+
 
          }
      }

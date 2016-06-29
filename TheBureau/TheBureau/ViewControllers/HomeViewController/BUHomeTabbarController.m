@@ -34,7 +34,7 @@
     // accept notifications.
     [UAirship push].userPushNotificationsEnabled = YES;
     
-    [UAirship push].pushNotificationDelegate = self;
+//    [UAirship push].pushNotificationDelegate = self;
     
     
     self.urbanAirshipTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(setUrbanAirshipChannel) userInfo:nil repeats:YES];
@@ -82,55 +82,55 @@
 }
 
 
-- (void)displayNotificationAlert:(NSString *)alertMessage
-{
-    NSMutableAttributedString *titleStr = [[NSMutableAttributedString alloc] initWithString:alertMessage];
-    [titleStr addAttribute:NSFontAttributeName
-                     value:[UIFont fontWithName:@"comfortaa" size:15]
-                     range:NSMakeRange(0, titleStr.length)];
-    
-    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@""];
-    
-    [message addAttribute:NSFontAttributeName
-                    value:[UIFont fontWithName:@"comfortaa" size:15]
-                    range:NSMakeRange(0, message.length)];
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
-                                                                             message:nil
-                                                                      preferredStyle:UIAlertControllerStyleAlert];
-    [alertController setValue:titleStr
-                       forKey:@"attributedTitle"];
-    
-    [alertController setValue:message
-                       forKey:@"attributedMessage"];
-    
-    [alertController addAction:({
-        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok"
-                                                         style:UIAlertActionStyleDefault
-                                                       handler:^(UIAlertAction *action)
-                                 {
-                                     NSLog(@"OK");
-                                     
-                                 }];
-        
-        action;
-    })];
-    
+//- (void)displayNotificationAlert:(NSString *)alertMessage
+//{
+//    NSMutableAttributedString *titleStr = [[NSMutableAttributedString alloc] initWithString:alertMessage];
+//    [titleStr addAttribute:NSFontAttributeName
+//                     value:[UIFont fontWithName:@"comfortaa" size:15]
+//                     range:NSMakeRange(0, titleStr.length)];
+//    
+//    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@""];
+//    
+//    [message addAttribute:NSFontAttributeName
+//                    value:[UIFont fontWithName:@"comfortaa" size:15]
+//                    range:NSMakeRange(0, message.length)];
+//    
+//    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
+//                                                                             message:nil
+//                                                                      preferredStyle:UIAlertControllerStyleAlert];
+//    [alertController setValue:titleStr
+//                       forKey:@"attributedTitle"];
+//    
+//    [alertController setValue:message
+//                       forKey:@"attributedMessage"];
+//    
 //    [alertController addAction:({
-//        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Not now"
+//        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok"
 //                                                         style:UIAlertActionStyleDefault
-//                                                       handler:^(UIAlertAction *action) {
-//                                                           NSLog(@"OK");
-//                                                           
-//                                                       }];
+//                                                       handler:^(UIAlertAction *action)
+//                                 {
+//                                     NSLog(@"OK");
+//                                     
+//                                 }];
 //        
 //        action;
 //    })];
-    
-    [self.navigationController.topViewController presentViewController:alertController animated:YES completion:nil];
-    
-    NSLog(@"displayNotificationAlert ==> %@",alertMessage);
-}
+//    
+////    [alertController addAction:({
+////        UIAlertAction *action = [UIAlertAction actionWithTitle:@"Not now"
+////                                                         style:UIAlertActionStyleDefault
+////                                                       handler:^(UIAlertAction *action) {
+////                                                           NSLog(@"OK");
+////                                                           
+////                                                       }];
+////        
+////        action;
+////    })];
+//    
+//    [self.navigationController.topViewController presentViewController:alertController animated:YES completion:nil];
+//    
+//    NSLog(@"displayNotificationAlert ==> %@",alertMessage);
+//}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

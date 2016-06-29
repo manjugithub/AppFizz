@@ -8,11 +8,13 @@
 
 #import "BUImagePreviewVC.h"
 #import "BUHomeImagePreviewCell.h"
-
+#import "BUWebServicesManager.h"
+#import "LQSViewController.h"
 @interface BUImagePreviewVC ()
 
 @property(nonatomic, strong) IBOutlet UIPageControl *pageControl;
 -(IBAction)closePreview:(id)sender;
+-(IBAction)removeImage:(id)sender;
 @end
 
 @implementation BUImagePreviewVC
@@ -98,6 +100,63 @@
 -(IBAction)closePreview:(id)sender
 {
     [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+-(IBAction)removeImage:(id)sender
+{
+    if(self.isHoroscope)
+    {
+        
+        NSMutableDictionary *parameters = [[NSMutableDictionary alloc]init];
+        [parameters setValue:[BUWebServicesManager sharedManager].userID forKey:@"userid"];
+        
+        [self startActivityIndicator:YES];
+
+        [[BUWebServicesManager sharedManager] queryServer:parameters
+                                                  baseURL:@"http://dev.thebureauapp.com/admin/deleteHoroscope"
+                                             successBlock:^(id response, NSError *error)
+         {
+             [self stopActivityIndicator];
+             
+             
+             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[response valueForKey:@"response"]];
+             [message addAttribute:NSFontAttributeName
+                             value:[UIFont fontWithName:@"comfortaa" size:15]
+                             range:NSMakeRange(0, message.length)];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+             [alertController setValue:message forKey:@"attributedTitle"];
+             
+             [alertController addAction:({
+                 UIAlertAction *action = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                     NSLog(@"OK");
+                     
+                     [[NSNotificationCenter defaultCenter] postNotificationName:@"kupdateProfile" object:nil];
+                     [self dismissViewControllerAnimated:NO completion:nil];
+                 }];
+                 
+                 action;
+             })];
+             
+             [self presentViewController:alertController  animated:YES completion:nil];
+             
+         }
+                                             failureBlock:^(id response, NSError *error)
+         {
+             [self stopActivityIndicator];
+             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Bureau Server Error"];
+             [message addAttribute:NSFontAttributeName
+                             value:[UIFont fontWithName:@"comfortaa" size:15]
+                             range:NSMakeRange(0, message.length)];
+             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+             [alertController setValue:message forKey:@"attributedTitle"];            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+             [self presentViewController:alertController animated:YES completion:nil];
+         }];
+    }
+    else
+    {
+        [self.chatVC deletePhotoAtIndex:self.currentIndex];
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }
 }
 
 @end

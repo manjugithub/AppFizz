@@ -323,6 +323,27 @@ constructingBodyWithBlock:nil
 }
 
 
+
+-(void)getProfileDetailsWithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack
+{
+    NSString *baseURL =[NSString stringWithFormat:@"%@%@",kBaseURL,@"readProfileDetails"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:baseURL
+       parameters:inParams
+constructingBodyWithBlock:nil
+         progress:nil
+          success:^(NSURLSessionDataTask *operation, id responseObject)
+     {
+         successCallBack(responseObject,nil);
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(NSURLSessionDataTask *operation, NSError *error)
+     {
+         failureCallBack(nil,error);
+         NSLog(@"Error: %@", error);
+     }];
+}
+
 -(void)matchMakingForTheDaywithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack
 {
     NSString *baseURL =[NSString stringWithFormat:@"%@%@",kBaseURL,@"matchtab"];
@@ -555,5 +576,25 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData)
      }];
 }
 
+
+-(void)deleteContactWithParameters:(NSDictionary *)inParams successBlock:(SuccessBlock) successCallBack failureBlock:(FailureBlock) failureCallBack
+{
+    NSString *baseURL =[NSString stringWithFormat:@"%@%@",kBaseURL,@"deleteChatContact"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:baseURL
+       parameters:inParams
+constructingBodyWithBlock:nil
+         progress:nil
+          success:^(NSURLSessionDataTask *operation, id responseObject)
+     {
+         successCallBack(responseObject,nil);
+         NSLog(@"Success: %@", responseObject);
+     }
+          failure:^(NSURLSessionDataTask *operation, NSError *error)
+     {
+         failureCallBack(nil,error);
+         NSLog(@"Error: %@", error);
+     }];
+}
 
 @end

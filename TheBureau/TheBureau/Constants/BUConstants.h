@@ -33,6 +33,9 @@ typedef NS_ENUM (NSInteger, EmployementStatus)
 };
 
 
+#define IDIOM    UI_USER_INTERFACE_IDIOM()
+#define IPAD     UIUserInterfaceIdiomPad
+
 
 //#if TARGET_IPHONE_SIMULATOR
 //// If on simulator set the user ID to Simulator and participant to Device
@@ -72,4 +75,6 @@ typedef NS_ENUM(NSInteger, MessageSender)
     MessageSenderSomeone
 };
 
+
+static NSString *const KInviteMessage = @"Hi, Use my code %@ to sign up & get free Gold! Click https://itunes.apple.com/us/app/thebureau/id1036009141?ls=1&mt=8 to download TheBureau App. Use Gold to Connect and Chat.";
 

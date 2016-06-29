@@ -9,7 +9,9 @@
 #import "BUInviteFriendVC.h"
 #import "BUProfileImageCell.h"
 #import <MessageUI/MessageUI.h>
+#import "BUConstants.h"
 @interface BUInviteFriendVC ()<UITableViewDataSource,UITableViewDelegate,MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *referCodeLabel;
 
 @end
 
@@ -20,6 +22,7 @@
     // Do any additional setup after loading the view.
     
     self.navigationItem.title = @"Invite Friend";
+    self.referCodeLabel.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"referral_code"];
 
 }
 
@@ -92,7 +95,7 @@
         [mailer setSubject:@"Check out TheBureau App"];
         
         NSMutableString *emailBody = [NSMutableString string];
-        [emailBody appendString:@"Your text here ..."];
+        [emailBody appendString:[NSString stringWithFormat:KInviteMessage,[[NSUserDefaults standardUserDefaults] valueForKey:@"referral_code"]]];
         [mailer setMessageBody:emailBody isHTML:YES];
         
         [self.navigationController presentViewController:mailer animated:YES completion:^{}];
@@ -152,7 +155,7 @@
     else
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message Failure"
-                                                        message:@"Your device doesn't support in-app message"
+                                                        message:[NSString stringWithFormat:KInviteMessage,[[NSUserDefaults standardUserDefaults] valueForKey:@"referral_code"]]
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];

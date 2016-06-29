@@ -9,7 +9,7 @@
 #import "BUProfileLegalStatusVC.h"
 #import "BUHomeTabbarController.h"
 #import "Localytics.h"
-
+#import "BUReferalVC.h"
 
 @interface BUProfileLegalStatusVC ()
 
@@ -194,11 +194,13 @@
                                              baseURL:@"http://dev.thebureauapp.com/admin/update_profile_step6"
                                         successBlock:^(id response, NSError *error)
      {
+         [self stopActivityIndicator];
+
          [Localytics tagEvent:@"Login Successful"];
          [Localytics setCustomerId:[BUWebServicesManager sharedManager].userID];;
-         UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-         BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-         [self.navigationController pushViewController:vc animated:YES];
+
+         BUReferalVC *referalVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BUReferalVC"];
+         [self.navigationController pushViewController:referalVC animated:YES];
          
      }
                                         failureBlock:^(id response, NSError *error)

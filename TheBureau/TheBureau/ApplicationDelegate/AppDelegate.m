@@ -264,21 +264,55 @@
 }
 
 
-//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-//{
-//    NSLog(@"Received Remote notification");
-//
-//    if (application.applicationState == UIApplicationStateActive)
-//    {
-//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"TheBureau" message:userInfo[@"aps"][@"alert"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        
-//        [alertView show];
-//    }
-//    else if (application.applicationState == UIApplicationStateBackground || application.applicationState == UIApplicationStateInactive)
-//    {
-//        // Do something else rather than showing an alert view, because it won't be displayed.
-//    }
-//}
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    NSLog(@"Received Remote notification");
+
+    if (application.applicationState == UIApplicationStateActive)
+    {
+        
+        NSString *notificationMSG = userInfo[@"aps"][@"alert"];
+        
+        if([notificationMSG containsString:@"says"])
+        {
+            
+            if(NO == [[NSUserDefaults standardUserDefaults] boolForKey:@"BUAppNotificationCellTypeChatNotifications"])
+            {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"TheBureau" message:notificationMSG delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alertView show];
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshHomeVC" object:nil];
+            }
+        }
+        else
+        {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"TheBureau" message:userInfo[@"aps"][@"alert"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertView show];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshHomeVC" object:nil];
+        }
+    }
+    else if (application.applicationState == UIApplicationStateBackground || application.applicationState == UIApplicationStateInactive)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshHomeVC" object:nil];
+    }
+}
+
+
+-(void)showAlertWithMessage:(NSString *)inMsgString
+{
+    NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:inMsgString];
+    [message addAttribute:NSFontAttributeName
+                    value:[UIFont fontWithName:@"comfortaa" size:15]
+                    range:NSMakeRange(0, message.length)];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertController setValue:message forKey:@"attributedTitle"];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+
+//    [self.window presentViewController:alertController animated:YES completion:nil];
+
+}
+
+
 //- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 //{
 //    NSLog(@"Received Local notification");

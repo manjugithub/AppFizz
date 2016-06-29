@@ -272,10 +272,8 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(IBAction)inviteFriend:(id)sender
 {
-    
         FBSDKAppInviteContent *content =[[FBSDKAppInviteContent alloc] init];
         content.appLinkURL = [NSURL URLWithString:@"https://app.cancerlife.com/fb.html"];
-    
         [FBSDKAppInviteDialog showFromViewController:self withContent:content delegate:self];
 }
 

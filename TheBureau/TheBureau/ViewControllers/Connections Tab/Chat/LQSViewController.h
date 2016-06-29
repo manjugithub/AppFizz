@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <LayerKit/LayerKit.h>
 #import "BUBaseViewController.h"
+#import "BUImagePreviewVC.h"
+@class BUChattingCell;
 @interface LQSViewController : BUBaseViewController
 
 @property (nonatomic) LYRClient *layerClient;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableBottomConstraint;
 
 @property (nonatomic, weak) IBOutlet UIButton *sendButton;
 @property (nonatomic, weak) IBOutlet UITextView *inputTextView;
@@ -30,5 +33,8 @@
 - (IBAction)clearButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)cameraButtonPressed:(UIButton *)sender;
 - (IBAction)goBack:(UIBarButtonItem *)sender;
+- (IBAction)deletePhotoAtIndex:(NSIndexPath *)inIndexPath;
+-(void)showPreview:(LYRMessage *)lyrMessage withCell:(BUChattingCell *)inCell;
+@property(weak, nonatomic) BUImagePreviewVC *imagePreviewVC;
 
 @end

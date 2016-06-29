@@ -10,8 +10,11 @@
     <customFonts key="customFonts">
         <mutableArray key="Comfortaa-Bold.ttf">
             <string>Comfortaa-Bold</string>
+            <string>Comfortaa-Bold</string>
         </mutableArray>
         <mutableArray key="Comfortaa-Regular.ttf">
+            <string>Comfortaa</string>
+            <string>Comfortaa</string>
             <string>Comfortaa</string>
             <string>Comfortaa</string>
             <string>Comfortaa</string>
@@ -2651,6 +2654,100 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oqw-XK-bTF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="620" y="-1485"/>
+        </scene>
+        <!--ReferalVC-->
+        <scene sceneID="EYf-Pf-Q8B">
+            <objects>
+                <viewController storyboardIdentifier="BUReferalVC" id="Wec-Xn-f9i" customClass="BUReferalVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hfY-db-pPh"/>
+                        <viewControllerLayoutGuide type="bottom" id="wea-t1-GLY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pk6-cq-ovX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsR-F9-Oes">
+                                <rect key="frame" x="0.0" y="555" width="600" height="45"/>
+                                <color key="backgroundColor" red="0.83529411760000005" green="0.050980392159999999" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="7p5-nB-jiT"/>
+                                    <constraint firstAttribute="width" constant="600" id="r9S-dt-3eO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fV8-JS-dyf">
+                                <rect key="frame" x="0.0" y="555" width="600" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="6iI-5W-mhO"/>
+                                    <constraint firstAttribute="height" constant="45" id="xtX-MV-HDa"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="continueClicked:" destination="Wec-Xn-f9i" eventType="touchUpInside" id="hq9-jf-LtC"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Referal Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0X-HT-Uye">
+                                <rect key="frame" x="20" y="76" width="560" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Ctf-P9-bM0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYd-6S-7J3">
+                                <rect key="frame" x="464" y="28" width="116" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="U2z-yn-a6X"/>
+                                    <constraint firstAttribute="width" constant="116" id="z4j-HJ-kWY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="14"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Skip" backgroundImage="bg_radiobutton_bubble_s1">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="bg_radiobutton_bubble_s2">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipReferal:" destination="Wec-Xn-f9i" eventType="touchUpInside" id="ZH0-Dw-ZGU"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="80a-re-qPM">
+                                <rect key="frame" x="160" y="105" width="280" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="8rf-Vw-QiE"/>
+                                    <constraint firstAttribute="height" constant="50" id="PfB-M2-GdI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="27"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="80a-re-qPM" firstAttribute="centerX" secondItem="Pk6-cq-ovX" secondAttribute="centerX" id="3Jg-se-0cf"/>
+                            <constraint firstItem="fV8-JS-dyf" firstAttribute="leading" secondItem="Pk6-cq-ovX" secondAttribute="leading" id="90h-1q-SLy"/>
+                            <constraint firstItem="wea-t1-GLY" firstAttribute="top" secondItem="bsR-F9-Oes" secondAttribute="bottom" id="BXD-5J-hhR"/>
+                            <constraint firstAttribute="trailing" secondItem="fV8-JS-dyf" secondAttribute="trailing" id="Bfo-KB-Qfb"/>
+                            <constraint firstItem="bsR-F9-Oes" firstAttribute="leading" secondItem="Pk6-cq-ovX" secondAttribute="leading" id="Vag-ZY-7Dq"/>
+                            <constraint firstItem="wea-t1-GLY" firstAttribute="top" secondItem="fV8-JS-dyf" secondAttribute="bottom" id="XkL-vw-Ztw"/>
+                            <constraint firstItem="80a-re-qPM" firstAttribute="top" secondItem="O0X-HT-Uye" secondAttribute="bottom" constant="8" id="gdQ-Kb-CXP"/>
+                            <constraint firstAttribute="trailing" secondItem="O0X-HT-Uye" secondAttribute="trailing" constant="20" id="jSf-nW-0RA"/>
+                            <constraint firstAttribute="trailing" secondItem="bsR-F9-Oes" secondAttribute="trailing" id="mEf-Ee-kG3"/>
+                            <constraint firstItem="tYd-6S-7J3" firstAttribute="top" secondItem="hfY-db-pPh" secondAttribute="bottom" constant="8" id="meC-5W-MUh"/>
+                            <constraint firstAttribute="trailing" secondItem="tYd-6S-7J3" secondAttribute="trailing" constant="20" id="na9-Mm-6C6"/>
+                            <constraint firstItem="O0X-HT-Uye" firstAttribute="top" secondItem="tYd-6S-7J3" secondAttribute="bottom" constant="14" id="rkl-e6-3of"/>
+                            <constraint firstItem="O0X-HT-Uye" firstAttribute="leading" secondItem="Pk6-cq-ovX" secondAttribute="leading" constant="20" id="zhB-lB-9hb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="referalTF" destination="80a-re-qPM" id="fuL-Za-7Lh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E4a-sT-LQ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="620" y="-1485"/>
         </scene>

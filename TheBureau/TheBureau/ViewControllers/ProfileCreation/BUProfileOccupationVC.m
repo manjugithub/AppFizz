@@ -12,7 +12,7 @@
 #import "BUProfileLegalStatusVC.h"
 #import "BUHomeTabbarController.h"
 #import "Localytics.h"
-
+#import "BUReferalVC.h"
 @interface BUProfileOccupationVC ()<UITableViewDataSource,UITableViewDelegate, HighLevelEducationTVCellDelegate,EmployementStatusTVCellDelegate,UIActionSheetDelegate>
 
 
@@ -268,9 +268,8 @@ HighLevelEducationTVCell *cell =(HighLevelEducationTVCell*) [_tableView cellForR
              [Localytics setCustomerId:[BUWebServicesManager sharedManager].userID];;
 
              
-             UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
-             BUHomeTabbarController *vc = [sb instantiateViewControllerWithIdentifier:@"BUHomeTabbarController"];
-             [self.navigationController pushViewController:vc animated:YES];
+             BUReferalVC *referalVC = [self.storyboard instantiateViewControllerWithIdentifier:@"BUReferalVC"];
+             [self.navigationController pushViewController:referalVC animated:YES];
              
          }
          

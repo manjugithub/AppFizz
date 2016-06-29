@@ -47,26 +47,45 @@
 
     self.profileStatusImgView.hidden = YES;
 
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshHomeVC" object:nil];
+
     
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RefreshHomeVC" object:nil];
+    [super viewWillDisappear:animated];
+}
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;    
     [self getGoldDetails];
+    self.noProfileImgView.hidden = NO;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMatchMaking)
+                                                 name:@"RefreshHomeVC"
+                                               object:nil];
+
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    self.noProfileImgView.hidden = NO;
     NSLog(@"Table view size frame: %@",NSStringFromCGRect(self.imgScrollerTableView.bounds));
     self.imgScrollerTableView.hidden = NO;
     [self.imgScrollerTableView reloadData];
     [self getMatchMakingfortheDay];
     
 
+}
+
+-(void)refreshMatchMaking
+{
+    self.imgScrollerTableView.hidden = NO;
+    [self.imgScrollerTableView reloadData];
+    [self getMatchMakingfortheDay];
 }
 
 

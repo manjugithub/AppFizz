@@ -177,7 +177,6 @@
                 [[BUWebServicesManager sharedManager] loginWithDelegeatewithParameters:parameters
                                                                           successBlock:^(id inResult, NSError *error)
                  {
-                     [self stopActivityIndicator];
                      
                      if(YES == [[inResult valueForKey:@"msg"] isEqualToString:@"Success"])
                      {
@@ -188,10 +187,12 @@
                          
                          
                          [[NSUserDefaults standardUserDefaults] setValue:[inResult valueForKey:@"userid"] forKey:@"userid"];
-                         [[NSUserDefaults standardUserDefaults] synchronize];
-
                          
                          [[NSUserDefaults standardUserDefaults] setValue:[BUWebServicesManager sharedManager].userName forKey:@"username"];
+                         
+                         
+                         [[NSUserDefaults standardUserDefaults] setValue:[inResult valueForKey:@"referral_code"] forKey:@"referral_code"];
+
                          [[NSUserDefaults standardUserDefaults] synchronize];
 
 
@@ -200,47 +201,36 @@
                          
                          [[BULayerHelper sharedHelper] setCurrentUserID:[inResult valueForKey:@"userid"]];
                          
-                         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Login Successful"];
-                         [message addAttribute:NSFontAttributeName
-                                         value:[UIFont fontWithName:@"comfortaa" size:15]
-                                         range:NSMakeRange(0, message.length)];
-                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-                         [alertController setValue:message forKey:@"attributedTitle"];
                          
-                         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                                            style:UIAlertActionStyleDefault
-                                                                          handler:^(UIAlertAction *action)
-                                                    {
-                                                        [self startActivityIndicator:YES];
-
-                                                        [[BULayerHelper sharedHelper] authenticateLayerWithsuccessBlock:^(id response, NSError *error)
-                                                         {
-                                                             [self checkForAccountCreation];
-                                                         } failureBlock:^(id response, NSError *error)
-                                                         {
-                                                             [self checkForAccountCreation];
-                                                             return ;
-                                                             NSLog(@"Failed Authenticating Layer Client with error:%@", error);
-                                                             [self stopActivityIndicator];
-                                                             NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Failed Authenticating Layer Client with error:%@", error]];
-                                                             [message addAttribute:NSFontAttributeName
-                                                                             value:[UIFont fontWithName:@"comfortaa" size:15]
-                                                                             range:NSMakeRange(0, message.length)];
-                                                             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
-                                                             [alertController setValue:message forKey:@"attributedTitle"];
-                                                             [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
-                                                             [self presentViewController:alertController animated:YES completion:nil];
-                                                             
-                                                         }];
-                                                    }];
                          
-                         [alertController addAction:okAction];
-                         [self presentViewController:alertController animated:YES completion:nil];
+                         
+                         [[BULayerHelper sharedHelper] authenticateLayerWithsuccessBlock:^(id response, NSError *error)
+                          {
+                              [self checkForAccountCreation];
+                          } failureBlock:^(id response, NSError *error)
+                          {
+                              [self checkForAccountCreation];
+                              return ;
+                              NSLog(@"Failed Authenticating Layer Client with error:%@", error);
+                              [self stopActivityIndicator];
+                              NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Failed Authenticating Layer Client with error:%@", error]];
+                              [message addAttribute:NSFontAttributeName
+                                              value:[UIFont fontWithName:@"comfortaa" size:15]
+                                              range:NSMakeRange(0, message.length)];
+                              UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+                              [alertController setValue:message forKey:@"attributedTitle"];
+                              [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                              [self presentViewController:alertController animated:YES completion:nil];
+                              
+                          }];
+                         
                          
                      }
                      else
                      {
-                         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:@"Login Failed"];
+                         [self stopActivityIndicator];
+
+                         NSMutableAttributedString *message = [[NSMutableAttributedString alloc] initWithString:[inResult valueForKey:@"response"]];
                          [message addAttribute:NSFontAttributeName
                                          value:[UIFont fontWithName:@"comfortaa" size:15]
                                          range:NSMakeRange(0, message.length)];

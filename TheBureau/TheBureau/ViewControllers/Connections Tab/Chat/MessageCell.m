@@ -73,8 +73,18 @@
     [self addTimeLabel];
     [self setTimeLabel];
     
-//    [self addStatusIcon];
-//    [self setStatusIcon];
+    [self addStatusIcon];
+    [self setStatusIcon];
+}
+
+
+-(void)updateStatus
+{
+    [self addTimeLabel];
+    [self setTimeLabel];
+    
+    [self addStatusIcon];
+    [self setStatusIcon];
 }
 
 #pragma mark - 
@@ -112,7 +122,7 @@
     
     self.messageImageView = [[UIImageView alloc]init];
     self.messageImageView.tag = 1;
-    self.messageImageView.frame = CGRectMake(100, 30, 150, 90);
+    self.messageImageView.frame = CGRectMake(100, 30, 200, 150);
 
 
     [self.contentView addSubview:self.messageImageView];
@@ -439,6 +449,9 @@
 }
 -(void)setStatusIcon
 {
+
+    _statusIcon.image = [UIImage imageNamed:@"status_sent"];
+
     if (self.message.status == MessageStatusSent)
         _statusIcon.image = [UIImage imageNamed:@"status_sent"];
     else if (self.message.status == MessageStatusNotified)
@@ -446,7 +459,7 @@
     else if (self.message.status == MessageStatusRead)
         _statusIcon.image = [UIImage imageNamed:@"status_read"];
     
-    _statusIcon.hidden = _message.sender == MessageSenderSomeone;
+    _statusIcon.hidden = NO;// _message.sender == MessageSenderSomeone;
     
     //Animate Transition
     _statusIcon.alpha = 0;

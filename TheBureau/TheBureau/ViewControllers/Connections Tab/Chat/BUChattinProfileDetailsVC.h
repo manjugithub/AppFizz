@@ -11,4 +11,6 @@
 @interface BUChattinProfileDetailsVC : BUBaseViewController<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic, strong) NSMutableArray *imagesList;
 @property(nonatomic, strong) NSMutableDictionary *datasourceList;
+@property(nonatomic, strong) NSString *profileID;
+-(void)getProfileDetails;
 @end

@@ -44,6 +44,17 @@
     // Do any additional setup after loading the view.
     [self getProfileDetails];
     self.isEditing = NO;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData)
+                                                 name:@"kupdateProfile"
+                                               object:nil];
+
+}
+
+
+-(void)refreshData
+{
+    [self.profileTableView reloadData];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -59,14 +70,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyboard) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyBoard) name:UIKeyboardWillHideNotification object:nil];
 
+    
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-//    [BUUtilities setNavBarLogo:self.navigationController image:[UIImage imageNamed:@"logo44"]];
-//    self.navigationItem.rightBarButtonItem = nil;
-    
 }
 
 

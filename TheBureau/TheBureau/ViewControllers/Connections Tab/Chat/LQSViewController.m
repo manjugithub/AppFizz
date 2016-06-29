@@ -14,6 +14,9 @@
 #import "MessageCell.h"
 #import "BUWebServicesManager.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "BURematchProfileDetailsVC.h"
+#import "BUChattinProfileDetailsVC.h"
+#import "BUChattingCell.h"
 // Defined in LQSAppDelegate.m
 
 // Metadata keys related to navbar color
@@ -107,6 +110,12 @@ static UIColor *LSRandomColor(void)
     self.title = self.recipientName;
 
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+
+    
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle:@"Clear" style:UIBarButtonItemStylePlain target:self action:@selector(clearButtonPressed:)];
     self.navigationItem.rightBarButtonItem = rightBtn;
 
@@ -132,6 +141,9 @@ static UIColor *LSRandomColor(void)
 -(void)viewWillDisappear:(BOOL)animated
 {
     self.navigationItem.rightBarButtonItem = nil;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+
 }
 
 
@@ -245,55 +257,118 @@ static UIColor *LSRandomColor(void)
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MessageCell *cell = (MessageCell *) [self tableView:tableView cellForRowAtIndexPath:indexPath];
-    return cell?cell.height > 60 ? cell.height : 60 :200;
+    LYRMessage *lyrMessage = [self.queryController objectAtIndexPath:indexPath];
+    LYRMessagePart *messagePart = lyrMessage.parts[0];
+    if ([messagePart.MIMEType isEqualToString:@"image/png"])
+    {
+        return 250;
+    }
+    return 80;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     [self.view endEditing:YES];
+    
+    LYRMessage *lyrMessage = [self.queryController objectAtIndexPath:indexPath];
+    LYRMessagePart *messagePart = lyrMessage.parts[0];
+    
+    if ([messagePart.MIMEType isEqualToString:@"image/png"])
+    {
+        UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+        self.imagePreviewVC = [sb instantiateViewControllerWithIdentifier:@"BUImagePreviewVC"];
+        self.imagePreviewVC.imagesList = [[NSMutableArray alloc] initWithObjects:[[UIImage alloc]initWithData:messagePart.data], nil];
+        self.imagePreviewVC.indexPathToScroll = [NSIndexPath indexPathForRow:0 inSection:0];
+        self.imagePreviewVC.currentIndex = indexPath;
+        self.imagePreviewVC.chatVC = self;
+        self.imagePreviewVC.isHoroscope = NO;
+        [self presentViewController:self.imagePreviewVC animated:NO completion:nil];
+        
+    }
+
+}
+
+-(void)showPreview:(LYRMessage *)lyrMessage withCell:(BUChattingCell *)inCell
+{
+    
+    LYRMessagePart *messagePart = lyrMessage.parts[0];
+    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"HomeView" bundle:nil];
+    self.imagePreviewVC = [sb instantiateViewControllerWithIdentifier:@"BUImagePreviewVC"];
+    self.imagePreviewVC.imagesList = [[NSMutableArray alloc] initWithObjects:[[UIImage alloc]initWithData:messagePart.data], nil];
+    self.imagePreviewVC.indexPathToScroll = [NSIndexPath indexPathForRow:0 inSection:0];
+    self.imagePreviewVC.currentIndex = [self.tableView indexPathForCell:inCell];
+    self.imagePreviewVC.chatVC = self;
+    self.imagePreviewVC.isHoroscope = NO;
+    [self presentViewController:self.imagePreviewVC animated:NO completion:nil];
+}
+
+
+
+
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"MessageCell";
-    MessageCell *cell = (MessageCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil)
-    {
-        cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
     
+    BUChattingCell *cell;
     
     LYRMessage *lyrMessage = [self.queryController objectAtIndexPath:indexPath];
-    LYRMessagePart *messagePart = lyrMessage.parts[0];
+        if([lyrMessage.sender.userID isEqualToString:[[BULayerHelper sharedHelper] currentUserID]])
+        {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"SenderCell"];
+            [cell setDataSourceForSender:lyrMessage];
+        }
+        else
+        {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"ReceiverCell"];
+            [cell setDataSourceForReceiver:lyrMessage];
+        }
     
-    if ([messagePart.MIMEType isEqualToString:@"image/png"]) {
-        cell.message.text = @""; //
-        [cell updateWithImage:[[UIImage alloc]initWithData:messagePart.data]];
-        
-    } else {
-        [cell removeImage];
-    Message *message = [[Message alloc] init];
-    message.text = [[NSString alloc]initWithData:messagePart.data
-                                        encoding:NSUTF8StringEncoding];
-    if ([lyrMessage.sender.userID isEqualToString:[[BULayerHelper sharedHelper] currentUserID]])
-    {
-        message.sender = MessageSenderMyself;
-    }
-    else
-    {
-        message.sender = MessageSenderSomeone;
-    }
-    message.sent = [lyrMessage sentAt];
-    
-    cell.message = message;
-    
-    }
+    cell.parentVC = self;
     cell.backgroundColor = [UIColor clearColor];
     cell.contentView.backgroundColor = [UIColor clearColor];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    LYRMessage *message = [self.queryController objectAtIndexPath:indexPath];
+//    LYRMessagePart *messagePart = message.parts[0];
+//    
+//    //If it is type image
+//    if ([messagePart.MIMEType isEqualToString:@"image/png"]) {
+//        return 130;
+//    } else {
+//        return 70;
+//    }
+//}
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    // Set up custom ChatMessageCell for displaying message
+//    //LQSPictureMessageCell
+//    LQSChatMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:LQSChatMessageCellReuseIdentifier forIndexPath:indexPath];
+//    if (!cell) {
+//        cell = [[LQSChatMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:LQSChatMessageCellReuseIdentifier];
+//    }
+//    
+//    [self configureCell:cell forRowAtIndexPath:indexPath];
+//    cell.backgroundColor = [UIColor clearColor];
+//    cell.contentView.backgroundColor = [UIColor clearColor];
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//return cell;
+//}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
 }
 
 - (void)configureCell:(LQSChatMessageCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -373,12 +448,15 @@ static UIColor *LSRandomColor(void)
 
 - (IBAction)sendMessageAction:(id)sender
 {
-    // Send Message
-    [self sendMessage:self.inputTextView.text];
-    
-    // Lower the keyboard
-    [self moveViewUpToShowKeyboard:NO];
-    [self.inputTextView resignFirstResponder];
+    if(NO == [self.inputTextView.text isEqualToString:@""])
+    {
+        // Send Message
+        [self sendMessage:self.inputTextView.text];
+        
+        // Lower the keyboard
+        [self moveViewUpToShowKeyboard:NO];
+        [self.inputTextView resignFirstResponder];
+    }
 }
 
 - (void)sendMessage:(NSString *)messageText
@@ -405,16 +483,23 @@ static UIColor *LSRandomColor(void)
         messagePart = [LYRMessagePart messagePartWithText:messageText];
     }
     
-    // Creates and returns a new message object with the given conversation and array of message parts
-    NSString *pushMessage= [NSString stringWithFormat:@"%@ says %@",[BUWebServicesManager sharedManager].userName ,messageText];
+    LYRMessage *message = nil;
+    NSDictionary *pushOptions = nil;
     
-    LYRPushNotificationConfiguration *defaultConfiguration = [LYRPushNotificationConfiguration new];
-    defaultConfiguration.sound = @"layerbell.caff";
+//    NSUserDefaults *usDef = [NSUserDefaults standardUserDefaults];
+//    if(YES == [usDef boolForKey:@"BUAppNotificationCellTypeChatNotifications"])
+    {
+        // Creates and returns a new message object with the given conversation and array of message parts
+        NSString *pushMessage= [NSString stringWithFormat:@"%@ says %@",[BUWebServicesManager sharedManager].userName ,messageText];
+        
+        LYRPushNotificationConfiguration *defaultConfiguration = [LYRPushNotificationConfiguration new];
+        defaultConfiguration.sound = @"layerbell.caff";
         defaultConfiguration.alert = pushMessage;
-//    defaultConfiguration.category = LQSCategoryIdentifier;
-    NSDictionary *pushOptions = @{ LYRMessageOptionsPushNotificationConfigurationKey: defaultConfiguration };
+        //    defaultConfiguration.category = LQSCategoryIdentifier;
+        pushOptions = @{ LYRMessageOptionsPushNotificationConfigurationKey: defaultConfiguration };
+    }
     
-    LYRMessage *message = [self.layerClient newMessageWithParts:@[messagePart] options:pushOptions error:nil];
+    message = [self.layerClient newMessageWithParts:@[messagePart] options:pushOptions error:nil];
     
     // Sends the specified message
     NSError *error;
@@ -475,26 +560,61 @@ static UIColor *LSRandomColor(void)
 {
     // Sends a typing indicator event to the given conversation.
     [self.conversation sendTypingIndicator:LYRTypingDidFinish];
+    [self moveViewUpToShowKeyboard:NO];
 }
+
+
+
+
+
+- (void)keyboardWasShown:(NSNotification *)notification
+{
+    
+    CGFloat constant = 0;
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    constant = MIN(keyboardSize.height,keyboardSize.width);
+    self.tableBottomConstraint.constant = constant;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    
+}
+
+-(void)showKeyboard
+{
+    return;
+    CGFloat constant = 0;
+    constant = 250;
+    self.tableBottomConstraint.constant = constant;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.view layoutIfNeeded];
+    }];
+
+}
+-(void)hideKeyBoard
+{
+    CGFloat constant = 0;
+    self.tableBottomConstraint.constant = constant;
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
 
 // Move up the view when the keyboard is shown
 - (void)moveViewUpToShowKeyboard:(BOOL)movedUp
 {
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
-    
-    CGRect rect = self.view.frame;
-    if (movedUp) {
-        if (rect.origin.y == 64) {
-            rect.origin.y = self.view.frame.origin.y - LQSKeyboardHeight;
-        }
-    } else {
-        if (rect.origin.y < 64) {
-            rect.origin.y = self.view.frame.origin.y + LQSKeyboardHeight;
-        }
+    if (movedUp)
+    {
+        [self showKeyboard];
     }
-    self.view.frame = rect;
-    [UIView commitAnimations];
+    else
+    {
+        [self hideKeyBoard];
+    }
 }
 
 // If the user hits Return then dismiss the keyboard and move the view back down
@@ -589,6 +709,7 @@ static UIColor *LSRandomColor(void)
 
 - (void)setNavbarColorFromConversationMetadata:(NSDictionary *)metadata
 {
+    return;
     // For more information about Metadata, check out https://developer.layer.com/docs/integration/ios#metadata
     if (![metadata valueForKey:LQSBackgroundColorMetadataKey]) {
         return;
@@ -619,6 +740,31 @@ static UIColor *LSRandomColor(void)
     return [self.queryController numberOfObjectsInSection:0];
 }
 
+
+- (IBAction)deletePhotoAtIndex:(NSIndexPath *)inIndexPath
+{
+    LYRQuery *message = [LYRQuery queryWithQueryableClass:[LYRMessage class]];
+    
+    NSError *error;
+    NSOrderedSet *messageList = [self.layerClient executeQuery:message error:&error];
+    
+    if (messageList)
+    {
+        LYRMessage *message = [messageList objectAtIndex:inIndexPath.row];
+        BOOL success = [message delete:LYRDeletionModeAllParticipants error:&error];
+        NSLog(@"Message is: %@", message.parts);
+        if (success)
+        {
+            NSLog(@"The message has been deleted");
+        }
+        else
+        {
+            NSLog(@"Failed deletion of message: %@", error);
+        }
+    } else {
+        NSLog(@"Failed querying for messages: %@", error);
+    }
+}
 
 - (IBAction)clearButtonPressed:(UIBarButtonItem *)sender
 {
@@ -677,8 +823,7 @@ static UIColor *LSRandomColor(void)
     UIImage *image = info[UIImagePickerControllerEditedImage] ?: info[UIImagePickerControllerOriginalImage];
     self.photo = image;
     [self dismissViewControllerAnimated:YES completion:nil];
-    
-    self.messageImageView.image = image;
+    [self sendMessage:@""];
 }
 
 
@@ -704,8 +849,13 @@ static UIColor *LSRandomColor(void)
 
 - (IBAction)showProfile:(UIBarButtonItem *)sender
 {
-    
+    UIStoryboard *sb =[UIStoryboard storyboardWithName:@"Connections" bundle:nil];
+    BUChattinProfileDetailsVC *vc = [sb instantiateViewControllerWithIdentifier:@"BUChattinProfileDetailsVC"];
+    vc.profileID = self.recipientID;
+    [vc getProfileDetails];
+    [self.navigationController pushViewController:vc animated:YES];
 }
+
 - (IBAction)goBack:(UIBarButtonItem *)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
