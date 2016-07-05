@@ -54,6 +54,7 @@
 
 -(void)refreshData
 {
+    [self.horoscopeDict setValue: @""  forKey:@"horoscope_path"];
     [self.profileTableView reloadData];
 }
 

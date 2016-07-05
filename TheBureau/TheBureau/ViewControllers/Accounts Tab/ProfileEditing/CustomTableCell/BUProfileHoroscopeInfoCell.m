@@ -55,7 +55,7 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [self.parentVC performSelector:@selector(showKeyboard123) withObject:nil afterDelay:1.0];
+    [self.parentVC performSelector:@selector(showKeyboard123) withObject:nil afterDelay:0.1];
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView;
@@ -66,7 +66,7 @@
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView;
 {
     textView.text = [textView.text stringByReplacingOccurrencesOfString:@"Your text here ..." withString:@""];
-    [self.parentVC performSelector:@selector(showKeyboard123) withObject:nil afterDelay:1.0];
+    [self.parentVC performSelector:@selector(showKeyboard123) withObject:nil afterDelay:0.1];
     return YES;
 }
 

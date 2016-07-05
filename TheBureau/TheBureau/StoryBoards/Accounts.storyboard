@@ -3052,150 +3052,12 @@
                                             <outlet property="switchBtn" destination="9rD-x5-UiF" id="m79-4K-piu"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="6fb-tO-l8K" customClass="BUAppNotificationCell">
-                                        <rect key="frame" x="0.0" y="116" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6fb-tO-l8K" id="FHm-TL-cMZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customer Service (Emails)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paP-2S-JDG">
-                                                    <rect key="frame" x="8" y="11" width="500" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="I72-Jo-Opb"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NV1-2h-Ob0">
-                                                    <rect key="frame" x="516" y="6" width="68" height="32"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="68" id="0ck-Hy-Msc"/>
-                                                        <constraint firstAttribute="height" constant="32" id="uhg-j8-6AX"/>
-                                                    </constraints>
-                                                    <state key="normal" backgroundImage="switch_ON"/>
-                                                    <connections>
-                                                        <action selector="changeNotificationSettings:" destination="6fb-tO-l8K" eventType="touchUpInside" id="Lt2-rY-Sca"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="paP-2S-JDG" firstAttribute="leading" secondItem="FHm-TL-cMZ" secondAttribute="leading" constant="8" id="Hfv-cY-bD8"/>
-                                                <constraint firstAttribute="trailing" secondItem="NV1-2h-Ob0" secondAttribute="trailing" constant="16" id="IeM-0z-dZu"/>
-                                                <constraint firstItem="NV1-2h-Ob0" firstAttribute="top" secondItem="FHm-TL-cMZ" secondAttribute="top" constant="6" id="PZg-6X-7Rm"/>
-                                                <constraint firstItem="paP-2S-JDG" firstAttribute="top" secondItem="FHm-TL-cMZ" secondAttribute="top" constant="11" id="Yu2-df-jBS"/>
-                                                <constraint firstItem="NV1-2h-Ob0" firstAttribute="leading" secondItem="paP-2S-JDG" secondAttribute="trailing" constant="8" id="wuy-Wk-bc3"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="appNotificationCellType">
-                                                <integer key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <outlet property="notificationTitleLabel" destination="paP-2S-JDG" id="zU8-ct-1Oe"/>
-                                            <outlet property="switchBtn" destination="NV1-2h-Ob0" id="nuj-6M-xgo"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="Ueu-1r-OW9" customClass="BUAppNotificationCell">
-                                        <rect key="frame" x="0.0" y="160" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ueu-1r-OW9" id="zUW-h1-UEv">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blog Release" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vei-uv-N1r">
-                                                    <rect key="frame" x="8" y="11" width="500" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="OG2-u8-Ui5"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3i-rN-Xbd">
-                                                    <rect key="frame" x="516" y="6" width="68" height="32"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="32" id="ZdE-Xv-zYC"/>
-                                                        <constraint firstAttribute="width" constant="68" id="cIV-I8-3mV"/>
-                                                    </constraints>
-                                                    <state key="normal" backgroundImage="switch_ON"/>
-                                                    <connections>
-                                                        <action selector="changeNotificationSettings:" destination="Ueu-1r-OW9" eventType="touchUpInside" id="YDb-yU-g7S"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="W3i-rN-Xbd" firstAttribute="leading" secondItem="Vei-uv-N1r" secondAttribute="trailing" constant="8" id="AlE-uQ-be9"/>
-                                                <constraint firstAttribute="trailing" secondItem="W3i-rN-Xbd" secondAttribute="trailing" constant="16" id="Czn-9s-cC6"/>
-                                                <constraint firstItem="Vei-uv-N1r" firstAttribute="top" secondItem="zUW-h1-UEv" secondAttribute="top" constant="11" id="PHw-FT-qXe"/>
-                                                <constraint firstItem="W3i-rN-Xbd" firstAttribute="top" secondItem="zUW-h1-UEv" secondAttribute="top" constant="6" id="p4D-G1-N1E"/>
-                                                <constraint firstItem="Vei-uv-N1r" firstAttribute="leading" secondItem="zUW-h1-UEv" secondAttribute="leading" constant="8" id="uwb-Xd-BzO"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="appNotificationCellType">
-                                                <integer key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <outlet property="notificationTitleLabel" destination="Vei-uv-N1r" id="vT2-B8-8Ev"/>
-                                            <outlet property="switchBtn" destination="W3i-rN-Xbd" id="3nD-cf-dbc"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="BjE-Ej-EgY" customClass="BUAppNotificationCell">
-                                        <rect key="frame" x="0.0" y="204" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BjE-Ej-EgY" id="UVu-4H-fPl">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cnb-fC-uFe">
-                                                    <rect key="frame" x="8" y="11" width="500" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="HaA-hR-YYM"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CF1-Mi-whG">
-                                                    <rect key="frame" x="516" y="6" width="68" height="32"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="32" id="Uo5-WY-NRv"/>
-                                                        <constraint firstAttribute="width" constant="68" id="fdq-55-h1t"/>
-                                                    </constraints>
-                                                    <state key="normal" backgroundImage="switch_ON"/>
-                                                    <connections>
-                                                        <action selector="changeNotificationSettings:" destination="BjE-Ej-EgY" eventType="touchUpInside" id="CbR-TM-7iM"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Cnb-fC-uFe" firstAttribute="leading" secondItem="UVu-4H-fPl" secondAttribute="leading" constant="8" id="1C8-Uj-RK8"/>
-                                                <constraint firstAttribute="trailing" secondItem="CF1-Mi-whG" secondAttribute="trailing" constant="16" id="R3p-EY-Q1e"/>
-                                                <constraint firstItem="CF1-Mi-whG" firstAttribute="top" secondItem="UVu-4H-fPl" secondAttribute="top" constant="6" id="eMJ-VB-5BH"/>
-                                                <constraint firstItem="CF1-Mi-whG" firstAttribute="leading" secondItem="Cnb-fC-uFe" secondAttribute="trailing" constant="8" id="kPS-fm-OrH"/>
-                                                <constraint firstItem="Cnb-fC-uFe" firstAttribute="top" secondItem="UVu-4H-fPl" secondAttribute="top" constant="11" id="mZ2-uy-5uj"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="appNotificationCellType">
-                                                <integer key="value" value="4"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <outlet property="notificationTitleLabel" destination="Cnb-fC-uFe" id="0zQ-fF-qIR"/>
-                                            <outlet property="switchBtn" destination="CF1-Mi-whG" id="2yi-CP-7Er"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="MEMBERSHIP" id="grK-Q3-Xfg">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="ipG-Yc-OOn" customClass="BUAppNotificationCell">
-                                        <rect key="frame" x="0.0" y="276" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="144" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ipG-Yc-OOn" id="b9Z-nR-5XW">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -3238,7 +3100,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="xb0-j8-A2j" customClass="BUAppNotificationCell">
-                                        <rect key="frame" x="0.0" y="320" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="188" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xb0-j8-A2j" id="RiB-Tq-Sh6">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -3280,7 +3142,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="DbD-Cr-lqw" customClass="BUAppNotificationCell">
-                                        <rect key="frame" x="0.0" y="364" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="232" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DbD-Cr-lqw" id="Yll-NE-hYc">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -3322,7 +3184,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="fqF-uW-MaM" customClass="BUAppNotificationCell">
-                                        <rect key="frame" x="0.0" y="408" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="276" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fqF-uW-MaM" id="YU2-UD-zAd">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -3368,7 +3230,7 @@
                             <tableViewSection headerTitle="SUPPORT" id="af1-RZ-qga">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="PB8-NH-Uch" customClass="BUAppNotificationCell">
-                                        <rect key="frame" x="0.0" y="480" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="348" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PB8-NH-Uch" id="Hoh-1q-Vdb">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -3400,7 +3262,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="u22-Gw-0hh" customClass="BUAppNotificationCell">
-                                        <rect key="frame" x="0.0" y="524" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="392" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u22-Gw-0hh" id="bdx-o6-Xrd">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -3432,7 +3294,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="mt2-1E-H8V" customClass="BUAppNotificationCell">
-                                        <rect key="frame" x="0.0" y="568" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="436" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mt2-1E-H8V" id="mMI-ra-7Dl">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -3474,6 +3336,144 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQM-XI-yfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="BjE-Ej-EgY" customClass="BUAppNotificationCell">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BjE-Ej-EgY" id="UVu-4H-fPl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cnb-fC-uFe">
+                                <rect key="frame" x="8" y="11" width="500" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="HaA-hR-YYM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CF1-Mi-whG">
+                                <rect key="frame" x="516" y="6" width="68" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="Uo5-WY-NRv"/>
+                                    <constraint firstAttribute="width" constant="68" id="fdq-55-h1t"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="switch_ON"/>
+                                <connections>
+                                    <action selector="changeNotificationSettings:" destination="BjE-Ej-EgY" eventType="touchUpInside" id="CbR-TM-7iM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Cnb-fC-uFe" firstAttribute="leading" secondItem="UVu-4H-fPl" secondAttribute="leading" constant="8" id="1C8-Uj-RK8"/>
+                            <constraint firstAttribute="trailing" secondItem="CF1-Mi-whG" secondAttribute="trailing" constant="16" id="R3p-EY-Q1e"/>
+                            <constraint firstItem="CF1-Mi-whG" firstAttribute="top" secondItem="UVu-4H-fPl" secondAttribute="top" constant="6" id="eMJ-VB-5BH"/>
+                            <constraint firstItem="CF1-Mi-whG" firstAttribute="leading" secondItem="Cnb-fC-uFe" secondAttribute="trailing" constant="8" id="kPS-fm-OrH"/>
+                            <constraint firstItem="Cnb-fC-uFe" firstAttribute="top" secondItem="UVu-4H-fPl" secondAttribute="top" constant="11" id="mZ2-uy-5uj"/>
+                        </constraints>
+                    </tableViewCellContentView>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="appNotificationCellType">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="notificationTitleLabel" destination="Cnb-fC-uFe" id="0zQ-fF-qIR"/>
+                        <outlet property="switchBtn" destination="CF1-Mi-whG" id="2yi-CP-7Er"/>
+                    </connections>
+                </tableViewCell>
+                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="Ueu-1r-OW9" customClass="BUAppNotificationCell">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ueu-1r-OW9" id="zUW-h1-UEv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blog Release" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vei-uv-N1r">
+                                <rect key="frame" x="8" y="11" width="500" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="OG2-u8-Ui5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3i-rN-Xbd">
+                                <rect key="frame" x="516" y="6" width="68" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="ZdE-Xv-zYC"/>
+                                    <constraint firstAttribute="width" constant="68" id="cIV-I8-3mV"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="switch_ON"/>
+                                <connections>
+                                    <action selector="changeNotificationSettings:" destination="Ueu-1r-OW9" eventType="touchUpInside" id="YDb-yU-g7S"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="W3i-rN-Xbd" firstAttribute="leading" secondItem="Vei-uv-N1r" secondAttribute="trailing" constant="8" id="AlE-uQ-be9"/>
+                            <constraint firstAttribute="trailing" secondItem="W3i-rN-Xbd" secondAttribute="trailing" constant="16" id="Czn-9s-cC6"/>
+                            <constraint firstItem="Vei-uv-N1r" firstAttribute="top" secondItem="zUW-h1-UEv" secondAttribute="top" constant="11" id="PHw-FT-qXe"/>
+                            <constraint firstItem="W3i-rN-Xbd" firstAttribute="top" secondItem="zUW-h1-UEv" secondAttribute="top" constant="6" id="p4D-G1-N1E"/>
+                            <constraint firstItem="Vei-uv-N1r" firstAttribute="leading" secondItem="zUW-h1-UEv" secondAttribute="leading" constant="8" id="uwb-Xd-BzO"/>
+                        </constraints>
+                    </tableViewCellContentView>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="appNotificationCellType">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="notificationTitleLabel" destination="Vei-uv-N1r" id="vT2-B8-8Ev"/>
+                        <outlet property="switchBtn" destination="W3i-rN-Xbd" id="3nD-cf-dbc"/>
+                    </connections>
+                </tableViewCell>
+                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BUAppNotificationCell" id="6fb-tO-l8K" customClass="BUAppNotificationCell">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6fb-tO-l8K" id="FHm-TL-cMZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customer Service (Emails)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paP-2S-JDG">
+                                <rect key="frame" x="8" y="11" width="500" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="I72-Jo-Opb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Comfortaa" family="Comfortaa" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NV1-2h-Ob0">
+                                <rect key="frame" x="516" y="6" width="68" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="0ck-Hy-Msc"/>
+                                    <constraint firstAttribute="height" constant="32" id="uhg-j8-6AX"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="switch_ON"/>
+                                <connections>
+                                    <action selector="changeNotificationSettings:" destination="6fb-tO-l8K" eventType="touchUpInside" id="Lt2-rY-Sca"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="paP-2S-JDG" firstAttribute="leading" secondItem="FHm-TL-cMZ" secondAttribute="leading" constant="8" id="Hfv-cY-bD8"/>
+                            <constraint firstAttribute="trailing" secondItem="NV1-2h-Ob0" secondAttribute="trailing" constant="16" id="IeM-0z-dZu"/>
+                            <constraint firstItem="NV1-2h-Ob0" firstAttribute="top" secondItem="FHm-TL-cMZ" secondAttribute="top" constant="6" id="PZg-6X-7Rm"/>
+                            <constraint firstItem="paP-2S-JDG" firstAttribute="top" secondItem="FHm-TL-cMZ" secondAttribute="top" constant="11" id="Yu2-df-jBS"/>
+                            <constraint firstItem="NV1-2h-Ob0" firstAttribute="leading" secondItem="paP-2S-JDG" secondAttribute="trailing" constant="8" id="wuy-Wk-bc3"/>
+                        </constraints>
+                    </tableViewCellContentView>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="appNotificationCellType">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="notificationTitleLabel" destination="paP-2S-JDG" id="zU8-ct-1Oe"/>
+                        <outlet property="switchBtn" destination="NV1-2h-Ob0" id="nuj-6M-xgo"/>
+                    </connections>
+                </tableViewCell>
             </objects>
             <point key="canvasLocation" x="1" y="79"/>
         </scene>
